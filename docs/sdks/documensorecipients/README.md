@@ -35,7 +35,7 @@ func main() {
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Templates.Recipients.Get(ctx, 7003.46)
+    res, err := s.Templates.Recipients.Get(ctx, 7003.47)
     if err != nil {
         log.Fatal(err)
     }
@@ -220,7 +220,7 @@ func main() {
     )
 
     res, err := s.Templates.Recipients.Update(ctx, operations.RecipientUpdateTemplateRecipientRequestBody{
-        TemplateID: 8574.77,
+        TemplateID: 8574.78,
         Recipient: operations.RecipientUpdateTemplateRecipientRecipient{
             ID: 5971.29,
         },

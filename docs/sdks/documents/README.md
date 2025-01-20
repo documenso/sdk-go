@@ -39,7 +39,9 @@ func main() {
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
+    res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
+        OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -93,7 +95,7 @@ func main() {
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Documents.Get(ctx, 7003.46)
+    res, err := s.Documents.Get(ctx, 7003.47)
     if err != nil {
         log.Fatal(err)
     }
@@ -205,7 +207,7 @@ func main() {
     )
 
     res, err := s.Documents.Update(ctx, operations.DocumentSetSettingsForDocumentRequestBody{
-        DocumentID: 8574.77,
+        DocumentID: 8574.78,
     })
     if err != nil {
         log.Fatal(err)
@@ -317,7 +319,7 @@ func main() {
     )
 
     res, err := s.Documents.MoveToTeam(ctx, operations.DocumentMoveDocumentToTeamRequestBody{
-        DocumentID: 8301.71,
+        DocumentID: 8301.72,
         TeamID: 6724.78,
     })
     if err != nil {
@@ -432,7 +434,7 @@ func main() {
     res, err := s.Documents.Redistribute(ctx, operations.DocumentResendDocumentRequestBody{
         DocumentID: 5758.65,
         Recipients: []float64{
-            2264.08,
+
         },
     })
     if err != nil {
