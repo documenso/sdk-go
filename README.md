@@ -70,7 +70,9 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
+	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
+		OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -112,7 +114,9 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
+	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
+		OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -224,7 +228,9 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{}, operations.WithRetries(
+	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
+		OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
+	}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -276,7 +282,9 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
+	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
+		OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -326,7 +334,9 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
+	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
+		OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
+	})
 	if err != nil {
 
 		var e *apierrors.ErrorBADREQUEST
@@ -383,7 +393,9 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
+	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
+		OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
+	})
 	if err != nil {
 		log.Fatal(err)
 	}

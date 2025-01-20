@@ -146,7 +146,7 @@ func main() {
     )
 
     res, err := s.Templates.DirectLink.Toggle(ctx, operations.TemplateToggleTemplateDirectLinkRequestBody{
-        TemplateID: 722.90,
+        TemplateID: 722.9,
         Enabled: true,
     })
     if err != nil {

@@ -35,7 +35,7 @@ func main() {
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Documents.Recipients.Get(ctx, 7003.46)
+    res, err := s.Documents.Recipients.Get(ctx, 7003.47)
     if err != nil {
         log.Fatal(err)
     }
@@ -220,7 +220,7 @@ func main() {
     )
 
     res, err := s.Documents.Recipients.Update(ctx, operations.RecipientUpdateDocumentRecipientRequestBody{
-        DocumentID: 8574.77,
+        DocumentID: 8574.78,
         Recipient: operations.RecipientUpdateDocumentRecipientRecipient{
             ID: 5971.29,
         },

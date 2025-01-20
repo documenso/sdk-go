@@ -1,4 +1,4 @@
-speakeasyVersion: 1.468.4
+speakeasyVersion: 1.469.10
 sources:
     documenso-OAS:
         sourceNamespace: documenso-oas
@@ -6,6 +6,7 @@ sources:
         sourceBlobDigest: sha256:b54d7f793fedc532b07ad3a417aa86f4af3d1b4f9e7496550ce6cf5a455187fb
         tags:
             - latest
+            - speakeasy-sdk-regen-1737371637
 targets:
     documenso:
         source: documenso-OAS
@@ -13,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:93ee78e094f9f5de4c126c6a06c363e22412c11a874255e545a8cb610b3bf047
         sourceBlobDigest: sha256:b54d7f793fedc532b07ad3a417aa86f4af3d1b4f9e7496550ce6cf5a455187fb
         codeSamplesNamespace: documenso-oas-go-code-samples
-        codeSamplesRevisionDigest: sha256:ac5aff11a828170d957142e604ceb6943dd28abb5a7c73decfba737123c2516d
+        codeSamplesRevisionDigest: sha256:f534fad4491fdd81b058c6e5b813ac3bb67bb475d274c79ab41530834427df5f
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

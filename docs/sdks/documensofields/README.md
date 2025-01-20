@@ -38,15 +38,15 @@ func main() {
 
     res, err := s.Templates.Fields.Create(ctx, operations.FieldCreateTemplateFieldRequestBody{
         TemplateID: 4865.89,
-        Field: operations.CreateFieldCreateTemplateFieldFieldFieldCreateTemplateFieldField1(
-            operations.FieldCreateTemplateFieldField1{
-                Type: operations.FieldCreateTemplateFieldFieldTypeSignature,
-                RecipientID: 1697.27,
-                PageNumber: 899.64,
-                PageX: 7926.20,
-                PageY: 8165.87,
-                Width: 5862.20,
-                Height: 7524.37,
+        Field: operations.CreateFieldCreateTemplateFieldFieldFieldCreateTemplateFieldField8(
+            operations.FieldCreateTemplateFieldField8{
+                Type: operations.FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8TypeNumber,
+                RecipientID: 4174.58,
+                PageNumber: 1343.65,
+                PageX: 690.25,
+                PageY: 7964.74,
+                Width: 9510.62,
+                Height: 0.86,
             },
         ),
     })
@@ -102,7 +102,7 @@ func main() {
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Templates.Fields.Get(ctx, 7003.46)
+    res, err := s.Templates.Fields.Get(ctx, 7003.47)
     if err != nil {
         log.Fatal(err)
     }
@@ -160,26 +160,26 @@ func main() {
     res, err := s.Templates.Fields.CreateMany(ctx, operations.FieldCreateTemplateFieldsRequestBody{
         TemplateID: 5158.41,
         Fields: []operations.FieldCreateTemplateFieldsFields{
+            operations.CreateFieldCreateTemplateFieldsFieldsFieldCreateTemplateFieldsFields10(
+                operations.FieldCreateTemplateFieldsFields10{
+                    Type: operations.FieldCreateTemplateFieldsFieldsTemplatesFieldsRequestRequestBody10TypeCheckbox,
+                    RecipientID: 2516.72,
+                    PageNumber: 2304.17,
+                    PageX: 7760.32,
+                    PageY: 3376.66,
+                    Width: 3566.94,
+                    Height: 2768.94,
+                },
+            ),
             operations.CreateFieldCreateTemplateFieldsFieldsFieldCreateTemplateFieldsFields8(
                 operations.FieldCreateTemplateFieldsFields8{
                     Type: operations.FieldCreateTemplateFieldsFieldsTemplatesFieldsRequestRequestBody8TypeNumber,
-                    RecipientID: 5043.41,
-                    PageNumber: 9910.51,
-                    PageX: 7633.87,
-                    PageY: 2229.58,
-                    Width: 4749.13,
-                    Height: 5816.06,
-                },
-            ),
-            operations.CreateFieldCreateTemplateFieldsFieldsFieldCreateTemplateFieldsFields9(
-                operations.FieldCreateTemplateFieldsFields9{
-                    Type: operations.FieldCreateTemplateFieldsFieldsTemplatesFieldsRequestRequestBody9TypeRadio,
-                    RecipientID: 6129.81,
-                    PageNumber: 8630.00,
-                    PageX: 6459.94,
-                    PageY: 6070.00,
-                    Width: 2530.57,
-                    Height: 4918.06,
+                    RecipientID: 5689.64,
+                    PageNumber: 6483.69,
+                    PageX: 7271.79,
+                    PageY: 1891.56,
+                    Width: 7263.21,
+                    Height: 5043.41,
                 },
             ),
         },
@@ -238,11 +238,11 @@ func main() {
     )
 
     res, err := s.Templates.Fields.Update(ctx, operations.FieldUpdateTemplateFieldRequestBody{
-        TemplateID: 8574.77,
-        Field: operations.CreateFieldUpdateTemplateFieldFieldFieldUpdateTemplateFieldField4(
-            operations.FieldUpdateTemplateFieldField4{
-                Type: operations.FieldUpdateTemplateFieldFieldTemplatesFieldsRequestRequestBody4TypeName,
-                ID: 9914.64,
+        TemplateID: 8574.78,
+        Field: operations.CreateFieldUpdateTemplateFieldFieldFieldUpdateTemplateFieldField7(
+            operations.FieldUpdateTemplateFieldField7{
+                Type: operations.FieldUpdateTemplateFieldFieldTemplatesFieldsRequestRequestBody7TypeText,
+                ID: 3446.2,
             },
         ),
     })
@@ -302,16 +302,16 @@ func main() {
     res, err := s.Templates.Fields.UpdateMany(ctx, operations.FieldUpdateTemplateFieldsRequestBody{
         TemplateID: 4057.69,
         Fields: []operations.FieldUpdateTemplateFieldsFields{
+            operations.CreateFieldUpdateTemplateFieldsFieldsFieldUpdateTemplateFieldsFields6(
+                operations.FieldUpdateTemplateFieldsFields6{
+                    Type: operations.FieldUpdateTemplateFieldsFieldsTemplatesFieldsRequestRequestBody6TypeDate,
+                    ID: 8982.15,
+                },
+            ),
             operations.CreateFieldUpdateTemplateFieldsFieldsFieldUpdateTemplateFieldsFields4(
                 operations.FieldUpdateTemplateFieldsFields4{
                     Type: operations.FieldUpdateTemplateFieldsFieldsTemplatesFieldsRequestRequestBody4TypeName,
-                    ID: 310.20,
-                },
-            ),
-            operations.CreateFieldUpdateTemplateFieldsFieldsFieldUpdateTemplateFieldsFields2(
-                operations.FieldUpdateTemplateFieldsFields2{
-                    Type: operations.FieldUpdateTemplateFieldsFieldsTemplatesFieldsTypeFreeSignature,
-                    ID: 8948.10,
+                    ID: 310.19,
                 },
             ),
         },

@@ -35,7 +35,7 @@ func main() {
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Documents.Fields.Get(ctx, 7003.46)
+    res, err := s.Documents.Fields.Get(ctx, 7003.47)
     if err != nil {
         log.Fatal(err)
     }
@@ -92,15 +92,15 @@ func main() {
 
     res, err := s.Documents.Fields.Create(ctx, operations.FieldCreateDocumentFieldRequestBody{
         DocumentID: 4865.89,
-        Field: operations.CreateFieldField1(
-            operations.Field1{
-                Type: operations.FieldTypeSignature,
-                RecipientID: 1697.27,
-                PageNumber: 899.64,
-                PageX: 7926.20,
-                PageY: 8165.87,
-                Width: 5862.20,
-                Height: 7524.37,
+        Field: operations.CreateFieldField8(
+            operations.Field8{
+                Type: operations.FieldCreateDocumentFieldFieldDocumentsFieldsRequestRequestBody8TypeNumber,
+                RecipientID: 4174.58,
+                PageNumber: 1343.65,
+                PageX: 690.25,
+                PageY: 7964.74,
+                Width: 9510.62,
+                Height: 0.86,
             },
         ),
     })
@@ -160,26 +160,26 @@ func main() {
     res, err := s.Documents.Fields.CreateMany(ctx, operations.FieldCreateDocumentFieldsRequestBody{
         DocumentID: 5158.41,
         Fields: []operations.FieldCreateDocumentFieldsFields{
+            operations.CreateFieldCreateDocumentFieldsFieldsFields10(
+                operations.Fields10{
+                    Type: operations.FieldCreateDocumentFieldsFieldsDocumentsFieldsRequestRequestBody10TypeCheckbox,
+                    RecipientID: 2516.72,
+                    PageNumber: 2304.17,
+                    PageX: 7760.32,
+                    PageY: 3376.66,
+                    Width: 3566.94,
+                    Height: 2768.94,
+                },
+            ),
             operations.CreateFieldCreateDocumentFieldsFieldsFields8(
                 operations.Fields8{
                     Type: operations.FieldCreateDocumentFieldsFieldsDocumentsFieldsRequestRequestBody8TypeNumber,
-                    RecipientID: 5043.41,
-                    PageNumber: 9910.51,
-                    PageX: 7633.87,
-                    PageY: 2229.58,
-                    Width: 4749.13,
-                    Height: 5816.06,
-                },
-            ),
-            operations.CreateFieldCreateDocumentFieldsFieldsFields9(
-                operations.Fields9{
-                    Type: operations.FieldCreateDocumentFieldsFieldsDocumentsFieldsRequestRequestBody9TypeRadio,
-                    RecipientID: 6129.81,
-                    PageNumber: 8630.00,
-                    PageX: 6459.94,
-                    PageY: 6070.00,
-                    Width: 2530.57,
-                    Height: 4918.06,
+                    RecipientID: 5689.64,
+                    PageNumber: 6483.69,
+                    PageX: 7271.79,
+                    PageY: 1891.56,
+                    Width: 7263.21,
+                    Height: 5043.41,
                 },
             ),
         },
@@ -238,11 +238,11 @@ func main() {
     )
 
     res, err := s.Documents.Fields.Update(ctx, operations.FieldUpdateDocumentFieldRequestBody{
-        DocumentID: 8574.77,
-        Field: operations.CreateFieldUpdateDocumentFieldFieldFieldUpdateDocumentFieldField4(
-            operations.FieldUpdateDocumentFieldField4{
-                Type: operations.FieldUpdateDocumentFieldFieldDocumentsFieldsRequestRequestBody4TypeName,
-                ID: 9914.64,
+        DocumentID: 8574.78,
+        Field: operations.CreateFieldUpdateDocumentFieldFieldFieldUpdateDocumentFieldField7(
+            operations.FieldUpdateDocumentFieldField7{
+                Type: operations.FieldUpdateDocumentFieldFieldDocumentsFieldsRequestRequestBody7TypeText,
+                ID: 3446.2,
             },
         ),
     })
@@ -302,16 +302,16 @@ func main() {
     res, err := s.Documents.Fields.UpdateMany(ctx, operations.FieldUpdateDocumentFieldsRequestBody{
         DocumentID: 4057.69,
         Fields: []operations.FieldUpdateDocumentFieldsFields{
+            operations.CreateFieldUpdateDocumentFieldsFieldsFieldUpdateDocumentFieldsFields6(
+                operations.FieldUpdateDocumentFieldsFields6{
+                    Type: operations.FieldUpdateDocumentFieldsFieldsDocumentsFieldsRequestRequestBody6TypeDate,
+                    ID: 8982.15,
+                },
+            ),
             operations.CreateFieldUpdateDocumentFieldsFieldsFieldUpdateDocumentFieldsFields4(
                 operations.FieldUpdateDocumentFieldsFields4{
                     Type: operations.FieldUpdateDocumentFieldsFieldsDocumentsFieldsRequestRequestBody4TypeName,
-                    ID: 310.20,
-                },
-            ),
-            operations.CreateFieldUpdateDocumentFieldsFieldsFieldUpdateDocumentFieldsFields2(
-                operations.FieldUpdateDocumentFieldsFields2{
-                    Type: operations.FieldUpdateDocumentFieldsFieldsDocumentsFieldsTypeFreeSignature,
-                    ID: 8948.10,
+                    ID: 310.19,
                 },
             ),
         },

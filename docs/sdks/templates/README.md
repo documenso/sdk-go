@@ -93,7 +93,7 @@ func main() {
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Templates.Get(ctx, 7003.46)
+    res, err := s.Templates.Get(ctx, 7003.47)
     if err != nil {
         log.Fatal(err)
     }
@@ -149,7 +149,7 @@ func main() {
     )
 
     res, err := s.Templates.Update(ctx, operations.TemplateUpdateTemplateRequestBody{
-        TemplateID: 8574.77,
+        TemplateID: 8574.78,
     })
     if err != nil {
         log.Fatal(err)
@@ -317,7 +317,7 @@ func main() {
     )
 
     res, err := s.Templates.Use(ctx, operations.TemplateCreateDocumentFromTemplateRequestBody{
-        TemplateID: 6626.90,
+        TemplateID: 6626.9,
         Recipients: []operations.TemplateCreateDocumentFromTemplateRecipients{
             operations.TemplateCreateDocumentFromTemplateRecipients{
                 ID: 6473.53,
@@ -383,7 +383,7 @@ func main() {
     )
 
     res, err := s.Templates.MoveToTeam(ctx, operations.TemplateMoveTemplateToTeamRequestBody{
-        TemplateID: 8301.71,
+        TemplateID: 8301.72,
         TeamID: 6724.78,
     })
     if err != nil {
