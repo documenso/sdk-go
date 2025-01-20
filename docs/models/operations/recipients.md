@@ -1,0 +1,14 @@
+# Recipients
+
+
+## Fields
+
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `Email`                                                                       | *string*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           |
+| `Name`                                                                        | *string*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           |
+| `Role`                                                                        | [operations.Role](../../models/operations/role.md)                            | :heavy_check_mark:                                                            | N/A                                                                           |
+| `SigningOrder`                                                                | **float64*                                                                    | :heavy_minus_sign:                                                            | N/A                                                                           |
+| `AccessAuth`                                                                  | [*operations.AccessAuth](../../models/operations/accessauth.md)               | :heavy_minus_sign:                                                            | The type of authentication required for the recipient to access the document. |
+| `ActionAuth`                                                                  | [*operations.ActionAuth](../../models/operations/actionauth.md)               | :heavy_minus_sign:                                                            | The type of authentication required for the recipient to sign the document.   |
+| `Fields`                                                                      | [][operations.Fields](../../models/operations/fields.md)                      | :heavy_minus_sign:                                                            | N/A                                                                           |

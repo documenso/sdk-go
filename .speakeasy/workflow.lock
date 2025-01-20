@@ -1,0 +1,35 @@
+speakeasyVersion: 1.468.4
+sources:
+    documenso-OAS:
+        sourceNamespace: documenso-oas
+        sourceRevisionDigest: sha256:93ee78e094f9f5de4c126c6a06c363e22412c11a874255e545a8cb610b3bf047
+        sourceBlobDigest: sha256:b54d7f793fedc532b07ad3a417aa86f4af3d1b4f9e7496550ce6cf5a455187fb
+        tags:
+            - latest
+targets:
+    documenso:
+        source: documenso-OAS
+        sourceNamespace: documenso-oas
+        sourceRevisionDigest: sha256:93ee78e094f9f5de4c126c6a06c363e22412c11a874255e545a8cb610b3bf047
+        sourceBlobDigest: sha256:b54d7f793fedc532b07ad3a417aa86f4af3d1b4f9e7496550ce6cf5a455187fb
+        codeSamplesNamespace: documenso-oas-go-code-samples
+        codeSamplesRevisionDigest: sha256:ac5aff11a828170d957142e604ceb6943dd28abb5a7c73decfba737123c2516d
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        documenso-OAS:
+            inputs:
+                - location: registry.speakeasyapi.dev/documenso-inc/api/documenso-v-2-beta-api:main
+            registry:
+                location: registry.speakeasyapi.dev/documenso-inc/api/documenso-oas
+    targets:
+        documenso:
+            target: go
+            source: documenso-OAS
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/documenso-inc/api/documenso-oas-go-code-samples
+                labelOverride:
+                    fixedValue: Go (SDK)
+                blocking: false

@@ -1,0 +1,14 @@
+# Field1
+
+
+## Fields
+
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `Type`                                                       | [operations.FieldType](../../models/operations/fieldtype.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `RecipientID`                                                | *float64*                                                    | :heavy_check_mark:                                           | The ID of the recipient to create the field for.             |
+| `PageNumber`                                                 | *float64*                                                    | :heavy_check_mark:                                           | The page number the field will be on.                        |
+| `PageX`                                                      | *float64*                                                    | :heavy_check_mark:                                           | The X coordinate of where the field will be placed.          |
+| `PageY`                                                      | *float64*                                                    | :heavy_check_mark:                                           | The Y coordinate of where the field will be placed.          |
+| `Width`                                                      | *float64*                                                    | :heavy_check_mark:                                           | The width of the field.                                      |
+| `Height`                                                     | *float64*                                                    | :heavy_check_mark:                                           | The height of the field.                                     |

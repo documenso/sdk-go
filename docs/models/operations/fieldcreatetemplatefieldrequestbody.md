@@ -1,0 +1,9 @@
+# FieldCreateTemplateFieldRequestBody
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `TemplateID`                                                                                         | *float64*                                                                                            | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `Field`                                                                                              | [operations.FieldCreateTemplateFieldField](../../models/operations/fieldcreatetemplatefieldfield.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

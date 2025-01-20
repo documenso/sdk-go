@@ -1,0 +1,10 @@
+# TemplateUpdateTemplateRequestBody
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `TemplateID`                                                                                    | *float64*                                                                                       | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `Data`                                                                                          | [*operations.TemplateUpdateTemplateData](../../models/operations/templateupdatetemplatedata.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |
+| `Meta`                                                                                          | [*operations.TemplateUpdateTemplateMeta](../../models/operations/templateupdatetemplatemeta.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |

@@ -1,0 +1,9 @@
+# TemplateGetTemplateByIDResponse
+
+
+## Fields
+
+| Field                                                                                                             | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                                        | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                                | :heavy_check_mark:                                                                                                | N/A                                                                                                               |
+| `Object`                                                                                                          | [*operations.TemplateGetTemplateByIDResponseBody](../../models/operations/templategettemplatebyidresponsebody.md) | :heavy_minus_sign:                                                                                                | Successful response                                                                                               |
