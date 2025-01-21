@@ -1,37 +1,45 @@
-# github.com/documenso/sdk-go
+<img src="https://github.com/documenso/documenso/assets/13398220/a643571f-0239-46a6-a73e-6bef38d1228b" alt="Documenso Logo">
 
-Developer-friendly & type-safe Go SDK specifically catered to leverage *github.com/documenso/sdk-go* API.
+&nbsp;
 
-<div align="left">
+<div align="center">
     <a href="https://www.speakeasy.com/?utm_source=github-com/documenso/sdk-go&utm_campaign=go"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
     </a>
 </div>
 
-<!-- Start Summary [summary] -->
-## Summary
+## Documenso Go SDK
 
-Documenso v2 beta API: Subject to breaking changes until v2 is fully released.
-<!-- End Summary [summary] -->
+A SDK for seamless integration with Documenso v2 API.
 
-<!-- Start Table of Contents [toc] -->
+The full Documenso API can be viewed here (**todo**), which includes examples.
+
+## ⚠️ Warning
+
+Documenso v2 API and SDKs are currently in beta. There may be to breaking changes.
+
+To keep updated, please follow the discussions and issues here:
+- Discussion -> Todo
+- Breaking change alerts -> Todo
+
+<!-- No Summary [summary] -->
+
 ## Table of Contents
+
 <!-- $toc-max-depth=2 -->
-* [github.com/documenso/sdk-go](#githubcomdocumensosdk-go)
+* [Overview](#documenso-go-sdk)
   * [SDK Installation](#sdk-installation)
-  * [SDK Example Usage](#sdk-example-usage)
+  * [Document creation example](#document-creation-example)
   * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
-  * [Server Selection](#server-selection)
-  * [Custom HTTP Client](#custom-http-client)
 * [Development](#development)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
 
-<!-- End Table of Contents [toc] -->
+<!-- No Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
@@ -42,86 +50,109 @@ go get github.com/documenso/sdk-go
 ```
 <!-- End SDK Installation [installation] -->
 
-<!-- Start SDK Example Usage [usage] -->
-## SDK Example Usage
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	sdkgo "github.com/documenso/sdk-go"
-	"github.com/documenso/sdk-go/models/operations"
-	"log"
-	"os"
-)
-
-func main() {
-	ctx := context.Background()
-
-	s := sdkgo.New(
-		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
-	)
-
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
-		OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-	if res.Object != nil {
-		// handle response
-	}
-}
-
-```
-<!-- End SDK Example Usage [usage] -->
-
-<!-- Start Authentication [security] -->
 ## Authentication
 
-### Per-Client Security Schemes
+To use the SDK, you will need a Documenso API key which can be created [here](https://docs.documenso.com/developers/public-api/authentication#creating-an-api-key
+).
 
-This SDK supports the following security scheme globally:
+```go
+documenso := documensoSdk.New(
+  documensoSdk.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
+)
+```
+<!-- No Authentication [security] -->
 
-| Name     | Type   | Scheme  | Environment Variable |
-| -------- | ------ | ------- | -------------------- |
-| `APIKey` | apiKey | API key | `DOCUMENSO_API_KEY`  |
+## Document creation example
 
-You can configure it using the `WithSecurity` option when initializing the SDK client instance. For example:
+Currently creating a document involves two steps:
+
+1. Create the document
+2. Upload the PDF
+
+This is a temporary measure, in the near future prior to the full release we will merge these two tasks into one request. 
+
+Here is a full example of the document creation process which you can copy and run.
+
+Note that the function is temporarily called `createV0`, which will be replaced by `create` once we resolve the 2 step workaround.
+
 ```go
 package main
 
 import (
+	"bytes"
 	"context"
-	sdkgo "github.com/documenso/sdk-go"
-	"github.com/documenso/sdk-go/models/operations"
+	"errors"
+	"io"
 	"log"
+	"net/http"
 	"os"
+
+	documensoSdk "github.com/documenso/sdk-go"
+	"github.com/documenso/sdk-go/models/operations"
 )
+
+func uploadFileToPresignedUrl(filePath string, uploadUrl string) error {
+	// Read file
+	fileContent, err := os.ReadFile(filePath)
+	if err != nil {
+		return err
+	}
+
+	// Create request
+	req, err := http.NewRequest("PUT", uploadUrl, bytes.NewReader(fileContent))
+	if err != nil {
+		return err
+	}
+	req.Header.Set("Content-Type", "application/octet-stream")
+
+	// Make request
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	// Check response
+	if resp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(resp.Body)
+		return errors.New("upload failed with status: " + resp.Status + " body: " + string(body))
+	}
+
+	return nil
+}
 
 func main() {
 	ctx := context.Background()
 
-	s := sdkgo.New(
-		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
+	documenso := documensoSdk.New(
+		documensoSdk.WithSecurity("<API_KEY>"),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
-		OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
+	res, err := documenso.Documents.CreateV0(ctx, operations.DocumentCreateDocumentTemporaryRequestBody{
+		Title: "Document title",
+		Meta: &operations.Meta{
+			Subject:              documensoSdk.String("Email subject"),
+			Message:              documensoSdk.String("Email message"),
+			TypedSignatureEnabled: documensoSdk.Bool(false),
+		},
 	})
+
+
 	if err != nil {
 		log.Fatal(err)
 	}
-	if res.Object != nil {
-		// handle response
+
+
+	// Upload file
+	err = uploadFileToPresignedUrl("./demo.pdf", res.Object.UploadURL)
+
+	if err != nil {
+		log.Fatal(err)
 	}
 }
-
 ```
-<!-- End Authentication [security] -->
+<!-- No SDK Example Usage [usage] -->
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
@@ -363,73 +394,8 @@ func main() {
 ```
 <!-- End Error Handling [errors] -->
 
-<!-- Start Server Selection [server] -->
-## Server Selection
-
-### Override Server URL Per-Client
-
-The default server can also be overridden globally using the `WithServerURL(serverURL string)` option when initializing the SDK client instance. For example:
-```go
-package main
-
-import (
-	"context"
-	sdkgo "github.com/documenso/sdk-go"
-	"github.com/documenso/sdk-go/models/operations"
-	"log"
-	"os"
-)
-
-func main() {
-	ctx := context.Background()
-
-	s := sdkgo.New(
-		sdkgo.WithServerURL("https://app.documenso.com/api/v2-beta"),
-		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
-	)
-
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
-		OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
-	})
-	if err != nil {
-		log.Fatal(err)
-	}
-	if res.Object != nil {
-		// handle response
-	}
-}
-
-```
-<!-- End Server Selection [server] -->
-
-<!-- Start Custom HTTP Client [http-client] -->
-## Custom HTTP Client
-
-The Go SDK makes API calls that wrap an internal HTTP client. The requirements for the HTTP client are very simple. It must match this interface:
-
-```go
-type HTTPClient interface {
-	Do(req *http.Request) (*http.Response, error)
-}
-```
-
-The built-in `net/http` client satisfies this interface and a default client based on the built-in is provided by default. To replace this default with a client of your own, you can implement this interface yourself or provide your own client configured as desired. Here's a simple example, which adds a client with a 30 second timeout.
-
-```go
-import (
-	"net/http"
-	"time"
-	"github.com/myorg/your-go-sdk"
-)
-
-var (
-	httpClient = &http.Client{Timeout: 30 * time.Second}
-	sdkClient  = sdk.New(sdk.WithClient(httpClient))
-)
-```
-
-This can be a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration.
-<!-- End Custom HTTP Client [http-client] -->
+<!-- No Server Selection [server] -->
+<!-- No Custom HTTP Client [http-client] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
