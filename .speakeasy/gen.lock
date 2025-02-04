@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: bae11706-ab18-405c-b9f4-26138a36bedc
 management:
-  docChecksum: 76e9b7822f2da5a5cb122b30d7f464b9
+  docChecksum: 5e2ce059e01704af6196abae6c7e5982
   docVersion: 0.0.0
-  speakeasyVersion: 1.469.11
-  generationVersion: 2.493.32
-  releaseVersion: 0.0.3
-  configChecksum: 1273cde6512988aed70207b941746d49
+  speakeasyVersion: 1.483.0
+  generationVersion: 2.502.0
+  releaseVersion: 0.0.4
+  configChecksum: 1e521fc87198426e9670af1f972f7ad1
   repoURL: https://github.com/documenso/sdk-go.git
   installationURL: https://github.com/documenso/sdk-go
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.6.9
+    core: 3.6.12
     defaultEnabledRetries: 0.2.0
     devContainers: 2.90.0
     envVarSecurityUsage: 0.3.2
@@ -35,9 +35,49 @@ generatedFiles:
   - .devcontainer/devcontainer.json
   - .devcontainer/setup.sh
   - .gitattributes
-  - /models/apierrors/errorbadrequest.go
-  - /models/apierrors/errorinternalservererror.go
-  - /models/apierrors/errornotfound.go
+  - /models/apierrors/documentcreatedocumenttemporary.go
+  - /models/apierrors/documentdeletedocument.go
+  - /models/apierrors/documentduplicatedocument.go
+  - /models/apierrors/documentfinddocuments.go
+  - /models/apierrors/documentgetdocumentwithdetailsbyid.go
+  - /models/apierrors/documentmovedocumenttoteam.go
+  - /models/apierrors/documentresenddocument.go
+  - /models/apierrors/documentsenddocument.go
+  - /models/apierrors/documentsetsettingsfordocument.go
+  - /models/apierrors/fieldcreatedocumentfield.go
+  - /models/apierrors/fieldcreatedocumentfields.go
+  - /models/apierrors/fieldcreatetemplatefield.go
+  - /models/apierrors/fieldcreatetemplatefields.go
+  - /models/apierrors/fielddeletedocumentfield.go
+  - /models/apierrors/fielddeletetemplatefield.go
+  - /models/apierrors/fieldgetdocumentfield.go
+  - /models/apierrors/fieldgettemplatefield.go
+  - /models/apierrors/fieldupdatedocumentfield.go
+  - /models/apierrors/fieldupdatedocumentfields.go
+  - /models/apierrors/fieldupdatetemplatefield.go
+  - /models/apierrors/fieldupdatetemplatefields.go
+  - /models/apierrors/recipientcreatedocumentrecipient.go
+  - /models/apierrors/recipientcreatedocumentrecipients.go
+  - /models/apierrors/recipientcreatetemplaterecipient.go
+  - /models/apierrors/recipientcreatetemplaterecipients.go
+  - /models/apierrors/recipientdeletedocumentrecipient.go
+  - /models/apierrors/recipientdeletetemplaterecipient.go
+  - /models/apierrors/recipientgetdocumentrecipient.go
+  - /models/apierrors/recipientgettemplaterecipient.go
+  - /models/apierrors/recipientupdatedocumentrecipient.go
+  - /models/apierrors/recipientupdatedocumentrecipients.go
+  - /models/apierrors/recipientupdatetemplaterecipient.go
+  - /models/apierrors/recipientupdatetemplaterecipients.go
+  - /models/apierrors/templatecreatedocumentfromtemplate.go
+  - /models/apierrors/templatecreatetemplatedirectlink.go
+  - /models/apierrors/templatedeletetemplate.go
+  - /models/apierrors/templatedeletetemplatedirectlink.go
+  - /models/apierrors/templateduplicatetemplate.go
+  - /models/apierrors/templatefindtemplates.go
+  - /models/apierrors/templategettemplatebyid.go
+  - /models/apierrors/templatemovetemplatetoteam.go
+  - /models/apierrors/templatetoggletemplatedirectlink.go
+  - /models/apierrors/templateupdatetemplate.go
   - /models/components/httpmetadata.go
   - /models/components/security.go
   - /models/operations/documentcreatedocumenttemporary.go
@@ -85,12 +125,194 @@ generatedFiles:
   - /models/operations/templateupdatetemplate.go
   - USAGE.md
   - directlink.go
-  - docs/models/apierrors/errorbadrequest.md
-  - docs/models/apierrors/errorinternalservererror.md
-  - docs/models/apierrors/errorinternalservererrorissues.md
-  - docs/models/apierrors/errornotfound.md
-  - docs/models/apierrors/errornotfoundissues.md
+  - docs/models/apierrors/documentcreatedocumenttemporarydocumentsissues.md
+  - docs/models/apierrors/documentcreatedocumenttemporarydocumentsresponsebody.md
+  - docs/models/apierrors/documentcreatedocumenttemporaryissues.md
+  - docs/models/apierrors/documentcreatedocumenttemporaryresponsebody.md
+  - docs/models/apierrors/documentdeletedocumentdocumentsissues.md
+  - docs/models/apierrors/documentdeletedocumentdocumentsresponsebody.md
+  - docs/models/apierrors/documentdeletedocumentissues.md
+  - docs/models/apierrors/documentdeletedocumentresponsebody.md
+  - docs/models/apierrors/documentduplicatedocumentdocumentsissues.md
+  - docs/models/apierrors/documentduplicatedocumentdocumentsresponsebody.md
+  - docs/models/apierrors/documentduplicatedocumentissues.md
+  - docs/models/apierrors/documentduplicatedocumentresponsebody.md
+  - docs/models/apierrors/documentfinddocumentsdocumentsissues.md
+  - docs/models/apierrors/documentfinddocumentsdocumentsresponsebody.md
+  - docs/models/apierrors/documentfinddocumentsdocumentsresponseresponsebody.md
+  - docs/models/apierrors/documentfinddocumentsissues.md
+  - docs/models/apierrors/documentfinddocumentsresponsebody.md
+  - docs/models/apierrors/documentgetdocumentwithdetailsbyiddocumentsissues.md
+  - docs/models/apierrors/documentgetdocumentwithdetailsbyiddocumentsresponsebody.md
+  - docs/models/apierrors/documentgetdocumentwithdetailsbyiddocumentsresponseissues.md
+  - docs/models/apierrors/documentgetdocumentwithdetailsbyiddocumentsresponseresponsebody.md
+  - docs/models/apierrors/documentgetdocumentwithdetailsbyidissues.md
+  - docs/models/apierrors/documentgetdocumentwithdetailsbyidresponsebody.md
+  - docs/models/apierrors/documentmovedocumenttoteamdocumentsissues.md
+  - docs/models/apierrors/documentmovedocumenttoteamdocumentsresponsebody.md
+  - docs/models/apierrors/documentmovedocumenttoteamissues.md
+  - docs/models/apierrors/documentmovedocumenttoteamresponsebody.md
+  - docs/models/apierrors/documentresenddocumentdocumentsissues.md
+  - docs/models/apierrors/documentresenddocumentdocumentsresponsebody.md
+  - docs/models/apierrors/documentresenddocumentissues.md
+  - docs/models/apierrors/documentresenddocumentresponsebody.md
+  - docs/models/apierrors/documentsenddocumentdocumentsissues.md
+  - docs/models/apierrors/documentsenddocumentdocumentsresponsebody.md
+  - docs/models/apierrors/documentsenddocumentissues.md
+  - docs/models/apierrors/documentsenddocumentresponsebody.md
+  - docs/models/apierrors/documentsetsettingsfordocumentdocumentsissues.md
+  - docs/models/apierrors/documentsetsettingsfordocumentdocumentsresponsebody.md
+  - docs/models/apierrors/documentsetsettingsfordocumentissues.md
+  - docs/models/apierrors/documentsetsettingsfordocumentresponsebody.md
+  - docs/models/apierrors/fieldcreatedocumentfielddocumentsfieldsissues.md
+  - docs/models/apierrors/fieldcreatedocumentfielddocumentsfieldsresponsebody.md
+  - docs/models/apierrors/fieldcreatedocumentfieldissues.md
+  - docs/models/apierrors/fieldcreatedocumentfieldresponsebody.md
+  - docs/models/apierrors/fieldcreatedocumentfieldsdocumentsfieldsissues.md
+  - docs/models/apierrors/fieldcreatedocumentfieldsdocumentsfieldsresponsebody.md
+  - docs/models/apierrors/fieldcreatedocumentfieldsissues.md
+  - docs/models/apierrors/fieldcreatedocumentfieldsresponsebody.md
+  - docs/models/apierrors/fieldcreatetemplatefieldissues.md
+  - docs/models/apierrors/fieldcreatetemplatefieldresponsebody.md
+  - docs/models/apierrors/fieldcreatetemplatefieldsissues.md
+  - docs/models/apierrors/fieldcreatetemplatefieldsresponsebody.md
+  - docs/models/apierrors/fieldcreatetemplatefieldstemplatesfieldsissues.md
+  - docs/models/apierrors/fieldcreatetemplatefieldstemplatesfieldsresponsebody.md
+  - docs/models/apierrors/fieldcreatetemplatefieldtemplatesfieldsissues.md
+  - docs/models/apierrors/fieldcreatetemplatefieldtemplatesfieldsresponsebody.md
+  - docs/models/apierrors/fielddeletedocumentfielddocumentsfieldsissues.md
+  - docs/models/apierrors/fielddeletedocumentfielddocumentsfieldsresponsebody.md
+  - docs/models/apierrors/fielddeletedocumentfieldissues.md
+  - docs/models/apierrors/fielddeletedocumentfieldresponsebody.md
+  - docs/models/apierrors/fielddeletetemplatefieldissues.md
+  - docs/models/apierrors/fielddeletetemplatefieldresponsebody.md
+  - docs/models/apierrors/fielddeletetemplatefieldtemplatesfieldsissues.md
+  - docs/models/apierrors/fielddeletetemplatefieldtemplatesfieldsresponsebody.md
+  - docs/models/apierrors/fieldgetdocumentfielddocumentsfieldsissues.md
+  - docs/models/apierrors/fieldgetdocumentfielddocumentsfieldsresponsebody.md
+  - docs/models/apierrors/fieldgetdocumentfielddocumentsfieldsresponseissues.md
+  - docs/models/apierrors/fieldgetdocumentfielddocumentsfieldsresponseresponsebody.md
+  - docs/models/apierrors/fieldgetdocumentfieldissues.md
+  - docs/models/apierrors/fieldgetdocumentfieldresponsebody.md
+  - docs/models/apierrors/fieldgettemplatefieldissues.md
+  - docs/models/apierrors/fieldgettemplatefieldresponsebody.md
+  - docs/models/apierrors/fieldgettemplatefieldtemplatesfieldsissues.md
+  - docs/models/apierrors/fieldgettemplatefieldtemplatesfieldsresponsebody.md
+  - docs/models/apierrors/fieldgettemplatefieldtemplatesfieldsresponseissues.md
+  - docs/models/apierrors/fieldgettemplatefieldtemplatesfieldsresponseresponsebody.md
+  - docs/models/apierrors/fieldupdatedocumentfielddocumentsfieldsissues.md
+  - docs/models/apierrors/fieldupdatedocumentfielddocumentsfieldsresponsebody.md
+  - docs/models/apierrors/fieldupdatedocumentfieldissues.md
+  - docs/models/apierrors/fieldupdatedocumentfieldresponsebody.md
+  - docs/models/apierrors/fieldupdatedocumentfieldsdocumentsfieldsissues.md
+  - docs/models/apierrors/fieldupdatedocumentfieldsdocumentsfieldsresponsebody.md
+  - docs/models/apierrors/fieldupdatedocumentfieldsissues.md
+  - docs/models/apierrors/fieldupdatedocumentfieldsresponsebody.md
+  - docs/models/apierrors/fieldupdatetemplatefieldissues.md
+  - docs/models/apierrors/fieldupdatetemplatefieldresponsebody.md
+  - docs/models/apierrors/fieldupdatetemplatefieldsissues.md
+  - docs/models/apierrors/fieldupdatetemplatefieldsresponsebody.md
+  - docs/models/apierrors/fieldupdatetemplatefieldstemplatesfieldsissues.md
+  - docs/models/apierrors/fieldupdatetemplatefieldstemplatesfieldsresponsebody.md
+  - docs/models/apierrors/fieldupdatetemplatefieldtemplatesfieldsissues.md
+  - docs/models/apierrors/fieldupdatetemplatefieldtemplatesfieldsresponsebody.md
   - docs/models/apierrors/issues.md
+  - docs/models/apierrors/recipientcreatedocumentrecipientdocumentsrecipientsissues.md
+  - docs/models/apierrors/recipientcreatedocumentrecipientdocumentsrecipientsresponsebody.md
+  - docs/models/apierrors/recipientcreatedocumentrecipientissues.md
+  - docs/models/apierrors/recipientcreatedocumentrecipientresponsebody.md
+  - docs/models/apierrors/recipientcreatedocumentrecipientsdocumentsrecipientsissues.md
+  - docs/models/apierrors/recipientcreatedocumentrecipientsdocumentsrecipientsresponsebody.md
+  - docs/models/apierrors/recipientcreatedocumentrecipientsissues.md
+  - docs/models/apierrors/recipientcreatedocumentrecipientsresponsebody.md
+  - docs/models/apierrors/recipientcreatetemplaterecipientissues.md
+  - docs/models/apierrors/recipientcreatetemplaterecipientresponsebody.md
+  - docs/models/apierrors/recipientcreatetemplaterecipientsissues.md
+  - docs/models/apierrors/recipientcreatetemplaterecipientsresponsebody.md
+  - docs/models/apierrors/recipientcreatetemplaterecipientstemplatesrecipientsissues.md
+  - docs/models/apierrors/recipientcreatetemplaterecipientstemplatesrecipientsresponsebody.md
+  - docs/models/apierrors/recipientcreatetemplaterecipienttemplatesrecipientsissues.md
+  - docs/models/apierrors/recipientcreatetemplaterecipienttemplatesrecipientsresponsebody.md
+  - docs/models/apierrors/recipientdeletedocumentrecipientdocumentsrecipientsissues.md
+  - docs/models/apierrors/recipientdeletedocumentrecipientdocumentsrecipientsresponsebody.md
+  - docs/models/apierrors/recipientdeletedocumentrecipientissues.md
+  - docs/models/apierrors/recipientdeletedocumentrecipientresponsebody.md
+  - docs/models/apierrors/recipientdeletetemplaterecipientissues.md
+  - docs/models/apierrors/recipientdeletetemplaterecipientresponsebody.md
+  - docs/models/apierrors/recipientdeletetemplaterecipienttemplatesrecipientsissues.md
+  - docs/models/apierrors/recipientdeletetemplaterecipienttemplatesrecipientsresponsebody.md
+  - docs/models/apierrors/recipientgetdocumentrecipientdocumentsrecipientsissues.md
+  - docs/models/apierrors/recipientgetdocumentrecipientdocumentsrecipientsresponsebody.md
+  - docs/models/apierrors/recipientgetdocumentrecipientdocumentsrecipientsresponseissues.md
+  - docs/models/apierrors/recipientgetdocumentrecipientdocumentsrecipientsresponseresponsebody.md
+  - docs/models/apierrors/recipientgetdocumentrecipientissues.md
+  - docs/models/apierrors/recipientgetdocumentrecipientresponsebody.md
+  - docs/models/apierrors/recipientgettemplaterecipientissues.md
+  - docs/models/apierrors/recipientgettemplaterecipientresponsebody.md
+  - docs/models/apierrors/recipientgettemplaterecipienttemplatesrecipientsissues.md
+  - docs/models/apierrors/recipientgettemplaterecipienttemplatesrecipientsresponsebody.md
+  - docs/models/apierrors/recipientgettemplaterecipienttemplatesrecipientsresponseissues.md
+  - docs/models/apierrors/recipientgettemplaterecipienttemplatesrecipientsresponseresponsebody.md
+  - docs/models/apierrors/recipientupdatedocumentrecipientdocumentsrecipientsissues.md
+  - docs/models/apierrors/recipientupdatedocumentrecipientdocumentsrecipientsresponsebody.md
+  - docs/models/apierrors/recipientupdatedocumentrecipientissues.md
+  - docs/models/apierrors/recipientupdatedocumentrecipientresponsebody.md
+  - docs/models/apierrors/recipientupdatedocumentrecipientsdocumentsrecipientsissues.md
+  - docs/models/apierrors/recipientupdatedocumentrecipientsdocumentsrecipientsresponsebody.md
+  - docs/models/apierrors/recipientupdatedocumentrecipientsissues.md
+  - docs/models/apierrors/recipientupdatedocumentrecipientsresponsebody.md
+  - docs/models/apierrors/recipientupdatetemplaterecipientissues.md
+  - docs/models/apierrors/recipientupdatetemplaterecipientresponsebody.md
+  - docs/models/apierrors/recipientupdatetemplaterecipientsissues.md
+  - docs/models/apierrors/recipientupdatetemplaterecipientsresponsebody.md
+  - docs/models/apierrors/recipientupdatetemplaterecipientstemplatesrecipientsissues.md
+  - docs/models/apierrors/recipientupdatetemplaterecipientstemplatesrecipientsresponsebody.md
+  - docs/models/apierrors/recipientupdatetemplaterecipienttemplatesrecipientsissues.md
+  - docs/models/apierrors/recipientupdatetemplaterecipienttemplatesrecipientsresponsebody.md
+  - docs/models/apierrors/templatecreatedocumentfromtemplateissues.md
+  - docs/models/apierrors/templatecreatedocumentfromtemplateresponsebody.md
+  - docs/models/apierrors/templatecreatedocumentfromtemplatetemplatesissues.md
+  - docs/models/apierrors/templatecreatedocumentfromtemplatetemplatesresponsebody.md
+  - docs/models/apierrors/templatecreatetemplatedirectlinkissues.md
+  - docs/models/apierrors/templatecreatetemplatedirectlinkresponsebody.md
+  - docs/models/apierrors/templatecreatetemplatedirectlinktemplatesdirectlinkissues.md
+  - docs/models/apierrors/templatecreatetemplatedirectlinktemplatesdirectlinkresponsebody.md
+  - docs/models/apierrors/templatedeletetemplatedirectlinkissues.md
+  - docs/models/apierrors/templatedeletetemplatedirectlinkresponsebody.md
+  - docs/models/apierrors/templatedeletetemplatedirectlinktemplatesdirectlinkissues.md
+  - docs/models/apierrors/templatedeletetemplatedirectlinktemplatesdirectlinkresponsebody.md
+  - docs/models/apierrors/templatedeletetemplateissues.md
+  - docs/models/apierrors/templatedeletetemplateresponsebody.md
+  - docs/models/apierrors/templatedeletetemplatetemplatesissues.md
+  - docs/models/apierrors/templatedeletetemplatetemplatesresponsebody.md
+  - docs/models/apierrors/templateduplicatetemplateissues.md
+  - docs/models/apierrors/templateduplicatetemplateresponsebody.md
+  - docs/models/apierrors/templateduplicatetemplatetemplatesissues.md
+  - docs/models/apierrors/templateduplicatetemplatetemplatesresponsebody.md
+  - docs/models/apierrors/templatefindtemplatesissues.md
+  - docs/models/apierrors/templatefindtemplatesresponsebody.md
+  - docs/models/apierrors/templatefindtemplatestemplatesissues.md
+  - docs/models/apierrors/templatefindtemplatestemplatesresponsebody.md
+  - docs/models/apierrors/templatefindtemplatestemplatesresponseissues.md
+  - docs/models/apierrors/templatefindtemplatestemplatesresponseresponsebody.md
+  - docs/models/apierrors/templategettemplatebyidissues.md
+  - docs/models/apierrors/templategettemplatebyidresponsebody.md
+  - docs/models/apierrors/templategettemplatebyidtemplatesissues.md
+  - docs/models/apierrors/templategettemplatebyidtemplatesresponsebody.md
+  - docs/models/apierrors/templategettemplatebyidtemplatesresponseissues.md
+  - docs/models/apierrors/templategettemplatebyidtemplatesresponseresponsebody.md
+  - docs/models/apierrors/templatemovetemplatetoteamissues.md
+  - docs/models/apierrors/templatemovetemplatetoteamresponsebody.md
+  - docs/models/apierrors/templatemovetemplatetoteamtemplatesissues.md
+  - docs/models/apierrors/templatemovetemplatetoteamtemplatesresponsebody.md
+  - docs/models/apierrors/templatetoggletemplatedirectlinkissues.md
+  - docs/models/apierrors/templatetoggletemplatedirectlinkresponsebody.md
+  - docs/models/apierrors/templatetoggletemplatedirectlinktemplatesdirectlinkissues.md
+  - docs/models/apierrors/templatetoggletemplatedirectlinktemplatesdirectlinkresponsebody.md
+  - docs/models/apierrors/templateupdatetemplateissues.md
+  - docs/models/apierrors/templateupdatetemplateresponsebody.md
+  - docs/models/apierrors/templateupdatetemplatetemplatesissues.md
+  - docs/models/apierrors/templateupdatetemplatetemplatesresponsebody.md
   - docs/models/components/httpmetadata.md
   - docs/models/components/security.md
   - docs/models/operations/accessauth.md
@@ -1473,11 +1695,11 @@ examples:
         "200":
           application/json: {"data": [], "count": 4880.98, "currentPage": 9399.43, "perPage": 168.65, "totalPages": 4136.86}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "404":
-          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": []}
+          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   document-getDocumentWithDetailsById:
     speakeasy-default-document-get-document-with-details-by-id:
       parameters:
@@ -1487,11 +1709,11 @@ examples:
         "200":
           application/json: {"visibility": "MANAGER_AND_ABOVE", "status": "PENDING", "source": "TEMPLATE", "id": 969961, "externalId": "<id>", "userId": 4580.49, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "PASSKEY"}, "formValues": {"key": "<value>"}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1735389517712", "updatedAt": "1737323136432", "completedAt": "<value>", "deletedAt": "<value>", "teamId": 801373, "templateId": 78888, "documentData": {"type": "S3_PATH", "id": "<id>", "data": "<value>", "initialData": "<value>"}, "documentMeta": {"signingOrder": "PARALLEL", "distributionMethod": "EMAIL", "id": "<id>", "subject": "<value>", "message": "<value>", "timezone": "Asia/Dushanbe", "password": "mEgZU18kgjdwKI0", "dateFormat": "<value>", "documentId": 550563, "redirectUrl": "https://tough-parade.name/", "typedSignatureEnabled": true, "language": "<value>", "emailSettings": {"recipientSigningRequest": true, "recipientRemoved": true, "recipientSigned": true, "documentPending": true, "documentCompleted": true, "documentDeleted": true, "ownerDocumentCompleted": true}}, "recipients": [{"role": "APPROVER", "readStatus": "NOT_OPENED", "signingStatus": "SIGNED", "sendStatus": "NOT_SENT", "id": 808481, "documentId": 508887, "templateId": 656841, "email": "Lenore_Jacobi45@yahoo.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "TWO_FACTOR_AUTH"}, "signingOrder": 3925.74, "rejectionReason": "<value>"}, {"role": "APPROVER", "readStatus": "OPENED", "signingStatus": "REJECTED", "sendStatus": "NOT_SENT", "id": 149108, "documentId": 741131, "templateId": 503671, "email": "Jed64@hotmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "EXPLICIT_NONE"}, "signingOrder": 250.42, "rejectionReason": "<value>"}], "fields": [{"type": "NUMBER", "id": 292469, "secondaryId": "<id>", "documentId": 892556, "templateId": 286547, "recipientId": 237994, "page": 7106.36, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "checkbox"}}, {"type": "RADIO", "id": 667645, "secondaryId": "<id>", "documentId": 188420, "templateId": 457772, "recipientId": 83673, "page": 4090.49, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "date"}}]}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "404":
-          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": []}
+          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   document-createDocumentTemporary:
     speakeasy-default-document-create-document-temporary:
       requestBody:
@@ -1500,20 +1722,20 @@ examples:
         "200":
           application/json: {"document": {"visibility": "EVERYONE", "status": "COMPLETED", "source": "DOCUMENT", "id": 42952, "externalId": "<id>", "userId": 5373.96, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "ACCOUNT"}, "formValues": {"key": 4734.62, "key1": "<value>", "key2": "<value>"}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1728027795049", "updatedAt": "1737354261381", "completedAt": "<value>", "deletedAt": "<value>", "teamId": 357046, "templateId": 812006, "documentData": {"type": "BYTES", "id": "<id>", "data": "<value>", "initialData": "<value>"}, "documentMeta": {"signingOrder": "PARALLEL", "distributionMethod": "EMAIL", "id": "<id>", "subject": "<value>", "message": "<value>", "timezone": "America/Port-au-Prince", "password": "nDdQyEBdZkTA06U", "dateFormat": "<value>", "documentId": 901036, "redirectUrl": "https://scientific-cutover.biz/", "typedSignatureEnabled": true, "language": "<value>", "emailSettings": {"recipientSigningRequest": true, "recipientRemoved": true, "recipientSigned": true, "documentPending": true, "documentCompleted": true, "documentDeleted": true, "ownerDocumentCompleted": true}}, "recipients": [{"role": "VIEWER", "readStatus": "NOT_OPENED", "signingStatus": "SIGNED", "sendStatus": "NOT_SENT", "id": 504146, "documentId": 487425, "templateId": 415779, "email": "Roel80@yahoo.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "TWO_FACTOR_AUTH"}, "signingOrder": 700.38, "rejectionReason": "<value>"}, {"role": "APPROVER", "readStatus": "OPENED", "signingStatus": "NOT_SIGNED", "sendStatus": "NOT_SENT", "id": 713985, "documentId": 107633, "templateId": 731204, "email": "Anabel.Gleichner@hotmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "EXPLICIT_NONE"}, "signingOrder": 9547.02, "rejectionReason": "<value>"}], "fields": []}, "uploadUrl": "https://determined-technician.biz/"}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   document-setSettingsForDocument:
     speakeasy-default-document-set-settings-for-document:
       requestBody:
         application/json: {"documentId": 8574.78}
       responses:
         "200":
-          application/json: {"visibility": "MANAGER_AND_ABOVE", "status": "PENDING", "source": "TEMPLATE_DIRECT_LINK", "id": 627690, "externalId": "<id>", "userId": 4888.52, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "TWO_FACTOR_AUTH"}, "formValues": {"key": true, "key1": 6276.9, "key2": false}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1734107711180", "updatedAt": "1737323889912", "completedAt": "<value>", "deletedAt": "<value>", "teamId": 311507, "templateId": 249440}
+          application/json: {"visibility": "MANAGER_AND_ABOVE", "status": "PENDING", "source": "TEMPLATE_DIRECT_LINK", "id": 627690, "externalId": "<id>", "userId": 4888.52, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "TWO_FACTOR_AUTH"}, "formValues": {"key": true, "key1": 6276.9, "key2": 5971.29}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1734107711180", "updatedAt": "1737323889912", "completedAt": "<value>", "deletedAt": "<value>", "teamId": 311507, "templateId": 249440}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   document-deleteDocument:
     speakeasy-default-document-delete-document:
       requestBody:
@@ -1522,9 +1744,9 @@ examples:
         "200":
           application/json: {"success": false}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   document-moveDocumentToTeam:
     speakeasy-default-document-move-document-to-team:
       requestBody:
@@ -1533,9 +1755,9 @@ examples:
         "200":
           application/json: {"visibility": "ADMIN", "status": "COMPLETED", "source": "TEMPLATE", "id": 775043, "externalId": "<id>", "userId": 780.73, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "ACCOUNT"}, "formValues": {"key": 7264.87, "key1": 6341.95, "key2": 780.73}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1711256191007", "updatedAt": "1737323010856", "completedAt": "<value>", "deletedAt": "<value>", "teamId": 700797, "templateId": 933634}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   document-sendDocument:
     speakeasy-default-document-send-document:
       requestBody:
@@ -1544,9 +1766,9 @@ examples:
         "200":
           application/json: {"visibility": "ADMIN", "status": "DRAFT", "source": "TEMPLATE_DIRECT_LINK", "id": 265491, "externalId": "<id>", "userId": 6765.82, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "TWO_FACTOR_AUTH"}, "formValues": {"key": 1184.5}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1733988792188", "updatedAt": "1737330985726", "completedAt": "<value>", "deletedAt": "<value>", "teamId": 296533, "templateId": 836846}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   document-resendDocument:
     speakeasy-default-document-resend-document:
       requestBody:
@@ -1555,9 +1777,9 @@ examples:
         "200":
           application/json: {"success": true}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   document-duplicateDocument:
     speakeasy-default-document-duplicate-document:
       requestBody:
@@ -1566,9 +1788,9 @@ examples:
         "200":
           application/json: {"documentId": 3284.91}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   field-getDocumentField:
     speakeasy-default-field-get-document-field:
       parameters:
@@ -1578,11 +1800,11 @@ examples:
         "200":
           application/json: {"type": "TEXT", "id": 544221, "secondaryId": "<id>", "documentId": 521235, "templateId": 969961, "recipientId": 458049, "page": 4508.24, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "name"}}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "404":
-          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": []}
+          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   field-createDocumentField:
     speakeasy-default-field-create-document-field:
       requestBody:
@@ -1591,9 +1813,9 @@ examples:
         "200":
           application/json: {"type": "FREE_SIGNATURE", "id": 89964, "secondaryId": "<id>", "documentId": 792620, "templateId": 816588, "recipientId": 586220, "page": 7524.38, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "date"}}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   field-createDocumentFields:
     speakeasy-default-field-create-document-fields:
       requestBody:
@@ -1602,9 +1824,9 @@ examples:
         "200":
           application/json: {"fields": [{"type": "RADIO", "id": 222957, "secondaryId": "<id>", "documentId": 474913, "templateId": 581606, "recipientId": 817193, "page": 6129.81, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "number"}}, {"type": "TEXT", "id": 253057, "secondaryId": "<id>", "documentId": 491806, "templateId": 191040, "recipientId": 291674, "page": 9879.25, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "dropdown"}}, {"type": "SIGNATURE", "id": 43577, "secondaryId": "<id>", "documentId": 501293, "templateId": 42577, "recipientId": 858534, "page": 3847.59, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "number"}}]}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   field-updateDocumentField:
     speakeasy-default-field-update-document-field:
       requestBody:
@@ -1613,9 +1835,9 @@ examples:
         "200":
           application/json: {"type": "DROPDOWN", "id": 627690, "secondaryId": "<id>", "documentId": 488852, "templateId": 984008, "recipientId": 54062, "page": 8965.01, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "email"}}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   field-updateDocumentFields:
     speakeasy-default-field-update-document-fields:
       requestBody:
@@ -1624,9 +1846,9 @@ examples:
         "200":
           application/json: {"fields": []}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   field-deleteDocumentField:
     speakeasy-default-field-delete-document-field:
       requestBody:
@@ -1635,9 +1857,9 @@ examples:
         "200":
           application/json: {"success": false}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   recipient-getDocumentRecipient:
     speakeasy-default-recipient-get-document-recipient:
       parameters:
@@ -1647,11 +1869,11 @@ examples:
         "200":
           application/json: {"role": "VIEWER", "readStatus": "OPENED", "signingStatus": "SIGNED", "sendStatus": "SENT", "id": 458049, "documentId": 450824, "templateId": 262795, "email": "Tressa.Schmitt21@gmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "ACCOUNT"}, "signingOrder": 5525.82, "rejectionReason": "<value>", "fields": [{"type": "EMAIL", "id": 746585, "secondaryId": "<id>", "documentId": 608535, "templateId": 550965, "recipientId": 322612, "page": 3231.85, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "email"}}, {"type": "RADIO", "id": 284041, "secondaryId": "<id>", "documentId": 737581, "templateId": 772105, "recipientId": 710500, "page": 9091.18, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "initials"}}, {"type": "DROPDOWN", "id": 444836, "secondaryId": "<id>", "documentId": 424256, "templateId": 132944, "recipientId": 159685, "page": 5505.63, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "checkbox"}}]}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "404":
-          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": []}
+          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   recipient-createDocumentRecipient:
     speakeasy-default-recipient-create-document-recipient:
       requestBody:
@@ -1660,9 +1882,9 @@ examples:
         "200":
           application/json: {"role": "CC", "readStatus": "OPENED", "signingStatus": "REJECTED", "sendStatus": "SENT", "id": 752438, "documentId": 957409, "templateId": 357021, "email": "Ahmed.Ebert32@gmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "ACCOUNT"}, "signingOrder": 1009.66, "rejectionReason": "<value>"}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   recipient-createDocumentRecipients:
     speakeasy-default-recipient-create-document-recipients:
       requestBody:
@@ -1671,9 +1893,9 @@ examples:
         "200":
           application/json: {"recipients": []}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   recipient-updateDocumentRecipient:
     speakeasy-default-recipient-update-document-recipient:
       requestBody:
@@ -1682,9 +1904,9 @@ examples:
         "200":
           application/json: {"role": "SIGNER", "readStatus": "OPENED", "signingStatus": "SIGNED", "sendStatus": "NOT_SENT", "id": 984008, "documentId": 54062, "templateId": 896501, "email": "Elvie_Connelly88@yahoo.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "PASSKEY"}, "signingOrder": 7712.03, "rejectionReason": "<value>", "fields": [{"type": "EMAIL", "id": 33980, "secondaryId": "<id>", "documentId": 756247, "templateId": 810877, "recipientId": 439152, "page": 5011.35, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "email"}}, {"type": "NAME", "id": 824679, "secondaryId": "<id>", "documentId": 834574, "templateId": 888006, "recipientId": 711565, "page": 5198.81, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "text"}}]}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   recipient-updateDocumentRecipients:
     speakeasy-default-recipient-update-document-recipients:
       requestBody:
@@ -1693,9 +1915,9 @@ examples:
         "200":
           application/json: {"recipients": [{"role": "CC", "readStatus": "NOT_OPENED", "signingStatus": "REJECTED", "sendStatus": "NOT_SENT", "id": 180205, "documentId": 993155, "templateId": 967004, "email": "Vickie_Koss@hotmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "PASSKEY"}, "signingOrder": 1585.39, "rejectionReason": "<value>", "fields": []}]}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   recipient-deleteDocumentRecipient:
     speakeasy-default-recipient-delete-document-recipient:
       requestBody:
@@ -1704,20 +1926,20 @@ examples:
         "200":
           application/json: {"success": false}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   template-findTemplates:
     speakeasy-default-template-find-templates:
       responses:
         "200":
           application/json: {"data": [], "count": 4880.98, "currentPage": 9399.43, "perPage": 168.65, "totalPages": 4136.86}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "404":
-          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": []}
+          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   template-getTemplateById:
     speakeasy-default-template-get-template-by-id:
       parameters:
@@ -1727,11 +1949,11 @@ examples:
         "200":
           application/json: {"type": "PRIVATE", "visibility": "MANAGER_AND_ABOVE", "id": 521235, "externalId": "<id>", "title": "<value>", "userId": 969961, "teamId": 458049, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "PASSKEY"}, "templateDocumentDataId": "<id>", "createdAt": "1714123202017", "updatedAt": "1737303724271", "publicTitle": "<value>", "publicDescription": "<value>", "templateDocumentData": {"type": "BYTES_64", "id": "<id>", "data": "<value>", "initialData": "<value>"}, "templateMeta": {"id": "<id>", "subject": "<value>", "message": "<value>", "timezone": "America/St_Thomas", "dateFormat": "<value>", "signingOrder": "SEQUENTIAL", "typedSignatureEnabled": true, "distributionMethod": "EMAIL", "templateId": 313464, "redirectUrl": "https://next-shark.info/", "language": "<value>", "emailSettings": {"recipientSigningRequest": true, "recipientRemoved": true, "recipientSigned": true, "documentPending": true, "documentCompleted": true, "documentDeleted": true, "ownerDocumentCompleted": true}}, "directLink": {"id": "<id>", "templateId": 746585, "token": "<value>", "createdAt": "1725026447503", "enabled": false, "directTemplateRecipientId": 322612}, "user": {"id": 323185, "name": "<value>", "email": "Dedric77@gmail.com"}, "recipients": [{"role": "SIGNER", "readStatus": "NOT_OPENED", "signingStatus": "REJECTED", "sendStatus": "NOT_SENT", "id": 424256, "documentId": 132944, "templateId": 159685, "email": "Bernardo29@yahoo.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "EXPLICIT_NONE"}, "signingOrder": 4073.3, "rejectionReason": "<value>"}, {"role": "SIGNER", "readStatus": "NOT_OPENED", "signingStatus": "REJECTED", "sendStatus": "SENT", "id": 656841, "documentId": 570980, "templateId": 607679, "email": "Graham.Klocko@hotmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "EXPLICIT_NONE"}, "signingOrder": 7540.54, "rejectionReason": "<value>"}, {"role": "APPROVER", "readStatus": "NOT_OPENED", "signingStatus": "NOT_SIGNED", "sendStatus": "SENT", "id": 503671, "documentId": 950598, "templateId": 486669, "email": "Armani_OConner98@gmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "TWO_FACTOR_AUTH"}, "signingOrder": 6887.35, "rejectionReason": "<value>"}], "fields": [{"type": "CHECKBOX", "id": 286547, "secondaryId": "<id>", "documentId": 237994, "templateId": 710636, "recipientId": 256758, "page": 7869.52, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "radio"}}]}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "404":
-          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": []}
+          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   template-updateTemplate:
     speakeasy-default-template-update-template:
       requestBody:
@@ -1740,9 +1962,9 @@ examples:
         "200":
           application/json: {"type": "PRIVATE", "visibility": "MANAGER_AND_ABOVE", "id": 991464, "externalId": "<id>", "title": "<value>", "userId": 627690, "teamId": 488852, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "TWO_FACTOR_AUTH"}, "templateDocumentDataId": "<id>", "createdAt": "1707540586707", "updatedAt": "1737362738503", "publicTitle": "<value>", "publicDescription": "<value>"}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   template-duplicateTemplate:
     speakeasy-default-template-duplicate-template:
       requestBody:
@@ -1751,9 +1973,9 @@ examples:
         "200":
           application/json: {"type": "PUBLIC", "visibility": "ADMIN", "id": 461148, "externalId": "<id>", "title": "<value>", "userId": 348891, "teamId": 524674, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "ACCOUNT"}, "templateDocumentDataId": "<id>", "createdAt": "1718418521760", "updatedAt": "1737326705063", "publicTitle": "<value>", "publicDescription": "<value>"}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   template-deleteTemplate:
     speakeasy-default-template-delete-template:
       requestBody:
@@ -1762,9 +1984,9 @@ examples:
         "200":
           application/json: {"success": false}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   template-createDocumentFromTemplate:
     speakeasy-default-template-create-document-from-template:
       requestBody:
@@ -1773,9 +1995,9 @@ examples:
         "200":
           application/json: {"visibility": "EVERYONE", "status": "DRAFT", "source": "DOCUMENT", "id": 529343, "externalId": "<id>", "userId": 382.49, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "PASSKEY"}, "formValues": {"key": 1071.58, "key1": "<value>", "key2": "<value>"}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1712770850963", "updatedAt": "1737368556762", "completedAt": "<value>", "deletedAt": "<value>", "teamId": 814818, "templateId": 649241, "documentData": {"type": "BYTES", "id": "<id>", "data": "<value>", "initialData": "<value>"}, "documentMeta": {"signingOrder": "SEQUENTIAL", "distributionMethod": "EMAIL", "id": "<id>", "subject": "<value>", "message": "<value>", "timezone": "America/Mazatlan", "password": "ygGKsqP0fmjT8Pg", "dateFormat": "<value>", "documentId": 430384, "redirectUrl": "https://disloyal-haversack.com", "typedSignatureEnabled": true, "language": "<value>", "emailSettings": {"recipientSigningRequest": true, "recipientRemoved": true, "recipientSigned": true, "documentPending": true, "documentCompleted": true, "documentDeleted": true, "ownerDocumentCompleted": true}}, "recipients": [{"role": "VIEWER", "readStatus": "OPENED", "signingStatus": "NOT_SIGNED", "sendStatus": "NOT_SENT", "id": 292530, "documentId": 987418, "templateId": 77227, "email": "Asia.Welch@gmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "ACCOUNT"}, "signingOrder": 5750.99, "rejectionReason": "<value>"}, {"role": "VIEWER", "readStatus": "NOT_OPENED", "signingStatus": "NOT_SIGNED", "sendStatus": "SENT", "id": 115596, "documentId": 220521, "templateId": 62163, "email": "Coty_Parisian91@yahoo.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "PASSKEY"}, "signingOrder": 3064.41, "rejectionReason": "<value>"}], "fields": [{"type": "INITIALS", "id": 9571, "secondaryId": "<id>", "documentId": 569573, "templateId": 217003, "recipientId": 960849, "page": 1861.81, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "number"}}]}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   template-moveTemplateToTeam:
     speakeasy-default-template-move-template-to-team:
       requestBody:
@@ -1784,9 +2006,9 @@ examples:
         "200":
           application/json: {"type": "PRIVATE", "visibility": "ADMIN", "id": 634195, "externalId": "<id>", "title": "<value>", "userId": 775043, "teamId": 78073, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "ACCOUNT"}, "templateDocumentDataId": "<id>", "createdAt": "1706124531055", "updatedAt": "1737300132388", "publicTitle": "<value>", "publicDescription": "<value>"}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   field-createTemplateField:
     speakeasy-default-field-create-template-field:
       requestBody:
@@ -1795,9 +2017,9 @@ examples:
         "200":
           application/json: {"type": "FREE_SIGNATURE", "id": 89964, "secondaryId": "<id>", "documentId": 792620, "templateId": 816588, "recipientId": 586220, "page": 7524.38, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "date"}}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   field-getTemplateField:
     speakeasy-default-field-get-template-field:
       parameters:
@@ -1807,11 +2029,11 @@ examples:
         "200":
           application/json: {"type": "TEXT", "id": 544221, "secondaryId": "<id>", "documentId": 521235, "templateId": 969961, "recipientId": 458049, "page": 4508.24, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "name"}}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "404":
-          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": []}
+          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   field-createTemplateFields:
     speakeasy-default-field-create-template-fields:
       requestBody:
@@ -1820,9 +2042,9 @@ examples:
         "200":
           application/json: {"fields": [{"type": "RADIO", "id": 222957, "secondaryId": "<id>", "documentId": 474913, "templateId": 581606, "recipientId": 817193, "page": 6129.81, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "number"}}, {"type": "TEXT", "id": 253057, "secondaryId": "<id>", "documentId": 491806, "templateId": 191040, "recipientId": 291674, "page": 9879.25, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "dropdown"}}, {"type": "SIGNATURE", "id": 43577, "secondaryId": "<id>", "documentId": 501293, "templateId": 42577, "recipientId": 858534, "page": 3847.59, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "number"}}]}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   field-updateTemplateField:
     speakeasy-default-field-update-template-field:
       requestBody:
@@ -1831,9 +2053,9 @@ examples:
         "200":
           application/json: {"type": "DROPDOWN", "id": 627690, "secondaryId": "<id>", "documentId": 488852, "templateId": 984008, "recipientId": 54062, "page": 8965.01, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "email"}}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   field-updateTemplateFields:
     speakeasy-default-field-update-template-fields:
       requestBody:
@@ -1842,9 +2064,9 @@ examples:
         "200":
           application/json: {"fields": []}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   field-deleteTemplateField:
     speakeasy-default-field-delete-template-field:
       requestBody:
@@ -1853,9 +2075,9 @@ examples:
         "200":
           application/json: {"success": false}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   recipient-getTemplateRecipient:
     speakeasy-default-recipient-get-template-recipient:
       parameters:
@@ -1865,11 +2087,11 @@ examples:
         "200":
           application/json: {"role": "VIEWER", "readStatus": "OPENED", "signingStatus": "SIGNED", "sendStatus": "SENT", "id": 458049, "documentId": 450824, "templateId": 262795, "email": "Tressa.Schmitt21@gmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "ACCOUNT"}, "signingOrder": 5525.82, "rejectionReason": "<value>", "fields": [{"type": "EMAIL", "id": 746585, "secondaryId": "<id>", "documentId": 608535, "templateId": 550965, "recipientId": 322612, "page": 3231.85, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "email"}}, {"type": "RADIO", "id": 284041, "secondaryId": "<id>", "documentId": 737581, "templateId": 772105, "recipientId": 710500, "page": 9091.18, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "initials"}}, {"type": "DROPDOWN", "id": 444836, "secondaryId": "<id>", "documentId": 424256, "templateId": 132944, "recipientId": 159685, "page": 5505.63, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "checkbox"}}]}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "404":
-          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": []}
+          application/json: {"message": "Not found", "code": "NOT_FOUND", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   recipient-createTemplateRecipient:
     speakeasy-default-recipient-create-template-recipient:
       requestBody:
@@ -1878,9 +2100,9 @@ examples:
         "200":
           application/json: {"role": "CC", "readStatus": "OPENED", "signingStatus": "REJECTED", "sendStatus": "SENT", "id": 752438, "documentId": 957409, "templateId": 357021, "email": "Ahmed.Ebert32@gmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "ACCOUNT"}, "signingOrder": 1009.66, "rejectionReason": "<value>"}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   recipient-createTemplateRecipients:
     speakeasy-default-recipient-create-template-recipients:
       requestBody:
@@ -1889,9 +2111,9 @@ examples:
         "200":
           application/json: {"recipients": []}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   recipient-updateTemplateRecipient:
     speakeasy-default-recipient-update-template-recipient:
       requestBody:
@@ -1900,9 +2122,9 @@ examples:
         "200":
           application/json: {"role": "SIGNER", "readStatus": "OPENED", "signingStatus": "SIGNED", "sendStatus": "NOT_SENT", "id": 984008, "documentId": 54062, "templateId": 896501, "email": "Elvie_Connelly88@yahoo.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "PASSKEY"}, "signingOrder": 7712.03, "rejectionReason": "<value>", "fields": [{"type": "EMAIL", "id": 33980, "secondaryId": "<id>", "documentId": 756247, "templateId": 810877, "recipientId": 439152, "page": 5011.35, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "email"}}, {"type": "NAME", "id": 824679, "secondaryId": "<id>", "documentId": 834574, "templateId": 888006, "recipientId": 711565, "page": 5198.81, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "text"}}]}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   recipient-updateTemplateRecipients:
     speakeasy-default-recipient-update-template-recipients:
       requestBody:
@@ -1911,9 +2133,9 @@ examples:
         "200":
           application/json: {"recipients": [{"role": "CC", "readStatus": "NOT_OPENED", "signingStatus": "REJECTED", "sendStatus": "NOT_SENT", "id": 180205, "documentId": 993155, "templateId": 967004, "email": "Vickie_Koss@hotmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "PASSKEY"}, "signingOrder": 1585.39, "rejectionReason": "<value>", "fields": []}]}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   recipient-deleteTemplateRecipient:
     speakeasy-default-recipient-delete-template-recipient:
       requestBody:
@@ -1922,9 +2144,9 @@ examples:
         "200":
           application/json: {"success": false}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   template-createTemplateDirectLink:
     speakeasy-default-template-create-template-direct-link:
       requestBody:
@@ -1933,9 +2155,9 @@ examples:
         "200":
           application/json: {"id": "<id>", "templateId": 638424, "token": "<value>", "createdAt": "1719000629609", "enabled": true, "directTemplateRecipientId": 69025}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   template-deleteTemplateDirectLink:
     speakeasy-default-template-delete-template-direct-link:
       requestBody:
@@ -1944,9 +2166,9 @@ examples:
         "200":
           application/json: {"success": false}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
   template-toggleTemplateDirectLink:
     speakeasy-default-template-toggle-template-direct-link:
       requestBody:
@@ -1955,8 +2177,8 @@ examples:
         "200":
           application/json: {"id": "<id>", "templateId": 507380, "token": "<value>", "createdAt": "1730752574456", "enabled": true, "directTemplateRecipientId": 182275}
         "400":
-          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": []}
+          application/json: {"message": "Invalid input data", "code": "BAD_REQUEST", "issues": [], "": {}}
         "500":
-          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": []}
+          application/json: {"message": "Internal server error", "code": "INTERNAL_SERVER_ERROR", "issues": [], "": {}}
 examplesVersion: 1.0.0
 generatedTests: {}

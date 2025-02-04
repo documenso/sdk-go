@@ -39,7 +39,6 @@ func (s *Templates) Find(ctx context.Context, query *string, page *float64, perP
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "template-findTemplates",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -229,11 +228,15 @@ func (s *Templates) Find(ctx context.Context, query *string, page *float64, perP
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.TemplateFindTemplatesResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -250,11 +253,15 @@ func (s *Templates) Find(ctx context.Context, query *string, page *float64, perP
 				return nil, err
 			}
 
-			var out apierrors.ErrorNOTFOUND
+			var out apierrors.TemplateFindTemplatesTemplatesResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -271,11 +278,15 @@ func (s *Templates) Find(ctx context.Context, query *string, page *float64, perP
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.TemplateFindTemplatesTemplatesResponseResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -313,7 +324,6 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "template-getTemplateById",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -496,11 +506,15 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.TemplateGetTemplateByIDResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -517,11 +531,15 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 				return nil, err
 			}
 
-			var out apierrors.ErrorNOTFOUND
+			var out apierrors.TemplateGetTemplateByIDTemplatesResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -538,11 +556,15 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.TemplateGetTemplateByIDTemplatesResponseResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -580,7 +602,6 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "template-updateTemplate",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -767,11 +788,15 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.TemplateUpdateTemplateResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -788,11 +813,15 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.TemplateUpdateTemplateTemplatesResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -830,7 +859,6 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "template-duplicateTemplate",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1017,11 +1045,15 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.TemplateDuplicateTemplateResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1038,11 +1070,15 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.TemplateDuplicateTemplateTemplatesResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1080,7 +1116,6 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "template-deleteTemplate",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1267,11 +1302,15 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.TemplateDeleteTemplateResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1288,11 +1327,15 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.TemplateDeleteTemplateTemplatesResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1331,7 +1374,6 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "template-createDocumentFromTemplate",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1518,11 +1560,15 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.TemplateCreateDocumentFromTemplateResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1539,11 +1585,15 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.TemplateCreateDocumentFromTemplateTemplatesResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1582,7 +1632,6 @@ func (s *Templates) MoveToTeam(ctx context.Context, request operations.TemplateM
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "template-moveTemplateToTeam",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1769,11 +1818,15 @@ func (s *Templates) MoveToTeam(ctx context.Context, request operations.TemplateM
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.TemplateMoveTemplateToTeamResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1790,11 +1843,15 @@ func (s *Templates) MoveToTeam(ctx context.Context, request operations.TemplateM
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.TemplateMoveTemplateToTeamTemplatesResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)

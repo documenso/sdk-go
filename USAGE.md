@@ -17,9 +17,7 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
-		OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
-	})
+	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
 	if err != nil {
 		log.Fatal(err)
 	}

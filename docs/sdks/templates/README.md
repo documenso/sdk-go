@@ -63,12 +63,12 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ErrorNOTFOUND            | 404                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                   | Status Code                                                  | Content Type                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| apierrors.TemplateFindTemplatesResponseBody                  | 400                                                          | application/json                                             |
+| apierrors.TemplateFindTemplatesTemplatesResponseBody         | 404                                                          | application/json                                             |
+| apierrors.TemplateFindTemplatesTemplatesResponseResponseBody | 500                                                          | application/json                                             |
+| apierrors.APIError                                           | 4XX, 5XX                                                     | \*/\*                                                        |
 
 ## Get
 
@@ -117,12 +117,12 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ErrorNOTFOUND            | 404                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                     | Status Code                                                    | Content Type                                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| apierrors.TemplateGetTemplateByIDResponseBody                  | 400                                                            | application/json                                               |
+| apierrors.TemplateGetTemplateByIDTemplatesResponseBody         | 404                                                            | application/json                                               |
+| apierrors.TemplateGetTemplateByIDTemplatesResponseResponseBody | 500                                                            | application/json                                               |
+| apierrors.APIError                                             | 4XX, 5XX                                                       | \*/\*                                                          |
 
 ## Update
 
@@ -174,11 +174,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| apierrors.TemplateUpdateTemplateResponseBody          | 400                                                   | application/json                                      |
+| apierrors.TemplateUpdateTemplateTemplatesResponseBody | 500                                                   | application/json                                      |
+| apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
 
 ## Duplicate
 
@@ -230,11 +230,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                               | Status Code                                              | Content Type                                             |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| apierrors.TemplateDuplicateTemplateResponseBody          | 400                                                      | application/json                                         |
+| apierrors.TemplateDuplicateTemplateTemplatesResponseBody | 500                                                      | application/json                                         |
+| apierrors.APIError                                       | 4XX, 5XX                                                 | \*/\*                                                    |
 
 ## Delete
 
@@ -286,11 +286,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| apierrors.TemplateDeleteTemplateResponseBody          | 400                                                   | application/json                                      |
+| apierrors.TemplateDeleteTemplateTemplatesResponseBody | 500                                                   | application/json                                      |
+| apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
 
 ## Use
 
@@ -352,11 +352,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                        | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| apierrors.TemplateCreateDocumentFromTemplateResponseBody          | 400                                                               | application/json                                                  |
+| apierrors.TemplateCreateDocumentFromTemplateTemplatesResponseBody | 500                                                               | application/json                                                  |
+| apierrors.APIError                                                | 4XX, 5XX                                                          | \*/\*                                                             |
 
 ## MoveToTeam
 
@@ -409,8 +409,8 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                | Status Code                                               | Content Type                                              |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| apierrors.TemplateMoveTemplateToTeamResponseBody          | 400                                                       | application/json                                          |
+| apierrors.TemplateMoveTemplateToTeamTemplatesResponseBody | 500                                                       | application/json                                          |
+| apierrors.APIError                                        | 4XX, 5XX                                                  | \*/\*                                                     |
