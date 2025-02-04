@@ -37,7 +37,6 @@ func (s *Documents) Find(ctx context.Context, request operations.DocumentFindDoc
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "document-findDocuments",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -220,11 +219,15 @@ func (s *Documents) Find(ctx context.Context, request operations.DocumentFindDoc
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.DocumentFindDocumentsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -241,11 +244,15 @@ func (s *Documents) Find(ctx context.Context, request operations.DocumentFindDoc
 				return nil, err
 			}
 
-			var out apierrors.ErrorNOTFOUND
+			var out apierrors.DocumentFindDocumentsDocumentsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -262,11 +269,15 @@ func (s *Documents) Find(ctx context.Context, request operations.DocumentFindDoc
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.DocumentFindDocumentsDocumentsResponseResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -305,7 +316,6 @@ func (s *Documents) Get(ctx context.Context, documentID float64, opts ...operati
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "document-getDocumentWithDetailsById",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -488,11 +498,15 @@ func (s *Documents) Get(ctx context.Context, documentID float64, opts ...operati
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.DocumentGetDocumentWithDetailsByIDResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -509,11 +523,15 @@ func (s *Documents) Get(ctx context.Context, documentID float64, opts ...operati
 				return nil, err
 			}
 
-			var out apierrors.ErrorNOTFOUND
+			var out apierrors.DocumentGetDocumentWithDetailsByIDDocumentsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -530,11 +548,15 @@ func (s *Documents) Get(ctx context.Context, documentID float64, opts ...operati
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.DocumentGetDocumentWithDetailsByIDDocumentsResponseResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -573,7 +595,6 @@ func (s *Documents) CreateV0(ctx context.Context, request operations.DocumentCre
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "document-createDocumentTemporary",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -760,11 +781,15 @@ func (s *Documents) CreateV0(ctx context.Context, request operations.DocumentCre
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.DocumentCreateDocumentTemporaryResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -781,11 +806,15 @@ func (s *Documents) CreateV0(ctx context.Context, request operations.DocumentCre
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.DocumentCreateDocumentTemporaryDocumentsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -823,7 +852,6 @@ func (s *Documents) Update(ctx context.Context, request operations.DocumentSetSe
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "document-setSettingsForDocument",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1010,11 +1038,15 @@ func (s *Documents) Update(ctx context.Context, request operations.DocumentSetSe
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.DocumentSetSettingsForDocumentResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1031,11 +1063,15 @@ func (s *Documents) Update(ctx context.Context, request operations.DocumentSetSe
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.DocumentSetSettingsForDocumentDocumentsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1073,7 +1109,6 @@ func (s *Documents) Delete(ctx context.Context, request operations.DocumentDelet
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "document-deleteDocument",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1260,11 +1295,15 @@ func (s *Documents) Delete(ctx context.Context, request operations.DocumentDelet
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.DocumentDeleteDocumentResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1281,11 +1320,15 @@ func (s *Documents) Delete(ctx context.Context, request operations.DocumentDelet
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.DocumentDeleteDocumentDocumentsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1324,7 +1367,6 @@ func (s *Documents) MoveToTeam(ctx context.Context, request operations.DocumentM
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "document-moveDocumentToTeam",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1511,11 +1553,15 @@ func (s *Documents) MoveToTeam(ctx context.Context, request operations.DocumentM
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.DocumentMoveDocumentToTeamResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1532,11 +1578,15 @@ func (s *Documents) MoveToTeam(ctx context.Context, request operations.DocumentM
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.DocumentMoveDocumentToTeamDocumentsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1575,7 +1625,6 @@ func (s *Documents) Distribute(ctx context.Context, request operations.DocumentS
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "document-sendDocument",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1762,11 +1811,15 @@ func (s *Documents) Distribute(ctx context.Context, request operations.DocumentS
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.DocumentSendDocumentResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1783,11 +1836,15 @@ func (s *Documents) Distribute(ctx context.Context, request operations.DocumentS
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.DocumentSendDocumentDocumentsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1826,7 +1883,6 @@ func (s *Documents) Redistribute(ctx context.Context, request operations.Documen
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "document-resendDocument",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -2013,11 +2069,15 @@ func (s *Documents) Redistribute(ctx context.Context, request operations.Documen
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.DocumentResendDocumentResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -2034,11 +2094,15 @@ func (s *Documents) Redistribute(ctx context.Context, request operations.Documen
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.DocumentResendDocumentDocumentsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -2076,7 +2140,6 @@ func (s *Documents) Duplicate(ctx context.Context, request operations.DocumentDu
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "document-duplicateDocument",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -2263,11 +2326,15 @@ func (s *Documents) Duplicate(ctx context.Context, request operations.DocumentDu
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.DocumentDuplicateDocumentResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -2284,11 +2351,15 @@ func (s *Documents) Duplicate(ctx context.Context, request operations.DocumentDu
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.DocumentDuplicateDocumentDocumentsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)

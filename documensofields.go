@@ -32,7 +32,6 @@ func (s *DocumensoFields) Create(ctx context.Context, request operations.FieldCr
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "field-createTemplateField",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -219,11 +218,15 @@ func (s *DocumensoFields) Create(ctx context.Context, request operations.FieldCr
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.FieldCreateTemplateFieldResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -240,11 +243,15 @@ func (s *DocumensoFields) Create(ctx context.Context, request operations.FieldCr
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.FieldCreateTemplateFieldTemplatesFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -283,7 +290,6 @@ func (s *DocumensoFields) Get(ctx context.Context, fieldID float64, opts ...oper
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "field-getTemplateField",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -466,11 +472,15 @@ func (s *DocumensoFields) Get(ctx context.Context, fieldID float64, opts ...oper
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.FieldGetTemplateFieldResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -487,11 +497,15 @@ func (s *DocumensoFields) Get(ctx context.Context, fieldID float64, opts ...oper
 				return nil, err
 			}
 
-			var out apierrors.ErrorNOTFOUND
+			var out apierrors.FieldGetTemplateFieldTemplatesFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -508,11 +522,15 @@ func (s *DocumensoFields) Get(ctx context.Context, fieldID float64, opts ...oper
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.FieldGetTemplateFieldTemplatesFieldsResponseResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -551,7 +569,6 @@ func (s *DocumensoFields) CreateMany(ctx context.Context, request operations.Fie
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "field-createTemplateFields",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -738,11 +755,15 @@ func (s *DocumensoFields) CreateMany(ctx context.Context, request operations.Fie
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.FieldCreateTemplateFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -759,11 +780,15 @@ func (s *DocumensoFields) CreateMany(ctx context.Context, request operations.Fie
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.FieldCreateTemplateFieldsTemplatesFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -802,7 +827,6 @@ func (s *DocumensoFields) Update(ctx context.Context, request operations.FieldUp
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "field-updateTemplateField",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -989,11 +1013,15 @@ func (s *DocumensoFields) Update(ctx context.Context, request operations.FieldUp
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.FieldUpdateTemplateFieldResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1010,11 +1038,15 @@ func (s *DocumensoFields) Update(ctx context.Context, request operations.FieldUp
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.FieldUpdateTemplateFieldTemplatesFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1053,7 +1085,6 @@ func (s *DocumensoFields) UpdateMany(ctx context.Context, request operations.Fie
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "field-updateTemplateFields",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1240,11 +1271,15 @@ func (s *DocumensoFields) UpdateMany(ctx context.Context, request operations.Fie
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.FieldUpdateTemplateFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1261,11 +1296,15 @@ func (s *DocumensoFields) UpdateMany(ctx context.Context, request operations.Fie
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.FieldUpdateTemplateFieldsTemplatesFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1303,7 +1342,6 @@ func (s *DocumensoFields) Delete(ctx context.Context, request operations.FieldDe
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "field-deleteTemplateField",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1490,11 +1528,15 @@ func (s *DocumensoFields) Delete(ctx context.Context, request operations.FieldDe
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.FieldDeleteTemplateFieldResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1511,11 +1553,15 @@ func (s *DocumensoFields) Delete(ctx context.Context, request operations.FieldDe
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.FieldDeleteTemplateFieldTemplatesFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)

@@ -39,9 +39,7 @@ func main() {
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
-        OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
-    })
+    res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -65,12 +63,12 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ErrorNOTFOUND            | 404                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                   | Status Code                                                  | Content Type                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| apierrors.DocumentFindDocumentsResponseBody                  | 400                                                          | application/json                                             |
+| apierrors.DocumentFindDocumentsDocumentsResponseBody         | 404                                                          | application/json                                             |
+| apierrors.DocumentFindDocumentsDocumentsResponseResponseBody | 500                                                          | application/json                                             |
+| apierrors.APIError                                           | 4XX, 5XX                                                     | \*/\*                                                        |
 
 ## Get
 
@@ -119,12 +117,12 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ErrorNOTFOUND            | 404                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                                | Status Code                                                               | Content Type                                                              |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| apierrors.DocumentGetDocumentWithDetailsByIDResponseBody                  | 400                                                                       | application/json                                                          |
+| apierrors.DocumentGetDocumentWithDetailsByIDDocumentsResponseBody         | 404                                                                       | application/json                                                          |
+| apierrors.DocumentGetDocumentWithDetailsByIDDocumentsResponseResponseBody | 500                                                                       | application/json                                                          |
+| apierrors.APIError                                                        | 4XX, 5XX                                                                  | \*/\*                                                                     |
 
 ## CreateV0
 
@@ -176,11 +174,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                     | Status Code                                                    | Content Type                                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| apierrors.DocumentCreateDocumentTemporaryResponseBody          | 400                                                            | application/json                                               |
+| apierrors.DocumentCreateDocumentTemporaryDocumentsResponseBody | 500                                                            | application/json                                               |
+| apierrors.APIError                                             | 4XX, 5XX                                                       | \*/\*                                                          |
 
 ## Update
 
@@ -232,11 +230,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| apierrors.DocumentSetSettingsForDocumentResponseBody          | 400                                                           | application/json                                              |
+| apierrors.DocumentSetSettingsForDocumentDocumentsResponseBody | 500                                                           | application/json                                              |
+| apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |
 
 ## Delete
 
@@ -288,11 +286,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| apierrors.DocumentDeleteDocumentResponseBody          | 400                                                   | application/json                                      |
+| apierrors.DocumentDeleteDocumentDocumentsResponseBody | 500                                                   | application/json                                      |
+| apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
 
 ## MoveToTeam
 
@@ -345,11 +343,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                | Status Code                                               | Content Type                                              |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| apierrors.DocumentMoveDocumentToTeamResponseBody          | 400                                                       | application/json                                          |
+| apierrors.DocumentMoveDocumentToTeamDocumentsResponseBody | 500                                                       | application/json                                          |
+| apierrors.APIError                                        | 4XX, 5XX                                                  | \*/\*                                                     |
 
 ## Distribute
 
@@ -401,11 +399,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                          | Status Code                                         | Content Type                                        |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| apierrors.DocumentSendDocumentResponseBody          | 400                                                 | application/json                                    |
+| apierrors.DocumentSendDocumentDocumentsResponseBody | 500                                                 | application/json                                    |
+| apierrors.APIError                                  | 4XX, 5XX                                            | \*/\*                                               |
 
 ## Redistribute
 
@@ -460,11 +458,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| apierrors.DocumentResendDocumentResponseBody          | 400                                                   | application/json                                      |
+| apierrors.DocumentResendDocumentDocumentsResponseBody | 500                                                   | application/json                                      |
+| apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
 
 ## Duplicate
 
@@ -516,8 +514,8 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                               | Status Code                                              | Content Type                                             |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| apierrors.DocumentDuplicateDocumentResponseBody          | 400                                                      | application/json                                         |
+| apierrors.DocumentDuplicateDocumentDocumentsResponseBody | 500                                                      | application/json                                         |
+| apierrors.APIError                                       | 4XX, 5XX                                                 | \*/\*                                                    |

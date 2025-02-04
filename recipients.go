@@ -32,7 +32,6 @@ func (s *Recipients) Get(ctx context.Context, recipientID float64, opts ...opera
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "recipient-getDocumentRecipient",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -215,11 +214,15 @@ func (s *Recipients) Get(ctx context.Context, recipientID float64, opts ...opera
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.RecipientGetDocumentRecipientResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -236,11 +239,15 @@ func (s *Recipients) Get(ctx context.Context, recipientID float64, opts ...opera
 				return nil, err
 			}
 
-			var out apierrors.ErrorNOTFOUND
+			var out apierrors.RecipientGetDocumentRecipientDocumentsRecipientsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -257,11 +264,15 @@ func (s *Recipients) Get(ctx context.Context, recipientID float64, opts ...opera
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.RecipientGetDocumentRecipientDocumentsRecipientsResponseResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -300,7 +311,6 @@ func (s *Recipients) Create(ctx context.Context, request operations.RecipientCre
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "recipient-createDocumentRecipient",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -487,11 +497,15 @@ func (s *Recipients) Create(ctx context.Context, request operations.RecipientCre
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.RecipientCreateDocumentRecipientResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -508,11 +522,15 @@ func (s *Recipients) Create(ctx context.Context, request operations.RecipientCre
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.RecipientCreateDocumentRecipientDocumentsRecipientsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -551,7 +569,6 @@ func (s *Recipients) CreateMany(ctx context.Context, request operations.Recipien
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "recipient-createDocumentRecipients",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -738,11 +755,15 @@ func (s *Recipients) CreateMany(ctx context.Context, request operations.Recipien
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.RecipientCreateDocumentRecipientsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -759,11 +780,15 @@ func (s *Recipients) CreateMany(ctx context.Context, request operations.Recipien
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.RecipientCreateDocumentRecipientsDocumentsRecipientsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -802,7 +827,6 @@ func (s *Recipients) Update(ctx context.Context, request operations.RecipientUpd
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "recipient-updateDocumentRecipient",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -989,11 +1013,15 @@ func (s *Recipients) Update(ctx context.Context, request operations.RecipientUpd
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.RecipientUpdateDocumentRecipientResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1010,11 +1038,15 @@ func (s *Recipients) Update(ctx context.Context, request operations.RecipientUpd
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.RecipientUpdateDocumentRecipientDocumentsRecipientsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1053,7 +1085,6 @@ func (s *Recipients) UpdateMany(ctx context.Context, request operations.Recipien
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "recipient-updateDocumentRecipients",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1240,11 +1271,15 @@ func (s *Recipients) UpdateMany(ctx context.Context, request operations.Recipien
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.RecipientUpdateDocumentRecipientsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1261,11 +1296,15 @@ func (s *Recipients) UpdateMany(ctx context.Context, request operations.Recipien
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.RecipientUpdateDocumentRecipientsDocumentsRecipientsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1303,7 +1342,6 @@ func (s *Recipients) Delete(ctx context.Context, request operations.RecipientDel
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "recipient-deleteDocumentRecipient",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1490,11 +1528,15 @@ func (s *Recipients) Delete(ctx context.Context, request operations.RecipientDel
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.RecipientDeleteDocumentRecipientResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1511,11 +1553,15 @@ func (s *Recipients) Delete(ctx context.Context, request operations.RecipientDel
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.RecipientDeleteDocumentRecipientDocumentsRecipientsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)

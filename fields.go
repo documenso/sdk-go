@@ -32,7 +32,6 @@ func (s *Fields) Get(ctx context.Context, fieldID float64, opts ...operations.Op
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "field-getDocumentField",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -215,11 +214,15 @@ func (s *Fields) Get(ctx context.Context, fieldID float64, opts ...operations.Op
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.FieldGetDocumentFieldResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -236,11 +239,15 @@ func (s *Fields) Get(ctx context.Context, fieldID float64, opts ...operations.Op
 				return nil, err
 			}
 
-			var out apierrors.ErrorNOTFOUND
+			var out apierrors.FieldGetDocumentFieldDocumentsFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -257,11 +264,15 @@ func (s *Fields) Get(ctx context.Context, fieldID float64, opts ...operations.Op
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.FieldGetDocumentFieldDocumentsFieldsResponseResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -300,7 +311,6 @@ func (s *Fields) Create(ctx context.Context, request operations.FieldCreateDocum
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "field-createDocumentField",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -487,11 +497,15 @@ func (s *Fields) Create(ctx context.Context, request operations.FieldCreateDocum
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.FieldCreateDocumentFieldResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -508,11 +522,15 @@ func (s *Fields) Create(ctx context.Context, request operations.FieldCreateDocum
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.FieldCreateDocumentFieldDocumentsFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -551,7 +569,6 @@ func (s *Fields) CreateMany(ctx context.Context, request operations.FieldCreateD
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "field-createDocumentFields",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -738,11 +755,15 @@ func (s *Fields) CreateMany(ctx context.Context, request operations.FieldCreateD
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.FieldCreateDocumentFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -759,11 +780,15 @@ func (s *Fields) CreateMany(ctx context.Context, request operations.FieldCreateD
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.FieldCreateDocumentFieldsDocumentsFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -802,7 +827,6 @@ func (s *Fields) Update(ctx context.Context, request operations.FieldUpdateDocum
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "field-updateDocumentField",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -989,11 +1013,15 @@ func (s *Fields) Update(ctx context.Context, request operations.FieldUpdateDocum
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.FieldUpdateDocumentFieldResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1010,11 +1038,15 @@ func (s *Fields) Update(ctx context.Context, request operations.FieldUpdateDocum
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.FieldUpdateDocumentFieldDocumentsFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1053,7 +1085,6 @@ func (s *Fields) UpdateMany(ctx context.Context, request operations.FieldUpdateD
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "field-updateDocumentFields",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1240,11 +1271,15 @@ func (s *Fields) UpdateMany(ctx context.Context, request operations.FieldUpdateD
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.FieldUpdateDocumentFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1261,11 +1296,15 @@ func (s *Fields) UpdateMany(ctx context.Context, request operations.FieldUpdateD
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.FieldUpdateDocumentFieldsDocumentsFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1303,7 +1342,6 @@ func (s *Fields) Delete(ctx context.Context, request operations.FieldDeleteDocum
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "field-deleteDocumentField",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -1490,11 +1528,15 @@ func (s *Fields) Delete(ctx context.Context, request operations.FieldDeleteDocum
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.FieldDeleteDocumentFieldResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -1511,11 +1553,15 @@ func (s *Fields) Delete(ctx context.Context, request operations.FieldDeleteDocum
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.FieldDeleteDocumentFieldDocumentsFieldsResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)

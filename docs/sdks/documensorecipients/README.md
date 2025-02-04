@@ -59,12 +59,12 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ErrorNOTFOUND            | 404                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                                     | Status Code                                                                    | Content Type                                                                   |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| apierrors.RecipientGetTemplateRecipientResponseBody                            | 400                                                                            | application/json                                                               |
+| apierrors.RecipientGetTemplateRecipientTemplatesRecipientsResponseBody         | 404                                                                            | application/json                                                               |
+| apierrors.RecipientGetTemplateRecipientTemplatesRecipientsResponseResponseBody | 500                                                                            | application/json                                                               |
+| apierrors.APIError                                                             | 4XX, 5XX                                                                       | \*/\*                                                                          |
 
 ## Create
 
@@ -121,11 +121,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                                | Status Code                                                               | Content Type                                                              |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| apierrors.RecipientCreateTemplateRecipientResponseBody                    | 400                                                                       | application/json                                                          |
+| apierrors.RecipientCreateTemplateRecipientTemplatesRecipientsResponseBody | 500                                                                       | application/json                                                          |
+| apierrors.APIError                                                        | 4XX, 5XX                                                                  | \*/\*                                                                     |
 
 ## CreateMany
 
@@ -189,11 +189,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                                 | Status Code                                                                | Content Type                                                               |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| apierrors.RecipientCreateTemplateRecipientsResponseBody                    | 400                                                                        | application/json                                                           |
+| apierrors.RecipientCreateTemplateRecipientsTemplatesRecipientsResponseBody | 500                                                                        | application/json                                                           |
+| apierrors.APIError                                                         | 4XX, 5XX                                                                   | \*/\*                                                                      |
 
 ## Update
 
@@ -248,11 +248,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                                | Status Code                                                               | Content Type                                                              |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| apierrors.RecipientUpdateTemplateRecipientResponseBody                    | 400                                                                       | application/json                                                          |
+| apierrors.RecipientUpdateTemplateRecipientTemplatesRecipientsResponseBody | 500                                                                       | application/json                                                          |
+| apierrors.APIError                                                        | 4XX, 5XX                                                                  | \*/\*                                                                     |
 
 ## UpdateMany
 
@@ -312,11 +312,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                                 | Status Code                                                                | Content Type                                                               |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| apierrors.RecipientUpdateTemplateRecipientsResponseBody                    | 400                                                                        | application/json                                                           |
+| apierrors.RecipientUpdateTemplateRecipientsTemplatesRecipientsResponseBody | 500                                                                        | application/json                                                           |
+| apierrors.APIError                                                         | 4XX, 5XX                                                                   | \*/\*                                                                      |
 
 ## Delete
 
@@ -368,8 +368,8 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                                | Status Code                                                               | Content Type                                                              |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| apierrors.RecipientDeleteTemplateRecipientResponseBody                    | 400                                                                       | application/json                                                          |
+| apierrors.RecipientDeleteTemplateRecipientTemplatesRecipientsResponseBody | 500                                                                       | application/json                                                          |
+| apierrors.APIError                                                        | 4XX, 5XX                                                                  | \*/\*                                                                     |

@@ -32,7 +32,6 @@ func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCrea
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "template-createTemplateDirectLink",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -219,11 +218,15 @@ func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCrea
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.TemplateCreateTemplateDirectLinkResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -240,11 +243,15 @@ func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCrea
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.TemplateCreateTemplateDirectLinkTemplatesDirectLinkResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -283,7 +290,6 @@ func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDele
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "template-deleteTemplateDirectLink",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -470,11 +476,15 @@ func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDele
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.TemplateDeleteTemplateDirectLinkResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -491,11 +501,15 @@ func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDele
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.TemplateDeleteTemplateDirectLinkTemplatesDirectLinkResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -534,7 +548,6 @@ func (s *DirectLink) Toggle(ctx context.Context, request operations.TemplateTogg
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "template-toggleTemplateDirectLink",
-		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -721,11 +734,15 @@ func (s *DirectLink) Toggle(ctx context.Context, request operations.TemplateTogg
 				return nil, err
 			}
 
-			var out apierrors.ErrorBADREQUEST
+			var out apierrors.TemplateToggleTemplateDirectLinkResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)
@@ -742,11 +759,15 @@ func (s *DirectLink) Toggle(ctx context.Context, request operations.TemplateTogg
 				return nil, err
 			}
 
-			var out apierrors.ERRORINTERNALSERVERERROR
+			var out apierrors.TemplateToggleTemplateDirectLinkTemplatesDirectLinkResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
 
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
 			return nil, &out
 		default:
 			rawBody, err := utils.ConsumeRawBody(httpRes)

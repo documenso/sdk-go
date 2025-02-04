@@ -59,11 +59,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                                | Status Code                                                               | Content Type                                                              |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| apierrors.TemplateCreateTemplateDirectLinkResponseBody                    | 400                                                                       | application/json                                                          |
+| apierrors.TemplateCreateTemplateDirectLinkTemplatesDirectLinkResponseBody | 500                                                                       | application/json                                                          |
+| apierrors.APIError                                                        | 4XX, 5XX                                                                  | \*/\*                                                                     |
 
 ## Delete
 
@@ -115,11 +115,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                                | Status Code                                                               | Content Type                                                              |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| apierrors.TemplateDeleteTemplateDirectLinkResponseBody                    | 400                                                                       | application/json                                                          |
+| apierrors.TemplateDeleteTemplateDirectLinkTemplatesDirectLinkResponseBody | 500                                                                       | application/json                                                          |
+| apierrors.APIError                                                        | 4XX, 5XX                                                                  | \*/\*                                                                     |
 
 ## Toggle
 
@@ -172,8 +172,8 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                                | Status Code                                                               | Content Type                                                              |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| apierrors.TemplateToggleTemplateDirectLinkResponseBody                    | 400                                                                       | application/json                                                          |
+| apierrors.TemplateToggleTemplateDirectLinkTemplatesDirectLinkResponseBody | 500                                                                       | application/json                                                          |
+| apierrors.APIError                                                        | 4XX, 5XX                                                                  | \*/\*                                                                     |

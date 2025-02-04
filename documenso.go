@@ -149,9 +149,9 @@ func New(opts ...SDKOption) *Documenso {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.0",
-			SDKVersion:        "0.0.3",
-			GenVersion:        "2.493.32",
-			UserAgent:         "speakeasy-sdk/go 0.0.3 2.493.32 0.0.0 github.com/documenso/sdk-go",
+			SDKVersion:        "0.0.4",
+			GenVersion:        "2.502.0",
+			UserAgent:         "speakeasy-sdk/go 0.0.4 2.502.0 0.0.0 github.com/documenso/sdk-go",
 			Hooks:             hooks.New(),
 		},
 	}

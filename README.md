@@ -254,9 +254,7 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
-		OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
-	}, operations.WithRetries(
+	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -308,9 +306,7 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
-		OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
-	})
+	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -331,12 +327,12 @@ By Default, an API error will return `apierrors.APIError`. When custom error res
 
 For example, the `Find` function may return the following errors:
 
-| Error Type                         | Status Code | Content Type     |
-| ---------------------------------- | ----------- | ---------------- |
-| apierrors.ErrorBADREQUEST          | 400         | application/json |
-| apierrors.ErrorNOTFOUND            | 404         | application/json |
-| apierrors.ERRORINTERNALSERVERERROR | 500         | application/json |
-| apierrors.APIError                 | 4XX, 5XX    | \*/\*            |
+| Error Type                                                   | Status Code | Content Type     |
+| ------------------------------------------------------------ | ----------- | ---------------- |
+| apierrors.DocumentFindDocumentsResponseBody                  | 400         | application/json |
+| apierrors.DocumentFindDocumentsDocumentsResponseBody         | 404         | application/json |
+| apierrors.DocumentFindDocumentsDocumentsResponseResponseBody | 500         | application/json |
+| apierrors.APIError                                           | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
@@ -360,24 +356,22 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
-		OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
-	})
+	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
 	if err != nil {
 
-		var e *apierrors.ErrorBADREQUEST
+		var e *apierrors.DocumentFindDocumentsResponseBody
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
 		}
 
-		var e *apierrors.ErrorNOTFOUND
+		var e *apierrors.DocumentFindDocumentsDocumentsResponseBody
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
 		}
 
-		var e *apierrors.ERRORINTERNALSERVERERROR
+		var e *apierrors.DocumentFindDocumentsDocumentsResponseResponseBody
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())

@@ -73,11 +73,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| apierrors.FieldCreateTemplateFieldResponseBody                | 400                                                           | application/json                                              |
+| apierrors.FieldCreateTemplateFieldTemplatesFieldsResponseBody | 500                                                           | application/json                                              |
+| apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |
 
 ## Get
 
@@ -126,12 +126,12 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ErrorNOTFOUND            | 404                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                         | Status Code                                                        | Content Type                                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| apierrors.FieldGetTemplateFieldResponseBody                        | 400                                                                | application/json                                                   |
+| apierrors.FieldGetTemplateFieldTemplatesFieldsResponseBody         | 404                                                                | application/json                                                   |
+| apierrors.FieldGetTemplateFieldTemplatesFieldsResponseResponseBody | 500                                                                | application/json                                                   |
+| apierrors.APIError                                                 | 4XX, 5XX                                                           | \*/\*                                                              |
 
 ## CreateMany
 
@@ -207,11 +207,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                     | Status Code                                                    | Content Type                                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| apierrors.FieldCreateTemplateFieldsResponseBody                | 400                                                            | application/json                                               |
+| apierrors.FieldCreateTemplateFieldsTemplatesFieldsResponseBody | 500                                                            | application/json                                               |
+| apierrors.APIError                                             | 4XX, 5XX                                                       | \*/\*                                                          |
 
 ## Update
 
@@ -269,11 +269,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| apierrors.FieldUpdateTemplateFieldResponseBody                | 400                                                           | application/json                                              |
+| apierrors.FieldUpdateTemplateFieldTemplatesFieldsResponseBody | 500                                                           | application/json                                              |
+| apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |
 
 ## UpdateMany
 
@@ -339,11 +339,11 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                     | Status Code                                                    | Content Type                                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| apierrors.FieldUpdateTemplateFieldsResponseBody                | 400                                                            | application/json                                               |
+| apierrors.FieldUpdateTemplateFieldsTemplatesFieldsResponseBody | 500                                                            | application/json                                               |
+| apierrors.APIError                                             | 4XX, 5XX                                                       | \*/\*                                                          |
 
 ## Delete
 
@@ -395,8 +395,8 @@ func main() {
 
 ### Errors
 
-| Error Type                         | Status Code                        | Content Type                       |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| apierrors.ErrorBADREQUEST          | 400                                | application/json                   |
-| apierrors.ERRORINTERNALSERVERERROR | 500                                | application/json                   |
-| apierrors.APIError                 | 4XX, 5XX                           | \*/\*                              |
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| apierrors.FieldDeleteTemplateFieldResponseBody                | 400                                                           | application/json                                              |
+| apierrors.FieldDeleteTemplateFieldTemplatesFieldsResponseBody | 500                                                           | application/json                                              |
+| apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |
