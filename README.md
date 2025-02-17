@@ -35,6 +35,7 @@ To keep updated, please follow the discussions here:
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
 * [Development](#development)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
@@ -388,7 +389,43 @@ func main() {
 ```
 <!-- End Error Handling [errors] -->
 
-<!-- No Server Selection [server] -->
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally using the `WithServerURL(serverURL string)` option when initializing the SDK client instance. For example:
+
+```go
+package main
+
+import (
+	"context"
+	sdkgo "github.com/documenso/sdk-go"
+	"github.com/documenso/sdk-go/models/operations"
+	"log"
+	"os"
+)
+
+func main() {
+	ctx := context.Background()
+	s := sdkgo.New(
+		sdkgo.WithServerURL("https://app.documenso.com/api/v2-beta"),
+		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
+	)
+	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
+		OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	if res.Object != nil {
+		// handle response
+	}
+}
+```
+<!-- End Server Selection [server] -->
+
 <!-- No Custom HTTP Client [http-client] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
