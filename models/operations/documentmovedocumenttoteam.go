@@ -10,21 +10,21 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type DocumentMoveDocumentToTeamRequestBody struct {
+type DocumentMoveDocumentToTeamRequest struct {
 	// The ID of the document to move to a team.
 	DocumentID float64 `json:"documentId"`
 	// The ID of the team to move the document to.
 	TeamID float64 `json:"teamId"`
 }
 
-func (o *DocumentMoveDocumentToTeamRequestBody) GetDocumentID() float64 {
+func (o *DocumentMoveDocumentToTeamRequest) GetDocumentID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.DocumentID
 }
 
-func (o *DocumentMoveDocumentToTeamRequestBody) GetTeamID() float64 {
+func (o *DocumentMoveDocumentToTeamRequest) GetTeamID() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -66,6 +66,7 @@ const (
 	DocumentMoveDocumentToTeamStatusDraft     DocumentMoveDocumentToTeamStatus = "DRAFT"
 	DocumentMoveDocumentToTeamStatusPending   DocumentMoveDocumentToTeamStatus = "PENDING"
 	DocumentMoveDocumentToTeamStatusCompleted DocumentMoveDocumentToTeamStatus = "COMPLETED"
+	DocumentMoveDocumentToTeamStatusRejected  DocumentMoveDocumentToTeamStatus = "REJECTED"
 )
 
 func (e DocumentMoveDocumentToTeamStatus) ToPointer() *DocumentMoveDocumentToTeamStatus {
@@ -82,6 +83,8 @@ func (e *DocumentMoveDocumentToTeamStatus) UnmarshalJSON(data []byte) error {
 	case "PENDING":
 		fallthrough
 	case "COMPLETED":
+		fallthrough
+	case "REJECTED":
 		*e = DocumentMoveDocumentToTeamStatus(v)
 		return nil
 	default:
@@ -283,7 +286,7 @@ type DocumentMoveDocumentToTeamResponseBody struct {
 	Visibility DocumentMoveDocumentToTeamVisibility `json:"visibility"`
 	Status     DocumentMoveDocumentToTeamStatus     `json:"status"`
 	Source     DocumentMoveDocumentToTeamSource     `json:"source"`
-	ID         int64                                `json:"id"`
+	ID         float64                              `json:"id"`
 	// A custom external ID you can use to identify the document.
 	ExternalID *string `json:"externalId"`
 	// The ID of the user that created this document.
@@ -296,8 +299,8 @@ type DocumentMoveDocumentToTeamResponseBody struct {
 	UpdatedAt      string                                          `json:"updatedAt"`
 	CompletedAt    *string                                         `json:"completedAt"`
 	DeletedAt      *string                                         `json:"deletedAt"`
-	TeamID         *int64                                          `json:"teamId"`
-	TemplateID     *int64                                          `json:"templateId"`
+	TeamID         *float64                                        `json:"teamId"`
+	TemplateID     *float64                                        `json:"templateId"`
 }
 
 func (o *DocumentMoveDocumentToTeamResponseBody) GetVisibility() DocumentMoveDocumentToTeamVisibility {
@@ -321,9 +324,9 @@ func (o *DocumentMoveDocumentToTeamResponseBody) GetSource() DocumentMoveDocumen
 	return o.Source
 }
 
-func (o *DocumentMoveDocumentToTeamResponseBody) GetID() int64 {
+func (o *DocumentMoveDocumentToTeamResponseBody) GetID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.ID
 }
@@ -398,14 +401,14 @@ func (o *DocumentMoveDocumentToTeamResponseBody) GetDeletedAt() *string {
 	return o.DeletedAt
 }
 
-func (o *DocumentMoveDocumentToTeamResponseBody) GetTeamID() *int64 {
+func (o *DocumentMoveDocumentToTeamResponseBody) GetTeamID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.TeamID
 }
 
-func (o *DocumentMoveDocumentToTeamResponseBody) GetTemplateID() *int64 {
+func (o *DocumentMoveDocumentToTeamResponseBody) GetTemplateID() *float64 {
 	if o == nil {
 		return nil
 	}

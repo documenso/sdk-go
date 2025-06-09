@@ -6,20 +6,20 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type DocumentResendDocumentRequestBody struct {
+type DocumentResendDocumentRequest struct {
 	DocumentID float64 `json:"documentId"`
 	// The IDs of the recipients to redistribute the document to.
 	Recipients []float64 `json:"recipients"`
 }
 
-func (o *DocumentResendDocumentRequestBody) GetDocumentID() float64 {
+func (o *DocumentResendDocumentRequest) GetDocumentID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.DocumentID
 }
 
-func (o *DocumentResendDocumentRequestBody) GetRecipients() []float64 {
+func (o *DocumentResendDocumentRequest) GetRecipients() []float64 {
 	if o == nil {
 		return []float64{}
 	}

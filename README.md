@@ -174,23 +174,23 @@ func main() {
 * [Redistribute](docs/sdks/documents/README.md#redistribute) - Redistribute document
 * [Duplicate](docs/sdks/documents/README.md#duplicate) - Duplicate document
 
-#### [Documents.Fields](docs/sdks/fields/README.md)
+#### [Documents.Fields](docs/sdks/documentsfields/README.md)
 
-* [Get](docs/sdks/fields/README.md#get) - Get document field
-* [Create](docs/sdks/fields/README.md#create) - Create document field
-* [CreateMany](docs/sdks/fields/README.md#createmany) - Create document fields
-* [Update](docs/sdks/fields/README.md#update) - Update document field
-* [UpdateMany](docs/sdks/fields/README.md#updatemany) - Update document fields
-* [Delete](docs/sdks/fields/README.md#delete) - Delete document field
+* [Get](docs/sdks/documentsfields/README.md#get) - Get document field
+* [Create](docs/sdks/documentsfields/README.md#create) - Create document field
+* [CreateMany](docs/sdks/documentsfields/README.md#createmany) - Create document fields
+* [Update](docs/sdks/documentsfields/README.md#update) - Update document field
+* [UpdateMany](docs/sdks/documentsfields/README.md#updatemany) - Update document fields
+* [Delete](docs/sdks/documentsfields/README.md#delete) - Delete document field
 
-#### [Documents.Recipients](docs/sdks/recipients/README.md)
+#### [Documents.Recipients](docs/sdks/documentsrecipients/README.md)
 
-* [Get](docs/sdks/recipients/README.md#get) - Get document recipient
-* [Create](docs/sdks/recipients/README.md#create) - Create document recipient
-* [CreateMany](docs/sdks/recipients/README.md#createmany) - Create document recipients
-* [Update](docs/sdks/recipients/README.md#update) - Update document recipient
-* [UpdateMany](docs/sdks/recipients/README.md#updatemany) - Update document recipients
-* [Delete](docs/sdks/recipients/README.md#delete) - Delete document recipient
+* [Get](docs/sdks/documentsrecipients/README.md#get) - Get document recipient
+* [Create](docs/sdks/documentsrecipients/README.md#create) - Create document recipient
+* [CreateMany](docs/sdks/documentsrecipients/README.md#createmany) - Create document recipients
+* [Update](docs/sdks/documentsrecipients/README.md#update) - Update document recipient
+* [UpdateMany](docs/sdks/documentsrecipients/README.md#updatemany) - Update document recipients
+* [Delete](docs/sdks/documentsrecipients/README.md#delete) - Delete document recipient
 
 ### [Templates](docs/sdks/templates/README.md)
 
@@ -208,23 +208,23 @@ func main() {
 * [Delete](docs/sdks/directlink/README.md#delete) - Delete direct link
 * [Toggle](docs/sdks/directlink/README.md#toggle) - Toggle direct link
 
-#### [Templates.Fields](docs/sdks/documensofields/README.md)
+#### [Templates.Fields](docs/sdks/templatesfields/README.md)
 
-* [Create](docs/sdks/documensofields/README.md#create) - Create template field
-* [Get](docs/sdks/documensofields/README.md#get) - Get template field
-* [CreateMany](docs/sdks/documensofields/README.md#createmany) - Create template fields
-* [Update](docs/sdks/documensofields/README.md#update) - Update template field
-* [UpdateMany](docs/sdks/documensofields/README.md#updatemany) - Update template fields
-* [Delete](docs/sdks/documensofields/README.md#delete) - Delete template field
+* [Create](docs/sdks/templatesfields/README.md#create) - Create template field
+* [Get](docs/sdks/templatesfields/README.md#get) - Get template field
+* [CreateMany](docs/sdks/templatesfields/README.md#createmany) - Create template fields
+* [Update](docs/sdks/templatesfields/README.md#update) - Update template field
+* [UpdateMany](docs/sdks/templatesfields/README.md#updatemany) - Update template fields
+* [Delete](docs/sdks/templatesfields/README.md#delete) - Delete template field
 
-#### [Templates.Recipients](docs/sdks/documensorecipients/README.md)
+#### [Templates.Recipients](docs/sdks/templatesrecipients/README.md)
 
-* [Get](docs/sdks/documensorecipients/README.md#get) - Get template recipient
-* [Create](docs/sdks/documensorecipients/README.md#create) - Create template recipient
-* [CreateMany](docs/sdks/documensorecipients/README.md#createmany) - Create template recipients
-* [Update](docs/sdks/documensorecipients/README.md#update) - Update template recipient
-* [UpdateMany](docs/sdks/documensorecipients/README.md#updatemany) - Update template recipients
-* [Delete](docs/sdks/documensorecipients/README.md#delete) - Delete template recipient
+* [Get](docs/sdks/templatesrecipients/README.md#get) - Get template recipient
+* [Create](docs/sdks/templatesrecipients/README.md#create) - Create template recipient
+* [CreateMany](docs/sdks/templatesrecipients/README.md#createmany) - Create template recipients
+* [Update](docs/sdks/templatesrecipients/README.md#update) - Update template recipient
+* [UpdateMany](docs/sdks/templatesrecipients/README.md#updatemany) - Update template recipients
+* [Delete](docs/sdks/templatesrecipients/README.md#delete) - Delete template recipient
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -328,12 +328,12 @@ By Default, an API error will return `apierrors.APIError`. When custom error res
 
 For example, the `Find` function may return the following errors:
 
-| Error Type                                                   | Status Code | Content Type     |
-| ------------------------------------------------------------ | ----------- | ---------------- |
-| apierrors.DocumentFindDocumentsResponseBody                  | 400         | application/json |
-| apierrors.DocumentFindDocumentsDocumentsResponseBody         | 404         | application/json |
-| apierrors.DocumentFindDocumentsDocumentsResponseResponseBody | 500         | application/json |
-| apierrors.APIError                                           | 4XX, 5XX    | \*/\*            |
+| Error Type                                         | Status Code | Content Type     |
+| -------------------------------------------------- | ----------- | ---------------- |
+| apierrors.DocumentFindDocumentsBadRequestError     | 400         | application/json |
+| apierrors.DocumentFindDocumentsNotFoundError       | 404         | application/json |
+| apierrors.DocumentFindDocumentsInternalServerError | 500         | application/json |
+| apierrors.APIError                                 | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
@@ -360,19 +360,19 @@ func main() {
 	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
 	if err != nil {
 
-		var e *apierrors.DocumentFindDocumentsResponseBody
+		var e *apierrors.DocumentFindDocumentsBadRequestError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
 		}
 
-		var e *apierrors.DocumentFindDocumentsDocumentsResponseBody
+		var e *apierrors.DocumentFindDocumentsNotFoundError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
 		}
 
-		var e *apierrors.DocumentFindDocumentsDocumentsResponseResponseBody
+		var e *apierrors.DocumentFindDocumentsInternalServerError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
@@ -394,8 +394,7 @@ func main() {
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally using the `WithServerURL(serverURL string)` option when initializing the SDK client instance. For example:
-
+The default server can be overridden globally using the `WithServerURL(serverURL string)` option when initializing the SDK client instance. For example:
 ```go
 package main
 
@@ -409,13 +408,13 @@ import (
 
 func main() {
 	ctx := context.Background()
+
 	s := sdkgo.New(
 		sdkgo.WithServerURL("https://app.documenso.com/api/v2-beta"),
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{
-		OrderByDirection: operations.OrderByDirectionDesc.ToPointer(),
-	})
+
+	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -423,6 +422,7 @@ func main() {
 		// handle response
 	}
 }
+
 ```
 <!-- End Server Selection [server] -->
 

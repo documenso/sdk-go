@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type DocumentCreateDocumentTemporaryDocumentsIssues struct {
+type DocumentCreateDocumentTemporaryInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentsIssues) GetMessage() string {
+func (o *DocumentCreateDocumentTemporaryInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// DocumentCreateDocumentTemporaryDocumentsResponseBody - Internal server error
-type DocumentCreateDocumentTemporaryDocumentsResponseBody struct {
-	Message  string                                           `json:"message"`
-	Code     string                                           `json:"code"`
-	Issues   []DocumentCreateDocumentTemporaryDocumentsIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                          `json:"-"`
+// DocumentCreateDocumentTemporaryInternalServerError - Internal server error
+type DocumentCreateDocumentTemporaryInternalServerError struct {
+	Message  string                                                    `json:"message"`
+	Code     string                                                    `json:"code"`
+	Issues   []DocumentCreateDocumentTemporaryInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                                   `json:"-"`
 }
 
-var _ error = &DocumentCreateDocumentTemporaryDocumentsResponseBody{}
+var _ error = &DocumentCreateDocumentTemporaryInternalServerError{}
 
-func (e *DocumentCreateDocumentTemporaryDocumentsResponseBody) Error() string {
+func (e *DocumentCreateDocumentTemporaryInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type DocumentCreateDocumentTemporaryIssues struct {
+type DocumentCreateDocumentTemporaryBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentCreateDocumentTemporaryIssues) GetMessage() string {
+func (o *DocumentCreateDocumentTemporaryBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// DocumentCreateDocumentTemporaryResponseBody - Invalid input data
-type DocumentCreateDocumentTemporaryResponseBody struct {
-	Message  string                                  `json:"message"`
-	Code     string                                  `json:"code"`
-	Issues   []DocumentCreateDocumentTemporaryIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                 `json:"-"`
+// DocumentCreateDocumentTemporaryBadRequestError - Invalid input data
+type DocumentCreateDocumentTemporaryBadRequestError struct {
+	Message  string                                           `json:"message"`
+	Code     string                                           `json:"code"`
+	Issues   []DocumentCreateDocumentTemporaryBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                          `json:"-"`
 }
 
-var _ error = &DocumentCreateDocumentTemporaryResponseBody{}
+var _ error = &DocumentCreateDocumentTemporaryBadRequestError{}
 
-func (e *DocumentCreateDocumentTemporaryResponseBody) Error() string {
+func (e *DocumentCreateDocumentTemporaryBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

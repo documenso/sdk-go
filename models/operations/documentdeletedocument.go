@@ -6,11 +6,11 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type DocumentDeleteDocumentRequestBody struct {
+type DocumentDeleteDocumentRequest struct {
 	DocumentID float64 `json:"documentId"`
 }
 
-func (o *DocumentDeleteDocumentRequestBody) GetDocumentID() float64 {
+func (o *DocumentDeleteDocumentRequest) GetDocumentID() float64 {
 	if o == nil {
 		return 0.0
 	}

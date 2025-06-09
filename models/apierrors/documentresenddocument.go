@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type DocumentResendDocumentDocumentsIssues struct {
+type DocumentResendDocumentInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentResendDocumentDocumentsIssues) GetMessage() string {
+func (o *DocumentResendDocumentInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// DocumentResendDocumentDocumentsResponseBody - Internal server error
-type DocumentResendDocumentDocumentsResponseBody struct {
-	Message  string                                  `json:"message"`
-	Code     string                                  `json:"code"`
-	Issues   []DocumentResendDocumentDocumentsIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                 `json:"-"`
+// DocumentResendDocumentInternalServerError - Internal server error
+type DocumentResendDocumentInternalServerError struct {
+	Message  string                                           `json:"message"`
+	Code     string                                           `json:"code"`
+	Issues   []DocumentResendDocumentInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                          `json:"-"`
 }
 
-var _ error = &DocumentResendDocumentDocumentsResponseBody{}
+var _ error = &DocumentResendDocumentInternalServerError{}
 
-func (e *DocumentResendDocumentDocumentsResponseBody) Error() string {
+func (e *DocumentResendDocumentInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type DocumentResendDocumentIssues struct {
+type DocumentResendDocumentBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentResendDocumentIssues) GetMessage() string {
+func (o *DocumentResendDocumentBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// DocumentResendDocumentResponseBody - Invalid input data
-type DocumentResendDocumentResponseBody struct {
-	Message  string                         `json:"message"`
-	Code     string                         `json:"code"`
-	Issues   []DocumentResendDocumentIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata        `json:"-"`
+// DocumentResendDocumentBadRequestError - Invalid input data
+type DocumentResendDocumentBadRequestError struct {
+	Message  string                                  `json:"message"`
+	Code     string                                  `json:"code"`
+	Issues   []DocumentResendDocumentBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                 `json:"-"`
 }
 
-var _ error = &DocumentResendDocumentResponseBody{}
+var _ error = &DocumentResendDocumentBadRequestError{}
 
-func (e *DocumentResendDocumentResponseBody) Error() string {
+func (e *DocumentResendDocumentBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

@@ -1,0 +1,9 @@
+# TemplateFindTemplatesRecipientAuthOptions
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `AccessAuth`                                                                                             | [operations.TemplateFindTemplatesAccessAuth](../../models/operations/templatefindtemplatesaccessauth.md) | :heavy_check_mark:                                                                                       | The type of authentication required for the recipient to access the document.                            |
+| `ActionAuth`                                                                                             | [operations.TemplateFindTemplatesActionAuth](../../models/operations/templatefindtemplatesactionauth.md) | :heavy_check_mark:                                                                                       | The type of authentication required for the recipient to sign the document.                              |

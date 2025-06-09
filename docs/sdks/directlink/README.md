@@ -28,13 +28,13 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Templates.DirectLink.Create(ctx, operations.TemplateCreateTemplateDirectLinkRequestBody{
-        TemplateID: 4865.89,
+    res, err := s.Templates.DirectLink.Create(ctx, operations.TemplateCreateTemplateDirectLinkRequest{
+        TemplateID: 5094.31,
     })
     if err != nil {
         log.Fatal(err)
@@ -47,11 +47,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                                            | :heavy_check_mark:                                                                                                               | The context to use for the request.                                                                                              |
-| `request`                                                                                                                        | [operations.TemplateCreateTemplateDirectLinkRequestBody](../../models/operations/templatecreatetemplatedirectlinkrequestbody.md) | :heavy_check_mark:                                                                                                               | The request object to use for the request.                                                                                       |
-| `opts`                                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                                         | :heavy_minus_sign:                                                                                                               | The options for this request.                                                                                                    |
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                    | :heavy_check_mark:                                                                                                       | The context to use for the request.                                                                                      |
+| `request`                                                                                                                | [operations.TemplateCreateTemplateDirectLinkRequest](../../models/operations/templatecreatetemplatedirectlinkrequest.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
+| `opts`                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                 | :heavy_minus_sign:                                                                                                       | The options for this request.                                                                                            |
 
 ### Response
 
@@ -59,11 +59,11 @@ func main() {
 
 ### Errors
 
-| Error Type                                                                | Status Code                                                               | Content Type                                                              |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| apierrors.TemplateCreateTemplateDirectLinkResponseBody                    | 400                                                                       | application/json                                                          |
-| apierrors.TemplateCreateTemplateDirectLinkTemplatesDirectLinkResponseBody | 500                                                                       | application/json                                                          |
-| apierrors.APIError                                                        | 4XX, 5XX                                                                  | \*/\*                                                                     |
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| apierrors.TemplateCreateTemplateDirectLinkBadRequestError     | 400                                                           | application/json                                              |
+| apierrors.TemplateCreateTemplateDirectLinkInternalServerError | 500                                                           | application/json                                              |
+| apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |
 
 ## Delete
 
@@ -84,13 +84,13 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Templates.DirectLink.Delete(ctx, operations.TemplateDeleteTemplateDirectLinkRequestBody{
-        TemplateID: 5459.07,
+    res, err := s.Templates.DirectLink.Delete(ctx, operations.TemplateDeleteTemplateDirectLinkRequest{
+        TemplateID: 9950.03,
     })
     if err != nil {
         log.Fatal(err)
@@ -103,11 +103,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                                            | :heavy_check_mark:                                                                                                               | The context to use for the request.                                                                                              |
-| `request`                                                                                                                        | [operations.TemplateDeleteTemplateDirectLinkRequestBody](../../models/operations/templatedeletetemplatedirectlinkrequestbody.md) | :heavy_check_mark:                                                                                                               | The request object to use for the request.                                                                                       |
-| `opts`                                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                                         | :heavy_minus_sign:                                                                                                               | The options for this request.                                                                                                    |
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                    | :heavy_check_mark:                                                                                                       | The context to use for the request.                                                                                      |
+| `request`                                                                                                                | [operations.TemplateDeleteTemplateDirectLinkRequest](../../models/operations/templatedeletetemplatedirectlinkrequest.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
+| `opts`                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                 | :heavy_minus_sign:                                                                                                       | The options for this request.                                                                                            |
 
 ### Response
 
@@ -115,11 +115,11 @@ func main() {
 
 ### Errors
 
-| Error Type                                                                | Status Code                                                               | Content Type                                                              |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| apierrors.TemplateDeleteTemplateDirectLinkResponseBody                    | 400                                                                       | application/json                                                          |
-| apierrors.TemplateDeleteTemplateDirectLinkTemplatesDirectLinkResponseBody | 500                                                                       | application/json                                                          |
-| apierrors.APIError                                                        | 4XX, 5XX                                                                  | \*/\*                                                                     |
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| apierrors.TemplateDeleteTemplateDirectLinkBadRequestError     | 400                                                           | application/json                                              |
+| apierrors.TemplateDeleteTemplateDirectLinkInternalServerError | 500                                                           | application/json                                              |
+| apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |
 
 ## Toggle
 
@@ -140,14 +140,14 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Templates.DirectLink.Toggle(ctx, operations.TemplateToggleTemplateDirectLinkRequestBody{
-        TemplateID: 722.9,
-        Enabled: true,
+    res, err := s.Templates.DirectLink.Toggle(ctx, operations.TemplateToggleTemplateDirectLinkRequest{
+        TemplateID: 6583.54,
+        Enabled: false,
     })
     if err != nil {
         log.Fatal(err)
@@ -160,11 +160,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                                            | :heavy_check_mark:                                                                                                               | The context to use for the request.                                                                                              |
-| `request`                                                                                                                        | [operations.TemplateToggleTemplateDirectLinkRequestBody](../../models/operations/templatetoggletemplatedirectlinkrequestbody.md) | :heavy_check_mark:                                                                                                               | The request object to use for the request.                                                                                       |
-| `opts`                                                                                                                           | [][operations.Option](../../models/operations/option.md)                                                                         | :heavy_minus_sign:                                                                                                               | The options for this request.                                                                                                    |
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                                    | :heavy_check_mark:                                                                                                       | The context to use for the request.                                                                                      |
+| `request`                                                                                                                | [operations.TemplateToggleTemplateDirectLinkRequest](../../models/operations/templatetoggletemplatedirectlinkrequest.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
+| `opts`                                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                                 | :heavy_minus_sign:                                                                                                       | The options for this request.                                                                                            |
 
 ### Response
 
@@ -172,8 +172,8 @@ func main() {
 
 ### Errors
 
-| Error Type                                                                | Status Code                                                               | Content Type                                                              |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| apierrors.TemplateToggleTemplateDirectLinkResponseBody                    | 400                                                                       | application/json                                                          |
-| apierrors.TemplateToggleTemplateDirectLinkTemplatesDirectLinkResponseBody | 500                                                                       | application/json                                                          |
-| apierrors.APIError                                                        | 4XX, 5XX                                                                  | \*/\*                                                                     |
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| apierrors.TemplateToggleTemplateDirectLinkBadRequestError     | 400                                                           | application/json                                              |
+| apierrors.TemplateToggleTemplateDirectLinkInternalServerError | 500                                                           | application/json                                              |
+| apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |

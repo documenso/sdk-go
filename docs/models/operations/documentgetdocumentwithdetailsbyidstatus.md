@@ -8,3 +8,4 @@
 | `DocumentGetDocumentWithDetailsByIDStatusDraft`     | DRAFT                                               |
 | `DocumentGetDocumentWithDetailsByIDStatusPending`   | PENDING                                             |
 | `DocumentGetDocumentWithDetailsByIDStatusCompleted` | COMPLETED                                           |
+| `DocumentGetDocumentWithDetailsByIDStatusRejected`  | REJECTED                                            |

@@ -96,6 +96,8 @@ const (
 	DocumentSendDocumentLanguageEn DocumentSendDocumentLanguage = "en"
 	DocumentSendDocumentLanguageFr DocumentSendDocumentLanguage = "fr"
 	DocumentSendDocumentLanguageEs DocumentSendDocumentLanguage = "es"
+	DocumentSendDocumentLanguageIt DocumentSendDocumentLanguage = "it"
+	DocumentSendDocumentLanguagePl DocumentSendDocumentLanguage = "pl"
 )
 
 func (e DocumentSendDocumentLanguage) ToPointer() *DocumentSendDocumentLanguage {
@@ -114,6 +116,10 @@ func (e *DocumentSendDocumentLanguage) UnmarshalJSON(data []byte) error {
 	case "fr":
 		fallthrough
 	case "es":
+		fallthrough
+	case "it":
+		fallthrough
+	case "pl":
 		*e = DocumentSendDocumentLanguage(v)
 		return nil
 	default:
@@ -272,20 +278,20 @@ func (o *DocumentSendDocumentMeta) GetEmailSettings() *DocumentSendDocumentEmail
 	return o.EmailSettings
 }
 
-type DocumentSendDocumentRequestBody struct {
+type DocumentSendDocumentRequest struct {
 	// The ID of the document to send.
 	DocumentID float64                   `json:"documentId"`
 	Meta       *DocumentSendDocumentMeta `json:"meta,omitempty"`
 }
 
-func (o *DocumentSendDocumentRequestBody) GetDocumentID() float64 {
+func (o *DocumentSendDocumentRequest) GetDocumentID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.DocumentID
 }
 
-func (o *DocumentSendDocumentRequestBody) GetMeta() *DocumentSendDocumentMeta {
+func (o *DocumentSendDocumentRequest) GetMeta() *DocumentSendDocumentMeta {
 	if o == nil {
 		return nil
 	}
@@ -327,6 +333,7 @@ const (
 	DocumentSendDocumentStatusDraft     DocumentSendDocumentStatus = "DRAFT"
 	DocumentSendDocumentStatusPending   DocumentSendDocumentStatus = "PENDING"
 	DocumentSendDocumentStatusCompleted DocumentSendDocumentStatus = "COMPLETED"
+	DocumentSendDocumentStatusRejected  DocumentSendDocumentStatus = "REJECTED"
 )
 
 func (e DocumentSendDocumentStatus) ToPointer() *DocumentSendDocumentStatus {
@@ -343,6 +350,8 @@ func (e *DocumentSendDocumentStatus) UnmarshalJSON(data []byte) error {
 	case "PENDING":
 		fallthrough
 	case "COMPLETED":
+		fallthrough
+	case "REJECTED":
 		*e = DocumentSendDocumentStatus(v)
 		return nil
 	default:
@@ -544,7 +553,7 @@ type DocumentSendDocumentResponseBody struct {
 	Visibility DocumentSendDocumentVisibility `json:"visibility"`
 	Status     DocumentSendDocumentStatus     `json:"status"`
 	Source     DocumentSendDocumentSource     `json:"source"`
-	ID         int64                          `json:"id"`
+	ID         float64                        `json:"id"`
 	// A custom external ID you can use to identify the document.
 	ExternalID *string `json:"externalId"`
 	// The ID of the user that created this document.
@@ -557,8 +566,8 @@ type DocumentSendDocumentResponseBody struct {
 	UpdatedAt      string                                    `json:"updatedAt"`
 	CompletedAt    *string                                   `json:"completedAt"`
 	DeletedAt      *string                                   `json:"deletedAt"`
-	TeamID         *int64                                    `json:"teamId"`
-	TemplateID     *int64                                    `json:"templateId"`
+	TeamID         *float64                                  `json:"teamId"`
+	TemplateID     *float64                                  `json:"templateId"`
 }
 
 func (o *DocumentSendDocumentResponseBody) GetVisibility() DocumentSendDocumentVisibility {
@@ -582,9 +591,9 @@ func (o *DocumentSendDocumentResponseBody) GetSource() DocumentSendDocumentSourc
 	return o.Source
 }
 
-func (o *DocumentSendDocumentResponseBody) GetID() int64 {
+func (o *DocumentSendDocumentResponseBody) GetID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.ID
 }
@@ -659,14 +668,14 @@ func (o *DocumentSendDocumentResponseBody) GetDeletedAt() *string {
 	return o.DeletedAt
 }
 
-func (o *DocumentSendDocumentResponseBody) GetTeamID() *int64 {
+func (o *DocumentSendDocumentResponseBody) GetTeamID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.TeamID
 }
 
-func (o *DocumentSendDocumentResponseBody) GetTemplateID() *int64 {
+func (o *DocumentSendDocumentResponseBody) GetTemplateID() *float64 {
 	if o == nil {
 		return nil
 	}

@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateToggleTemplateDirectLinkTemplatesDirectLinkIssues struct {
+type TemplateToggleTemplateDirectLinkInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateToggleTemplateDirectLinkTemplatesDirectLinkIssues) GetMessage() string {
+func (o *TemplateToggleTemplateDirectLinkInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateToggleTemplateDirectLinkTemplatesDirectLinkResponseBody - Internal server error
-type TemplateToggleTemplateDirectLinkTemplatesDirectLinkResponseBody struct {
-	Message  string                                                      `json:"message"`
-	Code     string                                                      `json:"code"`
-	Issues   []TemplateToggleTemplateDirectLinkTemplatesDirectLinkIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                                     `json:"-"`
+// TemplateToggleTemplateDirectLinkInternalServerError - Internal server error
+type TemplateToggleTemplateDirectLinkInternalServerError struct {
+	Message  string                                                     `json:"message"`
+	Code     string                                                     `json:"code"`
+	Issues   []TemplateToggleTemplateDirectLinkInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                                    `json:"-"`
 }
 
-var _ error = &TemplateToggleTemplateDirectLinkTemplatesDirectLinkResponseBody{}
+var _ error = &TemplateToggleTemplateDirectLinkInternalServerError{}
 
-func (e *TemplateToggleTemplateDirectLinkTemplatesDirectLinkResponseBody) Error() string {
+func (e *TemplateToggleTemplateDirectLinkInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type TemplateToggleTemplateDirectLinkIssues struct {
+type TemplateToggleTemplateDirectLinkBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateToggleTemplateDirectLinkIssues) GetMessage() string {
+func (o *TemplateToggleTemplateDirectLinkBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateToggleTemplateDirectLinkResponseBody - Invalid input data
-type TemplateToggleTemplateDirectLinkResponseBody struct {
-	Message  string                                   `json:"message"`
-	Code     string                                   `json:"code"`
-	Issues   []TemplateToggleTemplateDirectLinkIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                  `json:"-"`
+// TemplateToggleTemplateDirectLinkBadRequestError - Invalid input data
+type TemplateToggleTemplateDirectLinkBadRequestError struct {
+	Message  string                                            `json:"message"`
+	Code     string                                            `json:"code"`
+	Issues   []TemplateToggleTemplateDirectLinkBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                           `json:"-"`
 }
 
-var _ error = &TemplateToggleTemplateDirectLinkResponseBody{}
+var _ error = &TemplateToggleTemplateDirectLinkBadRequestError{}
 
-func (e *TemplateToggleTemplateDirectLinkResponseBody) Error() string {
+func (e *TemplateToggleTemplateDirectLinkBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

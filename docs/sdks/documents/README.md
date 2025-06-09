@@ -34,7 +34,7 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
@@ -63,12 +63,12 @@ func main() {
 
 ### Errors
 
-| Error Type                                                   | Status Code                                                  | Content Type                                                 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| apierrors.DocumentFindDocumentsResponseBody                  | 400                                                          | application/json                                             |
-| apierrors.DocumentFindDocumentsDocumentsResponseBody         | 404                                                          | application/json                                             |
-| apierrors.DocumentFindDocumentsDocumentsResponseResponseBody | 500                                                          | application/json                                             |
-| apierrors.APIError                                           | 4XX, 5XX                                                     | \*/\*                                                        |
+| Error Type                                         | Status Code                                        | Content Type                                       |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| apierrors.DocumentFindDocumentsBadRequestError     | 400                                                | application/json                                   |
+| apierrors.DocumentFindDocumentsNotFoundError       | 404                                                | application/json                                   |
+| apierrors.DocumentFindDocumentsInternalServerError | 500                                                | application/json                                   |
+| apierrors.APIError                                 | 4XX, 5XX                                           | \*/\*                                              |
 
 ## Get
 
@@ -88,12 +88,12 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Documents.Get(ctx, 7003.47)
+    res, err := s.Documents.Get(ctx, 7491.86)
     if err != nil {
         log.Fatal(err)
     }
@@ -117,12 +117,12 @@ func main() {
 
 ### Errors
 
-| Error Type                                                                | Status Code                                                               | Content Type                                                              |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| apierrors.DocumentGetDocumentWithDetailsByIDResponseBody                  | 400                                                                       | application/json                                                          |
-| apierrors.DocumentGetDocumentWithDetailsByIDDocumentsResponseBody         | 404                                                                       | application/json                                                          |
-| apierrors.DocumentGetDocumentWithDetailsByIDDocumentsResponseResponseBody | 500                                                                       | application/json                                                          |
-| apierrors.APIError                                                        | 4XX, 5XX                                                                  | \*/\*                                                                     |
+| Error Type                                                      | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| apierrors.DocumentGetDocumentWithDetailsByIDBadRequestError     | 400                                                             | application/json                                                |
+| apierrors.DocumentGetDocumentWithDetailsByIDNotFoundError       | 404                                                             | application/json                                                |
+| apierrors.DocumentGetDocumentWithDetailsByIDInternalServerError | 500                                                             | application/json                                                |
+| apierrors.APIError                                              | 4XX, 5XX                                                        | \*/\*                                                           |
 
 ## CreateV0
 
@@ -143,12 +143,12 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Documents.CreateV0(ctx, operations.DocumentCreateDocumentTemporaryRequestBody{
+    res, err := s.Documents.CreateV0(ctx, operations.DocumentCreateDocumentTemporaryRequest{
         Title: "<value>",
     })
     if err != nil {
@@ -162,11 +162,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                                          | :heavy_check_mark:                                                                                                             | The context to use for the request.                                                                                            |
-| `request`                                                                                                                      | [operations.DocumentCreateDocumentTemporaryRequestBody](../../models/operations/documentcreatedocumenttemporaryrequestbody.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
-| `opts`                                                                                                                         | [][operations.Option](../../models/operations/option.md)                                                                       | :heavy_minus_sign:                                                                                                             | The options for this request.                                                                                                  |
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                                  | :heavy_check_mark:                                                                                                     | The context to use for the request.                                                                                    |
+| `request`                                                                                                              | [operations.DocumentCreateDocumentTemporaryRequest](../../models/operations/documentcreatedocumenttemporaryrequest.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
+| `opts`                                                                                                                 | [][operations.Option](../../models/operations/option.md)                                                               | :heavy_minus_sign:                                                                                                     | The options for this request.                                                                                          |
 
 ### Response
 
@@ -174,11 +174,11 @@ func main() {
 
 ### Errors
 
-| Error Type                                                     | Status Code                                                    | Content Type                                                   |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| apierrors.DocumentCreateDocumentTemporaryResponseBody          | 400                                                            | application/json                                               |
-| apierrors.DocumentCreateDocumentTemporaryDocumentsResponseBody | 500                                                            | application/json                                               |
-| apierrors.APIError                                             | 4XX, 5XX                                                       | \*/\*                                                          |
+| Error Type                                                   | Status Code                                                  | Content Type                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| apierrors.DocumentCreateDocumentTemporaryBadRequestError     | 400                                                          | application/json                                             |
+| apierrors.DocumentCreateDocumentTemporaryInternalServerError | 500                                                          | application/json                                             |
+| apierrors.APIError                                           | 4XX, 5XX                                                     | \*/\*                                                        |
 
 ## Update
 
@@ -199,13 +199,13 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Documents.Update(ctx, operations.DocumentSetSettingsForDocumentRequestBody{
-        DocumentID: 8574.78,
+    res, err := s.Documents.Update(ctx, operations.DocumentUpdateDocumentRequest{
+        DocumentID: 9701.92,
     })
     if err != nil {
         log.Fatal(err)
@@ -218,23 +218,23 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                        | :heavy_check_mark:                                                                                                           | The context to use for the request.                                                                                          |
-| `request`                                                                                                                    | [operations.DocumentSetSettingsForDocumentRequestBody](../../models/operations/documentsetsettingsfordocumentrequestbody.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
-| `opts`                                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                                     | :heavy_minus_sign:                                                                                                           | The options for this request.                                                                                                |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |
+| `request`                                                                                            | [operations.DocumentUpdateDocumentRequest](../../models/operations/documentupdatedocumentrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `opts`                                                                                               | [][operations.Option](../../models/operations/option.md)                                             | :heavy_minus_sign:                                                                                   | The options for this request.                                                                        |
 
 ### Response
 
-**[*operations.DocumentSetSettingsForDocumentResponse](../../models/operations/documentsetsettingsfordocumentresponse.md), error**
+**[*operations.DocumentUpdateDocumentResponse](../../models/operations/documentupdatedocumentresponse.md), error**
 
 ### Errors
 
-| Error Type                                                    | Status Code                                                   | Content Type                                                  |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| apierrors.DocumentSetSettingsForDocumentResponseBody          | 400                                                           | application/json                                              |
-| apierrors.DocumentSetSettingsForDocumentDocumentsResponseBody | 500                                                           | application/json                                              |
-| apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |
+| Error Type                                          | Status Code                                         | Content Type                                        |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| apierrors.DocumentUpdateDocumentBadRequestError     | 400                                                 | application/json                                    |
+| apierrors.DocumentUpdateDocumentInternalServerError | 500                                                 | application/json                                    |
+| apierrors.APIError                                  | 4XX, 5XX                                            | \*/\*                                               |
 
 ## Delete
 
@@ -255,13 +255,13 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Documents.Delete(ctx, operations.DocumentDeleteDocumentRequestBody{
-        DocumentID: 5459.07,
+    res, err := s.Documents.Delete(ctx, operations.DocumentDeleteDocumentRequest{
+        DocumentID: 4054.62,
     })
     if err != nil {
         log.Fatal(err)
@@ -274,11 +274,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                        | :heavy_check_mark:                                                                                           | The context to use for the request.                                                                          |
-| `request`                                                                                                    | [operations.DocumentDeleteDocumentRequestBody](../../models/operations/documentdeletedocumentrequestbody.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
-| `opts`                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                     | :heavy_minus_sign:                                                                                           | The options for this request.                                                                                |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |
+| `request`                                                                                            | [operations.DocumentDeleteDocumentRequest](../../models/operations/documentdeletedocumentrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `opts`                                                                                               | [][operations.Option](../../models/operations/option.md)                                             | :heavy_minus_sign:                                                                                   | The options for this request.                                                                        |
 
 ### Response
 
@@ -286,11 +286,11 @@ func main() {
 
 ### Errors
 
-| Error Type                                            | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| apierrors.DocumentDeleteDocumentResponseBody          | 400                                                   | application/json                                      |
-| apierrors.DocumentDeleteDocumentDocumentsResponseBody | 500                                                   | application/json                                      |
-| apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
+| Error Type                                          | Status Code                                         | Content Type                                        |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| apierrors.DocumentDeleteDocumentBadRequestError     | 400                                                 | application/json                                    |
+| apierrors.DocumentDeleteDocumentInternalServerError | 500                                                 | application/json                                    |
+| apierrors.APIError                                  | 4XX, 5XX                                            | \*/\*                                               |
 
 ## MoveToTeam
 
@@ -311,14 +311,14 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Documents.MoveToTeam(ctx, operations.DocumentMoveDocumentToTeamRequestBody{
-        DocumentID: 8301.72,
-        TeamID: 6724.78,
+    res, err := s.Documents.MoveToTeam(ctx, operations.DocumentMoveDocumentToTeamRequest{
+        DocumentID: 7184.15,
+        TeamID: 4855.19,
     })
     if err != nil {
         log.Fatal(err)
@@ -331,11 +331,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                | :heavy_check_mark:                                                                                                   | The context to use for the request.                                                                                  |
-| `request`                                                                                                            | [operations.DocumentMoveDocumentToTeamRequestBody](../../models/operations/documentmovedocumenttoteamrequestbody.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
-| `opts`                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                             | :heavy_minus_sign:                                                                                                   | The options for this request.                                                                                        |
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                        | :heavy_check_mark:                                                                                           | The context to use for the request.                                                                          |
+| `request`                                                                                                    | [operations.DocumentMoveDocumentToTeamRequest](../../models/operations/documentmovedocumenttoteamrequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+| `opts`                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                     | :heavy_minus_sign:                                                                                           | The options for this request.                                                                                |
 
 ### Response
 
@@ -343,11 +343,11 @@ func main() {
 
 ### Errors
 
-| Error Type                                                | Status Code                                               | Content Type                                              |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| apierrors.DocumentMoveDocumentToTeamResponseBody          | 400                                                       | application/json                                          |
-| apierrors.DocumentMoveDocumentToTeamDocumentsResponseBody | 500                                                       | application/json                                          |
-| apierrors.APIError                                        | 4XX, 5XX                                                  | \*/\*                                                     |
+| Error Type                                              | Status Code                                             | Content Type                                            |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| apierrors.DocumentMoveDocumentToTeamBadRequestError     | 400                                                     | application/json                                        |
+| apierrors.DocumentMoveDocumentToTeamInternalServerError | 500                                                     | application/json                                        |
+| apierrors.APIError                                      | 4XX, 5XX                                                | \*/\*                                                   |
 
 ## Distribute
 
@@ -368,13 +368,13 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Documents.Distribute(ctx, operations.DocumentSendDocumentRequestBody{
-        DocumentID: 4115.92,
+    res, err := s.Documents.Distribute(ctx, operations.DocumentSendDocumentRequest{
+        DocumentID: 7930.82,
     })
     if err != nil {
         log.Fatal(err)
@@ -387,11 +387,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                    | :heavy_check_mark:                                                                                       | The context to use for the request.                                                                      |
-| `request`                                                                                                | [operations.DocumentSendDocumentRequestBody](../../models/operations/documentsenddocumentrequestbody.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
-| `opts`                                                                                                   | [][operations.Option](../../models/operations/option.md)                                                 | :heavy_minus_sign:                                                                                       | The options for this request.                                                                            |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |
+| `request`                                                                                        | [operations.DocumentSendDocumentRequest](../../models/operations/documentsenddocumentrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `opts`                                                                                           | [][operations.Option](../../models/operations/option.md)                                         | :heavy_minus_sign:                                                                               | The options for this request.                                                                    |
 
 ### Response
 
@@ -399,11 +399,11 @@ func main() {
 
 ### Errors
 
-| Error Type                                          | Status Code                                         | Content Type                                        |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| apierrors.DocumentSendDocumentResponseBody          | 400                                                 | application/json                                    |
-| apierrors.DocumentSendDocumentDocumentsResponseBody | 500                                                 | application/json                                    |
-| apierrors.APIError                                  | 4XX, 5XX                                            | \*/\*                                               |
+| Error Type                                        | Status Code                                       | Content Type                                      |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| apierrors.DocumentSendDocumentBadRequestError     | 400                                               | application/json                                  |
+| apierrors.DocumentSendDocumentInternalServerError | 500                                               | application/json                                  |
+| apierrors.APIError                                | 4XX, 5XX                                          | \*/\*                                             |
 
 ## Redistribute
 
@@ -424,16 +424,14 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Documents.Redistribute(ctx, operations.DocumentResendDocumentRequestBody{
-        DocumentID: 5758.65,
-        Recipients: []float64{
-
-        },
+    res, err := s.Documents.Redistribute(ctx, operations.DocumentResendDocumentRequest{
+        DocumentID: 2824.22,
+        Recipients: []float64{},
     })
     if err != nil {
         log.Fatal(err)
@@ -446,11 +444,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                        | :heavy_check_mark:                                                                                           | The context to use for the request.                                                                          |
-| `request`                                                                                                    | [operations.DocumentResendDocumentRequestBody](../../models/operations/documentresenddocumentrequestbody.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
-| `opts`                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                     | :heavy_minus_sign:                                                                                           | The options for this request.                                                                                |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |
+| `request`                                                                                            | [operations.DocumentResendDocumentRequest](../../models/operations/documentresenddocumentrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `opts`                                                                                               | [][operations.Option](../../models/operations/option.md)                                             | :heavy_minus_sign:                                                                                   | The options for this request.                                                                        |
 
 ### Response
 
@@ -458,11 +456,11 @@ func main() {
 
 ### Errors
 
-| Error Type                                            | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| apierrors.DocumentResendDocumentResponseBody          | 400                                                   | application/json                                      |
-| apierrors.DocumentResendDocumentDocumentsResponseBody | 500                                                   | application/json                                      |
-| apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
+| Error Type                                          | Status Code                                         | Content Type                                        |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| apierrors.DocumentResendDocumentBadRequestError     | 400                                                 | application/json                                    |
+| apierrors.DocumentResendDocumentInternalServerError | 500                                                 | application/json                                    |
+| apierrors.APIError                                  | 4XX, 5XX                                            | \*/\*                                               |
 
 ## Duplicate
 
@@ -483,13 +481,13 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Documents.Duplicate(ctx, operations.DocumentDuplicateDocumentRequestBody{
-        DocumentID: 3523.11,
+    res, err := s.Documents.Duplicate(ctx, operations.DocumentDuplicateDocumentRequest{
+        DocumentID: 309.05,
     })
     if err != nil {
         log.Fatal(err)
@@ -502,11 +500,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                              | :heavy_check_mark:                                                                                                 | The context to use for the request.                                                                                |
-| `request`                                                                                                          | [operations.DocumentDuplicateDocumentRequestBody](../../models/operations/documentduplicatedocumentrequestbody.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
-| `opts`                                                                                                             | [][operations.Option](../../models/operations/option.md)                                                           | :heavy_minus_sign:                                                                                                 | The options for this request.                                                                                      |
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |
+| `request`                                                                                                  | [operations.DocumentDuplicateDocumentRequest](../../models/operations/documentduplicatedocumentrequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
+| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |
 
 ### Response
 
@@ -514,8 +512,8 @@ func main() {
 
 ### Errors
 
-| Error Type                                               | Status Code                                              | Content Type                                             |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| apierrors.DocumentDuplicateDocumentResponseBody          | 400                                                      | application/json                                         |
-| apierrors.DocumentDuplicateDocumentDocumentsResponseBody | 500                                                      | application/json                                         |
-| apierrors.APIError                                       | 4XX, 5XX                                                 | \*/\*                                                    |
+| Error Type                                             | Status Code                                            | Content Type                                           |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| apierrors.DocumentDuplicateDocumentBadRequestError     | 400                                                    | application/json                                       |
+| apierrors.DocumentDuplicateDocumentInternalServerError | 500                                                    | application/json                                       |
+| apierrors.APIError                                     | 4XX, 5XX                                               | \*/\*                                                  |

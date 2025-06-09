@@ -7,80 +7,80 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type FieldGetTemplateFieldTemplatesFieldsResponseIssues struct {
+type FieldGetTemplateFieldInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *FieldGetTemplateFieldTemplatesFieldsResponseIssues) GetMessage() string {
+func (o *FieldGetTemplateFieldInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// FieldGetTemplateFieldTemplatesFieldsResponseResponseBody - Internal server error
-type FieldGetTemplateFieldTemplatesFieldsResponseResponseBody struct {
-	Message  string                                               `json:"message"`
-	Code     string                                               `json:"code"`
-	Issues   []FieldGetTemplateFieldTemplatesFieldsResponseIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                              `json:"-"`
+// FieldGetTemplateFieldInternalServerError - Internal server error
+type FieldGetTemplateFieldInternalServerError struct {
+	Message  string                                          `json:"message"`
+	Code     string                                          `json:"code"`
+	Issues   []FieldGetTemplateFieldInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                         `json:"-"`
 }
 
-var _ error = &FieldGetTemplateFieldTemplatesFieldsResponseResponseBody{}
+var _ error = &FieldGetTemplateFieldInternalServerError{}
 
-func (e *FieldGetTemplateFieldTemplatesFieldsResponseResponseBody) Error() string {
+func (e *FieldGetTemplateFieldInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type FieldGetTemplateFieldTemplatesFieldsIssues struct {
+type FieldGetTemplateFieldNotFoundIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *FieldGetTemplateFieldTemplatesFieldsIssues) GetMessage() string {
+func (o *FieldGetTemplateFieldNotFoundIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// FieldGetTemplateFieldTemplatesFieldsResponseBody - Not found
-type FieldGetTemplateFieldTemplatesFieldsResponseBody struct {
-	Message  string                                       `json:"message"`
-	Code     string                                       `json:"code"`
-	Issues   []FieldGetTemplateFieldTemplatesFieldsIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                      `json:"-"`
+// FieldGetTemplateFieldNotFoundError - Not found
+type FieldGetTemplateFieldNotFoundError struct {
+	Message  string                               `json:"message"`
+	Code     string                               `json:"code"`
+	Issues   []FieldGetTemplateFieldNotFoundIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata              `json:"-"`
 }
 
-var _ error = &FieldGetTemplateFieldTemplatesFieldsResponseBody{}
+var _ error = &FieldGetTemplateFieldNotFoundError{}
 
-func (e *FieldGetTemplateFieldTemplatesFieldsResponseBody) Error() string {
+func (e *FieldGetTemplateFieldNotFoundError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type FieldGetTemplateFieldIssues struct {
+type FieldGetTemplateFieldBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *FieldGetTemplateFieldIssues) GetMessage() string {
+func (o *FieldGetTemplateFieldBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// FieldGetTemplateFieldResponseBody - Invalid input data
-type FieldGetTemplateFieldResponseBody struct {
-	Message  string                        `json:"message"`
-	Code     string                        `json:"code"`
-	Issues   []FieldGetTemplateFieldIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata       `json:"-"`
+// FieldGetTemplateFieldBadRequestError - Invalid input data
+type FieldGetTemplateFieldBadRequestError struct {
+	Message  string                                 `json:"message"`
+	Code     string                                 `json:"code"`
+	Issues   []FieldGetTemplateFieldBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                `json:"-"`
 }
 
-var _ error = &FieldGetTemplateFieldResponseBody{}
+var _ error = &FieldGetTemplateFieldBadRequestError{}
 
-func (e *FieldGetTemplateFieldResponseBody) Error() string {
+func (e *FieldGetTemplateFieldBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

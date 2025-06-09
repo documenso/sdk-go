@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateDeleteTemplateTemplatesIssues struct {
+type TemplateDeleteTemplateInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateDeleteTemplateTemplatesIssues) GetMessage() string {
+func (o *TemplateDeleteTemplateInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateDeleteTemplateTemplatesResponseBody - Internal server error
-type TemplateDeleteTemplateTemplatesResponseBody struct {
-	Message  string                                  `json:"message"`
-	Code     string                                  `json:"code"`
-	Issues   []TemplateDeleteTemplateTemplatesIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                 `json:"-"`
+// TemplateDeleteTemplateInternalServerError - Internal server error
+type TemplateDeleteTemplateInternalServerError struct {
+	Message  string                                           `json:"message"`
+	Code     string                                           `json:"code"`
+	Issues   []TemplateDeleteTemplateInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                          `json:"-"`
 }
 
-var _ error = &TemplateDeleteTemplateTemplatesResponseBody{}
+var _ error = &TemplateDeleteTemplateInternalServerError{}
 
-func (e *TemplateDeleteTemplateTemplatesResponseBody) Error() string {
+func (e *TemplateDeleteTemplateInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type TemplateDeleteTemplateIssues struct {
+type TemplateDeleteTemplateBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateDeleteTemplateIssues) GetMessage() string {
+func (o *TemplateDeleteTemplateBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateDeleteTemplateResponseBody - Invalid input data
-type TemplateDeleteTemplateResponseBody struct {
-	Message  string                         `json:"message"`
-	Code     string                         `json:"code"`
-	Issues   []TemplateDeleteTemplateIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata        `json:"-"`
+// TemplateDeleteTemplateBadRequestError - Invalid input data
+type TemplateDeleteTemplateBadRequestError struct {
+	Message  string                                  `json:"message"`
+	Code     string                                  `json:"code"`
+	Issues   []TemplateDeleteTemplateBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                 `json:"-"`
 }
 
-var _ error = &TemplateDeleteTemplateResponseBody{}
+var _ error = &TemplateDeleteTemplateBadRequestError{}
 
-func (e *TemplateDeleteTemplateResponseBody) Error() string {
+func (e *TemplateDeleteTemplateBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

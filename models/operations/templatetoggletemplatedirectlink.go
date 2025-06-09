@@ -6,19 +6,19 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateToggleTemplateDirectLinkRequestBody struct {
+type TemplateToggleTemplateDirectLinkRequest struct {
 	TemplateID float64 `json:"templateId"`
 	Enabled    bool    `json:"enabled"`
 }
 
-func (o *TemplateToggleTemplateDirectLinkRequestBody) GetTemplateID() float64 {
+func (o *TemplateToggleTemplateDirectLinkRequest) GetTemplateID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.TemplateID
 }
 
-func (o *TemplateToggleTemplateDirectLinkRequestBody) GetEnabled() bool {
+func (o *TemplateToggleTemplateDirectLinkRequest) GetEnabled() bool {
 	if o == nil {
 		return false
 	}
@@ -27,12 +27,12 @@ func (o *TemplateToggleTemplateDirectLinkRequestBody) GetEnabled() bool {
 
 // TemplateToggleTemplateDirectLinkResponseBody - Successful response
 type TemplateToggleTemplateDirectLinkResponseBody struct {
-	ID                        string `json:"id"`
-	TemplateID                int64  `json:"templateId"`
-	Token                     string `json:"token"`
-	CreatedAt                 string `json:"createdAt"`
-	Enabled                   bool   `json:"enabled"`
-	DirectTemplateRecipientID int64  `json:"directTemplateRecipientId"`
+	ID                        string  `json:"id"`
+	TemplateID                float64 `json:"templateId"`
+	Token                     string  `json:"token"`
+	CreatedAt                 string  `json:"createdAt"`
+	Enabled                   bool    `json:"enabled"`
+	DirectTemplateRecipientID float64 `json:"directTemplateRecipientId"`
 }
 
 func (o *TemplateToggleTemplateDirectLinkResponseBody) GetID() string {
@@ -42,9 +42,9 @@ func (o *TemplateToggleTemplateDirectLinkResponseBody) GetID() string {
 	return o.ID
 }
 
-func (o *TemplateToggleTemplateDirectLinkResponseBody) GetTemplateID() int64 {
+func (o *TemplateToggleTemplateDirectLinkResponseBody) GetTemplateID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.TemplateID
 }
@@ -70,9 +70,9 @@ func (o *TemplateToggleTemplateDirectLinkResponseBody) GetEnabled() bool {
 	return o.Enabled
 }
 
-func (o *TemplateToggleTemplateDirectLinkResponseBody) GetDirectTemplateRecipientID() int64 {
+func (o *TemplateToggleTemplateDirectLinkResponseBody) GetDirectTemplateRecipientID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.DirectTemplateRecipientID
 }

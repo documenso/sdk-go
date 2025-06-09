@@ -1,9 +1,0 @@
-# FieldUpdateTemplateFieldRequestBody
-
-
-## Fields
-
-| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `TemplateID`                                                                                         | *float64*                                                                                            | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `Field`                                                                                              | [operations.FieldUpdateTemplateFieldField](../../models/operations/fieldupdatetemplatefieldfield.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

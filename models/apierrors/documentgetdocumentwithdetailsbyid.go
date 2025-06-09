@@ -7,80 +7,80 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type DocumentGetDocumentWithDetailsByIDDocumentsResponseIssues struct {
+type DocumentGetDocumentWithDetailsByIDInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentGetDocumentWithDetailsByIDDocumentsResponseIssues) GetMessage() string {
+func (o *DocumentGetDocumentWithDetailsByIDInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// DocumentGetDocumentWithDetailsByIDDocumentsResponseResponseBody - Internal server error
-type DocumentGetDocumentWithDetailsByIDDocumentsResponseResponseBody struct {
-	Message  string                                                      `json:"message"`
-	Code     string                                                      `json:"code"`
-	Issues   []DocumentGetDocumentWithDetailsByIDDocumentsResponseIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                                     `json:"-"`
+// DocumentGetDocumentWithDetailsByIDInternalServerError - Internal server error
+type DocumentGetDocumentWithDetailsByIDInternalServerError struct {
+	Message  string                                                       `json:"message"`
+	Code     string                                                       `json:"code"`
+	Issues   []DocumentGetDocumentWithDetailsByIDInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                                      `json:"-"`
 }
 
-var _ error = &DocumentGetDocumentWithDetailsByIDDocumentsResponseResponseBody{}
+var _ error = &DocumentGetDocumentWithDetailsByIDInternalServerError{}
 
-func (e *DocumentGetDocumentWithDetailsByIDDocumentsResponseResponseBody) Error() string {
+func (e *DocumentGetDocumentWithDetailsByIDInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type DocumentGetDocumentWithDetailsByIDDocumentsIssues struct {
+type DocumentGetDocumentWithDetailsByIDNotFoundIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentGetDocumentWithDetailsByIDDocumentsIssues) GetMessage() string {
+func (o *DocumentGetDocumentWithDetailsByIDNotFoundIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// DocumentGetDocumentWithDetailsByIDDocumentsResponseBody - Not found
-type DocumentGetDocumentWithDetailsByIDDocumentsResponseBody struct {
+// DocumentGetDocumentWithDetailsByIDNotFoundError - Not found
+type DocumentGetDocumentWithDetailsByIDNotFoundError struct {
+	Message  string                                            `json:"message"`
+	Code     string                                            `json:"code"`
+	Issues   []DocumentGetDocumentWithDetailsByIDNotFoundIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                           `json:"-"`
+}
+
+var _ error = &DocumentGetDocumentWithDetailsByIDNotFoundError{}
+
+func (e *DocumentGetDocumentWithDetailsByIDNotFoundError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type DocumentGetDocumentWithDetailsByIDBadRequestIssue struct {
+	Message string `json:"message"`
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDBadRequestIssue) GetMessage() string {
+	if o == nil {
+		return ""
+	}
+	return o.Message
+}
+
+// DocumentGetDocumentWithDetailsByIDBadRequestError - Invalid input data
+type DocumentGetDocumentWithDetailsByIDBadRequestError struct {
 	Message  string                                              `json:"message"`
 	Code     string                                              `json:"code"`
-	Issues   []DocumentGetDocumentWithDetailsByIDDocumentsIssues `json:"issues,omitempty"`
+	Issues   []DocumentGetDocumentWithDetailsByIDBadRequestIssue `json:"issues,omitempty"`
 	HTTPMeta components.HTTPMetadata                             `json:"-"`
 }
 
-var _ error = &DocumentGetDocumentWithDetailsByIDDocumentsResponseBody{}
+var _ error = &DocumentGetDocumentWithDetailsByIDBadRequestError{}
 
-func (e *DocumentGetDocumentWithDetailsByIDDocumentsResponseBody) Error() string {
-	data, _ := json.Marshal(e)
-	return string(data)
-}
-
-type DocumentGetDocumentWithDetailsByIDIssues struct {
-	Message string `json:"message"`
-}
-
-func (o *DocumentGetDocumentWithDetailsByIDIssues) GetMessage() string {
-	if o == nil {
-		return ""
-	}
-	return o.Message
-}
-
-// DocumentGetDocumentWithDetailsByIDResponseBody - Invalid input data
-type DocumentGetDocumentWithDetailsByIDResponseBody struct {
-	Message  string                                     `json:"message"`
-	Code     string                                     `json:"code"`
-	Issues   []DocumentGetDocumentWithDetailsByIDIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                    `json:"-"`
-}
-
-var _ error = &DocumentGetDocumentWithDetailsByIDResponseBody{}
-
-func (e *DocumentGetDocumentWithDetailsByIDResponseBody) Error() string {
+func (e *DocumentGetDocumentWithDetailsByIDBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

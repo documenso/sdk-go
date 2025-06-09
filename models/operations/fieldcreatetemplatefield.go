@@ -10,125 +10,125 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11Type string
+type FieldCreateTemplateFieldTypeDropdownRequestBody1 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11TypeDropdown FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11Type = "DROPDOWN"
+	FieldCreateTemplateFieldTypeDropdownRequestBody1Dropdown FieldCreateTemplateFieldTypeDropdownRequestBody1 = "DROPDOWN"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11Type) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11Type {
+func (e FieldCreateTemplateFieldTypeDropdownRequestBody1) ToPointer() *FieldCreateTemplateFieldTypeDropdownRequestBody1 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11Type) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeDropdownRequestBody1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "DROPDOWN":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11Type(v)
+		*e = FieldCreateTemplateFieldTypeDropdownRequestBody1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11Type: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeDropdownRequestBody1: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMetaType string
+type FieldCreateTemplateFieldTypeDropdownRequestBody2 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMetaTypeDropdown FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMetaType = "dropdown"
+	FieldCreateTemplateFieldTypeDropdownRequestBody2Dropdown FieldCreateTemplateFieldTypeDropdownRequestBody2 = "dropdown"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMetaType) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMetaType {
+func (e FieldCreateTemplateFieldTypeDropdownRequestBody2) ToPointer() *FieldCreateTemplateFieldTypeDropdownRequestBody2 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMetaType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeDropdownRequestBody2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "dropdown":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMetaType(v)
+		*e = FieldCreateTemplateFieldTypeDropdownRequestBody2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMetaType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeDropdownRequestBody2: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestValues struct {
+type FieldCreateTemplateFieldValueDropdown struct {
 	Value string `json:"value"`
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestValues) GetValue() string {
+func (o *FieldCreateTemplateFieldValueDropdown) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMeta struct {
-	Label        *string                                                                       `json:"label,omitempty"`
-	Placeholder  *string                                                                       `json:"placeholder,omitempty"`
-	Required     *bool                                                                         `json:"required,omitempty"`
-	ReadOnly     *bool                                                                         `json:"readOnly,omitempty"`
-	Type         FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMetaType `json:"type"`
-	Values       []FieldCreateTemplateFieldFieldTemplatesFieldsRequestValues                   `json:"values,omitempty"`
-	DefaultValue *string                                                                       `json:"defaultValue,omitempty"`
+type FieldCreateTemplateFieldFieldMetaDropdownRequestBody struct {
+	Label        *string                                          `json:"label,omitempty"`
+	Placeholder  *string                                          `json:"placeholder,omitempty"`
+	Required     *bool                                            `json:"required,omitempty"`
+	ReadOnly     *bool                                            `json:"readOnly,omitempty"`
+	Type         FieldCreateTemplateFieldTypeDropdownRequestBody2 `json:"type"`
+	Values       []FieldCreateTemplateFieldValueDropdown          `json:"values,omitempty"`
+	DefaultValue *string                                          `json:"defaultValue,omitempty"`
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMeta) GetLabel() *string {
+func (o *FieldCreateTemplateFieldFieldMetaDropdownRequestBody) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMeta) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaDropdownRequestBody) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMeta) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaDropdownRequestBody) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMeta) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaDropdownRequestBody) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMeta) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMetaType {
+func (o *FieldCreateTemplateFieldFieldMetaDropdownRequestBody) GetType() FieldCreateTemplateFieldTypeDropdownRequestBody2 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMetaType("")
+		return FieldCreateTemplateFieldTypeDropdownRequestBody2("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMeta) GetValues() []FieldCreateTemplateFieldFieldTemplatesFieldsRequestValues {
+func (o *FieldCreateTemplateFieldFieldMetaDropdownRequestBody) GetValues() []FieldCreateTemplateFieldValueDropdown {
 	if o == nil {
 		return nil
 	}
 	return o.Values
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMeta) GetDefaultValue() *string {
+func (o *FieldCreateTemplateFieldFieldMetaDropdownRequestBody) GetDefaultValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DefaultValue
 }
 
-type FieldCreateTemplateFieldField11 struct {
-	Type      FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11Type       `json:"type"`
-	FieldMeta *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMeta `json:"fieldMeta,omitempty"`
+type FieldCreateTemplateFieldFieldDropdown struct {
+	Type      FieldCreateTemplateFieldTypeDropdownRequestBody1      `json:"type"`
+	FieldMeta *FieldCreateTemplateFieldFieldMetaDropdownRequestBody `json:"fieldMeta,omitempty"`
 	// The ID of the recipient to create the field for.
 	RecipientID float64 `json:"recipientId"`
 	// The page number the field will be on.
@@ -143,205 +143,205 @@ type FieldCreateTemplateFieldField11 struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldCreateTemplateFieldField11) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11Type {
+func (o *FieldCreateTemplateFieldFieldDropdown) GetType() FieldCreateTemplateFieldTypeDropdownRequestBody1 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11Type("")
+		return FieldCreateTemplateFieldTypeDropdownRequestBody1("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldField11) GetFieldMeta() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody11FieldMeta {
+func (o *FieldCreateTemplateFieldFieldDropdown) GetFieldMeta() *FieldCreateTemplateFieldFieldMetaDropdownRequestBody {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldCreateTemplateFieldField11) GetRecipientID() float64 {
+func (o *FieldCreateTemplateFieldFieldDropdown) GetRecipientID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.RecipientID
 }
 
-func (o *FieldCreateTemplateFieldField11) GetPageNumber() float64 {
+func (o *FieldCreateTemplateFieldFieldDropdown) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldCreateTemplateFieldField11) GetPageX() float64 {
+func (o *FieldCreateTemplateFieldFieldDropdown) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldCreateTemplateFieldField11) GetPageY() float64 {
+func (o *FieldCreateTemplateFieldFieldDropdown) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldCreateTemplateFieldField11) GetWidth() float64 {
+func (o *FieldCreateTemplateFieldFieldDropdown) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldCreateTemplateFieldField11) GetHeight() float64 {
+func (o *FieldCreateTemplateFieldFieldDropdown) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10Type string
+type FieldCreateTemplateFieldTypeCheckboxRequestBody1 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10TypeCheckbox FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10Type = "CHECKBOX"
+	FieldCreateTemplateFieldTypeCheckboxRequestBody1Checkbox FieldCreateTemplateFieldTypeCheckboxRequestBody1 = "CHECKBOX"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10Type) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10Type {
+func (e FieldCreateTemplateFieldTypeCheckboxRequestBody1) ToPointer() *FieldCreateTemplateFieldTypeCheckboxRequestBody1 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10Type) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeCheckboxRequestBody1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "CHECKBOX":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10Type(v)
+		*e = FieldCreateTemplateFieldTypeCheckboxRequestBody1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10Type: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeCheckboxRequestBody1: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMetaType string
+type FieldCreateTemplateFieldTypeCheckboxRequestBody2 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMetaTypeCheckbox FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMetaType = "checkbox"
+	FieldCreateTemplateFieldTypeCheckboxRequestBody2Checkbox FieldCreateTemplateFieldTypeCheckboxRequestBody2 = "checkbox"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMetaType) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMetaType {
+func (e FieldCreateTemplateFieldTypeCheckboxRequestBody2) ToPointer() *FieldCreateTemplateFieldTypeCheckboxRequestBody2 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMetaType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeCheckboxRequestBody2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "checkbox":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMetaType(v)
+		*e = FieldCreateTemplateFieldTypeCheckboxRequestBody2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMetaType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeCheckboxRequestBody2: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsValues struct {
+type FieldCreateTemplateFieldValueCheckbox struct {
 	ID      float64 `json:"id"`
 	Checked bool    `json:"checked"`
 	Value   string  `json:"value"`
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsValues) GetID() float64 {
+func (o *FieldCreateTemplateFieldValueCheckbox) GetID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ID
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsValues) GetChecked() bool {
+func (o *FieldCreateTemplateFieldValueCheckbox) GetChecked() bool {
 	if o == nil {
 		return false
 	}
 	return o.Checked
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsValues) GetValue() string {
+func (o *FieldCreateTemplateFieldValueCheckbox) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMeta struct {
-	Label            *string                                                                       `json:"label,omitempty"`
-	Placeholder      *string                                                                       `json:"placeholder,omitempty"`
-	Required         *bool                                                                         `json:"required,omitempty"`
-	ReadOnly         *bool                                                                         `json:"readOnly,omitempty"`
-	Type             FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMetaType `json:"type"`
-	Values           []FieldCreateTemplateFieldFieldTemplatesFieldsValues                          `json:"values,omitempty"`
-	ValidationRule   *string                                                                       `json:"validationRule,omitempty"`
-	ValidationLength *float64                                                                      `json:"validationLength,omitempty"`
+type FieldCreateTemplateFieldFieldMetaCheckboxRequestBody struct {
+	Label            *string                                          `json:"label,omitempty"`
+	Placeholder      *string                                          `json:"placeholder,omitempty"`
+	Required         *bool                                            `json:"required,omitempty"`
+	ReadOnly         *bool                                            `json:"readOnly,omitempty"`
+	Type             FieldCreateTemplateFieldTypeCheckboxRequestBody2 `json:"type"`
+	Values           []FieldCreateTemplateFieldValueCheckbox          `json:"values,omitempty"`
+	ValidationRule   *string                                          `json:"validationRule,omitempty"`
+	ValidationLength *float64                                         `json:"validationLength,omitempty"`
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMeta) GetLabel() *string {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxRequestBody) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMeta) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxRequestBody) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMeta) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxRequestBody) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMeta) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxRequestBody) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMeta) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMetaType {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxRequestBody) GetType() FieldCreateTemplateFieldTypeCheckboxRequestBody2 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMetaType("")
+		return FieldCreateTemplateFieldTypeCheckboxRequestBody2("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMeta) GetValues() []FieldCreateTemplateFieldFieldTemplatesFieldsValues {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxRequestBody) GetValues() []FieldCreateTemplateFieldValueCheckbox {
 	if o == nil {
 		return nil
 	}
 	return o.Values
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMeta) GetValidationRule() *string {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxRequestBody) GetValidationRule() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ValidationRule
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMeta) GetValidationLength() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxRequestBody) GetValidationLength() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ValidationLength
 }
 
-type FieldCreateTemplateFieldField10 struct {
-	Type      FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10Type       `json:"type"`
-	FieldMeta *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMeta `json:"fieldMeta,omitempty"`
+type FieldCreateTemplateFieldFieldCheckbox struct {
+	Type      FieldCreateTemplateFieldTypeCheckboxRequestBody1      `json:"type"`
+	FieldMeta *FieldCreateTemplateFieldFieldMetaCheckboxRequestBody `json:"fieldMeta,omitempty"`
 	// The ID of the recipient to create the field for.
 	RecipientID float64 `json:"recipientId"`
 	// The page number the field will be on.
@@ -356,189 +356,189 @@ type FieldCreateTemplateFieldField10 struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldCreateTemplateFieldField10) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10Type {
+func (o *FieldCreateTemplateFieldFieldCheckbox) GetType() FieldCreateTemplateFieldTypeCheckboxRequestBody1 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10Type("")
+		return FieldCreateTemplateFieldTypeCheckboxRequestBody1("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldField10) GetFieldMeta() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody10FieldMeta {
+func (o *FieldCreateTemplateFieldFieldCheckbox) GetFieldMeta() *FieldCreateTemplateFieldFieldMetaCheckboxRequestBody {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldCreateTemplateFieldField10) GetRecipientID() float64 {
+func (o *FieldCreateTemplateFieldFieldCheckbox) GetRecipientID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.RecipientID
 }
 
-func (o *FieldCreateTemplateFieldField10) GetPageNumber() float64 {
+func (o *FieldCreateTemplateFieldFieldCheckbox) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldCreateTemplateFieldField10) GetPageX() float64 {
+func (o *FieldCreateTemplateFieldFieldCheckbox) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldCreateTemplateFieldField10) GetPageY() float64 {
+func (o *FieldCreateTemplateFieldFieldCheckbox) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldCreateTemplateFieldField10) GetWidth() float64 {
+func (o *FieldCreateTemplateFieldFieldCheckbox) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldCreateTemplateFieldField10) GetHeight() float64 {
+func (o *FieldCreateTemplateFieldFieldCheckbox) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9Type string
+type FieldCreateTemplateFieldTypeRadioRequestBody1 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9TypeRadio FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9Type = "RADIO"
+	FieldCreateTemplateFieldTypeRadioRequestBody1Radio FieldCreateTemplateFieldTypeRadioRequestBody1 = "RADIO"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9Type) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9Type {
+func (e FieldCreateTemplateFieldTypeRadioRequestBody1) ToPointer() *FieldCreateTemplateFieldTypeRadioRequestBody1 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9Type) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeRadioRequestBody1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "RADIO":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9Type(v)
+		*e = FieldCreateTemplateFieldTypeRadioRequestBody1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9Type: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeRadioRequestBody1: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMetaType string
+type FieldCreateTemplateFieldTypeRadioRequestBody2 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMetaTypeRadio FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMetaType = "radio"
+	FieldCreateTemplateFieldTypeRadioRequestBody2Radio FieldCreateTemplateFieldTypeRadioRequestBody2 = "radio"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMetaType) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMetaType {
+func (e FieldCreateTemplateFieldTypeRadioRequestBody2) ToPointer() *FieldCreateTemplateFieldTypeRadioRequestBody2 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMetaType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeRadioRequestBody2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "radio":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMetaType(v)
+		*e = FieldCreateTemplateFieldTypeRadioRequestBody2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMetaType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeRadioRequestBody2: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldValues struct {
+type FieldCreateTemplateFieldValueRadio struct {
 	ID      float64 `json:"id"`
 	Checked bool    `json:"checked"`
 	Value   string  `json:"value"`
 }
 
-func (o *FieldCreateTemplateFieldFieldValues) GetID() float64 {
+func (o *FieldCreateTemplateFieldValueRadio) GetID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ID
 }
 
-func (o *FieldCreateTemplateFieldFieldValues) GetChecked() bool {
+func (o *FieldCreateTemplateFieldValueRadio) GetChecked() bool {
 	if o == nil {
 		return false
 	}
 	return o.Checked
 }
 
-func (o *FieldCreateTemplateFieldFieldValues) GetValue() string {
+func (o *FieldCreateTemplateFieldValueRadio) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMeta struct {
-	Label       *string                                                                      `json:"label,omitempty"`
-	Placeholder *string                                                                      `json:"placeholder,omitempty"`
-	Required    *bool                                                                        `json:"required,omitempty"`
-	ReadOnly    *bool                                                                        `json:"readOnly,omitempty"`
-	Type        FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMetaType `json:"type"`
-	Values      []FieldCreateTemplateFieldFieldValues                                        `json:"values,omitempty"`
+type FieldCreateTemplateFieldFieldMetaRadioRequestBody struct {
+	Label       *string                                       `json:"label,omitempty"`
+	Placeholder *string                                       `json:"placeholder,omitempty"`
+	Required    *bool                                         `json:"required,omitempty"`
+	ReadOnly    *bool                                         `json:"readOnly,omitempty"`
+	Type        FieldCreateTemplateFieldTypeRadioRequestBody2 `json:"type"`
+	Values      []FieldCreateTemplateFieldValueRadio          `json:"values,omitempty"`
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMeta) GetLabel() *string {
+func (o *FieldCreateTemplateFieldFieldMetaRadioRequestBody) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMeta) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaRadioRequestBody) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMeta) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaRadioRequestBody) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMeta) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaRadioRequestBody) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMeta) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMetaType {
+func (o *FieldCreateTemplateFieldFieldMetaRadioRequestBody) GetType() FieldCreateTemplateFieldTypeRadioRequestBody2 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMetaType("")
+		return FieldCreateTemplateFieldTypeRadioRequestBody2("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMeta) GetValues() []FieldCreateTemplateFieldFieldValues {
+func (o *FieldCreateTemplateFieldFieldMetaRadioRequestBody) GetValues() []FieldCreateTemplateFieldValueRadio {
 	if o == nil {
 		return nil
 	}
 	return o.Values
 }
 
-type FieldCreateTemplateFieldField9 struct {
-	Type      FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9Type       `json:"type"`
-	FieldMeta *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMeta `json:"fieldMeta,omitempty"`
+type FieldCreateTemplateFieldFieldRadio struct {
+	Type      FieldCreateTemplateFieldTypeRadioRequestBody1      `json:"type"`
+	FieldMeta *FieldCreateTemplateFieldFieldMetaRadioRequestBody `json:"fieldMeta,omitempty"`
 	// The ID of the recipient to create the field for.
 	RecipientID float64 `json:"recipientId"`
 	// The page number the field will be on.
@@ -553,194 +553,231 @@ type FieldCreateTemplateFieldField9 struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldCreateTemplateFieldField9) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9Type {
+func (o *FieldCreateTemplateFieldFieldRadio) GetType() FieldCreateTemplateFieldTypeRadioRequestBody1 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9Type("")
+		return FieldCreateTemplateFieldTypeRadioRequestBody1("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldField9) GetFieldMeta() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody9FieldMeta {
+func (o *FieldCreateTemplateFieldFieldRadio) GetFieldMeta() *FieldCreateTemplateFieldFieldMetaRadioRequestBody {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldCreateTemplateFieldField9) GetRecipientID() float64 {
+func (o *FieldCreateTemplateFieldFieldRadio) GetRecipientID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.RecipientID
 }
 
-func (o *FieldCreateTemplateFieldField9) GetPageNumber() float64 {
+func (o *FieldCreateTemplateFieldFieldRadio) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldCreateTemplateFieldField9) GetPageX() float64 {
+func (o *FieldCreateTemplateFieldFieldRadio) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldCreateTemplateFieldField9) GetPageY() float64 {
+func (o *FieldCreateTemplateFieldFieldRadio) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldCreateTemplateFieldField9) GetWidth() float64 {
+func (o *FieldCreateTemplateFieldFieldRadio) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldCreateTemplateFieldField9) GetHeight() float64 {
+func (o *FieldCreateTemplateFieldFieldRadio) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8Type string
+type FieldCreateTemplateFieldTypeNumberRequestBody1 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8TypeNumber FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8Type = "NUMBER"
+	FieldCreateTemplateFieldTypeNumberRequestBody1Number FieldCreateTemplateFieldTypeNumberRequestBody1 = "NUMBER"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8Type) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8Type {
+func (e FieldCreateTemplateFieldTypeNumberRequestBody1) ToPointer() *FieldCreateTemplateFieldTypeNumberRequestBody1 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8Type) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeNumberRequestBody1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "NUMBER":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8Type(v)
+		*e = FieldCreateTemplateFieldTypeNumberRequestBody1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8Type: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeNumberRequestBody1: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMetaType string
+type FieldCreateTemplateFieldTypeNumberRequestBody2 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMetaTypeNumber FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMetaType = "number"
+	FieldCreateTemplateFieldTypeNumberRequestBody2Number FieldCreateTemplateFieldTypeNumberRequestBody2 = "number"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMetaType) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMetaType {
+func (e FieldCreateTemplateFieldTypeNumberRequestBody2) ToPointer() *FieldCreateTemplateFieldTypeNumberRequestBody2 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMetaType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeNumberRequestBody2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "number":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMetaType(v)
+		*e = FieldCreateTemplateFieldTypeNumberRequestBody2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMetaType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeNumberRequestBody2: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMeta struct {
-	Label        *string                                                                      `json:"label,omitempty"`
-	Placeholder  *string                                                                      `json:"placeholder,omitempty"`
-	Required     *bool                                                                        `json:"required,omitempty"`
-	ReadOnly     *bool                                                                        `json:"readOnly,omitempty"`
-	Type         FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMetaType `json:"type"`
-	NumberFormat *string                                                                      `json:"numberFormat,omitempty"`
-	Value        *string                                                                      `json:"value,omitempty"`
-	MinValue     *float64                                                                     `json:"minValue,omitempty"`
-	MaxValue     *float64                                                                     `json:"maxValue,omitempty"`
-	FontSize     *float64                                                                     `json:"fontSize,omitempty"`
+type FieldCreateTemplateFieldTextAlignNumber string
+
+const (
+	FieldCreateTemplateFieldTextAlignNumberLeft   FieldCreateTemplateFieldTextAlignNumber = "left"
+	FieldCreateTemplateFieldTextAlignNumberCenter FieldCreateTemplateFieldTextAlignNumber = "center"
+	FieldCreateTemplateFieldTextAlignNumberRight  FieldCreateTemplateFieldTextAlignNumber = "right"
+)
+
+func (e FieldCreateTemplateFieldTextAlignNumber) ToPointer() *FieldCreateTemplateFieldTextAlignNumber {
+	return &e
+}
+func (e *FieldCreateTemplateFieldTextAlignNumber) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = FieldCreateTemplateFieldTextAlignNumber(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTextAlignNumber: %v", v)
+	}
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMeta) GetLabel() *string {
+type FieldCreateTemplateFieldFieldMetaNumberRequestBody struct {
+	Label        *string                                        `json:"label,omitempty"`
+	Placeholder  *string                                        `json:"placeholder,omitempty"`
+	Required     *bool                                          `json:"required,omitempty"`
+	ReadOnly     *bool                                          `json:"readOnly,omitempty"`
+	Type         FieldCreateTemplateFieldTypeNumberRequestBody2 `json:"type"`
+	NumberFormat *string                                        `json:"numberFormat,omitempty"`
+	Value        *string                                        `json:"value,omitempty"`
+	MinValue     *float64                                       `json:"minValue,omitempty"`
+	MaxValue     *float64                                       `json:"maxValue,omitempty"`
+	FontSize     *float64                                       `json:"fontSize,omitempty"`
+	TextAlign    *FieldCreateTemplateFieldTextAlignNumber       `json:"textAlign,omitempty"`
+}
+
+func (o *FieldCreateTemplateFieldFieldMetaNumberRequestBody) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMeta) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaNumberRequestBody) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMeta) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaNumberRequestBody) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMeta) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaNumberRequestBody) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMeta) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMetaType {
+func (o *FieldCreateTemplateFieldFieldMetaNumberRequestBody) GetType() FieldCreateTemplateFieldTypeNumberRequestBody2 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMetaType("")
+		return FieldCreateTemplateFieldTypeNumberRequestBody2("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMeta) GetNumberFormat() *string {
+func (o *FieldCreateTemplateFieldFieldMetaNumberRequestBody) GetNumberFormat() *string {
 	if o == nil {
 		return nil
 	}
 	return o.NumberFormat
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMeta) GetValue() *string {
+func (o *FieldCreateTemplateFieldFieldMetaNumberRequestBody) GetValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMeta) GetMinValue() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaNumberRequestBody) GetMinValue() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MinValue
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMeta) GetMaxValue() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaNumberRequestBody) GetMaxValue() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxValue
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMeta) GetFontSize() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaNumberRequestBody) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type FieldCreateTemplateFieldField8 struct {
-	Type      FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8Type       `json:"type"`
-	FieldMeta *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMeta `json:"fieldMeta,omitempty"`
+func (o *FieldCreateTemplateFieldFieldMetaNumberRequestBody) GetTextAlign() *FieldCreateTemplateFieldTextAlignNumber {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type FieldCreateTemplateFieldFieldNumber struct {
+	Type      FieldCreateTemplateFieldTypeNumberRequestBody1      `json:"type"`
+	FieldMeta *FieldCreateTemplateFieldFieldMetaNumberRequestBody `json:"fieldMeta,omitempty"`
 	// The ID of the recipient to create the field for.
 	RecipientID float64 `json:"recipientId"`
 	// The page number the field will be on.
@@ -755,178 +792,215 @@ type FieldCreateTemplateFieldField8 struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldCreateTemplateFieldField8) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8Type {
+func (o *FieldCreateTemplateFieldFieldNumber) GetType() FieldCreateTemplateFieldTypeNumberRequestBody1 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8Type("")
+		return FieldCreateTemplateFieldTypeNumberRequestBody1("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldField8) GetFieldMeta() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody8FieldMeta {
+func (o *FieldCreateTemplateFieldFieldNumber) GetFieldMeta() *FieldCreateTemplateFieldFieldMetaNumberRequestBody {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldCreateTemplateFieldField8) GetRecipientID() float64 {
+func (o *FieldCreateTemplateFieldFieldNumber) GetRecipientID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.RecipientID
 }
 
-func (o *FieldCreateTemplateFieldField8) GetPageNumber() float64 {
+func (o *FieldCreateTemplateFieldFieldNumber) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldCreateTemplateFieldField8) GetPageX() float64 {
+func (o *FieldCreateTemplateFieldFieldNumber) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldCreateTemplateFieldField8) GetPageY() float64 {
+func (o *FieldCreateTemplateFieldFieldNumber) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldCreateTemplateFieldField8) GetWidth() float64 {
+func (o *FieldCreateTemplateFieldFieldNumber) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldCreateTemplateFieldField8) GetHeight() float64 {
+func (o *FieldCreateTemplateFieldFieldNumber) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7Type string
+type FieldCreateTemplateFieldTypeTextRequestBody1 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7TypeText FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7Type = "TEXT"
+	FieldCreateTemplateFieldTypeTextRequestBody1Text FieldCreateTemplateFieldTypeTextRequestBody1 = "TEXT"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7Type) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7Type {
+func (e FieldCreateTemplateFieldTypeTextRequestBody1) ToPointer() *FieldCreateTemplateFieldTypeTextRequestBody1 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7Type) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeTextRequestBody1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "TEXT":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7Type(v)
+		*e = FieldCreateTemplateFieldTypeTextRequestBody1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7Type: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeTextRequestBody1: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMetaType string
+type FieldCreateTemplateFieldTypeTextRequestBody2 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMetaTypeText FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMetaType = "text"
+	FieldCreateTemplateFieldTypeTextRequestBody2Text FieldCreateTemplateFieldTypeTextRequestBody2 = "text"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMetaType) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMetaType {
+func (e FieldCreateTemplateFieldTypeTextRequestBody2) ToPointer() *FieldCreateTemplateFieldTypeTextRequestBody2 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMetaType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeTextRequestBody2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "text":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMetaType(v)
+		*e = FieldCreateTemplateFieldTypeTextRequestBody2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMetaType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeTextRequestBody2: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMeta struct {
-	Label          *string                                                                      `json:"label,omitempty"`
-	Placeholder    *string                                                                      `json:"placeholder,omitempty"`
-	Required       *bool                                                                        `json:"required,omitempty"`
-	ReadOnly       *bool                                                                        `json:"readOnly,omitempty"`
-	Type           FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMetaType `json:"type"`
-	Text           *string                                                                      `json:"text,omitempty"`
-	CharacterLimit *float64                                                                     `json:"characterLimit,omitempty"`
-	FontSize       *float64                                                                     `json:"fontSize,omitempty"`
+type FieldCreateTemplateFieldTextAlignText string
+
+const (
+	FieldCreateTemplateFieldTextAlignTextLeft   FieldCreateTemplateFieldTextAlignText = "left"
+	FieldCreateTemplateFieldTextAlignTextCenter FieldCreateTemplateFieldTextAlignText = "center"
+	FieldCreateTemplateFieldTextAlignTextRight  FieldCreateTemplateFieldTextAlignText = "right"
+)
+
+func (e FieldCreateTemplateFieldTextAlignText) ToPointer() *FieldCreateTemplateFieldTextAlignText {
+	return &e
+}
+func (e *FieldCreateTemplateFieldTextAlignText) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = FieldCreateTemplateFieldTextAlignText(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTextAlignText: %v", v)
+	}
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMeta) GetLabel() *string {
+type FieldCreateTemplateFieldFieldMetaTextRequestBody struct {
+	Label          *string                                      `json:"label,omitempty"`
+	Placeholder    *string                                      `json:"placeholder,omitempty"`
+	Required       *bool                                        `json:"required,omitempty"`
+	ReadOnly       *bool                                        `json:"readOnly,omitempty"`
+	Type           FieldCreateTemplateFieldTypeTextRequestBody2 `json:"type"`
+	Text           *string                                      `json:"text,omitempty"`
+	CharacterLimit *float64                                     `json:"characterLimit,omitempty"`
+	FontSize       *float64                                     `json:"fontSize,omitempty"`
+	TextAlign      *FieldCreateTemplateFieldTextAlignText       `json:"textAlign,omitempty"`
+}
+
+func (o *FieldCreateTemplateFieldFieldMetaTextRequestBody) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMeta) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaTextRequestBody) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMeta) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaTextRequestBody) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMeta) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaTextRequestBody) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMeta) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMetaType {
+func (o *FieldCreateTemplateFieldFieldMetaTextRequestBody) GetType() FieldCreateTemplateFieldTypeTextRequestBody2 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMetaType("")
+		return FieldCreateTemplateFieldTypeTextRequestBody2("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMeta) GetText() *string {
+func (o *FieldCreateTemplateFieldFieldMetaTextRequestBody) GetText() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Text
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMeta) GetCharacterLimit() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaTextRequestBody) GetCharacterLimit() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CharacterLimit
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMeta) GetFontSize() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaTextRequestBody) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type FieldCreateTemplateFieldField7 struct {
-	Type      FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7Type       `json:"type"`
-	FieldMeta *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMeta `json:"fieldMeta,omitempty"`
+func (o *FieldCreateTemplateFieldFieldMetaTextRequestBody) GetTextAlign() *FieldCreateTemplateFieldTextAlignText {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type FieldCreateTemplateFieldFieldText struct {
+	Type      FieldCreateTemplateFieldTypeTextRequestBody1      `json:"type"`
+	FieldMeta *FieldCreateTemplateFieldFieldMetaTextRequestBody `json:"fieldMeta,omitempty"`
 	// The ID of the recipient to create the field for.
 	RecipientID float64 `json:"recipientId"`
 	// The page number the field will be on.
@@ -941,162 +1015,199 @@ type FieldCreateTemplateFieldField7 struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldCreateTemplateFieldField7) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7Type {
+func (o *FieldCreateTemplateFieldFieldText) GetType() FieldCreateTemplateFieldTypeTextRequestBody1 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7Type("")
+		return FieldCreateTemplateFieldTypeTextRequestBody1("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldField7) GetFieldMeta() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody7FieldMeta {
+func (o *FieldCreateTemplateFieldFieldText) GetFieldMeta() *FieldCreateTemplateFieldFieldMetaTextRequestBody {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldCreateTemplateFieldField7) GetRecipientID() float64 {
+func (o *FieldCreateTemplateFieldFieldText) GetRecipientID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.RecipientID
 }
 
-func (o *FieldCreateTemplateFieldField7) GetPageNumber() float64 {
+func (o *FieldCreateTemplateFieldFieldText) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldCreateTemplateFieldField7) GetPageX() float64 {
+func (o *FieldCreateTemplateFieldFieldText) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldCreateTemplateFieldField7) GetPageY() float64 {
+func (o *FieldCreateTemplateFieldFieldText) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldCreateTemplateFieldField7) GetWidth() float64 {
+func (o *FieldCreateTemplateFieldFieldText) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldCreateTemplateFieldField7) GetHeight() float64 {
+func (o *FieldCreateTemplateFieldFieldText) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6Type string
+type FieldCreateTemplateFieldTypeDateRequestBody1 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6TypeDate FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6Type = "DATE"
+	FieldCreateTemplateFieldTypeDateRequestBody1Date FieldCreateTemplateFieldTypeDateRequestBody1 = "DATE"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6Type) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6Type {
+func (e FieldCreateTemplateFieldTypeDateRequestBody1) ToPointer() *FieldCreateTemplateFieldTypeDateRequestBody1 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6Type) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeDateRequestBody1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "DATE":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6Type(v)
+		*e = FieldCreateTemplateFieldTypeDateRequestBody1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6Type: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeDateRequestBody1: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6FieldMetaType string
+type FieldCreateTemplateFieldTypeDateRequestBody2 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6FieldMetaTypeDate FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6FieldMetaType = "date"
+	FieldCreateTemplateFieldTypeDateRequestBody2Date FieldCreateTemplateFieldTypeDateRequestBody2 = "date"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6FieldMetaType) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6FieldMetaType {
+func (e FieldCreateTemplateFieldTypeDateRequestBody2) ToPointer() *FieldCreateTemplateFieldTypeDateRequestBody2 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6FieldMetaType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeDateRequestBody2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "date":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6FieldMetaType(v)
+		*e = FieldCreateTemplateFieldTypeDateRequestBody2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6FieldMetaType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeDateRequestBody2: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyFieldMeta struct {
-	Label       *string                                                                      `json:"label,omitempty"`
-	Placeholder *string                                                                      `json:"placeholder,omitempty"`
-	Required    *bool                                                                        `json:"required,omitempty"`
-	ReadOnly    *bool                                                                        `json:"readOnly,omitempty"`
-	Type        FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6FieldMetaType `json:"type"`
-	FontSize    *float64                                                                     `json:"fontSize,omitempty"`
+type FieldCreateTemplateFieldTextAlignDate string
+
+const (
+	FieldCreateTemplateFieldTextAlignDateLeft   FieldCreateTemplateFieldTextAlignDate = "left"
+	FieldCreateTemplateFieldTextAlignDateCenter FieldCreateTemplateFieldTextAlignDate = "center"
+	FieldCreateTemplateFieldTextAlignDateRight  FieldCreateTemplateFieldTextAlignDate = "right"
+)
+
+func (e FieldCreateTemplateFieldTextAlignDate) ToPointer() *FieldCreateTemplateFieldTextAlignDate {
+	return &e
+}
+func (e *FieldCreateTemplateFieldTextAlignDate) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = FieldCreateTemplateFieldTextAlignDate(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTextAlignDate: %v", v)
+	}
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyFieldMeta) GetLabel() *string {
+type FieldCreateTemplateFieldFieldMetaDateRequestBody struct {
+	Label       *string                                      `json:"label,omitempty"`
+	Placeholder *string                                      `json:"placeholder,omitempty"`
+	Required    *bool                                        `json:"required,omitempty"`
+	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
+	Type        FieldCreateTemplateFieldTypeDateRequestBody2 `json:"type"`
+	FontSize    *float64                                     `json:"fontSize,omitempty"`
+	TextAlign   *FieldCreateTemplateFieldTextAlignDate       `json:"textAlign,omitempty"`
+}
+
+func (o *FieldCreateTemplateFieldFieldMetaDateRequestBody) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyFieldMeta) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaDateRequestBody) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyFieldMeta) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaDateRequestBody) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyFieldMeta) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaDateRequestBody) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyFieldMeta) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6FieldMetaType {
+func (o *FieldCreateTemplateFieldFieldMetaDateRequestBody) GetType() FieldCreateTemplateFieldTypeDateRequestBody2 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6FieldMetaType("")
+		return FieldCreateTemplateFieldTypeDateRequestBody2("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyFieldMeta) GetFontSize() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaDateRequestBody) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type FieldCreateTemplateFieldField6 struct {
-	Type      FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6Type      `json:"type"`
-	FieldMeta *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyFieldMeta `json:"fieldMeta,omitempty"`
+func (o *FieldCreateTemplateFieldFieldMetaDateRequestBody) GetTextAlign() *FieldCreateTemplateFieldTextAlignDate {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type FieldCreateTemplateFieldFieldDate struct {
+	Type      FieldCreateTemplateFieldTypeDateRequestBody1      `json:"type"`
+	FieldMeta *FieldCreateTemplateFieldFieldMetaDateRequestBody `json:"fieldMeta,omitempty"`
 	// The ID of the recipient to create the field for.
 	RecipientID float64 `json:"recipientId"`
 	// The page number the field will be on.
@@ -1111,162 +1222,199 @@ type FieldCreateTemplateFieldField6 struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldCreateTemplateFieldField6) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6Type {
+func (o *FieldCreateTemplateFieldFieldDate) GetType() FieldCreateTemplateFieldTypeDateRequestBody1 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody6Type("")
+		return FieldCreateTemplateFieldTypeDateRequestBody1("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldField6) GetFieldMeta() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyFieldMeta {
+func (o *FieldCreateTemplateFieldFieldDate) GetFieldMeta() *FieldCreateTemplateFieldFieldMetaDateRequestBody {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldCreateTemplateFieldField6) GetRecipientID() float64 {
+func (o *FieldCreateTemplateFieldFieldDate) GetRecipientID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.RecipientID
 }
 
-func (o *FieldCreateTemplateFieldField6) GetPageNumber() float64 {
+func (o *FieldCreateTemplateFieldFieldDate) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldCreateTemplateFieldField6) GetPageX() float64 {
+func (o *FieldCreateTemplateFieldFieldDate) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldCreateTemplateFieldField6) GetPageY() float64 {
+func (o *FieldCreateTemplateFieldFieldDate) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldCreateTemplateFieldField6) GetWidth() float64 {
+func (o *FieldCreateTemplateFieldFieldDate) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldCreateTemplateFieldField6) GetHeight() float64 {
+func (o *FieldCreateTemplateFieldFieldDate) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5Type string
+type FieldCreateTemplateFieldTypeEmailRequestBody1 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5TypeEmail FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5Type = "EMAIL"
+	FieldCreateTemplateFieldTypeEmailRequestBody1Email FieldCreateTemplateFieldTypeEmailRequestBody1 = "EMAIL"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5Type) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5Type {
+func (e FieldCreateTemplateFieldTypeEmailRequestBody1) ToPointer() *FieldCreateTemplateFieldTypeEmailRequestBody1 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5Type) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeEmailRequestBody1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "EMAIL":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5Type(v)
+		*e = FieldCreateTemplateFieldTypeEmailRequestBody1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5Type: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeEmailRequestBody1: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5FieldMetaType string
+type FieldCreateTemplateFieldTypeEmailRequestBody2 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5FieldMetaTypeEmail FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5FieldMetaType = "email"
+	FieldCreateTemplateFieldTypeEmailRequestBody2Email FieldCreateTemplateFieldTypeEmailRequestBody2 = "email"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5FieldMetaType) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5FieldMetaType {
+func (e FieldCreateTemplateFieldTypeEmailRequestBody2) ToPointer() *FieldCreateTemplateFieldTypeEmailRequestBody2 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5FieldMetaType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeEmailRequestBody2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "email":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5FieldMetaType(v)
+		*e = FieldCreateTemplateFieldTypeEmailRequestBody2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5FieldMetaType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeEmailRequestBody2: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestFieldMeta struct {
-	Label       *string                                                                      `json:"label,omitempty"`
-	Placeholder *string                                                                      `json:"placeholder,omitempty"`
-	Required    *bool                                                                        `json:"required,omitempty"`
-	ReadOnly    *bool                                                                        `json:"readOnly,omitempty"`
-	Type        FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5FieldMetaType `json:"type"`
-	FontSize    *float64                                                                     `json:"fontSize,omitempty"`
+type FieldCreateTemplateFieldTextAlignEmail string
+
+const (
+	FieldCreateTemplateFieldTextAlignEmailLeft   FieldCreateTemplateFieldTextAlignEmail = "left"
+	FieldCreateTemplateFieldTextAlignEmailCenter FieldCreateTemplateFieldTextAlignEmail = "center"
+	FieldCreateTemplateFieldTextAlignEmailRight  FieldCreateTemplateFieldTextAlignEmail = "right"
+)
+
+func (e FieldCreateTemplateFieldTextAlignEmail) ToPointer() *FieldCreateTemplateFieldTextAlignEmail {
+	return &e
+}
+func (e *FieldCreateTemplateFieldTextAlignEmail) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = FieldCreateTemplateFieldTextAlignEmail(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTextAlignEmail: %v", v)
+	}
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestFieldMeta) GetLabel() *string {
+type FieldCreateTemplateFieldFieldMetaEmailRequestBody struct {
+	Label       *string                                       `json:"label,omitempty"`
+	Placeholder *string                                       `json:"placeholder,omitempty"`
+	Required    *bool                                         `json:"required,omitempty"`
+	ReadOnly    *bool                                         `json:"readOnly,omitempty"`
+	Type        FieldCreateTemplateFieldTypeEmailRequestBody2 `json:"type"`
+	FontSize    *float64                                      `json:"fontSize,omitempty"`
+	TextAlign   *FieldCreateTemplateFieldTextAlignEmail       `json:"textAlign,omitempty"`
+}
+
+func (o *FieldCreateTemplateFieldFieldMetaEmailRequestBody) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestFieldMeta) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaEmailRequestBody) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestFieldMeta) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaEmailRequestBody) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestFieldMeta) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaEmailRequestBody) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestFieldMeta) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5FieldMetaType {
+func (o *FieldCreateTemplateFieldFieldMetaEmailRequestBody) GetType() FieldCreateTemplateFieldTypeEmailRequestBody2 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5FieldMetaType("")
+		return FieldCreateTemplateFieldTypeEmailRequestBody2("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsRequestFieldMeta) GetFontSize() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaEmailRequestBody) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type FieldCreateTemplateFieldField5 struct {
-	Type      FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5Type `json:"type"`
-	FieldMeta *FieldCreateTemplateFieldFieldTemplatesFieldsRequestFieldMeta       `json:"fieldMeta,omitempty"`
+func (o *FieldCreateTemplateFieldFieldMetaEmailRequestBody) GetTextAlign() *FieldCreateTemplateFieldTextAlignEmail {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type FieldCreateTemplateFieldFieldEmail struct {
+	Type      FieldCreateTemplateFieldTypeEmailRequestBody1      `json:"type"`
+	FieldMeta *FieldCreateTemplateFieldFieldMetaEmailRequestBody `json:"fieldMeta,omitempty"`
 	// The ID of the recipient to create the field for.
 	RecipientID float64 `json:"recipientId"`
 	// The page number the field will be on.
@@ -1281,162 +1429,199 @@ type FieldCreateTemplateFieldField5 struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldCreateTemplateFieldField5) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5Type {
+func (o *FieldCreateTemplateFieldFieldEmail) GetType() FieldCreateTemplateFieldTypeEmailRequestBody1 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody5Type("")
+		return FieldCreateTemplateFieldTypeEmailRequestBody1("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldField5) GetFieldMeta() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestFieldMeta {
+func (o *FieldCreateTemplateFieldFieldEmail) GetFieldMeta() *FieldCreateTemplateFieldFieldMetaEmailRequestBody {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldCreateTemplateFieldField5) GetRecipientID() float64 {
+func (o *FieldCreateTemplateFieldFieldEmail) GetRecipientID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.RecipientID
 }
 
-func (o *FieldCreateTemplateFieldField5) GetPageNumber() float64 {
+func (o *FieldCreateTemplateFieldFieldEmail) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldCreateTemplateFieldField5) GetPageX() float64 {
+func (o *FieldCreateTemplateFieldFieldEmail) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldCreateTemplateFieldField5) GetPageY() float64 {
+func (o *FieldCreateTemplateFieldFieldEmail) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldCreateTemplateFieldField5) GetWidth() float64 {
+func (o *FieldCreateTemplateFieldFieldEmail) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldCreateTemplateFieldField5) GetHeight() float64 {
+func (o *FieldCreateTemplateFieldFieldEmail) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4Type string
+type FieldCreateTemplateFieldTypeNameRequestBody1 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4TypeName FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4Type = "NAME"
+	FieldCreateTemplateFieldTypeNameRequestBody1Name FieldCreateTemplateFieldTypeNameRequestBody1 = "NAME"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4Type) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4Type {
+func (e FieldCreateTemplateFieldTypeNameRequestBody1) ToPointer() *FieldCreateTemplateFieldTypeNameRequestBody1 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4Type) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeNameRequestBody1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "NAME":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4Type(v)
+		*e = FieldCreateTemplateFieldTypeNameRequestBody1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4Type: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeNameRequestBody1: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4FieldMetaType string
+type FieldCreateTemplateFieldTypeNameRequestBody2 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4FieldMetaTypeName FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4FieldMetaType = "name"
+	FieldCreateTemplateFieldTypeNameRequestBody2Name FieldCreateTemplateFieldTypeNameRequestBody2 = "name"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4FieldMetaType) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4FieldMetaType {
+func (e FieldCreateTemplateFieldTypeNameRequestBody2) ToPointer() *FieldCreateTemplateFieldTypeNameRequestBody2 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4FieldMetaType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeNameRequestBody2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "name":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4FieldMetaType(v)
+		*e = FieldCreateTemplateFieldTypeNameRequestBody2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4FieldMetaType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeNameRequestBody2: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsFieldMeta struct {
-	Label       *string                                                                      `json:"label,omitempty"`
-	Placeholder *string                                                                      `json:"placeholder,omitempty"`
-	Required    *bool                                                                        `json:"required,omitempty"`
-	ReadOnly    *bool                                                                        `json:"readOnly,omitempty"`
-	Type        FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4FieldMetaType `json:"type"`
-	FontSize    *float64                                                                     `json:"fontSize,omitempty"`
+type FieldCreateTemplateFieldTextAlignName string
+
+const (
+	FieldCreateTemplateFieldTextAlignNameLeft   FieldCreateTemplateFieldTextAlignName = "left"
+	FieldCreateTemplateFieldTextAlignNameCenter FieldCreateTemplateFieldTextAlignName = "center"
+	FieldCreateTemplateFieldTextAlignNameRight  FieldCreateTemplateFieldTextAlignName = "right"
+)
+
+func (e FieldCreateTemplateFieldTextAlignName) ToPointer() *FieldCreateTemplateFieldTextAlignName {
+	return &e
+}
+func (e *FieldCreateTemplateFieldTextAlignName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = FieldCreateTemplateFieldTextAlignName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTextAlignName: %v", v)
+	}
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsFieldMeta) GetLabel() *string {
+type FieldCreateTemplateFieldFieldMetaNameRequestBody struct {
+	Label       *string                                      `json:"label,omitempty"`
+	Placeholder *string                                      `json:"placeholder,omitempty"`
+	Required    *bool                                        `json:"required,omitempty"`
+	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
+	Type        FieldCreateTemplateFieldTypeNameRequestBody2 `json:"type"`
+	FontSize    *float64                                     `json:"fontSize,omitempty"`
+	TextAlign   *FieldCreateTemplateFieldTextAlignName       `json:"textAlign,omitempty"`
+}
+
+func (o *FieldCreateTemplateFieldFieldMetaNameRequestBody) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsFieldMeta) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaNameRequestBody) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsFieldMeta) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaNameRequestBody) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsFieldMeta) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaNameRequestBody) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsFieldMeta) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4FieldMetaType {
+func (o *FieldCreateTemplateFieldFieldMetaNameRequestBody) GetType() FieldCreateTemplateFieldTypeNameRequestBody2 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4FieldMetaType("")
+		return FieldCreateTemplateFieldTypeNameRequestBody2("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldTemplatesFieldsFieldMeta) GetFontSize() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaNameRequestBody) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type FieldCreateTemplateFieldField4 struct {
-	Type      FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4Type `json:"type"`
-	FieldMeta *FieldCreateTemplateFieldFieldTemplatesFieldsFieldMeta              `json:"fieldMeta,omitempty"`
+func (o *FieldCreateTemplateFieldFieldMetaNameRequestBody) GetTextAlign() *FieldCreateTemplateFieldTextAlignName {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type FieldCreateTemplateFieldFieldName struct {
+	Type      FieldCreateTemplateFieldTypeNameRequestBody1      `json:"type"`
+	FieldMeta *FieldCreateTemplateFieldFieldMetaNameRequestBody `json:"fieldMeta,omitempty"`
 	// The ID of the recipient to create the field for.
 	RecipientID float64 `json:"recipientId"`
 	// The page number the field will be on.
@@ -1451,162 +1636,199 @@ type FieldCreateTemplateFieldField4 struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldCreateTemplateFieldField4) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4Type {
+func (o *FieldCreateTemplateFieldFieldName) GetType() FieldCreateTemplateFieldTypeNameRequestBody1 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBody4Type("")
+		return FieldCreateTemplateFieldTypeNameRequestBody1("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldField4) GetFieldMeta() *FieldCreateTemplateFieldFieldTemplatesFieldsFieldMeta {
+func (o *FieldCreateTemplateFieldFieldName) GetFieldMeta() *FieldCreateTemplateFieldFieldMetaNameRequestBody {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldCreateTemplateFieldField4) GetRecipientID() float64 {
+func (o *FieldCreateTemplateFieldFieldName) GetRecipientID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.RecipientID
 }
 
-func (o *FieldCreateTemplateFieldField4) GetPageNumber() float64 {
+func (o *FieldCreateTemplateFieldFieldName) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldCreateTemplateFieldField4) GetPageX() float64 {
+func (o *FieldCreateTemplateFieldFieldName) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldCreateTemplateFieldField4) GetPageY() float64 {
+func (o *FieldCreateTemplateFieldFieldName) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldCreateTemplateFieldField4) GetWidth() float64 {
+func (o *FieldCreateTemplateFieldFieldName) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldCreateTemplateFieldField4) GetHeight() float64 {
+func (o *FieldCreateTemplateFieldFieldName) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestType string
+type FieldCreateTemplateFieldTypeInitialsRequestBody1 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestTypeInitials FieldCreateTemplateFieldFieldTemplatesFieldsRequestType = "INITIALS"
+	FieldCreateTemplateFieldTypeInitialsRequestBody1Initials FieldCreateTemplateFieldTypeInitialsRequestBody1 = "INITIALS"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestType) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestType {
+func (e FieldCreateTemplateFieldTypeInitialsRequestBody1) ToPointer() *FieldCreateTemplateFieldTypeInitialsRequestBody1 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeInitialsRequestBody1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "INITIALS":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestType(v)
+		*e = FieldCreateTemplateFieldTypeInitialsRequestBody1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeInitialsRequestBody1: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyType string
+type FieldCreateTemplateFieldTypeInitialsRequestBody2 string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyTypeInitials FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyType = "initials"
+	FieldCreateTemplateFieldTypeInitialsRequestBody2Initials FieldCreateTemplateFieldTypeInitialsRequestBody2 = "initials"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyType) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyType {
+func (e FieldCreateTemplateFieldTypeInitialsRequestBody2) ToPointer() *FieldCreateTemplateFieldTypeInitialsRequestBody2 {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeInitialsRequestBody2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "initials":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyType(v)
+		*e = FieldCreateTemplateFieldTypeInitialsRequestBody2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeInitialsRequestBody2: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldFieldMeta struct {
-	Label       *string                                                            `json:"label,omitempty"`
-	Placeholder *string                                                            `json:"placeholder,omitempty"`
-	Required    *bool                                                              `json:"required,omitempty"`
-	ReadOnly    *bool                                                              `json:"readOnly,omitempty"`
-	Type        FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyType `json:"type"`
-	FontSize    *float64                                                           `json:"fontSize,omitempty"`
+type FieldCreateTemplateFieldTextAlignInitials string
+
+const (
+	FieldCreateTemplateFieldTextAlignInitialsLeft   FieldCreateTemplateFieldTextAlignInitials = "left"
+	FieldCreateTemplateFieldTextAlignInitialsCenter FieldCreateTemplateFieldTextAlignInitials = "center"
+	FieldCreateTemplateFieldTextAlignInitialsRight  FieldCreateTemplateFieldTextAlignInitials = "right"
+)
+
+func (e FieldCreateTemplateFieldTextAlignInitials) ToPointer() *FieldCreateTemplateFieldTextAlignInitials {
+	return &e
+}
+func (e *FieldCreateTemplateFieldTextAlignInitials) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = FieldCreateTemplateFieldTextAlignInitials(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTextAlignInitials: %v", v)
+	}
 }
 
-func (o *FieldCreateTemplateFieldFieldFieldMeta) GetLabel() *string {
+type FieldCreateTemplateFieldFieldMetaInitialsRequestBody struct {
+	Label       *string                                          `json:"label,omitempty"`
+	Placeholder *string                                          `json:"placeholder,omitempty"`
+	Required    *bool                                            `json:"required,omitempty"`
+	ReadOnly    *bool                                            `json:"readOnly,omitempty"`
+	Type        FieldCreateTemplateFieldTypeInitialsRequestBody2 `json:"type"`
+	FontSize    *float64                                         `json:"fontSize,omitempty"`
+	TextAlign   *FieldCreateTemplateFieldTextAlignInitials       `json:"textAlign,omitempty"`
+}
+
+func (o *FieldCreateTemplateFieldFieldMetaInitialsRequestBody) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldFieldMeta) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaInitialsRequestBody) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldFieldMeta) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaInitialsRequestBody) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldFieldMeta) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaInitialsRequestBody) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldFieldMeta) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyType {
+func (o *FieldCreateTemplateFieldFieldMetaInitialsRequestBody) GetType() FieldCreateTemplateFieldTypeInitialsRequestBody2 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestRequestBodyType("")
+		return FieldCreateTemplateFieldTypeInitialsRequestBody2("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldFieldMeta) GetFontSize() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaInitialsRequestBody) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type FieldCreateTemplateFieldField3 struct {
-	Type      FieldCreateTemplateFieldFieldTemplatesFieldsRequestType `json:"type"`
-	FieldMeta *FieldCreateTemplateFieldFieldFieldMeta                 `json:"fieldMeta,omitempty"`
+func (o *FieldCreateTemplateFieldFieldMetaInitialsRequestBody) GetTextAlign() *FieldCreateTemplateFieldTextAlignInitials {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type FieldCreateTemplateFieldFieldInitials struct {
+	Type      FieldCreateTemplateFieldTypeInitialsRequestBody1      `json:"type"`
+	FieldMeta *FieldCreateTemplateFieldFieldMetaInitialsRequestBody `json:"fieldMeta,omitempty"`
 	// The ID of the recipient to create the field for.
 	RecipientID float64 `json:"recipientId"`
 	// The page number the field will be on.
@@ -1621,87 +1843,87 @@ type FieldCreateTemplateFieldField3 struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldCreateTemplateFieldField3) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsRequestType {
+func (o *FieldCreateTemplateFieldFieldInitials) GetType() FieldCreateTemplateFieldTypeInitialsRequestBody1 {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsRequestType("")
+		return FieldCreateTemplateFieldTypeInitialsRequestBody1("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldField3) GetFieldMeta() *FieldCreateTemplateFieldFieldFieldMeta {
+func (o *FieldCreateTemplateFieldFieldInitials) GetFieldMeta() *FieldCreateTemplateFieldFieldMetaInitialsRequestBody {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldCreateTemplateFieldField3) GetRecipientID() float64 {
+func (o *FieldCreateTemplateFieldFieldInitials) GetRecipientID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.RecipientID
 }
 
-func (o *FieldCreateTemplateFieldField3) GetPageNumber() float64 {
+func (o *FieldCreateTemplateFieldFieldInitials) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldCreateTemplateFieldField3) GetPageX() float64 {
+func (o *FieldCreateTemplateFieldFieldInitials) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldCreateTemplateFieldField3) GetPageY() float64 {
+func (o *FieldCreateTemplateFieldFieldInitials) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldCreateTemplateFieldField3) GetWidth() float64 {
+func (o *FieldCreateTemplateFieldFieldInitials) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldCreateTemplateFieldField3) GetHeight() float64 {
+func (o *FieldCreateTemplateFieldFieldInitials) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type FieldCreateTemplateFieldFieldTemplatesFieldsType string
+type FieldCreateTemplateFieldTypeFreeSignature string
 
 const (
-	FieldCreateTemplateFieldFieldTemplatesFieldsTypeFreeSignature FieldCreateTemplateFieldFieldTemplatesFieldsType = "FREE_SIGNATURE"
+	FieldCreateTemplateFieldTypeFreeSignatureFreeSignature FieldCreateTemplateFieldTypeFreeSignature = "FREE_SIGNATURE"
 )
 
-func (e FieldCreateTemplateFieldFieldTemplatesFieldsType) ToPointer() *FieldCreateTemplateFieldFieldTemplatesFieldsType {
+func (e FieldCreateTemplateFieldTypeFreeSignature) ToPointer() *FieldCreateTemplateFieldTypeFreeSignature {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldTemplatesFieldsType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeFreeSignature) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "FREE_SIGNATURE":
-		*e = FieldCreateTemplateFieldFieldTemplatesFieldsType(v)
+		*e = FieldCreateTemplateFieldTypeFreeSignature(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldTemplatesFieldsType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeFreeSignature: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldField2 struct {
-	Type FieldCreateTemplateFieldFieldTemplatesFieldsType `json:"type"`
+type FieldCreateTemplateFieldFieldFreeSignature struct {
+	Type FieldCreateTemplateFieldTypeFreeSignature `json:"type"`
 	// The ID of the recipient to create the field for.
 	RecipientID float64 `json:"recipientId"`
 	// The page number the field will be on.
@@ -1716,80 +1938,80 @@ type FieldCreateTemplateFieldField2 struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldCreateTemplateFieldField2) GetType() FieldCreateTemplateFieldFieldTemplatesFieldsType {
+func (o *FieldCreateTemplateFieldFieldFreeSignature) GetType() FieldCreateTemplateFieldTypeFreeSignature {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldTemplatesFieldsType("")
+		return FieldCreateTemplateFieldTypeFreeSignature("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldField2) GetRecipientID() float64 {
+func (o *FieldCreateTemplateFieldFieldFreeSignature) GetRecipientID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.RecipientID
 }
 
-func (o *FieldCreateTemplateFieldField2) GetPageNumber() float64 {
+func (o *FieldCreateTemplateFieldFieldFreeSignature) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldCreateTemplateFieldField2) GetPageX() float64 {
+func (o *FieldCreateTemplateFieldFieldFreeSignature) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldCreateTemplateFieldField2) GetPageY() float64 {
+func (o *FieldCreateTemplateFieldFieldFreeSignature) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldCreateTemplateFieldField2) GetWidth() float64 {
+func (o *FieldCreateTemplateFieldFieldFreeSignature) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldCreateTemplateFieldField2) GetHeight() float64 {
+func (o *FieldCreateTemplateFieldFieldFreeSignature) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type FieldCreateTemplateFieldFieldType string
+type FieldCreateTemplateFieldTypeSignature string
 
 const (
-	FieldCreateTemplateFieldFieldTypeSignature FieldCreateTemplateFieldFieldType = "SIGNATURE"
+	FieldCreateTemplateFieldTypeSignatureSignature FieldCreateTemplateFieldTypeSignature = "SIGNATURE"
 )
 
-func (e FieldCreateTemplateFieldFieldType) ToPointer() *FieldCreateTemplateFieldFieldType {
+func (e FieldCreateTemplateFieldTypeSignature) ToPointer() *FieldCreateTemplateFieldTypeSignature {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeSignature) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "SIGNATURE":
-		*e = FieldCreateTemplateFieldFieldType(v)
+		*e = FieldCreateTemplateFieldTypeSignature(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeSignature: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldField1 struct {
-	Type FieldCreateTemplateFieldFieldType `json:"type"`
+type FieldCreateTemplateFieldFieldSignature struct {
+	Type FieldCreateTemplateFieldTypeSignature `json:"type"`
 	// The ID of the recipient to create the field for.
 	RecipientID float64 `json:"recipientId"`
 	// The page number the field will be on.
@@ -1804,49 +2026,49 @@ type FieldCreateTemplateFieldField1 struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldCreateTemplateFieldField1) GetType() FieldCreateTemplateFieldFieldType {
+func (o *FieldCreateTemplateFieldFieldSignature) GetType() FieldCreateTemplateFieldTypeSignature {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldType("")
+		return FieldCreateTemplateFieldTypeSignature("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldField1) GetRecipientID() float64 {
+func (o *FieldCreateTemplateFieldFieldSignature) GetRecipientID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.RecipientID
 }
 
-func (o *FieldCreateTemplateFieldField1) GetPageNumber() float64 {
+func (o *FieldCreateTemplateFieldFieldSignature) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldCreateTemplateFieldField1) GetPageX() float64 {
+func (o *FieldCreateTemplateFieldFieldSignature) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldCreateTemplateFieldField1) GetPageY() float64 {
+func (o *FieldCreateTemplateFieldFieldSignature) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldCreateTemplateFieldField1) GetWidth() float64 {
+func (o *FieldCreateTemplateFieldFieldSignature) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldCreateTemplateFieldField1) GetHeight() float64 {
+func (o *FieldCreateTemplateFieldFieldSignature) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -1856,303 +2078,303 @@ func (o *FieldCreateTemplateFieldField1) GetHeight() float64 {
 type FieldCreateTemplateFieldFieldUnionType string
 
 const (
-	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField1  FieldCreateTemplateFieldFieldUnionType = "field-createTemplateField_field_1"
-	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField2  FieldCreateTemplateFieldFieldUnionType = "field-createTemplateField_field_2"
-	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField3  FieldCreateTemplateFieldFieldUnionType = "field-createTemplateField_field_3"
-	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField4  FieldCreateTemplateFieldFieldUnionType = "field-createTemplateField_field_4"
-	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField5  FieldCreateTemplateFieldFieldUnionType = "field-createTemplateField_field_5"
-	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField6  FieldCreateTemplateFieldFieldUnionType = "field-createTemplateField_field_6"
-	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField7  FieldCreateTemplateFieldFieldUnionType = "field-createTemplateField_field_7"
-	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField8  FieldCreateTemplateFieldFieldUnionType = "field-createTemplateField_field_8"
-	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField9  FieldCreateTemplateFieldFieldUnionType = "field-createTemplateField_field_9"
-	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField10 FieldCreateTemplateFieldFieldUnionType = "field-createTemplateField_field_10"
-	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField11 FieldCreateTemplateFieldFieldUnionType = "field-createTemplateField_field_11"
+	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldSignature     FieldCreateTemplateFieldFieldUnionType = "field_createTemplateField_field_Signature"
+	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldFreeSignature FieldCreateTemplateFieldFieldUnionType = "field_createTemplateField_field_FreeSignature"
+	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldInitials      FieldCreateTemplateFieldFieldUnionType = "field_createTemplateField_field_Initials"
+	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldName          FieldCreateTemplateFieldFieldUnionType = "field_createTemplateField_field_Name"
+	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldEmail         FieldCreateTemplateFieldFieldUnionType = "field_createTemplateField_field_Email"
+	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldDate          FieldCreateTemplateFieldFieldUnionType = "field_createTemplateField_field_Date"
+	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldText          FieldCreateTemplateFieldFieldUnionType = "field_createTemplateField_field_Text"
+	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldNumber        FieldCreateTemplateFieldFieldUnionType = "field_createTemplateField_field_Number"
+	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldRadio         FieldCreateTemplateFieldFieldUnionType = "field_createTemplateField_field_Radio"
+	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldCheckbox      FieldCreateTemplateFieldFieldUnionType = "field_createTemplateField_field_Checkbox"
+	FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldDropdown      FieldCreateTemplateFieldFieldUnionType = "field_createTemplateField_field_Dropdown"
 )
 
-type FieldCreateTemplateFieldField struct {
-	FieldCreateTemplateFieldField1  *FieldCreateTemplateFieldField1  `queryParam:"inline"`
-	FieldCreateTemplateFieldField2  *FieldCreateTemplateFieldField2  `queryParam:"inline"`
-	FieldCreateTemplateFieldField3  *FieldCreateTemplateFieldField3  `queryParam:"inline"`
-	FieldCreateTemplateFieldField4  *FieldCreateTemplateFieldField4  `queryParam:"inline"`
-	FieldCreateTemplateFieldField5  *FieldCreateTemplateFieldField5  `queryParam:"inline"`
-	FieldCreateTemplateFieldField6  *FieldCreateTemplateFieldField6  `queryParam:"inline"`
-	FieldCreateTemplateFieldField7  *FieldCreateTemplateFieldField7  `queryParam:"inline"`
-	FieldCreateTemplateFieldField8  *FieldCreateTemplateFieldField8  `queryParam:"inline"`
-	FieldCreateTemplateFieldField9  *FieldCreateTemplateFieldField9  `queryParam:"inline"`
-	FieldCreateTemplateFieldField10 *FieldCreateTemplateFieldField10 `queryParam:"inline"`
-	FieldCreateTemplateFieldField11 *FieldCreateTemplateFieldField11 `queryParam:"inline"`
+type FieldCreateTemplateFieldFieldUnion struct {
+	FieldCreateTemplateFieldFieldSignature     *FieldCreateTemplateFieldFieldSignature     `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldFreeSignature *FieldCreateTemplateFieldFieldFreeSignature `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldInitials      *FieldCreateTemplateFieldFieldInitials      `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldName          *FieldCreateTemplateFieldFieldName          `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldEmail         *FieldCreateTemplateFieldFieldEmail         `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldDate          *FieldCreateTemplateFieldFieldDate          `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldText          *FieldCreateTemplateFieldFieldText          `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldNumber        *FieldCreateTemplateFieldFieldNumber        `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldRadio         *FieldCreateTemplateFieldFieldRadio         `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldCheckbox      *FieldCreateTemplateFieldFieldCheckbox      `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldDropdown      *FieldCreateTemplateFieldFieldDropdown      `queryParam:"inline"`
 
 	Type FieldCreateTemplateFieldFieldUnionType
 }
 
-func CreateFieldCreateTemplateFieldFieldFieldCreateTemplateFieldField1(fieldCreateTemplateFieldField1 FieldCreateTemplateFieldField1) FieldCreateTemplateFieldField {
-	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField1
+func CreateFieldCreateTemplateFieldFieldUnionFieldCreateTemplateFieldFieldSignature(fieldCreateTemplateFieldFieldSignature FieldCreateTemplateFieldFieldSignature) FieldCreateTemplateFieldFieldUnion {
+	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldSignature
 
-	return FieldCreateTemplateFieldField{
-		FieldCreateTemplateFieldField1: &fieldCreateTemplateFieldField1,
-		Type:                           typ,
+	return FieldCreateTemplateFieldFieldUnion{
+		FieldCreateTemplateFieldFieldSignature: &fieldCreateTemplateFieldFieldSignature,
+		Type:                                   typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldFieldCreateTemplateFieldField2(fieldCreateTemplateFieldField2 FieldCreateTemplateFieldField2) FieldCreateTemplateFieldField {
-	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField2
+func CreateFieldCreateTemplateFieldFieldUnionFieldCreateTemplateFieldFieldFreeSignature(fieldCreateTemplateFieldFieldFreeSignature FieldCreateTemplateFieldFieldFreeSignature) FieldCreateTemplateFieldFieldUnion {
+	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldFreeSignature
 
-	return FieldCreateTemplateFieldField{
-		FieldCreateTemplateFieldField2: &fieldCreateTemplateFieldField2,
-		Type:                           typ,
+	return FieldCreateTemplateFieldFieldUnion{
+		FieldCreateTemplateFieldFieldFreeSignature: &fieldCreateTemplateFieldFieldFreeSignature,
+		Type: typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldFieldCreateTemplateFieldField3(fieldCreateTemplateFieldField3 FieldCreateTemplateFieldField3) FieldCreateTemplateFieldField {
-	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField3
+func CreateFieldCreateTemplateFieldFieldUnionFieldCreateTemplateFieldFieldInitials(fieldCreateTemplateFieldFieldInitials FieldCreateTemplateFieldFieldInitials) FieldCreateTemplateFieldFieldUnion {
+	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldInitials
 
-	return FieldCreateTemplateFieldField{
-		FieldCreateTemplateFieldField3: &fieldCreateTemplateFieldField3,
-		Type:                           typ,
+	return FieldCreateTemplateFieldFieldUnion{
+		FieldCreateTemplateFieldFieldInitials: &fieldCreateTemplateFieldFieldInitials,
+		Type:                                  typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldFieldCreateTemplateFieldField4(fieldCreateTemplateFieldField4 FieldCreateTemplateFieldField4) FieldCreateTemplateFieldField {
-	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField4
+func CreateFieldCreateTemplateFieldFieldUnionFieldCreateTemplateFieldFieldName(fieldCreateTemplateFieldFieldName FieldCreateTemplateFieldFieldName) FieldCreateTemplateFieldFieldUnion {
+	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldName
 
-	return FieldCreateTemplateFieldField{
-		FieldCreateTemplateFieldField4: &fieldCreateTemplateFieldField4,
-		Type:                           typ,
+	return FieldCreateTemplateFieldFieldUnion{
+		FieldCreateTemplateFieldFieldName: &fieldCreateTemplateFieldFieldName,
+		Type:                              typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldFieldCreateTemplateFieldField5(fieldCreateTemplateFieldField5 FieldCreateTemplateFieldField5) FieldCreateTemplateFieldField {
-	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField5
+func CreateFieldCreateTemplateFieldFieldUnionFieldCreateTemplateFieldFieldEmail(fieldCreateTemplateFieldFieldEmail FieldCreateTemplateFieldFieldEmail) FieldCreateTemplateFieldFieldUnion {
+	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldEmail
 
-	return FieldCreateTemplateFieldField{
-		FieldCreateTemplateFieldField5: &fieldCreateTemplateFieldField5,
-		Type:                           typ,
+	return FieldCreateTemplateFieldFieldUnion{
+		FieldCreateTemplateFieldFieldEmail: &fieldCreateTemplateFieldFieldEmail,
+		Type:                               typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldFieldCreateTemplateFieldField6(fieldCreateTemplateFieldField6 FieldCreateTemplateFieldField6) FieldCreateTemplateFieldField {
-	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField6
+func CreateFieldCreateTemplateFieldFieldUnionFieldCreateTemplateFieldFieldDate(fieldCreateTemplateFieldFieldDate FieldCreateTemplateFieldFieldDate) FieldCreateTemplateFieldFieldUnion {
+	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldDate
 
-	return FieldCreateTemplateFieldField{
-		FieldCreateTemplateFieldField6: &fieldCreateTemplateFieldField6,
-		Type:                           typ,
+	return FieldCreateTemplateFieldFieldUnion{
+		FieldCreateTemplateFieldFieldDate: &fieldCreateTemplateFieldFieldDate,
+		Type:                              typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldFieldCreateTemplateFieldField7(fieldCreateTemplateFieldField7 FieldCreateTemplateFieldField7) FieldCreateTemplateFieldField {
-	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField7
+func CreateFieldCreateTemplateFieldFieldUnionFieldCreateTemplateFieldFieldText(fieldCreateTemplateFieldFieldText FieldCreateTemplateFieldFieldText) FieldCreateTemplateFieldFieldUnion {
+	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldText
 
-	return FieldCreateTemplateFieldField{
-		FieldCreateTemplateFieldField7: &fieldCreateTemplateFieldField7,
-		Type:                           typ,
+	return FieldCreateTemplateFieldFieldUnion{
+		FieldCreateTemplateFieldFieldText: &fieldCreateTemplateFieldFieldText,
+		Type:                              typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldFieldCreateTemplateFieldField8(fieldCreateTemplateFieldField8 FieldCreateTemplateFieldField8) FieldCreateTemplateFieldField {
-	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField8
+func CreateFieldCreateTemplateFieldFieldUnionFieldCreateTemplateFieldFieldNumber(fieldCreateTemplateFieldFieldNumber FieldCreateTemplateFieldFieldNumber) FieldCreateTemplateFieldFieldUnion {
+	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldNumber
 
-	return FieldCreateTemplateFieldField{
-		FieldCreateTemplateFieldField8: &fieldCreateTemplateFieldField8,
-		Type:                           typ,
+	return FieldCreateTemplateFieldFieldUnion{
+		FieldCreateTemplateFieldFieldNumber: &fieldCreateTemplateFieldFieldNumber,
+		Type:                                typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldFieldCreateTemplateFieldField9(fieldCreateTemplateFieldField9 FieldCreateTemplateFieldField9) FieldCreateTemplateFieldField {
-	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField9
+func CreateFieldCreateTemplateFieldFieldUnionFieldCreateTemplateFieldFieldRadio(fieldCreateTemplateFieldFieldRadio FieldCreateTemplateFieldFieldRadio) FieldCreateTemplateFieldFieldUnion {
+	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldRadio
 
-	return FieldCreateTemplateFieldField{
-		FieldCreateTemplateFieldField9: &fieldCreateTemplateFieldField9,
-		Type:                           typ,
+	return FieldCreateTemplateFieldFieldUnion{
+		FieldCreateTemplateFieldFieldRadio: &fieldCreateTemplateFieldFieldRadio,
+		Type:                               typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldFieldCreateTemplateFieldField10(fieldCreateTemplateFieldField10 FieldCreateTemplateFieldField10) FieldCreateTemplateFieldField {
-	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField10
+func CreateFieldCreateTemplateFieldFieldUnionFieldCreateTemplateFieldFieldCheckbox(fieldCreateTemplateFieldFieldCheckbox FieldCreateTemplateFieldFieldCheckbox) FieldCreateTemplateFieldFieldUnion {
+	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldCheckbox
 
-	return FieldCreateTemplateFieldField{
-		FieldCreateTemplateFieldField10: &fieldCreateTemplateFieldField10,
-		Type:                            typ,
+	return FieldCreateTemplateFieldFieldUnion{
+		FieldCreateTemplateFieldFieldCheckbox: &fieldCreateTemplateFieldFieldCheckbox,
+		Type:                                  typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldFieldCreateTemplateFieldField11(fieldCreateTemplateFieldField11 FieldCreateTemplateFieldField11) FieldCreateTemplateFieldField {
-	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField11
+func CreateFieldCreateTemplateFieldFieldUnionFieldCreateTemplateFieldFieldDropdown(fieldCreateTemplateFieldFieldDropdown FieldCreateTemplateFieldFieldDropdown) FieldCreateTemplateFieldFieldUnion {
+	typ := FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldDropdown
 
-	return FieldCreateTemplateFieldField{
-		FieldCreateTemplateFieldField11: &fieldCreateTemplateFieldField11,
-		Type:                            typ,
+	return FieldCreateTemplateFieldFieldUnion{
+		FieldCreateTemplateFieldFieldDropdown: &fieldCreateTemplateFieldFieldDropdown,
+		Type:                                  typ,
 	}
 }
 
-func (u *FieldCreateTemplateFieldField) UnmarshalJSON(data []byte) error {
+func (u *FieldCreateTemplateFieldFieldUnion) UnmarshalJSON(data []byte) error {
 
-	var fieldCreateTemplateFieldField1 FieldCreateTemplateFieldField1 = FieldCreateTemplateFieldField1{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldField1, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldField1 = &fieldCreateTemplateFieldField1
-		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField1
+	var fieldCreateTemplateFieldFieldSignature FieldCreateTemplateFieldFieldSignature = FieldCreateTemplateFieldFieldSignature{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldSignature, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldSignature = &fieldCreateTemplateFieldFieldSignature
+		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldSignature
 		return nil
 	}
 
-	var fieldCreateTemplateFieldField2 FieldCreateTemplateFieldField2 = FieldCreateTemplateFieldField2{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldField2, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldField2 = &fieldCreateTemplateFieldField2
-		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField2
+	var fieldCreateTemplateFieldFieldFreeSignature FieldCreateTemplateFieldFieldFreeSignature = FieldCreateTemplateFieldFieldFreeSignature{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldFreeSignature, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldFreeSignature = &fieldCreateTemplateFieldFieldFreeSignature
+		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldFreeSignature
 		return nil
 	}
 
-	var fieldCreateTemplateFieldField3 FieldCreateTemplateFieldField3 = FieldCreateTemplateFieldField3{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldField3, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldField3 = &fieldCreateTemplateFieldField3
-		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField3
+	var fieldCreateTemplateFieldFieldInitials FieldCreateTemplateFieldFieldInitials = FieldCreateTemplateFieldFieldInitials{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldInitials, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldInitials = &fieldCreateTemplateFieldFieldInitials
+		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldInitials
 		return nil
 	}
 
-	var fieldCreateTemplateFieldField4 FieldCreateTemplateFieldField4 = FieldCreateTemplateFieldField4{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldField4, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldField4 = &fieldCreateTemplateFieldField4
-		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField4
+	var fieldCreateTemplateFieldFieldName FieldCreateTemplateFieldFieldName = FieldCreateTemplateFieldFieldName{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldName, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldName = &fieldCreateTemplateFieldFieldName
+		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldName
 		return nil
 	}
 
-	var fieldCreateTemplateFieldField5 FieldCreateTemplateFieldField5 = FieldCreateTemplateFieldField5{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldField5, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldField5 = &fieldCreateTemplateFieldField5
-		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField5
+	var fieldCreateTemplateFieldFieldEmail FieldCreateTemplateFieldFieldEmail = FieldCreateTemplateFieldFieldEmail{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldEmail, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldEmail = &fieldCreateTemplateFieldFieldEmail
+		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldEmail
 		return nil
 	}
 
-	var fieldCreateTemplateFieldField6 FieldCreateTemplateFieldField6 = FieldCreateTemplateFieldField6{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldField6, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldField6 = &fieldCreateTemplateFieldField6
-		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField6
+	var fieldCreateTemplateFieldFieldDate FieldCreateTemplateFieldFieldDate = FieldCreateTemplateFieldFieldDate{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldDate, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldDate = &fieldCreateTemplateFieldFieldDate
+		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldDate
 		return nil
 	}
 
-	var fieldCreateTemplateFieldField7 FieldCreateTemplateFieldField7 = FieldCreateTemplateFieldField7{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldField7, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldField7 = &fieldCreateTemplateFieldField7
-		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField7
+	var fieldCreateTemplateFieldFieldText FieldCreateTemplateFieldFieldText = FieldCreateTemplateFieldFieldText{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldText, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldText = &fieldCreateTemplateFieldFieldText
+		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldText
 		return nil
 	}
 
-	var fieldCreateTemplateFieldField8 FieldCreateTemplateFieldField8 = FieldCreateTemplateFieldField8{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldField8, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldField8 = &fieldCreateTemplateFieldField8
-		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField8
+	var fieldCreateTemplateFieldFieldNumber FieldCreateTemplateFieldFieldNumber = FieldCreateTemplateFieldFieldNumber{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldNumber, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldNumber = &fieldCreateTemplateFieldFieldNumber
+		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldNumber
 		return nil
 	}
 
-	var fieldCreateTemplateFieldField9 FieldCreateTemplateFieldField9 = FieldCreateTemplateFieldField9{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldField9, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldField9 = &fieldCreateTemplateFieldField9
-		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField9
+	var fieldCreateTemplateFieldFieldRadio FieldCreateTemplateFieldFieldRadio = FieldCreateTemplateFieldFieldRadio{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldRadio, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldRadio = &fieldCreateTemplateFieldFieldRadio
+		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldRadio
 		return nil
 	}
 
-	var fieldCreateTemplateFieldField10 FieldCreateTemplateFieldField10 = FieldCreateTemplateFieldField10{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldField10, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldField10 = &fieldCreateTemplateFieldField10
-		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField10
+	var fieldCreateTemplateFieldFieldCheckbox FieldCreateTemplateFieldFieldCheckbox = FieldCreateTemplateFieldFieldCheckbox{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldCheckbox, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldCheckbox = &fieldCreateTemplateFieldFieldCheckbox
+		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldCheckbox
 		return nil
 	}
 
-	var fieldCreateTemplateFieldField11 FieldCreateTemplateFieldField11 = FieldCreateTemplateFieldField11{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldField11, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldField11 = &fieldCreateTemplateFieldField11
-		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldField11
+	var fieldCreateTemplateFieldFieldDropdown FieldCreateTemplateFieldFieldDropdown = FieldCreateTemplateFieldFieldDropdown{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldDropdown, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldDropdown = &fieldCreateTemplateFieldFieldDropdown
+		u.Type = FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldDropdown
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for FieldCreateTemplateFieldField", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for FieldCreateTemplateFieldFieldUnion", string(data))
 }
 
-func (u FieldCreateTemplateFieldField) MarshalJSON() ([]byte, error) {
-	if u.FieldCreateTemplateFieldField1 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldField1, "", true)
+func (u FieldCreateTemplateFieldFieldUnion) MarshalJSON() ([]byte, error) {
+	if u.FieldCreateTemplateFieldFieldSignature != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldSignature, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldField2 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldField2, "", true)
+	if u.FieldCreateTemplateFieldFieldFreeSignature != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldFreeSignature, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldField3 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldField3, "", true)
+	if u.FieldCreateTemplateFieldFieldInitials != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldInitials, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldField4 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldField4, "", true)
+	if u.FieldCreateTemplateFieldFieldName != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldName, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldField5 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldField5, "", true)
+	if u.FieldCreateTemplateFieldFieldEmail != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldEmail, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldField6 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldField6, "", true)
+	if u.FieldCreateTemplateFieldFieldDate != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldDate, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldField7 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldField7, "", true)
+	if u.FieldCreateTemplateFieldFieldText != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldText, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldField8 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldField8, "", true)
+	if u.FieldCreateTemplateFieldFieldNumber != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldNumber, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldField9 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldField9, "", true)
+	if u.FieldCreateTemplateFieldFieldRadio != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldRadio, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldField10 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldField10, "", true)
+	if u.FieldCreateTemplateFieldFieldCheckbox != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldCheckbox, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldField11 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldField11, "", true)
+	if u.FieldCreateTemplateFieldFieldDropdown != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldDropdown, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type FieldCreateTemplateFieldField: all fields are null")
+	return nil, errors.New("could not marshal union type FieldCreateTemplateFieldFieldUnion: all fields are null")
 }
 
-type FieldCreateTemplateFieldRequestBody struct {
-	TemplateID float64                       `json:"templateId"`
-	Field      FieldCreateTemplateFieldField `json:"field"`
+type FieldCreateTemplateFieldRequest struct {
+	TemplateID float64                            `json:"templateId"`
+	Field      FieldCreateTemplateFieldFieldUnion `json:"field"`
 }
 
-func (o *FieldCreateTemplateFieldRequestBody) GetTemplateID() float64 {
+func (o *FieldCreateTemplateFieldRequest) GetTemplateID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.TemplateID
 }
 
-func (o *FieldCreateTemplateFieldRequestBody) GetField() FieldCreateTemplateFieldField {
+func (o *FieldCreateTemplateFieldRequest) GetField() FieldCreateTemplateFieldFieldUnion {
 	if o == nil {
-		return FieldCreateTemplateFieldField{}
+		return FieldCreateTemplateFieldFieldUnion{}
 	}
 	return o.Field
 }
 
-type FieldCreateTemplateFieldType string
+type FieldCreateTemplateFieldTypeResponse string
 
 const (
-	FieldCreateTemplateFieldTypeSignature     FieldCreateTemplateFieldType = "SIGNATURE"
-	FieldCreateTemplateFieldTypeFreeSignature FieldCreateTemplateFieldType = "FREE_SIGNATURE"
-	FieldCreateTemplateFieldTypeInitials      FieldCreateTemplateFieldType = "INITIALS"
-	FieldCreateTemplateFieldTypeName          FieldCreateTemplateFieldType = "NAME"
-	FieldCreateTemplateFieldTypeEmail         FieldCreateTemplateFieldType = "EMAIL"
-	FieldCreateTemplateFieldTypeDate          FieldCreateTemplateFieldType = "DATE"
-	FieldCreateTemplateFieldTypeText          FieldCreateTemplateFieldType = "TEXT"
-	FieldCreateTemplateFieldTypeNumber        FieldCreateTemplateFieldType = "NUMBER"
-	FieldCreateTemplateFieldTypeRadio         FieldCreateTemplateFieldType = "RADIO"
-	FieldCreateTemplateFieldTypeCheckbox      FieldCreateTemplateFieldType = "CHECKBOX"
-	FieldCreateTemplateFieldTypeDropdown      FieldCreateTemplateFieldType = "DROPDOWN"
+	FieldCreateTemplateFieldTypeResponseSignature     FieldCreateTemplateFieldTypeResponse = "SIGNATURE"
+	FieldCreateTemplateFieldTypeResponseFreeSignature FieldCreateTemplateFieldTypeResponse = "FREE_SIGNATURE"
+	FieldCreateTemplateFieldTypeResponseInitials      FieldCreateTemplateFieldTypeResponse = "INITIALS"
+	FieldCreateTemplateFieldTypeResponseName          FieldCreateTemplateFieldTypeResponse = "NAME"
+	FieldCreateTemplateFieldTypeResponseEmail         FieldCreateTemplateFieldTypeResponse = "EMAIL"
+	FieldCreateTemplateFieldTypeResponseDate          FieldCreateTemplateFieldTypeResponse = "DATE"
+	FieldCreateTemplateFieldTypeResponseText          FieldCreateTemplateFieldTypeResponse = "TEXT"
+	FieldCreateTemplateFieldTypeResponseNumber        FieldCreateTemplateFieldTypeResponse = "NUMBER"
+	FieldCreateTemplateFieldTypeResponseRadio         FieldCreateTemplateFieldTypeResponse = "RADIO"
+	FieldCreateTemplateFieldTypeResponseCheckbox      FieldCreateTemplateFieldTypeResponse = "CHECKBOX"
+	FieldCreateTemplateFieldTypeResponseDropdown      FieldCreateTemplateFieldTypeResponse = "DROPDOWN"
 )
 
-func (e FieldCreateTemplateFieldType) ToPointer() *FieldCreateTemplateFieldType {
+func (e FieldCreateTemplateFieldTypeResponse) ToPointer() *FieldCreateTemplateFieldTypeResponse {
 	return &e
 }
-func (e *FieldCreateTemplateFieldType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldTypeResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2179,1062 +2401,1284 @@ func (e *FieldCreateTemplateFieldType) UnmarshalJSON(data []byte) error {
 	case "CHECKBOX":
 		fallthrough
 	case "DROPDOWN":
-		*e = FieldCreateTemplateFieldType(v)
+		*e = FieldCreateTemplateFieldTypeResponse(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTypeResponse: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody9Type string
+type FieldCreateTemplateFieldFieldMetaTypeDropdown string
 
 const (
-	FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody9TypeDropdown FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody9Type = "dropdown"
+	FieldCreateTemplateFieldFieldMetaTypeDropdownDropdown FieldCreateTemplateFieldFieldMetaTypeDropdown = "dropdown"
 )
 
-func (e FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody9Type) ToPointer() *FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody9Type {
+func (e FieldCreateTemplateFieldFieldMetaTypeDropdown) ToPointer() *FieldCreateTemplateFieldFieldMetaTypeDropdown {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody9Type) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldFieldMetaTypeDropdown) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "dropdown":
-		*e = FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody9Type(v)
+		*e = FieldCreateTemplateFieldFieldMetaTypeDropdown(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody9Type: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTypeDropdown: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponseValues struct {
+type FieldCreateTemplateFieldValueResponse3 struct {
 	Value string `json:"value"`
 }
 
-func (o *FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponseValues) GetValue() string {
+func (o *FieldCreateTemplateFieldValueResponse3) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type FieldCreateTemplateFieldFieldMeta9 struct {
-	Label        *string                                                                                     `json:"label,omitempty"`
-	Placeholder  *string                                                                                     `json:"placeholder,omitempty"`
-	Required     *bool                                                                                       `json:"required,omitempty"`
-	ReadOnly     *bool                                                                                       `json:"readOnly,omitempty"`
-	Type         FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody9Type `json:"type"`
-	Values       []FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponseValues                            `json:"values,omitempty"`
-	DefaultValue *string                                                                                     `json:"defaultValue,omitempty"`
+type FieldCreateTemplateFieldFieldMetaDropdownResponse struct {
+	Label        *string                                       `json:"label,omitempty"`
+	Placeholder  *string                                       `json:"placeholder,omitempty"`
+	Required     *bool                                         `json:"required,omitempty"`
+	ReadOnly     *bool                                         `json:"readOnly,omitempty"`
+	Type         FieldCreateTemplateFieldFieldMetaTypeDropdown `json:"type"`
+	Values       []FieldCreateTemplateFieldValueResponse3      `json:"values,omitempty"`
+	DefaultValue *string                                       `json:"defaultValue,omitempty"`
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta9) GetLabel() *string {
+func (o *FieldCreateTemplateFieldFieldMetaDropdownResponse) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta9) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaDropdownResponse) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta9) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaDropdownResponse) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta9) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaDropdownResponse) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta9) GetType() FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody9Type {
+func (o *FieldCreateTemplateFieldFieldMetaDropdownResponse) GetType() FieldCreateTemplateFieldFieldMetaTypeDropdown {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody9Type("")
+		return FieldCreateTemplateFieldFieldMetaTypeDropdown("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta9) GetValues() []FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponseValues {
+func (o *FieldCreateTemplateFieldFieldMetaDropdownResponse) GetValues() []FieldCreateTemplateFieldValueResponse3 {
 	if o == nil {
 		return nil
 	}
 	return o.Values
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta9) GetDefaultValue() *string {
+func (o *FieldCreateTemplateFieldFieldMetaDropdownResponse) GetDefaultValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DefaultValue
 }
 
-type FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody8Type string
+type FieldCreateTemplateFieldFieldMetaTypeCheckbox string
 
 const (
-	FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody8TypeCheckbox FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody8Type = "checkbox"
+	FieldCreateTemplateFieldFieldMetaTypeCheckboxCheckbox FieldCreateTemplateFieldFieldMetaTypeCheckbox = "checkbox"
 )
 
-func (e FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody8Type) ToPointer() *FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody8Type {
+func (e FieldCreateTemplateFieldFieldMetaTypeCheckbox) ToPointer() *FieldCreateTemplateFieldFieldMetaTypeCheckbox {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody8Type) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldFieldMetaTypeCheckbox) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "checkbox":
-		*e = FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody8Type(v)
+		*e = FieldCreateTemplateFieldFieldMetaTypeCheckbox(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody8Type: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTypeCheckbox: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldMetaTemplatesFieldsValues struct {
+type FieldCreateTemplateFieldValueResponse2 struct {
 	ID      float64 `json:"id"`
 	Checked bool    `json:"checked"`
 	Value   string  `json:"value"`
 }
 
-func (o *FieldCreateTemplateFieldFieldMetaTemplatesFieldsValues) GetID() float64 {
+func (o *FieldCreateTemplateFieldValueResponse2) GetID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ID
 }
 
-func (o *FieldCreateTemplateFieldFieldMetaTemplatesFieldsValues) GetChecked() bool {
+func (o *FieldCreateTemplateFieldValueResponse2) GetChecked() bool {
 	if o == nil {
 		return false
 	}
 	return o.Checked
 }
 
-func (o *FieldCreateTemplateFieldFieldMetaTemplatesFieldsValues) GetValue() string {
+func (o *FieldCreateTemplateFieldValueResponse2) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type FieldCreateTemplateFieldFieldMeta8 struct {
-	Label            *string                                                                                     `json:"label,omitempty"`
-	Placeholder      *string                                                                                     `json:"placeholder,omitempty"`
-	Required         *bool                                                                                       `json:"required,omitempty"`
-	ReadOnly         *bool                                                                                       `json:"readOnly,omitempty"`
-	Type             FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody8Type `json:"type"`
-	Values           []FieldCreateTemplateFieldFieldMetaTemplatesFieldsValues                                    `json:"values,omitempty"`
-	ValidationRule   *string                                                                                     `json:"validationRule,omitempty"`
-	ValidationLength *float64                                                                                    `json:"validationLength,omitempty"`
+type FieldCreateTemplateFieldFieldMetaCheckboxResponse struct {
+	Label            *string                                       `json:"label,omitempty"`
+	Placeholder      *string                                       `json:"placeholder,omitempty"`
+	Required         *bool                                         `json:"required,omitempty"`
+	ReadOnly         *bool                                         `json:"readOnly,omitempty"`
+	Type             FieldCreateTemplateFieldFieldMetaTypeCheckbox `json:"type"`
+	Values           []FieldCreateTemplateFieldValueResponse2      `json:"values,omitempty"`
+	ValidationRule   *string                                       `json:"validationRule,omitempty"`
+	ValidationLength *float64                                      `json:"validationLength,omitempty"`
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta8) GetLabel() *string {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxResponse) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta8) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxResponse) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta8) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxResponse) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta8) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxResponse) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta8) GetType() FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody8Type {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxResponse) GetType() FieldCreateTemplateFieldFieldMetaTypeCheckbox {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody8Type("")
+		return FieldCreateTemplateFieldFieldMetaTypeCheckbox("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta8) GetValues() []FieldCreateTemplateFieldFieldMetaTemplatesFieldsValues {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxResponse) GetValues() []FieldCreateTemplateFieldValueResponse2 {
 	if o == nil {
 		return nil
 	}
 	return o.Values
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta8) GetValidationRule() *string {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxResponse) GetValidationRule() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ValidationRule
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta8) GetValidationLength() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaCheckboxResponse) GetValidationLength() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ValidationLength
 }
 
-type FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody7Type string
+type FieldCreateTemplateFieldFieldMetaTypeRadio string
 
 const (
-	FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody7TypeRadio FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody7Type = "radio"
+	FieldCreateTemplateFieldFieldMetaTypeRadioRadio FieldCreateTemplateFieldFieldMetaTypeRadio = "radio"
 )
 
-func (e FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody7Type) ToPointer() *FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody7Type {
+func (e FieldCreateTemplateFieldFieldMetaTypeRadio) ToPointer() *FieldCreateTemplateFieldFieldMetaTypeRadio {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody7Type) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldFieldMetaTypeRadio) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "radio":
-		*e = FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody7Type(v)
+		*e = FieldCreateTemplateFieldFieldMetaTypeRadio(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody7Type: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTypeRadio: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldMetaValues struct {
+type FieldCreateTemplateFieldValueResponse1 struct {
 	ID      float64 `json:"id"`
 	Checked bool    `json:"checked"`
 	Value   string  `json:"value"`
 }
 
-func (o *FieldCreateTemplateFieldFieldMetaValues) GetID() float64 {
+func (o *FieldCreateTemplateFieldValueResponse1) GetID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ID
 }
 
-func (o *FieldCreateTemplateFieldFieldMetaValues) GetChecked() bool {
+func (o *FieldCreateTemplateFieldValueResponse1) GetChecked() bool {
 	if o == nil {
 		return false
 	}
 	return o.Checked
 }
 
-func (o *FieldCreateTemplateFieldFieldMetaValues) GetValue() string {
+func (o *FieldCreateTemplateFieldValueResponse1) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type FieldCreateTemplateFieldFieldMeta7 struct {
-	Label       *string                                                                                     `json:"label,omitempty"`
-	Placeholder *string                                                                                     `json:"placeholder,omitempty"`
-	Required    *bool                                                                                       `json:"required,omitempty"`
-	ReadOnly    *bool                                                                                       `json:"readOnly,omitempty"`
-	Type        FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody7Type `json:"type"`
-	Values      []FieldCreateTemplateFieldFieldMetaValues                                                   `json:"values,omitempty"`
+type FieldCreateTemplateFieldFieldMetaRadioResponse struct {
+	Label       *string                                    `json:"label,omitempty"`
+	Placeholder *string                                    `json:"placeholder,omitempty"`
+	Required    *bool                                      `json:"required,omitempty"`
+	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
+	Type        FieldCreateTemplateFieldFieldMetaTypeRadio `json:"type"`
+	Values      []FieldCreateTemplateFieldValueResponse1   `json:"values,omitempty"`
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta7) GetLabel() *string {
+func (o *FieldCreateTemplateFieldFieldMetaRadioResponse) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta7) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaRadioResponse) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta7) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaRadioResponse) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta7) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaRadioResponse) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta7) GetType() FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody7Type {
+func (o *FieldCreateTemplateFieldFieldMetaRadioResponse) GetType() FieldCreateTemplateFieldFieldMetaTypeRadio {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBody7Type("")
+		return FieldCreateTemplateFieldFieldMetaTypeRadio("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta7) GetValues() []FieldCreateTemplateFieldFieldMetaValues {
+func (o *FieldCreateTemplateFieldFieldMetaRadioResponse) GetValues() []FieldCreateTemplateFieldValueResponse1 {
 	if o == nil {
 		return nil
 	}
 	return o.Values
 }
 
-type FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBodyType string
+type FieldCreateTemplateFieldFieldMetaTypeNumber string
 
 const (
-	FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBodyTypeNumber FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBodyType = "number"
+	FieldCreateTemplateFieldFieldMetaTypeNumberNumber FieldCreateTemplateFieldFieldMetaTypeNumber = "number"
 )
 
-func (e FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBodyType) ToPointer() *FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBodyType {
+func (e FieldCreateTemplateFieldFieldMetaTypeNumber) ToPointer() *FieldCreateTemplateFieldFieldMetaTypeNumber {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldFieldMetaTypeNumber) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "number":
-		*e = FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBodyType(v)
+		*e = FieldCreateTemplateFieldFieldMetaTypeNumber(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTypeNumber: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldMeta6 struct {
-	Label        *string                                                                                    `json:"label,omitempty"`
-	Placeholder  *string                                                                                    `json:"placeholder,omitempty"`
-	Required     *bool                                                                                      `json:"required,omitempty"`
-	ReadOnly     *bool                                                                                      `json:"readOnly,omitempty"`
-	Type         FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBodyType `json:"type"`
-	NumberFormat *string                                                                                    `json:"numberFormat,omitempty"`
-	Value        *string                                                                                    `json:"value,omitempty"`
-	MinValue     *float64                                                                                   `json:"minValue,omitempty"`
-	MaxValue     *float64                                                                                   `json:"maxValue,omitempty"`
-	FontSize     *float64                                                                                   `json:"fontSize,omitempty"`
+type FieldCreateTemplateFieldTextAlignResponse6 string
+
+const (
+	FieldCreateTemplateFieldTextAlignResponse6Left   FieldCreateTemplateFieldTextAlignResponse6 = "left"
+	FieldCreateTemplateFieldTextAlignResponse6Center FieldCreateTemplateFieldTextAlignResponse6 = "center"
+	FieldCreateTemplateFieldTextAlignResponse6Right  FieldCreateTemplateFieldTextAlignResponse6 = "right"
+)
+
+func (e FieldCreateTemplateFieldTextAlignResponse6) ToPointer() *FieldCreateTemplateFieldTextAlignResponse6 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldTextAlignResponse6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = FieldCreateTemplateFieldTextAlignResponse6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTextAlignResponse6: %v", v)
+	}
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta6) GetLabel() *string {
+type FieldCreateTemplateFieldFieldMetaNumberResponse struct {
+	Label        *string                                     `json:"label,omitempty"`
+	Placeholder  *string                                     `json:"placeholder,omitempty"`
+	Required     *bool                                       `json:"required,omitempty"`
+	ReadOnly     *bool                                       `json:"readOnly,omitempty"`
+	Type         FieldCreateTemplateFieldFieldMetaTypeNumber `json:"type"`
+	NumberFormat *string                                     `json:"numberFormat,omitempty"`
+	Value        *string                                     `json:"value,omitempty"`
+	MinValue     *float64                                    `json:"minValue,omitempty"`
+	MaxValue     *float64                                    `json:"maxValue,omitempty"`
+	FontSize     *float64                                    `json:"fontSize,omitempty"`
+	TextAlign    *FieldCreateTemplateFieldTextAlignResponse6 `json:"textAlign,omitempty"`
+}
+
+func (o *FieldCreateTemplateFieldFieldMetaNumberResponse) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta6) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaNumberResponse) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta6) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaNumberResponse) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta6) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaNumberResponse) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta6) GetType() FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBodyType {
+func (o *FieldCreateTemplateFieldFieldMetaNumberResponse) GetType() FieldCreateTemplateFieldFieldMetaTypeNumber {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONResponseBodyType("")
+		return FieldCreateTemplateFieldFieldMetaTypeNumber("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta6) GetNumberFormat() *string {
+func (o *FieldCreateTemplateFieldFieldMetaNumberResponse) GetNumberFormat() *string {
 	if o == nil {
 		return nil
 	}
 	return o.NumberFormat
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta6) GetValue() *string {
+func (o *FieldCreateTemplateFieldFieldMetaNumberResponse) GetValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta6) GetMinValue() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaNumberResponse) GetMinValue() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MinValue
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta6) GetMaxValue() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaNumberResponse) GetMaxValue() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxValue
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta6) GetFontSize() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaNumberResponse) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONType string
+func (o *FieldCreateTemplateFieldFieldMetaNumberResponse) GetTextAlign() *FieldCreateTemplateFieldTextAlignResponse6 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type FieldCreateTemplateFieldFieldMetaTypeText string
 
 const (
-	FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONTypeText FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONType = "text"
+	FieldCreateTemplateFieldFieldMetaTypeTextText FieldCreateTemplateFieldFieldMetaTypeText = "text"
 )
 
-func (e FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONType) ToPointer() *FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONType {
+func (e FieldCreateTemplateFieldFieldMetaTypeText) ToPointer() *FieldCreateTemplateFieldFieldMetaTypeText {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldFieldMetaTypeText) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "text":
-		*e = FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONType(v)
+		*e = FieldCreateTemplateFieldFieldMetaTypeText(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTypeText: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldMeta5 struct {
-	Label          *string                                                                        `json:"label,omitempty"`
-	Placeholder    *string                                                                        `json:"placeholder,omitempty"`
-	Required       *bool                                                                          `json:"required,omitempty"`
-	ReadOnly       *bool                                                                          `json:"readOnly,omitempty"`
-	Type           FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONType `json:"type"`
-	Text           *string                                                                        `json:"text,omitempty"`
-	CharacterLimit *float64                                                                       `json:"characterLimit,omitempty"`
-	FontSize       *float64                                                                       `json:"fontSize,omitempty"`
+type FieldCreateTemplateFieldTextAlignResponse5 string
+
+const (
+	FieldCreateTemplateFieldTextAlignResponse5Left   FieldCreateTemplateFieldTextAlignResponse5 = "left"
+	FieldCreateTemplateFieldTextAlignResponse5Center FieldCreateTemplateFieldTextAlignResponse5 = "center"
+	FieldCreateTemplateFieldTextAlignResponse5Right  FieldCreateTemplateFieldTextAlignResponse5 = "right"
+)
+
+func (e FieldCreateTemplateFieldTextAlignResponse5) ToPointer() *FieldCreateTemplateFieldTextAlignResponse5 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldTextAlignResponse5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = FieldCreateTemplateFieldTextAlignResponse5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTextAlignResponse5: %v", v)
+	}
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta5) GetLabel() *string {
+type FieldCreateTemplateFieldFieldMetaTextResponse struct {
+	Label          *string                                     `json:"label,omitempty"`
+	Placeholder    *string                                     `json:"placeholder,omitempty"`
+	Required       *bool                                       `json:"required,omitempty"`
+	ReadOnly       *bool                                       `json:"readOnly,omitempty"`
+	Type           FieldCreateTemplateFieldFieldMetaTypeText   `json:"type"`
+	Text           *string                                     `json:"text,omitempty"`
+	CharacterLimit *float64                                    `json:"characterLimit,omitempty"`
+	FontSize       *float64                                    `json:"fontSize,omitempty"`
+	TextAlign      *FieldCreateTemplateFieldTextAlignResponse5 `json:"textAlign,omitempty"`
+}
+
+func (o *FieldCreateTemplateFieldFieldMetaTextResponse) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta5) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaTextResponse) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta5) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaTextResponse) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta5) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaTextResponse) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta5) GetType() FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONType {
+func (o *FieldCreateTemplateFieldFieldMetaTextResponse) GetType() FieldCreateTemplateFieldFieldMetaTypeText {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200ApplicationJSONType("")
+		return FieldCreateTemplateFieldFieldMetaTypeText("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta5) GetText() *string {
+func (o *FieldCreateTemplateFieldFieldMetaTextResponse) GetText() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Text
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta5) GetCharacterLimit() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaTextResponse) GetCharacterLimit() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CharacterLimit
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta5) GetFontSize() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaTextResponse) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200Type string
+func (o *FieldCreateTemplateFieldFieldMetaTextResponse) GetTextAlign() *FieldCreateTemplateFieldTextAlignResponse5 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type FieldCreateTemplateFieldFieldMetaTypeDate string
 
 const (
-	FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200TypeDate FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200Type = "date"
+	FieldCreateTemplateFieldFieldMetaTypeDateDate FieldCreateTemplateFieldFieldMetaTypeDate = "date"
 )
 
-func (e FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200Type) ToPointer() *FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200Type {
+func (e FieldCreateTemplateFieldFieldMetaTypeDate) ToPointer() *FieldCreateTemplateFieldFieldMetaTypeDate {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200Type) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldFieldMetaTypeDate) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "date":
-		*e = FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200Type(v)
+		*e = FieldCreateTemplateFieldFieldMetaTypeDate(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200Type: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTypeDate: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldMeta4 struct {
-	Label       *string                                                         `json:"label,omitempty"`
-	Placeholder *string                                                         `json:"placeholder,omitempty"`
-	Required    *bool                                                           `json:"required,omitempty"`
-	ReadOnly    *bool                                                           `json:"readOnly,omitempty"`
-	Type        FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200Type `json:"type"`
-	FontSize    *float64                                                        `json:"fontSize,omitempty"`
+type FieldCreateTemplateFieldTextAlignResponse4 string
+
+const (
+	FieldCreateTemplateFieldTextAlignResponse4Left   FieldCreateTemplateFieldTextAlignResponse4 = "left"
+	FieldCreateTemplateFieldTextAlignResponse4Center FieldCreateTemplateFieldTextAlignResponse4 = "center"
+	FieldCreateTemplateFieldTextAlignResponse4Right  FieldCreateTemplateFieldTextAlignResponse4 = "right"
+)
+
+func (e FieldCreateTemplateFieldTextAlignResponse4) ToPointer() *FieldCreateTemplateFieldTextAlignResponse4 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldTextAlignResponse4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = FieldCreateTemplateFieldTextAlignResponse4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTextAlignResponse4: %v", v)
+	}
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta4) GetLabel() *string {
+type FieldCreateTemplateFieldFieldMetaDateResponse struct {
+	Label       *string                                     `json:"label,omitempty"`
+	Placeholder *string                                     `json:"placeholder,omitempty"`
+	Required    *bool                                       `json:"required,omitempty"`
+	ReadOnly    *bool                                       `json:"readOnly,omitempty"`
+	Type        FieldCreateTemplateFieldFieldMetaTypeDate   `json:"type"`
+	FontSize    *float64                                    `json:"fontSize,omitempty"`
+	TextAlign   *FieldCreateTemplateFieldTextAlignResponse4 `json:"textAlign,omitempty"`
+}
+
+func (o *FieldCreateTemplateFieldFieldMetaDateResponse) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta4) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaDateResponse) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta4) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaDateResponse) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta4) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaDateResponse) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta4) GetType() FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200Type {
+func (o *FieldCreateTemplateFieldFieldMetaDateResponse) GetType() FieldCreateTemplateFieldFieldMetaTypeDate {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponse200Type("")
+		return FieldCreateTemplateFieldFieldMetaTypeDate("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta4) GetFontSize() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaDateResponse) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponseType string
+func (o *FieldCreateTemplateFieldFieldMetaDateResponse) GetTextAlign() *FieldCreateTemplateFieldTextAlignResponse4 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type FieldCreateTemplateFieldFieldMetaTypeEmail string
 
 const (
-	FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponseTypeEmail FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponseType = "email"
+	FieldCreateTemplateFieldFieldMetaTypeEmailEmail FieldCreateTemplateFieldFieldMetaTypeEmail = "email"
 )
 
-func (e FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponseType) ToPointer() *FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponseType {
+func (e FieldCreateTemplateFieldFieldMetaTypeEmail) ToPointer() *FieldCreateTemplateFieldFieldMetaTypeEmail {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponseType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldFieldMetaTypeEmail) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "email":
-		*e = FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponseType(v)
+		*e = FieldCreateTemplateFieldFieldMetaTypeEmail(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponseType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTypeEmail: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldMeta3 struct {
-	Label       *string                                                      `json:"label,omitempty"`
-	Placeholder *string                                                      `json:"placeholder,omitempty"`
-	Required    *bool                                                        `json:"required,omitempty"`
-	ReadOnly    *bool                                                        `json:"readOnly,omitempty"`
-	Type        FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponseType `json:"type"`
-	FontSize    *float64                                                     `json:"fontSize,omitempty"`
+type FieldCreateTemplateFieldTextAlignResponse3 string
+
+const (
+	FieldCreateTemplateFieldTextAlignResponse3Left   FieldCreateTemplateFieldTextAlignResponse3 = "left"
+	FieldCreateTemplateFieldTextAlignResponse3Center FieldCreateTemplateFieldTextAlignResponse3 = "center"
+	FieldCreateTemplateFieldTextAlignResponse3Right  FieldCreateTemplateFieldTextAlignResponse3 = "right"
+)
+
+func (e FieldCreateTemplateFieldTextAlignResponse3) ToPointer() *FieldCreateTemplateFieldTextAlignResponse3 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldTextAlignResponse3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = FieldCreateTemplateFieldTextAlignResponse3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTextAlignResponse3: %v", v)
+	}
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta3) GetLabel() *string {
+type FieldCreateTemplateFieldFieldMetaEmailResponse struct {
+	Label       *string                                     `json:"label,omitempty"`
+	Placeholder *string                                     `json:"placeholder,omitempty"`
+	Required    *bool                                       `json:"required,omitempty"`
+	ReadOnly    *bool                                       `json:"readOnly,omitempty"`
+	Type        FieldCreateTemplateFieldFieldMetaTypeEmail  `json:"type"`
+	FontSize    *float64                                    `json:"fontSize,omitempty"`
+	TextAlign   *FieldCreateTemplateFieldTextAlignResponse3 `json:"textAlign,omitempty"`
+}
+
+func (o *FieldCreateTemplateFieldFieldMetaEmailResponse) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta3) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaEmailResponse) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta3) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaEmailResponse) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta3) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaEmailResponse) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta3) GetType() FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponseType {
+func (o *FieldCreateTemplateFieldFieldMetaEmailResponse) GetType() FieldCreateTemplateFieldFieldMetaTypeEmail {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldMetaTemplatesFieldsResponseType("")
+		return FieldCreateTemplateFieldFieldMetaTypeEmail("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta3) GetFontSize() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaEmailResponse) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type FieldCreateTemplateFieldFieldMetaTemplatesFieldsType string
+func (o *FieldCreateTemplateFieldFieldMetaEmailResponse) GetTextAlign() *FieldCreateTemplateFieldTextAlignResponse3 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type FieldCreateTemplateFieldFieldMetaTypeName string
 
 const (
-	FieldCreateTemplateFieldFieldMetaTemplatesFieldsTypeName FieldCreateTemplateFieldFieldMetaTemplatesFieldsType = "name"
+	FieldCreateTemplateFieldFieldMetaTypeNameName FieldCreateTemplateFieldFieldMetaTypeName = "name"
 )
 
-func (e FieldCreateTemplateFieldFieldMetaTemplatesFieldsType) ToPointer() *FieldCreateTemplateFieldFieldMetaTemplatesFieldsType {
+func (e FieldCreateTemplateFieldFieldMetaTypeName) ToPointer() *FieldCreateTemplateFieldFieldMetaTypeName {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldMetaTemplatesFieldsType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldFieldMetaTypeName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "name":
-		*e = FieldCreateTemplateFieldFieldMetaTemplatesFieldsType(v)
+		*e = FieldCreateTemplateFieldFieldMetaTypeName(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTemplatesFieldsType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTypeName: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldMeta2 struct {
-	Label       *string                                              `json:"label,omitempty"`
-	Placeholder *string                                              `json:"placeholder,omitempty"`
-	Required    *bool                                                `json:"required,omitempty"`
-	ReadOnly    *bool                                                `json:"readOnly,omitempty"`
-	Type        FieldCreateTemplateFieldFieldMetaTemplatesFieldsType `json:"type"`
-	FontSize    *float64                                             `json:"fontSize,omitempty"`
+type FieldCreateTemplateFieldTextAlignResponse2 string
+
+const (
+	FieldCreateTemplateFieldTextAlignResponse2Left   FieldCreateTemplateFieldTextAlignResponse2 = "left"
+	FieldCreateTemplateFieldTextAlignResponse2Center FieldCreateTemplateFieldTextAlignResponse2 = "center"
+	FieldCreateTemplateFieldTextAlignResponse2Right  FieldCreateTemplateFieldTextAlignResponse2 = "right"
+)
+
+func (e FieldCreateTemplateFieldTextAlignResponse2) ToPointer() *FieldCreateTemplateFieldTextAlignResponse2 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldTextAlignResponse2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = FieldCreateTemplateFieldTextAlignResponse2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTextAlignResponse2: %v", v)
+	}
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta2) GetLabel() *string {
+type FieldCreateTemplateFieldFieldMetaNameResponse struct {
+	Label       *string                                     `json:"label,omitempty"`
+	Placeholder *string                                     `json:"placeholder,omitempty"`
+	Required    *bool                                       `json:"required,omitempty"`
+	ReadOnly    *bool                                       `json:"readOnly,omitempty"`
+	Type        FieldCreateTemplateFieldFieldMetaTypeName   `json:"type"`
+	FontSize    *float64                                    `json:"fontSize,omitempty"`
+	TextAlign   *FieldCreateTemplateFieldTextAlignResponse2 `json:"textAlign,omitempty"`
+}
+
+func (o *FieldCreateTemplateFieldFieldMetaNameResponse) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta2) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaNameResponse) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta2) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaNameResponse) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta2) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaNameResponse) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta2) GetType() FieldCreateTemplateFieldFieldMetaTemplatesFieldsType {
+func (o *FieldCreateTemplateFieldFieldMetaNameResponse) GetType() FieldCreateTemplateFieldFieldMetaTypeName {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldMetaTemplatesFieldsType("")
+		return FieldCreateTemplateFieldFieldMetaTypeName("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta2) GetFontSize() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaNameResponse) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type FieldCreateTemplateFieldFieldMetaType string
+func (o *FieldCreateTemplateFieldFieldMetaNameResponse) GetTextAlign() *FieldCreateTemplateFieldTextAlignResponse2 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type FieldCreateTemplateFieldFieldMetaTypeInitials string
 
 const (
-	FieldCreateTemplateFieldFieldMetaTypeInitials FieldCreateTemplateFieldFieldMetaType = "initials"
+	FieldCreateTemplateFieldFieldMetaTypeInitialsInitials FieldCreateTemplateFieldFieldMetaTypeInitials = "initials"
 )
 
-func (e FieldCreateTemplateFieldFieldMetaType) ToPointer() *FieldCreateTemplateFieldFieldMetaType {
+func (e FieldCreateTemplateFieldFieldMetaTypeInitials) ToPointer() *FieldCreateTemplateFieldFieldMetaTypeInitials {
 	return &e
 }
-func (e *FieldCreateTemplateFieldFieldMetaType) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateTemplateFieldFieldMetaTypeInitials) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "initials":
-		*e = FieldCreateTemplateFieldFieldMetaType(v)
+		*e = FieldCreateTemplateFieldFieldMetaTypeInitials(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaType: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldFieldMetaTypeInitials: %v", v)
 	}
 }
 
-type FieldCreateTemplateFieldFieldMeta1 struct {
-	Label       *string                               `json:"label,omitempty"`
-	Placeholder *string                               `json:"placeholder,omitempty"`
-	Required    *bool                                 `json:"required,omitempty"`
-	ReadOnly    *bool                                 `json:"readOnly,omitempty"`
-	Type        FieldCreateTemplateFieldFieldMetaType `json:"type"`
-	FontSize    *float64                              `json:"fontSize,omitempty"`
+type FieldCreateTemplateFieldTextAlignResponse1 string
+
+const (
+	FieldCreateTemplateFieldTextAlignResponse1Left   FieldCreateTemplateFieldTextAlignResponse1 = "left"
+	FieldCreateTemplateFieldTextAlignResponse1Center FieldCreateTemplateFieldTextAlignResponse1 = "center"
+	FieldCreateTemplateFieldTextAlignResponse1Right  FieldCreateTemplateFieldTextAlignResponse1 = "right"
+)
+
+func (e FieldCreateTemplateFieldTextAlignResponse1) ToPointer() *FieldCreateTemplateFieldTextAlignResponse1 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldTextAlignResponse1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = FieldCreateTemplateFieldTextAlignResponse1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldTextAlignResponse1: %v", v)
+	}
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta1) GetLabel() *string {
+type FieldCreateTemplateFieldFieldMetaInitialsResponse struct {
+	Label       *string                                       `json:"label,omitempty"`
+	Placeholder *string                                       `json:"placeholder,omitempty"`
+	Required    *bool                                         `json:"required,omitempty"`
+	ReadOnly    *bool                                         `json:"readOnly,omitempty"`
+	Type        FieldCreateTemplateFieldFieldMetaTypeInitials `json:"type"`
+	FontSize    *float64                                      `json:"fontSize,omitempty"`
+	TextAlign   *FieldCreateTemplateFieldTextAlignResponse1   `json:"textAlign,omitempty"`
+}
+
+func (o *FieldCreateTemplateFieldFieldMetaInitialsResponse) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta1) GetPlaceholder() *string {
+func (o *FieldCreateTemplateFieldFieldMetaInitialsResponse) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta1) GetRequired() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaInitialsResponse) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta1) GetReadOnly() *bool {
+func (o *FieldCreateTemplateFieldFieldMetaInitialsResponse) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta1) GetType() FieldCreateTemplateFieldFieldMetaType {
+func (o *FieldCreateTemplateFieldFieldMetaInitialsResponse) GetType() FieldCreateTemplateFieldFieldMetaTypeInitials {
 	if o == nil {
-		return FieldCreateTemplateFieldFieldMetaType("")
+		return FieldCreateTemplateFieldFieldMetaTypeInitials("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldFieldMeta1) GetFontSize() *float64 {
+func (o *FieldCreateTemplateFieldFieldMetaInitialsResponse) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
+func (o *FieldCreateTemplateFieldFieldMetaInitialsResponse) GetTextAlign() *FieldCreateTemplateFieldTextAlignResponse1 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
 type FieldCreateTemplateFieldFieldMetaUnionType string
 
 const (
-	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta1 FieldCreateTemplateFieldFieldMetaUnionType = "field-createTemplateField_fieldMeta_1"
-	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta2 FieldCreateTemplateFieldFieldMetaUnionType = "field-createTemplateField_fieldMeta_2"
-	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta3 FieldCreateTemplateFieldFieldMetaUnionType = "field-createTemplateField_fieldMeta_3"
-	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta4 FieldCreateTemplateFieldFieldMetaUnionType = "field-createTemplateField_fieldMeta_4"
-	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta5 FieldCreateTemplateFieldFieldMetaUnionType = "field-createTemplateField_fieldMeta_5"
-	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta6 FieldCreateTemplateFieldFieldMetaUnionType = "field-createTemplateField_fieldMeta_6"
-	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta7 FieldCreateTemplateFieldFieldMetaUnionType = "field-createTemplateField_fieldMeta_7"
-	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta8 FieldCreateTemplateFieldFieldMetaUnionType = "field-createTemplateField_fieldMeta_8"
-	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta9 FieldCreateTemplateFieldFieldMetaUnionType = "field-createTemplateField_fieldMeta_9"
+	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaInitialsResponse FieldCreateTemplateFieldFieldMetaUnionType = "field_createTemplateField_fieldMeta_Initials_response"
+	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaNameResponse     FieldCreateTemplateFieldFieldMetaUnionType = "field_createTemplateField_fieldMeta_Name_response"
+	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaEmailResponse    FieldCreateTemplateFieldFieldMetaUnionType = "field_createTemplateField_fieldMeta_Email_response"
+	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaDateResponse     FieldCreateTemplateFieldFieldMetaUnionType = "field_createTemplateField_fieldMeta_Date_response"
+	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaTextResponse     FieldCreateTemplateFieldFieldMetaUnionType = "field_createTemplateField_fieldMeta_Text_response"
+	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaNumberResponse   FieldCreateTemplateFieldFieldMetaUnionType = "field_createTemplateField_fieldMeta_Number_response"
+	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaRadioResponse    FieldCreateTemplateFieldFieldMetaUnionType = "field_createTemplateField_fieldMeta_Radio_response"
+	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaCheckboxResponse FieldCreateTemplateFieldFieldMetaUnionType = "field_createTemplateField_fieldMeta_Checkbox_response"
+	FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaDropdownResponse FieldCreateTemplateFieldFieldMetaUnionType = "field_createTemplateField_fieldMeta_Dropdown_response"
 )
 
-type FieldCreateTemplateFieldFieldMeta struct {
-	FieldCreateTemplateFieldFieldMeta1 *FieldCreateTemplateFieldFieldMeta1 `queryParam:"inline"`
-	FieldCreateTemplateFieldFieldMeta2 *FieldCreateTemplateFieldFieldMeta2 `queryParam:"inline"`
-	FieldCreateTemplateFieldFieldMeta3 *FieldCreateTemplateFieldFieldMeta3 `queryParam:"inline"`
-	FieldCreateTemplateFieldFieldMeta4 *FieldCreateTemplateFieldFieldMeta4 `queryParam:"inline"`
-	FieldCreateTemplateFieldFieldMeta5 *FieldCreateTemplateFieldFieldMeta5 `queryParam:"inline"`
-	FieldCreateTemplateFieldFieldMeta6 *FieldCreateTemplateFieldFieldMeta6 `queryParam:"inline"`
-	FieldCreateTemplateFieldFieldMeta7 *FieldCreateTemplateFieldFieldMeta7 `queryParam:"inline"`
-	FieldCreateTemplateFieldFieldMeta8 *FieldCreateTemplateFieldFieldMeta8 `queryParam:"inline"`
-	FieldCreateTemplateFieldFieldMeta9 *FieldCreateTemplateFieldFieldMeta9 `queryParam:"inline"`
+type FieldCreateTemplateFieldFieldMetaUnion struct {
+	FieldCreateTemplateFieldFieldMetaInitialsResponse *FieldCreateTemplateFieldFieldMetaInitialsResponse `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldMetaNameResponse     *FieldCreateTemplateFieldFieldMetaNameResponse     `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldMetaEmailResponse    *FieldCreateTemplateFieldFieldMetaEmailResponse    `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldMetaDateResponse     *FieldCreateTemplateFieldFieldMetaDateResponse     `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldMetaTextResponse     *FieldCreateTemplateFieldFieldMetaTextResponse     `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldMetaNumberResponse   *FieldCreateTemplateFieldFieldMetaNumberResponse   `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldMetaRadioResponse    *FieldCreateTemplateFieldFieldMetaRadioResponse    `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldMetaCheckboxResponse *FieldCreateTemplateFieldFieldMetaCheckboxResponse `queryParam:"inline"`
+	FieldCreateTemplateFieldFieldMetaDropdownResponse *FieldCreateTemplateFieldFieldMetaDropdownResponse `queryParam:"inline"`
 
 	Type FieldCreateTemplateFieldFieldMetaUnionType
 }
 
-func CreateFieldCreateTemplateFieldFieldMetaFieldCreateTemplateFieldFieldMeta1(fieldCreateTemplateFieldFieldMeta1 FieldCreateTemplateFieldFieldMeta1) FieldCreateTemplateFieldFieldMeta {
-	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta1
+func CreateFieldCreateTemplateFieldFieldMetaUnionFieldCreateTemplateFieldFieldMetaInitialsResponse(fieldCreateTemplateFieldFieldMetaInitialsResponse FieldCreateTemplateFieldFieldMetaInitialsResponse) FieldCreateTemplateFieldFieldMetaUnion {
+	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaInitialsResponse
 
-	return FieldCreateTemplateFieldFieldMeta{
-		FieldCreateTemplateFieldFieldMeta1: &fieldCreateTemplateFieldFieldMeta1,
-		Type:                               typ,
+	return FieldCreateTemplateFieldFieldMetaUnion{
+		FieldCreateTemplateFieldFieldMetaInitialsResponse: &fieldCreateTemplateFieldFieldMetaInitialsResponse,
+		Type: typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldMetaFieldCreateTemplateFieldFieldMeta2(fieldCreateTemplateFieldFieldMeta2 FieldCreateTemplateFieldFieldMeta2) FieldCreateTemplateFieldFieldMeta {
-	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta2
+func CreateFieldCreateTemplateFieldFieldMetaUnionFieldCreateTemplateFieldFieldMetaNameResponse(fieldCreateTemplateFieldFieldMetaNameResponse FieldCreateTemplateFieldFieldMetaNameResponse) FieldCreateTemplateFieldFieldMetaUnion {
+	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaNameResponse
 
-	return FieldCreateTemplateFieldFieldMeta{
-		FieldCreateTemplateFieldFieldMeta2: &fieldCreateTemplateFieldFieldMeta2,
-		Type:                               typ,
+	return FieldCreateTemplateFieldFieldMetaUnion{
+		FieldCreateTemplateFieldFieldMetaNameResponse: &fieldCreateTemplateFieldFieldMetaNameResponse,
+		Type: typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldMetaFieldCreateTemplateFieldFieldMeta3(fieldCreateTemplateFieldFieldMeta3 FieldCreateTemplateFieldFieldMeta3) FieldCreateTemplateFieldFieldMeta {
-	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta3
+func CreateFieldCreateTemplateFieldFieldMetaUnionFieldCreateTemplateFieldFieldMetaEmailResponse(fieldCreateTemplateFieldFieldMetaEmailResponse FieldCreateTemplateFieldFieldMetaEmailResponse) FieldCreateTemplateFieldFieldMetaUnion {
+	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaEmailResponse
 
-	return FieldCreateTemplateFieldFieldMeta{
-		FieldCreateTemplateFieldFieldMeta3: &fieldCreateTemplateFieldFieldMeta3,
-		Type:                               typ,
+	return FieldCreateTemplateFieldFieldMetaUnion{
+		FieldCreateTemplateFieldFieldMetaEmailResponse: &fieldCreateTemplateFieldFieldMetaEmailResponse,
+		Type: typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldMetaFieldCreateTemplateFieldFieldMeta4(fieldCreateTemplateFieldFieldMeta4 FieldCreateTemplateFieldFieldMeta4) FieldCreateTemplateFieldFieldMeta {
-	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta4
+func CreateFieldCreateTemplateFieldFieldMetaUnionFieldCreateTemplateFieldFieldMetaDateResponse(fieldCreateTemplateFieldFieldMetaDateResponse FieldCreateTemplateFieldFieldMetaDateResponse) FieldCreateTemplateFieldFieldMetaUnion {
+	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaDateResponse
 
-	return FieldCreateTemplateFieldFieldMeta{
-		FieldCreateTemplateFieldFieldMeta4: &fieldCreateTemplateFieldFieldMeta4,
-		Type:                               typ,
+	return FieldCreateTemplateFieldFieldMetaUnion{
+		FieldCreateTemplateFieldFieldMetaDateResponse: &fieldCreateTemplateFieldFieldMetaDateResponse,
+		Type: typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldMetaFieldCreateTemplateFieldFieldMeta5(fieldCreateTemplateFieldFieldMeta5 FieldCreateTemplateFieldFieldMeta5) FieldCreateTemplateFieldFieldMeta {
-	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta5
+func CreateFieldCreateTemplateFieldFieldMetaUnionFieldCreateTemplateFieldFieldMetaTextResponse(fieldCreateTemplateFieldFieldMetaTextResponse FieldCreateTemplateFieldFieldMetaTextResponse) FieldCreateTemplateFieldFieldMetaUnion {
+	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaTextResponse
 
-	return FieldCreateTemplateFieldFieldMeta{
-		FieldCreateTemplateFieldFieldMeta5: &fieldCreateTemplateFieldFieldMeta5,
-		Type:                               typ,
+	return FieldCreateTemplateFieldFieldMetaUnion{
+		FieldCreateTemplateFieldFieldMetaTextResponse: &fieldCreateTemplateFieldFieldMetaTextResponse,
+		Type: typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldMetaFieldCreateTemplateFieldFieldMeta6(fieldCreateTemplateFieldFieldMeta6 FieldCreateTemplateFieldFieldMeta6) FieldCreateTemplateFieldFieldMeta {
-	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta6
+func CreateFieldCreateTemplateFieldFieldMetaUnionFieldCreateTemplateFieldFieldMetaNumberResponse(fieldCreateTemplateFieldFieldMetaNumberResponse FieldCreateTemplateFieldFieldMetaNumberResponse) FieldCreateTemplateFieldFieldMetaUnion {
+	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaNumberResponse
 
-	return FieldCreateTemplateFieldFieldMeta{
-		FieldCreateTemplateFieldFieldMeta6: &fieldCreateTemplateFieldFieldMeta6,
-		Type:                               typ,
+	return FieldCreateTemplateFieldFieldMetaUnion{
+		FieldCreateTemplateFieldFieldMetaNumberResponse: &fieldCreateTemplateFieldFieldMetaNumberResponse,
+		Type: typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldMetaFieldCreateTemplateFieldFieldMeta7(fieldCreateTemplateFieldFieldMeta7 FieldCreateTemplateFieldFieldMeta7) FieldCreateTemplateFieldFieldMeta {
-	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta7
+func CreateFieldCreateTemplateFieldFieldMetaUnionFieldCreateTemplateFieldFieldMetaRadioResponse(fieldCreateTemplateFieldFieldMetaRadioResponse FieldCreateTemplateFieldFieldMetaRadioResponse) FieldCreateTemplateFieldFieldMetaUnion {
+	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaRadioResponse
 
-	return FieldCreateTemplateFieldFieldMeta{
-		FieldCreateTemplateFieldFieldMeta7: &fieldCreateTemplateFieldFieldMeta7,
-		Type:                               typ,
+	return FieldCreateTemplateFieldFieldMetaUnion{
+		FieldCreateTemplateFieldFieldMetaRadioResponse: &fieldCreateTemplateFieldFieldMetaRadioResponse,
+		Type: typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldMetaFieldCreateTemplateFieldFieldMeta8(fieldCreateTemplateFieldFieldMeta8 FieldCreateTemplateFieldFieldMeta8) FieldCreateTemplateFieldFieldMeta {
-	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta8
+func CreateFieldCreateTemplateFieldFieldMetaUnionFieldCreateTemplateFieldFieldMetaCheckboxResponse(fieldCreateTemplateFieldFieldMetaCheckboxResponse FieldCreateTemplateFieldFieldMetaCheckboxResponse) FieldCreateTemplateFieldFieldMetaUnion {
+	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaCheckboxResponse
 
-	return FieldCreateTemplateFieldFieldMeta{
-		FieldCreateTemplateFieldFieldMeta8: &fieldCreateTemplateFieldFieldMeta8,
-		Type:                               typ,
+	return FieldCreateTemplateFieldFieldMetaUnion{
+		FieldCreateTemplateFieldFieldMetaCheckboxResponse: &fieldCreateTemplateFieldFieldMetaCheckboxResponse,
+		Type: typ,
 	}
 }
 
-func CreateFieldCreateTemplateFieldFieldMetaFieldCreateTemplateFieldFieldMeta9(fieldCreateTemplateFieldFieldMeta9 FieldCreateTemplateFieldFieldMeta9) FieldCreateTemplateFieldFieldMeta {
-	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta9
+func CreateFieldCreateTemplateFieldFieldMetaUnionFieldCreateTemplateFieldFieldMetaDropdownResponse(fieldCreateTemplateFieldFieldMetaDropdownResponse FieldCreateTemplateFieldFieldMetaDropdownResponse) FieldCreateTemplateFieldFieldMetaUnion {
+	typ := FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaDropdownResponse
 
-	return FieldCreateTemplateFieldFieldMeta{
-		FieldCreateTemplateFieldFieldMeta9: &fieldCreateTemplateFieldFieldMeta9,
-		Type:                               typ,
+	return FieldCreateTemplateFieldFieldMetaUnion{
+		FieldCreateTemplateFieldFieldMetaDropdownResponse: &fieldCreateTemplateFieldFieldMetaDropdownResponse,
+		Type: typ,
 	}
 }
 
-func (u *FieldCreateTemplateFieldFieldMeta) UnmarshalJSON(data []byte) error {
+func (u *FieldCreateTemplateFieldFieldMetaUnion) UnmarshalJSON(data []byte) error {
 
-	var fieldCreateTemplateFieldFieldMeta1 FieldCreateTemplateFieldFieldMeta1 = FieldCreateTemplateFieldFieldMeta1{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMeta1, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldFieldMeta1 = &fieldCreateTemplateFieldFieldMeta1
-		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta1
+	var fieldCreateTemplateFieldFieldMetaRadioResponse FieldCreateTemplateFieldFieldMetaRadioResponse = FieldCreateTemplateFieldFieldMetaRadioResponse{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMetaRadioResponse, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldMetaRadioResponse = &fieldCreateTemplateFieldFieldMetaRadioResponse
+		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaRadioResponse
 		return nil
 	}
 
-	var fieldCreateTemplateFieldFieldMeta2 FieldCreateTemplateFieldFieldMeta2 = FieldCreateTemplateFieldFieldMeta2{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMeta2, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldFieldMeta2 = &fieldCreateTemplateFieldFieldMeta2
-		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta2
+	var fieldCreateTemplateFieldFieldMetaInitialsResponse FieldCreateTemplateFieldFieldMetaInitialsResponse = FieldCreateTemplateFieldFieldMetaInitialsResponse{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMetaInitialsResponse, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldMetaInitialsResponse = &fieldCreateTemplateFieldFieldMetaInitialsResponse
+		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaInitialsResponse
 		return nil
 	}
 
-	var fieldCreateTemplateFieldFieldMeta3 FieldCreateTemplateFieldFieldMeta3 = FieldCreateTemplateFieldFieldMeta3{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMeta3, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldFieldMeta3 = &fieldCreateTemplateFieldFieldMeta3
-		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta3
+	var fieldCreateTemplateFieldFieldMetaNameResponse FieldCreateTemplateFieldFieldMetaNameResponse = FieldCreateTemplateFieldFieldMetaNameResponse{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMetaNameResponse, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldMetaNameResponse = &fieldCreateTemplateFieldFieldMetaNameResponse
+		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaNameResponse
 		return nil
 	}
 
-	var fieldCreateTemplateFieldFieldMeta4 FieldCreateTemplateFieldFieldMeta4 = FieldCreateTemplateFieldFieldMeta4{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMeta4, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldFieldMeta4 = &fieldCreateTemplateFieldFieldMeta4
-		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta4
+	var fieldCreateTemplateFieldFieldMetaEmailResponse FieldCreateTemplateFieldFieldMetaEmailResponse = FieldCreateTemplateFieldFieldMetaEmailResponse{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMetaEmailResponse, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldMetaEmailResponse = &fieldCreateTemplateFieldFieldMetaEmailResponse
+		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaEmailResponse
 		return nil
 	}
 
-	var fieldCreateTemplateFieldFieldMeta7 FieldCreateTemplateFieldFieldMeta7 = FieldCreateTemplateFieldFieldMeta7{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMeta7, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldFieldMeta7 = &fieldCreateTemplateFieldFieldMeta7
-		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta7
+	var fieldCreateTemplateFieldFieldMetaDateResponse FieldCreateTemplateFieldFieldMetaDateResponse = FieldCreateTemplateFieldFieldMetaDateResponse{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMetaDateResponse, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldMetaDateResponse = &fieldCreateTemplateFieldFieldMetaDateResponse
+		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaDateResponse
 		return nil
 	}
 
-	var fieldCreateTemplateFieldFieldMeta9 FieldCreateTemplateFieldFieldMeta9 = FieldCreateTemplateFieldFieldMeta9{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMeta9, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldFieldMeta9 = &fieldCreateTemplateFieldFieldMeta9
-		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta9
+	var fieldCreateTemplateFieldFieldMetaDropdownResponse FieldCreateTemplateFieldFieldMetaDropdownResponse = FieldCreateTemplateFieldFieldMetaDropdownResponse{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMetaDropdownResponse, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldMetaDropdownResponse = &fieldCreateTemplateFieldFieldMetaDropdownResponse
+		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaDropdownResponse
 		return nil
 	}
 
-	var fieldCreateTemplateFieldFieldMeta5 FieldCreateTemplateFieldFieldMeta5 = FieldCreateTemplateFieldFieldMeta5{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMeta5, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldFieldMeta5 = &fieldCreateTemplateFieldFieldMeta5
-		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta5
+	var fieldCreateTemplateFieldFieldMetaCheckboxResponse FieldCreateTemplateFieldFieldMetaCheckboxResponse = FieldCreateTemplateFieldFieldMetaCheckboxResponse{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMetaCheckboxResponse, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldMetaCheckboxResponse = &fieldCreateTemplateFieldFieldMetaCheckboxResponse
+		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaCheckboxResponse
 		return nil
 	}
 
-	var fieldCreateTemplateFieldFieldMeta8 FieldCreateTemplateFieldFieldMeta8 = FieldCreateTemplateFieldFieldMeta8{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMeta8, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldFieldMeta8 = &fieldCreateTemplateFieldFieldMeta8
-		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta8
+	var fieldCreateTemplateFieldFieldMetaTextResponse FieldCreateTemplateFieldFieldMetaTextResponse = FieldCreateTemplateFieldFieldMetaTextResponse{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMetaTextResponse, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldMetaTextResponse = &fieldCreateTemplateFieldFieldMetaTextResponse
+		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaTextResponse
 		return nil
 	}
 
-	var fieldCreateTemplateFieldFieldMeta6 FieldCreateTemplateFieldFieldMeta6 = FieldCreateTemplateFieldFieldMeta6{}
-	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMeta6, "", true, true); err == nil {
-		u.FieldCreateTemplateFieldFieldMeta6 = &fieldCreateTemplateFieldFieldMeta6
-		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMeta6
+	var fieldCreateTemplateFieldFieldMetaNumberResponse FieldCreateTemplateFieldFieldMetaNumberResponse = FieldCreateTemplateFieldFieldMetaNumberResponse{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldFieldMetaNumberResponse, "", true, true); err == nil {
+		u.FieldCreateTemplateFieldFieldMetaNumberResponse = &fieldCreateTemplateFieldFieldMetaNumberResponse
+		u.Type = FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaNumberResponse
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for FieldCreateTemplateFieldFieldMeta", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for FieldCreateTemplateFieldFieldMetaUnion", string(data))
 }
 
-func (u FieldCreateTemplateFieldFieldMeta) MarshalJSON() ([]byte, error) {
-	if u.FieldCreateTemplateFieldFieldMeta1 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMeta1, "", true)
+func (u FieldCreateTemplateFieldFieldMetaUnion) MarshalJSON() ([]byte, error) {
+	if u.FieldCreateTemplateFieldFieldMetaInitialsResponse != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMetaInitialsResponse, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldFieldMeta2 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMeta2, "", true)
+	if u.FieldCreateTemplateFieldFieldMetaNameResponse != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMetaNameResponse, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldFieldMeta3 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMeta3, "", true)
+	if u.FieldCreateTemplateFieldFieldMetaEmailResponse != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMetaEmailResponse, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldFieldMeta4 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMeta4, "", true)
+	if u.FieldCreateTemplateFieldFieldMetaDateResponse != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMetaDateResponse, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldFieldMeta5 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMeta5, "", true)
+	if u.FieldCreateTemplateFieldFieldMetaTextResponse != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMetaTextResponse, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldFieldMeta6 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMeta6, "", true)
+	if u.FieldCreateTemplateFieldFieldMetaNumberResponse != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMetaNumberResponse, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldFieldMeta7 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMeta7, "", true)
+	if u.FieldCreateTemplateFieldFieldMetaRadioResponse != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMetaRadioResponse, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldFieldMeta8 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMeta8, "", true)
+	if u.FieldCreateTemplateFieldFieldMetaCheckboxResponse != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMetaCheckboxResponse, "", true)
 	}
 
-	if u.FieldCreateTemplateFieldFieldMeta9 != nil {
-		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMeta9, "", true)
+	if u.FieldCreateTemplateFieldFieldMetaDropdownResponse != nil {
+		return utils.MarshalJSON(u.FieldCreateTemplateFieldFieldMetaDropdownResponse, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type FieldCreateTemplateFieldFieldMeta: all fields are null")
+	return nil, errors.New("could not marshal union type FieldCreateTemplateFieldFieldMetaUnion: all fields are null")
 }
 
 // FieldCreateTemplateFieldResponseBody - Successful response
 type FieldCreateTemplateFieldResponseBody struct {
-	Type        FieldCreateTemplateFieldType `json:"type"`
-	ID          int64                        `json:"id"`
-	SecondaryID string                       `json:"secondaryId"`
-	DocumentID  *int64                       `json:"documentId"`
-	TemplateID  *int64                       `json:"templateId"`
-	RecipientID int64                        `json:"recipientId"`
+	Type        FieldCreateTemplateFieldTypeResponse `json:"type"`
+	ID          float64                              `json:"id"`
+	SecondaryID string                               `json:"secondaryId"`
+	DocumentID  *float64                             `json:"documentId"`
+	TemplateID  *float64                             `json:"templateId"`
+	RecipientID float64                              `json:"recipientId"`
 	// The page number of the field on the document. Starts from 1.
-	Page       float64                            `json:"page"`
-	PositionX  any                                `json:"positionX,omitempty"`
-	PositionY  any                                `json:"positionY,omitempty"`
-	Width      any                                `json:"width,omitempty"`
-	Height     any                                `json:"height,omitempty"`
-	CustomText string                             `json:"customText"`
-	Inserted   bool                               `json:"inserted"`
-	FieldMeta  *FieldCreateTemplateFieldFieldMeta `json:"fieldMeta"`
+	Page       float64                                 `json:"page"`
+	PositionX  any                                     `json:"positionX,omitempty"`
+	PositionY  any                                     `json:"positionY,omitempty"`
+	Width      any                                     `json:"width,omitempty"`
+	Height     any                                     `json:"height,omitempty"`
+	CustomText string                                  `json:"customText"`
+	Inserted   bool                                    `json:"inserted"`
+	FieldMeta  *FieldCreateTemplateFieldFieldMetaUnion `json:"fieldMeta"`
 }
 
-func (o *FieldCreateTemplateFieldResponseBody) GetType() FieldCreateTemplateFieldType {
+func (o *FieldCreateTemplateFieldResponseBody) GetType() FieldCreateTemplateFieldTypeResponse {
 	if o == nil {
-		return FieldCreateTemplateFieldType("")
+		return FieldCreateTemplateFieldTypeResponse("")
 	}
 	return o.Type
 }
 
-func (o *FieldCreateTemplateFieldResponseBody) GetID() int64 {
+func (o *FieldCreateTemplateFieldResponseBody) GetID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.ID
 }
@@ -3246,23 +3690,23 @@ func (o *FieldCreateTemplateFieldResponseBody) GetSecondaryID() string {
 	return o.SecondaryID
 }
 
-func (o *FieldCreateTemplateFieldResponseBody) GetDocumentID() *int64 {
+func (o *FieldCreateTemplateFieldResponseBody) GetDocumentID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DocumentID
 }
 
-func (o *FieldCreateTemplateFieldResponseBody) GetTemplateID() *int64 {
+func (o *FieldCreateTemplateFieldResponseBody) GetTemplateID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.TemplateID
 }
 
-func (o *FieldCreateTemplateFieldResponseBody) GetRecipientID() int64 {
+func (o *FieldCreateTemplateFieldResponseBody) GetRecipientID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.RecipientID
 }
@@ -3316,7 +3760,7 @@ func (o *FieldCreateTemplateFieldResponseBody) GetInserted() bool {
 	return o.Inserted
 }
 
-func (o *FieldCreateTemplateFieldResponseBody) GetFieldMeta() *FieldCreateTemplateFieldFieldMeta {
+func (o *FieldCreateTemplateFieldResponseBody) GetFieldMeta() *FieldCreateTemplateFieldFieldMetaUnion {
 	if o == nil {
 		return nil
 	}

@@ -7,80 +7,80 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type DocumentFindDocumentsDocumentsIssues struct {
+type DocumentFindDocumentsInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentFindDocumentsDocumentsIssues) GetMessage() string {
+func (o *DocumentFindDocumentsInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// DocumentFindDocumentsDocumentsResponseResponseBody - Internal server error
-type DocumentFindDocumentsDocumentsResponseResponseBody struct {
+// DocumentFindDocumentsInternalServerError - Internal server error
+type DocumentFindDocumentsInternalServerError struct {
+	Message  string                                          `json:"message"`
+	Code     string                                          `json:"code"`
+	Issues   []DocumentFindDocumentsInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                         `json:"-"`
+}
+
+var _ error = &DocumentFindDocumentsInternalServerError{}
+
+func (e *DocumentFindDocumentsInternalServerError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type DocumentFindDocumentsNotFoundIssue struct {
+	Message string `json:"message"`
+}
+
+func (o *DocumentFindDocumentsNotFoundIssue) GetMessage() string {
+	if o == nil {
+		return ""
+	}
+	return o.Message
+}
+
+// DocumentFindDocumentsNotFoundError - Not found
+type DocumentFindDocumentsNotFoundError struct {
+	Message  string                               `json:"message"`
+	Code     string                               `json:"code"`
+	Issues   []DocumentFindDocumentsNotFoundIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata              `json:"-"`
+}
+
+var _ error = &DocumentFindDocumentsNotFoundError{}
+
+func (e *DocumentFindDocumentsNotFoundError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type DocumentFindDocumentsBadRequestIssue struct {
+	Message string `json:"message"`
+}
+
+func (o *DocumentFindDocumentsBadRequestIssue) GetMessage() string {
+	if o == nil {
+		return ""
+	}
+	return o.Message
+}
+
+// DocumentFindDocumentsBadRequestError - Invalid input data
+type DocumentFindDocumentsBadRequestError struct {
 	Message  string                                 `json:"message"`
 	Code     string                                 `json:"code"`
-	Issues   []DocumentFindDocumentsDocumentsIssues `json:"issues,omitempty"`
+	Issues   []DocumentFindDocumentsBadRequestIssue `json:"issues,omitempty"`
 	HTTPMeta components.HTTPMetadata                `json:"-"`
 }
 
-var _ error = &DocumentFindDocumentsDocumentsResponseResponseBody{}
+var _ error = &DocumentFindDocumentsBadRequestError{}
 
-func (e *DocumentFindDocumentsDocumentsResponseResponseBody) Error() string {
-	data, _ := json.Marshal(e)
-	return string(data)
-}
-
-type DocumentFindDocumentsIssues struct {
-	Message string `json:"message"`
-}
-
-func (o *DocumentFindDocumentsIssues) GetMessage() string {
-	if o == nil {
-		return ""
-	}
-	return o.Message
-}
-
-// DocumentFindDocumentsDocumentsResponseBody - Not found
-type DocumentFindDocumentsDocumentsResponseBody struct {
-	Message  string                        `json:"message"`
-	Code     string                        `json:"code"`
-	Issues   []DocumentFindDocumentsIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata       `json:"-"`
-}
-
-var _ error = &DocumentFindDocumentsDocumentsResponseBody{}
-
-func (e *DocumentFindDocumentsDocumentsResponseBody) Error() string {
-	data, _ := json.Marshal(e)
-	return string(data)
-}
-
-type Issues struct {
-	Message string `json:"message"`
-}
-
-func (o *Issues) GetMessage() string {
-	if o == nil {
-		return ""
-	}
-	return o.Message
-}
-
-// DocumentFindDocumentsResponseBody - Invalid input data
-type DocumentFindDocumentsResponseBody struct {
-	Message  string                  `json:"message"`
-	Code     string                  `json:"code"`
-	Issues   []Issues                `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata `json:"-"`
-}
-
-var _ error = &DocumentFindDocumentsResponseBody{}
-
-func (e *DocumentFindDocumentsResponseBody) Error() string {
+func (e *DocumentFindDocumentsBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

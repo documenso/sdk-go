@@ -8,3 +8,4 @@
 | `DocumentMoveDocumentToTeamStatusDraft`     | DRAFT                                       |
 | `DocumentMoveDocumentToTeamStatusPending`   | PENDING                                     |
 | `DocumentMoveDocumentToTeamStatusCompleted` | COMPLETED                                   |
+| `DocumentMoveDocumentToTeamStatusRejected`  | REJECTED                                    |

@@ -10,19 +10,19 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-// Source - Filter documents by how it was created.
-type Source string
+// QueryParamSource - Filter documents by how it was created.
+type QueryParamSource string
 
 const (
-	SourceDocument           Source = "DOCUMENT"
-	SourceTemplate           Source = "TEMPLATE"
-	SourceTemplateDirectLink Source = "TEMPLATE_DIRECT_LINK"
+	QueryParamSourceDocument           QueryParamSource = "DOCUMENT"
+	QueryParamSourceTemplate           QueryParamSource = "TEMPLATE"
+	QueryParamSourceTemplateDirectLink QueryParamSource = "TEMPLATE_DIRECT_LINK"
 )
 
-func (e Source) ToPointer() *Source {
+func (e QueryParamSource) ToPointer() *QueryParamSource {
 	return &e
 }
-func (e *Source) UnmarshalJSON(data []byte) error {
+func (e *QueryParamSource) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,26 +33,27 @@ func (e *Source) UnmarshalJSON(data []byte) error {
 	case "TEMPLATE":
 		fallthrough
 	case "TEMPLATE_DIRECT_LINK":
-		*e = Source(v)
+		*e = QueryParamSource(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Source: %v", v)
+		return fmt.Errorf("invalid value for QueryParamSource: %v", v)
 	}
 }
 
-// Status - Filter documents by the current status
-type Status string
+// QueryParamStatus - Filter documents by the current status
+type QueryParamStatus string
 
 const (
-	StatusDraft     Status = "DRAFT"
-	StatusPending   Status = "PENDING"
-	StatusCompleted Status = "COMPLETED"
+	QueryParamStatusDraft     QueryParamStatus = "DRAFT"
+	QueryParamStatusPending   QueryParamStatus = "PENDING"
+	QueryParamStatusCompleted QueryParamStatus = "COMPLETED"
+	QueryParamStatusRejected  QueryParamStatus = "REJECTED"
 )
 
-func (e Status) ToPointer() *Status {
+func (e QueryParamStatus) ToPointer() *QueryParamStatus {
 	return &e
 }
-func (e *Status) UnmarshalJSON(data []byte) error {
+func (e *QueryParamStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -63,10 +64,12 @@ func (e *Status) UnmarshalJSON(data []byte) error {
 	case "PENDING":
 		fallthrough
 	case "COMPLETED":
-		*e = Status(v)
+		fallthrough
+	case "REJECTED":
+		*e = QueryParamStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Status: %v", v)
+		return fmt.Errorf("invalid value for QueryParamStatus: %v", v)
 	}
 }
 
@@ -129,9 +132,9 @@ type DocumentFindDocumentsRequest struct {
 	// Filter documents by the template ID used to create it.
 	TemplateID *float64 `queryParam:"style=form,explode=true,name=templateId"`
 	// Filter documents by how it was created.
-	Source *Source `queryParam:"style=form,explode=true,name=source"`
+	Source *QueryParamSource `queryParam:"style=form,explode=true,name=source"`
 	// Filter documents by the current status
-	Status           *Status           `queryParam:"style=form,explode=true,name=status"`
+	Status           *QueryParamStatus `queryParam:"style=form,explode=true,name=status"`
 	OrderByColumn    *OrderByColumn    `queryParam:"style=form,explode=true,name=orderByColumn"`
 	OrderByDirection *OrderByDirection `default:"desc" queryParam:"style=form,explode=true,name=orderByDirection"`
 }
@@ -175,14 +178,14 @@ func (o *DocumentFindDocumentsRequest) GetTemplateID() *float64 {
 	return o.TemplateID
 }
 
-func (o *DocumentFindDocumentsRequest) GetSource() *Source {
+func (o *DocumentFindDocumentsRequest) GetSource() *QueryParamSource {
 	if o == nil {
 		return nil
 	}
 	return o.Source
 }
 
-func (o *DocumentFindDocumentsRequest) GetStatus() *Status {
+func (o *DocumentFindDocumentsRequest) GetStatus() *QueryParamStatus {
 	if o == nil {
 		return nil
 	}
@@ -232,18 +235,19 @@ func (e *DocumentFindDocumentsVisibility) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type DocumentFindDocumentsStatus string
+type DataStatus string
 
 const (
-	DocumentFindDocumentsStatusDraft     DocumentFindDocumentsStatus = "DRAFT"
-	DocumentFindDocumentsStatusPending   DocumentFindDocumentsStatus = "PENDING"
-	DocumentFindDocumentsStatusCompleted DocumentFindDocumentsStatus = "COMPLETED"
+	DataStatusDraft     DataStatus = "DRAFT"
+	DataStatusPending   DataStatus = "PENDING"
+	DataStatusCompleted DataStatus = "COMPLETED"
+	DataStatusRejected  DataStatus = "REJECTED"
 )
 
-func (e DocumentFindDocumentsStatus) ToPointer() *DocumentFindDocumentsStatus {
+func (e DataStatus) ToPointer() *DataStatus {
 	return &e
 }
-func (e *DocumentFindDocumentsStatus) UnmarshalJSON(data []byte) error {
+func (e *DataStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -254,25 +258,27 @@ func (e *DocumentFindDocumentsStatus) UnmarshalJSON(data []byte) error {
 	case "PENDING":
 		fallthrough
 	case "COMPLETED":
-		*e = DocumentFindDocumentsStatus(v)
+		fallthrough
+	case "REJECTED":
+		*e = DataStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DocumentFindDocumentsStatus: %v", v)
+		return fmt.Errorf("invalid value for DataStatus: %v", v)
 	}
 }
 
-type DocumentFindDocumentsSource string
+type DataSource string
 
 const (
-	DocumentFindDocumentsSourceDocument           DocumentFindDocumentsSource = "DOCUMENT"
-	DocumentFindDocumentsSourceTemplate           DocumentFindDocumentsSource = "TEMPLATE"
-	DocumentFindDocumentsSourceTemplateDirectLink DocumentFindDocumentsSource = "TEMPLATE_DIRECT_LINK"
+	DataSourceDocument           DataSource = "DOCUMENT"
+	DataSourceTemplate           DataSource = "TEMPLATE"
+	DataSourceTemplateDirectLink DataSource = "TEMPLATE_DIRECT_LINK"
 )
 
-func (e DocumentFindDocumentsSource) ToPointer() *DocumentFindDocumentsSource {
+func (e DataSource) ToPointer() *DataSource {
 	return &e
 }
-func (e *DocumentFindDocumentsSource) UnmarshalJSON(data []byte) error {
+func (e *DataSource) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -283,10 +289,10 @@ func (e *DocumentFindDocumentsSource) UnmarshalJSON(data []byte) error {
 	case "TEMPLATE":
 		fallthrough
 	case "TEMPLATE_DIRECT_LINK":
-		*e = DocumentFindDocumentsSource(v)
+		*e = DataSource(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DocumentFindDocumentsSource: %v", v)
+		return fmt.Errorf("invalid value for DataSource: %v", v)
 	}
 }
 
@@ -451,14 +457,14 @@ func (u DocumentFindDocumentsFormValues) MarshalJSON() ([]byte, error) {
 }
 
 type DocumentFindDocumentsUser struct {
-	ID    int64   `json:"id"`
+	ID    float64 `json:"id"`
 	Name  *string `json:"name"`
 	Email string  `json:"email"`
 }
 
-func (o *DocumentFindDocumentsUser) GetID() int64 {
+func (o *DocumentFindDocumentsUser) GetID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.ID
 }
@@ -480,10 +486,11 @@ func (o *DocumentFindDocumentsUser) GetEmail() string {
 type DocumentFindDocumentsRole string
 
 const (
-	DocumentFindDocumentsRoleCc       DocumentFindDocumentsRole = "CC"
-	DocumentFindDocumentsRoleSigner   DocumentFindDocumentsRole = "SIGNER"
-	DocumentFindDocumentsRoleViewer   DocumentFindDocumentsRole = "VIEWER"
-	DocumentFindDocumentsRoleApprover DocumentFindDocumentsRole = "APPROVER"
+	DocumentFindDocumentsRoleCc        DocumentFindDocumentsRole = "CC"
+	DocumentFindDocumentsRoleSigner    DocumentFindDocumentsRole = "SIGNER"
+	DocumentFindDocumentsRoleViewer    DocumentFindDocumentsRole = "VIEWER"
+	DocumentFindDocumentsRoleApprover  DocumentFindDocumentsRole = "APPROVER"
+	DocumentFindDocumentsRoleAssistant DocumentFindDocumentsRole = "ASSISTANT"
 )
 
 func (e DocumentFindDocumentsRole) ToPointer() *DocumentFindDocumentsRole {
@@ -502,6 +509,8 @@ func (e *DocumentFindDocumentsRole) UnmarshalJSON(data []byte) error {
 	case "VIEWER":
 		fallthrough
 	case "APPROVER":
+		fallthrough
+	case "ASSISTANT":
 		*e = DocumentFindDocumentsRole(v)
 		return nil
 	default:
@@ -647,172 +656,172 @@ func (e *DocumentFindDocumentsActionAuth) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type DocumentFindDocumentsDocumentsAuthOptions struct {
+type DocumentFindDocumentsRecipientAuthOptions struct {
 	// The type of authentication required for the recipient to access the document.
 	AccessAuth *DocumentFindDocumentsAccessAuth `json:"accessAuth"`
 	// The type of authentication required for the recipient to sign the document.
 	ActionAuth *DocumentFindDocumentsActionAuth `json:"actionAuth"`
 }
 
-func (o *DocumentFindDocumentsDocumentsAuthOptions) GetAccessAuth() *DocumentFindDocumentsAccessAuth {
+func (o *DocumentFindDocumentsRecipientAuthOptions) GetAccessAuth() *DocumentFindDocumentsAccessAuth {
 	if o == nil {
 		return nil
 	}
 	return o.AccessAuth
 }
 
-func (o *DocumentFindDocumentsDocumentsAuthOptions) GetActionAuth() *DocumentFindDocumentsActionAuth {
+func (o *DocumentFindDocumentsRecipientAuthOptions) GetActionAuth() *DocumentFindDocumentsActionAuth {
 	if o == nil {
 		return nil
 	}
 	return o.ActionAuth
 }
 
-type DocumentFindDocumentsRecipients struct {
+type DocumentFindDocumentsRecipient struct {
 	Role              DocumentFindDocumentsRole                  `json:"role"`
 	ReadStatus        DocumentFindDocumentsReadStatus            `json:"readStatus"`
 	SigningStatus     DocumentFindDocumentsSigningStatus         `json:"signingStatus"`
 	SendStatus        DocumentFindDocumentsSendStatus            `json:"sendStatus"`
-	ID                int64                                      `json:"id"`
-	DocumentID        *int64                                     `json:"documentId"`
-	TemplateID        *int64                                     `json:"templateId"`
+	ID                float64                                    `json:"id"`
+	DocumentID        *float64                                   `json:"documentId"`
+	TemplateID        *float64                                   `json:"templateId"`
 	Email             string                                     `json:"email"`
 	Name              string                                     `json:"name"`
 	Token             string                                     `json:"token"`
 	DocumentDeletedAt *string                                    `json:"documentDeletedAt"`
 	Expired           *string                                    `json:"expired"`
 	SignedAt          *string                                    `json:"signedAt"`
-	AuthOptions       *DocumentFindDocumentsDocumentsAuthOptions `json:"authOptions"`
+	AuthOptions       *DocumentFindDocumentsRecipientAuthOptions `json:"authOptions"`
 	// The order in which the recipient should sign the document. Only works if the document is set to sequential signing.
 	SigningOrder    *float64 `json:"signingOrder"`
 	RejectionReason *string  `json:"rejectionReason"`
 }
 
-func (o *DocumentFindDocumentsRecipients) GetRole() DocumentFindDocumentsRole {
+func (o *DocumentFindDocumentsRecipient) GetRole() DocumentFindDocumentsRole {
 	if o == nil {
 		return DocumentFindDocumentsRole("")
 	}
 	return o.Role
 }
 
-func (o *DocumentFindDocumentsRecipients) GetReadStatus() DocumentFindDocumentsReadStatus {
+func (o *DocumentFindDocumentsRecipient) GetReadStatus() DocumentFindDocumentsReadStatus {
 	if o == nil {
 		return DocumentFindDocumentsReadStatus("")
 	}
 	return o.ReadStatus
 }
 
-func (o *DocumentFindDocumentsRecipients) GetSigningStatus() DocumentFindDocumentsSigningStatus {
+func (o *DocumentFindDocumentsRecipient) GetSigningStatus() DocumentFindDocumentsSigningStatus {
 	if o == nil {
 		return DocumentFindDocumentsSigningStatus("")
 	}
 	return o.SigningStatus
 }
 
-func (o *DocumentFindDocumentsRecipients) GetSendStatus() DocumentFindDocumentsSendStatus {
+func (o *DocumentFindDocumentsRecipient) GetSendStatus() DocumentFindDocumentsSendStatus {
 	if o == nil {
 		return DocumentFindDocumentsSendStatus("")
 	}
 	return o.SendStatus
 }
 
-func (o *DocumentFindDocumentsRecipients) GetID() int64 {
+func (o *DocumentFindDocumentsRecipient) GetID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.ID
 }
 
-func (o *DocumentFindDocumentsRecipients) GetDocumentID() *int64 {
+func (o *DocumentFindDocumentsRecipient) GetDocumentID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DocumentID
 }
 
-func (o *DocumentFindDocumentsRecipients) GetTemplateID() *int64 {
+func (o *DocumentFindDocumentsRecipient) GetTemplateID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.TemplateID
 }
 
-func (o *DocumentFindDocumentsRecipients) GetEmail() string {
+func (o *DocumentFindDocumentsRecipient) GetEmail() string {
 	if o == nil {
 		return ""
 	}
 	return o.Email
 }
 
-func (o *DocumentFindDocumentsRecipients) GetName() string {
+func (o *DocumentFindDocumentsRecipient) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *DocumentFindDocumentsRecipients) GetToken() string {
+func (o *DocumentFindDocumentsRecipient) GetToken() string {
 	if o == nil {
 		return ""
 	}
 	return o.Token
 }
 
-func (o *DocumentFindDocumentsRecipients) GetDocumentDeletedAt() *string {
+func (o *DocumentFindDocumentsRecipient) GetDocumentDeletedAt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DocumentDeletedAt
 }
 
-func (o *DocumentFindDocumentsRecipients) GetExpired() *string {
+func (o *DocumentFindDocumentsRecipient) GetExpired() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Expired
 }
 
-func (o *DocumentFindDocumentsRecipients) GetSignedAt() *string {
+func (o *DocumentFindDocumentsRecipient) GetSignedAt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.SignedAt
 }
 
-func (o *DocumentFindDocumentsRecipients) GetAuthOptions() *DocumentFindDocumentsDocumentsAuthOptions {
+func (o *DocumentFindDocumentsRecipient) GetAuthOptions() *DocumentFindDocumentsRecipientAuthOptions {
 	if o == nil {
 		return nil
 	}
 	return o.AuthOptions
 }
 
-func (o *DocumentFindDocumentsRecipients) GetSigningOrder() *float64 {
+func (o *DocumentFindDocumentsRecipient) GetSigningOrder() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.SigningOrder
 }
 
-func (o *DocumentFindDocumentsRecipients) GetRejectionReason() *string {
+func (o *DocumentFindDocumentsRecipient) GetRejectionReason() *string {
 	if o == nil {
 		return nil
 	}
 	return o.RejectionReason
 }
 
-type Team struct {
-	ID  int64  `json:"id"`
-	URL string `json:"url"`
+type DocumentFindDocumentsTeam struct {
+	ID  float64 `json:"id"`
+	URL string  `json:"url"`
 }
 
-func (o *Team) GetID() int64 {
+func (o *DocumentFindDocumentsTeam) GetID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.ID
 }
 
-func (o *Team) GetURL() string {
+func (o *DocumentFindDocumentsTeam) GetURL() string {
 	if o == nil {
 		return ""
 	}
@@ -821,9 +830,9 @@ func (o *Team) GetURL() string {
 
 type DocumentFindDocumentsData struct {
 	Visibility DocumentFindDocumentsVisibility `json:"visibility"`
-	Status     DocumentFindDocumentsStatus     `json:"status"`
-	Source     DocumentFindDocumentsSource     `json:"source"`
-	ID         int64                           `json:"id"`
+	Status     DataStatus                      `json:"status"`
+	Source     DataSource                      `json:"source"`
+	ID         float64                         `json:"id"`
 	// A custom external ID you can use to identify the document.
 	ExternalID *string `json:"externalId"`
 	// The ID of the user that created this document.
@@ -836,11 +845,11 @@ type DocumentFindDocumentsData struct {
 	UpdatedAt      string                                     `json:"updatedAt"`
 	CompletedAt    *string                                    `json:"completedAt"`
 	DeletedAt      *string                                    `json:"deletedAt"`
-	TeamID         *int64                                     `json:"teamId"`
-	TemplateID     *int64                                     `json:"templateId"`
+	TeamID         *float64                                   `json:"teamId"`
+	TemplateID     *float64                                   `json:"templateId"`
 	User           DocumentFindDocumentsUser                  `json:"user"`
-	Recipients     []DocumentFindDocumentsRecipients          `json:"recipients"`
-	Team           *Team                                      `json:"team"`
+	Recipients     []DocumentFindDocumentsRecipient           `json:"recipients"`
+	Team           *DocumentFindDocumentsTeam                 `json:"team"`
 }
 
 func (o *DocumentFindDocumentsData) GetVisibility() DocumentFindDocumentsVisibility {
@@ -850,23 +859,23 @@ func (o *DocumentFindDocumentsData) GetVisibility() DocumentFindDocumentsVisibil
 	return o.Visibility
 }
 
-func (o *DocumentFindDocumentsData) GetStatus() DocumentFindDocumentsStatus {
+func (o *DocumentFindDocumentsData) GetStatus() DataStatus {
 	if o == nil {
-		return DocumentFindDocumentsStatus("")
+		return DataStatus("")
 	}
 	return o.Status
 }
 
-func (o *DocumentFindDocumentsData) GetSource() DocumentFindDocumentsSource {
+func (o *DocumentFindDocumentsData) GetSource() DataSource {
 	if o == nil {
-		return DocumentFindDocumentsSource("")
+		return DataSource("")
 	}
 	return o.Source
 }
 
-func (o *DocumentFindDocumentsData) GetID() int64 {
+func (o *DocumentFindDocumentsData) GetID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.ID
 }
@@ -941,14 +950,14 @@ func (o *DocumentFindDocumentsData) GetDeletedAt() *string {
 	return o.DeletedAt
 }
 
-func (o *DocumentFindDocumentsData) GetTeamID() *int64 {
+func (o *DocumentFindDocumentsData) GetTeamID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.TeamID
 }
 
-func (o *DocumentFindDocumentsData) GetTemplateID() *int64 {
+func (o *DocumentFindDocumentsData) GetTemplateID() *float64 {
 	if o == nil {
 		return nil
 	}
@@ -962,14 +971,14 @@ func (o *DocumentFindDocumentsData) GetUser() DocumentFindDocumentsUser {
 	return o.User
 }
 
-func (o *DocumentFindDocumentsData) GetRecipients() []DocumentFindDocumentsRecipients {
+func (o *DocumentFindDocumentsData) GetRecipients() []DocumentFindDocumentsRecipient {
 	if o == nil {
-		return []DocumentFindDocumentsRecipients{}
+		return []DocumentFindDocumentsRecipient{}
 	}
 	return o.Recipients
 }
 
-func (o *DocumentFindDocumentsData) GetTeam() *Team {
+func (o *DocumentFindDocumentsData) GetTeam() *DocumentFindDocumentsTeam {
 	if o == nil {
 		return nil
 	}

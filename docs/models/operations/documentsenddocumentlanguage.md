@@ -11,3 +11,5 @@ The language to use for email communications with recipients.
 | `DocumentSendDocumentLanguageEn` | en                               |
 | `DocumentSendDocumentLanguageFr` | fr                               |
 | `DocumentSendDocumentLanguageEs` | es                               |
+| `DocumentSendDocumentLanguageIt` | it                               |
+| `DocumentSendDocumentLanguagePl` | pl                               |

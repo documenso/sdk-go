@@ -1,9 +1,0 @@
-# TemplateCreateTemplateDirectLinkRequestBody
-
-
-## Fields
-
-| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
-| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `TemplateID`                                                                                                    | *float64*                                                                                                       | :heavy_check_mark:                                                                                              | N/A                                                                                                             |
-| `DirectRecipientID`                                                                                             | **float64*                                                                                                      | :heavy_minus_sign:                                                                                              | The of the recipient in the current template to transform into the primary recipient when the template is used. |

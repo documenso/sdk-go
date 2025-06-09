@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type RecipientCreateDocumentRecipientDocumentsRecipientsIssues struct {
+type RecipientCreateDocumentRecipientInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *RecipientCreateDocumentRecipientDocumentsRecipientsIssues) GetMessage() string {
+func (o *RecipientCreateDocumentRecipientInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// RecipientCreateDocumentRecipientDocumentsRecipientsResponseBody - Internal server error
-type RecipientCreateDocumentRecipientDocumentsRecipientsResponseBody struct {
-	Message  string                                                      `json:"message"`
-	Code     string                                                      `json:"code"`
-	Issues   []RecipientCreateDocumentRecipientDocumentsRecipientsIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                                     `json:"-"`
+// RecipientCreateDocumentRecipientInternalServerError - Internal server error
+type RecipientCreateDocumentRecipientInternalServerError struct {
+	Message  string                                                     `json:"message"`
+	Code     string                                                     `json:"code"`
+	Issues   []RecipientCreateDocumentRecipientInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                                    `json:"-"`
 }
 
-var _ error = &RecipientCreateDocumentRecipientDocumentsRecipientsResponseBody{}
+var _ error = &RecipientCreateDocumentRecipientInternalServerError{}
 
-func (e *RecipientCreateDocumentRecipientDocumentsRecipientsResponseBody) Error() string {
+func (e *RecipientCreateDocumentRecipientInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type RecipientCreateDocumentRecipientIssues struct {
+type RecipientCreateDocumentRecipientBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *RecipientCreateDocumentRecipientIssues) GetMessage() string {
+func (o *RecipientCreateDocumentRecipientBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// RecipientCreateDocumentRecipientResponseBody - Invalid input data
-type RecipientCreateDocumentRecipientResponseBody struct {
-	Message  string                                   `json:"message"`
-	Code     string                                   `json:"code"`
-	Issues   []RecipientCreateDocumentRecipientIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                  `json:"-"`
+// RecipientCreateDocumentRecipientBadRequestError - Invalid input data
+type RecipientCreateDocumentRecipientBadRequestError struct {
+	Message  string                                            `json:"message"`
+	Code     string                                            `json:"code"`
+	Issues   []RecipientCreateDocumentRecipientBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                           `json:"-"`
 }
 
-var _ error = &RecipientCreateDocumentRecipientResponseBody{}
+var _ error = &RecipientCreateDocumentRecipientBadRequestError{}
 
-func (e *RecipientCreateDocumentRecipientResponseBody) Error() string {
+func (e *RecipientCreateDocumentRecipientBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

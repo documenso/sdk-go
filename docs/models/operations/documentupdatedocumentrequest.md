@@ -1,0 +1,10 @@
+# DocumentUpdateDocumentRequest
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `DocumentID`                                                                                    | *float64*                                                                                       | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `Data`                                                                                          | [*operations.DocumentUpdateDocumentData](../../models/operations/documentupdatedocumentdata.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |
+| `Meta`                                                                                          | [*operations.DocumentUpdateDocumentMeta](../../models/operations/documentupdatedocumentmeta.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |

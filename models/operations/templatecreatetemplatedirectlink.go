@@ -6,20 +6,20 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateCreateTemplateDirectLinkRequestBody struct {
+type TemplateCreateTemplateDirectLinkRequest struct {
 	TemplateID float64 `json:"templateId"`
 	// The of the recipient in the current template to transform into the primary recipient when the template is used.
 	DirectRecipientID *float64 `json:"directRecipientId,omitempty"`
 }
 
-func (o *TemplateCreateTemplateDirectLinkRequestBody) GetTemplateID() float64 {
+func (o *TemplateCreateTemplateDirectLinkRequest) GetTemplateID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.TemplateID
 }
 
-func (o *TemplateCreateTemplateDirectLinkRequestBody) GetDirectRecipientID() *float64 {
+func (o *TemplateCreateTemplateDirectLinkRequest) GetDirectRecipientID() *float64 {
 	if o == nil {
 		return nil
 	}
@@ -28,12 +28,12 @@ func (o *TemplateCreateTemplateDirectLinkRequestBody) GetDirectRecipientID() *fl
 
 // TemplateCreateTemplateDirectLinkResponseBody - Successful response
 type TemplateCreateTemplateDirectLinkResponseBody struct {
-	ID                        string `json:"id"`
-	TemplateID                int64  `json:"templateId"`
-	Token                     string `json:"token"`
-	CreatedAt                 string `json:"createdAt"`
-	Enabled                   bool   `json:"enabled"`
-	DirectTemplateRecipientID int64  `json:"directTemplateRecipientId"`
+	ID                        string  `json:"id"`
+	TemplateID                float64 `json:"templateId"`
+	Token                     string  `json:"token"`
+	CreatedAt                 string  `json:"createdAt"`
+	Enabled                   bool    `json:"enabled"`
+	DirectTemplateRecipientID float64 `json:"directTemplateRecipientId"`
 }
 
 func (o *TemplateCreateTemplateDirectLinkResponseBody) GetID() string {
@@ -43,9 +43,9 @@ func (o *TemplateCreateTemplateDirectLinkResponseBody) GetID() string {
 	return o.ID
 }
 
-func (o *TemplateCreateTemplateDirectLinkResponseBody) GetTemplateID() int64 {
+func (o *TemplateCreateTemplateDirectLinkResponseBody) GetTemplateID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.TemplateID
 }
@@ -71,9 +71,9 @@ func (o *TemplateCreateTemplateDirectLinkResponseBody) GetEnabled() bool {
 	return o.Enabled
 }
 
-func (o *TemplateCreateTemplateDirectLinkResponseBody) GetDirectTemplateRecipientID() int64 {
+func (o *TemplateCreateTemplateDirectLinkResponseBody) GetDirectTemplateRecipientID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.DirectTemplateRecipientID
 }

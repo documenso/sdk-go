@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type FieldDeleteTemplateFieldTemplatesFieldsIssues struct {
+type FieldDeleteTemplateFieldInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *FieldDeleteTemplateFieldTemplatesFieldsIssues) GetMessage() string {
+func (o *FieldDeleteTemplateFieldInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// FieldDeleteTemplateFieldTemplatesFieldsResponseBody - Internal server error
-type FieldDeleteTemplateFieldTemplatesFieldsResponseBody struct {
-	Message  string                                          `json:"message"`
-	Code     string                                          `json:"code"`
-	Issues   []FieldDeleteTemplateFieldTemplatesFieldsIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                         `json:"-"`
+// FieldDeleteTemplateFieldInternalServerError - Internal server error
+type FieldDeleteTemplateFieldInternalServerError struct {
+	Message  string                                             `json:"message"`
+	Code     string                                             `json:"code"`
+	Issues   []FieldDeleteTemplateFieldInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                            `json:"-"`
 }
 
-var _ error = &FieldDeleteTemplateFieldTemplatesFieldsResponseBody{}
+var _ error = &FieldDeleteTemplateFieldInternalServerError{}
 
-func (e *FieldDeleteTemplateFieldTemplatesFieldsResponseBody) Error() string {
+func (e *FieldDeleteTemplateFieldInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type FieldDeleteTemplateFieldIssues struct {
+type FieldDeleteTemplateFieldBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *FieldDeleteTemplateFieldIssues) GetMessage() string {
+func (o *FieldDeleteTemplateFieldBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// FieldDeleteTemplateFieldResponseBody - Invalid input data
-type FieldDeleteTemplateFieldResponseBody struct {
-	Message  string                           `json:"message"`
-	Code     string                           `json:"code"`
-	Issues   []FieldDeleteTemplateFieldIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata          `json:"-"`
+// FieldDeleteTemplateFieldBadRequestError - Invalid input data
+type FieldDeleteTemplateFieldBadRequestError struct {
+	Message  string                                    `json:"message"`
+	Code     string                                    `json:"code"`
+	Issues   []FieldDeleteTemplateFieldBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                   `json:"-"`
 }
 
-var _ error = &FieldDeleteTemplateFieldResponseBody{}
+var _ error = &FieldDeleteTemplateFieldBadRequestError{}
 
-func (e *FieldDeleteTemplateFieldResponseBody) Error() string {
+func (e *FieldDeleteTemplateFieldBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

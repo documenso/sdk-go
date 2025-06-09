@@ -3,9 +3,10 @@
 
 ## Values
 
-| Name                                  | Value                                 |
-| ------------------------------------- | ------------------------------------- |
-| `TemplateGetTemplateByIDRoleCc`       | CC                                    |
-| `TemplateGetTemplateByIDRoleSigner`   | SIGNER                                |
-| `TemplateGetTemplateByIDRoleViewer`   | VIEWER                                |
-| `TemplateGetTemplateByIDRoleApprover` | APPROVER                              |
+| Name                                   | Value                                  |
+| -------------------------------------- | -------------------------------------- |
+| `TemplateGetTemplateByIDRoleCc`        | CC                                     |
+| `TemplateGetTemplateByIDRoleSigner`    | SIGNER                                 |
+| `TemplateGetTemplateByIDRoleViewer`    | VIEWER                                 |
+| `TemplateGetTemplateByIDRoleApprover`  | APPROVER                               |
+| `TemplateGetTemplateByIDRoleAssistant` | ASSISTANT                              |

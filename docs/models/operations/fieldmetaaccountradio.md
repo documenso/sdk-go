@@ -1,0 +1,13 @@
+# FieldMetaAccountRadio
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `Label`                                                                        | **string*                                                                      | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `Placeholder`                                                                  | **string*                                                                      | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `Required`                                                                     | **bool*                                                                        | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `ReadOnly`                                                                     | **bool*                                                                        | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `Type`                                                                         | [operations.TypeAccountRadio2](../../models/operations/typeaccountradio2.md)   | :heavy_check_mark:                                                             | N/A                                                                            |
+| `Values`                                                                       | [][operations.ValueAccountRadio](../../models/operations/valueaccountradio.md) | :heavy_minus_sign:                                                             | N/A                                                                            |

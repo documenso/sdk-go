@@ -8,11 +8,11 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateDuplicateTemplateRequestBody struct {
+type TemplateDuplicateTemplateRequest struct {
 	TemplateID float64 `json:"templateId"`
 }
 
-func (o *TemplateDuplicateTemplateRequestBody) GetTemplateID() float64 {
+func (o *TemplateDuplicateTemplateRequest) GetTemplateID() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -153,11 +153,11 @@ func (o *TemplateDuplicateTemplateAuthOptions) GetGlobalActionAuth() *TemplateDu
 type TemplateDuplicateTemplateResponseBody struct {
 	Type                   TemplateDuplicateTemplateType         `json:"type"`
 	Visibility             TemplateDuplicateTemplateVisibility   `json:"visibility"`
-	ID                     int64                                 `json:"id"`
+	ID                     float64                               `json:"id"`
 	ExternalID             *string                               `json:"externalId"`
 	Title                  string                                `json:"title"`
-	UserID                 int64                                 `json:"userId"`
-	TeamID                 *int64                                `json:"teamId"`
+	UserID                 float64                               `json:"userId"`
+	TeamID                 *float64                              `json:"teamId"`
 	AuthOptions            *TemplateDuplicateTemplateAuthOptions `json:"authOptions"`
 	TemplateDocumentDataID string                                `json:"templateDocumentDataId"`
 	CreatedAt              string                                `json:"createdAt"`
@@ -180,9 +180,9 @@ func (o *TemplateDuplicateTemplateResponseBody) GetVisibility() TemplateDuplicat
 	return o.Visibility
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetID() int64 {
+func (o *TemplateDuplicateTemplateResponseBody) GetID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.ID
 }
@@ -201,14 +201,14 @@ func (o *TemplateDuplicateTemplateResponseBody) GetTitle() string {
 	return o.Title
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetUserID() int64 {
+func (o *TemplateDuplicateTemplateResponseBody) GetUserID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.UserID
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetTeamID() *int64 {
+func (o *TemplateDuplicateTemplateResponseBody) GetTeamID() *float64 {
 	if o == nil {
 		return nil
 	}

@@ -1,0 +1,9 @@
+# DocumentFindDocumentsRecipientAuthOptions
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `AccessAuth`                                                                                             | [operations.DocumentFindDocumentsAccessAuth](../../models/operations/documentfinddocumentsaccessauth.md) | :heavy_check_mark:                                                                                       | The type of authentication required for the recipient to access the document.                            |
+| `ActionAuth`                                                                                             | [operations.DocumentFindDocumentsActionAuth](../../models/operations/documentfinddocumentsactionauth.md) | :heavy_check_mark:                                                                                       | The type of authentication required for the recipient to sign the document.                              |

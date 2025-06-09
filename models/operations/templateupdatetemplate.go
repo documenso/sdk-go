@@ -9,18 +9,18 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateUpdateTemplateVisibility string
+type TemplateUpdateTemplateVisibilityRequestBody string
 
 const (
-	TemplateUpdateTemplateVisibilityEveryone        TemplateUpdateTemplateVisibility = "EVERYONE"
-	TemplateUpdateTemplateVisibilityManagerAndAbove TemplateUpdateTemplateVisibility = "MANAGER_AND_ABOVE"
-	TemplateUpdateTemplateVisibilityAdmin           TemplateUpdateTemplateVisibility = "ADMIN"
+	TemplateUpdateTemplateVisibilityRequestBodyEveryone        TemplateUpdateTemplateVisibilityRequestBody = "EVERYONE"
+	TemplateUpdateTemplateVisibilityRequestBodyManagerAndAbove TemplateUpdateTemplateVisibilityRequestBody = "MANAGER_AND_ABOVE"
+	TemplateUpdateTemplateVisibilityRequestBodyAdmin           TemplateUpdateTemplateVisibilityRequestBody = "ADMIN"
 )
 
-func (e TemplateUpdateTemplateVisibility) ToPointer() *TemplateUpdateTemplateVisibility {
+func (e TemplateUpdateTemplateVisibilityRequestBody) ToPointer() *TemplateUpdateTemplateVisibilityRequestBody {
 	return &e
 }
-func (e *TemplateUpdateTemplateVisibility) UnmarshalJSON(data []byte) error {
+func (e *TemplateUpdateTemplateVisibilityRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -31,50 +31,50 @@ func (e *TemplateUpdateTemplateVisibility) UnmarshalJSON(data []byte) error {
 	case "MANAGER_AND_ABOVE":
 		fallthrough
 	case "ADMIN":
-		*e = TemplateUpdateTemplateVisibility(v)
+		*e = TemplateUpdateTemplateVisibilityRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateUpdateTemplateVisibility: %v", v)
+		return fmt.Errorf("invalid value for TemplateUpdateTemplateVisibilityRequestBody: %v", v)
 	}
 }
 
-// TemplateUpdateTemplateGlobalAccessAuth - The type of authentication required for the recipient to access the document.
-type TemplateUpdateTemplateGlobalAccessAuth string
+// TemplateUpdateTemplateGlobalAccessAuthRequestBody - The type of authentication required for the recipient to access the document.
+type TemplateUpdateTemplateGlobalAccessAuthRequestBody string
 
 const (
-	TemplateUpdateTemplateGlobalAccessAuthAccount TemplateUpdateTemplateGlobalAccessAuth = "ACCOUNT"
+	TemplateUpdateTemplateGlobalAccessAuthRequestBodyAccount TemplateUpdateTemplateGlobalAccessAuthRequestBody = "ACCOUNT"
 )
 
-func (e TemplateUpdateTemplateGlobalAccessAuth) ToPointer() *TemplateUpdateTemplateGlobalAccessAuth {
+func (e TemplateUpdateTemplateGlobalAccessAuthRequestBody) ToPointer() *TemplateUpdateTemplateGlobalAccessAuthRequestBody {
 	return &e
 }
-func (e *TemplateUpdateTemplateGlobalAccessAuth) UnmarshalJSON(data []byte) error {
+func (e *TemplateUpdateTemplateGlobalAccessAuthRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "ACCOUNT":
-		*e = TemplateUpdateTemplateGlobalAccessAuth(v)
+		*e = TemplateUpdateTemplateGlobalAccessAuthRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateUpdateTemplateGlobalAccessAuth: %v", v)
+		return fmt.Errorf("invalid value for TemplateUpdateTemplateGlobalAccessAuthRequestBody: %v", v)
 	}
 }
 
-// TemplateUpdateTemplateGlobalActionAuth - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-type TemplateUpdateTemplateGlobalActionAuth string
+// TemplateUpdateTemplateGlobalActionAuthRequestBody - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
+type TemplateUpdateTemplateGlobalActionAuthRequestBody string
 
 const (
-	TemplateUpdateTemplateGlobalActionAuthAccount       TemplateUpdateTemplateGlobalActionAuth = "ACCOUNT"
-	TemplateUpdateTemplateGlobalActionAuthPasskey       TemplateUpdateTemplateGlobalActionAuth = "PASSKEY"
-	TemplateUpdateTemplateGlobalActionAuthTwoFactorAuth TemplateUpdateTemplateGlobalActionAuth = "TWO_FACTOR_AUTH"
+	TemplateUpdateTemplateGlobalActionAuthRequestBodyAccount       TemplateUpdateTemplateGlobalActionAuthRequestBody = "ACCOUNT"
+	TemplateUpdateTemplateGlobalActionAuthRequestBodyPasskey       TemplateUpdateTemplateGlobalActionAuthRequestBody = "PASSKEY"
+	TemplateUpdateTemplateGlobalActionAuthRequestBodyTwoFactorAuth TemplateUpdateTemplateGlobalActionAuthRequestBody = "TWO_FACTOR_AUTH"
 )
 
-func (e TemplateUpdateTemplateGlobalActionAuth) ToPointer() *TemplateUpdateTemplateGlobalActionAuth {
+func (e TemplateUpdateTemplateGlobalActionAuthRequestBody) ToPointer() *TemplateUpdateTemplateGlobalActionAuthRequestBody {
 	return &e
 }
-func (e *TemplateUpdateTemplateGlobalActionAuth) UnmarshalJSON(data []byte) error {
+func (e *TemplateUpdateTemplateGlobalActionAuthRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -85,24 +85,24 @@ func (e *TemplateUpdateTemplateGlobalActionAuth) UnmarshalJSON(data []byte) erro
 	case "PASSKEY":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
-		*e = TemplateUpdateTemplateGlobalActionAuth(v)
+		*e = TemplateUpdateTemplateGlobalActionAuthRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateUpdateTemplateGlobalActionAuth: %v", v)
+		return fmt.Errorf("invalid value for TemplateUpdateTemplateGlobalActionAuthRequestBody: %v", v)
 	}
 }
 
-type TemplateUpdateTemplateType string
+type TemplateUpdateTemplateDataType string
 
 const (
-	TemplateUpdateTemplateTypePublic  TemplateUpdateTemplateType = "PUBLIC"
-	TemplateUpdateTemplateTypePrivate TemplateUpdateTemplateType = "PRIVATE"
+	TemplateUpdateTemplateDataTypePublic  TemplateUpdateTemplateDataType = "PUBLIC"
+	TemplateUpdateTemplateDataTypePrivate TemplateUpdateTemplateDataType = "PRIVATE"
 )
 
-func (e TemplateUpdateTemplateType) ToPointer() *TemplateUpdateTemplateType {
+func (e TemplateUpdateTemplateDataType) ToPointer() *TemplateUpdateTemplateDataType {
 	return &e
 }
-func (e *TemplateUpdateTemplateType) UnmarshalJSON(data []byte) error {
+func (e *TemplateUpdateTemplateDataType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -111,26 +111,26 @@ func (e *TemplateUpdateTemplateType) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
-		*e = TemplateUpdateTemplateType(v)
+		*e = TemplateUpdateTemplateDataType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateUpdateTemplateType: %v", v)
+		return fmt.Errorf("invalid value for TemplateUpdateTemplateDataType: %v", v)
 	}
 }
 
 type TemplateUpdateTemplateData struct {
-	Title      *string                           `json:"title,omitempty"`
-	ExternalID *string                           `json:"externalId,omitempty"`
-	Visibility *TemplateUpdateTemplateVisibility `json:"visibility,omitempty"`
+	Title      *string                                      `json:"title,omitempty"`
+	ExternalID *string                                      `json:"externalId,omitempty"`
+	Visibility *TemplateUpdateTemplateVisibilityRequestBody `json:"visibility,omitempty"`
 	// The type of authentication required for the recipient to access the document.
-	GlobalAccessAuth *TemplateUpdateTemplateGlobalAccessAuth `json:"globalAccessAuth,omitempty"`
+	GlobalAccessAuth *TemplateUpdateTemplateGlobalAccessAuthRequestBody `json:"globalAccessAuth,omitempty"`
 	// The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-	GlobalActionAuth *TemplateUpdateTemplateGlobalActionAuth `json:"globalActionAuth,omitempty"`
+	GlobalActionAuth *TemplateUpdateTemplateGlobalActionAuthRequestBody `json:"globalActionAuth,omitempty"`
 	// The title of the template that will be displayed to the public. Only applicable for public templates.
 	PublicTitle *string `json:"publicTitle,omitempty"`
 	// The description of the template that will be displayed to the public. Only applicable for public templates.
-	PublicDescription *string                     `json:"publicDescription,omitempty"`
-	Type              *TemplateUpdateTemplateType `json:"type,omitempty"`
+	PublicDescription *string                         `json:"publicDescription,omitempty"`
+	Type              *TemplateUpdateTemplateDataType `json:"type,omitempty"`
 }
 
 func (o *TemplateUpdateTemplateData) GetTitle() *string {
@@ -147,21 +147,21 @@ func (o *TemplateUpdateTemplateData) GetExternalID() *string {
 	return o.ExternalID
 }
 
-func (o *TemplateUpdateTemplateData) GetVisibility() *TemplateUpdateTemplateVisibility {
+func (o *TemplateUpdateTemplateData) GetVisibility() *TemplateUpdateTemplateVisibilityRequestBody {
 	if o == nil {
 		return nil
 	}
 	return o.Visibility
 }
 
-func (o *TemplateUpdateTemplateData) GetGlobalAccessAuth() *TemplateUpdateTemplateGlobalAccessAuth {
+func (o *TemplateUpdateTemplateData) GetGlobalAccessAuth() *TemplateUpdateTemplateGlobalAccessAuthRequestBody {
 	if o == nil {
 		return nil
 	}
 	return o.GlobalAccessAuth
 }
 
-func (o *TemplateUpdateTemplateData) GetGlobalActionAuth() *TemplateUpdateTemplateGlobalActionAuth {
+func (o *TemplateUpdateTemplateData) GetGlobalActionAuth() *TemplateUpdateTemplateGlobalActionAuthRequestBody {
 	if o == nil {
 		return nil
 	}
@@ -182,7 +182,7 @@ func (o *TemplateUpdateTemplateData) GetPublicDescription() *string {
 	return o.PublicDescription
 }
 
-func (o *TemplateUpdateTemplateData) GetType() *TemplateUpdateTemplateType {
+func (o *TemplateUpdateTemplateData) GetType() *TemplateUpdateTemplateDataType {
 	if o == nil {
 		return nil
 	}
@@ -352,6 +352,8 @@ const (
 	TemplateUpdateTemplateLanguageEn TemplateUpdateTemplateLanguage = "en"
 	TemplateUpdateTemplateLanguageFr TemplateUpdateTemplateLanguage = "fr"
 	TemplateUpdateTemplateLanguageEs TemplateUpdateTemplateLanguage = "es"
+	TemplateUpdateTemplateLanguageIt TemplateUpdateTemplateLanguage = "it"
+	TemplateUpdateTemplateLanguagePl TemplateUpdateTemplateLanguage = "pl"
 )
 
 func (e TemplateUpdateTemplateLanguage) ToPointer() *TemplateUpdateTemplateLanguage {
@@ -370,6 +372,10 @@ func (e *TemplateUpdateTemplateLanguage) UnmarshalJSON(data []byte) error {
 	case "fr":
 		fallthrough
 	case "es":
+		fallthrough
+	case "it":
+		fallthrough
+	case "pl":
 		*e = TemplateUpdateTemplateLanguage(v)
 		return nil
 	default:
@@ -420,8 +426,13 @@ type TemplateUpdateTemplateMeta struct {
 	// The language to use for email communications with recipients.
 	Language *TemplateUpdateTemplateLanguage `json:"language,omitempty"`
 	// Whether to allow recipients to sign using a typed signature.
-	TypedSignatureEnabled *bool                               `json:"typedSignatureEnabled,omitempty"`
-	SigningOrder          *TemplateUpdateTemplateSigningOrder `json:"signingOrder,omitempty"`
+	TypedSignatureEnabled *bool `json:"typedSignatureEnabled,omitempty"`
+	// Whether to allow recipients to sign using an uploaded signature.
+	UploadSignatureEnabled *bool `json:"uploadSignatureEnabled,omitempty"`
+	// Whether to allow recipients to sign using a draw signature.
+	DrawSignatureEnabled   *bool                               `json:"drawSignatureEnabled,omitempty"`
+	SigningOrder           *TemplateUpdateTemplateSigningOrder `json:"signingOrder,omitempty"`
+	AllowDictateNextSigner *bool                               `json:"allowDictateNextSigner,omitempty"`
 }
 
 func (o *TemplateUpdateTemplateMeta) GetSubject() *string {
@@ -487,6 +498,20 @@ func (o *TemplateUpdateTemplateMeta) GetTypedSignatureEnabled() *bool {
 	return o.TypedSignatureEnabled
 }
 
+func (o *TemplateUpdateTemplateMeta) GetUploadSignatureEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UploadSignatureEnabled
+}
+
+func (o *TemplateUpdateTemplateMeta) GetDrawSignatureEnabled() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.DrawSignatureEnabled
+}
+
 func (o *TemplateUpdateTemplateMeta) GetSigningOrder() *TemplateUpdateTemplateSigningOrder {
 	if o == nil {
 		return nil
@@ -494,44 +519,51 @@ func (o *TemplateUpdateTemplateMeta) GetSigningOrder() *TemplateUpdateTemplateSi
 	return o.SigningOrder
 }
 
-type TemplateUpdateTemplateRequestBody struct {
+func (o *TemplateUpdateTemplateMeta) GetAllowDictateNextSigner() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AllowDictateNextSigner
+}
+
+type TemplateUpdateTemplateRequest struct {
 	TemplateID float64                     `json:"templateId"`
 	Data       *TemplateUpdateTemplateData `json:"data,omitempty"`
 	Meta       *TemplateUpdateTemplateMeta `json:"meta,omitempty"`
 }
 
-func (o *TemplateUpdateTemplateRequestBody) GetTemplateID() float64 {
+func (o *TemplateUpdateTemplateRequest) GetTemplateID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.TemplateID
 }
 
-func (o *TemplateUpdateTemplateRequestBody) GetData() *TemplateUpdateTemplateData {
+func (o *TemplateUpdateTemplateRequest) GetData() *TemplateUpdateTemplateData {
 	if o == nil {
 		return nil
 	}
 	return o.Data
 }
 
-func (o *TemplateUpdateTemplateRequestBody) GetMeta() *TemplateUpdateTemplateMeta {
+func (o *TemplateUpdateTemplateRequest) GetMeta() *TemplateUpdateTemplateMeta {
 	if o == nil {
 		return nil
 	}
 	return o.Meta
 }
 
-type TemplateUpdateTemplateTemplatesType string
+type TemplateUpdateTemplateTypeResponse string
 
 const (
-	TemplateUpdateTemplateTemplatesTypePublic  TemplateUpdateTemplateTemplatesType = "PUBLIC"
-	TemplateUpdateTemplateTemplatesTypePrivate TemplateUpdateTemplateTemplatesType = "PRIVATE"
+	TemplateUpdateTemplateTypeResponsePublic  TemplateUpdateTemplateTypeResponse = "PUBLIC"
+	TemplateUpdateTemplateTypeResponsePrivate TemplateUpdateTemplateTypeResponse = "PRIVATE"
 )
 
-func (e TemplateUpdateTemplateTemplatesType) ToPointer() *TemplateUpdateTemplateTemplatesType {
+func (e TemplateUpdateTemplateTypeResponse) ToPointer() *TemplateUpdateTemplateTypeResponse {
 	return &e
 }
-func (e *TemplateUpdateTemplateTemplatesType) UnmarshalJSON(data []byte) error {
+func (e *TemplateUpdateTemplateTypeResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -540,25 +572,25 @@ func (e *TemplateUpdateTemplateTemplatesType) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
-		*e = TemplateUpdateTemplateTemplatesType(v)
+		*e = TemplateUpdateTemplateTypeResponse(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateUpdateTemplateTemplatesType: %v", v)
+		return fmt.Errorf("invalid value for TemplateUpdateTemplateTypeResponse: %v", v)
 	}
 }
 
-type TemplateUpdateTemplateTemplatesVisibility string
+type TemplateUpdateTemplateVisibilityResponse string
 
 const (
-	TemplateUpdateTemplateTemplatesVisibilityEveryone        TemplateUpdateTemplateTemplatesVisibility = "EVERYONE"
-	TemplateUpdateTemplateTemplatesVisibilityManagerAndAbove TemplateUpdateTemplateTemplatesVisibility = "MANAGER_AND_ABOVE"
-	TemplateUpdateTemplateTemplatesVisibilityAdmin           TemplateUpdateTemplateTemplatesVisibility = "ADMIN"
+	TemplateUpdateTemplateVisibilityResponseEveryone        TemplateUpdateTemplateVisibilityResponse = "EVERYONE"
+	TemplateUpdateTemplateVisibilityResponseManagerAndAbove TemplateUpdateTemplateVisibilityResponse = "MANAGER_AND_ABOVE"
+	TemplateUpdateTemplateVisibilityResponseAdmin           TemplateUpdateTemplateVisibilityResponse = "ADMIN"
 )
 
-func (e TemplateUpdateTemplateTemplatesVisibility) ToPointer() *TemplateUpdateTemplateTemplatesVisibility {
+func (e TemplateUpdateTemplateVisibilityResponse) ToPointer() *TemplateUpdateTemplateVisibilityResponse {
 	return &e
 }
-func (e *TemplateUpdateTemplateTemplatesVisibility) UnmarshalJSON(data []byte) error {
+func (e *TemplateUpdateTemplateVisibilityResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -569,50 +601,50 @@ func (e *TemplateUpdateTemplateTemplatesVisibility) UnmarshalJSON(data []byte) e
 	case "MANAGER_AND_ABOVE":
 		fallthrough
 	case "ADMIN":
-		*e = TemplateUpdateTemplateTemplatesVisibility(v)
+		*e = TemplateUpdateTemplateVisibilityResponse(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateUpdateTemplateTemplatesVisibility: %v", v)
+		return fmt.Errorf("invalid value for TemplateUpdateTemplateVisibilityResponse: %v", v)
 	}
 }
 
-// TemplateUpdateTemplateTemplatesGlobalAccessAuth - The type of authentication required for the recipient to access the document.
-type TemplateUpdateTemplateTemplatesGlobalAccessAuth string
+// TemplateUpdateTemplateGlobalAccessAuthResponse - The type of authentication required for the recipient to access the document.
+type TemplateUpdateTemplateGlobalAccessAuthResponse string
 
 const (
-	TemplateUpdateTemplateTemplatesGlobalAccessAuthAccount TemplateUpdateTemplateTemplatesGlobalAccessAuth = "ACCOUNT"
+	TemplateUpdateTemplateGlobalAccessAuthResponseAccount TemplateUpdateTemplateGlobalAccessAuthResponse = "ACCOUNT"
 )
 
-func (e TemplateUpdateTemplateTemplatesGlobalAccessAuth) ToPointer() *TemplateUpdateTemplateTemplatesGlobalAccessAuth {
+func (e TemplateUpdateTemplateGlobalAccessAuthResponse) ToPointer() *TemplateUpdateTemplateGlobalAccessAuthResponse {
 	return &e
 }
-func (e *TemplateUpdateTemplateTemplatesGlobalAccessAuth) UnmarshalJSON(data []byte) error {
+func (e *TemplateUpdateTemplateGlobalAccessAuthResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "ACCOUNT":
-		*e = TemplateUpdateTemplateTemplatesGlobalAccessAuth(v)
+		*e = TemplateUpdateTemplateGlobalAccessAuthResponse(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateUpdateTemplateTemplatesGlobalAccessAuth: %v", v)
+		return fmt.Errorf("invalid value for TemplateUpdateTemplateGlobalAccessAuthResponse: %v", v)
 	}
 }
 
-// TemplateUpdateTemplateTemplatesGlobalActionAuth - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-type TemplateUpdateTemplateTemplatesGlobalActionAuth string
+// TemplateUpdateTemplateGlobalActionAuthResponse - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
+type TemplateUpdateTemplateGlobalActionAuthResponse string
 
 const (
-	TemplateUpdateTemplateTemplatesGlobalActionAuthAccount       TemplateUpdateTemplateTemplatesGlobalActionAuth = "ACCOUNT"
-	TemplateUpdateTemplateTemplatesGlobalActionAuthPasskey       TemplateUpdateTemplateTemplatesGlobalActionAuth = "PASSKEY"
-	TemplateUpdateTemplateTemplatesGlobalActionAuthTwoFactorAuth TemplateUpdateTemplateTemplatesGlobalActionAuth = "TWO_FACTOR_AUTH"
+	TemplateUpdateTemplateGlobalActionAuthResponseAccount       TemplateUpdateTemplateGlobalActionAuthResponse = "ACCOUNT"
+	TemplateUpdateTemplateGlobalActionAuthResponsePasskey       TemplateUpdateTemplateGlobalActionAuthResponse = "PASSKEY"
+	TemplateUpdateTemplateGlobalActionAuthResponseTwoFactorAuth TemplateUpdateTemplateGlobalActionAuthResponse = "TWO_FACTOR_AUTH"
 )
 
-func (e TemplateUpdateTemplateTemplatesGlobalActionAuth) ToPointer() *TemplateUpdateTemplateTemplatesGlobalActionAuth {
+func (e TemplateUpdateTemplateGlobalActionAuthResponse) ToPointer() *TemplateUpdateTemplateGlobalActionAuthResponse {
 	return &e
 }
-func (e *TemplateUpdateTemplateTemplatesGlobalActionAuth) UnmarshalJSON(data []byte) error {
+func (e *TemplateUpdateTemplateGlobalActionAuthResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -623,28 +655,28 @@ func (e *TemplateUpdateTemplateTemplatesGlobalActionAuth) UnmarshalJSON(data []b
 	case "PASSKEY":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
-		*e = TemplateUpdateTemplateTemplatesGlobalActionAuth(v)
+		*e = TemplateUpdateTemplateGlobalActionAuthResponse(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateUpdateTemplateTemplatesGlobalActionAuth: %v", v)
+		return fmt.Errorf("invalid value for TemplateUpdateTemplateGlobalActionAuthResponse: %v", v)
 	}
 }
 
 type TemplateUpdateTemplateAuthOptions struct {
 	// The type of authentication required for the recipient to access the document.
-	GlobalAccessAuth *TemplateUpdateTemplateTemplatesGlobalAccessAuth `json:"globalAccessAuth"`
+	GlobalAccessAuth *TemplateUpdateTemplateGlobalAccessAuthResponse `json:"globalAccessAuth"`
 	// The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-	GlobalActionAuth *TemplateUpdateTemplateTemplatesGlobalActionAuth `json:"globalActionAuth"`
+	GlobalActionAuth *TemplateUpdateTemplateGlobalActionAuthResponse `json:"globalActionAuth"`
 }
 
-func (o *TemplateUpdateTemplateAuthOptions) GetGlobalAccessAuth() *TemplateUpdateTemplateTemplatesGlobalAccessAuth {
+func (o *TemplateUpdateTemplateAuthOptions) GetGlobalAccessAuth() *TemplateUpdateTemplateGlobalAccessAuthResponse {
 	if o == nil {
 		return nil
 	}
 	return o.GlobalAccessAuth
 }
 
-func (o *TemplateUpdateTemplateAuthOptions) GetGlobalActionAuth() *TemplateUpdateTemplateTemplatesGlobalActionAuth {
+func (o *TemplateUpdateTemplateAuthOptions) GetGlobalActionAuth() *TemplateUpdateTemplateGlobalActionAuthResponse {
 	if o == nil {
 		return nil
 	}
@@ -653,38 +685,38 @@ func (o *TemplateUpdateTemplateAuthOptions) GetGlobalActionAuth() *TemplateUpdat
 
 // TemplateUpdateTemplateResponseBody - Successful response
 type TemplateUpdateTemplateResponseBody struct {
-	Type                   TemplateUpdateTemplateTemplatesType       `json:"type"`
-	Visibility             TemplateUpdateTemplateTemplatesVisibility `json:"visibility"`
-	ID                     int64                                     `json:"id"`
-	ExternalID             *string                                   `json:"externalId"`
-	Title                  string                                    `json:"title"`
-	UserID                 int64                                     `json:"userId"`
-	TeamID                 *int64                                    `json:"teamId"`
-	AuthOptions            *TemplateUpdateTemplateAuthOptions        `json:"authOptions"`
-	TemplateDocumentDataID string                                    `json:"templateDocumentDataId"`
-	CreatedAt              string                                    `json:"createdAt"`
-	UpdatedAt              string                                    `json:"updatedAt"`
-	PublicTitle            string                                    `json:"publicTitle"`
-	PublicDescription      string                                    `json:"publicDescription"`
+	Type                   TemplateUpdateTemplateTypeResponse       `json:"type"`
+	Visibility             TemplateUpdateTemplateVisibilityResponse `json:"visibility"`
+	ID                     float64                                  `json:"id"`
+	ExternalID             *string                                  `json:"externalId"`
+	Title                  string                                   `json:"title"`
+	UserID                 float64                                  `json:"userId"`
+	TeamID                 *float64                                 `json:"teamId"`
+	AuthOptions            *TemplateUpdateTemplateAuthOptions       `json:"authOptions"`
+	TemplateDocumentDataID string                                   `json:"templateDocumentDataId"`
+	CreatedAt              string                                   `json:"createdAt"`
+	UpdatedAt              string                                   `json:"updatedAt"`
+	PublicTitle            string                                   `json:"publicTitle"`
+	PublicDescription      string                                   `json:"publicDescription"`
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetType() TemplateUpdateTemplateTemplatesType {
+func (o *TemplateUpdateTemplateResponseBody) GetType() TemplateUpdateTemplateTypeResponse {
 	if o == nil {
-		return TemplateUpdateTemplateTemplatesType("")
+		return TemplateUpdateTemplateTypeResponse("")
 	}
 	return o.Type
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetVisibility() TemplateUpdateTemplateTemplatesVisibility {
+func (o *TemplateUpdateTemplateResponseBody) GetVisibility() TemplateUpdateTemplateVisibilityResponse {
 	if o == nil {
-		return TemplateUpdateTemplateTemplatesVisibility("")
+		return TemplateUpdateTemplateVisibilityResponse("")
 	}
 	return o.Visibility
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetID() int64 {
+func (o *TemplateUpdateTemplateResponseBody) GetID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.ID
 }
@@ -703,14 +735,14 @@ func (o *TemplateUpdateTemplateResponseBody) GetTitle() string {
 	return o.Title
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetUserID() int64 {
+func (o *TemplateUpdateTemplateResponseBody) GetUserID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.UserID
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetTeamID() *int64 {
+func (o *TemplateUpdateTemplateResponseBody) GetTeamID() *float64 {
 	if o == nil {
 		return nil
 	}

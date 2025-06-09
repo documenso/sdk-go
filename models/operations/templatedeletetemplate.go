@@ -6,11 +6,11 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateDeleteTemplateRequestBody struct {
+type TemplateDeleteTemplateRequest struct {
 	TemplateID float64 `json:"templateId"`
 }
 
-func (o *TemplateDeleteTemplateRequestBody) GetTemplateID() float64 {
+func (o *TemplateDeleteTemplateRequest) GetTemplateID() float64 {
 	if o == nil {
 		return 0.0
 	}
