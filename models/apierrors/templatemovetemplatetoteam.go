@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateMoveTemplateToTeamTemplatesIssues struct {
+type TemplateMoveTemplateToTeamInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateMoveTemplateToTeamTemplatesIssues) GetMessage() string {
+func (o *TemplateMoveTemplateToTeamInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateMoveTemplateToTeamTemplatesResponseBody - Internal server error
-type TemplateMoveTemplateToTeamTemplatesResponseBody struct {
-	Message  string                                      `json:"message"`
-	Code     string                                      `json:"code"`
-	Issues   []TemplateMoveTemplateToTeamTemplatesIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                     `json:"-"`
+// TemplateMoveTemplateToTeamInternalServerError - Internal server error
+type TemplateMoveTemplateToTeamInternalServerError struct {
+	Message  string                                               `json:"message"`
+	Code     string                                               `json:"code"`
+	Issues   []TemplateMoveTemplateToTeamInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                              `json:"-"`
 }
 
-var _ error = &TemplateMoveTemplateToTeamTemplatesResponseBody{}
+var _ error = &TemplateMoveTemplateToTeamInternalServerError{}
 
-func (e *TemplateMoveTemplateToTeamTemplatesResponseBody) Error() string {
+func (e *TemplateMoveTemplateToTeamInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type TemplateMoveTemplateToTeamIssues struct {
+type TemplateMoveTemplateToTeamBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateMoveTemplateToTeamIssues) GetMessage() string {
+func (o *TemplateMoveTemplateToTeamBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateMoveTemplateToTeamResponseBody - Invalid input data
-type TemplateMoveTemplateToTeamResponseBody struct {
-	Message  string                             `json:"message"`
-	Code     string                             `json:"code"`
-	Issues   []TemplateMoveTemplateToTeamIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata            `json:"-"`
+// TemplateMoveTemplateToTeamBadRequestError - Invalid input data
+type TemplateMoveTemplateToTeamBadRequestError struct {
+	Message  string                                      `json:"message"`
+	Code     string                                      `json:"code"`
+	Issues   []TemplateMoveTemplateToTeamBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                     `json:"-"`
 }
 
-var _ error = &TemplateMoveTemplateToTeamResponseBody{}
+var _ error = &TemplateMoveTemplateToTeamBadRequestError{}
 
-func (e *TemplateMoveTemplateToTeamResponseBody) Error() string {
+func (e *TemplateMoveTemplateToTeamBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

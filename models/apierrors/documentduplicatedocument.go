@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type DocumentDuplicateDocumentDocumentsIssues struct {
+type DocumentDuplicateDocumentInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentDuplicateDocumentDocumentsIssues) GetMessage() string {
+func (o *DocumentDuplicateDocumentInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// DocumentDuplicateDocumentDocumentsResponseBody - Internal server error
-type DocumentDuplicateDocumentDocumentsResponseBody struct {
-	Message  string                                     `json:"message"`
-	Code     string                                     `json:"code"`
-	Issues   []DocumentDuplicateDocumentDocumentsIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                    `json:"-"`
+// DocumentDuplicateDocumentInternalServerError - Internal server error
+type DocumentDuplicateDocumentInternalServerError struct {
+	Message  string                                              `json:"message"`
+	Code     string                                              `json:"code"`
+	Issues   []DocumentDuplicateDocumentInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                             `json:"-"`
 }
 
-var _ error = &DocumentDuplicateDocumentDocumentsResponseBody{}
+var _ error = &DocumentDuplicateDocumentInternalServerError{}
 
-func (e *DocumentDuplicateDocumentDocumentsResponseBody) Error() string {
+func (e *DocumentDuplicateDocumentInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type DocumentDuplicateDocumentIssues struct {
+type DocumentDuplicateDocumentBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentDuplicateDocumentIssues) GetMessage() string {
+func (o *DocumentDuplicateDocumentBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// DocumentDuplicateDocumentResponseBody - Invalid input data
-type DocumentDuplicateDocumentResponseBody struct {
-	Message  string                            `json:"message"`
-	Code     string                            `json:"code"`
-	Issues   []DocumentDuplicateDocumentIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata           `json:"-"`
+// DocumentDuplicateDocumentBadRequestError - Invalid input data
+type DocumentDuplicateDocumentBadRequestError struct {
+	Message  string                                     `json:"message"`
+	Code     string                                     `json:"code"`
+	Issues   []DocumentDuplicateDocumentBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                    `json:"-"`
 }
 
-var _ error = &DocumentDuplicateDocumentResponseBody{}
+var _ error = &DocumentDuplicateDocumentBadRequestError{}
 
-func (e *DocumentDuplicateDocumentResponseBody) Error() string {
+func (e *DocumentDuplicateDocumentBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

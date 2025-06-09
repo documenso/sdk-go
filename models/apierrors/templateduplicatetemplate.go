@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateDuplicateTemplateTemplatesIssues struct {
+type TemplateDuplicateTemplateInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateDuplicateTemplateTemplatesIssues) GetMessage() string {
+func (o *TemplateDuplicateTemplateInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateDuplicateTemplateTemplatesResponseBody - Internal server error
-type TemplateDuplicateTemplateTemplatesResponseBody struct {
-	Message  string                                     `json:"message"`
-	Code     string                                     `json:"code"`
-	Issues   []TemplateDuplicateTemplateTemplatesIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                    `json:"-"`
+// TemplateDuplicateTemplateInternalServerError - Internal server error
+type TemplateDuplicateTemplateInternalServerError struct {
+	Message  string                                              `json:"message"`
+	Code     string                                              `json:"code"`
+	Issues   []TemplateDuplicateTemplateInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                             `json:"-"`
 }
 
-var _ error = &TemplateDuplicateTemplateTemplatesResponseBody{}
+var _ error = &TemplateDuplicateTemplateInternalServerError{}
 
-func (e *TemplateDuplicateTemplateTemplatesResponseBody) Error() string {
+func (e *TemplateDuplicateTemplateInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type TemplateDuplicateTemplateIssues struct {
+type TemplateDuplicateTemplateBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateDuplicateTemplateIssues) GetMessage() string {
+func (o *TemplateDuplicateTemplateBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateDuplicateTemplateResponseBody - Invalid input data
-type TemplateDuplicateTemplateResponseBody struct {
-	Message  string                            `json:"message"`
-	Code     string                            `json:"code"`
-	Issues   []TemplateDuplicateTemplateIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata           `json:"-"`
+// TemplateDuplicateTemplateBadRequestError - Invalid input data
+type TemplateDuplicateTemplateBadRequestError struct {
+	Message  string                                     `json:"message"`
+	Code     string                                     `json:"code"`
+	Issues   []TemplateDuplicateTemplateBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                    `json:"-"`
 }
 
-var _ error = &TemplateDuplicateTemplateResponseBody{}
+var _ error = &TemplateDuplicateTemplateBadRequestError{}
 
-func (e *TemplateDuplicateTemplateResponseBody) Error() string {
+func (e *TemplateDuplicateTemplateBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

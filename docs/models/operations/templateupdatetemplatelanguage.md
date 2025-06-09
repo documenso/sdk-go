@@ -11,3 +11,5 @@ The language to use for email communications with recipients.
 | `TemplateUpdateTemplateLanguageEn` | en                                 |
 | `TemplateUpdateTemplateLanguageFr` | fr                                 |
 | `TemplateUpdateTemplateLanguageEs` | es                                 |
+| `TemplateUpdateTemplateLanguageIt` | it                                 |
+| `TemplateUpdateTemplateLanguagePl` | pl                                 |

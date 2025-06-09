@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type DocumentSendDocumentDocumentsIssues struct {
+type DocumentSendDocumentInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentSendDocumentDocumentsIssues) GetMessage() string {
+func (o *DocumentSendDocumentInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// DocumentSendDocumentDocumentsResponseBody - Internal server error
-type DocumentSendDocumentDocumentsResponseBody struct {
-	Message  string                                `json:"message"`
-	Code     string                                `json:"code"`
-	Issues   []DocumentSendDocumentDocumentsIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata               `json:"-"`
+// DocumentSendDocumentInternalServerError - Internal server error
+type DocumentSendDocumentInternalServerError struct {
+	Message  string                                         `json:"message"`
+	Code     string                                         `json:"code"`
+	Issues   []DocumentSendDocumentInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                        `json:"-"`
 }
 
-var _ error = &DocumentSendDocumentDocumentsResponseBody{}
+var _ error = &DocumentSendDocumentInternalServerError{}
 
-func (e *DocumentSendDocumentDocumentsResponseBody) Error() string {
+func (e *DocumentSendDocumentInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type DocumentSendDocumentIssues struct {
+type DocumentSendDocumentBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentSendDocumentIssues) GetMessage() string {
+func (o *DocumentSendDocumentBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// DocumentSendDocumentResponseBody - Invalid input data
-type DocumentSendDocumentResponseBody struct {
-	Message  string                       `json:"message"`
-	Code     string                       `json:"code"`
-	Issues   []DocumentSendDocumentIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata      `json:"-"`
+// DocumentSendDocumentBadRequestError - Invalid input data
+type DocumentSendDocumentBadRequestError struct {
+	Message  string                                `json:"message"`
+	Code     string                                `json:"code"`
+	Issues   []DocumentSendDocumentBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata               `json:"-"`
 }
 
-var _ error = &DocumentSendDocumentResponseBody{}
+var _ error = &DocumentSendDocumentBadRequestError{}
 
-func (e *DocumentSendDocumentResponseBody) Error() string {
+func (e *DocumentSendDocumentBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

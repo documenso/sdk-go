@@ -7,80 +7,80 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateFindTemplatesTemplatesResponseIssues struct {
+type TemplateFindTemplatesInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateFindTemplatesTemplatesResponseIssues) GetMessage() string {
+func (o *TemplateFindTemplatesInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateFindTemplatesTemplatesResponseResponseBody - Internal server error
-type TemplateFindTemplatesTemplatesResponseResponseBody struct {
-	Message  string                                         `json:"message"`
-	Code     string                                         `json:"code"`
-	Issues   []TemplateFindTemplatesTemplatesResponseIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                        `json:"-"`
+// TemplateFindTemplatesInternalServerError - Internal server error
+type TemplateFindTemplatesInternalServerError struct {
+	Message  string                                          `json:"message"`
+	Code     string                                          `json:"code"`
+	Issues   []TemplateFindTemplatesInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                         `json:"-"`
 }
 
-var _ error = &TemplateFindTemplatesTemplatesResponseResponseBody{}
+var _ error = &TemplateFindTemplatesInternalServerError{}
 
-func (e *TemplateFindTemplatesTemplatesResponseResponseBody) Error() string {
+func (e *TemplateFindTemplatesInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type TemplateFindTemplatesTemplatesIssues struct {
+type TemplateFindTemplatesNotFoundIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateFindTemplatesTemplatesIssues) GetMessage() string {
+func (o *TemplateFindTemplatesNotFoundIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateFindTemplatesTemplatesResponseBody - Not found
-type TemplateFindTemplatesTemplatesResponseBody struct {
+// TemplateFindTemplatesNotFoundError - Not found
+type TemplateFindTemplatesNotFoundError struct {
+	Message  string                               `json:"message"`
+	Code     string                               `json:"code"`
+	Issues   []TemplateFindTemplatesNotFoundIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata              `json:"-"`
+}
+
+var _ error = &TemplateFindTemplatesNotFoundError{}
+
+func (e *TemplateFindTemplatesNotFoundError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type TemplateFindTemplatesBadRequestIssue struct {
+	Message string `json:"message"`
+}
+
+func (o *TemplateFindTemplatesBadRequestIssue) GetMessage() string {
+	if o == nil {
+		return ""
+	}
+	return o.Message
+}
+
+// TemplateFindTemplatesBadRequestError - Invalid input data
+type TemplateFindTemplatesBadRequestError struct {
 	Message  string                                 `json:"message"`
 	Code     string                                 `json:"code"`
-	Issues   []TemplateFindTemplatesTemplatesIssues `json:"issues,omitempty"`
+	Issues   []TemplateFindTemplatesBadRequestIssue `json:"issues,omitempty"`
 	HTTPMeta components.HTTPMetadata                `json:"-"`
 }
 
-var _ error = &TemplateFindTemplatesTemplatesResponseBody{}
+var _ error = &TemplateFindTemplatesBadRequestError{}
 
-func (e *TemplateFindTemplatesTemplatesResponseBody) Error() string {
-	data, _ := json.Marshal(e)
-	return string(data)
-}
-
-type TemplateFindTemplatesIssues struct {
-	Message string `json:"message"`
-}
-
-func (o *TemplateFindTemplatesIssues) GetMessage() string {
-	if o == nil {
-		return ""
-	}
-	return o.Message
-}
-
-// TemplateFindTemplatesResponseBody - Invalid input data
-type TemplateFindTemplatesResponseBody struct {
-	Message  string                        `json:"message"`
-	Code     string                        `json:"code"`
-	Issues   []TemplateFindTemplatesIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata       `json:"-"`
-}
-
-var _ error = &TemplateFindTemplatesResponseBody{}
-
-func (e *TemplateFindTemplatesResponseBody) Error() string {
+func (e *TemplateFindTemplatesBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

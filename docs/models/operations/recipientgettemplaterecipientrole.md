@@ -3,9 +3,10 @@
 
 ## Values
 
-| Name                                        | Value                                       |
-| ------------------------------------------- | ------------------------------------------- |
-| `RecipientGetTemplateRecipientRoleCc`       | CC                                          |
-| `RecipientGetTemplateRecipientRoleSigner`   | SIGNER                                      |
-| `RecipientGetTemplateRecipientRoleViewer`   | VIEWER                                      |
-| `RecipientGetTemplateRecipientRoleApprover` | APPROVER                                    |
+| Name                                         | Value                                        |
+| -------------------------------------------- | -------------------------------------------- |
+| `RecipientGetTemplateRecipientRoleCc`        | CC                                           |
+| `RecipientGetTemplateRecipientRoleSigner`    | SIGNER                                       |
+| `RecipientGetTemplateRecipientRoleViewer`    | VIEWER                                       |
+| `RecipientGetTemplateRecipientRoleApprover`  | APPROVER                                     |
+| `RecipientGetTemplateRecipientRoleAssistant` | ASSISTANT                                    |

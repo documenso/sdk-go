@@ -1,9 +1,0 @@
-# TemplateGetTemplateByIDTemplatesAuthOptions
-
-
-## Fields
-
-| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `AccessAuth`                                                                                                 | [operations.TemplateGetTemplateByIDAccessAuth](../../models/operations/templategettemplatebyidaccessauth.md) | :heavy_check_mark:                                                                                           | The type of authentication required for the recipient to access the document.                                |
-| `ActionAuth`                                                                                                 | [operations.TemplateGetTemplateByIDActionAuth](../../models/operations/templategettemplatebyidactionauth.md) | :heavy_check_mark:                                                                                           | The type of authentication required for the recipient to sign the document.                                  |

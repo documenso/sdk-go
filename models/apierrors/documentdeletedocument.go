@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type DocumentDeleteDocumentDocumentsIssues struct {
+type DocumentDeleteDocumentInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentDeleteDocumentDocumentsIssues) GetMessage() string {
+func (o *DocumentDeleteDocumentInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// DocumentDeleteDocumentDocumentsResponseBody - Internal server error
-type DocumentDeleteDocumentDocumentsResponseBody struct {
-	Message  string                                  `json:"message"`
-	Code     string                                  `json:"code"`
-	Issues   []DocumentDeleteDocumentDocumentsIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                 `json:"-"`
+// DocumentDeleteDocumentInternalServerError - Internal server error
+type DocumentDeleteDocumentInternalServerError struct {
+	Message  string                                           `json:"message"`
+	Code     string                                           `json:"code"`
+	Issues   []DocumentDeleteDocumentInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                          `json:"-"`
 }
 
-var _ error = &DocumentDeleteDocumentDocumentsResponseBody{}
+var _ error = &DocumentDeleteDocumentInternalServerError{}
 
-func (e *DocumentDeleteDocumentDocumentsResponseBody) Error() string {
+func (e *DocumentDeleteDocumentInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type DocumentDeleteDocumentIssues struct {
+type DocumentDeleteDocumentBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentDeleteDocumentIssues) GetMessage() string {
+func (o *DocumentDeleteDocumentBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// DocumentDeleteDocumentResponseBody - Invalid input data
-type DocumentDeleteDocumentResponseBody struct {
-	Message  string                         `json:"message"`
-	Code     string                         `json:"code"`
-	Issues   []DocumentDeleteDocumentIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata        `json:"-"`
+// DocumentDeleteDocumentBadRequestError - Invalid input data
+type DocumentDeleteDocumentBadRequestError struct {
+	Message  string                                  `json:"message"`
+	Code     string                                  `json:"code"`
+	Issues   []DocumentDeleteDocumentBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                 `json:"-"`
 }
 
-var _ error = &DocumentDeleteDocumentResponseBody{}
+var _ error = &DocumentDeleteDocumentBadRequestError{}
 
-func (e *DocumentDeleteDocumentResponseBody) Error() string {
+func (e *DocumentDeleteDocumentBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

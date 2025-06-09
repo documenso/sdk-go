@@ -31,7 +31,7 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
@@ -63,12 +63,12 @@ func main() {
 
 ### Errors
 
-| Error Type                                                   | Status Code                                                  | Content Type                                                 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| apierrors.TemplateFindTemplatesResponseBody                  | 400                                                          | application/json                                             |
-| apierrors.TemplateFindTemplatesTemplatesResponseBody         | 404                                                          | application/json                                             |
-| apierrors.TemplateFindTemplatesTemplatesResponseResponseBody | 500                                                          | application/json                                             |
-| apierrors.APIError                                           | 4XX, 5XX                                                     | \*/\*                                                        |
+| Error Type                                         | Status Code                                        | Content Type                                       |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| apierrors.TemplateFindTemplatesBadRequestError     | 400                                                | application/json                                   |
+| apierrors.TemplateFindTemplatesNotFoundError       | 404                                                | application/json                                   |
+| apierrors.TemplateFindTemplatesInternalServerError | 500                                                | application/json                                   |
+| apierrors.APIError                                 | 4XX, 5XX                                           | \*/\*                                              |
 
 ## Get
 
@@ -88,12 +88,12 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Templates.Get(ctx, 7003.47)
+    res, err := s.Templates.Get(ctx, 2128.54)
     if err != nil {
         log.Fatal(err)
     }
@@ -117,12 +117,12 @@ func main() {
 
 ### Errors
 
-| Error Type                                                     | Status Code                                                    | Content Type                                                   |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| apierrors.TemplateGetTemplateByIDResponseBody                  | 400                                                            | application/json                                               |
-| apierrors.TemplateGetTemplateByIDTemplatesResponseBody         | 404                                                            | application/json                                               |
-| apierrors.TemplateGetTemplateByIDTemplatesResponseResponseBody | 500                                                            | application/json                                               |
-| apierrors.APIError                                             | 4XX, 5XX                                                       | \*/\*                                                          |
+| Error Type                                           | Status Code                                          | Content Type                                         |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| apierrors.TemplateGetTemplateByIDBadRequestError     | 400                                                  | application/json                                     |
+| apierrors.TemplateGetTemplateByIDNotFoundError       | 404                                                  | application/json                                     |
+| apierrors.TemplateGetTemplateByIDInternalServerError | 500                                                  | application/json                                     |
+| apierrors.APIError                                   | 4XX, 5XX                                             | \*/\*                                                |
 
 ## Update
 
@@ -143,13 +143,13 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Templates.Update(ctx, operations.TemplateUpdateTemplateRequestBody{
-        TemplateID: 8574.78,
+    res, err := s.Templates.Update(ctx, operations.TemplateUpdateTemplateRequest{
+        TemplateID: 9404.77,
     })
     if err != nil {
         log.Fatal(err)
@@ -162,11 +162,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                        | :heavy_check_mark:                                                                                           | The context to use for the request.                                                                          |
-| `request`                                                                                                    | [operations.TemplateUpdateTemplateRequestBody](../../models/operations/templateupdatetemplaterequestbody.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
-| `opts`                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                     | :heavy_minus_sign:                                                                                           | The options for this request.                                                                                |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |
+| `request`                                                                                            | [operations.TemplateUpdateTemplateRequest](../../models/operations/templateupdatetemplaterequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `opts`                                                                                               | [][operations.Option](../../models/operations/option.md)                                             | :heavy_minus_sign:                                                                                   | The options for this request.                                                                        |
 
 ### Response
 
@@ -174,11 +174,11 @@ func main() {
 
 ### Errors
 
-| Error Type                                            | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| apierrors.TemplateUpdateTemplateResponseBody          | 400                                                   | application/json                                      |
-| apierrors.TemplateUpdateTemplateTemplatesResponseBody | 500                                                   | application/json                                      |
-| apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
+| Error Type                                          | Status Code                                         | Content Type                                        |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| apierrors.TemplateUpdateTemplateBadRequestError     | 400                                                 | application/json                                    |
+| apierrors.TemplateUpdateTemplateInternalServerError | 500                                                 | application/json                                    |
+| apierrors.APIError                                  | 4XX, 5XX                                            | \*/\*                                               |
 
 ## Duplicate
 
@@ -199,13 +199,13 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Templates.Duplicate(ctx, operations.TemplateDuplicateTemplateRequestBody{
-        TemplateID: 3523.11,
+    res, err := s.Templates.Duplicate(ctx, operations.TemplateDuplicateTemplateRequest{
+        TemplateID: 2490.16,
     })
     if err != nil {
         log.Fatal(err)
@@ -218,11 +218,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                              | :heavy_check_mark:                                                                                                 | The context to use for the request.                                                                                |
-| `request`                                                                                                          | [operations.TemplateDuplicateTemplateRequestBody](../../models/operations/templateduplicatetemplaterequestbody.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
-| `opts`                                                                                                             | [][operations.Option](../../models/operations/option.md)                                                           | :heavy_minus_sign:                                                                                                 | The options for this request.                                                                                      |
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                      | [context.Context](https://pkg.go.dev/context#Context)                                                      | :heavy_check_mark:                                                                                         | The context to use for the request.                                                                        |
+| `request`                                                                                                  | [operations.TemplateDuplicateTemplateRequest](../../models/operations/templateduplicatetemplaterequest.md) | :heavy_check_mark:                                                                                         | The request object to use for the request.                                                                 |
+| `opts`                                                                                                     | [][operations.Option](../../models/operations/option.md)                                                   | :heavy_minus_sign:                                                                                         | The options for this request.                                                                              |
 
 ### Response
 
@@ -230,11 +230,11 @@ func main() {
 
 ### Errors
 
-| Error Type                                               | Status Code                                              | Content Type                                             |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| apierrors.TemplateDuplicateTemplateResponseBody          | 400                                                      | application/json                                         |
-| apierrors.TemplateDuplicateTemplateTemplatesResponseBody | 500                                                      | application/json                                         |
-| apierrors.APIError                                       | 4XX, 5XX                                                 | \*/\*                                                    |
+| Error Type                                             | Status Code                                            | Content Type                                           |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| apierrors.TemplateDuplicateTemplateBadRequestError     | 400                                                    | application/json                                       |
+| apierrors.TemplateDuplicateTemplateInternalServerError | 500                                                    | application/json                                       |
+| apierrors.APIError                                     | 4XX, 5XX                                               | \*/\*                                                  |
 
 ## Delete
 
@@ -255,13 +255,13 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Templates.Delete(ctx, operations.TemplateDeleteTemplateRequestBody{
-        TemplateID: 5459.07,
+    res, err := s.Templates.Delete(ctx, operations.TemplateDeleteTemplateRequest{
+        TemplateID: 536.89,
     })
     if err != nil {
         log.Fatal(err)
@@ -274,11 +274,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                        | :heavy_check_mark:                                                                                           | The context to use for the request.                                                                          |
-| `request`                                                                                                    | [operations.TemplateDeleteTemplateRequestBody](../../models/operations/templatedeletetemplaterequestbody.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
-| `opts`                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                     | :heavy_minus_sign:                                                                                           | The options for this request.                                                                                |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |
+| `request`                                                                                            | [operations.TemplateDeleteTemplateRequest](../../models/operations/templatedeletetemplaterequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `opts`                                                                                               | [][operations.Option](../../models/operations/option.md)                                             | :heavy_minus_sign:                                                                                   | The options for this request.                                                                        |
 
 ### Response
 
@@ -286,11 +286,11 @@ func main() {
 
 ### Errors
 
-| Error Type                                            | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| apierrors.TemplateDeleteTemplateResponseBody          | 400                                                   | application/json                                      |
-| apierrors.TemplateDeleteTemplateTemplatesResponseBody | 500                                                   | application/json                                      |
-| apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
+| Error Type                                          | Status Code                                         | Content Type                                        |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| apierrors.TemplateDeleteTemplateBadRequestError     | 400                                                 | application/json                                    |
+| apierrors.TemplateDeleteTemplateInternalServerError | 500                                                 | application/json                                    |
+| apierrors.APIError                                  | 4XX, 5XX                                            | \*/\*                                               |
 
 ## Use
 
@@ -311,23 +311,14 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Templates.Use(ctx, operations.TemplateCreateDocumentFromTemplateRequestBody{
-        TemplateID: 6626.9,
-        Recipients: []operations.TemplateCreateDocumentFromTemplateRecipients{
-            operations.TemplateCreateDocumentFromTemplateRecipients{
-                ID: 6473.53,
-                Email: "August_Schmeler68@yahoo.com",
-            },
-            operations.TemplateCreateDocumentFromTemplateRecipients{
-                ID: 3772.31,
-                Email: "Angeline.Purdy@gmail.com",
-            },
-        },
+    res, err := s.Templates.Use(ctx, operations.TemplateCreateDocumentFromTemplateRequest{
+        TemplateID: 7392.96,
+        Recipients: []operations.TemplateCreateDocumentFromTemplateRecipientRequestBody{},
     })
     if err != nil {
         log.Fatal(err)
@@ -340,11 +331,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                            | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                                | :heavy_check_mark:                                                                                                                   | The context to use for the request.                                                                                                  |
-| `request`                                                                                                                            | [operations.TemplateCreateDocumentFromTemplateRequestBody](../../models/operations/templatecreatedocumentfromtemplaterequestbody.md) | :heavy_check_mark:                                                                                                                   | The request object to use for the request.                                                                                           |
-| `opts`                                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                                             | :heavy_minus_sign:                                                                                                                   | The options for this request.                                                                                                        |
+| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                                        | :heavy_check_mark:                                                                                                           | The context to use for the request.                                                                                          |
+| `request`                                                                                                                    | [operations.TemplateCreateDocumentFromTemplateRequest](../../models/operations/templatecreatedocumentfromtemplaterequest.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
+| `opts`                                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                                     | :heavy_minus_sign:                                                                                                           | The options for this request.                                                                                                |
 
 ### Response
 
@@ -352,11 +343,11 @@ func main() {
 
 ### Errors
 
-| Error Type                                                        | Status Code                                                       | Content Type                                                      |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| apierrors.TemplateCreateDocumentFromTemplateResponseBody          | 400                                                               | application/json                                                  |
-| apierrors.TemplateCreateDocumentFromTemplateTemplatesResponseBody | 500                                                               | application/json                                                  |
-| apierrors.APIError                                                | 4XX, 5XX                                                          | \*/\*                                                             |
+| Error Type                                                      | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| apierrors.TemplateCreateDocumentFromTemplateBadRequestError     | 400                                                             | application/json                                                |
+| apierrors.TemplateCreateDocumentFromTemplateInternalServerError | 500                                                             | application/json                                                |
+| apierrors.APIError                                              | 4XX, 5XX                                                        | \*/\*                                                           |
 
 ## MoveToTeam
 
@@ -377,14 +368,14 @@ import(
 
 func main() {
     ctx := context.Background()
-    
+
     s := sdkgo.New(
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Templates.MoveToTeam(ctx, operations.TemplateMoveTemplateToTeamRequestBody{
-        TemplateID: 8301.72,
-        TeamID: 6724.78,
+    res, err := s.Templates.MoveToTeam(ctx, operations.TemplateMoveTemplateToTeamRequest{
+        TemplateID: 9124,
+        TeamID: 6200.73,
     })
     if err != nil {
         log.Fatal(err)
@@ -397,11 +388,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                | :heavy_check_mark:                                                                                                   | The context to use for the request.                                                                                  |
-| `request`                                                                                                            | [operations.TemplateMoveTemplateToTeamRequestBody](../../models/operations/templatemovetemplatetoteamrequestbody.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
-| `opts`                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                             | :heavy_minus_sign:                                                                                                   | The options for this request.                                                                                        |
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                        | :heavy_check_mark:                                                                                           | The context to use for the request.                                                                          |
+| `request`                                                                                                    | [operations.TemplateMoveTemplateToTeamRequest](../../models/operations/templatemovetemplatetoteamrequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+| `opts`                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                     | :heavy_minus_sign:                                                                                           | The options for this request.                                                                                |
 
 ### Response
 
@@ -409,8 +400,8 @@ func main() {
 
 ### Errors
 
-| Error Type                                                | Status Code                                               | Content Type                                              |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| apierrors.TemplateMoveTemplateToTeamResponseBody          | 400                                                       | application/json                                          |
-| apierrors.TemplateMoveTemplateToTeamTemplatesResponseBody | 500                                                       | application/json                                          |
-| apierrors.APIError                                        | 4XX, 5XX                                                  | \*/\*                                                     |
+| Error Type                                              | Status Code                                             | Content Type                                            |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| apierrors.TemplateMoveTemplateToTeamBadRequestError     | 400                                                     | application/json                                        |
+| apierrors.TemplateMoveTemplateToTeamInternalServerError | 500                                                     | application/json                                        |
+| apierrors.APIError                                      | 4XX, 5XX                                                | \*/\*                                                   |

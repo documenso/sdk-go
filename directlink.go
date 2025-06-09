@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/documenso/sdk-go/internal/config"
 	"github.com/documenso/sdk-go/internal/hooks"
 	"github.com/documenso/sdk-go/internal/utils"
 	"github.com/documenso/sdk-go/models/apierrors"
@@ -17,24 +18,22 @@ import (
 )
 
 type DirectLink struct {
-	sdkConfiguration sdkConfiguration
+	rootSDK          *Documenso
+	sdkConfiguration config.SDKConfiguration
+	hooks            *hooks.Hooks
 }
 
-func newDirectLink(sdkConfig sdkConfiguration) *DirectLink {
+func newDirectLink(rootSDK *Documenso, sdkConfig config.SDKConfiguration, hooks *hooks.Hooks) *DirectLink {
 	return &DirectLink{
+		rootSDK:          rootSDK,
 		sdkConfiguration: sdkConfig,
+		hooks:            hooks,
 	}
 }
 
 // Create direct link
 // Create a direct link for a template
-func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCreateTemplateDirectLinkRequestBody, opts ...operations.Option) (*operations.TemplateCreateTemplateDirectLinkResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "template-createTemplateDirectLink",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
+func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCreateTemplateDirectLinkRequest, opts ...operations.Option) (*operations.TemplateCreateTemplateDirectLinkResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -58,6 +57,14 @@ func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCrea
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "template-createTemplateDirectLink",
+		SecuritySource:   s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -112,15 +119,17 @@ func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCrea
 				"504",
 			},
 		}, func() (*http.Response, error) {
-			if req.Body != nil {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
 				copyBody, err := req.GetBody()
+
 				if err != nil {
 					return nil, err
 				}
+
 				req.Body = copyBody
 			}
 
-			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
 				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
 					return nil, err
@@ -137,7 +146,7 @@ func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCrea
 					err = fmt.Errorf("error sending request: no response")
 				}
 
-				_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			}
 			return httpRes, err
 		})
@@ -145,13 +154,13 @@ func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCrea
 		if err != nil {
 			return nil, err
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
 		}
 	} else {
-		req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 		if err != nil {
 			return nil, err
 		}
@@ -164,17 +173,17 @@ func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCrea
 				err = fmt.Errorf("error sending request: no response")
 			}
 
-			_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
 		} else if utils.MatchStatusCodes([]string{"400", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-			_httpRes, err := s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
 			} else if _httpRes != nil {
 				httpRes = _httpRes
 			}
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
@@ -218,7 +227,7 @@ func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCrea
 				return nil, err
 			}
 
-			var out apierrors.TemplateCreateTemplateDirectLinkResponseBody
+			var out apierrors.TemplateCreateTemplateDirectLinkBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -243,7 +252,7 @@ func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCrea
 				return nil, err
 			}
 
-			var out apierrors.TemplateCreateTemplateDirectLinkTemplatesDirectLinkResponseBody
+			var out apierrors.TemplateCreateTemplateDirectLinkInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -286,13 +295,7 @@ func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCrea
 
 // Delete direct link
 // Delete a direct link for a template
-func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDeleteTemplateDirectLinkRequestBody, opts ...operations.Option) (*operations.TemplateDeleteTemplateDirectLinkResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "template-deleteTemplateDirectLink",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
+func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDeleteTemplateDirectLinkRequest, opts ...operations.Option) (*operations.TemplateDeleteTemplateDirectLinkResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -316,6 +319,14 @@ func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDele
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "template-deleteTemplateDirectLink",
+		SecuritySource:   s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -370,15 +381,17 @@ func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDele
 				"504",
 			},
 		}, func() (*http.Response, error) {
-			if req.Body != nil {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
 				copyBody, err := req.GetBody()
+
 				if err != nil {
 					return nil, err
 				}
+
 				req.Body = copyBody
 			}
 
-			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
 				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
 					return nil, err
@@ -395,7 +408,7 @@ func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDele
 					err = fmt.Errorf("error sending request: no response")
 				}
 
-				_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			}
 			return httpRes, err
 		})
@@ -403,13 +416,13 @@ func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDele
 		if err != nil {
 			return nil, err
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
 		}
 	} else {
-		req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 		if err != nil {
 			return nil, err
 		}
@@ -422,17 +435,17 @@ func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDele
 				err = fmt.Errorf("error sending request: no response")
 			}
 
-			_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
 		} else if utils.MatchStatusCodes([]string{"400", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-			_httpRes, err := s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
 			} else if _httpRes != nil {
 				httpRes = _httpRes
 			}
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
@@ -476,7 +489,7 @@ func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDele
 				return nil, err
 			}
 
-			var out apierrors.TemplateDeleteTemplateDirectLinkResponseBody
+			var out apierrors.TemplateDeleteTemplateDirectLinkBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -501,7 +514,7 @@ func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDele
 				return nil, err
 			}
 
-			var out apierrors.TemplateDeleteTemplateDirectLinkTemplatesDirectLinkResponseBody
+			var out apierrors.TemplateDeleteTemplateDirectLinkInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -544,13 +557,7 @@ func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDele
 
 // Toggle direct link
 // Enable or disable a direct link for a template
-func (s *DirectLink) Toggle(ctx context.Context, request operations.TemplateToggleTemplateDirectLinkRequestBody, opts ...operations.Option) (*operations.TemplateToggleTemplateDirectLinkResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "template-toggleTemplateDirectLink",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
+func (s *DirectLink) Toggle(ctx context.Context, request operations.TemplateToggleTemplateDirectLinkRequest, opts ...operations.Option) (*operations.TemplateToggleTemplateDirectLinkResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -574,6 +581,14 @@ func (s *DirectLink) Toggle(ctx context.Context, request operations.TemplateTogg
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "template-toggleTemplateDirectLink",
+		SecuritySource:   s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -628,15 +643,17 @@ func (s *DirectLink) Toggle(ctx context.Context, request operations.TemplateTogg
 				"504",
 			},
 		}, func() (*http.Response, error) {
-			if req.Body != nil {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
 				copyBody, err := req.GetBody()
+
 				if err != nil {
 					return nil, err
 				}
+
 				req.Body = copyBody
 			}
 
-			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
 				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
 					return nil, err
@@ -653,7 +670,7 @@ func (s *DirectLink) Toggle(ctx context.Context, request operations.TemplateTogg
 					err = fmt.Errorf("error sending request: no response")
 				}
 
-				_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			}
 			return httpRes, err
 		})
@@ -661,13 +678,13 @@ func (s *DirectLink) Toggle(ctx context.Context, request operations.TemplateTogg
 		if err != nil {
 			return nil, err
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
 		}
 	} else {
-		req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 		if err != nil {
 			return nil, err
 		}
@@ -680,17 +697,17 @@ func (s *DirectLink) Toggle(ctx context.Context, request operations.TemplateTogg
 				err = fmt.Errorf("error sending request: no response")
 			}
 
-			_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
 		} else if utils.MatchStatusCodes([]string{"400", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-			_httpRes, err := s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
 			} else if _httpRes != nil {
 				httpRes = _httpRes
 			}
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
@@ -734,7 +751,7 @@ func (s *DirectLink) Toggle(ctx context.Context, request operations.TemplateTogg
 				return nil, err
 			}
 
-			var out apierrors.TemplateToggleTemplateDirectLinkResponseBody
+			var out apierrors.TemplateToggleTemplateDirectLinkBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -759,7 +776,7 @@ func (s *DirectLink) Toggle(ctx context.Context, request operations.TemplateTogg
 				return nil, err
 			}
 
-			var out apierrors.TemplateToggleTemplateDirectLinkTemplatesDirectLinkResponseBody
+			var out apierrors.TemplateToggleTemplateDirectLinkInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

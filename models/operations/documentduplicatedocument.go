@@ -6,11 +6,11 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type DocumentDuplicateDocumentRequestBody struct {
+type DocumentDuplicateDocumentRequest struct {
 	DocumentID float64 `json:"documentId"`
 }
 
-func (o *DocumentDuplicateDocumentRequestBody) GetDocumentID() float64 {
+func (o *DocumentDuplicateDocumentRequest) GetDocumentID() float64 {
 	if o == nil {
 		return 0.0
 	}

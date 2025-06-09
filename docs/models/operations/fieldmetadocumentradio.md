@@ -1,0 +1,13 @@
+# FieldMetaDocumentRadio
+
+
+## Fields
+
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `Label`                                                                      | **string*                                                                    | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `Placeholder`                                                                | **string*                                                                    | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `Required`                                                                   | **bool*                                                                      | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `ReadOnly`                                                                   | **bool*                                                                      | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `Type`                                                                       | [operations.DocumentTypeRadio](../../models/operations/documenttyperadio.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `Values`                                                                     | [][operations.DocumentValue1](../../models/operations/documentvalue1.md)     | :heavy_minus_sign:                                                           | N/A                                                                          |

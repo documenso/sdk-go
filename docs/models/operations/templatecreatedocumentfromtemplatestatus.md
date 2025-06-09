@@ -8,3 +8,4 @@
 | `TemplateCreateDocumentFromTemplateStatusDraft`     | DRAFT                                               |
 | `TemplateCreateDocumentFromTemplateStatusPending`   | PENDING                                             |
 | `TemplateCreateDocumentFromTemplateStatusCompleted` | COMPLETED                                           |
+| `TemplateCreateDocumentFromTemplateStatusRejected`  | REJECTED                                            |

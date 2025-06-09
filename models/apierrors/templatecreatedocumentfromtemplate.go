@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateCreateDocumentFromTemplateTemplatesIssues struct {
+type TemplateCreateDocumentFromTemplateInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesIssues) GetMessage() string {
+func (o *TemplateCreateDocumentFromTemplateInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateCreateDocumentFromTemplateTemplatesResponseBody - Internal server error
-type TemplateCreateDocumentFromTemplateTemplatesResponseBody struct {
-	Message  string                                              `json:"message"`
-	Code     string                                              `json:"code"`
-	Issues   []TemplateCreateDocumentFromTemplateTemplatesIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                             `json:"-"`
+// TemplateCreateDocumentFromTemplateInternalServerError - Internal server error
+type TemplateCreateDocumentFromTemplateInternalServerError struct {
+	Message  string                                                       `json:"message"`
+	Code     string                                                       `json:"code"`
+	Issues   []TemplateCreateDocumentFromTemplateInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                                      `json:"-"`
 }
 
-var _ error = &TemplateCreateDocumentFromTemplateTemplatesResponseBody{}
+var _ error = &TemplateCreateDocumentFromTemplateInternalServerError{}
 
-func (e *TemplateCreateDocumentFromTemplateTemplatesResponseBody) Error() string {
+func (e *TemplateCreateDocumentFromTemplateInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type TemplateCreateDocumentFromTemplateIssues struct {
+type TemplateCreateDocumentFromTemplateBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateIssues) GetMessage() string {
+func (o *TemplateCreateDocumentFromTemplateBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateCreateDocumentFromTemplateResponseBody - Invalid input data
-type TemplateCreateDocumentFromTemplateResponseBody struct {
-	Message  string                                     `json:"message"`
-	Code     string                                     `json:"code"`
-	Issues   []TemplateCreateDocumentFromTemplateIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                    `json:"-"`
+// TemplateCreateDocumentFromTemplateBadRequestError - Invalid input data
+type TemplateCreateDocumentFromTemplateBadRequestError struct {
+	Message  string                                              `json:"message"`
+	Code     string                                              `json:"code"`
+	Issues   []TemplateCreateDocumentFromTemplateBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                             `json:"-"`
 }
 
-var _ error = &TemplateCreateDocumentFromTemplateResponseBody{}
+var _ error = &TemplateCreateDocumentFromTemplateBadRequestError{}
 
-func (e *TemplateCreateDocumentFromTemplateResponseBody) Error() string {
+func (e *TemplateCreateDocumentFromTemplateBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

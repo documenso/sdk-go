@@ -6,11 +6,11 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type FieldDeleteTemplateFieldRequestBody struct {
+type FieldDeleteTemplateFieldRequest struct {
 	FieldID float64 `json:"fieldId"`
 }
 
-func (o *FieldDeleteTemplateFieldRequestBody) GetFieldID() float64 {
+func (o *FieldDeleteTemplateFieldRequest) GetFieldID() float64 {
 	if o == nil {
 		return 0.0
 	}

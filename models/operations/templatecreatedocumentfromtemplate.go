@@ -10,70 +10,514 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateCreateDocumentFromTemplateRecipients struct {
+type TemplateCreateDocumentFromTemplateRecipientRequestBody struct {
 	// The ID of the recipient in the template.
 	ID    float64 `json:"id"`
 	Email string  `json:"email"`
 	Name  *string `json:"name,omitempty"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateRecipients) GetID() float64 {
+func (o *TemplateCreateDocumentFromTemplateRecipientRequestBody) GetID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ID
 }
 
-func (o *TemplateCreateDocumentFromTemplateRecipients) GetEmail() string {
+func (o *TemplateCreateDocumentFromTemplateRecipientRequestBody) GetEmail() string {
 	if o == nil {
 		return ""
 	}
 	return o.Email
 }
 
-func (o *TemplateCreateDocumentFromTemplateRecipients) GetName() *string {
+func (o *TemplateCreateDocumentFromTemplateRecipientRequestBody) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-type TemplateCreateDocumentFromTemplateRequestBody struct {
+type PrefillFieldTypeDropdown string
+
+const (
+	PrefillFieldTypeDropdownDropdown PrefillFieldTypeDropdown = "dropdown"
+)
+
+func (e PrefillFieldTypeDropdown) ToPointer() *PrefillFieldTypeDropdown {
+	return &e
+}
+func (e *PrefillFieldTypeDropdown) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "dropdown":
+		*e = PrefillFieldTypeDropdown(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PrefillFieldTypeDropdown: %v", v)
+	}
+}
+
+type PrefillFieldDropdown struct {
+	Type  PrefillFieldTypeDropdown `json:"type"`
+	Label *string                  `json:"label,omitempty"`
+	Value *string                  `json:"value,omitempty"`
+	ID    float64                  `json:"id"`
+}
+
+func (o *PrefillFieldDropdown) GetType() PrefillFieldTypeDropdown {
+	if o == nil {
+		return PrefillFieldTypeDropdown("")
+	}
+	return o.Type
+}
+
+func (o *PrefillFieldDropdown) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *PrefillFieldDropdown) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+func (o *PrefillFieldDropdown) GetID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ID
+}
+
+type PrefillFieldTypeCheckbox string
+
+const (
+	PrefillFieldTypeCheckboxCheckbox PrefillFieldTypeCheckbox = "checkbox"
+)
+
+func (e PrefillFieldTypeCheckbox) ToPointer() *PrefillFieldTypeCheckbox {
+	return &e
+}
+func (e *PrefillFieldTypeCheckbox) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "checkbox":
+		*e = PrefillFieldTypeCheckbox(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PrefillFieldTypeCheckbox: %v", v)
+	}
+}
+
+type PrefillFieldCheckbox struct {
+	Type  PrefillFieldTypeCheckbox `json:"type"`
+	Label *string                  `json:"label,omitempty"`
+	Value []string                 `json:"value,omitempty"`
+	ID    float64                  `json:"id"`
+}
+
+func (o *PrefillFieldCheckbox) GetType() PrefillFieldTypeCheckbox {
+	if o == nil {
+		return PrefillFieldTypeCheckbox("")
+	}
+	return o.Type
+}
+
+func (o *PrefillFieldCheckbox) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *PrefillFieldCheckbox) GetValue() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+func (o *PrefillFieldCheckbox) GetID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ID
+}
+
+type PrefillFieldTypeRadio string
+
+const (
+	PrefillFieldTypeRadioRadio PrefillFieldTypeRadio = "radio"
+)
+
+func (e PrefillFieldTypeRadio) ToPointer() *PrefillFieldTypeRadio {
+	return &e
+}
+func (e *PrefillFieldTypeRadio) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "radio":
+		*e = PrefillFieldTypeRadio(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PrefillFieldTypeRadio: %v", v)
+	}
+}
+
+type PrefillFieldRadio struct {
+	Type  PrefillFieldTypeRadio `json:"type"`
+	Label *string               `json:"label,omitempty"`
+	Value *string               `json:"value,omitempty"`
+	ID    float64               `json:"id"`
+}
+
+func (o *PrefillFieldRadio) GetType() PrefillFieldTypeRadio {
+	if o == nil {
+		return PrefillFieldTypeRadio("")
+	}
+	return o.Type
+}
+
+func (o *PrefillFieldRadio) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *PrefillFieldRadio) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+func (o *PrefillFieldRadio) GetID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ID
+}
+
+type PrefillFieldTypeNumber string
+
+const (
+	PrefillFieldTypeNumberNumber PrefillFieldTypeNumber = "number"
+)
+
+func (e PrefillFieldTypeNumber) ToPointer() *PrefillFieldTypeNumber {
+	return &e
+}
+func (e *PrefillFieldTypeNumber) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "number":
+		*e = PrefillFieldTypeNumber(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PrefillFieldTypeNumber: %v", v)
+	}
+}
+
+type PrefillFieldNumber struct {
+	Type        PrefillFieldTypeNumber `json:"type"`
+	Label       *string                `json:"label,omitempty"`
+	Placeholder *string                `json:"placeholder,omitempty"`
+	Value       *string                `json:"value,omitempty"`
+	ID          float64                `json:"id"`
+}
+
+func (o *PrefillFieldNumber) GetType() PrefillFieldTypeNumber {
+	if o == nil {
+		return PrefillFieldTypeNumber("")
+	}
+	return o.Type
+}
+
+func (o *PrefillFieldNumber) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *PrefillFieldNumber) GetPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Placeholder
+}
+
+func (o *PrefillFieldNumber) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+func (o *PrefillFieldNumber) GetID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ID
+}
+
+type PrefillFieldTypeText string
+
+const (
+	PrefillFieldTypeTextText PrefillFieldTypeText = "text"
+)
+
+func (e PrefillFieldTypeText) ToPointer() *PrefillFieldTypeText {
+	return &e
+}
+func (e *PrefillFieldTypeText) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "text":
+		*e = PrefillFieldTypeText(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PrefillFieldTypeText: %v", v)
+	}
+}
+
+type PrefillFieldText struct {
+	Type        PrefillFieldTypeText `json:"type"`
+	Label       *string              `json:"label,omitempty"`
+	Placeholder *string              `json:"placeholder,omitempty"`
+	Value       *string              `json:"value,omitempty"`
+	ID          float64              `json:"id"`
+}
+
+func (o *PrefillFieldText) GetType() PrefillFieldTypeText {
+	if o == nil {
+		return PrefillFieldTypeText("")
+	}
+	return o.Type
+}
+
+func (o *PrefillFieldText) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *PrefillFieldText) GetPlaceholder() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Placeholder
+}
+
+func (o *PrefillFieldText) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+func (o *PrefillFieldText) GetID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ID
+}
+
+type PrefillFieldType string
+
+const (
+	PrefillFieldTypePrefillFieldText     PrefillFieldType = "prefillField_Text"
+	PrefillFieldTypePrefillFieldNumber   PrefillFieldType = "prefillField_Number"
+	PrefillFieldTypePrefillFieldRadio    PrefillFieldType = "prefillField_Radio"
+	PrefillFieldTypePrefillFieldCheckbox PrefillFieldType = "prefillField_Checkbox"
+	PrefillFieldTypePrefillFieldDropdown PrefillFieldType = "prefillField_Dropdown"
+)
+
+type PrefillField struct {
+	PrefillFieldText     *PrefillFieldText     `queryParam:"inline"`
+	PrefillFieldNumber   *PrefillFieldNumber   `queryParam:"inline"`
+	PrefillFieldRadio    *PrefillFieldRadio    `queryParam:"inline"`
+	PrefillFieldCheckbox *PrefillFieldCheckbox `queryParam:"inline"`
+	PrefillFieldDropdown *PrefillFieldDropdown `queryParam:"inline"`
+
+	Type PrefillFieldType
+}
+
+func CreatePrefillFieldPrefillFieldText(prefillFieldText PrefillFieldText) PrefillField {
+	typ := PrefillFieldTypePrefillFieldText
+
+	return PrefillField{
+		PrefillFieldText: &prefillFieldText,
+		Type:             typ,
+	}
+}
+
+func CreatePrefillFieldPrefillFieldNumber(prefillFieldNumber PrefillFieldNumber) PrefillField {
+	typ := PrefillFieldTypePrefillFieldNumber
+
+	return PrefillField{
+		PrefillFieldNumber: &prefillFieldNumber,
+		Type:               typ,
+	}
+}
+
+func CreatePrefillFieldPrefillFieldRadio(prefillFieldRadio PrefillFieldRadio) PrefillField {
+	typ := PrefillFieldTypePrefillFieldRadio
+
+	return PrefillField{
+		PrefillFieldRadio: &prefillFieldRadio,
+		Type:              typ,
+	}
+}
+
+func CreatePrefillFieldPrefillFieldCheckbox(prefillFieldCheckbox PrefillFieldCheckbox) PrefillField {
+	typ := PrefillFieldTypePrefillFieldCheckbox
+
+	return PrefillField{
+		PrefillFieldCheckbox: &prefillFieldCheckbox,
+		Type:                 typ,
+	}
+}
+
+func CreatePrefillFieldPrefillFieldDropdown(prefillFieldDropdown PrefillFieldDropdown) PrefillField {
+	typ := PrefillFieldTypePrefillFieldDropdown
+
+	return PrefillField{
+		PrefillFieldDropdown: &prefillFieldDropdown,
+		Type:                 typ,
+	}
+}
+
+func (u *PrefillField) UnmarshalJSON(data []byte) error {
+
+	var prefillFieldRadio PrefillFieldRadio = PrefillFieldRadio{}
+	if err := utils.UnmarshalJSON(data, &prefillFieldRadio, "", true, true); err == nil {
+		u.PrefillFieldRadio = &prefillFieldRadio
+		u.Type = PrefillFieldTypePrefillFieldRadio
+		return nil
+	}
+
+	var prefillFieldCheckbox PrefillFieldCheckbox = PrefillFieldCheckbox{}
+	if err := utils.UnmarshalJSON(data, &prefillFieldCheckbox, "", true, true); err == nil {
+		u.PrefillFieldCheckbox = &prefillFieldCheckbox
+		u.Type = PrefillFieldTypePrefillFieldCheckbox
+		return nil
+	}
+
+	var prefillFieldDropdown PrefillFieldDropdown = PrefillFieldDropdown{}
+	if err := utils.UnmarshalJSON(data, &prefillFieldDropdown, "", true, true); err == nil {
+		u.PrefillFieldDropdown = &prefillFieldDropdown
+		u.Type = PrefillFieldTypePrefillFieldDropdown
+		return nil
+	}
+
+	var prefillFieldText PrefillFieldText = PrefillFieldText{}
+	if err := utils.UnmarshalJSON(data, &prefillFieldText, "", true, true); err == nil {
+		u.PrefillFieldText = &prefillFieldText
+		u.Type = PrefillFieldTypePrefillFieldText
+		return nil
+	}
+
+	var prefillFieldNumber PrefillFieldNumber = PrefillFieldNumber{}
+	if err := utils.UnmarshalJSON(data, &prefillFieldNumber, "", true, true); err == nil {
+		u.PrefillFieldNumber = &prefillFieldNumber
+		u.Type = PrefillFieldTypePrefillFieldNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for PrefillField", string(data))
+}
+
+func (u PrefillField) MarshalJSON() ([]byte, error) {
+	if u.PrefillFieldText != nil {
+		return utils.MarshalJSON(u.PrefillFieldText, "", true)
+	}
+
+	if u.PrefillFieldNumber != nil {
+		return utils.MarshalJSON(u.PrefillFieldNumber, "", true)
+	}
+
+	if u.PrefillFieldRadio != nil {
+		return utils.MarshalJSON(u.PrefillFieldRadio, "", true)
+	}
+
+	if u.PrefillFieldCheckbox != nil {
+		return utils.MarshalJSON(u.PrefillFieldCheckbox, "", true)
+	}
+
+	if u.PrefillFieldDropdown != nil {
+		return utils.MarshalJSON(u.PrefillFieldDropdown, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type PrefillField: all fields are null")
+}
+
+type TemplateCreateDocumentFromTemplateRequest struct {
 	TemplateID float64 `json:"templateId"`
 	// The information of the recipients to create the document with.
-	Recipients []TemplateCreateDocumentFromTemplateRecipients `json:"recipients"`
+	Recipients []TemplateCreateDocumentFromTemplateRecipientRequestBody `json:"recipients"`
 	// Whether to create the document as pending and distribute it to recipients.
 	DistributeDocument *bool `json:"distributeDocument,omitempty"`
 	// The data ID of an alternative PDF to use when creating the document. If not provided, the PDF attached to the template will be used.
 	CustomDocumentDataID *string `json:"customDocumentDataId,omitempty"`
+	// The fields to prefill on the document before sending it out. Useful when you want to create a document from an existing template and pre-fill the fields with specific values.
+	PrefillFields []PrefillField `json:"prefillFields,omitempty"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateRequestBody) GetTemplateID() float64 {
+func (o *TemplateCreateDocumentFromTemplateRequest) GetTemplateID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.TemplateID
 }
 
-func (o *TemplateCreateDocumentFromTemplateRequestBody) GetRecipients() []TemplateCreateDocumentFromTemplateRecipients {
+func (o *TemplateCreateDocumentFromTemplateRequest) GetRecipients() []TemplateCreateDocumentFromTemplateRecipientRequestBody {
 	if o == nil {
-		return []TemplateCreateDocumentFromTemplateRecipients{}
+		return []TemplateCreateDocumentFromTemplateRecipientRequestBody{}
 	}
 	return o.Recipients
 }
 
-func (o *TemplateCreateDocumentFromTemplateRequestBody) GetDistributeDocument() *bool {
+func (o *TemplateCreateDocumentFromTemplateRequest) GetDistributeDocument() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.DistributeDocument
 }
 
-func (o *TemplateCreateDocumentFromTemplateRequestBody) GetCustomDocumentDataID() *string {
+func (o *TemplateCreateDocumentFromTemplateRequest) GetCustomDocumentDataID() *string {
 	if o == nil {
 		return nil
 	}
 	return o.CustomDocumentDataID
+}
+
+func (o *TemplateCreateDocumentFromTemplateRequest) GetPrefillFields() []PrefillField {
+	if o == nil {
+		return nil
+	}
+	return o.PrefillFields
 }
 
 type TemplateCreateDocumentFromTemplateVisibility string
@@ -111,6 +555,7 @@ const (
 	TemplateCreateDocumentFromTemplateStatusDraft     TemplateCreateDocumentFromTemplateStatus = "DRAFT"
 	TemplateCreateDocumentFromTemplateStatusPending   TemplateCreateDocumentFromTemplateStatus = "PENDING"
 	TemplateCreateDocumentFromTemplateStatusCompleted TemplateCreateDocumentFromTemplateStatus = "COMPLETED"
+	TemplateCreateDocumentFromTemplateStatusRejected  TemplateCreateDocumentFromTemplateStatus = "REJECTED"
 )
 
 func (e TemplateCreateDocumentFromTemplateStatus) ToPointer() *TemplateCreateDocumentFromTemplateStatus {
@@ -127,6 +572,8 @@ func (e *TemplateCreateDocumentFromTemplateStatus) UnmarshalJSON(data []byte) er
 	case "PENDING":
 		fallthrough
 	case "COMPLETED":
+		fallthrough
+	case "REJECTED":
 		*e = TemplateCreateDocumentFromTemplateStatus(v)
 		return nil
 	default:
@@ -323,18 +770,18 @@ func (u TemplateCreateDocumentFromTemplateFormValues) MarshalJSON() ([]byte, err
 	return nil, errors.New("could not marshal union type TemplateCreateDocumentFromTemplateFormValues: all fields are null")
 }
 
-type TemplateCreateDocumentFromTemplateType string
+type TemplateCreateDocumentFromTemplateDocumentDataType string
 
 const (
-	TemplateCreateDocumentFromTemplateTypeS3Path  TemplateCreateDocumentFromTemplateType = "S3_PATH"
-	TemplateCreateDocumentFromTemplateTypeBytes   TemplateCreateDocumentFromTemplateType = "BYTES"
-	TemplateCreateDocumentFromTemplateTypeBytes64 TemplateCreateDocumentFromTemplateType = "BYTES_64"
+	TemplateCreateDocumentFromTemplateDocumentDataTypeS3Path  TemplateCreateDocumentFromTemplateDocumentDataType = "S3_PATH"
+	TemplateCreateDocumentFromTemplateDocumentDataTypeBytes   TemplateCreateDocumentFromTemplateDocumentDataType = "BYTES"
+	TemplateCreateDocumentFromTemplateDocumentDataTypeBytes64 TemplateCreateDocumentFromTemplateDocumentDataType = "BYTES_64"
 )
 
-func (e TemplateCreateDocumentFromTemplateType) ToPointer() *TemplateCreateDocumentFromTemplateType {
+func (e TemplateCreateDocumentFromTemplateDocumentDataType) ToPointer() *TemplateCreateDocumentFromTemplateDocumentDataType {
 	return &e
 }
-func (e *TemplateCreateDocumentFromTemplateType) UnmarshalJSON(data []byte) error {
+func (e *TemplateCreateDocumentFromTemplateDocumentDataType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -345,23 +792,23 @@ func (e *TemplateCreateDocumentFromTemplateType) UnmarshalJSON(data []byte) erro
 	case "BYTES":
 		fallthrough
 	case "BYTES_64":
-		*e = TemplateCreateDocumentFromTemplateType(v)
+		*e = TemplateCreateDocumentFromTemplateDocumentDataType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateType: %v", v)
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateDocumentDataType: %v", v)
 	}
 }
 
 type TemplateCreateDocumentFromTemplateDocumentData struct {
-	Type        TemplateCreateDocumentFromTemplateType `json:"type"`
-	ID          string                                 `json:"id"`
-	Data        string                                 `json:"data"`
-	InitialData string                                 `json:"initialData"`
+	Type        TemplateCreateDocumentFromTemplateDocumentDataType `json:"type"`
+	ID          string                                             `json:"id"`
+	Data        string                                             `json:"data"`
+	InitialData string                                             `json:"initialData"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateDocumentData) GetType() TemplateCreateDocumentFromTemplateType {
+func (o *TemplateCreateDocumentFromTemplateDocumentData) GetType() TemplateCreateDocumentFromTemplateDocumentDataType {
 	if o == nil {
-		return TemplateCreateDocumentFromTemplateType("")
+		return TemplateCreateDocumentFromTemplateDocumentDataType("")
 	}
 	return o.Type
 }
@@ -517,19 +964,22 @@ func (o *TemplateCreateDocumentFromTemplateEmailSettings) GetOwnerDocumentComple
 }
 
 type TemplateCreateDocumentFromTemplateDocumentMeta struct {
-	SigningOrder          TemplateCreateDocumentFromTemplateSigningOrder       `json:"signingOrder"`
-	DistributionMethod    TemplateCreateDocumentFromTemplateDistributionMethod `json:"distributionMethod"`
-	ID                    string                                               `json:"id"`
-	Subject               *string                                              `json:"subject"`
-	Message               *string                                              `json:"message"`
-	Timezone              *string                                              `json:"timezone"`
-	Password              *string                                              `json:"password"`
-	DateFormat            *string                                              `json:"dateFormat"`
-	DocumentID            int64                                                `json:"documentId"`
-	RedirectURL           *string                                              `json:"redirectUrl"`
-	TypedSignatureEnabled bool                                                 `json:"typedSignatureEnabled"`
-	Language              string                                               `json:"language"`
-	EmailSettings         *TemplateCreateDocumentFromTemplateEmailSettings     `json:"emailSettings"`
+	SigningOrder           TemplateCreateDocumentFromTemplateSigningOrder       `json:"signingOrder"`
+	DistributionMethod     TemplateCreateDocumentFromTemplateDistributionMethod `json:"distributionMethod"`
+	ID                     string                                               `json:"id"`
+	Subject                *string                                              `json:"subject"`
+	Message                *string                                              `json:"message"`
+	Timezone               *string                                              `json:"timezone"`
+	Password               *string                                              `json:"password"`
+	DateFormat             *string                                              `json:"dateFormat"`
+	DocumentID             float64                                              `json:"documentId"`
+	RedirectURL            *string                                              `json:"redirectUrl"`
+	TypedSignatureEnabled  bool                                                 `json:"typedSignatureEnabled"`
+	UploadSignatureEnabled bool                                                 `json:"uploadSignatureEnabled"`
+	DrawSignatureEnabled   bool                                                 `json:"drawSignatureEnabled"`
+	AllowDictateNextSigner bool                                                 `json:"allowDictateNextSigner"`
+	Language               string                                               `json:"language"`
+	EmailSettings          *TemplateCreateDocumentFromTemplateEmailSettings     `json:"emailSettings"`
 }
 
 func (o *TemplateCreateDocumentFromTemplateDocumentMeta) GetSigningOrder() TemplateCreateDocumentFromTemplateSigningOrder {
@@ -588,9 +1038,9 @@ func (o *TemplateCreateDocumentFromTemplateDocumentMeta) GetDateFormat() *string
 	return o.DateFormat
 }
 
-func (o *TemplateCreateDocumentFromTemplateDocumentMeta) GetDocumentID() int64 {
+func (o *TemplateCreateDocumentFromTemplateDocumentMeta) GetDocumentID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.DocumentID
 }
@@ -607,6 +1057,27 @@ func (o *TemplateCreateDocumentFromTemplateDocumentMeta) GetTypedSignatureEnable
 		return false
 	}
 	return o.TypedSignatureEnabled
+}
+
+func (o *TemplateCreateDocumentFromTemplateDocumentMeta) GetUploadSignatureEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.UploadSignatureEnabled
+}
+
+func (o *TemplateCreateDocumentFromTemplateDocumentMeta) GetDrawSignatureEnabled() bool {
+	if o == nil {
+		return false
+	}
+	return o.DrawSignatureEnabled
+}
+
+func (o *TemplateCreateDocumentFromTemplateDocumentMeta) GetAllowDictateNextSigner() bool {
+	if o == nil {
+		return false
+	}
+	return o.AllowDictateNextSigner
 }
 
 func (o *TemplateCreateDocumentFromTemplateDocumentMeta) GetLanguage() string {
@@ -626,10 +1097,11 @@ func (o *TemplateCreateDocumentFromTemplateDocumentMeta) GetEmailSettings() *Tem
 type TemplateCreateDocumentFromTemplateRole string
 
 const (
-	TemplateCreateDocumentFromTemplateRoleCc       TemplateCreateDocumentFromTemplateRole = "CC"
-	TemplateCreateDocumentFromTemplateRoleSigner   TemplateCreateDocumentFromTemplateRole = "SIGNER"
-	TemplateCreateDocumentFromTemplateRoleViewer   TemplateCreateDocumentFromTemplateRole = "VIEWER"
-	TemplateCreateDocumentFromTemplateRoleApprover TemplateCreateDocumentFromTemplateRole = "APPROVER"
+	TemplateCreateDocumentFromTemplateRoleCc        TemplateCreateDocumentFromTemplateRole = "CC"
+	TemplateCreateDocumentFromTemplateRoleSigner    TemplateCreateDocumentFromTemplateRole = "SIGNER"
+	TemplateCreateDocumentFromTemplateRoleViewer    TemplateCreateDocumentFromTemplateRole = "VIEWER"
+	TemplateCreateDocumentFromTemplateRoleApprover  TemplateCreateDocumentFromTemplateRole = "APPROVER"
+	TemplateCreateDocumentFromTemplateRoleAssistant TemplateCreateDocumentFromTemplateRole = "ASSISTANT"
 )
 
 func (e TemplateCreateDocumentFromTemplateRole) ToPointer() *TemplateCreateDocumentFromTemplateRole {
@@ -648,6 +1120,8 @@ func (e *TemplateCreateDocumentFromTemplateRole) UnmarshalJSON(data []byte) erro
 	case "VIEWER":
 		fallthrough
 	case "APPROVER":
+		fallthrough
+	case "ASSISTANT":
 		*e = TemplateCreateDocumentFromTemplateRole(v)
 		return nil
 	default:
@@ -793,179 +1267,179 @@ func (e *TemplateCreateDocumentFromTemplateActionAuth) UnmarshalJSON(data []byte
 	}
 }
 
-type TemplateCreateDocumentFromTemplateTemplatesAuthOptions struct {
+type TemplateCreateDocumentFromTemplateRecipientAuthOptions struct {
 	// The type of authentication required for the recipient to access the document.
 	AccessAuth *TemplateCreateDocumentFromTemplateAccessAuth `json:"accessAuth"`
 	// The type of authentication required for the recipient to sign the document.
 	ActionAuth *TemplateCreateDocumentFromTemplateActionAuth `json:"actionAuth"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesAuthOptions) GetAccessAuth() *TemplateCreateDocumentFromTemplateAccessAuth {
+func (o *TemplateCreateDocumentFromTemplateRecipientAuthOptions) GetAccessAuth() *TemplateCreateDocumentFromTemplateAccessAuth {
 	if o == nil {
 		return nil
 	}
 	return o.AccessAuth
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesAuthOptions) GetActionAuth() *TemplateCreateDocumentFromTemplateActionAuth {
+func (o *TemplateCreateDocumentFromTemplateRecipientAuthOptions) GetActionAuth() *TemplateCreateDocumentFromTemplateActionAuth {
 	if o == nil {
 		return nil
 	}
 	return o.ActionAuth
 }
 
-type TemplateCreateDocumentFromTemplateTemplatesRecipients struct {
+type TemplateCreateDocumentFromTemplateRecipientResponse struct {
 	Role              TemplateCreateDocumentFromTemplateRole                  `json:"role"`
 	ReadStatus        TemplateCreateDocumentFromTemplateReadStatus            `json:"readStatus"`
 	SigningStatus     TemplateCreateDocumentFromTemplateSigningStatus         `json:"signingStatus"`
 	SendStatus        TemplateCreateDocumentFromTemplateSendStatus            `json:"sendStatus"`
-	ID                int64                                                   `json:"id"`
-	DocumentID        *int64                                                  `json:"documentId"`
-	TemplateID        *int64                                                  `json:"templateId"`
+	ID                float64                                                 `json:"id"`
+	DocumentID        *float64                                                `json:"documentId"`
+	TemplateID        *float64                                                `json:"templateId"`
 	Email             string                                                  `json:"email"`
 	Name              string                                                  `json:"name"`
 	Token             string                                                  `json:"token"`
 	DocumentDeletedAt *string                                                 `json:"documentDeletedAt"`
 	Expired           *string                                                 `json:"expired"`
 	SignedAt          *string                                                 `json:"signedAt"`
-	AuthOptions       *TemplateCreateDocumentFromTemplateTemplatesAuthOptions `json:"authOptions"`
+	AuthOptions       *TemplateCreateDocumentFromTemplateRecipientAuthOptions `json:"authOptions"`
 	// The order in which the recipient should sign the document. Only works if the document is set to sequential signing.
 	SigningOrder    *float64 `json:"signingOrder"`
 	RejectionReason *string  `json:"rejectionReason"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetRole() TemplateCreateDocumentFromTemplateRole {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetRole() TemplateCreateDocumentFromTemplateRole {
 	if o == nil {
 		return TemplateCreateDocumentFromTemplateRole("")
 	}
 	return o.Role
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetReadStatus() TemplateCreateDocumentFromTemplateReadStatus {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetReadStatus() TemplateCreateDocumentFromTemplateReadStatus {
 	if o == nil {
 		return TemplateCreateDocumentFromTemplateReadStatus("")
 	}
 	return o.ReadStatus
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetSigningStatus() TemplateCreateDocumentFromTemplateSigningStatus {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetSigningStatus() TemplateCreateDocumentFromTemplateSigningStatus {
 	if o == nil {
 		return TemplateCreateDocumentFromTemplateSigningStatus("")
 	}
 	return o.SigningStatus
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetSendStatus() TemplateCreateDocumentFromTemplateSendStatus {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetSendStatus() TemplateCreateDocumentFromTemplateSendStatus {
 	if o == nil {
 		return TemplateCreateDocumentFromTemplateSendStatus("")
 	}
 	return o.SendStatus
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetID() int64 {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.ID
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetDocumentID() *int64 {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetDocumentID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DocumentID
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetTemplateID() *int64 {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetTemplateID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.TemplateID
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetEmail() string {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetEmail() string {
 	if o == nil {
 		return ""
 	}
 	return o.Email
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetName() string {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetToken() string {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetToken() string {
 	if o == nil {
 		return ""
 	}
 	return o.Token
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetDocumentDeletedAt() *string {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetDocumentDeletedAt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DocumentDeletedAt
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetExpired() *string {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetExpired() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Expired
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetSignedAt() *string {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetSignedAt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.SignedAt
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetAuthOptions() *TemplateCreateDocumentFromTemplateTemplatesAuthOptions {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetAuthOptions() *TemplateCreateDocumentFromTemplateRecipientAuthOptions {
 	if o == nil {
 		return nil
 	}
 	return o.AuthOptions
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetSigningOrder() *float64 {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetSigningOrder() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.SigningOrder
 }
 
-func (o *TemplateCreateDocumentFromTemplateTemplatesRecipients) GetRejectionReason() *string {
+func (o *TemplateCreateDocumentFromTemplateRecipientResponse) GetRejectionReason() *string {
 	if o == nil {
 		return nil
 	}
 	return o.RejectionReason
 }
 
-type TemplateCreateDocumentFromTemplateTemplatesType string
+type TemplateCreateDocumentFromTemplateFieldType string
 
 const (
-	TemplateCreateDocumentFromTemplateTemplatesTypeSignature     TemplateCreateDocumentFromTemplateTemplatesType = "SIGNATURE"
-	TemplateCreateDocumentFromTemplateTemplatesTypeFreeSignature TemplateCreateDocumentFromTemplateTemplatesType = "FREE_SIGNATURE"
-	TemplateCreateDocumentFromTemplateTemplatesTypeInitials      TemplateCreateDocumentFromTemplateTemplatesType = "INITIALS"
-	TemplateCreateDocumentFromTemplateTemplatesTypeName          TemplateCreateDocumentFromTemplateTemplatesType = "NAME"
-	TemplateCreateDocumentFromTemplateTemplatesTypeEmail         TemplateCreateDocumentFromTemplateTemplatesType = "EMAIL"
-	TemplateCreateDocumentFromTemplateTemplatesTypeDate          TemplateCreateDocumentFromTemplateTemplatesType = "DATE"
-	TemplateCreateDocumentFromTemplateTemplatesTypeText          TemplateCreateDocumentFromTemplateTemplatesType = "TEXT"
-	TemplateCreateDocumentFromTemplateTemplatesTypeNumber        TemplateCreateDocumentFromTemplateTemplatesType = "NUMBER"
-	TemplateCreateDocumentFromTemplateTemplatesTypeRadio         TemplateCreateDocumentFromTemplateTemplatesType = "RADIO"
-	TemplateCreateDocumentFromTemplateTemplatesTypeCheckbox      TemplateCreateDocumentFromTemplateTemplatesType = "CHECKBOX"
-	TemplateCreateDocumentFromTemplateTemplatesTypeDropdown      TemplateCreateDocumentFromTemplateTemplatesType = "DROPDOWN"
+	TemplateCreateDocumentFromTemplateFieldTypeSignature     TemplateCreateDocumentFromTemplateFieldType = "SIGNATURE"
+	TemplateCreateDocumentFromTemplateFieldTypeFreeSignature TemplateCreateDocumentFromTemplateFieldType = "FREE_SIGNATURE"
+	TemplateCreateDocumentFromTemplateFieldTypeInitials      TemplateCreateDocumentFromTemplateFieldType = "INITIALS"
+	TemplateCreateDocumentFromTemplateFieldTypeName          TemplateCreateDocumentFromTemplateFieldType = "NAME"
+	TemplateCreateDocumentFromTemplateFieldTypeEmail         TemplateCreateDocumentFromTemplateFieldType = "EMAIL"
+	TemplateCreateDocumentFromTemplateFieldTypeDate          TemplateCreateDocumentFromTemplateFieldType = "DATE"
+	TemplateCreateDocumentFromTemplateFieldTypeText          TemplateCreateDocumentFromTemplateFieldType = "TEXT"
+	TemplateCreateDocumentFromTemplateFieldTypeNumber        TemplateCreateDocumentFromTemplateFieldType = "NUMBER"
+	TemplateCreateDocumentFromTemplateFieldTypeRadio         TemplateCreateDocumentFromTemplateFieldType = "RADIO"
+	TemplateCreateDocumentFromTemplateFieldTypeCheckbox      TemplateCreateDocumentFromTemplateFieldType = "CHECKBOX"
+	TemplateCreateDocumentFromTemplateFieldTypeDropdown      TemplateCreateDocumentFromTemplateFieldType = "DROPDOWN"
 )
 
-func (e TemplateCreateDocumentFromTemplateTemplatesType) ToPointer() *TemplateCreateDocumentFromTemplateTemplatesType {
+func (e TemplateCreateDocumentFromTemplateFieldType) ToPointer() *TemplateCreateDocumentFromTemplateFieldType {
 	return &e
 }
-func (e *TemplateCreateDocumentFromTemplateTemplatesType) UnmarshalJSON(data []byte) error {
+func (e *TemplateCreateDocumentFromTemplateFieldType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -992,1143 +1466,1365 @@ func (e *TemplateCreateDocumentFromTemplateTemplatesType) UnmarshalJSON(data []b
 	case "CHECKBOX":
 		fallthrough
 	case "DROPDOWN":
-		*e = TemplateCreateDocumentFromTemplateTemplatesType(v)
+		*e = TemplateCreateDocumentFromTemplateFieldType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateTemplatesType: %v", v)
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldType: %v", v)
 	}
 }
 
-type TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields9Type string
+type TemplateCreateDocumentFromTemplateFieldMetaTypeDropdown string
 
 const (
-	TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields9TypeDropdown TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields9Type = "dropdown"
+	TemplateCreateDocumentFromTemplateFieldMetaTypeDropdownDropdown TemplateCreateDocumentFromTemplateFieldMetaTypeDropdown = "dropdown"
 )
 
-func (e TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields9Type) ToPointer() *TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields9Type {
+func (e TemplateCreateDocumentFromTemplateFieldMetaTypeDropdown) ToPointer() *TemplateCreateDocumentFromTemplateFieldMetaTypeDropdown {
 	return &e
 }
-func (e *TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields9Type) UnmarshalJSON(data []byte) error {
+func (e *TemplateCreateDocumentFromTemplateFieldMetaTypeDropdown) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "dropdown":
-		*e = TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields9Type(v)
+		*e = TemplateCreateDocumentFromTemplateFieldMetaTypeDropdown(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields9Type: %v", v)
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldMetaTypeDropdown: %v", v)
 	}
 }
 
-type TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponseValues struct {
+type TemplateCreateDocumentFromTemplateValue3 struct {
 	Value string `json:"value"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponseValues) GetValue() string {
+func (o *TemplateCreateDocumentFromTemplateValue3) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type TemplateCreateDocumentFromTemplateFieldMeta9 struct {
-	Label        *string                                                                                               `json:"label,omitempty"`
-	Placeholder  *string                                                                                               `json:"placeholder,omitempty"`
-	Required     *bool                                                                                                 `json:"required,omitempty"`
-	ReadOnly     *bool                                                                                                 `json:"readOnly,omitempty"`
-	Type         TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields9Type `json:"type"`
-	Values       []TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponseValues                                  `json:"values,omitempty"`
-	DefaultValue *string                                                                                               `json:"defaultValue,omitempty"`
+type TemplateCreateDocumentFromTemplateFieldMetaDropdown struct {
+	Label        *string                                                 `json:"label,omitempty"`
+	Placeholder  *string                                                 `json:"placeholder,omitempty"`
+	Required     *bool                                                   `json:"required,omitempty"`
+	ReadOnly     *bool                                                   `json:"readOnly,omitempty"`
+	Type         TemplateCreateDocumentFromTemplateFieldMetaTypeDropdown `json:"type"`
+	Values       []TemplateCreateDocumentFromTemplateValue3              `json:"values,omitempty"`
+	DefaultValue *string                                                 `json:"defaultValue,omitempty"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta9) GetLabel() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaDropdown) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta9) GetPlaceholder() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaDropdown) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta9) GetRequired() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaDropdown) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta9) GetReadOnly() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaDropdown) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta9) GetType() TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields9Type {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaDropdown) GetType() TemplateCreateDocumentFromTemplateFieldMetaTypeDropdown {
 	if o == nil {
-		return TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields9Type("")
+		return TemplateCreateDocumentFromTemplateFieldMetaTypeDropdown("")
 	}
 	return o.Type
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta9) GetValues() []TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponseValues {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaDropdown) GetValues() []TemplateCreateDocumentFromTemplateValue3 {
 	if o == nil {
 		return nil
 	}
 	return o.Values
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta9) GetDefaultValue() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaDropdown) GetDefaultValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DefaultValue
 }
 
-type TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields8Type string
+type TemplateCreateDocumentFromTemplateFieldMetaTypeCheckbox string
 
 const (
-	TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields8TypeCheckbox TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields8Type = "checkbox"
+	TemplateCreateDocumentFromTemplateFieldMetaTypeCheckboxCheckbox TemplateCreateDocumentFromTemplateFieldMetaTypeCheckbox = "checkbox"
 )
 
-func (e TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields8Type) ToPointer() *TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields8Type {
+func (e TemplateCreateDocumentFromTemplateFieldMetaTypeCheckbox) ToPointer() *TemplateCreateDocumentFromTemplateFieldMetaTypeCheckbox {
 	return &e
 }
-func (e *TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields8Type) UnmarshalJSON(data []byte) error {
+func (e *TemplateCreateDocumentFromTemplateFieldMetaTypeCheckbox) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "checkbox":
-		*e = TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields8Type(v)
+		*e = TemplateCreateDocumentFromTemplateFieldMetaTypeCheckbox(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields8Type: %v", v)
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldMetaTypeCheckbox: %v", v)
 	}
 }
 
-type TemplateCreateDocumentFromTemplateFieldMetaTemplatesValues struct {
+type TemplateCreateDocumentFromTemplateValue2 struct {
 	ID      float64 `json:"id"`
 	Checked bool    `json:"checked"`
 	Value   string  `json:"value"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMetaTemplatesValues) GetID() float64 {
+func (o *TemplateCreateDocumentFromTemplateValue2) GetID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ID
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMetaTemplatesValues) GetChecked() bool {
+func (o *TemplateCreateDocumentFromTemplateValue2) GetChecked() bool {
 	if o == nil {
 		return false
 	}
 	return o.Checked
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMetaTemplatesValues) GetValue() string {
+func (o *TemplateCreateDocumentFromTemplateValue2) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type TemplateCreateDocumentFromTemplateFieldMeta8 struct {
-	Label            *string                                                                                               `json:"label,omitempty"`
-	Placeholder      *string                                                                                               `json:"placeholder,omitempty"`
-	Required         *bool                                                                                                 `json:"required,omitempty"`
-	ReadOnly         *bool                                                                                                 `json:"readOnly,omitempty"`
-	Type             TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields8Type `json:"type"`
-	Values           []TemplateCreateDocumentFromTemplateFieldMetaTemplatesValues                                          `json:"values,omitempty"`
-	ValidationRule   *string                                                                                               `json:"validationRule,omitempty"`
-	ValidationLength *float64                                                                                              `json:"validationLength,omitempty"`
+type TemplateCreateDocumentFromTemplateFieldMetaCheckbox struct {
+	Label            *string                                                 `json:"label,omitempty"`
+	Placeholder      *string                                                 `json:"placeholder,omitempty"`
+	Required         *bool                                                   `json:"required,omitempty"`
+	ReadOnly         *bool                                                   `json:"readOnly,omitempty"`
+	Type             TemplateCreateDocumentFromTemplateFieldMetaTypeCheckbox `json:"type"`
+	Values           []TemplateCreateDocumentFromTemplateValue2              `json:"values,omitempty"`
+	ValidationRule   *string                                                 `json:"validationRule,omitempty"`
+	ValidationLength *float64                                                `json:"validationLength,omitempty"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta8) GetLabel() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaCheckbox) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta8) GetPlaceholder() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaCheckbox) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta8) GetRequired() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaCheckbox) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta8) GetReadOnly() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaCheckbox) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta8) GetType() TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields8Type {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaCheckbox) GetType() TemplateCreateDocumentFromTemplateFieldMetaTypeCheckbox {
 	if o == nil {
-		return TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFields8Type("")
+		return TemplateCreateDocumentFromTemplateFieldMetaTypeCheckbox("")
 	}
 	return o.Type
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta8) GetValues() []TemplateCreateDocumentFromTemplateFieldMetaTemplatesValues {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaCheckbox) GetValues() []TemplateCreateDocumentFromTemplateValue2 {
 	if o == nil {
 		return nil
 	}
 	return o.Values
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta8) GetValidationRule() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaCheckbox) GetValidationRule() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ValidationRule
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta8) GetValidationLength() *float64 {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaCheckbox) GetValidationLength() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ValidationLength
 }
 
-type TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFieldsType string
+type TemplateCreateDocumentFromTemplateFieldMetaTypeRadio string
 
 const (
-	TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFieldsTypeRadio TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFieldsType = "radio"
+	TemplateCreateDocumentFromTemplateFieldMetaTypeRadioRadio TemplateCreateDocumentFromTemplateFieldMetaTypeRadio = "radio"
 )
 
-func (e TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFieldsType) ToPointer() *TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFieldsType {
+func (e TemplateCreateDocumentFromTemplateFieldMetaTypeRadio) ToPointer() *TemplateCreateDocumentFromTemplateFieldMetaTypeRadio {
 	return &e
 }
-func (e *TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFieldsType) UnmarshalJSON(data []byte) error {
+func (e *TemplateCreateDocumentFromTemplateFieldMetaTypeRadio) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "radio":
-		*e = TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFieldsType(v)
+		*e = TemplateCreateDocumentFromTemplateFieldMetaTypeRadio(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFieldsType: %v", v)
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldMetaTypeRadio: %v", v)
 	}
 }
 
-type TemplateCreateDocumentFromTemplateFieldMetaValues struct {
+type TemplateCreateDocumentFromTemplateValue1 struct {
 	ID      float64 `json:"id"`
 	Checked bool    `json:"checked"`
 	Value   string  `json:"value"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMetaValues) GetID() float64 {
+func (o *TemplateCreateDocumentFromTemplateValue1) GetID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ID
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMetaValues) GetChecked() bool {
+func (o *TemplateCreateDocumentFromTemplateValue1) GetChecked() bool {
 	if o == nil {
 		return false
 	}
 	return o.Checked
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMetaValues) GetValue() string {
+func (o *TemplateCreateDocumentFromTemplateValue1) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type TemplateCreateDocumentFromTemplateFieldMeta7 struct {
-	Label       *string                                                                                              `json:"label,omitempty"`
-	Placeholder *string                                                                                              `json:"placeholder,omitempty"`
-	Required    *bool                                                                                                `json:"required,omitempty"`
-	ReadOnly    *bool                                                                                                `json:"readOnly,omitempty"`
-	Type        TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFieldsType `json:"type"`
-	Values      []TemplateCreateDocumentFromTemplateFieldMetaValues                                                  `json:"values,omitempty"`
+type TemplateCreateDocumentFromTemplateFieldMetaRadio struct {
+	Label       *string                                              `json:"label,omitempty"`
+	Placeholder *string                                              `json:"placeholder,omitempty"`
+	Required    *bool                                                `json:"required,omitempty"`
+	ReadOnly    *bool                                                `json:"readOnly,omitempty"`
+	Type        TemplateCreateDocumentFromTemplateFieldMetaTypeRadio `json:"type"`
+	Values      []TemplateCreateDocumentFromTemplateValue1           `json:"values,omitempty"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta7) GetLabel() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaRadio) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta7) GetPlaceholder() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaRadio) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta7) GetRequired() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaRadio) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta7) GetReadOnly() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaRadio) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta7) GetType() TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFieldsType {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaRadio) GetType() TemplateCreateDocumentFromTemplateFieldMetaTypeRadio {
 	if o == nil {
-		return TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyFieldsType("")
+		return TemplateCreateDocumentFromTemplateFieldMetaTypeRadio("")
 	}
 	return o.Type
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta7) GetValues() []TemplateCreateDocumentFromTemplateFieldMetaValues {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaRadio) GetValues() []TemplateCreateDocumentFromTemplateValue1 {
 	if o == nil {
 		return nil
 	}
 	return o.Values
 }
 
-type TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyType string
+type TemplateCreateDocumentFromTemplateFieldMetaTypeNumber string
 
 const (
-	TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyTypeNumber TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyType = "number"
+	TemplateCreateDocumentFromTemplateFieldMetaTypeNumberNumber TemplateCreateDocumentFromTemplateFieldMetaTypeNumber = "number"
 )
 
-func (e TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyType) ToPointer() *TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyType {
+func (e TemplateCreateDocumentFromTemplateFieldMetaTypeNumber) ToPointer() *TemplateCreateDocumentFromTemplateFieldMetaTypeNumber {
 	return &e
 }
-func (e *TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *TemplateCreateDocumentFromTemplateFieldMetaTypeNumber) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "number":
-		*e = TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyType(v)
+		*e = TemplateCreateDocumentFromTemplateFieldMetaTypeNumber(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldMetaTypeNumber: %v", v)
 	}
 }
 
-type TemplateCreateDocumentFromTemplateFieldMeta6 struct {
-	Label        *string                                                                                        `json:"label,omitempty"`
-	Placeholder  *string                                                                                        `json:"placeholder,omitempty"`
-	Required     *bool                                                                                          `json:"required,omitempty"`
-	ReadOnly     *bool                                                                                          `json:"readOnly,omitempty"`
-	Type         TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyType `json:"type"`
-	NumberFormat *string                                                                                        `json:"numberFormat,omitempty"`
-	Value        *string                                                                                        `json:"value,omitempty"`
-	MinValue     *float64                                                                                       `json:"minValue,omitempty"`
-	MaxValue     *float64                                                                                       `json:"maxValue,omitempty"`
-	FontSize     *float64                                                                                       `json:"fontSize,omitempty"`
+type TemplateCreateDocumentFromTemplateTextAlign6 string
+
+const (
+	TemplateCreateDocumentFromTemplateTextAlign6Left   TemplateCreateDocumentFromTemplateTextAlign6 = "left"
+	TemplateCreateDocumentFromTemplateTextAlign6Center TemplateCreateDocumentFromTemplateTextAlign6 = "center"
+	TemplateCreateDocumentFromTemplateTextAlign6Right  TemplateCreateDocumentFromTemplateTextAlign6 = "right"
+)
+
+func (e TemplateCreateDocumentFromTemplateTextAlign6) ToPointer() *TemplateCreateDocumentFromTemplateTextAlign6 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateTextAlign6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = TemplateCreateDocumentFromTemplateTextAlign6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateTextAlign6: %v", v)
+	}
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta6) GetLabel() *string {
+type TemplateCreateDocumentFromTemplateFieldMetaNumber struct {
+	Label        *string                                               `json:"label,omitempty"`
+	Placeholder  *string                                               `json:"placeholder,omitempty"`
+	Required     *bool                                                 `json:"required,omitempty"`
+	ReadOnly     *bool                                                 `json:"readOnly,omitempty"`
+	Type         TemplateCreateDocumentFromTemplateFieldMetaTypeNumber `json:"type"`
+	NumberFormat *string                                               `json:"numberFormat,omitempty"`
+	Value        *string                                               `json:"value,omitempty"`
+	MinValue     *float64                                              `json:"minValue,omitempty"`
+	MaxValue     *float64                                              `json:"maxValue,omitempty"`
+	FontSize     *float64                                              `json:"fontSize,omitempty"`
+	TextAlign    *TemplateCreateDocumentFromTemplateTextAlign6         `json:"textAlign,omitempty"`
+}
+
+func (o *TemplateCreateDocumentFromTemplateFieldMetaNumber) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta6) GetPlaceholder() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaNumber) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta6) GetRequired() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaNumber) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta6) GetReadOnly() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaNumber) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta6) GetType() TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyType {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaNumber) GetType() TemplateCreateDocumentFromTemplateFieldMetaTypeNumber {
 	if o == nil {
-		return TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONResponseBodyType("")
+		return TemplateCreateDocumentFromTemplateFieldMetaTypeNumber("")
 	}
 	return o.Type
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta6) GetNumberFormat() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaNumber) GetNumberFormat() *string {
 	if o == nil {
 		return nil
 	}
 	return o.NumberFormat
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta6) GetValue() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaNumber) GetValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta6) GetMinValue() *float64 {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaNumber) GetMinValue() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MinValue
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta6) GetMaxValue() *float64 {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaNumber) GetMaxValue() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxValue
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta6) GetFontSize() *float64 {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaNumber) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONType string
+func (o *TemplateCreateDocumentFromTemplateFieldMetaNumber) GetTextAlign() *TemplateCreateDocumentFromTemplateTextAlign6 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type TemplateCreateDocumentFromTemplateFieldMetaTypeText string
 
 const (
-	TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONTypeText TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONType = "text"
+	TemplateCreateDocumentFromTemplateFieldMetaTypeTextText TemplateCreateDocumentFromTemplateFieldMetaTypeText = "text"
 )
 
-func (e TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONType) ToPointer() *TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONType {
+func (e TemplateCreateDocumentFromTemplateFieldMetaTypeText) ToPointer() *TemplateCreateDocumentFromTemplateFieldMetaTypeText {
 	return &e
 }
-func (e *TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONType) UnmarshalJSON(data []byte) error {
+func (e *TemplateCreateDocumentFromTemplateFieldMetaTypeText) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "text":
-		*e = TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONType(v)
+		*e = TemplateCreateDocumentFromTemplateFieldMetaTypeText(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONType: %v", v)
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldMetaTypeText: %v", v)
 	}
 }
 
-type TemplateCreateDocumentFromTemplateFieldMeta5 struct {
-	Label          *string                                                                            `json:"label,omitempty"`
-	Placeholder    *string                                                                            `json:"placeholder,omitempty"`
-	Required       *bool                                                                              `json:"required,omitempty"`
-	ReadOnly       *bool                                                                              `json:"readOnly,omitempty"`
-	Type           TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONType `json:"type"`
-	Text           *string                                                                            `json:"text,omitempty"`
-	CharacterLimit *float64                                                                           `json:"characterLimit,omitempty"`
-	FontSize       *float64                                                                           `json:"fontSize,omitempty"`
+type TemplateCreateDocumentFromTemplateTextAlign5 string
+
+const (
+	TemplateCreateDocumentFromTemplateTextAlign5Left   TemplateCreateDocumentFromTemplateTextAlign5 = "left"
+	TemplateCreateDocumentFromTemplateTextAlign5Center TemplateCreateDocumentFromTemplateTextAlign5 = "center"
+	TemplateCreateDocumentFromTemplateTextAlign5Right  TemplateCreateDocumentFromTemplateTextAlign5 = "right"
+)
+
+func (e TemplateCreateDocumentFromTemplateTextAlign5) ToPointer() *TemplateCreateDocumentFromTemplateTextAlign5 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateTextAlign5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = TemplateCreateDocumentFromTemplateTextAlign5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateTextAlign5: %v", v)
+	}
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta5) GetLabel() *string {
+type TemplateCreateDocumentFromTemplateFieldMetaText struct {
+	Label          *string                                             `json:"label,omitempty"`
+	Placeholder    *string                                             `json:"placeholder,omitempty"`
+	Required       *bool                                               `json:"required,omitempty"`
+	ReadOnly       *bool                                               `json:"readOnly,omitempty"`
+	Type           TemplateCreateDocumentFromTemplateFieldMetaTypeText `json:"type"`
+	Text           *string                                             `json:"text,omitempty"`
+	CharacterLimit *float64                                            `json:"characterLimit,omitempty"`
+	FontSize       *float64                                            `json:"fontSize,omitempty"`
+	TextAlign      *TemplateCreateDocumentFromTemplateTextAlign5       `json:"textAlign,omitempty"`
+}
+
+func (o *TemplateCreateDocumentFromTemplateFieldMetaText) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta5) GetPlaceholder() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaText) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta5) GetRequired() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaText) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta5) GetReadOnly() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaText) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta5) GetType() TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONType {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaText) GetType() TemplateCreateDocumentFromTemplateFieldMetaTypeText {
 	if o == nil {
-		return TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200ApplicationJSONType("")
+		return TemplateCreateDocumentFromTemplateFieldMetaTypeText("")
 	}
 	return o.Type
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta5) GetText() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaText) GetText() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Text
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta5) GetCharacterLimit() *float64 {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaText) GetCharacterLimit() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CharacterLimit
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta5) GetFontSize() *float64 {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaText) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200Type string
+func (o *TemplateCreateDocumentFromTemplateFieldMetaText) GetTextAlign() *TemplateCreateDocumentFromTemplateTextAlign5 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type TemplateCreateDocumentFromTemplateTypeDate string
 
 const (
-	TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200TypeDate TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200Type = "date"
+	TemplateCreateDocumentFromTemplateTypeDateDate TemplateCreateDocumentFromTemplateTypeDate = "date"
 )
 
-func (e TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200Type) ToPointer() *TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200Type {
+func (e TemplateCreateDocumentFromTemplateTypeDate) ToPointer() *TemplateCreateDocumentFromTemplateTypeDate {
 	return &e
 }
-func (e *TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200Type) UnmarshalJSON(data []byte) error {
+func (e *TemplateCreateDocumentFromTemplateTypeDate) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "date":
-		*e = TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200Type(v)
+		*e = TemplateCreateDocumentFromTemplateTypeDate(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200Type: %v", v)
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateTypeDate: %v", v)
 	}
 }
 
-type TemplateCreateDocumentFromTemplateFieldMeta4 struct {
-	Label       *string                                                             `json:"label,omitempty"`
-	Placeholder *string                                                             `json:"placeholder,omitempty"`
-	Required    *bool                                                               `json:"required,omitempty"`
-	ReadOnly    *bool                                                               `json:"readOnly,omitempty"`
-	Type        TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200Type `json:"type"`
-	FontSize    *float64                                                            `json:"fontSize,omitempty"`
+type TemplateCreateDocumentFromTemplateTextAlign4 string
+
+const (
+	TemplateCreateDocumentFromTemplateTextAlign4Left   TemplateCreateDocumentFromTemplateTextAlign4 = "left"
+	TemplateCreateDocumentFromTemplateTextAlign4Center TemplateCreateDocumentFromTemplateTextAlign4 = "center"
+	TemplateCreateDocumentFromTemplateTextAlign4Right  TemplateCreateDocumentFromTemplateTextAlign4 = "right"
+)
+
+func (e TemplateCreateDocumentFromTemplateTextAlign4) ToPointer() *TemplateCreateDocumentFromTemplateTextAlign4 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateTextAlign4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = TemplateCreateDocumentFromTemplateTextAlign4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateTextAlign4: %v", v)
+	}
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta4) GetLabel() *string {
+type TemplateCreateDocumentFromTemplateFieldMetaDate struct {
+	Label       *string                                       `json:"label,omitempty"`
+	Placeholder *string                                       `json:"placeholder,omitempty"`
+	Required    *bool                                         `json:"required,omitempty"`
+	ReadOnly    *bool                                         `json:"readOnly,omitempty"`
+	Type        TemplateCreateDocumentFromTemplateTypeDate    `json:"type"`
+	FontSize    *float64                                      `json:"fontSize,omitempty"`
+	TextAlign   *TemplateCreateDocumentFromTemplateTextAlign4 `json:"textAlign,omitempty"`
+}
+
+func (o *TemplateCreateDocumentFromTemplateFieldMetaDate) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta4) GetPlaceholder() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaDate) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta4) GetRequired() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaDate) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta4) GetReadOnly() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaDate) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta4) GetType() TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200Type {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaDate) GetType() TemplateCreateDocumentFromTemplateTypeDate {
 	if o == nil {
-		return TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponse200Type("")
+		return TemplateCreateDocumentFromTemplateTypeDate("")
 	}
 	return o.Type
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta4) GetFontSize() *float64 {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaDate) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponseType string
+func (o *TemplateCreateDocumentFromTemplateFieldMetaDate) GetTextAlign() *TemplateCreateDocumentFromTemplateTextAlign4 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type TemplateCreateDocumentFromTemplateTypeEmail string
 
 const (
-	TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponseTypeEmail TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponseType = "email"
+	TemplateCreateDocumentFromTemplateTypeEmailEmail TemplateCreateDocumentFromTemplateTypeEmail = "email"
 )
 
-func (e TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponseType) ToPointer() *TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponseType {
+func (e TemplateCreateDocumentFromTemplateTypeEmail) ToPointer() *TemplateCreateDocumentFromTemplateTypeEmail {
 	return &e
 }
-func (e *TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponseType) UnmarshalJSON(data []byte) error {
+func (e *TemplateCreateDocumentFromTemplateTypeEmail) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "email":
-		*e = TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponseType(v)
+		*e = TemplateCreateDocumentFromTemplateTypeEmail(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponseType: %v", v)
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateTypeEmail: %v", v)
 	}
 }
 
-type TemplateCreateDocumentFromTemplateFieldMeta3 struct {
-	Label       *string                                                          `json:"label,omitempty"`
-	Placeholder *string                                                          `json:"placeholder,omitempty"`
-	Required    *bool                                                            `json:"required,omitempty"`
-	ReadOnly    *bool                                                            `json:"readOnly,omitempty"`
-	Type        TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponseType `json:"type"`
-	FontSize    *float64                                                         `json:"fontSize,omitempty"`
+type TemplateCreateDocumentFromTemplateTextAlign3 string
+
+const (
+	TemplateCreateDocumentFromTemplateTextAlign3Left   TemplateCreateDocumentFromTemplateTextAlign3 = "left"
+	TemplateCreateDocumentFromTemplateTextAlign3Center TemplateCreateDocumentFromTemplateTextAlign3 = "center"
+	TemplateCreateDocumentFromTemplateTextAlign3Right  TemplateCreateDocumentFromTemplateTextAlign3 = "right"
+)
+
+func (e TemplateCreateDocumentFromTemplateTextAlign3) ToPointer() *TemplateCreateDocumentFromTemplateTextAlign3 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateTextAlign3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = TemplateCreateDocumentFromTemplateTextAlign3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateTextAlign3: %v", v)
+	}
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta3) GetLabel() *string {
+type TemplateCreateDocumentFromTemplateFieldMetaEmail struct {
+	Label       *string                                       `json:"label,omitempty"`
+	Placeholder *string                                       `json:"placeholder,omitempty"`
+	Required    *bool                                         `json:"required,omitempty"`
+	ReadOnly    *bool                                         `json:"readOnly,omitempty"`
+	Type        TemplateCreateDocumentFromTemplateTypeEmail   `json:"type"`
+	FontSize    *float64                                      `json:"fontSize,omitempty"`
+	TextAlign   *TemplateCreateDocumentFromTemplateTextAlign3 `json:"textAlign,omitempty"`
+}
+
+func (o *TemplateCreateDocumentFromTemplateFieldMetaEmail) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta3) GetPlaceholder() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaEmail) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta3) GetRequired() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaEmail) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta3) GetReadOnly() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaEmail) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta3) GetType() TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponseType {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaEmail) GetType() TemplateCreateDocumentFromTemplateTypeEmail {
 	if o == nil {
-		return TemplateCreateDocumentFromTemplateFieldMetaTemplatesResponseType("")
+		return TemplateCreateDocumentFromTemplateTypeEmail("")
 	}
 	return o.Type
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta3) GetFontSize() *float64 {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaEmail) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type TemplateCreateDocumentFromTemplateFieldMetaTemplatesType string
+func (o *TemplateCreateDocumentFromTemplateFieldMetaEmail) GetTextAlign() *TemplateCreateDocumentFromTemplateTextAlign3 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type TemplateCreateDocumentFromTemplateTypeName string
 
 const (
-	TemplateCreateDocumentFromTemplateFieldMetaTemplatesTypeName TemplateCreateDocumentFromTemplateFieldMetaTemplatesType = "name"
+	TemplateCreateDocumentFromTemplateTypeNameName TemplateCreateDocumentFromTemplateTypeName = "name"
 )
 
-func (e TemplateCreateDocumentFromTemplateFieldMetaTemplatesType) ToPointer() *TemplateCreateDocumentFromTemplateFieldMetaTemplatesType {
+func (e TemplateCreateDocumentFromTemplateTypeName) ToPointer() *TemplateCreateDocumentFromTemplateTypeName {
 	return &e
 }
-func (e *TemplateCreateDocumentFromTemplateFieldMetaTemplatesType) UnmarshalJSON(data []byte) error {
+func (e *TemplateCreateDocumentFromTemplateTypeName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "name":
-		*e = TemplateCreateDocumentFromTemplateFieldMetaTemplatesType(v)
+		*e = TemplateCreateDocumentFromTemplateTypeName(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldMetaTemplatesType: %v", v)
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateTypeName: %v", v)
 	}
 }
 
-type TemplateCreateDocumentFromTemplateFieldMeta2 struct {
-	Label       *string                                                  `json:"label,omitempty"`
-	Placeholder *string                                                  `json:"placeholder,omitempty"`
-	Required    *bool                                                    `json:"required,omitempty"`
-	ReadOnly    *bool                                                    `json:"readOnly,omitempty"`
-	Type        TemplateCreateDocumentFromTemplateFieldMetaTemplatesType `json:"type"`
-	FontSize    *float64                                                 `json:"fontSize,omitempty"`
+type TemplateCreateDocumentFromTemplateTextAlign2 string
+
+const (
+	TemplateCreateDocumentFromTemplateTextAlign2Left   TemplateCreateDocumentFromTemplateTextAlign2 = "left"
+	TemplateCreateDocumentFromTemplateTextAlign2Center TemplateCreateDocumentFromTemplateTextAlign2 = "center"
+	TemplateCreateDocumentFromTemplateTextAlign2Right  TemplateCreateDocumentFromTemplateTextAlign2 = "right"
+)
+
+func (e TemplateCreateDocumentFromTemplateTextAlign2) ToPointer() *TemplateCreateDocumentFromTemplateTextAlign2 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateTextAlign2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = TemplateCreateDocumentFromTemplateTextAlign2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateTextAlign2: %v", v)
+	}
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta2) GetLabel() *string {
+type TemplateCreateDocumentFromTemplateFieldMetaName struct {
+	Label       *string                                       `json:"label,omitempty"`
+	Placeholder *string                                       `json:"placeholder,omitempty"`
+	Required    *bool                                         `json:"required,omitempty"`
+	ReadOnly    *bool                                         `json:"readOnly,omitempty"`
+	Type        TemplateCreateDocumentFromTemplateTypeName    `json:"type"`
+	FontSize    *float64                                      `json:"fontSize,omitempty"`
+	TextAlign   *TemplateCreateDocumentFromTemplateTextAlign2 `json:"textAlign,omitempty"`
+}
+
+func (o *TemplateCreateDocumentFromTemplateFieldMetaName) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta2) GetPlaceholder() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaName) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta2) GetRequired() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaName) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta2) GetReadOnly() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaName) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta2) GetType() TemplateCreateDocumentFromTemplateFieldMetaTemplatesType {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaName) GetType() TemplateCreateDocumentFromTemplateTypeName {
 	if o == nil {
-		return TemplateCreateDocumentFromTemplateFieldMetaTemplatesType("")
+		return TemplateCreateDocumentFromTemplateTypeName("")
 	}
 	return o.Type
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta2) GetFontSize() *float64 {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaName) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type TemplateCreateDocumentFromTemplateFieldMetaType string
+func (o *TemplateCreateDocumentFromTemplateFieldMetaName) GetTextAlign() *TemplateCreateDocumentFromTemplateTextAlign2 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type TemplateCreateDocumentFromTemplateTypeInitials string
 
 const (
-	TemplateCreateDocumentFromTemplateFieldMetaTypeInitials TemplateCreateDocumentFromTemplateFieldMetaType = "initials"
+	TemplateCreateDocumentFromTemplateTypeInitialsInitials TemplateCreateDocumentFromTemplateTypeInitials = "initials"
 )
 
-func (e TemplateCreateDocumentFromTemplateFieldMetaType) ToPointer() *TemplateCreateDocumentFromTemplateFieldMetaType {
+func (e TemplateCreateDocumentFromTemplateTypeInitials) ToPointer() *TemplateCreateDocumentFromTemplateTypeInitials {
 	return &e
 }
-func (e *TemplateCreateDocumentFromTemplateFieldMetaType) UnmarshalJSON(data []byte) error {
+func (e *TemplateCreateDocumentFromTemplateTypeInitials) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "initials":
-		*e = TemplateCreateDocumentFromTemplateFieldMetaType(v)
+		*e = TemplateCreateDocumentFromTemplateTypeInitials(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldMetaType: %v", v)
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateTypeInitials: %v", v)
 	}
 }
 
-type TemplateCreateDocumentFromTemplateFieldMeta1 struct {
-	Label       *string                                         `json:"label,omitempty"`
-	Placeholder *string                                         `json:"placeholder,omitempty"`
-	Required    *bool                                           `json:"required,omitempty"`
-	ReadOnly    *bool                                           `json:"readOnly,omitempty"`
-	Type        TemplateCreateDocumentFromTemplateFieldMetaType `json:"type"`
-	FontSize    *float64                                        `json:"fontSize,omitempty"`
+type TemplateCreateDocumentFromTemplateTextAlign1 string
+
+const (
+	TemplateCreateDocumentFromTemplateTextAlign1Left   TemplateCreateDocumentFromTemplateTextAlign1 = "left"
+	TemplateCreateDocumentFromTemplateTextAlign1Center TemplateCreateDocumentFromTemplateTextAlign1 = "center"
+	TemplateCreateDocumentFromTemplateTextAlign1Right  TemplateCreateDocumentFromTemplateTextAlign1 = "right"
+)
+
+func (e TemplateCreateDocumentFromTemplateTextAlign1) ToPointer() *TemplateCreateDocumentFromTemplateTextAlign1 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateTextAlign1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = TemplateCreateDocumentFromTemplateTextAlign1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateTextAlign1: %v", v)
+	}
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta1) GetLabel() *string {
+type TemplateCreateDocumentFromTemplateFieldMetaInitials struct {
+	Label       *string                                        `json:"label,omitempty"`
+	Placeholder *string                                        `json:"placeholder,omitempty"`
+	Required    *bool                                          `json:"required,omitempty"`
+	ReadOnly    *bool                                          `json:"readOnly,omitempty"`
+	Type        TemplateCreateDocumentFromTemplateTypeInitials `json:"type"`
+	FontSize    *float64                                       `json:"fontSize,omitempty"`
+	TextAlign   *TemplateCreateDocumentFromTemplateTextAlign1  `json:"textAlign,omitempty"`
+}
+
+func (o *TemplateCreateDocumentFromTemplateFieldMetaInitials) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta1) GetPlaceholder() *string {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaInitials) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta1) GetRequired() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaInitials) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta1) GetReadOnly() *bool {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaInitials) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta1) GetType() TemplateCreateDocumentFromTemplateFieldMetaType {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaInitials) GetType() TemplateCreateDocumentFromTemplateTypeInitials {
 	if o == nil {
-		return TemplateCreateDocumentFromTemplateFieldMetaType("")
+		return TemplateCreateDocumentFromTemplateTypeInitials("")
 	}
 	return o.Type
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMeta1) GetFontSize() *float64 {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaInitials) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
+func (o *TemplateCreateDocumentFromTemplateFieldMetaInitials) GetTextAlign() *TemplateCreateDocumentFromTemplateTextAlign1 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
 type TemplateCreateDocumentFromTemplateFieldMetaUnionType string
 
 const (
-	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta1 TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template-createDocumentFromTemplate_fieldMeta_1"
-	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta2 TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template-createDocumentFromTemplate_fieldMeta_2"
-	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta3 TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template-createDocumentFromTemplate_fieldMeta_3"
-	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta4 TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template-createDocumentFromTemplate_fieldMeta_4"
-	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta5 TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template-createDocumentFromTemplate_fieldMeta_5"
-	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta6 TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template-createDocumentFromTemplate_fieldMeta_6"
-	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta7 TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template-createDocumentFromTemplate_fieldMeta_7"
-	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta8 TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template-createDocumentFromTemplate_fieldMeta_8"
-	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta9 TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template-createDocumentFromTemplate_fieldMeta_9"
+	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaInitials TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template_createDocumentFromTemplate_fieldMeta_Initials"
+	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaName     TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template_createDocumentFromTemplate_fieldMeta_Name"
+	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaEmail    TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template_createDocumentFromTemplate_fieldMeta_Email"
+	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaDate     TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template_createDocumentFromTemplate_fieldMeta_Date"
+	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaText     TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template_createDocumentFromTemplate_fieldMeta_Text"
+	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaNumber   TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template_createDocumentFromTemplate_fieldMeta_Number"
+	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaRadio    TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template_createDocumentFromTemplate_fieldMeta_Radio"
+	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaCheckbox TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template_createDocumentFromTemplate_fieldMeta_Checkbox"
+	TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaDropdown TemplateCreateDocumentFromTemplateFieldMetaUnionType = "template_createDocumentFromTemplate_fieldMeta_Dropdown"
 )
 
-type TemplateCreateDocumentFromTemplateFieldMeta struct {
-	TemplateCreateDocumentFromTemplateFieldMeta1 *TemplateCreateDocumentFromTemplateFieldMeta1 `queryParam:"inline"`
-	TemplateCreateDocumentFromTemplateFieldMeta2 *TemplateCreateDocumentFromTemplateFieldMeta2 `queryParam:"inline"`
-	TemplateCreateDocumentFromTemplateFieldMeta3 *TemplateCreateDocumentFromTemplateFieldMeta3 `queryParam:"inline"`
-	TemplateCreateDocumentFromTemplateFieldMeta4 *TemplateCreateDocumentFromTemplateFieldMeta4 `queryParam:"inline"`
-	TemplateCreateDocumentFromTemplateFieldMeta5 *TemplateCreateDocumentFromTemplateFieldMeta5 `queryParam:"inline"`
-	TemplateCreateDocumentFromTemplateFieldMeta6 *TemplateCreateDocumentFromTemplateFieldMeta6 `queryParam:"inline"`
-	TemplateCreateDocumentFromTemplateFieldMeta7 *TemplateCreateDocumentFromTemplateFieldMeta7 `queryParam:"inline"`
-	TemplateCreateDocumentFromTemplateFieldMeta8 *TemplateCreateDocumentFromTemplateFieldMeta8 `queryParam:"inline"`
-	TemplateCreateDocumentFromTemplateFieldMeta9 *TemplateCreateDocumentFromTemplateFieldMeta9 `queryParam:"inline"`
+type TemplateCreateDocumentFromTemplateFieldMetaUnion struct {
+	TemplateCreateDocumentFromTemplateFieldMetaInitials *TemplateCreateDocumentFromTemplateFieldMetaInitials `queryParam:"inline"`
+	TemplateCreateDocumentFromTemplateFieldMetaName     *TemplateCreateDocumentFromTemplateFieldMetaName     `queryParam:"inline"`
+	TemplateCreateDocumentFromTemplateFieldMetaEmail    *TemplateCreateDocumentFromTemplateFieldMetaEmail    `queryParam:"inline"`
+	TemplateCreateDocumentFromTemplateFieldMetaDate     *TemplateCreateDocumentFromTemplateFieldMetaDate     `queryParam:"inline"`
+	TemplateCreateDocumentFromTemplateFieldMetaText     *TemplateCreateDocumentFromTemplateFieldMetaText     `queryParam:"inline"`
+	TemplateCreateDocumentFromTemplateFieldMetaNumber   *TemplateCreateDocumentFromTemplateFieldMetaNumber   `queryParam:"inline"`
+	TemplateCreateDocumentFromTemplateFieldMetaRadio    *TemplateCreateDocumentFromTemplateFieldMetaRadio    `queryParam:"inline"`
+	TemplateCreateDocumentFromTemplateFieldMetaCheckbox *TemplateCreateDocumentFromTemplateFieldMetaCheckbox `queryParam:"inline"`
+	TemplateCreateDocumentFromTemplateFieldMetaDropdown *TemplateCreateDocumentFromTemplateFieldMetaDropdown `queryParam:"inline"`
 
 	Type TemplateCreateDocumentFromTemplateFieldMetaUnionType
 }
 
-func CreateTemplateCreateDocumentFromTemplateFieldMetaTemplateCreateDocumentFromTemplateFieldMeta1(templateCreateDocumentFromTemplateFieldMeta1 TemplateCreateDocumentFromTemplateFieldMeta1) TemplateCreateDocumentFromTemplateFieldMeta {
-	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta1
+func CreateTemplateCreateDocumentFromTemplateFieldMetaUnionTemplateCreateDocumentFromTemplateFieldMetaInitials(templateCreateDocumentFromTemplateFieldMetaInitials TemplateCreateDocumentFromTemplateFieldMetaInitials) TemplateCreateDocumentFromTemplateFieldMetaUnion {
+	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaInitials
 
-	return TemplateCreateDocumentFromTemplateFieldMeta{
-		TemplateCreateDocumentFromTemplateFieldMeta1: &templateCreateDocumentFromTemplateFieldMeta1,
+	return TemplateCreateDocumentFromTemplateFieldMetaUnion{
+		TemplateCreateDocumentFromTemplateFieldMetaInitials: &templateCreateDocumentFromTemplateFieldMetaInitials,
 		Type: typ,
 	}
 }
 
-func CreateTemplateCreateDocumentFromTemplateFieldMetaTemplateCreateDocumentFromTemplateFieldMeta2(templateCreateDocumentFromTemplateFieldMeta2 TemplateCreateDocumentFromTemplateFieldMeta2) TemplateCreateDocumentFromTemplateFieldMeta {
-	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta2
+func CreateTemplateCreateDocumentFromTemplateFieldMetaUnionTemplateCreateDocumentFromTemplateFieldMetaName(templateCreateDocumentFromTemplateFieldMetaName TemplateCreateDocumentFromTemplateFieldMetaName) TemplateCreateDocumentFromTemplateFieldMetaUnion {
+	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaName
 
-	return TemplateCreateDocumentFromTemplateFieldMeta{
-		TemplateCreateDocumentFromTemplateFieldMeta2: &templateCreateDocumentFromTemplateFieldMeta2,
+	return TemplateCreateDocumentFromTemplateFieldMetaUnion{
+		TemplateCreateDocumentFromTemplateFieldMetaName: &templateCreateDocumentFromTemplateFieldMetaName,
 		Type: typ,
 	}
 }
 
-func CreateTemplateCreateDocumentFromTemplateFieldMetaTemplateCreateDocumentFromTemplateFieldMeta3(templateCreateDocumentFromTemplateFieldMeta3 TemplateCreateDocumentFromTemplateFieldMeta3) TemplateCreateDocumentFromTemplateFieldMeta {
-	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta3
+func CreateTemplateCreateDocumentFromTemplateFieldMetaUnionTemplateCreateDocumentFromTemplateFieldMetaEmail(templateCreateDocumentFromTemplateFieldMetaEmail TemplateCreateDocumentFromTemplateFieldMetaEmail) TemplateCreateDocumentFromTemplateFieldMetaUnion {
+	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaEmail
 
-	return TemplateCreateDocumentFromTemplateFieldMeta{
-		TemplateCreateDocumentFromTemplateFieldMeta3: &templateCreateDocumentFromTemplateFieldMeta3,
+	return TemplateCreateDocumentFromTemplateFieldMetaUnion{
+		TemplateCreateDocumentFromTemplateFieldMetaEmail: &templateCreateDocumentFromTemplateFieldMetaEmail,
 		Type: typ,
 	}
 }
 
-func CreateTemplateCreateDocumentFromTemplateFieldMetaTemplateCreateDocumentFromTemplateFieldMeta4(templateCreateDocumentFromTemplateFieldMeta4 TemplateCreateDocumentFromTemplateFieldMeta4) TemplateCreateDocumentFromTemplateFieldMeta {
-	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta4
+func CreateTemplateCreateDocumentFromTemplateFieldMetaUnionTemplateCreateDocumentFromTemplateFieldMetaDate(templateCreateDocumentFromTemplateFieldMetaDate TemplateCreateDocumentFromTemplateFieldMetaDate) TemplateCreateDocumentFromTemplateFieldMetaUnion {
+	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaDate
 
-	return TemplateCreateDocumentFromTemplateFieldMeta{
-		TemplateCreateDocumentFromTemplateFieldMeta4: &templateCreateDocumentFromTemplateFieldMeta4,
+	return TemplateCreateDocumentFromTemplateFieldMetaUnion{
+		TemplateCreateDocumentFromTemplateFieldMetaDate: &templateCreateDocumentFromTemplateFieldMetaDate,
 		Type: typ,
 	}
 }
 
-func CreateTemplateCreateDocumentFromTemplateFieldMetaTemplateCreateDocumentFromTemplateFieldMeta5(templateCreateDocumentFromTemplateFieldMeta5 TemplateCreateDocumentFromTemplateFieldMeta5) TemplateCreateDocumentFromTemplateFieldMeta {
-	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta5
+func CreateTemplateCreateDocumentFromTemplateFieldMetaUnionTemplateCreateDocumentFromTemplateFieldMetaText(templateCreateDocumentFromTemplateFieldMetaText TemplateCreateDocumentFromTemplateFieldMetaText) TemplateCreateDocumentFromTemplateFieldMetaUnion {
+	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaText
 
-	return TemplateCreateDocumentFromTemplateFieldMeta{
-		TemplateCreateDocumentFromTemplateFieldMeta5: &templateCreateDocumentFromTemplateFieldMeta5,
+	return TemplateCreateDocumentFromTemplateFieldMetaUnion{
+		TemplateCreateDocumentFromTemplateFieldMetaText: &templateCreateDocumentFromTemplateFieldMetaText,
 		Type: typ,
 	}
 }
 
-func CreateTemplateCreateDocumentFromTemplateFieldMetaTemplateCreateDocumentFromTemplateFieldMeta6(templateCreateDocumentFromTemplateFieldMeta6 TemplateCreateDocumentFromTemplateFieldMeta6) TemplateCreateDocumentFromTemplateFieldMeta {
-	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta6
+func CreateTemplateCreateDocumentFromTemplateFieldMetaUnionTemplateCreateDocumentFromTemplateFieldMetaNumber(templateCreateDocumentFromTemplateFieldMetaNumber TemplateCreateDocumentFromTemplateFieldMetaNumber) TemplateCreateDocumentFromTemplateFieldMetaUnion {
+	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaNumber
 
-	return TemplateCreateDocumentFromTemplateFieldMeta{
-		TemplateCreateDocumentFromTemplateFieldMeta6: &templateCreateDocumentFromTemplateFieldMeta6,
+	return TemplateCreateDocumentFromTemplateFieldMetaUnion{
+		TemplateCreateDocumentFromTemplateFieldMetaNumber: &templateCreateDocumentFromTemplateFieldMetaNumber,
 		Type: typ,
 	}
 }
 
-func CreateTemplateCreateDocumentFromTemplateFieldMetaTemplateCreateDocumentFromTemplateFieldMeta7(templateCreateDocumentFromTemplateFieldMeta7 TemplateCreateDocumentFromTemplateFieldMeta7) TemplateCreateDocumentFromTemplateFieldMeta {
-	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta7
+func CreateTemplateCreateDocumentFromTemplateFieldMetaUnionTemplateCreateDocumentFromTemplateFieldMetaRadio(templateCreateDocumentFromTemplateFieldMetaRadio TemplateCreateDocumentFromTemplateFieldMetaRadio) TemplateCreateDocumentFromTemplateFieldMetaUnion {
+	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaRadio
 
-	return TemplateCreateDocumentFromTemplateFieldMeta{
-		TemplateCreateDocumentFromTemplateFieldMeta7: &templateCreateDocumentFromTemplateFieldMeta7,
+	return TemplateCreateDocumentFromTemplateFieldMetaUnion{
+		TemplateCreateDocumentFromTemplateFieldMetaRadio: &templateCreateDocumentFromTemplateFieldMetaRadio,
 		Type: typ,
 	}
 }
 
-func CreateTemplateCreateDocumentFromTemplateFieldMetaTemplateCreateDocumentFromTemplateFieldMeta8(templateCreateDocumentFromTemplateFieldMeta8 TemplateCreateDocumentFromTemplateFieldMeta8) TemplateCreateDocumentFromTemplateFieldMeta {
-	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta8
+func CreateTemplateCreateDocumentFromTemplateFieldMetaUnionTemplateCreateDocumentFromTemplateFieldMetaCheckbox(templateCreateDocumentFromTemplateFieldMetaCheckbox TemplateCreateDocumentFromTemplateFieldMetaCheckbox) TemplateCreateDocumentFromTemplateFieldMetaUnion {
+	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaCheckbox
 
-	return TemplateCreateDocumentFromTemplateFieldMeta{
-		TemplateCreateDocumentFromTemplateFieldMeta8: &templateCreateDocumentFromTemplateFieldMeta8,
+	return TemplateCreateDocumentFromTemplateFieldMetaUnion{
+		TemplateCreateDocumentFromTemplateFieldMetaCheckbox: &templateCreateDocumentFromTemplateFieldMetaCheckbox,
 		Type: typ,
 	}
 }
 
-func CreateTemplateCreateDocumentFromTemplateFieldMetaTemplateCreateDocumentFromTemplateFieldMeta9(templateCreateDocumentFromTemplateFieldMeta9 TemplateCreateDocumentFromTemplateFieldMeta9) TemplateCreateDocumentFromTemplateFieldMeta {
-	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta9
+func CreateTemplateCreateDocumentFromTemplateFieldMetaUnionTemplateCreateDocumentFromTemplateFieldMetaDropdown(templateCreateDocumentFromTemplateFieldMetaDropdown TemplateCreateDocumentFromTemplateFieldMetaDropdown) TemplateCreateDocumentFromTemplateFieldMetaUnion {
+	typ := TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaDropdown
 
-	return TemplateCreateDocumentFromTemplateFieldMeta{
-		TemplateCreateDocumentFromTemplateFieldMeta9: &templateCreateDocumentFromTemplateFieldMeta9,
+	return TemplateCreateDocumentFromTemplateFieldMetaUnion{
+		TemplateCreateDocumentFromTemplateFieldMetaDropdown: &templateCreateDocumentFromTemplateFieldMetaDropdown,
 		Type: typ,
 	}
 }
 
-func (u *TemplateCreateDocumentFromTemplateFieldMeta) UnmarshalJSON(data []byte) error {
+func (u *TemplateCreateDocumentFromTemplateFieldMetaUnion) UnmarshalJSON(data []byte) error {
 
-	var templateCreateDocumentFromTemplateFieldMeta1 TemplateCreateDocumentFromTemplateFieldMeta1 = TemplateCreateDocumentFromTemplateFieldMeta1{}
-	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMeta1, "", true, true); err == nil {
-		u.TemplateCreateDocumentFromTemplateFieldMeta1 = &templateCreateDocumentFromTemplateFieldMeta1
-		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta1
+	var templateCreateDocumentFromTemplateFieldMetaRadio TemplateCreateDocumentFromTemplateFieldMetaRadio = TemplateCreateDocumentFromTemplateFieldMetaRadio{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMetaRadio, "", true, true); err == nil {
+		u.TemplateCreateDocumentFromTemplateFieldMetaRadio = &templateCreateDocumentFromTemplateFieldMetaRadio
+		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaRadio
 		return nil
 	}
 
-	var templateCreateDocumentFromTemplateFieldMeta2 TemplateCreateDocumentFromTemplateFieldMeta2 = TemplateCreateDocumentFromTemplateFieldMeta2{}
-	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMeta2, "", true, true); err == nil {
-		u.TemplateCreateDocumentFromTemplateFieldMeta2 = &templateCreateDocumentFromTemplateFieldMeta2
-		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta2
+	var templateCreateDocumentFromTemplateFieldMetaInitials TemplateCreateDocumentFromTemplateFieldMetaInitials = TemplateCreateDocumentFromTemplateFieldMetaInitials{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMetaInitials, "", true, true); err == nil {
+		u.TemplateCreateDocumentFromTemplateFieldMetaInitials = &templateCreateDocumentFromTemplateFieldMetaInitials
+		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaInitials
 		return nil
 	}
 
-	var templateCreateDocumentFromTemplateFieldMeta3 TemplateCreateDocumentFromTemplateFieldMeta3 = TemplateCreateDocumentFromTemplateFieldMeta3{}
-	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMeta3, "", true, true); err == nil {
-		u.TemplateCreateDocumentFromTemplateFieldMeta3 = &templateCreateDocumentFromTemplateFieldMeta3
-		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta3
+	var templateCreateDocumentFromTemplateFieldMetaName TemplateCreateDocumentFromTemplateFieldMetaName = TemplateCreateDocumentFromTemplateFieldMetaName{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMetaName, "", true, true); err == nil {
+		u.TemplateCreateDocumentFromTemplateFieldMetaName = &templateCreateDocumentFromTemplateFieldMetaName
+		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaName
 		return nil
 	}
 
-	var templateCreateDocumentFromTemplateFieldMeta4 TemplateCreateDocumentFromTemplateFieldMeta4 = TemplateCreateDocumentFromTemplateFieldMeta4{}
-	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMeta4, "", true, true); err == nil {
-		u.TemplateCreateDocumentFromTemplateFieldMeta4 = &templateCreateDocumentFromTemplateFieldMeta4
-		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta4
+	var templateCreateDocumentFromTemplateFieldMetaEmail TemplateCreateDocumentFromTemplateFieldMetaEmail = TemplateCreateDocumentFromTemplateFieldMetaEmail{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMetaEmail, "", true, true); err == nil {
+		u.TemplateCreateDocumentFromTemplateFieldMetaEmail = &templateCreateDocumentFromTemplateFieldMetaEmail
+		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaEmail
 		return nil
 	}
 
-	var templateCreateDocumentFromTemplateFieldMeta7 TemplateCreateDocumentFromTemplateFieldMeta7 = TemplateCreateDocumentFromTemplateFieldMeta7{}
-	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMeta7, "", true, true); err == nil {
-		u.TemplateCreateDocumentFromTemplateFieldMeta7 = &templateCreateDocumentFromTemplateFieldMeta7
-		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta7
+	var templateCreateDocumentFromTemplateFieldMetaDate TemplateCreateDocumentFromTemplateFieldMetaDate = TemplateCreateDocumentFromTemplateFieldMetaDate{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMetaDate, "", true, true); err == nil {
+		u.TemplateCreateDocumentFromTemplateFieldMetaDate = &templateCreateDocumentFromTemplateFieldMetaDate
+		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaDate
 		return nil
 	}
 
-	var templateCreateDocumentFromTemplateFieldMeta9 TemplateCreateDocumentFromTemplateFieldMeta9 = TemplateCreateDocumentFromTemplateFieldMeta9{}
-	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMeta9, "", true, true); err == nil {
-		u.TemplateCreateDocumentFromTemplateFieldMeta9 = &templateCreateDocumentFromTemplateFieldMeta9
-		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta9
+	var templateCreateDocumentFromTemplateFieldMetaDropdown TemplateCreateDocumentFromTemplateFieldMetaDropdown = TemplateCreateDocumentFromTemplateFieldMetaDropdown{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMetaDropdown, "", true, true); err == nil {
+		u.TemplateCreateDocumentFromTemplateFieldMetaDropdown = &templateCreateDocumentFromTemplateFieldMetaDropdown
+		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaDropdown
 		return nil
 	}
 
-	var templateCreateDocumentFromTemplateFieldMeta5 TemplateCreateDocumentFromTemplateFieldMeta5 = TemplateCreateDocumentFromTemplateFieldMeta5{}
-	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMeta5, "", true, true); err == nil {
-		u.TemplateCreateDocumentFromTemplateFieldMeta5 = &templateCreateDocumentFromTemplateFieldMeta5
-		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta5
+	var templateCreateDocumentFromTemplateFieldMetaCheckbox TemplateCreateDocumentFromTemplateFieldMetaCheckbox = TemplateCreateDocumentFromTemplateFieldMetaCheckbox{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMetaCheckbox, "", true, true); err == nil {
+		u.TemplateCreateDocumentFromTemplateFieldMetaCheckbox = &templateCreateDocumentFromTemplateFieldMetaCheckbox
+		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaCheckbox
 		return nil
 	}
 
-	var templateCreateDocumentFromTemplateFieldMeta8 TemplateCreateDocumentFromTemplateFieldMeta8 = TemplateCreateDocumentFromTemplateFieldMeta8{}
-	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMeta8, "", true, true); err == nil {
-		u.TemplateCreateDocumentFromTemplateFieldMeta8 = &templateCreateDocumentFromTemplateFieldMeta8
-		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta8
+	var templateCreateDocumentFromTemplateFieldMetaText TemplateCreateDocumentFromTemplateFieldMetaText = TemplateCreateDocumentFromTemplateFieldMetaText{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMetaText, "", true, true); err == nil {
+		u.TemplateCreateDocumentFromTemplateFieldMetaText = &templateCreateDocumentFromTemplateFieldMetaText
+		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaText
 		return nil
 	}
 
-	var templateCreateDocumentFromTemplateFieldMeta6 TemplateCreateDocumentFromTemplateFieldMeta6 = TemplateCreateDocumentFromTemplateFieldMeta6{}
-	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMeta6, "", true, true); err == nil {
-		u.TemplateCreateDocumentFromTemplateFieldMeta6 = &templateCreateDocumentFromTemplateFieldMeta6
-		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMeta6
+	var templateCreateDocumentFromTemplateFieldMetaNumber TemplateCreateDocumentFromTemplateFieldMetaNumber = TemplateCreateDocumentFromTemplateFieldMetaNumber{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMetaNumber, "", true, true); err == nil {
+		u.TemplateCreateDocumentFromTemplateFieldMetaNumber = &templateCreateDocumentFromTemplateFieldMetaNumber
+		u.Type = TemplateCreateDocumentFromTemplateFieldMetaUnionTypeTemplateCreateDocumentFromTemplateFieldMetaNumber
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TemplateCreateDocumentFromTemplateFieldMeta", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TemplateCreateDocumentFromTemplateFieldMetaUnion", string(data))
 }
 
-func (u TemplateCreateDocumentFromTemplateFieldMeta) MarshalJSON() ([]byte, error) {
-	if u.TemplateCreateDocumentFromTemplateFieldMeta1 != nil {
-		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMeta1, "", true)
+func (u TemplateCreateDocumentFromTemplateFieldMetaUnion) MarshalJSON() ([]byte, error) {
+	if u.TemplateCreateDocumentFromTemplateFieldMetaInitials != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMetaInitials, "", true)
 	}
 
-	if u.TemplateCreateDocumentFromTemplateFieldMeta2 != nil {
-		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMeta2, "", true)
+	if u.TemplateCreateDocumentFromTemplateFieldMetaName != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMetaName, "", true)
 	}
 
-	if u.TemplateCreateDocumentFromTemplateFieldMeta3 != nil {
-		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMeta3, "", true)
+	if u.TemplateCreateDocumentFromTemplateFieldMetaEmail != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMetaEmail, "", true)
 	}
 
-	if u.TemplateCreateDocumentFromTemplateFieldMeta4 != nil {
-		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMeta4, "", true)
+	if u.TemplateCreateDocumentFromTemplateFieldMetaDate != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMetaDate, "", true)
 	}
 
-	if u.TemplateCreateDocumentFromTemplateFieldMeta5 != nil {
-		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMeta5, "", true)
+	if u.TemplateCreateDocumentFromTemplateFieldMetaText != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMetaText, "", true)
 	}
 
-	if u.TemplateCreateDocumentFromTemplateFieldMeta6 != nil {
-		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMeta6, "", true)
+	if u.TemplateCreateDocumentFromTemplateFieldMetaNumber != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMetaNumber, "", true)
 	}
 
-	if u.TemplateCreateDocumentFromTemplateFieldMeta7 != nil {
-		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMeta7, "", true)
+	if u.TemplateCreateDocumentFromTemplateFieldMetaRadio != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMetaRadio, "", true)
 	}
 
-	if u.TemplateCreateDocumentFromTemplateFieldMeta8 != nil {
-		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMeta8, "", true)
+	if u.TemplateCreateDocumentFromTemplateFieldMetaCheckbox != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMetaCheckbox, "", true)
 	}
 
-	if u.TemplateCreateDocumentFromTemplateFieldMeta9 != nil {
-		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMeta9, "", true)
+	if u.TemplateCreateDocumentFromTemplateFieldMetaDropdown != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateFieldMetaDropdown, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type TemplateCreateDocumentFromTemplateFieldMeta: all fields are null")
+	return nil, errors.New("could not marshal union type TemplateCreateDocumentFromTemplateFieldMetaUnion: all fields are null")
 }
 
-type TemplateCreateDocumentFromTemplateFields struct {
-	Type        TemplateCreateDocumentFromTemplateTemplatesType `json:"type"`
-	ID          int64                                           `json:"id"`
-	SecondaryID string                                          `json:"secondaryId"`
-	DocumentID  *int64                                          `json:"documentId"`
-	TemplateID  *int64                                          `json:"templateId"`
-	RecipientID int64                                           `json:"recipientId"`
+type TemplateCreateDocumentFromTemplateField struct {
+	Type        TemplateCreateDocumentFromTemplateFieldType `json:"type"`
+	ID          float64                                     `json:"id"`
+	SecondaryID string                                      `json:"secondaryId"`
+	DocumentID  *float64                                    `json:"documentId"`
+	TemplateID  *float64                                    `json:"templateId"`
+	RecipientID float64                                     `json:"recipientId"`
 	// The page number of the field on the document. Starts from 1.
-	Page       float64                                      `json:"page"`
-	PositionX  any                                          `json:"positionX,omitempty"`
-	PositionY  any                                          `json:"positionY,omitempty"`
-	Width      any                                          `json:"width,omitempty"`
-	Height     any                                          `json:"height,omitempty"`
-	CustomText string                                       `json:"customText"`
-	Inserted   bool                                         `json:"inserted"`
-	FieldMeta  *TemplateCreateDocumentFromTemplateFieldMeta `json:"fieldMeta"`
+	Page       float64                                           `json:"page"`
+	PositionX  any                                               `json:"positionX,omitempty"`
+	PositionY  any                                               `json:"positionY,omitempty"`
+	Width      any                                               `json:"width,omitempty"`
+	Height     any                                               `json:"height,omitempty"`
+	CustomText string                                            `json:"customText"`
+	Inserted   bool                                              `json:"inserted"`
+	FieldMeta  *TemplateCreateDocumentFromTemplateFieldMetaUnion `json:"fieldMeta"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateFields) GetType() TemplateCreateDocumentFromTemplateTemplatesType {
+func (o *TemplateCreateDocumentFromTemplateField) GetType() TemplateCreateDocumentFromTemplateFieldType {
 	if o == nil {
-		return TemplateCreateDocumentFromTemplateTemplatesType("")
+		return TemplateCreateDocumentFromTemplateFieldType("")
 	}
 	return o.Type
 }
 
-func (o *TemplateCreateDocumentFromTemplateFields) GetID() int64 {
+func (o *TemplateCreateDocumentFromTemplateField) GetID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.ID
 }
 
-func (o *TemplateCreateDocumentFromTemplateFields) GetSecondaryID() string {
+func (o *TemplateCreateDocumentFromTemplateField) GetSecondaryID() string {
 	if o == nil {
 		return ""
 	}
 	return o.SecondaryID
 }
 
-func (o *TemplateCreateDocumentFromTemplateFields) GetDocumentID() *int64 {
+func (o *TemplateCreateDocumentFromTemplateField) GetDocumentID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DocumentID
 }
 
-func (o *TemplateCreateDocumentFromTemplateFields) GetTemplateID() *int64 {
+func (o *TemplateCreateDocumentFromTemplateField) GetTemplateID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.TemplateID
 }
 
-func (o *TemplateCreateDocumentFromTemplateFields) GetRecipientID() int64 {
+func (o *TemplateCreateDocumentFromTemplateField) GetRecipientID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.RecipientID
 }
 
-func (o *TemplateCreateDocumentFromTemplateFields) GetPage() float64 {
+func (o *TemplateCreateDocumentFromTemplateField) GetPage() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Page
 }
 
-func (o *TemplateCreateDocumentFromTemplateFields) GetPositionX() any {
+func (o *TemplateCreateDocumentFromTemplateField) GetPositionX() any {
 	if o == nil {
 		return nil
 	}
 	return o.PositionX
 }
 
-func (o *TemplateCreateDocumentFromTemplateFields) GetPositionY() any {
+func (o *TemplateCreateDocumentFromTemplateField) GetPositionY() any {
 	if o == nil {
 		return nil
 	}
 	return o.PositionY
 }
 
-func (o *TemplateCreateDocumentFromTemplateFields) GetWidth() any {
+func (o *TemplateCreateDocumentFromTemplateField) GetWidth() any {
 	if o == nil {
 		return nil
 	}
 	return o.Width
 }
 
-func (o *TemplateCreateDocumentFromTemplateFields) GetHeight() any {
+func (o *TemplateCreateDocumentFromTemplateField) GetHeight() any {
 	if o == nil {
 		return nil
 	}
 	return o.Height
 }
 
-func (o *TemplateCreateDocumentFromTemplateFields) GetCustomText() string {
+func (o *TemplateCreateDocumentFromTemplateField) GetCustomText() string {
 	if o == nil {
 		return ""
 	}
 	return o.CustomText
 }
 
-func (o *TemplateCreateDocumentFromTemplateFields) GetInserted() bool {
+func (o *TemplateCreateDocumentFromTemplateField) GetInserted() bool {
 	if o == nil {
 		return false
 	}
 	return o.Inserted
 }
 
-func (o *TemplateCreateDocumentFromTemplateFields) GetFieldMeta() *TemplateCreateDocumentFromTemplateFieldMeta {
+func (o *TemplateCreateDocumentFromTemplateField) GetFieldMeta() *TemplateCreateDocumentFromTemplateFieldMetaUnion {
 	if o == nil {
 		return nil
 	}
@@ -2140,7 +2836,7 @@ type TemplateCreateDocumentFromTemplateResponseBody struct {
 	Visibility TemplateCreateDocumentFromTemplateVisibility `json:"visibility"`
 	Status     TemplateCreateDocumentFromTemplateStatus     `json:"status"`
 	Source     TemplateCreateDocumentFromTemplateSource     `json:"source"`
-	ID         int64                                        `json:"id"`
+	ID         float64                                      `json:"id"`
 	// A custom external ID you can use to identify the document.
 	ExternalID *string `json:"externalId"`
 	// The ID of the user that created this document.
@@ -2153,12 +2849,12 @@ type TemplateCreateDocumentFromTemplateResponseBody struct {
 	UpdatedAt      string                                                  `json:"updatedAt"`
 	CompletedAt    *string                                                 `json:"completedAt"`
 	DeletedAt      *string                                                 `json:"deletedAt"`
-	TeamID         *int64                                                  `json:"teamId"`
-	TemplateID     *int64                                                  `json:"templateId"`
+	TeamID         *float64                                                `json:"teamId"`
+	TemplateID     *float64                                                `json:"templateId"`
 	DocumentData   TemplateCreateDocumentFromTemplateDocumentData          `json:"documentData"`
 	DocumentMeta   *TemplateCreateDocumentFromTemplateDocumentMeta         `json:"documentMeta"`
-	Recipients     []TemplateCreateDocumentFromTemplateTemplatesRecipients `json:"recipients"`
-	Fields         []TemplateCreateDocumentFromTemplateFields              `json:"fields"`
+	Recipients     []TemplateCreateDocumentFromTemplateRecipientResponse   `json:"recipients"`
+	Fields         []TemplateCreateDocumentFromTemplateField               `json:"fields"`
 }
 
 func (o *TemplateCreateDocumentFromTemplateResponseBody) GetVisibility() TemplateCreateDocumentFromTemplateVisibility {
@@ -2182,9 +2878,9 @@ func (o *TemplateCreateDocumentFromTemplateResponseBody) GetSource() TemplateCre
 	return o.Source
 }
 
-func (o *TemplateCreateDocumentFromTemplateResponseBody) GetID() int64 {
+func (o *TemplateCreateDocumentFromTemplateResponseBody) GetID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.ID
 }
@@ -2259,14 +2955,14 @@ func (o *TemplateCreateDocumentFromTemplateResponseBody) GetDeletedAt() *string 
 	return o.DeletedAt
 }
 
-func (o *TemplateCreateDocumentFromTemplateResponseBody) GetTeamID() *int64 {
+func (o *TemplateCreateDocumentFromTemplateResponseBody) GetTeamID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.TeamID
 }
 
-func (o *TemplateCreateDocumentFromTemplateResponseBody) GetTemplateID() *int64 {
+func (o *TemplateCreateDocumentFromTemplateResponseBody) GetTemplateID() *float64 {
 	if o == nil {
 		return nil
 	}
@@ -2287,16 +2983,16 @@ func (o *TemplateCreateDocumentFromTemplateResponseBody) GetDocumentMeta() *Temp
 	return o.DocumentMeta
 }
 
-func (o *TemplateCreateDocumentFromTemplateResponseBody) GetRecipients() []TemplateCreateDocumentFromTemplateTemplatesRecipients {
+func (o *TemplateCreateDocumentFromTemplateResponseBody) GetRecipients() []TemplateCreateDocumentFromTemplateRecipientResponse {
 	if o == nil {
-		return []TemplateCreateDocumentFromTemplateTemplatesRecipients{}
+		return []TemplateCreateDocumentFromTemplateRecipientResponse{}
 	}
 	return o.Recipients
 }
 
-func (o *TemplateCreateDocumentFromTemplateResponseBody) GetFields() []TemplateCreateDocumentFromTemplateFields {
+func (o *TemplateCreateDocumentFromTemplateResponseBody) GetFields() []TemplateCreateDocumentFromTemplateField {
 	if o == nil {
-		return []TemplateCreateDocumentFromTemplateFields{}
+		return []TemplateCreateDocumentFromTemplateField{}
 	}
 	return o.Fields
 }

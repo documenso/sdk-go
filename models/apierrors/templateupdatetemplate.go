@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateUpdateTemplateTemplatesIssues struct {
+type TemplateUpdateTemplateInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateUpdateTemplateTemplatesIssues) GetMessage() string {
+func (o *TemplateUpdateTemplateInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateUpdateTemplateTemplatesResponseBody - Internal server error
-type TemplateUpdateTemplateTemplatesResponseBody struct {
-	Message  string                                  `json:"message"`
-	Code     string                                  `json:"code"`
-	Issues   []TemplateUpdateTemplateTemplatesIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                 `json:"-"`
+// TemplateUpdateTemplateInternalServerError - Internal server error
+type TemplateUpdateTemplateInternalServerError struct {
+	Message  string                                           `json:"message"`
+	Code     string                                           `json:"code"`
+	Issues   []TemplateUpdateTemplateInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                          `json:"-"`
 }
 
-var _ error = &TemplateUpdateTemplateTemplatesResponseBody{}
+var _ error = &TemplateUpdateTemplateInternalServerError{}
 
-func (e *TemplateUpdateTemplateTemplatesResponseBody) Error() string {
+func (e *TemplateUpdateTemplateInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type TemplateUpdateTemplateIssues struct {
+type TemplateUpdateTemplateBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateUpdateTemplateIssues) GetMessage() string {
+func (o *TemplateUpdateTemplateBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateUpdateTemplateResponseBody - Invalid input data
-type TemplateUpdateTemplateResponseBody struct {
-	Message  string                         `json:"message"`
-	Code     string                         `json:"code"`
-	Issues   []TemplateUpdateTemplateIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata        `json:"-"`
+// TemplateUpdateTemplateBadRequestError - Invalid input data
+type TemplateUpdateTemplateBadRequestError struct {
+	Message  string                                  `json:"message"`
+	Code     string                                  `json:"code"`
+	Issues   []TemplateUpdateTemplateBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                 `json:"-"`
 }
 
-var _ error = &TemplateUpdateTemplateResponseBody{}
+var _ error = &TemplateUpdateTemplateBadRequestError{}
 
-func (e *TemplateUpdateTemplateResponseBody) Error() string {
+func (e *TemplateUpdateTemplateBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

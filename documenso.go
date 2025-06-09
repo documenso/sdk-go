@@ -2,9 +2,12 @@
 
 package sdkgo
 
+// Generated from OpenAPI doc version 0.0.0 and generator version 2.623.0
+
 import (
 	"context"
 	"fmt"
+	"github.com/documenso/sdk-go/internal/config"
 	"github.com/documenso/sdk-go/internal/hooks"
 	"github.com/documenso/sdk-go/internal/utils"
 	"github.com/documenso/sdk-go/models/components"
@@ -18,7 +21,7 @@ var ServerList = []string{
 	"https://app.documenso.com/api/v2-beta",
 }
 
-// HTTPClient provides an interface for suplying the SDK with a custom HTTP client
+// HTTPClient provides an interface for supplying the SDK with a custom HTTP client
 type HTTPClient interface {
 	Do(req *http.Request) (*http.Response, error)
 }
@@ -44,35 +47,14 @@ func Float64(f float64) *float64 { return &f }
 // Pointer provides a helper function to return a pointer to a type
 func Pointer[T any](v T) *T { return &v }
 
-type sdkConfiguration struct {
-	Client            HTTPClient
-	Security          func(context.Context) (interface{}, error)
-	ServerURL         string
-	ServerIndex       int
-	Language          string
-	OpenAPIDocVersion string
-	SDKVersion        string
-	GenVersion        string
-	UserAgent         string
-	RetryConfig       *retry.Config
-	Hooks             *hooks.Hooks
-	Timeout           *time.Duration
-}
-
-func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
-	if c.ServerURL != "" {
-		return c.ServerURL, nil
-	}
-
-	return ServerList[c.ServerIndex], nil
-}
-
 // Documenso v2 beta API: Subject to breaking changes until v2 is fully released.
 type Documenso struct {
-	Documents *Documents
-	Templates *Templates
+	SDKVersion string
+	Documents  *Documents
+	Templates  *Templates
 
-	sdkConfiguration sdkConfiguration
+	sdkConfiguration config.SDKConfiguration
+	hooks            *hooks.Hooks
 }
 
 type SDKOption func(*Documenso)
@@ -146,14 +128,12 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Documenso {
 	sdk := &Documenso{
-		sdkConfiguration: sdkConfiguration{
-			Language:          "go",
-			OpenAPIDocVersion: "0.0.0",
-			SDKVersion:        "0.0.4",
-			GenVersion:        "2.502.0",
-			UserAgent:         "speakeasy-sdk/go 0.0.4 2.502.0 0.0.0 github.com/documenso/sdk-go",
-			Hooks:             hooks.New(),
+		SDKVersion: "0.1.0",
+		sdkConfiguration: config.SDKConfiguration{
+			UserAgent:  "speakeasy-sdk/go 0.1.0 2.623.0 0.0.0 github.com/documenso/sdk-go",
+			ServerList: ServerList,
 		},
+		hooks: hooks.New(),
 	}
 	for _, opt := range opts {
 		opt(sdk)
@@ -173,14 +153,13 @@ func New(opts ...SDKOption) *Documenso {
 
 	currentServerURL, _ := sdk.sdkConfiguration.GetServerDetails()
 	serverURL := currentServerURL
-	serverURL, sdk.sdkConfiguration.Client = sdk.sdkConfiguration.Hooks.SDKInit(currentServerURL, sdk.sdkConfiguration.Client)
-	if serverURL != currentServerURL {
+	serverURL, sdk.sdkConfiguration.Client = sdk.hooks.SDKInit(currentServerURL, sdk.sdkConfiguration.Client)
+	if currentServerURL != serverURL {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 
-	sdk.Documents = newDocuments(sdk.sdkConfiguration)
-
-	sdk.Templates = newTemplates(sdk.sdkConfiguration)
+	sdk.Documents = newDocuments(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Templates = newTemplates(sdk, sdk.sdkConfiguration, sdk.hooks)
 
 	return sdk
 }

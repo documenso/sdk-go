@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type FieldUpdateDocumentFieldDocumentsFieldsIssues struct {
+type FieldUpdateDocumentFieldInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *FieldUpdateDocumentFieldDocumentsFieldsIssues) GetMessage() string {
+func (o *FieldUpdateDocumentFieldInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// FieldUpdateDocumentFieldDocumentsFieldsResponseBody - Internal server error
-type FieldUpdateDocumentFieldDocumentsFieldsResponseBody struct {
-	Message  string                                          `json:"message"`
-	Code     string                                          `json:"code"`
-	Issues   []FieldUpdateDocumentFieldDocumentsFieldsIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                         `json:"-"`
+// FieldUpdateDocumentFieldInternalServerError - Internal server error
+type FieldUpdateDocumentFieldInternalServerError struct {
+	Message  string                                             `json:"message"`
+	Code     string                                             `json:"code"`
+	Issues   []FieldUpdateDocumentFieldInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                            `json:"-"`
 }
 
-var _ error = &FieldUpdateDocumentFieldDocumentsFieldsResponseBody{}
+var _ error = &FieldUpdateDocumentFieldInternalServerError{}
 
-func (e *FieldUpdateDocumentFieldDocumentsFieldsResponseBody) Error() string {
+func (e *FieldUpdateDocumentFieldInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type FieldUpdateDocumentFieldIssues struct {
+type FieldUpdateDocumentFieldBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *FieldUpdateDocumentFieldIssues) GetMessage() string {
+func (o *FieldUpdateDocumentFieldBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// FieldUpdateDocumentFieldResponseBody - Invalid input data
-type FieldUpdateDocumentFieldResponseBody struct {
-	Message  string                           `json:"message"`
-	Code     string                           `json:"code"`
-	Issues   []FieldUpdateDocumentFieldIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata          `json:"-"`
+// FieldUpdateDocumentFieldBadRequestError - Invalid input data
+type FieldUpdateDocumentFieldBadRequestError struct {
+	Message  string                                    `json:"message"`
+	Code     string                                    `json:"code"`
+	Issues   []FieldUpdateDocumentFieldBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                   `json:"-"`
 }
 
-var _ error = &FieldUpdateDocumentFieldResponseBody{}
+var _ error = &FieldUpdateDocumentFieldBadRequestError{}
 
-func (e *FieldUpdateDocumentFieldResponseBody) Error() string {
+func (e *FieldUpdateDocumentFieldBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

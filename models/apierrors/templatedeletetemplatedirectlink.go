@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateDeleteTemplateDirectLinkTemplatesDirectLinkIssues struct {
+type TemplateDeleteTemplateDirectLinkInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateDeleteTemplateDirectLinkTemplatesDirectLinkIssues) GetMessage() string {
+func (o *TemplateDeleteTemplateDirectLinkInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateDeleteTemplateDirectLinkTemplatesDirectLinkResponseBody - Internal server error
-type TemplateDeleteTemplateDirectLinkTemplatesDirectLinkResponseBody struct {
-	Message  string                                                      `json:"message"`
-	Code     string                                                      `json:"code"`
-	Issues   []TemplateDeleteTemplateDirectLinkTemplatesDirectLinkIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                                     `json:"-"`
+// TemplateDeleteTemplateDirectLinkInternalServerError - Internal server error
+type TemplateDeleteTemplateDirectLinkInternalServerError struct {
+	Message  string                                                     `json:"message"`
+	Code     string                                                     `json:"code"`
+	Issues   []TemplateDeleteTemplateDirectLinkInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                                    `json:"-"`
 }
 
-var _ error = &TemplateDeleteTemplateDirectLinkTemplatesDirectLinkResponseBody{}
+var _ error = &TemplateDeleteTemplateDirectLinkInternalServerError{}
 
-func (e *TemplateDeleteTemplateDirectLinkTemplatesDirectLinkResponseBody) Error() string {
+func (e *TemplateDeleteTemplateDirectLinkInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type TemplateDeleteTemplateDirectLinkIssues struct {
+type TemplateDeleteTemplateDirectLinkBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateDeleteTemplateDirectLinkIssues) GetMessage() string {
+func (o *TemplateDeleteTemplateDirectLinkBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// TemplateDeleteTemplateDirectLinkResponseBody - Invalid input data
-type TemplateDeleteTemplateDirectLinkResponseBody struct {
-	Message  string                                   `json:"message"`
-	Code     string                                   `json:"code"`
-	Issues   []TemplateDeleteTemplateDirectLinkIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                  `json:"-"`
+// TemplateDeleteTemplateDirectLinkBadRequestError - Invalid input data
+type TemplateDeleteTemplateDirectLinkBadRequestError struct {
+	Message  string                                            `json:"message"`
+	Code     string                                            `json:"code"`
+	Issues   []TemplateDeleteTemplateDirectLinkBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                           `json:"-"`
 }
 
-var _ error = &TemplateDeleteTemplateDirectLinkResponseBody{}
+var _ error = &TemplateDeleteTemplateDirectLinkBadRequestError{}
 
-func (e *TemplateDeleteTemplateDirectLinkResponseBody) Error() string {
+func (e *TemplateDeleteTemplateDirectLinkBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

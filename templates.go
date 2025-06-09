@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/documenso/sdk-go/internal/config"
 	"github.com/documenso/sdk-go/internal/hooks"
 	"github.com/documenso/sdk-go/internal/utils"
 	"github.com/documenso/sdk-go/models/apierrors"
@@ -17,31 +18,29 @@ import (
 )
 
 type Templates struct {
-	Fields     *DocumensoFields
-	Recipients *DocumensoRecipients
+	Fields     *TemplatesFields
+	Recipients *TemplatesRecipients
 	DirectLink *DirectLink
 
-	sdkConfiguration sdkConfiguration
+	rootSDK          *Documenso
+	sdkConfiguration config.SDKConfiguration
+	hooks            *hooks.Hooks
 }
 
-func newTemplates(sdkConfig sdkConfiguration) *Templates {
+func newTemplates(rootSDK *Documenso, sdkConfig config.SDKConfiguration, hooks *hooks.Hooks) *Templates {
 	return &Templates{
+		rootSDK:          rootSDK,
 		sdkConfiguration: sdkConfig,
-		Fields:           newDocumensoFields(sdkConfig),
-		Recipients:       newDocumensoRecipients(sdkConfig),
-		DirectLink:       newDirectLink(sdkConfig),
+		hooks:            hooks,
+		Fields:           newTemplatesFields(rootSDK, sdkConfig, hooks),
+		Recipients:       newTemplatesRecipients(rootSDK, sdkConfig, hooks),
+		DirectLink:       newDirectLink(rootSDK, sdkConfig, hooks),
 	}
 }
 
 // Find templates
 // Find templates based on a search criteria
 func (s *Templates) Find(ctx context.Context, query *string, page *float64, perPage *float64, type_ *operations.QueryParamType, opts ...operations.Option) (*operations.TemplateFindTemplatesResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "template-findTemplates",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.TemplateFindTemplatesRequest{
 		Query:   query,
 		Page:    page,
@@ -70,6 +69,15 @@ func (s *Templates) Find(ctx context.Context, query *string, page *float64, perP
 	opURL, err := url.JoinPath(baseURL, "/template")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "template-findTemplates",
+		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -122,15 +130,17 @@ func (s *Templates) Find(ctx context.Context, query *string, page *float64, perP
 				"504",
 			},
 		}, func() (*http.Response, error) {
-			if req.Body != nil {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
 				copyBody, err := req.GetBody()
+
 				if err != nil {
 					return nil, err
 				}
+
 				req.Body = copyBody
 			}
 
-			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
 				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
 					return nil, err
@@ -147,7 +157,7 @@ func (s *Templates) Find(ctx context.Context, query *string, page *float64, perP
 					err = fmt.Errorf("error sending request: no response")
 				}
 
-				_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			}
 			return httpRes, err
 		})
@@ -155,13 +165,13 @@ func (s *Templates) Find(ctx context.Context, query *string, page *float64, perP
 		if err != nil {
 			return nil, err
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
 		}
 	} else {
-		req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 		if err != nil {
 			return nil, err
 		}
@@ -174,17 +184,17 @@ func (s *Templates) Find(ctx context.Context, query *string, page *float64, perP
 				err = fmt.Errorf("error sending request: no response")
 			}
 
-			_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
 		} else if utils.MatchStatusCodes([]string{"400", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-			_httpRes, err := s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
 			} else if _httpRes != nil {
 				httpRes = _httpRes
 			}
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
@@ -228,7 +238,7 @@ func (s *Templates) Find(ctx context.Context, query *string, page *float64, perP
 				return nil, err
 			}
 
-			var out apierrors.TemplateFindTemplatesResponseBody
+			var out apierrors.TemplateFindTemplatesBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -253,7 +263,7 @@ func (s *Templates) Find(ctx context.Context, query *string, page *float64, perP
 				return nil, err
 			}
 
-			var out apierrors.TemplateFindTemplatesTemplatesResponseBody
+			var out apierrors.TemplateFindTemplatesNotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -278,7 +288,7 @@ func (s *Templates) Find(ctx context.Context, query *string, page *float64, perP
 				return nil, err
 			}
 
-			var out apierrors.TemplateFindTemplatesTemplatesResponseResponseBody
+			var out apierrors.TemplateFindTemplatesInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -321,12 +331,6 @@ func (s *Templates) Find(ctx context.Context, query *string, page *float64, perP
 
 // Get template
 func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operations.Option) (*operations.TemplateGetTemplateByIDResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "template-getTemplateById",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	request := operations.TemplateGetTemplateByIDRequest{
 		TemplateID: templateID,
 	}
@@ -352,6 +356,15 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/template/{templateId}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "template-getTemplateById",
+		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -400,15 +413,17 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 				"504",
 			},
 		}, func() (*http.Response, error) {
-			if req.Body != nil {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
 				copyBody, err := req.GetBody()
+
 				if err != nil {
 					return nil, err
 				}
+
 				req.Body = copyBody
 			}
 
-			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
 				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
 					return nil, err
@@ -425,7 +440,7 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 					err = fmt.Errorf("error sending request: no response")
 				}
 
-				_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			}
 			return httpRes, err
 		})
@@ -433,13 +448,13 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 		if err != nil {
 			return nil, err
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
 		}
 	} else {
-		req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 		if err != nil {
 			return nil, err
 		}
@@ -452,17 +467,17 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 				err = fmt.Errorf("error sending request: no response")
 			}
 
-			_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
 		} else if utils.MatchStatusCodes([]string{"400", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-			_httpRes, err := s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
 			} else if _httpRes != nil {
 				httpRes = _httpRes
 			}
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
@@ -506,7 +521,7 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 				return nil, err
 			}
 
-			var out apierrors.TemplateGetTemplateByIDResponseBody
+			var out apierrors.TemplateGetTemplateByIDBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -531,7 +546,7 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 				return nil, err
 			}
 
-			var out apierrors.TemplateGetTemplateByIDTemplatesResponseBody
+			var out apierrors.TemplateGetTemplateByIDNotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -556,7 +571,7 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 				return nil, err
 			}
 
-			var out apierrors.TemplateGetTemplateByIDTemplatesResponseResponseBody
+			var out apierrors.TemplateGetTemplateByIDInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -598,13 +613,7 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 }
 
 // Update template
-func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdateTemplateRequestBody, opts ...operations.Option) (*operations.TemplateUpdateTemplateResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "template-updateTemplate",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
+func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdateTemplateRequest, opts ...operations.Option) (*operations.TemplateUpdateTemplateResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -628,6 +637,14 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "template-updateTemplate",
+		SecuritySource:   s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -682,15 +699,17 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 				"504",
 			},
 		}, func() (*http.Response, error) {
-			if req.Body != nil {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
 				copyBody, err := req.GetBody()
+
 				if err != nil {
 					return nil, err
 				}
+
 				req.Body = copyBody
 			}
 
-			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
 				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
 					return nil, err
@@ -707,7 +726,7 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 					err = fmt.Errorf("error sending request: no response")
 				}
 
-				_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			}
 			return httpRes, err
 		})
@@ -715,13 +734,13 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 		if err != nil {
 			return nil, err
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
 		}
 	} else {
-		req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 		if err != nil {
 			return nil, err
 		}
@@ -734,17 +753,17 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 				err = fmt.Errorf("error sending request: no response")
 			}
 
-			_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
 		} else if utils.MatchStatusCodes([]string{"400", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-			_httpRes, err := s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
 			} else if _httpRes != nil {
 				httpRes = _httpRes
 			}
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
@@ -788,7 +807,7 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 				return nil, err
 			}
 
-			var out apierrors.TemplateUpdateTemplateResponseBody
+			var out apierrors.TemplateUpdateTemplateBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -813,7 +832,7 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 				return nil, err
 			}
 
-			var out apierrors.TemplateUpdateTemplateTemplatesResponseBody
+			var out apierrors.TemplateUpdateTemplateInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -855,13 +874,7 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 }
 
 // Duplicate template
-func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDuplicateTemplateRequestBody, opts ...operations.Option) (*operations.TemplateDuplicateTemplateResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "template-duplicateTemplate",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
+func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDuplicateTemplateRequest, opts ...operations.Option) (*operations.TemplateDuplicateTemplateResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -885,6 +898,14 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "template-duplicateTemplate",
+		SecuritySource:   s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -939,15 +960,17 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 				"504",
 			},
 		}, func() (*http.Response, error) {
-			if req.Body != nil {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
 				copyBody, err := req.GetBody()
+
 				if err != nil {
 					return nil, err
 				}
+
 				req.Body = copyBody
 			}
 
-			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
 				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
 					return nil, err
@@ -964,7 +987,7 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 					err = fmt.Errorf("error sending request: no response")
 				}
 
-				_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			}
 			return httpRes, err
 		})
@@ -972,13 +995,13 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 		if err != nil {
 			return nil, err
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
 		}
 	} else {
-		req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 		if err != nil {
 			return nil, err
 		}
@@ -991,17 +1014,17 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 				err = fmt.Errorf("error sending request: no response")
 			}
 
-			_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
 		} else if utils.MatchStatusCodes([]string{"400", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-			_httpRes, err := s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
 			} else if _httpRes != nil {
 				httpRes = _httpRes
 			}
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
@@ -1045,7 +1068,7 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 				return nil, err
 			}
 
-			var out apierrors.TemplateDuplicateTemplateResponseBody
+			var out apierrors.TemplateDuplicateTemplateBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1070,7 +1093,7 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 				return nil, err
 			}
 
-			var out apierrors.TemplateDuplicateTemplateTemplatesResponseBody
+			var out apierrors.TemplateDuplicateTemplateInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1112,13 +1135,7 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 }
 
 // Delete template
-func (s *Templates) Delete(ctx context.Context, request operations.TemplateDeleteTemplateRequestBody, opts ...operations.Option) (*operations.TemplateDeleteTemplateResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "template-deleteTemplate",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
+func (s *Templates) Delete(ctx context.Context, request operations.TemplateDeleteTemplateRequest, opts ...operations.Option) (*operations.TemplateDeleteTemplateResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1142,6 +1159,14 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "template-deleteTemplate",
+		SecuritySource:   s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1196,15 +1221,17 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 				"504",
 			},
 		}, func() (*http.Response, error) {
-			if req.Body != nil {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
 				copyBody, err := req.GetBody()
+
 				if err != nil {
 					return nil, err
 				}
+
 				req.Body = copyBody
 			}
 
-			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
 				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
 					return nil, err
@@ -1221,7 +1248,7 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 					err = fmt.Errorf("error sending request: no response")
 				}
 
-				_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			}
 			return httpRes, err
 		})
@@ -1229,13 +1256,13 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 		if err != nil {
 			return nil, err
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
 		}
 	} else {
-		req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 		if err != nil {
 			return nil, err
 		}
@@ -1248,17 +1275,17 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 				err = fmt.Errorf("error sending request: no response")
 			}
 
-			_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
 		} else if utils.MatchStatusCodes([]string{"400", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-			_httpRes, err := s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
 			} else if _httpRes != nil {
 				httpRes = _httpRes
 			}
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
@@ -1302,7 +1329,7 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 				return nil, err
 			}
 
-			var out apierrors.TemplateDeleteTemplateResponseBody
+			var out apierrors.TemplateDeleteTemplateBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1327,7 +1354,7 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 				return nil, err
 			}
 
-			var out apierrors.TemplateDeleteTemplateTemplatesResponseBody
+			var out apierrors.TemplateDeleteTemplateInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1370,13 +1397,7 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 
 // Use template
 // Use the template to create a document
-func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDocumentFromTemplateRequestBody, opts ...operations.Option) (*operations.TemplateCreateDocumentFromTemplateResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "template-createDocumentFromTemplate",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
+func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDocumentFromTemplateRequest, opts ...operations.Option) (*operations.TemplateCreateDocumentFromTemplateResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1400,6 +1421,14 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "template-createDocumentFromTemplate",
+		SecuritySource:   s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1454,15 +1483,17 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 				"504",
 			},
 		}, func() (*http.Response, error) {
-			if req.Body != nil {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
 				copyBody, err := req.GetBody()
+
 				if err != nil {
 					return nil, err
 				}
+
 				req.Body = copyBody
 			}
 
-			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
 				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
 					return nil, err
@@ -1479,7 +1510,7 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 					err = fmt.Errorf("error sending request: no response")
 				}
 
-				_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			}
 			return httpRes, err
 		})
@@ -1487,13 +1518,13 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 		if err != nil {
 			return nil, err
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
 		}
 	} else {
-		req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 		if err != nil {
 			return nil, err
 		}
@@ -1506,17 +1537,17 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 				err = fmt.Errorf("error sending request: no response")
 			}
 
-			_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
 		} else if utils.MatchStatusCodes([]string{"400", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-			_httpRes, err := s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
 			} else if _httpRes != nil {
 				httpRes = _httpRes
 			}
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
@@ -1560,7 +1591,7 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 				return nil, err
 			}
 
-			var out apierrors.TemplateCreateDocumentFromTemplateResponseBody
+			var out apierrors.TemplateCreateDocumentFromTemplateBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1585,7 +1616,7 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 				return nil, err
 			}
 
-			var out apierrors.TemplateCreateDocumentFromTemplateTemplatesResponseBody
+			var out apierrors.TemplateCreateDocumentFromTemplateInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1628,13 +1659,7 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 
 // MoveToTeam - Move template
 // Move a template to a team
-func (s *Templates) MoveToTeam(ctx context.Context, request operations.TemplateMoveTemplateToTeamRequestBody, opts ...operations.Option) (*operations.TemplateMoveTemplateToTeamResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "template-moveTemplateToTeam",
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
+func (s *Templates) MoveToTeam(ctx context.Context, request operations.TemplateMoveTemplateToTeamRequest, opts ...operations.Option) (*operations.TemplateMoveTemplateToTeamResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1658,6 +1683,14 @@ func (s *Templates) MoveToTeam(ctx context.Context, request operations.TemplateM
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		SDK:              s.rootSDK,
+		SDKConfiguration: s.sdkConfiguration,
+		BaseURL:          baseURL,
+		Context:          ctx,
+		OperationID:      "template-moveTemplateToTeam",
+		SecuritySource:   s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, false, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1712,15 +1745,17 @@ func (s *Templates) MoveToTeam(ctx context.Context, request operations.TemplateM
 				"504",
 			},
 		}, func() (*http.Response, error) {
-			if req.Body != nil {
+			if req.Body != nil && req.Body != http.NoBody && req.GetBody != nil {
 				copyBody, err := req.GetBody()
+
 				if err != nil {
 					return nil, err
 				}
+
 				req.Body = copyBody
 			}
 
-			req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+			req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 			if err != nil {
 				if retry.IsPermanentError(err) || retry.IsTemporaryError(err) {
 					return nil, err
@@ -1737,7 +1772,7 @@ func (s *Templates) MoveToTeam(ctx context.Context, request operations.TemplateM
 					err = fmt.Errorf("error sending request: no response")
 				}
 
-				_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+				_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			}
 			return httpRes, err
 		})
@@ -1745,13 +1780,13 @@ func (s *Templates) MoveToTeam(ctx context.Context, request operations.TemplateM
 		if err != nil {
 			return nil, err
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
 		}
 	} else {
-		req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
+		req, err = s.hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 		if err != nil {
 			return nil, err
 		}
@@ -1764,17 +1799,17 @@ func (s *Templates) MoveToTeam(ctx context.Context, request operations.TemplateM
 				err = fmt.Errorf("error sending request: no response")
 			}
 
-			_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
+			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
 		} else if utils.MatchStatusCodes([]string{"400", "4XX", "500", "5XX"}, httpRes.StatusCode) {
-			_httpRes, err := s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
+			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
 			} else if _httpRes != nil {
 				httpRes = _httpRes
 			}
 		} else {
-			httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
+			httpRes, err = s.hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 			if err != nil {
 				return nil, err
 			}
@@ -1818,7 +1853,7 @@ func (s *Templates) MoveToTeam(ctx context.Context, request operations.TemplateM
 				return nil, err
 			}
 
-			var out apierrors.TemplateMoveTemplateToTeamResponseBody
+			var out apierrors.TemplateMoveTemplateToTeamBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -1843,7 +1878,7 @@ func (s *Templates) MoveToTeam(ctx context.Context, request operations.TemplateM
 				return nil, err
 			}
 
-			var out apierrors.TemplateMoveTemplateToTeamTemplatesResponseBody
+			var out apierrors.TemplateMoveTemplateToTeamInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

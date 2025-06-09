@@ -8,21 +8,21 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateMoveTemplateToTeamRequestBody struct {
+type TemplateMoveTemplateToTeamRequest struct {
 	// The ID of the template to move to.
 	TemplateID float64 `json:"templateId"`
 	// The ID of the team to move the template to.
 	TeamID float64 `json:"teamId"`
 }
 
-func (o *TemplateMoveTemplateToTeamRequestBody) GetTemplateID() float64 {
+func (o *TemplateMoveTemplateToTeamRequest) GetTemplateID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.TemplateID
 }
 
-func (o *TemplateMoveTemplateToTeamRequestBody) GetTeamID() float64 {
+func (o *TemplateMoveTemplateToTeamRequest) GetTeamID() float64 {
 	if o == nil {
 		return 0.0
 	}
@@ -163,11 +163,11 @@ func (o *TemplateMoveTemplateToTeamAuthOptions) GetGlobalActionAuth() *TemplateM
 type TemplateMoveTemplateToTeamResponseBody struct {
 	Type                   TemplateMoveTemplateToTeamType         `json:"type"`
 	Visibility             TemplateMoveTemplateToTeamVisibility   `json:"visibility"`
-	ID                     int64                                  `json:"id"`
+	ID                     float64                                `json:"id"`
 	ExternalID             *string                                `json:"externalId"`
 	Title                  string                                 `json:"title"`
-	UserID                 int64                                  `json:"userId"`
-	TeamID                 *int64                                 `json:"teamId"`
+	UserID                 float64                                `json:"userId"`
+	TeamID                 *float64                               `json:"teamId"`
 	AuthOptions            *TemplateMoveTemplateToTeamAuthOptions `json:"authOptions"`
 	TemplateDocumentDataID string                                 `json:"templateDocumentDataId"`
 	CreatedAt              string                                 `json:"createdAt"`
@@ -190,9 +190,9 @@ func (o *TemplateMoveTemplateToTeamResponseBody) GetVisibility() TemplateMoveTem
 	return o.Visibility
 }
 
-func (o *TemplateMoveTemplateToTeamResponseBody) GetID() int64 {
+func (o *TemplateMoveTemplateToTeamResponseBody) GetID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.ID
 }
@@ -211,14 +211,14 @@ func (o *TemplateMoveTemplateToTeamResponseBody) GetTitle() string {
 	return o.Title
 }
 
-func (o *TemplateMoveTemplateToTeamResponseBody) GetUserID() int64 {
+func (o *TemplateMoveTemplateToTeamResponseBody) GetUserID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.UserID
 }
 
-func (o *TemplateMoveTemplateToTeamResponseBody) GetTeamID() *int64 {
+func (o *TemplateMoveTemplateToTeamResponseBody) GetTeamID() *float64 {
 	if o == nil {
 		return nil
 	}

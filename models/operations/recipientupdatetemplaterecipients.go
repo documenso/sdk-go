@@ -10,19 +10,20 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type RecipientUpdateTemplateRecipientsRole string
+type RecipientUpdateTemplateRecipientsRoleRequestBody string
 
 const (
-	RecipientUpdateTemplateRecipientsRoleCc       RecipientUpdateTemplateRecipientsRole = "CC"
-	RecipientUpdateTemplateRecipientsRoleSigner   RecipientUpdateTemplateRecipientsRole = "SIGNER"
-	RecipientUpdateTemplateRecipientsRoleViewer   RecipientUpdateTemplateRecipientsRole = "VIEWER"
-	RecipientUpdateTemplateRecipientsRoleApprover RecipientUpdateTemplateRecipientsRole = "APPROVER"
+	RecipientUpdateTemplateRecipientsRoleRequestBodyCc        RecipientUpdateTemplateRecipientsRoleRequestBody = "CC"
+	RecipientUpdateTemplateRecipientsRoleRequestBodySigner    RecipientUpdateTemplateRecipientsRoleRequestBody = "SIGNER"
+	RecipientUpdateTemplateRecipientsRoleRequestBodyViewer    RecipientUpdateTemplateRecipientsRoleRequestBody = "VIEWER"
+	RecipientUpdateTemplateRecipientsRoleRequestBodyApprover  RecipientUpdateTemplateRecipientsRoleRequestBody = "APPROVER"
+	RecipientUpdateTemplateRecipientsRoleRequestBodyAssistant RecipientUpdateTemplateRecipientsRoleRequestBody = "ASSISTANT"
 )
 
-func (e RecipientUpdateTemplateRecipientsRole) ToPointer() *RecipientUpdateTemplateRecipientsRole {
+func (e RecipientUpdateTemplateRecipientsRoleRequestBody) ToPointer() *RecipientUpdateTemplateRecipientsRoleRequestBody {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsRole) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsRoleRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -35,51 +36,53 @@ func (e *RecipientUpdateTemplateRecipientsRole) UnmarshalJSON(data []byte) error
 	case "VIEWER":
 		fallthrough
 	case "APPROVER":
-		*e = RecipientUpdateTemplateRecipientsRole(v)
+		fallthrough
+	case "ASSISTANT":
+		*e = RecipientUpdateTemplateRecipientsRoleRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsRole: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsRoleRequestBody: %v", v)
 	}
 }
 
-// RecipientUpdateTemplateRecipientsAccessAuth - The type of authentication required for the recipient to access the document.
-type RecipientUpdateTemplateRecipientsAccessAuth string
+// RecipientUpdateTemplateRecipientsAccessAuthRequestBody - The type of authentication required for the recipient to access the document.
+type RecipientUpdateTemplateRecipientsAccessAuthRequestBody string
 
 const (
-	RecipientUpdateTemplateRecipientsAccessAuthAccount RecipientUpdateTemplateRecipientsAccessAuth = "ACCOUNT"
+	RecipientUpdateTemplateRecipientsAccessAuthRequestBodyAccount RecipientUpdateTemplateRecipientsAccessAuthRequestBody = "ACCOUNT"
 )
 
-func (e RecipientUpdateTemplateRecipientsAccessAuth) ToPointer() *RecipientUpdateTemplateRecipientsAccessAuth {
+func (e RecipientUpdateTemplateRecipientsAccessAuthRequestBody) ToPointer() *RecipientUpdateTemplateRecipientsAccessAuthRequestBody {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsAccessAuth) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsAccessAuthRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "ACCOUNT":
-		*e = RecipientUpdateTemplateRecipientsAccessAuth(v)
+		*e = RecipientUpdateTemplateRecipientsAccessAuthRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsAccessAuth: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsAccessAuthRequestBody: %v", v)
 	}
 }
 
-// RecipientUpdateTemplateRecipientsActionAuth - The type of authentication required for the recipient to sign the document.
-type RecipientUpdateTemplateRecipientsActionAuth string
+// RecipientUpdateTemplateRecipientsActionAuthRequestBody - The type of authentication required for the recipient to sign the document.
+type RecipientUpdateTemplateRecipientsActionAuthRequestBody string
 
 const (
-	RecipientUpdateTemplateRecipientsActionAuthAccount       RecipientUpdateTemplateRecipientsActionAuth = "ACCOUNT"
-	RecipientUpdateTemplateRecipientsActionAuthPasskey       RecipientUpdateTemplateRecipientsActionAuth = "PASSKEY"
-	RecipientUpdateTemplateRecipientsActionAuthTwoFactorAuth RecipientUpdateTemplateRecipientsActionAuth = "TWO_FACTOR_AUTH"
-	RecipientUpdateTemplateRecipientsActionAuthExplicitNone  RecipientUpdateTemplateRecipientsActionAuth = "EXPLICIT_NONE"
+	RecipientUpdateTemplateRecipientsActionAuthRequestBodyAccount       RecipientUpdateTemplateRecipientsActionAuthRequestBody = "ACCOUNT"
+	RecipientUpdateTemplateRecipientsActionAuthRequestBodyPasskey       RecipientUpdateTemplateRecipientsActionAuthRequestBody = "PASSKEY"
+	RecipientUpdateTemplateRecipientsActionAuthRequestBodyTwoFactorAuth RecipientUpdateTemplateRecipientsActionAuthRequestBody = "TWO_FACTOR_AUTH"
+	RecipientUpdateTemplateRecipientsActionAuthRequestBodyExplicitNone  RecipientUpdateTemplateRecipientsActionAuthRequestBody = "EXPLICIT_NONE"
 )
 
-func (e RecipientUpdateTemplateRecipientsActionAuth) ToPointer() *RecipientUpdateTemplateRecipientsActionAuth {
+func (e RecipientUpdateTemplateRecipientsActionAuthRequestBody) ToPointer() *RecipientUpdateTemplateRecipientsActionAuthRequestBody {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsActionAuth) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsActionAuthRequestBody) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -92,107 +95,108 @@ func (e *RecipientUpdateTemplateRecipientsActionAuth) UnmarshalJSON(data []byte)
 	case "TWO_FACTOR_AUTH":
 		fallthrough
 	case "EXPLICIT_NONE":
-		*e = RecipientUpdateTemplateRecipientsActionAuth(v)
+		*e = RecipientUpdateTemplateRecipientsActionAuthRequestBody(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsActionAuth: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsActionAuthRequestBody: %v", v)
 	}
 }
 
-type RecipientUpdateTemplateRecipientsRecipients struct {
+type RecipientUpdateTemplateRecipientsRecipientRequestBody struct {
 	// The ID of the recipient to update.
-	ID           float64                                `json:"id"`
-	Email        *string                                `json:"email,omitempty"`
-	Name         *string                                `json:"name,omitempty"`
-	Role         *RecipientUpdateTemplateRecipientsRole `json:"role,omitempty"`
-	SigningOrder *float64                               `json:"signingOrder,omitempty"`
+	ID           float64                                           `json:"id"`
+	Email        *string                                           `json:"email,omitempty"`
+	Name         *string                                           `json:"name,omitempty"`
+	Role         *RecipientUpdateTemplateRecipientsRoleRequestBody `json:"role,omitempty"`
+	SigningOrder *float64                                          `json:"signingOrder,omitempty"`
 	// The type of authentication required for the recipient to access the document.
-	AccessAuth *RecipientUpdateTemplateRecipientsAccessAuth `json:"accessAuth,omitempty"`
+	AccessAuth *RecipientUpdateTemplateRecipientsAccessAuthRequestBody `json:"accessAuth,omitempty"`
 	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *RecipientUpdateTemplateRecipientsActionAuth `json:"actionAuth,omitempty"`
+	ActionAuth *RecipientUpdateTemplateRecipientsActionAuthRequestBody `json:"actionAuth,omitempty"`
 }
 
-func (o *RecipientUpdateTemplateRecipientsRecipients) GetID() float64 {
+func (o *RecipientUpdateTemplateRecipientsRecipientRequestBody) GetID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ID
 }
 
-func (o *RecipientUpdateTemplateRecipientsRecipients) GetEmail() *string {
+func (o *RecipientUpdateTemplateRecipientsRecipientRequestBody) GetEmail() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Email
 }
 
-func (o *RecipientUpdateTemplateRecipientsRecipients) GetName() *string {
+func (o *RecipientUpdateTemplateRecipientsRecipientRequestBody) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *RecipientUpdateTemplateRecipientsRecipients) GetRole() *RecipientUpdateTemplateRecipientsRole {
+func (o *RecipientUpdateTemplateRecipientsRecipientRequestBody) GetRole() *RecipientUpdateTemplateRecipientsRoleRequestBody {
 	if o == nil {
 		return nil
 	}
 	return o.Role
 }
 
-func (o *RecipientUpdateTemplateRecipientsRecipients) GetSigningOrder() *float64 {
+func (o *RecipientUpdateTemplateRecipientsRecipientRequestBody) GetSigningOrder() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.SigningOrder
 }
 
-func (o *RecipientUpdateTemplateRecipientsRecipients) GetAccessAuth() *RecipientUpdateTemplateRecipientsAccessAuth {
+func (o *RecipientUpdateTemplateRecipientsRecipientRequestBody) GetAccessAuth() *RecipientUpdateTemplateRecipientsAccessAuthRequestBody {
 	if o == nil {
 		return nil
 	}
 	return o.AccessAuth
 }
 
-func (o *RecipientUpdateTemplateRecipientsRecipients) GetActionAuth() *RecipientUpdateTemplateRecipientsActionAuth {
+func (o *RecipientUpdateTemplateRecipientsRecipientRequestBody) GetActionAuth() *RecipientUpdateTemplateRecipientsActionAuthRequestBody {
 	if o == nil {
 		return nil
 	}
 	return o.ActionAuth
 }
 
-type RecipientUpdateTemplateRecipientsRequestBody struct {
-	TemplateID float64                                       `json:"templateId"`
-	Recipients []RecipientUpdateTemplateRecipientsRecipients `json:"recipients"`
+type RecipientUpdateTemplateRecipientsRequest struct {
+	TemplateID float64                                                 `json:"templateId"`
+	Recipients []RecipientUpdateTemplateRecipientsRecipientRequestBody `json:"recipients"`
 }
 
-func (o *RecipientUpdateTemplateRecipientsRequestBody) GetTemplateID() float64 {
+func (o *RecipientUpdateTemplateRecipientsRequest) GetTemplateID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.TemplateID
 }
 
-func (o *RecipientUpdateTemplateRecipientsRequestBody) GetRecipients() []RecipientUpdateTemplateRecipientsRecipients {
+func (o *RecipientUpdateTemplateRecipientsRequest) GetRecipients() []RecipientUpdateTemplateRecipientsRecipientRequestBody {
 	if o == nil {
-		return []RecipientUpdateTemplateRecipientsRecipients{}
+		return []RecipientUpdateTemplateRecipientsRecipientRequestBody{}
 	}
 	return o.Recipients
 }
 
-type RecipientUpdateTemplateRecipientsTemplatesRecipientsRole string
+type RecipientUpdateTemplateRecipientsRoleResponse string
 
 const (
-	RecipientUpdateTemplateRecipientsTemplatesRecipientsRoleCc       RecipientUpdateTemplateRecipientsTemplatesRecipientsRole = "CC"
-	RecipientUpdateTemplateRecipientsTemplatesRecipientsRoleSigner   RecipientUpdateTemplateRecipientsTemplatesRecipientsRole = "SIGNER"
-	RecipientUpdateTemplateRecipientsTemplatesRecipientsRoleViewer   RecipientUpdateTemplateRecipientsTemplatesRecipientsRole = "VIEWER"
-	RecipientUpdateTemplateRecipientsTemplatesRecipientsRoleApprover RecipientUpdateTemplateRecipientsTemplatesRecipientsRole = "APPROVER"
+	RecipientUpdateTemplateRecipientsRoleResponseCc        RecipientUpdateTemplateRecipientsRoleResponse = "CC"
+	RecipientUpdateTemplateRecipientsRoleResponseSigner    RecipientUpdateTemplateRecipientsRoleResponse = "SIGNER"
+	RecipientUpdateTemplateRecipientsRoleResponseViewer    RecipientUpdateTemplateRecipientsRoleResponse = "VIEWER"
+	RecipientUpdateTemplateRecipientsRoleResponseApprover  RecipientUpdateTemplateRecipientsRoleResponse = "APPROVER"
+	RecipientUpdateTemplateRecipientsRoleResponseAssistant RecipientUpdateTemplateRecipientsRoleResponse = "ASSISTANT"
 )
 
-func (e RecipientUpdateTemplateRecipientsTemplatesRecipientsRole) ToPointer() *RecipientUpdateTemplateRecipientsTemplatesRecipientsRole {
+func (e RecipientUpdateTemplateRecipientsRoleResponse) ToPointer() *RecipientUpdateTemplateRecipientsRoleResponse {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsTemplatesRecipientsRole) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsRoleResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -205,10 +209,12 @@ func (e *RecipientUpdateTemplateRecipientsTemplatesRecipientsRole) UnmarshalJSON
 	case "VIEWER":
 		fallthrough
 	case "APPROVER":
-		*e = RecipientUpdateTemplateRecipientsTemplatesRecipientsRole(v)
+		fallthrough
+	case "ASSISTANT":
+		*e = RecipientUpdateTemplateRecipientsRoleResponse(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsTemplatesRecipientsRole: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsRoleResponse: %v", v)
 	}
 }
 
@@ -293,44 +299,44 @@ func (e *RecipientUpdateTemplateRecipientsSendStatus) UnmarshalJSON(data []byte)
 	}
 }
 
-// RecipientUpdateTemplateRecipientsTemplatesRecipientsAccessAuth - The type of authentication required for the recipient to access the document.
-type RecipientUpdateTemplateRecipientsTemplatesRecipientsAccessAuth string
+// RecipientUpdateTemplateRecipientsAccessAuthResponse - The type of authentication required for the recipient to access the document.
+type RecipientUpdateTemplateRecipientsAccessAuthResponse string
 
 const (
-	RecipientUpdateTemplateRecipientsTemplatesRecipientsAccessAuthAccount RecipientUpdateTemplateRecipientsTemplatesRecipientsAccessAuth = "ACCOUNT"
+	RecipientUpdateTemplateRecipientsAccessAuthResponseAccount RecipientUpdateTemplateRecipientsAccessAuthResponse = "ACCOUNT"
 )
 
-func (e RecipientUpdateTemplateRecipientsTemplatesRecipientsAccessAuth) ToPointer() *RecipientUpdateTemplateRecipientsTemplatesRecipientsAccessAuth {
+func (e RecipientUpdateTemplateRecipientsAccessAuthResponse) ToPointer() *RecipientUpdateTemplateRecipientsAccessAuthResponse {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsTemplatesRecipientsAccessAuth) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsAccessAuthResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "ACCOUNT":
-		*e = RecipientUpdateTemplateRecipientsTemplatesRecipientsAccessAuth(v)
+		*e = RecipientUpdateTemplateRecipientsAccessAuthResponse(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsTemplatesRecipientsAccessAuth: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsAccessAuthResponse: %v", v)
 	}
 }
 
-// RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuth - The type of authentication required for the recipient to sign the document.
-type RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuth string
+// RecipientUpdateTemplateRecipientsActionAuthResponse - The type of authentication required for the recipient to sign the document.
+type RecipientUpdateTemplateRecipientsActionAuthResponse string
 
 const (
-	RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuthAccount       RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuth = "ACCOUNT"
-	RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuthPasskey       RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuth = "PASSKEY"
-	RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuthTwoFactorAuth RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuth = "TWO_FACTOR_AUTH"
-	RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuthExplicitNone  RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuth = "EXPLICIT_NONE"
+	RecipientUpdateTemplateRecipientsActionAuthResponseAccount       RecipientUpdateTemplateRecipientsActionAuthResponse = "ACCOUNT"
+	RecipientUpdateTemplateRecipientsActionAuthResponsePasskey       RecipientUpdateTemplateRecipientsActionAuthResponse = "PASSKEY"
+	RecipientUpdateTemplateRecipientsActionAuthResponseTwoFactorAuth RecipientUpdateTemplateRecipientsActionAuthResponse = "TWO_FACTOR_AUTH"
+	RecipientUpdateTemplateRecipientsActionAuthResponseExplicitNone  RecipientUpdateTemplateRecipientsActionAuthResponse = "EXPLICIT_NONE"
 )
 
-func (e RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuth) ToPointer() *RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuth {
+func (e RecipientUpdateTemplateRecipientsActionAuthResponse) ToPointer() *RecipientUpdateTemplateRecipientsActionAuthResponse {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuth) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsActionAuthResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -343,28 +349,28 @@ func (e *RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuth) Unmarsh
 	case "TWO_FACTOR_AUTH":
 		fallthrough
 	case "EXPLICIT_NONE":
-		*e = RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuth(v)
+		*e = RecipientUpdateTemplateRecipientsActionAuthResponse(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuth: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsActionAuthResponse: %v", v)
 	}
 }
 
 type RecipientUpdateTemplateRecipientsAuthOptions struct {
 	// The type of authentication required for the recipient to access the document.
-	AccessAuth *RecipientUpdateTemplateRecipientsTemplatesRecipientsAccessAuth `json:"accessAuth"`
+	AccessAuth *RecipientUpdateTemplateRecipientsAccessAuthResponse `json:"accessAuth"`
 	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuth `json:"actionAuth"`
+	ActionAuth *RecipientUpdateTemplateRecipientsActionAuthResponse `json:"actionAuth"`
 }
 
-func (o *RecipientUpdateTemplateRecipientsAuthOptions) GetAccessAuth() *RecipientUpdateTemplateRecipientsTemplatesRecipientsAccessAuth {
+func (o *RecipientUpdateTemplateRecipientsAuthOptions) GetAccessAuth() *RecipientUpdateTemplateRecipientsAccessAuthResponse {
 	if o == nil {
 		return nil
 	}
 	return o.AccessAuth
 }
 
-func (o *RecipientUpdateTemplateRecipientsAuthOptions) GetActionAuth() *RecipientUpdateTemplateRecipientsTemplatesRecipientsActionAuth {
+func (o *RecipientUpdateTemplateRecipientsAuthOptions) GetActionAuth() *RecipientUpdateTemplateRecipientsActionAuthResponse {
 	if o == nil {
 		return nil
 	}
@@ -424,1290 +430,1512 @@ func (e *RecipientUpdateTemplateRecipientsType) UnmarshalJSON(data []byte) error
 	}
 }
 
-type RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFields9Type string
+type RecipientUpdateTemplateRecipientsFieldMetaTypeDropdown string
 
 const (
-	RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFields9TypeDropdown RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFields9Type = "dropdown"
+	RecipientUpdateTemplateRecipientsFieldMetaTypeDropdownDropdown RecipientUpdateTemplateRecipientsFieldMetaTypeDropdown = "dropdown"
 )
 
-func (e RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFields9Type) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFields9Type {
+func (e RecipientUpdateTemplateRecipientsFieldMetaTypeDropdown) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTypeDropdown {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFields9Type) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsFieldMetaTypeDropdown) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "dropdown":
-		*e = RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFields9Type(v)
+		*e = RecipientUpdateTemplateRecipientsFieldMetaTypeDropdown(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFields9Type: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTypeDropdown: %v", v)
 	}
 }
 
-type RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponseValues struct {
+type RecipientUpdateTemplateRecipientsValue3 struct {
 	Value string `json:"value"`
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponseValues) GetValue() string {
+func (o *RecipientUpdateTemplateRecipientsValue3) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type RecipientUpdateTemplateRecipientsFieldMeta9 struct {
-	Label        *string                                                                                                                  `json:"label,omitempty"`
-	Placeholder  *string                                                                                                                  `json:"placeholder,omitempty"`
-	Required     *bool                                                                                                                    `json:"required,omitempty"`
-	ReadOnly     *bool                                                                                                                    `json:"readOnly,omitempty"`
-	Type         RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFields9Type `json:"type"`
-	Values       []RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponseValues                                            `json:"values,omitempty"`
-	DefaultValue *string                                                                                                                  `json:"defaultValue,omitempty"`
+type RecipientUpdateTemplateRecipientsFieldMetaDropdown struct {
+	Label        *string                                                `json:"label,omitempty"`
+	Placeholder  *string                                                `json:"placeholder,omitempty"`
+	Required     *bool                                                  `json:"required,omitempty"`
+	ReadOnly     *bool                                                  `json:"readOnly,omitempty"`
+	Type         RecipientUpdateTemplateRecipientsFieldMetaTypeDropdown `json:"type"`
+	Values       []RecipientUpdateTemplateRecipientsValue3              `json:"values,omitempty"`
+	DefaultValue *string                                                `json:"defaultValue,omitempty"`
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta9) GetLabel() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaDropdown) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta9) GetPlaceholder() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaDropdown) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta9) GetRequired() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaDropdown) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta9) GetReadOnly() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaDropdown) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta9) GetType() RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFields9Type {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaDropdown) GetType() RecipientUpdateTemplateRecipientsFieldMetaTypeDropdown {
 	if o == nil {
-		return RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFields9Type("")
+		return RecipientUpdateTemplateRecipientsFieldMetaTypeDropdown("")
 	}
 	return o.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta9) GetValues() []RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponseValues {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaDropdown) GetValues() []RecipientUpdateTemplateRecipientsValue3 {
 	if o == nil {
 		return nil
 	}
 	return o.Values
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta9) GetDefaultValue() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaDropdown) GetDefaultValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DefaultValue
 }
 
-type RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFieldsType string
+type RecipientUpdateTemplateRecipientsFieldMetaTypeCheckbox string
 
 const (
-	RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFieldsTypeCheckbox RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFieldsType = "checkbox"
+	RecipientUpdateTemplateRecipientsFieldMetaTypeCheckboxCheckbox RecipientUpdateTemplateRecipientsFieldMetaTypeCheckbox = "checkbox"
 )
 
-func (e RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFieldsType) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFieldsType {
+func (e RecipientUpdateTemplateRecipientsFieldMetaTypeCheckbox) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTypeCheckbox {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFieldsType) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsFieldMetaTypeCheckbox) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "checkbox":
-		*e = RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFieldsType(v)
+		*e = RecipientUpdateTemplateRecipientsFieldMetaTypeCheckbox(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFieldsType: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTypeCheckbox: %v", v)
 	}
 }
 
-type RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsValues struct {
+type RecipientUpdateTemplateRecipientsValue2 struct {
 	ID      float64 `json:"id"`
 	Checked bool    `json:"checked"`
 	Value   string  `json:"value"`
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsValues) GetID() float64 {
+func (o *RecipientUpdateTemplateRecipientsValue2) GetID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ID
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsValues) GetChecked() bool {
+func (o *RecipientUpdateTemplateRecipientsValue2) GetChecked() bool {
 	if o == nil {
 		return false
 	}
 	return o.Checked
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsValues) GetValue() string {
+func (o *RecipientUpdateTemplateRecipientsValue2) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type RecipientUpdateTemplateRecipientsFieldMeta8 struct {
-	Label            *string                                                                                                                 `json:"label,omitempty"`
-	Placeholder      *string                                                                                                                 `json:"placeholder,omitempty"`
-	Required         *bool                                                                                                                   `json:"required,omitempty"`
-	ReadOnly         *bool                                                                                                                   `json:"readOnly,omitempty"`
-	Type             RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFieldsType `json:"type"`
-	Values           []RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsValues                                                   `json:"values,omitempty"`
-	ValidationRule   *string                                                                                                                 `json:"validationRule,omitempty"`
-	ValidationLength *float64                                                                                                                `json:"validationLength,omitempty"`
+type RecipientUpdateTemplateRecipientsFieldMetaCheckbox struct {
+	Label            *string                                                `json:"label,omitempty"`
+	Placeholder      *string                                                `json:"placeholder,omitempty"`
+	Required         *bool                                                  `json:"required,omitempty"`
+	ReadOnly         *bool                                                  `json:"readOnly,omitempty"`
+	Type             RecipientUpdateTemplateRecipientsFieldMetaTypeCheckbox `json:"type"`
+	Values           []RecipientUpdateTemplateRecipientsValue2              `json:"values,omitempty"`
+	ValidationRule   *string                                                `json:"validationRule,omitempty"`
+	ValidationLength *float64                                               `json:"validationLength,omitempty"`
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta8) GetLabel() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaCheckbox) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta8) GetPlaceholder() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaCheckbox) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta8) GetRequired() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaCheckbox) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta8) GetReadOnly() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaCheckbox) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta8) GetType() RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFieldsType {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaCheckbox) GetType() RecipientUpdateTemplateRecipientsFieldMetaTypeCheckbox {
 	if o == nil {
-		return RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsFieldsType("")
+		return RecipientUpdateTemplateRecipientsFieldMetaTypeCheckbox("")
 	}
 	return o.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta8) GetValues() []RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsValues {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaCheckbox) GetValues() []RecipientUpdateTemplateRecipientsValue2 {
 	if o == nil {
 		return nil
 	}
 	return o.Values
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta8) GetValidationRule() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaCheckbox) GetValidationRule() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ValidationRule
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta8) GetValidationLength() *float64 {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaCheckbox) GetValidationLength() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ValidationLength
 }
 
-type RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsType string
+type RecipientUpdateTemplateRecipientsFieldMetaTypeRadio string
 
 const (
-	RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsTypeRadio RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsType = "radio"
+	RecipientUpdateTemplateRecipientsFieldMetaTypeRadioRadio RecipientUpdateTemplateRecipientsFieldMetaTypeRadio = "radio"
 )
 
-func (e RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsType) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsType {
+func (e RecipientUpdateTemplateRecipientsFieldMetaTypeRadio) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTypeRadio {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsType) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsFieldMetaTypeRadio) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "radio":
-		*e = RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsType(v)
+		*e = RecipientUpdateTemplateRecipientsFieldMetaTypeRadio(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsType: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTypeRadio: %v", v)
 	}
 }
 
-type RecipientUpdateTemplateRecipientsFieldMetaValues struct {
+type RecipientUpdateTemplateRecipientsValue1 struct {
 	ID      float64 `json:"id"`
 	Checked bool    `json:"checked"`
 	Value   string  `json:"value"`
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMetaValues) GetID() float64 {
+func (o *RecipientUpdateTemplateRecipientsValue1) GetID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ID
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMetaValues) GetChecked() bool {
+func (o *RecipientUpdateTemplateRecipientsValue1) GetChecked() bool {
 	if o == nil {
 		return false
 	}
 	return o.Checked
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMetaValues) GetValue() string {
+func (o *RecipientUpdateTemplateRecipientsValue1) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type RecipientUpdateTemplateRecipientsFieldMeta7 struct {
-	Label       *string                                                                                                           `json:"label,omitempty"`
-	Placeholder *string                                                                                                           `json:"placeholder,omitempty"`
-	Required    *bool                                                                                                             `json:"required,omitempty"`
-	ReadOnly    *bool                                                                                                             `json:"readOnly,omitempty"`
-	Type        RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsType `json:"type"`
-	Values      []RecipientUpdateTemplateRecipientsFieldMetaValues                                                                `json:"values,omitempty"`
+type RecipientUpdateTemplateRecipientsFieldMetaRadio struct {
+	Label       *string                                             `json:"label,omitempty"`
+	Placeholder *string                                             `json:"placeholder,omitempty"`
+	Required    *bool                                               `json:"required,omitempty"`
+	ReadOnly    *bool                                               `json:"readOnly,omitempty"`
+	Type        RecipientUpdateTemplateRecipientsFieldMetaTypeRadio `json:"type"`
+	Values      []RecipientUpdateTemplateRecipientsValue1           `json:"values,omitempty"`
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta7) GetLabel() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaRadio) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta7) GetPlaceholder() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaRadio) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta7) GetRequired() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaRadio) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta7) GetReadOnly() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaRadio) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta7) GetType() RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsType {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaRadio) GetType() RecipientUpdateTemplateRecipientsFieldMetaTypeRadio {
 	if o == nil {
-		return RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyRecipientsType("")
+		return RecipientUpdateTemplateRecipientsFieldMetaTypeRadio("")
 	}
 	return o.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta7) GetValues() []RecipientUpdateTemplateRecipientsFieldMetaValues {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaRadio) GetValues() []RecipientUpdateTemplateRecipientsValue1 {
 	if o == nil {
 		return nil
 	}
 	return o.Values
 }
 
-type RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyType string
+type RecipientUpdateTemplateRecipientsFieldMetaTypeNumber string
 
 const (
-	RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyTypeNumber RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyType = "number"
+	RecipientUpdateTemplateRecipientsFieldMetaTypeNumberNumber RecipientUpdateTemplateRecipientsFieldMetaTypeNumber = "number"
 )
 
-func (e RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyType) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyType {
+func (e RecipientUpdateTemplateRecipientsFieldMetaTypeNumber) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTypeNumber {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyType) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsFieldMetaTypeNumber) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "number":
-		*e = RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyType(v)
+		*e = RecipientUpdateTemplateRecipientsFieldMetaTypeNumber(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyType: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTypeNumber: %v", v)
 	}
 }
 
-type RecipientUpdateTemplateRecipientsFieldMeta6 struct {
-	Label        *string                                                                                                 `json:"label,omitempty"`
-	Placeholder  *string                                                                                                 `json:"placeholder,omitempty"`
-	Required     *bool                                                                                                   `json:"required,omitempty"`
-	ReadOnly     *bool                                                                                                   `json:"readOnly,omitempty"`
-	Type         RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyType `json:"type"`
-	NumberFormat *string                                                                                                 `json:"numberFormat,omitempty"`
-	Value        *string                                                                                                 `json:"value,omitempty"`
-	MinValue     *float64                                                                                                `json:"minValue,omitempty"`
-	MaxValue     *float64                                                                                                `json:"maxValue,omitempty"`
-	FontSize     *float64                                                                                                `json:"fontSize,omitempty"`
+type RecipientUpdateTemplateRecipientsTextAlign6 string
+
+const (
+	RecipientUpdateTemplateRecipientsTextAlign6Left   RecipientUpdateTemplateRecipientsTextAlign6 = "left"
+	RecipientUpdateTemplateRecipientsTextAlign6Center RecipientUpdateTemplateRecipientsTextAlign6 = "center"
+	RecipientUpdateTemplateRecipientsTextAlign6Right  RecipientUpdateTemplateRecipientsTextAlign6 = "right"
+)
+
+func (e RecipientUpdateTemplateRecipientsTextAlign6) ToPointer() *RecipientUpdateTemplateRecipientsTextAlign6 {
+	return &e
+}
+func (e *RecipientUpdateTemplateRecipientsTextAlign6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = RecipientUpdateTemplateRecipientsTextAlign6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsTextAlign6: %v", v)
+	}
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta6) GetLabel() *string {
+type RecipientUpdateTemplateRecipientsFieldMetaNumber struct {
+	Label        *string                                              `json:"label,omitempty"`
+	Placeholder  *string                                              `json:"placeholder,omitempty"`
+	Required     *bool                                                `json:"required,omitempty"`
+	ReadOnly     *bool                                                `json:"readOnly,omitempty"`
+	Type         RecipientUpdateTemplateRecipientsFieldMetaTypeNumber `json:"type"`
+	NumberFormat *string                                              `json:"numberFormat,omitempty"`
+	Value        *string                                              `json:"value,omitempty"`
+	MinValue     *float64                                             `json:"minValue,omitempty"`
+	MaxValue     *float64                                             `json:"maxValue,omitempty"`
+	FontSize     *float64                                             `json:"fontSize,omitempty"`
+	TextAlign    *RecipientUpdateTemplateRecipientsTextAlign6         `json:"textAlign,omitempty"`
+}
+
+func (o *RecipientUpdateTemplateRecipientsFieldMetaNumber) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta6) GetPlaceholder() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaNumber) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta6) GetRequired() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaNumber) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta6) GetReadOnly() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaNumber) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta6) GetType() RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyType {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaNumber) GetType() RecipientUpdateTemplateRecipientsFieldMetaTypeNumber {
 	if o == nil {
-		return RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONResponseBodyType("")
+		return RecipientUpdateTemplateRecipientsFieldMetaTypeNumber("")
 	}
 	return o.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta6) GetNumberFormat() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaNumber) GetNumberFormat() *string {
 	if o == nil {
 		return nil
 	}
 	return o.NumberFormat
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta6) GetValue() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaNumber) GetValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta6) GetMinValue() *float64 {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaNumber) GetMinValue() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MinValue
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta6) GetMaxValue() *float64 {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaNumber) GetMaxValue() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxValue
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta6) GetFontSize() *float64 {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaNumber) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONType string
+func (o *RecipientUpdateTemplateRecipientsFieldMetaNumber) GetTextAlign() *RecipientUpdateTemplateRecipientsTextAlign6 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type RecipientUpdateTemplateRecipientsFieldMetaTypeText string
 
 const (
-	RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONTypeText RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONType = "text"
+	RecipientUpdateTemplateRecipientsFieldMetaTypeTextText RecipientUpdateTemplateRecipientsFieldMetaTypeText = "text"
 )
 
-func (e RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONType) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONType {
+func (e RecipientUpdateTemplateRecipientsFieldMetaTypeText) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTypeText {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONType) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsFieldMetaTypeText) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "text":
-		*e = RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONType(v)
+		*e = RecipientUpdateTemplateRecipientsFieldMetaTypeText(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONType: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTypeText: %v", v)
 	}
 }
 
-type RecipientUpdateTemplateRecipientsFieldMeta5 struct {
-	Label          *string                                                                                     `json:"label,omitempty"`
-	Placeholder    *string                                                                                     `json:"placeholder,omitempty"`
-	Required       *bool                                                                                       `json:"required,omitempty"`
-	ReadOnly       *bool                                                                                       `json:"readOnly,omitempty"`
-	Type           RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONType `json:"type"`
-	Text           *string                                                                                     `json:"text,omitempty"`
-	CharacterLimit *float64                                                                                    `json:"characterLimit,omitempty"`
-	FontSize       *float64                                                                                    `json:"fontSize,omitempty"`
+type RecipientUpdateTemplateRecipientsTextAlign5 string
+
+const (
+	RecipientUpdateTemplateRecipientsTextAlign5Left   RecipientUpdateTemplateRecipientsTextAlign5 = "left"
+	RecipientUpdateTemplateRecipientsTextAlign5Center RecipientUpdateTemplateRecipientsTextAlign5 = "center"
+	RecipientUpdateTemplateRecipientsTextAlign5Right  RecipientUpdateTemplateRecipientsTextAlign5 = "right"
+)
+
+func (e RecipientUpdateTemplateRecipientsTextAlign5) ToPointer() *RecipientUpdateTemplateRecipientsTextAlign5 {
+	return &e
+}
+func (e *RecipientUpdateTemplateRecipientsTextAlign5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = RecipientUpdateTemplateRecipientsTextAlign5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsTextAlign5: %v", v)
+	}
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta5) GetLabel() *string {
+type RecipientUpdateTemplateRecipientsFieldMetaText struct {
+	Label          *string                                            `json:"label,omitempty"`
+	Placeholder    *string                                            `json:"placeholder,omitempty"`
+	Required       *bool                                              `json:"required,omitempty"`
+	ReadOnly       *bool                                              `json:"readOnly,omitempty"`
+	Type           RecipientUpdateTemplateRecipientsFieldMetaTypeText `json:"type"`
+	Text           *string                                            `json:"text,omitempty"`
+	CharacterLimit *float64                                           `json:"characterLimit,omitempty"`
+	FontSize       *float64                                           `json:"fontSize,omitempty"`
+	TextAlign      *RecipientUpdateTemplateRecipientsTextAlign5       `json:"textAlign,omitempty"`
+}
+
+func (o *RecipientUpdateTemplateRecipientsFieldMetaText) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta5) GetPlaceholder() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaText) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta5) GetRequired() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaText) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta5) GetReadOnly() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaText) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta5) GetType() RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONType {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaText) GetType() RecipientUpdateTemplateRecipientsFieldMetaTypeText {
 	if o == nil {
-		return RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200ApplicationJSONType("")
+		return RecipientUpdateTemplateRecipientsFieldMetaTypeText("")
 	}
 	return o.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta5) GetText() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaText) GetText() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Text
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta5) GetCharacterLimit() *float64 {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaText) GetCharacterLimit() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CharacterLimit
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta5) GetFontSize() *float64 {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaText) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200Type string
+func (o *RecipientUpdateTemplateRecipientsFieldMetaText) GetTextAlign() *RecipientUpdateTemplateRecipientsTextAlign5 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type RecipientUpdateTemplateRecipientsFieldMetaTypeDate string
 
 const (
-	RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200TypeDate RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200Type = "date"
+	RecipientUpdateTemplateRecipientsFieldMetaTypeDateDate RecipientUpdateTemplateRecipientsFieldMetaTypeDate = "date"
 )
 
-func (e RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200Type) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200Type {
+func (e RecipientUpdateTemplateRecipientsFieldMetaTypeDate) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTypeDate {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200Type) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsFieldMetaTypeDate) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "date":
-		*e = RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200Type(v)
+		*e = RecipientUpdateTemplateRecipientsFieldMetaTypeDate(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200Type: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTypeDate: %v", v)
 	}
 }
 
-type RecipientUpdateTemplateRecipientsFieldMeta4 struct {
-	Label       *string                                                                      `json:"label,omitempty"`
-	Placeholder *string                                                                      `json:"placeholder,omitempty"`
-	Required    *bool                                                                        `json:"required,omitempty"`
-	ReadOnly    *bool                                                                        `json:"readOnly,omitempty"`
-	Type        RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200Type `json:"type"`
-	FontSize    *float64                                                                     `json:"fontSize,omitempty"`
+type RecipientUpdateTemplateRecipientsTextAlign4 string
+
+const (
+	RecipientUpdateTemplateRecipientsTextAlign4Left   RecipientUpdateTemplateRecipientsTextAlign4 = "left"
+	RecipientUpdateTemplateRecipientsTextAlign4Center RecipientUpdateTemplateRecipientsTextAlign4 = "center"
+	RecipientUpdateTemplateRecipientsTextAlign4Right  RecipientUpdateTemplateRecipientsTextAlign4 = "right"
+)
+
+func (e RecipientUpdateTemplateRecipientsTextAlign4) ToPointer() *RecipientUpdateTemplateRecipientsTextAlign4 {
+	return &e
+}
+func (e *RecipientUpdateTemplateRecipientsTextAlign4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = RecipientUpdateTemplateRecipientsTextAlign4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsTextAlign4: %v", v)
+	}
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta4) GetLabel() *string {
+type RecipientUpdateTemplateRecipientsFieldMetaDate struct {
+	Label       *string                                            `json:"label,omitempty"`
+	Placeholder *string                                            `json:"placeholder,omitempty"`
+	Required    *bool                                              `json:"required,omitempty"`
+	ReadOnly    *bool                                              `json:"readOnly,omitempty"`
+	Type        RecipientUpdateTemplateRecipientsFieldMetaTypeDate `json:"type"`
+	FontSize    *float64                                           `json:"fontSize,omitempty"`
+	TextAlign   *RecipientUpdateTemplateRecipientsTextAlign4       `json:"textAlign,omitempty"`
+}
+
+func (o *RecipientUpdateTemplateRecipientsFieldMetaDate) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta4) GetPlaceholder() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaDate) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta4) GetRequired() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaDate) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta4) GetReadOnly() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaDate) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta4) GetType() RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200Type {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaDate) GetType() RecipientUpdateTemplateRecipientsFieldMetaTypeDate {
 	if o == nil {
-		return RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponse200Type("")
+		return RecipientUpdateTemplateRecipientsFieldMetaTypeDate("")
 	}
 	return o.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta4) GetFontSize() *float64 {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaDate) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponseType string
+func (o *RecipientUpdateTemplateRecipientsFieldMetaDate) GetTextAlign() *RecipientUpdateTemplateRecipientsTextAlign4 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type RecipientUpdateTemplateRecipientsFieldMetaTypeEmail string
 
 const (
-	RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponseTypeEmail RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponseType = "email"
+	RecipientUpdateTemplateRecipientsFieldMetaTypeEmailEmail RecipientUpdateTemplateRecipientsFieldMetaTypeEmail = "email"
 )
 
-func (e RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponseType) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponseType {
+func (e RecipientUpdateTemplateRecipientsFieldMetaTypeEmail) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTypeEmail {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponseType) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsFieldMetaTypeEmail) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "email":
-		*e = RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponseType(v)
+		*e = RecipientUpdateTemplateRecipientsFieldMetaTypeEmail(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponseType: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTypeEmail: %v", v)
 	}
 }
 
-type RecipientUpdateTemplateRecipientsFieldMeta3 struct {
-	Label       *string                                                                   `json:"label,omitempty"`
-	Placeholder *string                                                                   `json:"placeholder,omitempty"`
-	Required    *bool                                                                     `json:"required,omitempty"`
-	ReadOnly    *bool                                                                     `json:"readOnly,omitempty"`
-	Type        RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponseType `json:"type"`
-	FontSize    *float64                                                                  `json:"fontSize,omitempty"`
+type RecipientUpdateTemplateRecipientsTextAlign3 string
+
+const (
+	RecipientUpdateTemplateRecipientsTextAlign3Left   RecipientUpdateTemplateRecipientsTextAlign3 = "left"
+	RecipientUpdateTemplateRecipientsTextAlign3Center RecipientUpdateTemplateRecipientsTextAlign3 = "center"
+	RecipientUpdateTemplateRecipientsTextAlign3Right  RecipientUpdateTemplateRecipientsTextAlign3 = "right"
+)
+
+func (e RecipientUpdateTemplateRecipientsTextAlign3) ToPointer() *RecipientUpdateTemplateRecipientsTextAlign3 {
+	return &e
+}
+func (e *RecipientUpdateTemplateRecipientsTextAlign3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = RecipientUpdateTemplateRecipientsTextAlign3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsTextAlign3: %v", v)
+	}
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta3) GetLabel() *string {
+type RecipientUpdateTemplateRecipientsFieldMetaEmail struct {
+	Label       *string                                             `json:"label,omitempty"`
+	Placeholder *string                                             `json:"placeholder,omitempty"`
+	Required    *bool                                               `json:"required,omitempty"`
+	ReadOnly    *bool                                               `json:"readOnly,omitempty"`
+	Type        RecipientUpdateTemplateRecipientsFieldMetaTypeEmail `json:"type"`
+	FontSize    *float64                                            `json:"fontSize,omitempty"`
+	TextAlign   *RecipientUpdateTemplateRecipientsTextAlign3        `json:"textAlign,omitempty"`
+}
+
+func (o *RecipientUpdateTemplateRecipientsFieldMetaEmail) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta3) GetPlaceholder() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaEmail) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta3) GetRequired() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaEmail) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta3) GetReadOnly() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaEmail) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta3) GetType() RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponseType {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaEmail) GetType() RecipientUpdateTemplateRecipientsFieldMetaTypeEmail {
 	if o == nil {
-		return RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsResponseType("")
+		return RecipientUpdateTemplateRecipientsFieldMetaTypeEmail("")
 	}
 	return o.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta3) GetFontSize() *float64 {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaEmail) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsType string
+func (o *RecipientUpdateTemplateRecipientsFieldMetaEmail) GetTextAlign() *RecipientUpdateTemplateRecipientsTextAlign3 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type RecipientUpdateTemplateRecipientsFieldMetaTypeName string
 
 const (
-	RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsTypeName RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsType = "name"
+	RecipientUpdateTemplateRecipientsFieldMetaTypeNameName RecipientUpdateTemplateRecipientsFieldMetaTypeName = "name"
 )
 
-func (e RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsType) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsType {
+func (e RecipientUpdateTemplateRecipientsFieldMetaTypeName) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTypeName {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsType) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsFieldMetaTypeName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "name":
-		*e = RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsType(v)
+		*e = RecipientUpdateTemplateRecipientsFieldMetaTypeName(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsType: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTypeName: %v", v)
 	}
 }
 
-type RecipientUpdateTemplateRecipientsFieldMeta2 struct {
-	Label       *string                                                           `json:"label,omitempty"`
-	Placeholder *string                                                           `json:"placeholder,omitempty"`
-	Required    *bool                                                             `json:"required,omitempty"`
-	ReadOnly    *bool                                                             `json:"readOnly,omitempty"`
-	Type        RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsType `json:"type"`
-	FontSize    *float64                                                          `json:"fontSize,omitempty"`
+type RecipientUpdateTemplateRecipientsTextAlign2 string
+
+const (
+	RecipientUpdateTemplateRecipientsTextAlign2Left   RecipientUpdateTemplateRecipientsTextAlign2 = "left"
+	RecipientUpdateTemplateRecipientsTextAlign2Center RecipientUpdateTemplateRecipientsTextAlign2 = "center"
+	RecipientUpdateTemplateRecipientsTextAlign2Right  RecipientUpdateTemplateRecipientsTextAlign2 = "right"
+)
+
+func (e RecipientUpdateTemplateRecipientsTextAlign2) ToPointer() *RecipientUpdateTemplateRecipientsTextAlign2 {
+	return &e
+}
+func (e *RecipientUpdateTemplateRecipientsTextAlign2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = RecipientUpdateTemplateRecipientsTextAlign2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsTextAlign2: %v", v)
+	}
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta2) GetLabel() *string {
+type RecipientUpdateTemplateRecipientsFieldMetaName struct {
+	Label       *string                                            `json:"label,omitempty"`
+	Placeholder *string                                            `json:"placeholder,omitempty"`
+	Required    *bool                                              `json:"required,omitempty"`
+	ReadOnly    *bool                                              `json:"readOnly,omitempty"`
+	Type        RecipientUpdateTemplateRecipientsFieldMetaTypeName `json:"type"`
+	FontSize    *float64                                           `json:"fontSize,omitempty"`
+	TextAlign   *RecipientUpdateTemplateRecipientsTextAlign2       `json:"textAlign,omitempty"`
+}
+
+func (o *RecipientUpdateTemplateRecipientsFieldMetaName) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta2) GetPlaceholder() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaName) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta2) GetRequired() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaName) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta2) GetReadOnly() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaName) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta2) GetType() RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsType {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaName) GetType() RecipientUpdateTemplateRecipientsFieldMetaTypeName {
 	if o == nil {
-		return RecipientUpdateTemplateRecipientsFieldMetaTemplatesRecipientsType("")
+		return RecipientUpdateTemplateRecipientsFieldMetaTypeName("")
 	}
 	return o.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta2) GetFontSize() *float64 {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaName) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-type RecipientUpdateTemplateRecipientsFieldMetaType string
+func (o *RecipientUpdateTemplateRecipientsFieldMetaName) GetTextAlign() *RecipientUpdateTemplateRecipientsTextAlign2 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
+type RecipientUpdateTemplateRecipientsFieldMetaTypeInitials string
 
 const (
-	RecipientUpdateTemplateRecipientsFieldMetaTypeInitials RecipientUpdateTemplateRecipientsFieldMetaType = "initials"
+	RecipientUpdateTemplateRecipientsFieldMetaTypeInitialsInitials RecipientUpdateTemplateRecipientsFieldMetaTypeInitials = "initials"
 )
 
-func (e RecipientUpdateTemplateRecipientsFieldMetaType) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaType {
+func (e RecipientUpdateTemplateRecipientsFieldMetaTypeInitials) ToPointer() *RecipientUpdateTemplateRecipientsFieldMetaTypeInitials {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsFieldMetaType) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsFieldMetaTypeInitials) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "initials":
-		*e = RecipientUpdateTemplateRecipientsFieldMetaType(v)
+		*e = RecipientUpdateTemplateRecipientsFieldMetaTypeInitials(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaType: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsFieldMetaTypeInitials: %v", v)
 	}
 }
 
-type RecipientUpdateTemplateRecipientsFieldMeta1 struct {
-	Label       *string                                        `json:"label,omitempty"`
-	Placeholder *string                                        `json:"placeholder,omitempty"`
-	Required    *bool                                          `json:"required,omitempty"`
-	ReadOnly    *bool                                          `json:"readOnly,omitempty"`
-	Type        RecipientUpdateTemplateRecipientsFieldMetaType `json:"type"`
-	FontSize    *float64                                       `json:"fontSize,omitempty"`
+type RecipientUpdateTemplateRecipientsTextAlign1 string
+
+const (
+	RecipientUpdateTemplateRecipientsTextAlign1Left   RecipientUpdateTemplateRecipientsTextAlign1 = "left"
+	RecipientUpdateTemplateRecipientsTextAlign1Center RecipientUpdateTemplateRecipientsTextAlign1 = "center"
+	RecipientUpdateTemplateRecipientsTextAlign1Right  RecipientUpdateTemplateRecipientsTextAlign1 = "right"
+)
+
+func (e RecipientUpdateTemplateRecipientsTextAlign1) ToPointer() *RecipientUpdateTemplateRecipientsTextAlign1 {
+	return &e
+}
+func (e *RecipientUpdateTemplateRecipientsTextAlign1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = RecipientUpdateTemplateRecipientsTextAlign1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsTextAlign1: %v", v)
+	}
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta1) GetLabel() *string {
+type RecipientUpdateTemplateRecipientsFieldMetaInitials struct {
+	Label       *string                                                `json:"label,omitempty"`
+	Placeholder *string                                                `json:"placeholder,omitempty"`
+	Required    *bool                                                  `json:"required,omitempty"`
+	ReadOnly    *bool                                                  `json:"readOnly,omitempty"`
+	Type        RecipientUpdateTemplateRecipientsFieldMetaTypeInitials `json:"type"`
+	FontSize    *float64                                               `json:"fontSize,omitempty"`
+	TextAlign   *RecipientUpdateTemplateRecipientsTextAlign1           `json:"textAlign,omitempty"`
+}
+
+func (o *RecipientUpdateTemplateRecipientsFieldMetaInitials) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta1) GetPlaceholder() *string {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaInitials) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta1) GetRequired() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaInitials) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta1) GetReadOnly() *bool {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaInitials) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta1) GetType() RecipientUpdateTemplateRecipientsFieldMetaType {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaInitials) GetType() RecipientUpdateTemplateRecipientsFieldMetaTypeInitials {
 	if o == nil {
-		return RecipientUpdateTemplateRecipientsFieldMetaType("")
+		return RecipientUpdateTemplateRecipientsFieldMetaTypeInitials("")
 	}
 	return o.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientsFieldMeta1) GetFontSize() *float64 {
+func (o *RecipientUpdateTemplateRecipientsFieldMetaInitials) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
+func (o *RecipientUpdateTemplateRecipientsFieldMetaInitials) GetTextAlign() *RecipientUpdateTemplateRecipientsTextAlign1 {
+	if o == nil {
+		return nil
+	}
+	return o.TextAlign
+}
+
 type RecipientUpdateTemplateRecipientsFieldMetaUnionType string
 
 const (
-	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta1 RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient-updateTemplateRecipients_fieldMeta_1"
-	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta2 RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient-updateTemplateRecipients_fieldMeta_2"
-	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta3 RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient-updateTemplateRecipients_fieldMeta_3"
-	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta4 RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient-updateTemplateRecipients_fieldMeta_4"
-	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta5 RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient-updateTemplateRecipients_fieldMeta_5"
-	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta6 RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient-updateTemplateRecipients_fieldMeta_6"
-	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta7 RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient-updateTemplateRecipients_fieldMeta_7"
-	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta8 RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient-updateTemplateRecipients_fieldMeta_8"
-	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta9 RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient-updateTemplateRecipients_fieldMeta_9"
+	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaInitials RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient_updateTemplateRecipients_fieldMeta_Initials"
+	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaName     RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient_updateTemplateRecipients_fieldMeta_Name"
+	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaEmail    RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient_updateTemplateRecipients_fieldMeta_Email"
+	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaDate     RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient_updateTemplateRecipients_fieldMeta_Date"
+	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaText     RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient_updateTemplateRecipients_fieldMeta_Text"
+	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaNumber   RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient_updateTemplateRecipients_fieldMeta_Number"
+	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaRadio    RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient_updateTemplateRecipients_fieldMeta_Radio"
+	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaCheckbox RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient_updateTemplateRecipients_fieldMeta_Checkbox"
+	RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaDropdown RecipientUpdateTemplateRecipientsFieldMetaUnionType = "recipient_updateTemplateRecipients_fieldMeta_Dropdown"
 )
 
-type RecipientUpdateTemplateRecipientsFieldMeta struct {
-	RecipientUpdateTemplateRecipientsFieldMeta1 *RecipientUpdateTemplateRecipientsFieldMeta1 `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientsFieldMeta2 *RecipientUpdateTemplateRecipientsFieldMeta2 `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientsFieldMeta3 *RecipientUpdateTemplateRecipientsFieldMeta3 `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientsFieldMeta4 *RecipientUpdateTemplateRecipientsFieldMeta4 `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientsFieldMeta5 *RecipientUpdateTemplateRecipientsFieldMeta5 `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientsFieldMeta6 *RecipientUpdateTemplateRecipientsFieldMeta6 `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientsFieldMeta7 *RecipientUpdateTemplateRecipientsFieldMeta7 `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientsFieldMeta8 *RecipientUpdateTemplateRecipientsFieldMeta8 `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientsFieldMeta9 *RecipientUpdateTemplateRecipientsFieldMeta9 `queryParam:"inline"`
+type RecipientUpdateTemplateRecipientsFieldMetaUnion struct {
+	RecipientUpdateTemplateRecipientsFieldMetaInitials *RecipientUpdateTemplateRecipientsFieldMetaInitials `queryParam:"inline"`
+	RecipientUpdateTemplateRecipientsFieldMetaName     *RecipientUpdateTemplateRecipientsFieldMetaName     `queryParam:"inline"`
+	RecipientUpdateTemplateRecipientsFieldMetaEmail    *RecipientUpdateTemplateRecipientsFieldMetaEmail    `queryParam:"inline"`
+	RecipientUpdateTemplateRecipientsFieldMetaDate     *RecipientUpdateTemplateRecipientsFieldMetaDate     `queryParam:"inline"`
+	RecipientUpdateTemplateRecipientsFieldMetaText     *RecipientUpdateTemplateRecipientsFieldMetaText     `queryParam:"inline"`
+	RecipientUpdateTemplateRecipientsFieldMetaNumber   *RecipientUpdateTemplateRecipientsFieldMetaNumber   `queryParam:"inline"`
+	RecipientUpdateTemplateRecipientsFieldMetaRadio    *RecipientUpdateTemplateRecipientsFieldMetaRadio    `queryParam:"inline"`
+	RecipientUpdateTemplateRecipientsFieldMetaCheckbox *RecipientUpdateTemplateRecipientsFieldMetaCheckbox `queryParam:"inline"`
+	RecipientUpdateTemplateRecipientsFieldMetaDropdown *RecipientUpdateTemplateRecipientsFieldMetaDropdown `queryParam:"inline"`
 
 	Type RecipientUpdateTemplateRecipientsFieldMetaUnionType
 }
 
-func CreateRecipientUpdateTemplateRecipientsFieldMetaRecipientUpdateTemplateRecipientsFieldMeta1(recipientUpdateTemplateRecipientsFieldMeta1 RecipientUpdateTemplateRecipientsFieldMeta1) RecipientUpdateTemplateRecipientsFieldMeta {
-	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta1
+func CreateRecipientUpdateTemplateRecipientsFieldMetaUnionRecipientUpdateTemplateRecipientsFieldMetaInitials(recipientUpdateTemplateRecipientsFieldMetaInitials RecipientUpdateTemplateRecipientsFieldMetaInitials) RecipientUpdateTemplateRecipientsFieldMetaUnion {
+	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaInitials
 
-	return RecipientUpdateTemplateRecipientsFieldMeta{
-		RecipientUpdateTemplateRecipientsFieldMeta1: &recipientUpdateTemplateRecipientsFieldMeta1,
+	return RecipientUpdateTemplateRecipientsFieldMetaUnion{
+		RecipientUpdateTemplateRecipientsFieldMetaInitials: &recipientUpdateTemplateRecipientsFieldMetaInitials,
 		Type: typ,
 	}
 }
 
-func CreateRecipientUpdateTemplateRecipientsFieldMetaRecipientUpdateTemplateRecipientsFieldMeta2(recipientUpdateTemplateRecipientsFieldMeta2 RecipientUpdateTemplateRecipientsFieldMeta2) RecipientUpdateTemplateRecipientsFieldMeta {
-	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta2
+func CreateRecipientUpdateTemplateRecipientsFieldMetaUnionRecipientUpdateTemplateRecipientsFieldMetaName(recipientUpdateTemplateRecipientsFieldMetaName RecipientUpdateTemplateRecipientsFieldMetaName) RecipientUpdateTemplateRecipientsFieldMetaUnion {
+	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaName
 
-	return RecipientUpdateTemplateRecipientsFieldMeta{
-		RecipientUpdateTemplateRecipientsFieldMeta2: &recipientUpdateTemplateRecipientsFieldMeta2,
+	return RecipientUpdateTemplateRecipientsFieldMetaUnion{
+		RecipientUpdateTemplateRecipientsFieldMetaName: &recipientUpdateTemplateRecipientsFieldMetaName,
 		Type: typ,
 	}
 }
 
-func CreateRecipientUpdateTemplateRecipientsFieldMetaRecipientUpdateTemplateRecipientsFieldMeta3(recipientUpdateTemplateRecipientsFieldMeta3 RecipientUpdateTemplateRecipientsFieldMeta3) RecipientUpdateTemplateRecipientsFieldMeta {
-	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta3
+func CreateRecipientUpdateTemplateRecipientsFieldMetaUnionRecipientUpdateTemplateRecipientsFieldMetaEmail(recipientUpdateTemplateRecipientsFieldMetaEmail RecipientUpdateTemplateRecipientsFieldMetaEmail) RecipientUpdateTemplateRecipientsFieldMetaUnion {
+	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaEmail
 
-	return RecipientUpdateTemplateRecipientsFieldMeta{
-		RecipientUpdateTemplateRecipientsFieldMeta3: &recipientUpdateTemplateRecipientsFieldMeta3,
+	return RecipientUpdateTemplateRecipientsFieldMetaUnion{
+		RecipientUpdateTemplateRecipientsFieldMetaEmail: &recipientUpdateTemplateRecipientsFieldMetaEmail,
 		Type: typ,
 	}
 }
 
-func CreateRecipientUpdateTemplateRecipientsFieldMetaRecipientUpdateTemplateRecipientsFieldMeta4(recipientUpdateTemplateRecipientsFieldMeta4 RecipientUpdateTemplateRecipientsFieldMeta4) RecipientUpdateTemplateRecipientsFieldMeta {
-	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta4
+func CreateRecipientUpdateTemplateRecipientsFieldMetaUnionRecipientUpdateTemplateRecipientsFieldMetaDate(recipientUpdateTemplateRecipientsFieldMetaDate RecipientUpdateTemplateRecipientsFieldMetaDate) RecipientUpdateTemplateRecipientsFieldMetaUnion {
+	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaDate
 
-	return RecipientUpdateTemplateRecipientsFieldMeta{
-		RecipientUpdateTemplateRecipientsFieldMeta4: &recipientUpdateTemplateRecipientsFieldMeta4,
+	return RecipientUpdateTemplateRecipientsFieldMetaUnion{
+		RecipientUpdateTemplateRecipientsFieldMetaDate: &recipientUpdateTemplateRecipientsFieldMetaDate,
 		Type: typ,
 	}
 }
 
-func CreateRecipientUpdateTemplateRecipientsFieldMetaRecipientUpdateTemplateRecipientsFieldMeta5(recipientUpdateTemplateRecipientsFieldMeta5 RecipientUpdateTemplateRecipientsFieldMeta5) RecipientUpdateTemplateRecipientsFieldMeta {
-	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta5
+func CreateRecipientUpdateTemplateRecipientsFieldMetaUnionRecipientUpdateTemplateRecipientsFieldMetaText(recipientUpdateTemplateRecipientsFieldMetaText RecipientUpdateTemplateRecipientsFieldMetaText) RecipientUpdateTemplateRecipientsFieldMetaUnion {
+	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaText
 
-	return RecipientUpdateTemplateRecipientsFieldMeta{
-		RecipientUpdateTemplateRecipientsFieldMeta5: &recipientUpdateTemplateRecipientsFieldMeta5,
+	return RecipientUpdateTemplateRecipientsFieldMetaUnion{
+		RecipientUpdateTemplateRecipientsFieldMetaText: &recipientUpdateTemplateRecipientsFieldMetaText,
 		Type: typ,
 	}
 }
 
-func CreateRecipientUpdateTemplateRecipientsFieldMetaRecipientUpdateTemplateRecipientsFieldMeta6(recipientUpdateTemplateRecipientsFieldMeta6 RecipientUpdateTemplateRecipientsFieldMeta6) RecipientUpdateTemplateRecipientsFieldMeta {
-	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta6
+func CreateRecipientUpdateTemplateRecipientsFieldMetaUnionRecipientUpdateTemplateRecipientsFieldMetaNumber(recipientUpdateTemplateRecipientsFieldMetaNumber RecipientUpdateTemplateRecipientsFieldMetaNumber) RecipientUpdateTemplateRecipientsFieldMetaUnion {
+	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaNumber
 
-	return RecipientUpdateTemplateRecipientsFieldMeta{
-		RecipientUpdateTemplateRecipientsFieldMeta6: &recipientUpdateTemplateRecipientsFieldMeta6,
+	return RecipientUpdateTemplateRecipientsFieldMetaUnion{
+		RecipientUpdateTemplateRecipientsFieldMetaNumber: &recipientUpdateTemplateRecipientsFieldMetaNumber,
 		Type: typ,
 	}
 }
 
-func CreateRecipientUpdateTemplateRecipientsFieldMetaRecipientUpdateTemplateRecipientsFieldMeta7(recipientUpdateTemplateRecipientsFieldMeta7 RecipientUpdateTemplateRecipientsFieldMeta7) RecipientUpdateTemplateRecipientsFieldMeta {
-	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta7
+func CreateRecipientUpdateTemplateRecipientsFieldMetaUnionRecipientUpdateTemplateRecipientsFieldMetaRadio(recipientUpdateTemplateRecipientsFieldMetaRadio RecipientUpdateTemplateRecipientsFieldMetaRadio) RecipientUpdateTemplateRecipientsFieldMetaUnion {
+	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaRadio
 
-	return RecipientUpdateTemplateRecipientsFieldMeta{
-		RecipientUpdateTemplateRecipientsFieldMeta7: &recipientUpdateTemplateRecipientsFieldMeta7,
+	return RecipientUpdateTemplateRecipientsFieldMetaUnion{
+		RecipientUpdateTemplateRecipientsFieldMetaRadio: &recipientUpdateTemplateRecipientsFieldMetaRadio,
 		Type: typ,
 	}
 }
 
-func CreateRecipientUpdateTemplateRecipientsFieldMetaRecipientUpdateTemplateRecipientsFieldMeta8(recipientUpdateTemplateRecipientsFieldMeta8 RecipientUpdateTemplateRecipientsFieldMeta8) RecipientUpdateTemplateRecipientsFieldMeta {
-	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta8
+func CreateRecipientUpdateTemplateRecipientsFieldMetaUnionRecipientUpdateTemplateRecipientsFieldMetaCheckbox(recipientUpdateTemplateRecipientsFieldMetaCheckbox RecipientUpdateTemplateRecipientsFieldMetaCheckbox) RecipientUpdateTemplateRecipientsFieldMetaUnion {
+	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaCheckbox
 
-	return RecipientUpdateTemplateRecipientsFieldMeta{
-		RecipientUpdateTemplateRecipientsFieldMeta8: &recipientUpdateTemplateRecipientsFieldMeta8,
+	return RecipientUpdateTemplateRecipientsFieldMetaUnion{
+		RecipientUpdateTemplateRecipientsFieldMetaCheckbox: &recipientUpdateTemplateRecipientsFieldMetaCheckbox,
 		Type: typ,
 	}
 }
 
-func CreateRecipientUpdateTemplateRecipientsFieldMetaRecipientUpdateTemplateRecipientsFieldMeta9(recipientUpdateTemplateRecipientsFieldMeta9 RecipientUpdateTemplateRecipientsFieldMeta9) RecipientUpdateTemplateRecipientsFieldMeta {
-	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta9
+func CreateRecipientUpdateTemplateRecipientsFieldMetaUnionRecipientUpdateTemplateRecipientsFieldMetaDropdown(recipientUpdateTemplateRecipientsFieldMetaDropdown RecipientUpdateTemplateRecipientsFieldMetaDropdown) RecipientUpdateTemplateRecipientsFieldMetaUnion {
+	typ := RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaDropdown
 
-	return RecipientUpdateTemplateRecipientsFieldMeta{
-		RecipientUpdateTemplateRecipientsFieldMeta9: &recipientUpdateTemplateRecipientsFieldMeta9,
+	return RecipientUpdateTemplateRecipientsFieldMetaUnion{
+		RecipientUpdateTemplateRecipientsFieldMetaDropdown: &recipientUpdateTemplateRecipientsFieldMetaDropdown,
 		Type: typ,
 	}
 }
 
-func (u *RecipientUpdateTemplateRecipientsFieldMeta) UnmarshalJSON(data []byte) error {
+func (u *RecipientUpdateTemplateRecipientsFieldMetaUnion) UnmarshalJSON(data []byte) error {
 
-	var recipientUpdateTemplateRecipientsFieldMeta1 RecipientUpdateTemplateRecipientsFieldMeta1 = RecipientUpdateTemplateRecipientsFieldMeta1{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMeta1, "", true, true); err == nil {
-		u.RecipientUpdateTemplateRecipientsFieldMeta1 = &recipientUpdateTemplateRecipientsFieldMeta1
-		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta1
+	var recipientUpdateTemplateRecipientsFieldMetaRadio RecipientUpdateTemplateRecipientsFieldMetaRadio = RecipientUpdateTemplateRecipientsFieldMetaRadio{}
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaRadio, "", true, true); err == nil {
+		u.RecipientUpdateTemplateRecipientsFieldMetaRadio = &recipientUpdateTemplateRecipientsFieldMetaRadio
+		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaRadio
 		return nil
 	}
 
-	var recipientUpdateTemplateRecipientsFieldMeta2 RecipientUpdateTemplateRecipientsFieldMeta2 = RecipientUpdateTemplateRecipientsFieldMeta2{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMeta2, "", true, true); err == nil {
-		u.RecipientUpdateTemplateRecipientsFieldMeta2 = &recipientUpdateTemplateRecipientsFieldMeta2
-		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta2
+	var recipientUpdateTemplateRecipientsFieldMetaInitials RecipientUpdateTemplateRecipientsFieldMetaInitials = RecipientUpdateTemplateRecipientsFieldMetaInitials{}
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaInitials, "", true, true); err == nil {
+		u.RecipientUpdateTemplateRecipientsFieldMetaInitials = &recipientUpdateTemplateRecipientsFieldMetaInitials
+		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaInitials
 		return nil
 	}
 
-	var recipientUpdateTemplateRecipientsFieldMeta3 RecipientUpdateTemplateRecipientsFieldMeta3 = RecipientUpdateTemplateRecipientsFieldMeta3{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMeta3, "", true, true); err == nil {
-		u.RecipientUpdateTemplateRecipientsFieldMeta3 = &recipientUpdateTemplateRecipientsFieldMeta3
-		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta3
+	var recipientUpdateTemplateRecipientsFieldMetaName RecipientUpdateTemplateRecipientsFieldMetaName = RecipientUpdateTemplateRecipientsFieldMetaName{}
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaName, "", true, true); err == nil {
+		u.RecipientUpdateTemplateRecipientsFieldMetaName = &recipientUpdateTemplateRecipientsFieldMetaName
+		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaName
 		return nil
 	}
 
-	var recipientUpdateTemplateRecipientsFieldMeta4 RecipientUpdateTemplateRecipientsFieldMeta4 = RecipientUpdateTemplateRecipientsFieldMeta4{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMeta4, "", true, true); err == nil {
-		u.RecipientUpdateTemplateRecipientsFieldMeta4 = &recipientUpdateTemplateRecipientsFieldMeta4
-		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta4
+	var recipientUpdateTemplateRecipientsFieldMetaEmail RecipientUpdateTemplateRecipientsFieldMetaEmail = RecipientUpdateTemplateRecipientsFieldMetaEmail{}
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaEmail, "", true, true); err == nil {
+		u.RecipientUpdateTemplateRecipientsFieldMetaEmail = &recipientUpdateTemplateRecipientsFieldMetaEmail
+		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaEmail
 		return nil
 	}
 
-	var recipientUpdateTemplateRecipientsFieldMeta7 RecipientUpdateTemplateRecipientsFieldMeta7 = RecipientUpdateTemplateRecipientsFieldMeta7{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMeta7, "", true, true); err == nil {
-		u.RecipientUpdateTemplateRecipientsFieldMeta7 = &recipientUpdateTemplateRecipientsFieldMeta7
-		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta7
+	var recipientUpdateTemplateRecipientsFieldMetaDate RecipientUpdateTemplateRecipientsFieldMetaDate = RecipientUpdateTemplateRecipientsFieldMetaDate{}
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaDate, "", true, true); err == nil {
+		u.RecipientUpdateTemplateRecipientsFieldMetaDate = &recipientUpdateTemplateRecipientsFieldMetaDate
+		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaDate
 		return nil
 	}
 
-	var recipientUpdateTemplateRecipientsFieldMeta9 RecipientUpdateTemplateRecipientsFieldMeta9 = RecipientUpdateTemplateRecipientsFieldMeta9{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMeta9, "", true, true); err == nil {
-		u.RecipientUpdateTemplateRecipientsFieldMeta9 = &recipientUpdateTemplateRecipientsFieldMeta9
-		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta9
+	var recipientUpdateTemplateRecipientsFieldMetaDropdown RecipientUpdateTemplateRecipientsFieldMetaDropdown = RecipientUpdateTemplateRecipientsFieldMetaDropdown{}
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaDropdown, "", true, true); err == nil {
+		u.RecipientUpdateTemplateRecipientsFieldMetaDropdown = &recipientUpdateTemplateRecipientsFieldMetaDropdown
+		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaDropdown
 		return nil
 	}
 
-	var recipientUpdateTemplateRecipientsFieldMeta5 RecipientUpdateTemplateRecipientsFieldMeta5 = RecipientUpdateTemplateRecipientsFieldMeta5{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMeta5, "", true, true); err == nil {
-		u.RecipientUpdateTemplateRecipientsFieldMeta5 = &recipientUpdateTemplateRecipientsFieldMeta5
-		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta5
+	var recipientUpdateTemplateRecipientsFieldMetaCheckbox RecipientUpdateTemplateRecipientsFieldMetaCheckbox = RecipientUpdateTemplateRecipientsFieldMetaCheckbox{}
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaCheckbox, "", true, true); err == nil {
+		u.RecipientUpdateTemplateRecipientsFieldMetaCheckbox = &recipientUpdateTemplateRecipientsFieldMetaCheckbox
+		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaCheckbox
 		return nil
 	}
 
-	var recipientUpdateTemplateRecipientsFieldMeta8 RecipientUpdateTemplateRecipientsFieldMeta8 = RecipientUpdateTemplateRecipientsFieldMeta8{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMeta8, "", true, true); err == nil {
-		u.RecipientUpdateTemplateRecipientsFieldMeta8 = &recipientUpdateTemplateRecipientsFieldMeta8
-		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta8
+	var recipientUpdateTemplateRecipientsFieldMetaText RecipientUpdateTemplateRecipientsFieldMetaText = RecipientUpdateTemplateRecipientsFieldMetaText{}
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaText, "", true, true); err == nil {
+		u.RecipientUpdateTemplateRecipientsFieldMetaText = &recipientUpdateTemplateRecipientsFieldMetaText
+		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaText
 		return nil
 	}
 
-	var recipientUpdateTemplateRecipientsFieldMeta6 RecipientUpdateTemplateRecipientsFieldMeta6 = RecipientUpdateTemplateRecipientsFieldMeta6{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMeta6, "", true, true); err == nil {
-		u.RecipientUpdateTemplateRecipientsFieldMeta6 = &recipientUpdateTemplateRecipientsFieldMeta6
-		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMeta6
+	var recipientUpdateTemplateRecipientsFieldMetaNumber RecipientUpdateTemplateRecipientsFieldMetaNumber = RecipientUpdateTemplateRecipientsFieldMetaNumber{}
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaNumber, "", true, true); err == nil {
+		u.RecipientUpdateTemplateRecipientsFieldMetaNumber = &recipientUpdateTemplateRecipientsFieldMetaNumber
+		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaNumber
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RecipientUpdateTemplateRecipientsFieldMeta", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for RecipientUpdateTemplateRecipientsFieldMetaUnion", string(data))
 }
 
-func (u RecipientUpdateTemplateRecipientsFieldMeta) MarshalJSON() ([]byte, error) {
-	if u.RecipientUpdateTemplateRecipientsFieldMeta1 != nil {
-		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMeta1, "", true)
+func (u RecipientUpdateTemplateRecipientsFieldMetaUnion) MarshalJSON() ([]byte, error) {
+	if u.RecipientUpdateTemplateRecipientsFieldMetaInitials != nil {
+		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMetaInitials, "", true)
 	}
 
-	if u.RecipientUpdateTemplateRecipientsFieldMeta2 != nil {
-		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMeta2, "", true)
+	if u.RecipientUpdateTemplateRecipientsFieldMetaName != nil {
+		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMetaName, "", true)
 	}
 
-	if u.RecipientUpdateTemplateRecipientsFieldMeta3 != nil {
-		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMeta3, "", true)
+	if u.RecipientUpdateTemplateRecipientsFieldMetaEmail != nil {
+		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMetaEmail, "", true)
 	}
 
-	if u.RecipientUpdateTemplateRecipientsFieldMeta4 != nil {
-		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMeta4, "", true)
+	if u.RecipientUpdateTemplateRecipientsFieldMetaDate != nil {
+		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMetaDate, "", true)
 	}
 
-	if u.RecipientUpdateTemplateRecipientsFieldMeta5 != nil {
-		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMeta5, "", true)
+	if u.RecipientUpdateTemplateRecipientsFieldMetaText != nil {
+		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMetaText, "", true)
 	}
 
-	if u.RecipientUpdateTemplateRecipientsFieldMeta6 != nil {
-		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMeta6, "", true)
+	if u.RecipientUpdateTemplateRecipientsFieldMetaNumber != nil {
+		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMetaNumber, "", true)
 	}
 
-	if u.RecipientUpdateTemplateRecipientsFieldMeta7 != nil {
-		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMeta7, "", true)
+	if u.RecipientUpdateTemplateRecipientsFieldMetaRadio != nil {
+		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMetaRadio, "", true)
 	}
 
-	if u.RecipientUpdateTemplateRecipientsFieldMeta8 != nil {
-		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMeta8, "", true)
+	if u.RecipientUpdateTemplateRecipientsFieldMetaCheckbox != nil {
+		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMetaCheckbox, "", true)
 	}
 
-	if u.RecipientUpdateTemplateRecipientsFieldMeta9 != nil {
-		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMeta9, "", true)
+	if u.RecipientUpdateTemplateRecipientsFieldMetaDropdown != nil {
+		return utils.MarshalJSON(u.RecipientUpdateTemplateRecipientsFieldMetaDropdown, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type RecipientUpdateTemplateRecipientsFieldMeta: all fields are null")
+	return nil, errors.New("could not marshal union type RecipientUpdateTemplateRecipientsFieldMetaUnion: all fields are null")
 }
 
-type RecipientUpdateTemplateRecipientsFields struct {
+type RecipientUpdateTemplateRecipientsField struct {
 	Type        RecipientUpdateTemplateRecipientsType `json:"type"`
-	ID          int64                                 `json:"id"`
+	ID          float64                               `json:"id"`
 	SecondaryID string                                `json:"secondaryId"`
-	DocumentID  *int64                                `json:"documentId"`
-	TemplateID  *int64                                `json:"templateId"`
-	RecipientID int64                                 `json:"recipientId"`
+	DocumentID  *float64                              `json:"documentId"`
+	TemplateID  *float64                              `json:"templateId"`
+	RecipientID float64                               `json:"recipientId"`
 	// The page number of the field on the document. Starts from 1.
-	Page       float64                                     `json:"page"`
-	PositionX  any                                         `json:"positionX,omitempty"`
-	PositionY  any                                         `json:"positionY,omitempty"`
-	Width      any                                         `json:"width,omitempty"`
-	Height     any                                         `json:"height,omitempty"`
-	CustomText string                                      `json:"customText"`
-	Inserted   bool                                        `json:"inserted"`
-	FieldMeta  *RecipientUpdateTemplateRecipientsFieldMeta `json:"fieldMeta"`
+	Page       float64                                          `json:"page"`
+	PositionX  any                                              `json:"positionX,omitempty"`
+	PositionY  any                                              `json:"positionY,omitempty"`
+	Width      any                                              `json:"width,omitempty"`
+	Height     any                                              `json:"height,omitempty"`
+	CustomText string                                           `json:"customText"`
+	Inserted   bool                                             `json:"inserted"`
+	FieldMeta  *RecipientUpdateTemplateRecipientsFieldMetaUnion `json:"fieldMeta"`
 }
 
-func (o *RecipientUpdateTemplateRecipientsFields) GetType() RecipientUpdateTemplateRecipientsType {
+func (o *RecipientUpdateTemplateRecipientsField) GetType() RecipientUpdateTemplateRecipientsType {
 	if o == nil {
 		return RecipientUpdateTemplateRecipientsType("")
 	}
 	return o.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientsFields) GetID() int64 {
+func (o *RecipientUpdateTemplateRecipientsField) GetID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.ID
 }
 
-func (o *RecipientUpdateTemplateRecipientsFields) GetSecondaryID() string {
+func (o *RecipientUpdateTemplateRecipientsField) GetSecondaryID() string {
 	if o == nil {
 		return ""
 	}
 	return o.SecondaryID
 }
 
-func (o *RecipientUpdateTemplateRecipientsFields) GetDocumentID() *int64 {
+func (o *RecipientUpdateTemplateRecipientsField) GetDocumentID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DocumentID
 }
 
-func (o *RecipientUpdateTemplateRecipientsFields) GetTemplateID() *int64 {
+func (o *RecipientUpdateTemplateRecipientsField) GetTemplateID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.TemplateID
 }
 
-func (o *RecipientUpdateTemplateRecipientsFields) GetRecipientID() int64 {
+func (o *RecipientUpdateTemplateRecipientsField) GetRecipientID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.RecipientID
 }
 
-func (o *RecipientUpdateTemplateRecipientsFields) GetPage() float64 {
+func (o *RecipientUpdateTemplateRecipientsField) GetPage() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Page
 }
 
-func (o *RecipientUpdateTemplateRecipientsFields) GetPositionX() any {
+func (o *RecipientUpdateTemplateRecipientsField) GetPositionX() any {
 	if o == nil {
 		return nil
 	}
 	return o.PositionX
 }
 
-func (o *RecipientUpdateTemplateRecipientsFields) GetPositionY() any {
+func (o *RecipientUpdateTemplateRecipientsField) GetPositionY() any {
 	if o == nil {
 		return nil
 	}
 	return o.PositionY
 }
 
-func (o *RecipientUpdateTemplateRecipientsFields) GetWidth() any {
+func (o *RecipientUpdateTemplateRecipientsField) GetWidth() any {
 	if o == nil {
 		return nil
 	}
 	return o.Width
 }
 
-func (o *RecipientUpdateTemplateRecipientsFields) GetHeight() any {
+func (o *RecipientUpdateTemplateRecipientsField) GetHeight() any {
 	if o == nil {
 		return nil
 	}
 	return o.Height
 }
 
-func (o *RecipientUpdateTemplateRecipientsFields) GetCustomText() string {
+func (o *RecipientUpdateTemplateRecipientsField) GetCustomText() string {
 	if o == nil {
 		return ""
 	}
 	return o.CustomText
 }
 
-func (o *RecipientUpdateTemplateRecipientsFields) GetInserted() bool {
+func (o *RecipientUpdateTemplateRecipientsField) GetInserted() bool {
 	if o == nil {
 		return false
 	}
 	return o.Inserted
 }
 
-func (o *RecipientUpdateTemplateRecipientsFields) GetFieldMeta() *RecipientUpdateTemplateRecipientsFieldMeta {
+func (o *RecipientUpdateTemplateRecipientsField) GetFieldMeta() *RecipientUpdateTemplateRecipientsFieldMetaUnion {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-type RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients struct {
-	Role              RecipientUpdateTemplateRecipientsTemplatesRecipientsRole `json:"role"`
-	ReadStatus        RecipientUpdateTemplateRecipientsReadStatus              `json:"readStatus"`
-	SigningStatus     RecipientUpdateTemplateRecipientsSigningStatus           `json:"signingStatus"`
-	SendStatus        RecipientUpdateTemplateRecipientsSendStatus              `json:"sendStatus"`
-	ID                int64                                                    `json:"id"`
-	DocumentID        *int64                                                   `json:"documentId"`
-	TemplateID        *int64                                                   `json:"templateId"`
-	Email             string                                                   `json:"email"`
-	Name              string                                                   `json:"name"`
-	Token             string                                                   `json:"token"`
-	DocumentDeletedAt *string                                                  `json:"documentDeletedAt"`
-	Expired           *string                                                  `json:"expired"`
-	SignedAt          *string                                                  `json:"signedAt"`
-	AuthOptions       *RecipientUpdateTemplateRecipientsAuthOptions            `json:"authOptions"`
+type RecipientUpdateTemplateRecipientsRecipientResponse struct {
+	Role              RecipientUpdateTemplateRecipientsRoleResponse  `json:"role"`
+	ReadStatus        RecipientUpdateTemplateRecipientsReadStatus    `json:"readStatus"`
+	SigningStatus     RecipientUpdateTemplateRecipientsSigningStatus `json:"signingStatus"`
+	SendStatus        RecipientUpdateTemplateRecipientsSendStatus    `json:"sendStatus"`
+	ID                float64                                        `json:"id"`
+	DocumentID        *float64                                       `json:"documentId"`
+	TemplateID        *float64                                       `json:"templateId"`
+	Email             string                                         `json:"email"`
+	Name              string                                         `json:"name"`
+	Token             string                                         `json:"token"`
+	DocumentDeletedAt *string                                        `json:"documentDeletedAt"`
+	Expired           *string                                        `json:"expired"`
+	SignedAt          *string                                        `json:"signedAt"`
+	AuthOptions       *RecipientUpdateTemplateRecipientsAuthOptions  `json:"authOptions"`
 	// The order in which the recipient should sign the document. Only works if the document is set to sequential signing.
-	SigningOrder    *float64                                  `json:"signingOrder"`
-	RejectionReason *string                                   `json:"rejectionReason"`
-	Fields          []RecipientUpdateTemplateRecipientsFields `json:"fields"`
+	SigningOrder    *float64                                 `json:"signingOrder"`
+	RejectionReason *string                                  `json:"rejectionReason"`
+	Fields          []RecipientUpdateTemplateRecipientsField `json:"fields"`
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetRole() RecipientUpdateTemplateRecipientsTemplatesRecipientsRole {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetRole() RecipientUpdateTemplateRecipientsRoleResponse {
 	if o == nil {
-		return RecipientUpdateTemplateRecipientsTemplatesRecipientsRole("")
+		return RecipientUpdateTemplateRecipientsRoleResponse("")
 	}
 	return o.Role
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetReadStatus() RecipientUpdateTemplateRecipientsReadStatus {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetReadStatus() RecipientUpdateTemplateRecipientsReadStatus {
 	if o == nil {
 		return RecipientUpdateTemplateRecipientsReadStatus("")
 	}
 	return o.ReadStatus
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetSigningStatus() RecipientUpdateTemplateRecipientsSigningStatus {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetSigningStatus() RecipientUpdateTemplateRecipientsSigningStatus {
 	if o == nil {
 		return RecipientUpdateTemplateRecipientsSigningStatus("")
 	}
 	return o.SigningStatus
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetSendStatus() RecipientUpdateTemplateRecipientsSendStatus {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetSendStatus() RecipientUpdateTemplateRecipientsSendStatus {
 	if o == nil {
 		return RecipientUpdateTemplateRecipientsSendStatus("")
 	}
 	return o.SendStatus
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetID() int64 {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetID() float64 {
 	if o == nil {
-		return 0
+		return 0.0
 	}
 	return o.ID
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetDocumentID() *int64 {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetDocumentID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.DocumentID
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetTemplateID() *int64 {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetTemplateID() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.TemplateID
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetEmail() string {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetEmail() string {
 	if o == nil {
 		return ""
 	}
 	return o.Email
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetName() string {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetToken() string {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetToken() string {
 	if o == nil {
 		return ""
 	}
 	return o.Token
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetDocumentDeletedAt() *string {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetDocumentDeletedAt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DocumentDeletedAt
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetExpired() *string {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetExpired() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Expired
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetSignedAt() *string {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetSignedAt() *string {
 	if o == nil {
 		return nil
 	}
 	return o.SignedAt
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetAuthOptions() *RecipientUpdateTemplateRecipientsAuthOptions {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetAuthOptions() *RecipientUpdateTemplateRecipientsAuthOptions {
 	if o == nil {
 		return nil
 	}
 	return o.AuthOptions
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetSigningOrder() *float64 {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetSigningOrder() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.SigningOrder
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetRejectionReason() *string {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetRejectionReason() *string {
 	if o == nil {
 		return nil
 	}
 	return o.RejectionReason
 }
 
-func (o *RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients) GetFields() []RecipientUpdateTemplateRecipientsFields {
+func (o *RecipientUpdateTemplateRecipientsRecipientResponse) GetFields() []RecipientUpdateTemplateRecipientsField {
 	if o == nil {
-		return []RecipientUpdateTemplateRecipientsFields{}
+		return []RecipientUpdateTemplateRecipientsField{}
 	}
 	return o.Fields
 }
 
 // RecipientUpdateTemplateRecipientsResponseBody - Successful response
 type RecipientUpdateTemplateRecipientsResponseBody struct {
-	Recipients []RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients `json:"recipients"`
+	Recipients []RecipientUpdateTemplateRecipientsRecipientResponse `json:"recipients"`
 }
 
-func (o *RecipientUpdateTemplateRecipientsResponseBody) GetRecipients() []RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients {
+func (o *RecipientUpdateTemplateRecipientsResponseBody) GetRecipients() []RecipientUpdateTemplateRecipientsRecipientResponse {
 	if o == nil {
-		return []RecipientUpdateTemplateRecipientsTemplatesRecipientsRecipients{}
+		return []RecipientUpdateTemplateRecipientsRecipientResponse{}
 	}
 	return o.Recipients
 }

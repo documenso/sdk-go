@@ -7,54 +7,54 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type DocumentMoveDocumentToTeamDocumentsIssues struct {
+type DocumentMoveDocumentToTeamInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentMoveDocumentToTeamDocumentsIssues) GetMessage() string {
+func (o *DocumentMoveDocumentToTeamInternalServerErrorIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// DocumentMoveDocumentToTeamDocumentsResponseBody - Internal server error
-type DocumentMoveDocumentToTeamDocumentsResponseBody struct {
-	Message  string                                      `json:"message"`
-	Code     string                                      `json:"code"`
-	Issues   []DocumentMoveDocumentToTeamDocumentsIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata                     `json:"-"`
+// DocumentMoveDocumentToTeamInternalServerError - Internal server error
+type DocumentMoveDocumentToTeamInternalServerError struct {
+	Message  string                                               `json:"message"`
+	Code     string                                               `json:"code"`
+	Issues   []DocumentMoveDocumentToTeamInternalServerErrorIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                              `json:"-"`
 }
 
-var _ error = &DocumentMoveDocumentToTeamDocumentsResponseBody{}
+var _ error = &DocumentMoveDocumentToTeamInternalServerError{}
 
-func (e *DocumentMoveDocumentToTeamDocumentsResponseBody) Error() string {
+func (e *DocumentMoveDocumentToTeamInternalServerError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }
 
-type DocumentMoveDocumentToTeamIssues struct {
+type DocumentMoveDocumentToTeamBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentMoveDocumentToTeamIssues) GetMessage() string {
+func (o *DocumentMoveDocumentToTeamBadRequestIssue) GetMessage() string {
 	if o == nil {
 		return ""
 	}
 	return o.Message
 }
 
-// DocumentMoveDocumentToTeamResponseBody - Invalid input data
-type DocumentMoveDocumentToTeamResponseBody struct {
-	Message  string                             `json:"message"`
-	Code     string                             `json:"code"`
-	Issues   []DocumentMoveDocumentToTeamIssues `json:"issues,omitempty"`
-	HTTPMeta components.HTTPMetadata            `json:"-"`
+// DocumentMoveDocumentToTeamBadRequestError - Invalid input data
+type DocumentMoveDocumentToTeamBadRequestError struct {
+	Message  string                                      `json:"message"`
+	Code     string                                      `json:"code"`
+	Issues   []DocumentMoveDocumentToTeamBadRequestIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                     `json:"-"`
 }
 
-var _ error = &DocumentMoveDocumentToTeamResponseBody{}
+var _ error = &DocumentMoveDocumentToTeamBadRequestError{}
 
-func (e *DocumentMoveDocumentToTeamResponseBody) Error() string {
+func (e *DocumentMoveDocumentToTeamBadRequestError) Error() string {
 	data, _ := json.Marshal(e)
 	return string(data)
 }

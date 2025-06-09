@@ -3,9 +3,10 @@
 
 ## Values
 
-| Name                                | Value                               |
-| ----------------------------------- | ----------------------------------- |
-| `DocumentFindDocumentsRoleCc`       | CC                                  |
-| `DocumentFindDocumentsRoleSigner`   | SIGNER                              |
-| `DocumentFindDocumentsRoleViewer`   | VIEWER                              |
-| `DocumentFindDocumentsRoleApprover` | APPROVER                            |
+| Name                                 | Value                                |
+| ------------------------------------ | ------------------------------------ |
+| `DocumentFindDocumentsRoleCc`        | CC                                   |
+| `DocumentFindDocumentsRoleSigner`    | SIGNER                               |
+| `DocumentFindDocumentsRoleViewer`    | VIEWER                               |
+| `DocumentFindDocumentsRoleApprover`  | APPROVER                             |
+| `DocumentFindDocumentsRoleAssistant` | ASSISTANT                            |
