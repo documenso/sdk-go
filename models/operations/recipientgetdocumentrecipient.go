@@ -168,6 +168,7 @@ const (
 	RecipientGetDocumentRecipientActionAuthAccount       RecipientGetDocumentRecipientActionAuth = "ACCOUNT"
 	RecipientGetDocumentRecipientActionAuthPasskey       RecipientGetDocumentRecipientActionAuth = "PASSKEY"
 	RecipientGetDocumentRecipientActionAuthTwoFactorAuth RecipientGetDocumentRecipientActionAuth = "TWO_FACTOR_AUTH"
+	RecipientGetDocumentRecipientActionAuthPassword      RecipientGetDocumentRecipientActionAuth = "PASSWORD"
 	RecipientGetDocumentRecipientActionAuthExplicitNone  RecipientGetDocumentRecipientActionAuth = "EXPLICIT_NONE"
 )
 
@@ -186,6 +187,8 @@ func (e *RecipientGetDocumentRecipientActionAuth) UnmarshalJSON(data []byte) err
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
 		*e = RecipientGetDocumentRecipientActionAuth(v)
 		return nil
@@ -195,22 +198,20 @@ func (e *RecipientGetDocumentRecipientActionAuth) UnmarshalJSON(data []byte) err
 }
 
 type RecipientGetDocumentRecipientAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *RecipientGetDocumentRecipientAccessAuth `json:"accessAuth"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *RecipientGetDocumentRecipientActionAuth `json:"actionAuth"`
+	AccessAuth []RecipientGetDocumentRecipientAccessAuth `json:"accessAuth"`
+	ActionAuth []RecipientGetDocumentRecipientActionAuth `json:"actionAuth"`
 }
 
-func (o *RecipientGetDocumentRecipientAuthOptions) GetAccessAuth() *RecipientGetDocumentRecipientAccessAuth {
+func (o *RecipientGetDocumentRecipientAuthOptions) GetAccessAuth() []RecipientGetDocumentRecipientAccessAuth {
 	if o == nil {
-		return nil
+		return []RecipientGetDocumentRecipientAccessAuth{}
 	}
 	return o.AccessAuth
 }
 
-func (o *RecipientGetDocumentRecipientAuthOptions) GetActionAuth() *RecipientGetDocumentRecipientActionAuth {
+func (o *RecipientGetDocumentRecipientAuthOptions) GetActionAuth() []RecipientGetDocumentRecipientActionAuth {
 	if o == nil {
-		return nil
+		return []RecipientGetDocumentRecipientActionAuth{}
 	}
 	return o.ActionAuth
 }
