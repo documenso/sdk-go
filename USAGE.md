@@ -17,7 +17,9 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
+	res, err := s.Documents.Update(ctx, operations.DocumentUpdateDocumentRequest{
+		DocumentID: 9701.92,
+	})
 	if err != nil {
 		log.Fatal(err)
 	}

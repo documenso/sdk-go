@@ -94,7 +94,7 @@ func main() {
         DocumentID: 8001.93,
         Field: operations.CreateFieldCreateDocumentFieldFieldUnionFieldCreateDocumentFieldFieldName(
             operations.FieldCreateDocumentFieldFieldName{
-                Type: operations.FieldCreateDocumentFieldTypeNameRequestBody1Name,
+                Type: operations.FieldCreateDocumentFieldTypeNameRequest1Name,
                 RecipientID: 2564.68,
                 PageNumber: 791.77,
                 PageX: 7845.22,

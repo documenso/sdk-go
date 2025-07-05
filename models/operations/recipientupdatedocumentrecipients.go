@@ -10,20 +10,20 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type RecipientUpdateDocumentRecipientsRoleRequestBody string
+type RecipientUpdateDocumentRecipientsRoleRequest string
 
 const (
-	RecipientUpdateDocumentRecipientsRoleRequestBodyCc        RecipientUpdateDocumentRecipientsRoleRequestBody = "CC"
-	RecipientUpdateDocumentRecipientsRoleRequestBodySigner    RecipientUpdateDocumentRecipientsRoleRequestBody = "SIGNER"
-	RecipientUpdateDocumentRecipientsRoleRequestBodyViewer    RecipientUpdateDocumentRecipientsRoleRequestBody = "VIEWER"
-	RecipientUpdateDocumentRecipientsRoleRequestBodyApprover  RecipientUpdateDocumentRecipientsRoleRequestBody = "APPROVER"
-	RecipientUpdateDocumentRecipientsRoleRequestBodyAssistant RecipientUpdateDocumentRecipientsRoleRequestBody = "ASSISTANT"
+	RecipientUpdateDocumentRecipientsRoleRequestCc        RecipientUpdateDocumentRecipientsRoleRequest = "CC"
+	RecipientUpdateDocumentRecipientsRoleRequestSigner    RecipientUpdateDocumentRecipientsRoleRequest = "SIGNER"
+	RecipientUpdateDocumentRecipientsRoleRequestViewer    RecipientUpdateDocumentRecipientsRoleRequest = "VIEWER"
+	RecipientUpdateDocumentRecipientsRoleRequestApprover  RecipientUpdateDocumentRecipientsRoleRequest = "APPROVER"
+	RecipientUpdateDocumentRecipientsRoleRequestAssistant RecipientUpdateDocumentRecipientsRoleRequest = "ASSISTANT"
 )
 
-func (e RecipientUpdateDocumentRecipientsRoleRequestBody) ToPointer() *RecipientUpdateDocumentRecipientsRoleRequestBody {
+func (e RecipientUpdateDocumentRecipientsRoleRequest) ToPointer() *RecipientUpdateDocumentRecipientsRoleRequest {
 	return &e
 }
-func (e *RecipientUpdateDocumentRecipientsRoleRequestBody) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateDocumentRecipientsRoleRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -38,51 +38,52 @@ func (e *RecipientUpdateDocumentRecipientsRoleRequestBody) UnmarshalJSON(data []
 	case "APPROVER":
 		fallthrough
 	case "ASSISTANT":
-		*e = RecipientUpdateDocumentRecipientsRoleRequestBody(v)
+		*e = RecipientUpdateDocumentRecipientsRoleRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsRoleRequestBody: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsRoleRequest: %v", v)
 	}
 }
 
-// RecipientUpdateDocumentRecipientsAccessAuthRequestBody - The type of authentication required for the recipient to access the document.
-type RecipientUpdateDocumentRecipientsAccessAuthRequestBody string
+// RecipientUpdateDocumentRecipientsAccessAuthRequest - The type of authentication required for the recipient to access the document.
+type RecipientUpdateDocumentRecipientsAccessAuthRequest string
 
 const (
-	RecipientUpdateDocumentRecipientsAccessAuthRequestBodyAccount RecipientUpdateDocumentRecipientsAccessAuthRequestBody = "ACCOUNT"
+	RecipientUpdateDocumentRecipientsAccessAuthRequestAccount RecipientUpdateDocumentRecipientsAccessAuthRequest = "ACCOUNT"
 )
 
-func (e RecipientUpdateDocumentRecipientsAccessAuthRequestBody) ToPointer() *RecipientUpdateDocumentRecipientsAccessAuthRequestBody {
+func (e RecipientUpdateDocumentRecipientsAccessAuthRequest) ToPointer() *RecipientUpdateDocumentRecipientsAccessAuthRequest {
 	return &e
 }
-func (e *RecipientUpdateDocumentRecipientsAccessAuthRequestBody) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateDocumentRecipientsAccessAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "ACCOUNT":
-		*e = RecipientUpdateDocumentRecipientsAccessAuthRequestBody(v)
+		*e = RecipientUpdateDocumentRecipientsAccessAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsAccessAuthRequestBody: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsAccessAuthRequest: %v", v)
 	}
 }
 
-// RecipientUpdateDocumentRecipientsActionAuthRequestBody - The type of authentication required for the recipient to sign the document.
-type RecipientUpdateDocumentRecipientsActionAuthRequestBody string
+// RecipientUpdateDocumentRecipientsActionAuthRequest - The type of authentication required for the recipient to sign the document.
+type RecipientUpdateDocumentRecipientsActionAuthRequest string
 
 const (
-	RecipientUpdateDocumentRecipientsActionAuthRequestBodyAccount       RecipientUpdateDocumentRecipientsActionAuthRequestBody = "ACCOUNT"
-	RecipientUpdateDocumentRecipientsActionAuthRequestBodyPasskey       RecipientUpdateDocumentRecipientsActionAuthRequestBody = "PASSKEY"
-	RecipientUpdateDocumentRecipientsActionAuthRequestBodyTwoFactorAuth RecipientUpdateDocumentRecipientsActionAuthRequestBody = "TWO_FACTOR_AUTH"
-	RecipientUpdateDocumentRecipientsActionAuthRequestBodyExplicitNone  RecipientUpdateDocumentRecipientsActionAuthRequestBody = "EXPLICIT_NONE"
+	RecipientUpdateDocumentRecipientsActionAuthRequestAccount       RecipientUpdateDocumentRecipientsActionAuthRequest = "ACCOUNT"
+	RecipientUpdateDocumentRecipientsActionAuthRequestPasskey       RecipientUpdateDocumentRecipientsActionAuthRequest = "PASSKEY"
+	RecipientUpdateDocumentRecipientsActionAuthRequestTwoFactorAuth RecipientUpdateDocumentRecipientsActionAuthRequest = "TWO_FACTOR_AUTH"
+	RecipientUpdateDocumentRecipientsActionAuthRequestPassword      RecipientUpdateDocumentRecipientsActionAuthRequest = "PASSWORD"
+	RecipientUpdateDocumentRecipientsActionAuthRequestExplicitNone  RecipientUpdateDocumentRecipientsActionAuthRequest = "EXPLICIT_NONE"
 )
 
-func (e RecipientUpdateDocumentRecipientsActionAuthRequestBody) ToPointer() *RecipientUpdateDocumentRecipientsActionAuthRequestBody {
+func (e RecipientUpdateDocumentRecipientsActionAuthRequest) ToPointer() *RecipientUpdateDocumentRecipientsActionAuthRequest {
 	return &e
 }
-func (e *RecipientUpdateDocumentRecipientsActionAuthRequestBody) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateDocumentRecipientsActionAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -94,70 +95,70 @@ func (e *RecipientUpdateDocumentRecipientsActionAuthRequestBody) UnmarshalJSON(d
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
-		*e = RecipientUpdateDocumentRecipientsActionAuthRequestBody(v)
+		*e = RecipientUpdateDocumentRecipientsActionAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsActionAuthRequestBody: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsActionAuthRequest: %v", v)
 	}
 }
 
-type RecipientUpdateDocumentRecipientsRecipientRequestBody struct {
+type RecipientUpdateDocumentRecipientsRecipientRequest struct {
 	// The ID of the recipient to update.
-	ID           float64                                           `json:"id"`
-	Email        *string                                           `json:"email,omitempty"`
-	Name         *string                                           `json:"name,omitempty"`
-	Role         *RecipientUpdateDocumentRecipientsRoleRequestBody `json:"role,omitempty"`
-	SigningOrder *float64                                          `json:"signingOrder,omitempty"`
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *RecipientUpdateDocumentRecipientsAccessAuthRequestBody `json:"accessAuth,omitempty"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *RecipientUpdateDocumentRecipientsActionAuthRequestBody `json:"actionAuth,omitempty"`
+	ID           float64                                              `json:"id"`
+	Email        *string                                              `json:"email,omitempty"`
+	Name         *string                                              `json:"name,omitempty"`
+	Role         *RecipientUpdateDocumentRecipientsRoleRequest        `json:"role,omitempty"`
+	SigningOrder *float64                                             `json:"signingOrder,omitempty"`
+	AccessAuth   []RecipientUpdateDocumentRecipientsAccessAuthRequest `json:"accessAuth,omitempty"`
+	ActionAuth   []RecipientUpdateDocumentRecipientsActionAuthRequest `json:"actionAuth,omitempty"`
 }
 
-func (o *RecipientUpdateDocumentRecipientsRecipientRequestBody) GetID() float64 {
+func (o *RecipientUpdateDocumentRecipientsRecipientRequest) GetID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ID
 }
 
-func (o *RecipientUpdateDocumentRecipientsRecipientRequestBody) GetEmail() *string {
+func (o *RecipientUpdateDocumentRecipientsRecipientRequest) GetEmail() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Email
 }
 
-func (o *RecipientUpdateDocumentRecipientsRecipientRequestBody) GetName() *string {
+func (o *RecipientUpdateDocumentRecipientsRecipientRequest) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *RecipientUpdateDocumentRecipientsRecipientRequestBody) GetRole() *RecipientUpdateDocumentRecipientsRoleRequestBody {
+func (o *RecipientUpdateDocumentRecipientsRecipientRequest) GetRole() *RecipientUpdateDocumentRecipientsRoleRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Role
 }
 
-func (o *RecipientUpdateDocumentRecipientsRecipientRequestBody) GetSigningOrder() *float64 {
+func (o *RecipientUpdateDocumentRecipientsRecipientRequest) GetSigningOrder() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.SigningOrder
 }
 
-func (o *RecipientUpdateDocumentRecipientsRecipientRequestBody) GetAccessAuth() *RecipientUpdateDocumentRecipientsAccessAuthRequestBody {
+func (o *RecipientUpdateDocumentRecipientsRecipientRequest) GetAccessAuth() []RecipientUpdateDocumentRecipientsAccessAuthRequest {
 	if o == nil {
 		return nil
 	}
 	return o.AccessAuth
 }
 
-func (o *RecipientUpdateDocumentRecipientsRecipientRequestBody) GetActionAuth() *RecipientUpdateDocumentRecipientsActionAuthRequestBody {
+func (o *RecipientUpdateDocumentRecipientsRecipientRequest) GetActionAuth() []RecipientUpdateDocumentRecipientsActionAuthRequest {
 	if o == nil {
 		return nil
 	}
@@ -165,8 +166,8 @@ func (o *RecipientUpdateDocumentRecipientsRecipientRequestBody) GetActionAuth() 
 }
 
 type RecipientUpdateDocumentRecipientsRequest struct {
-	DocumentID float64                                                 `json:"documentId"`
-	Recipients []RecipientUpdateDocumentRecipientsRecipientRequestBody `json:"recipients"`
+	DocumentID float64                                             `json:"documentId"`
+	Recipients []RecipientUpdateDocumentRecipientsRecipientRequest `json:"recipients"`
 }
 
 func (o *RecipientUpdateDocumentRecipientsRequest) GetDocumentID() float64 {
@@ -176,9 +177,9 @@ func (o *RecipientUpdateDocumentRecipientsRequest) GetDocumentID() float64 {
 	return o.DocumentID
 }
 
-func (o *RecipientUpdateDocumentRecipientsRequest) GetRecipients() []RecipientUpdateDocumentRecipientsRecipientRequestBody {
+func (o *RecipientUpdateDocumentRecipientsRequest) GetRecipients() []RecipientUpdateDocumentRecipientsRecipientRequest {
 	if o == nil {
-		return []RecipientUpdateDocumentRecipientsRecipientRequestBody{}
+		return []RecipientUpdateDocumentRecipientsRecipientRequest{}
 	}
 	return o.Recipients
 }
@@ -330,6 +331,7 @@ const (
 	RecipientUpdateDocumentRecipientsActionAuthResponseAccount       RecipientUpdateDocumentRecipientsActionAuthResponse = "ACCOUNT"
 	RecipientUpdateDocumentRecipientsActionAuthResponsePasskey       RecipientUpdateDocumentRecipientsActionAuthResponse = "PASSKEY"
 	RecipientUpdateDocumentRecipientsActionAuthResponseTwoFactorAuth RecipientUpdateDocumentRecipientsActionAuthResponse = "TWO_FACTOR_AUTH"
+	RecipientUpdateDocumentRecipientsActionAuthResponsePassword      RecipientUpdateDocumentRecipientsActionAuthResponse = "PASSWORD"
 	RecipientUpdateDocumentRecipientsActionAuthResponseExplicitNone  RecipientUpdateDocumentRecipientsActionAuthResponse = "EXPLICIT_NONE"
 )
 
@@ -348,6 +350,8 @@ func (e *RecipientUpdateDocumentRecipientsActionAuthResponse) UnmarshalJSON(data
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
 		*e = RecipientUpdateDocumentRecipientsActionAuthResponse(v)
 		return nil
@@ -357,22 +361,20 @@ func (e *RecipientUpdateDocumentRecipientsActionAuthResponse) UnmarshalJSON(data
 }
 
 type RecipientUpdateDocumentRecipientsAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *RecipientUpdateDocumentRecipientsAccessAuthResponse `json:"accessAuth"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *RecipientUpdateDocumentRecipientsActionAuthResponse `json:"actionAuth"`
+	AccessAuth []RecipientUpdateDocumentRecipientsAccessAuthResponse `json:"accessAuth"`
+	ActionAuth []RecipientUpdateDocumentRecipientsActionAuthResponse `json:"actionAuth"`
 }
 
-func (o *RecipientUpdateDocumentRecipientsAuthOptions) GetAccessAuth() *RecipientUpdateDocumentRecipientsAccessAuthResponse {
+func (o *RecipientUpdateDocumentRecipientsAuthOptions) GetAccessAuth() []RecipientUpdateDocumentRecipientsAccessAuthResponse {
 	if o == nil {
-		return nil
+		return []RecipientUpdateDocumentRecipientsAccessAuthResponse{}
 	}
 	return o.AccessAuth
 }
 
-func (o *RecipientUpdateDocumentRecipientsAuthOptions) GetActionAuth() *RecipientUpdateDocumentRecipientsActionAuthResponse {
+func (o *RecipientUpdateDocumentRecipientsAuthOptions) GetActionAuth() []RecipientUpdateDocumentRecipientsActionAuthResponse {
 	if o == nil {
-		return nil
+		return []RecipientUpdateDocumentRecipientsActionAuthResponse{}
 	}
 	return o.ActionAuth
 }
