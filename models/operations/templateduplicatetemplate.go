@@ -105,6 +105,7 @@ const (
 	TemplateDuplicateTemplateGlobalActionAuthAccount       TemplateDuplicateTemplateGlobalActionAuth = "ACCOUNT"
 	TemplateDuplicateTemplateGlobalActionAuthPasskey       TemplateDuplicateTemplateGlobalActionAuth = "PASSKEY"
 	TemplateDuplicateTemplateGlobalActionAuthTwoFactorAuth TemplateDuplicateTemplateGlobalActionAuth = "TWO_FACTOR_AUTH"
+	TemplateDuplicateTemplateGlobalActionAuthPassword      TemplateDuplicateTemplateGlobalActionAuth = "PASSWORD"
 )
 
 func (e TemplateDuplicateTemplateGlobalActionAuth) ToPointer() *TemplateDuplicateTemplateGlobalActionAuth {
@@ -121,6 +122,8 @@ func (e *TemplateDuplicateTemplateGlobalActionAuth) UnmarshalJSON(data []byte) e
 	case "PASSKEY":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
+		fallthrough
+	case "PASSWORD":
 		*e = TemplateDuplicateTemplateGlobalActionAuth(v)
 		return nil
 	default:
@@ -129,41 +132,41 @@ func (e *TemplateDuplicateTemplateGlobalActionAuth) UnmarshalJSON(data []byte) e
 }
 
 type TemplateDuplicateTemplateAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	GlobalAccessAuth *TemplateDuplicateTemplateGlobalAccessAuth `json:"globalAccessAuth"`
-	// The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-	GlobalActionAuth *TemplateDuplicateTemplateGlobalActionAuth `json:"globalActionAuth"`
+	GlobalAccessAuth []TemplateDuplicateTemplateGlobalAccessAuth `json:"globalAccessAuth"`
+	GlobalActionAuth []TemplateDuplicateTemplateGlobalActionAuth `json:"globalActionAuth"`
 }
 
-func (o *TemplateDuplicateTemplateAuthOptions) GetGlobalAccessAuth() *TemplateDuplicateTemplateGlobalAccessAuth {
+func (o *TemplateDuplicateTemplateAuthOptions) GetGlobalAccessAuth() []TemplateDuplicateTemplateGlobalAccessAuth {
 	if o == nil {
-		return nil
+		return []TemplateDuplicateTemplateGlobalAccessAuth{}
 	}
 	return o.GlobalAccessAuth
 }
 
-func (o *TemplateDuplicateTemplateAuthOptions) GetGlobalActionAuth() *TemplateDuplicateTemplateGlobalActionAuth {
+func (o *TemplateDuplicateTemplateAuthOptions) GetGlobalActionAuth() []TemplateDuplicateTemplateGlobalActionAuth {
 	if o == nil {
-		return nil
+		return []TemplateDuplicateTemplateGlobalActionAuth{}
 	}
 	return o.GlobalActionAuth
 }
 
 // TemplateDuplicateTemplateResponseBody - Successful response
 type TemplateDuplicateTemplateResponseBody struct {
-	Type                   TemplateDuplicateTemplateType         `json:"type"`
-	Visibility             TemplateDuplicateTemplateVisibility   `json:"visibility"`
-	ID                     float64                               `json:"id"`
-	ExternalID             *string                               `json:"externalId"`
-	Title                  string                                `json:"title"`
-	UserID                 float64                               `json:"userId"`
-	TeamID                 *float64                              `json:"teamId"`
-	AuthOptions            *TemplateDuplicateTemplateAuthOptions `json:"authOptions"`
-	TemplateDocumentDataID string                                `json:"templateDocumentDataId"`
-	CreatedAt              string                                `json:"createdAt"`
-	UpdatedAt              string                                `json:"updatedAt"`
-	PublicTitle            string                                `json:"publicTitle"`
-	PublicDescription      string                                `json:"publicDescription"`
+	Type                    TemplateDuplicateTemplateType         `json:"type"`
+	Visibility              TemplateDuplicateTemplateVisibility   `json:"visibility"`
+	ID                      float64                               `json:"id"`
+	ExternalID              *string                               `json:"externalId"`
+	Title                   string                                `json:"title"`
+	UserID                  float64                               `json:"userId"`
+	TeamID                  float64                               `json:"teamId"`
+	AuthOptions             *TemplateDuplicateTemplateAuthOptions `json:"authOptions"`
+	TemplateDocumentDataID  string                                `json:"templateDocumentDataId"`
+	CreatedAt               string                                `json:"createdAt"`
+	UpdatedAt               string                                `json:"updatedAt"`
+	PublicTitle             string                                `json:"publicTitle"`
+	PublicDescription       string                                `json:"publicDescription"`
+	FolderID                *string                               `json:"folderId"`
+	UseLegacyFieldInsertion bool                                  `json:"useLegacyFieldInsertion"`
 }
 
 func (o *TemplateDuplicateTemplateResponseBody) GetType() TemplateDuplicateTemplateType {
@@ -208,9 +211,9 @@ func (o *TemplateDuplicateTemplateResponseBody) GetUserID() float64 {
 	return o.UserID
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetTeamID() *float64 {
+func (o *TemplateDuplicateTemplateResponseBody) GetTeamID() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.TeamID
 }
@@ -255,6 +258,20 @@ func (o *TemplateDuplicateTemplateResponseBody) GetPublicDescription() string {
 		return ""
 	}
 	return o.PublicDescription
+}
+
+func (o *TemplateDuplicateTemplateResponseBody) GetFolderID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FolderID
+}
+
+func (o *TemplateDuplicateTemplateResponseBody) GetUseLegacyFieldInsertion() bool {
+	if o == nil {
+		return false
+	}
+	return o.UseLegacyFieldInsertion
 }
 
 type TemplateDuplicateTemplateResponse struct {

@@ -95,7 +95,7 @@ func main() {
         Recipient: operations.RecipientCreateTemplateRecipientRecipient{
             Email: "Gerhard88@yahoo.com",
             Name: "<value>",
-            Role: operations.RecipientCreateTemplateRecipientRoleRequestBodySigner,
+            Role: operations.RecipientCreateTemplateRecipientRoleRequestSigner,
         },
     })
     if err != nil {
@@ -153,7 +153,7 @@ func main() {
 
     res, err := s.Templates.Recipients.CreateMany(ctx, operations.RecipientCreateTemplateRecipientsRequest{
         TemplateID: 5642.48,
-        Recipients: []operations.RecipientCreateTemplateRecipientsRecipientRequestBody{},
+        Recipients: []operations.RecipientCreateTemplateRecipientsRecipientRequest{},
     })
     if err != nil {
         log.Fatal(err)
@@ -269,8 +269,8 @@ func main() {
 
     res, err := s.Templates.Recipients.UpdateMany(ctx, operations.RecipientUpdateTemplateRecipientsRequest{
         TemplateID: 5597.58,
-        Recipients: []operations.RecipientUpdateTemplateRecipientsRecipientRequestBody{
-            operations.RecipientUpdateTemplateRecipientsRecipientRequestBody{
+        Recipients: []operations.RecipientUpdateTemplateRecipientsRecipientRequest{
+            operations.RecipientUpdateTemplateRecipientsRecipientRequest{
                 ID: 1630.42,
             },
         },
