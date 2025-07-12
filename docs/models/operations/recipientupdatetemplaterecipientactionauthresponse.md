@@ -10,4 +10,5 @@ The type of authentication required for the recipient to sign the document.
 | `RecipientUpdateTemplateRecipientActionAuthResponseAccount`       | ACCOUNT                                                           |
 | `RecipientUpdateTemplateRecipientActionAuthResponsePasskey`       | PASSKEY                                                           |
 | `RecipientUpdateTemplateRecipientActionAuthResponseTwoFactorAuth` | TWO_FACTOR_AUTH                                                   |
+| `RecipientUpdateTemplateRecipientActionAuthResponsePassword`      | PASSWORD                                                          |
 | `RecipientUpdateTemplateRecipientActionAuthResponseExplicitNone`  | EXPLICIT_NONE                                                     |
