@@ -11,7 +11,6 @@
 * [Duplicate](#duplicate) - Duplicate template
 * [Delete](#delete) - Delete template
 * [Use](#use) - Use template
-* [MoveToTeam](#movetoteam) - Move template
 
 ## Find
 
@@ -26,6 +25,7 @@ import(
 	"context"
 	"os"
 	sdkgo "github.com/documenso/sdk-go"
+	"github.com/documenso/sdk-go/models/operations"
 	"log"
 )
 
@@ -36,7 +36,7 @@ func main() {
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Templates.Find(ctx, nil, nil, nil, nil)
+    res, err := s.Templates.Find(ctx, operations.TemplateFindTemplatesRequest{})
     if err != nil {
         log.Fatal(err)
     }
@@ -48,14 +48,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `ctx`                                                                   | [context.Context](https://pkg.go.dev/context#Context)                   | :heavy_check_mark:                                                      | The context to use for the request.                                     |
-| `query`                                                                 | **string*                                                               | :heavy_minus_sign:                                                      | The search query.                                                       |
-| `page`                                                                  | **float64*                                                              | :heavy_minus_sign:                                                      | The pagination page number, starts at 1.                                |
-| `perPage`                                                               | **float64*                                                              | :heavy_minus_sign:                                                      | The number of items per page.                                           |
-| `type_`                                                                 | [*operations.QueryParamType](../../models/operations/queryparamtype.md) | :heavy_minus_sign:                                                      | Filter templates by type.                                               |
-| `opts`                                                                  | [][operations.Option](../../models/operations/option.md)                | :heavy_minus_sign:                                                      | The options for this request.                                           |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
+| `request`                                                                                          | [operations.TemplateFindTemplatesRequest](../../models/operations/templatefindtemplatesrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `opts`                                                                                             | [][operations.Option](../../models/operations/option.md)                                           | :heavy_minus_sign:                                                                                 | The options for this request.                                                                      |
 
 ### Response
 
@@ -318,7 +315,7 @@ func main() {
 
     res, err := s.Templates.Use(ctx, operations.TemplateCreateDocumentFromTemplateRequest{
         TemplateID: 7392.96,
-        Recipients: []operations.TemplateCreateDocumentFromTemplateRecipientRequestBody{},
+        Recipients: []operations.TemplateCreateDocumentFromTemplateRecipientRequest{},
     })
     if err != nil {
         log.Fatal(err)
@@ -348,60 +345,3 @@ func main() {
 | apierrors.TemplateCreateDocumentFromTemplateBadRequestError     | 400                                                             | application/json                                                |
 | apierrors.TemplateCreateDocumentFromTemplateInternalServerError | 500                                                             | application/json                                                |
 | apierrors.APIError                                              | 4XX, 5XX                                                        | \*/\*                                                           |
-
-## MoveToTeam
-
-Move a template to a team
-
-### Example Usage
-
-```go
-package main
-
-import(
-	"context"
-	"os"
-	sdkgo "github.com/documenso/sdk-go"
-	"github.com/documenso/sdk-go/models/operations"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkgo.New(
-        sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
-    )
-
-    res, err := s.Templates.MoveToTeam(ctx, operations.TemplateMoveTemplateToTeamRequest{
-        TemplateID: 9124,
-        TeamID: 6200.73,
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.Object != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                        | :heavy_check_mark:                                                                                           | The context to use for the request.                                                                          |
-| `request`                                                                                                    | [operations.TemplateMoveTemplateToTeamRequest](../../models/operations/templatemovetemplatetoteamrequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
-| `opts`                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                     | :heavy_minus_sign:                                                                                           | The options for this request.                                                                                |
-
-### Response
-
-**[*operations.TemplateMoveTemplateToTeamResponse](../../models/operations/templatemovetemplatetoteamresponse.md), error**
-
-### Errors
-
-| Error Type                                              | Status Code                                             | Content Type                                            |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| apierrors.TemplateMoveTemplateToTeamBadRequestError     | 400                                                     | application/json                                        |
-| apierrors.TemplateMoveTemplateToTeamInternalServerError | 500                                                     | application/json                                        |
-| apierrors.APIError                                      | 4XX, 5XX                                                | \*/\*                                                   |
