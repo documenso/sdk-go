@@ -10,32 +10,82 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateCreateDocumentFromTemplateRecipientRequestBody struct {
+type TemplateCreateDocumentFromTemplateRecipientRequest struct {
 	// The ID of the recipient in the template.
 	ID    float64 `json:"id"`
 	Email string  `json:"email"`
 	Name  *string `json:"name,omitempty"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateRecipientRequestBody) GetID() float64 {
+func (o *TemplateCreateDocumentFromTemplateRecipientRequest) GetID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ID
 }
 
-func (o *TemplateCreateDocumentFromTemplateRecipientRequestBody) GetEmail() string {
+func (o *TemplateCreateDocumentFromTemplateRecipientRequest) GetEmail() string {
 	if o == nil {
 		return ""
 	}
 	return o.Email
 }
 
-func (o *TemplateCreateDocumentFromTemplateRecipientRequestBody) GetName() *string {
+func (o *TemplateCreateDocumentFromTemplateRecipientRequest) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
+}
+
+type PrefillFieldTypeDate string
+
+const (
+	PrefillFieldTypeDateDate PrefillFieldTypeDate = "date"
+)
+
+func (e PrefillFieldTypeDate) ToPointer() *PrefillFieldTypeDate {
+	return &e
+}
+func (e *PrefillFieldTypeDate) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "date":
+		*e = PrefillFieldTypeDate(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for PrefillFieldTypeDate: %v", v)
+	}
+}
+
+type PrefillFieldDate struct {
+	Type  PrefillFieldTypeDate `json:"type"`
+	Value *string              `json:"value,omitempty"`
+	ID    float64              `json:"id"`
+}
+
+func (o *PrefillFieldDate) GetType() PrefillFieldTypeDate {
+	if o == nil {
+		return PrefillFieldTypeDate("")
+	}
+	return o.Type
+}
+
+func (o *PrefillFieldDate) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}
+
+func (o *PrefillFieldDate) GetID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.ID
 }
 
 type PrefillFieldTypeDropdown string
@@ -352,6 +402,7 @@ const (
 	PrefillFieldTypePrefillFieldRadio    PrefillFieldType = "prefillField_Radio"
 	PrefillFieldTypePrefillFieldCheckbox PrefillFieldType = "prefillField_Checkbox"
 	PrefillFieldTypePrefillFieldDropdown PrefillFieldType = "prefillField_Dropdown"
+	PrefillFieldTypePrefillFieldDate     PrefillFieldType = "prefillField_Date"
 )
 
 type PrefillField struct {
@@ -360,6 +411,7 @@ type PrefillField struct {
 	PrefillFieldRadio    *PrefillFieldRadio    `queryParam:"inline"`
 	PrefillFieldCheckbox *PrefillFieldCheckbox `queryParam:"inline"`
 	PrefillFieldDropdown *PrefillFieldDropdown `queryParam:"inline"`
+	PrefillFieldDate     *PrefillFieldDate     `queryParam:"inline"`
 
 	Type PrefillFieldType
 }
@@ -409,7 +461,23 @@ func CreatePrefillFieldPrefillFieldDropdown(prefillFieldDropdown PrefillFieldDro
 	}
 }
 
+func CreatePrefillFieldPrefillFieldDate(prefillFieldDate PrefillFieldDate) PrefillField {
+	typ := PrefillFieldTypePrefillFieldDate
+
+	return PrefillField{
+		PrefillFieldDate: &prefillFieldDate,
+		Type:             typ,
+	}
+}
+
 func (u *PrefillField) UnmarshalJSON(data []byte) error {
+
+	var prefillFieldDate PrefillFieldDate = PrefillFieldDate{}
+	if err := utils.UnmarshalJSON(data, &prefillFieldDate, "", true, true); err == nil {
+		u.PrefillFieldDate = &prefillFieldDate
+		u.Type = PrefillFieldTypePrefillFieldDate
+		return nil
+	}
 
 	var prefillFieldRadio PrefillFieldRadio = PrefillFieldRadio{}
 	if err := utils.UnmarshalJSON(data, &prefillFieldRadio, "", true, true); err == nil {
@@ -470,13 +538,17 @@ func (u PrefillField) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.PrefillFieldDropdown, "", true)
 	}
 
+	if u.PrefillFieldDate != nil {
+		return utils.MarshalJSON(u.PrefillFieldDate, "", true)
+	}
+
 	return nil, errors.New("could not marshal union type PrefillField: all fields are null")
 }
 
 type TemplateCreateDocumentFromTemplateRequest struct {
 	TemplateID float64 `json:"templateId"`
 	// The information of the recipients to create the document with.
-	Recipients []TemplateCreateDocumentFromTemplateRecipientRequestBody `json:"recipients"`
+	Recipients []TemplateCreateDocumentFromTemplateRecipientRequest `json:"recipients"`
 	// Whether to create the document as pending and distribute it to recipients.
 	DistributeDocument *bool `json:"distributeDocument,omitempty"`
 	// The data ID of an alternative PDF to use when creating the document. If not provided, the PDF attached to the template will be used.
@@ -492,9 +564,9 @@ func (o *TemplateCreateDocumentFromTemplateRequest) GetTemplateID() float64 {
 	return o.TemplateID
 }
 
-func (o *TemplateCreateDocumentFromTemplateRequest) GetRecipients() []TemplateCreateDocumentFromTemplateRecipientRequestBody {
+func (o *TemplateCreateDocumentFromTemplateRequest) GetRecipients() []TemplateCreateDocumentFromTemplateRecipientRequest {
 	if o == nil {
-		return []TemplateCreateDocumentFromTemplateRecipientRequestBody{}
+		return []TemplateCreateDocumentFromTemplateRecipientRequest{}
 	}
 	return o.Recipients
 }
@@ -641,6 +713,7 @@ const (
 	TemplateCreateDocumentFromTemplateGlobalActionAuthAccount       TemplateCreateDocumentFromTemplateGlobalActionAuth = "ACCOUNT"
 	TemplateCreateDocumentFromTemplateGlobalActionAuthPasskey       TemplateCreateDocumentFromTemplateGlobalActionAuth = "PASSKEY"
 	TemplateCreateDocumentFromTemplateGlobalActionAuthTwoFactorAuth TemplateCreateDocumentFromTemplateGlobalActionAuth = "TWO_FACTOR_AUTH"
+	TemplateCreateDocumentFromTemplateGlobalActionAuthPassword      TemplateCreateDocumentFromTemplateGlobalActionAuth = "PASSWORD"
 )
 
 func (e TemplateCreateDocumentFromTemplateGlobalActionAuth) ToPointer() *TemplateCreateDocumentFromTemplateGlobalActionAuth {
@@ -657,6 +730,8 @@ func (e *TemplateCreateDocumentFromTemplateGlobalActionAuth) UnmarshalJSON(data 
 	case "PASSKEY":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
+		fallthrough
+	case "PASSWORD":
 		*e = TemplateCreateDocumentFromTemplateGlobalActionAuth(v)
 		return nil
 	default:
@@ -665,22 +740,20 @@ func (e *TemplateCreateDocumentFromTemplateGlobalActionAuth) UnmarshalJSON(data 
 }
 
 type TemplateCreateDocumentFromTemplateAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	GlobalAccessAuth *TemplateCreateDocumentFromTemplateGlobalAccessAuth `json:"globalAccessAuth"`
-	// The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-	GlobalActionAuth *TemplateCreateDocumentFromTemplateGlobalActionAuth `json:"globalActionAuth"`
+	GlobalAccessAuth []TemplateCreateDocumentFromTemplateGlobalAccessAuth `json:"globalAccessAuth"`
+	GlobalActionAuth []TemplateCreateDocumentFromTemplateGlobalActionAuth `json:"globalActionAuth"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateAuthOptions) GetGlobalAccessAuth() *TemplateCreateDocumentFromTemplateGlobalAccessAuth {
+func (o *TemplateCreateDocumentFromTemplateAuthOptions) GetGlobalAccessAuth() []TemplateCreateDocumentFromTemplateGlobalAccessAuth {
 	if o == nil {
-		return nil
+		return []TemplateCreateDocumentFromTemplateGlobalAccessAuth{}
 	}
 	return o.GlobalAccessAuth
 }
 
-func (o *TemplateCreateDocumentFromTemplateAuthOptions) GetGlobalActionAuth() *TemplateCreateDocumentFromTemplateGlobalActionAuth {
+func (o *TemplateCreateDocumentFromTemplateAuthOptions) GetGlobalActionAuth() []TemplateCreateDocumentFromTemplateGlobalActionAuth {
 	if o == nil {
-		return nil
+		return []TemplateCreateDocumentFromTemplateGlobalActionAuth{}
 	}
 	return o.GlobalActionAuth
 }
@@ -1094,6 +1167,144 @@ func (o *TemplateCreateDocumentFromTemplateDocumentMeta) GetEmailSettings() *Tem
 	return o.EmailSettings
 }
 
+type TemplateCreateDocumentFromTemplateFolderType string
+
+const (
+	TemplateCreateDocumentFromTemplateFolderTypeDocument TemplateCreateDocumentFromTemplateFolderType = "DOCUMENT"
+	TemplateCreateDocumentFromTemplateFolderTypeTemplate TemplateCreateDocumentFromTemplateFolderType = "TEMPLATE"
+)
+
+func (e TemplateCreateDocumentFromTemplateFolderType) ToPointer() *TemplateCreateDocumentFromTemplateFolderType {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateFolderType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "DOCUMENT":
+		fallthrough
+	case "TEMPLATE":
+		*e = TemplateCreateDocumentFromTemplateFolderType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFolderType: %v", v)
+	}
+}
+
+type TemplateCreateDocumentFromTemplateFolderVisibility string
+
+const (
+	TemplateCreateDocumentFromTemplateFolderVisibilityEveryone        TemplateCreateDocumentFromTemplateFolderVisibility = "EVERYONE"
+	TemplateCreateDocumentFromTemplateFolderVisibilityManagerAndAbove TemplateCreateDocumentFromTemplateFolderVisibility = "MANAGER_AND_ABOVE"
+	TemplateCreateDocumentFromTemplateFolderVisibilityAdmin           TemplateCreateDocumentFromTemplateFolderVisibility = "ADMIN"
+)
+
+func (e TemplateCreateDocumentFromTemplateFolderVisibility) ToPointer() *TemplateCreateDocumentFromTemplateFolderVisibility {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateFolderVisibility) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "EVERYONE":
+		fallthrough
+	case "MANAGER_AND_ABOVE":
+		fallthrough
+	case "ADMIN":
+		*e = TemplateCreateDocumentFromTemplateFolderVisibility(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFolderVisibility: %v", v)
+	}
+}
+
+type TemplateCreateDocumentFromTemplateFolder struct {
+	ID         string                                             `json:"id"`
+	Name       string                                             `json:"name"`
+	Type       TemplateCreateDocumentFromTemplateFolderType       `json:"type"`
+	Visibility TemplateCreateDocumentFromTemplateFolderVisibility `json:"visibility"`
+	UserID     float64                                            `json:"userId"`
+	TeamID     float64                                            `json:"teamId"`
+	Pinned     bool                                               `json:"pinned"`
+	ParentID   *string                                            `json:"parentId"`
+	CreatedAt  string                                             `json:"createdAt"`
+	UpdatedAt  string                                             `json:"updatedAt"`
+}
+
+func (o *TemplateCreateDocumentFromTemplateFolder) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *TemplateCreateDocumentFromTemplateFolder) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *TemplateCreateDocumentFromTemplateFolder) GetType() TemplateCreateDocumentFromTemplateFolderType {
+	if o == nil {
+		return TemplateCreateDocumentFromTemplateFolderType("")
+	}
+	return o.Type
+}
+
+func (o *TemplateCreateDocumentFromTemplateFolder) GetVisibility() TemplateCreateDocumentFromTemplateFolderVisibility {
+	if o == nil {
+		return TemplateCreateDocumentFromTemplateFolderVisibility("")
+	}
+	return o.Visibility
+}
+
+func (o *TemplateCreateDocumentFromTemplateFolder) GetUserID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UserID
+}
+
+func (o *TemplateCreateDocumentFromTemplateFolder) GetTeamID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.TeamID
+}
+
+func (o *TemplateCreateDocumentFromTemplateFolder) GetPinned() bool {
+	if o == nil {
+		return false
+	}
+	return o.Pinned
+}
+
+func (o *TemplateCreateDocumentFromTemplateFolder) GetParentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ParentID
+}
+
+func (o *TemplateCreateDocumentFromTemplateFolder) GetCreatedAt() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedAt
+}
+
+func (o *TemplateCreateDocumentFromTemplateFolder) GetUpdatedAt() string {
+	if o == nil {
+		return ""
+	}
+	return o.UpdatedAt
+}
+
 type TemplateCreateDocumentFromTemplateRole string
 
 const (
@@ -1241,6 +1452,7 @@ const (
 	TemplateCreateDocumentFromTemplateActionAuthAccount       TemplateCreateDocumentFromTemplateActionAuth = "ACCOUNT"
 	TemplateCreateDocumentFromTemplateActionAuthPasskey       TemplateCreateDocumentFromTemplateActionAuth = "PASSKEY"
 	TemplateCreateDocumentFromTemplateActionAuthTwoFactorAuth TemplateCreateDocumentFromTemplateActionAuth = "TWO_FACTOR_AUTH"
+	TemplateCreateDocumentFromTemplateActionAuthPassword      TemplateCreateDocumentFromTemplateActionAuth = "PASSWORD"
 	TemplateCreateDocumentFromTemplateActionAuthExplicitNone  TemplateCreateDocumentFromTemplateActionAuth = "EXPLICIT_NONE"
 )
 
@@ -1259,6 +1471,8 @@ func (e *TemplateCreateDocumentFromTemplateActionAuth) UnmarshalJSON(data []byte
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
 		*e = TemplateCreateDocumentFromTemplateActionAuth(v)
 		return nil
@@ -1268,22 +1482,20 @@ func (e *TemplateCreateDocumentFromTemplateActionAuth) UnmarshalJSON(data []byte
 }
 
 type TemplateCreateDocumentFromTemplateRecipientAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *TemplateCreateDocumentFromTemplateAccessAuth `json:"accessAuth"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *TemplateCreateDocumentFromTemplateActionAuth `json:"actionAuth"`
+	AccessAuth []TemplateCreateDocumentFromTemplateAccessAuth `json:"accessAuth"`
+	ActionAuth []TemplateCreateDocumentFromTemplateActionAuth `json:"actionAuth"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateRecipientAuthOptions) GetAccessAuth() *TemplateCreateDocumentFromTemplateAccessAuth {
+func (o *TemplateCreateDocumentFromTemplateRecipientAuthOptions) GetAccessAuth() []TemplateCreateDocumentFromTemplateAccessAuth {
 	if o == nil {
-		return nil
+		return []TemplateCreateDocumentFromTemplateAccessAuth{}
 	}
 	return o.AccessAuth
 }
 
-func (o *TemplateCreateDocumentFromTemplateRecipientAuthOptions) GetActionAuth() *TemplateCreateDocumentFromTemplateActionAuth {
+func (o *TemplateCreateDocumentFromTemplateRecipientAuthOptions) GetActionAuth() []TemplateCreateDocumentFromTemplateActionAuth {
 	if o == nil {
-		return nil
+		return []TemplateCreateDocumentFromTemplateActionAuth{}
 	}
 	return o.ActionAuth
 }
@@ -2054,26 +2266,26 @@ func (o *TemplateCreateDocumentFromTemplateFieldMetaText) GetTextAlign() *Templa
 	return o.TextAlign
 }
 
-type TemplateCreateDocumentFromTemplateTypeDate string
+type TemplateCreateDocumentFromTemplateFieldMetaTypeDate string
 
 const (
-	TemplateCreateDocumentFromTemplateTypeDateDate TemplateCreateDocumentFromTemplateTypeDate = "date"
+	TemplateCreateDocumentFromTemplateFieldMetaTypeDateDate TemplateCreateDocumentFromTemplateFieldMetaTypeDate = "date"
 )
 
-func (e TemplateCreateDocumentFromTemplateTypeDate) ToPointer() *TemplateCreateDocumentFromTemplateTypeDate {
+func (e TemplateCreateDocumentFromTemplateFieldMetaTypeDate) ToPointer() *TemplateCreateDocumentFromTemplateFieldMetaTypeDate {
 	return &e
 }
-func (e *TemplateCreateDocumentFromTemplateTypeDate) UnmarshalJSON(data []byte) error {
+func (e *TemplateCreateDocumentFromTemplateFieldMetaTypeDate) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "date":
-		*e = TemplateCreateDocumentFromTemplateTypeDate(v)
+		*e = TemplateCreateDocumentFromTemplateFieldMetaTypeDate(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateTypeDate: %v", v)
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateFieldMetaTypeDate: %v", v)
 	}
 }
 
@@ -2107,13 +2319,13 @@ func (e *TemplateCreateDocumentFromTemplateTextAlign4) UnmarshalJSON(data []byte
 }
 
 type TemplateCreateDocumentFromTemplateFieldMetaDate struct {
-	Label       *string                                       `json:"label,omitempty"`
-	Placeholder *string                                       `json:"placeholder,omitempty"`
-	Required    *bool                                         `json:"required,omitempty"`
-	ReadOnly    *bool                                         `json:"readOnly,omitempty"`
-	Type        TemplateCreateDocumentFromTemplateTypeDate    `json:"type"`
-	FontSize    *float64                                      `json:"fontSize,omitempty"`
-	TextAlign   *TemplateCreateDocumentFromTemplateTextAlign4 `json:"textAlign,omitempty"`
+	Label       *string                                             `json:"label,omitempty"`
+	Placeholder *string                                             `json:"placeholder,omitempty"`
+	Required    *bool                                               `json:"required,omitempty"`
+	ReadOnly    *bool                                               `json:"readOnly,omitempty"`
+	Type        TemplateCreateDocumentFromTemplateFieldMetaTypeDate `json:"type"`
+	FontSize    *float64                                            `json:"fontSize,omitempty"`
+	TextAlign   *TemplateCreateDocumentFromTemplateTextAlign4       `json:"textAlign,omitempty"`
 }
 
 func (o *TemplateCreateDocumentFromTemplateFieldMetaDate) GetLabel() *string {
@@ -2144,9 +2356,9 @@ func (o *TemplateCreateDocumentFromTemplateFieldMetaDate) GetReadOnly() *bool {
 	return o.ReadOnly
 }
 
-func (o *TemplateCreateDocumentFromTemplateFieldMetaDate) GetType() TemplateCreateDocumentFromTemplateTypeDate {
+func (o *TemplateCreateDocumentFromTemplateFieldMetaDate) GetType() TemplateCreateDocumentFromTemplateFieldMetaTypeDate {
 	if o == nil {
-		return TemplateCreateDocumentFromTemplateTypeDate("")
+		return TemplateCreateDocumentFromTemplateFieldMetaTypeDate("")
 	}
 	return o.Type
 }
@@ -2849,10 +3061,12 @@ type TemplateCreateDocumentFromTemplateResponseBody struct {
 	UpdatedAt      string                                                  `json:"updatedAt"`
 	CompletedAt    *string                                                 `json:"completedAt"`
 	DeletedAt      *string                                                 `json:"deletedAt"`
-	TeamID         *float64                                                `json:"teamId"`
+	TeamID         float64                                                 `json:"teamId"`
 	TemplateID     *float64                                                `json:"templateId"`
+	FolderID       *string                                                 `json:"folderId"`
 	DocumentData   TemplateCreateDocumentFromTemplateDocumentData          `json:"documentData"`
 	DocumentMeta   *TemplateCreateDocumentFromTemplateDocumentMeta         `json:"documentMeta"`
+	Folder         *TemplateCreateDocumentFromTemplateFolder               `json:"folder"`
 	Recipients     []TemplateCreateDocumentFromTemplateRecipientResponse   `json:"recipients"`
 	Fields         []TemplateCreateDocumentFromTemplateField               `json:"fields"`
 }
@@ -2955,9 +3169,9 @@ func (o *TemplateCreateDocumentFromTemplateResponseBody) GetDeletedAt() *string 
 	return o.DeletedAt
 }
 
-func (o *TemplateCreateDocumentFromTemplateResponseBody) GetTeamID() *float64 {
+func (o *TemplateCreateDocumentFromTemplateResponseBody) GetTeamID() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.TeamID
 }
@@ -2967,6 +3181,13 @@ func (o *TemplateCreateDocumentFromTemplateResponseBody) GetTemplateID() *float6
 		return nil
 	}
 	return o.TemplateID
+}
+
+func (o *TemplateCreateDocumentFromTemplateResponseBody) GetFolderID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FolderID
 }
 
 func (o *TemplateCreateDocumentFromTemplateResponseBody) GetDocumentData() TemplateCreateDocumentFromTemplateDocumentData {
@@ -2981,6 +3202,13 @@ func (o *TemplateCreateDocumentFromTemplateResponseBody) GetDocumentMeta() *Temp
 		return nil
 	}
 	return o.DocumentMeta
+}
+
+func (o *TemplateCreateDocumentFromTemplateResponseBody) GetFolder() *TemplateCreateDocumentFromTemplateFolder {
+	if o == nil {
+		return nil
+	}
+	return o.Folder
 }
 
 func (o *TemplateCreateDocumentFromTemplateResponseBody) GetRecipients() []TemplateCreateDocumentFromTemplateRecipientResponse {

@@ -12,6 +12,8 @@ import (
 
 type DocumentGetDocumentWithDetailsByIDRequest struct {
 	DocumentID float64 `pathParam:"style=simple,explode=false,name=documentId"`
+	// Filter documents by folder ID
+	FolderID *string `queryParam:"style=form,explode=true,name=folderId"`
 }
 
 func (o *DocumentGetDocumentWithDetailsByIDRequest) GetDocumentID() float64 {
@@ -19,6 +21,13 @@ func (o *DocumentGetDocumentWithDetailsByIDRequest) GetDocumentID() float64 {
 		return 0.0
 	}
 	return o.DocumentID
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDRequest) GetFolderID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FolderID
 }
 
 type DocumentGetDocumentWithDetailsByIDVisibility string
@@ -142,6 +151,7 @@ const (
 	DocumentGetDocumentWithDetailsByIDGlobalActionAuthAccount       DocumentGetDocumentWithDetailsByIDGlobalActionAuth = "ACCOUNT"
 	DocumentGetDocumentWithDetailsByIDGlobalActionAuthPasskey       DocumentGetDocumentWithDetailsByIDGlobalActionAuth = "PASSKEY"
 	DocumentGetDocumentWithDetailsByIDGlobalActionAuthTwoFactorAuth DocumentGetDocumentWithDetailsByIDGlobalActionAuth = "TWO_FACTOR_AUTH"
+	DocumentGetDocumentWithDetailsByIDGlobalActionAuthPassword      DocumentGetDocumentWithDetailsByIDGlobalActionAuth = "PASSWORD"
 )
 
 func (e DocumentGetDocumentWithDetailsByIDGlobalActionAuth) ToPointer() *DocumentGetDocumentWithDetailsByIDGlobalActionAuth {
@@ -158,6 +168,8 @@ func (e *DocumentGetDocumentWithDetailsByIDGlobalActionAuth) UnmarshalJSON(data 
 	case "PASSKEY":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
+		fallthrough
+	case "PASSWORD":
 		*e = DocumentGetDocumentWithDetailsByIDGlobalActionAuth(v)
 		return nil
 	default:
@@ -166,22 +178,20 @@ func (e *DocumentGetDocumentWithDetailsByIDGlobalActionAuth) UnmarshalJSON(data 
 }
 
 type DocumentGetDocumentWithDetailsByIDAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	GlobalAccessAuth *DocumentGetDocumentWithDetailsByIDGlobalAccessAuth `json:"globalAccessAuth"`
-	// The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-	GlobalActionAuth *DocumentGetDocumentWithDetailsByIDGlobalActionAuth `json:"globalActionAuth"`
+	GlobalAccessAuth []DocumentGetDocumentWithDetailsByIDGlobalAccessAuth `json:"globalAccessAuth"`
+	GlobalActionAuth []DocumentGetDocumentWithDetailsByIDGlobalActionAuth `json:"globalActionAuth"`
 }
 
-func (o *DocumentGetDocumentWithDetailsByIDAuthOptions) GetGlobalAccessAuth() *DocumentGetDocumentWithDetailsByIDGlobalAccessAuth {
+func (o *DocumentGetDocumentWithDetailsByIDAuthOptions) GetGlobalAccessAuth() []DocumentGetDocumentWithDetailsByIDGlobalAccessAuth {
 	if o == nil {
-		return nil
+		return []DocumentGetDocumentWithDetailsByIDGlobalAccessAuth{}
 	}
 	return o.GlobalAccessAuth
 }
 
-func (o *DocumentGetDocumentWithDetailsByIDAuthOptions) GetGlobalActionAuth() *DocumentGetDocumentWithDetailsByIDGlobalActionAuth {
+func (o *DocumentGetDocumentWithDetailsByIDAuthOptions) GetGlobalActionAuth() []DocumentGetDocumentWithDetailsByIDGlobalActionAuth {
 	if o == nil {
-		return nil
+		return []DocumentGetDocumentWithDetailsByIDGlobalActionAuth{}
 	}
 	return o.GlobalActionAuth
 }
@@ -595,6 +605,144 @@ func (o *DocumentGetDocumentWithDetailsByIDDocumentMeta) GetEmailSettings() *Doc
 	return o.EmailSettings
 }
 
+type DocumentGetDocumentWithDetailsByIDFolderType string
+
+const (
+	DocumentGetDocumentWithDetailsByIDFolderTypeDocument DocumentGetDocumentWithDetailsByIDFolderType = "DOCUMENT"
+	DocumentGetDocumentWithDetailsByIDFolderTypeTemplate DocumentGetDocumentWithDetailsByIDFolderType = "TEMPLATE"
+)
+
+func (e DocumentGetDocumentWithDetailsByIDFolderType) ToPointer() *DocumentGetDocumentWithDetailsByIDFolderType {
+	return &e
+}
+func (e *DocumentGetDocumentWithDetailsByIDFolderType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "DOCUMENT":
+		fallthrough
+	case "TEMPLATE":
+		*e = DocumentGetDocumentWithDetailsByIDFolderType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetDocumentWithDetailsByIDFolderType: %v", v)
+	}
+}
+
+type DocumentGetDocumentWithDetailsByIDFolderVisibility string
+
+const (
+	DocumentGetDocumentWithDetailsByIDFolderVisibilityEveryone        DocumentGetDocumentWithDetailsByIDFolderVisibility = "EVERYONE"
+	DocumentGetDocumentWithDetailsByIDFolderVisibilityManagerAndAbove DocumentGetDocumentWithDetailsByIDFolderVisibility = "MANAGER_AND_ABOVE"
+	DocumentGetDocumentWithDetailsByIDFolderVisibilityAdmin           DocumentGetDocumentWithDetailsByIDFolderVisibility = "ADMIN"
+)
+
+func (e DocumentGetDocumentWithDetailsByIDFolderVisibility) ToPointer() *DocumentGetDocumentWithDetailsByIDFolderVisibility {
+	return &e
+}
+func (e *DocumentGetDocumentWithDetailsByIDFolderVisibility) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "EVERYONE":
+		fallthrough
+	case "MANAGER_AND_ABOVE":
+		fallthrough
+	case "ADMIN":
+		*e = DocumentGetDocumentWithDetailsByIDFolderVisibility(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetDocumentWithDetailsByIDFolderVisibility: %v", v)
+	}
+}
+
+type DocumentGetDocumentWithDetailsByIDFolder struct {
+	ID         string                                             `json:"id"`
+	Name       string                                             `json:"name"`
+	Type       DocumentGetDocumentWithDetailsByIDFolderType       `json:"type"`
+	Visibility DocumentGetDocumentWithDetailsByIDFolderVisibility `json:"visibility"`
+	UserID     float64                                            `json:"userId"`
+	TeamID     float64                                            `json:"teamId"`
+	Pinned     bool                                               `json:"pinned"`
+	ParentID   *string                                            `json:"parentId"`
+	CreatedAt  string                                             `json:"createdAt"`
+	UpdatedAt  string                                             `json:"updatedAt"`
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetType() DocumentGetDocumentWithDetailsByIDFolderType {
+	if o == nil {
+		return DocumentGetDocumentWithDetailsByIDFolderType("")
+	}
+	return o.Type
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetVisibility() DocumentGetDocumentWithDetailsByIDFolderVisibility {
+	if o == nil {
+		return DocumentGetDocumentWithDetailsByIDFolderVisibility("")
+	}
+	return o.Visibility
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetUserID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UserID
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetTeamID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.TeamID
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetPinned() bool {
+	if o == nil {
+		return false
+	}
+	return o.Pinned
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetParentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ParentID
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetCreatedAt() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedAt
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetUpdatedAt() string {
+	if o == nil {
+		return ""
+	}
+	return o.UpdatedAt
+}
+
 type DocumentGetDocumentWithDetailsByIDRole string
 
 const (
@@ -742,6 +890,7 @@ const (
 	DocumentGetDocumentWithDetailsByIDActionAuthAccount       DocumentGetDocumentWithDetailsByIDActionAuth = "ACCOUNT"
 	DocumentGetDocumentWithDetailsByIDActionAuthPasskey       DocumentGetDocumentWithDetailsByIDActionAuth = "PASSKEY"
 	DocumentGetDocumentWithDetailsByIDActionAuthTwoFactorAuth DocumentGetDocumentWithDetailsByIDActionAuth = "TWO_FACTOR_AUTH"
+	DocumentGetDocumentWithDetailsByIDActionAuthPassword      DocumentGetDocumentWithDetailsByIDActionAuth = "PASSWORD"
 	DocumentGetDocumentWithDetailsByIDActionAuthExplicitNone  DocumentGetDocumentWithDetailsByIDActionAuth = "EXPLICIT_NONE"
 )
 
@@ -760,6 +909,8 @@ func (e *DocumentGetDocumentWithDetailsByIDActionAuth) UnmarshalJSON(data []byte
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
 		*e = DocumentGetDocumentWithDetailsByIDActionAuth(v)
 		return nil
@@ -769,22 +920,20 @@ func (e *DocumentGetDocumentWithDetailsByIDActionAuth) UnmarshalJSON(data []byte
 }
 
 type DocumentGetDocumentWithDetailsByIDRecipientAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *DocumentGetDocumentWithDetailsByIDAccessAuth `json:"accessAuth"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *DocumentGetDocumentWithDetailsByIDActionAuth `json:"actionAuth"`
+	AccessAuth []DocumentGetDocumentWithDetailsByIDAccessAuth `json:"accessAuth"`
+	ActionAuth []DocumentGetDocumentWithDetailsByIDActionAuth `json:"actionAuth"`
 }
 
-func (o *DocumentGetDocumentWithDetailsByIDRecipientAuthOptions) GetAccessAuth() *DocumentGetDocumentWithDetailsByIDAccessAuth {
+func (o *DocumentGetDocumentWithDetailsByIDRecipientAuthOptions) GetAccessAuth() []DocumentGetDocumentWithDetailsByIDAccessAuth {
 	if o == nil {
-		return nil
+		return []DocumentGetDocumentWithDetailsByIDAccessAuth{}
 	}
 	return o.AccessAuth
 }
 
-func (o *DocumentGetDocumentWithDetailsByIDRecipientAuthOptions) GetActionAuth() *DocumentGetDocumentWithDetailsByIDActionAuth {
+func (o *DocumentGetDocumentWithDetailsByIDRecipientAuthOptions) GetActionAuth() []DocumentGetDocumentWithDetailsByIDActionAuth {
 	if o == nil {
-		return nil
+		return []DocumentGetDocumentWithDetailsByIDActionAuth{}
 	}
 	return o.ActionAuth
 }
@@ -2350,10 +2499,12 @@ type DocumentGetDocumentWithDetailsByIDResponseBody struct {
 	UpdatedAt      string                                                  `json:"updatedAt"`
 	CompletedAt    *string                                                 `json:"completedAt"`
 	DeletedAt      *string                                                 `json:"deletedAt"`
-	TeamID         *float64                                                `json:"teamId"`
+	TeamID         float64                                                 `json:"teamId"`
 	TemplateID     *float64                                                `json:"templateId"`
+	FolderID       *string                                                 `json:"folderId"`
 	DocumentData   DocumentGetDocumentWithDetailsByIDDocumentData          `json:"documentData"`
 	DocumentMeta   *DocumentGetDocumentWithDetailsByIDDocumentMeta         `json:"documentMeta"`
+	Folder         *DocumentGetDocumentWithDetailsByIDFolder               `json:"folder"`
 	Recipients     []DocumentGetDocumentWithDetailsByIDRecipient           `json:"recipients"`
 	Fields         []DocumentGetDocumentWithDetailsByIDField               `json:"fields"`
 }
@@ -2456,9 +2607,9 @@ func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetDeletedAt() *string 
 	return o.DeletedAt
 }
 
-func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetTeamID() *float64 {
+func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetTeamID() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.TeamID
 }
@@ -2468,6 +2619,13 @@ func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetTemplateID() *float6
 		return nil
 	}
 	return o.TemplateID
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetFolderID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FolderID
 }
 
 func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetDocumentData() DocumentGetDocumentWithDetailsByIDDocumentData {
@@ -2482,6 +2640,13 @@ func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetDocumentMeta() *Docu
 		return nil
 	}
 	return o.DocumentMeta
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetFolder() *DocumentGetDocumentWithDetailsByIDFolder {
+	if o == nil {
+		return nil
+	}
+	return o.Folder
 }
 
 func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetRecipients() []DocumentGetDocumentWithDetailsByIDRecipient {

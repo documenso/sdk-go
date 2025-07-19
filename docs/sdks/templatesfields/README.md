@@ -40,7 +40,7 @@ func main() {
         TemplateID: 1203.71,
         Field: operations.CreateFieldCreateTemplateFieldFieldUnionFieldCreateTemplateFieldFieldDate(
             operations.FieldCreateTemplateFieldFieldDate{
-                Type: operations.FieldCreateTemplateFieldTypeDateRequestBody1Date,
+                Type: operations.FieldCreateTemplateFieldTypeDateRequest1Date,
                 RecipientID: 2738.54,
                 PageNumber: 5735.12,
                 PageX: 2936.28,
@@ -230,7 +230,7 @@ func main() {
         TemplateID: 5083.07,
         Field: operations.CreateFieldUpdateTemplateFieldFieldUnionFieldUpdateTemplateFieldFieldText(
             operations.FieldUpdateTemplateFieldFieldText{
-                Type: operations.FieldUpdateTemplateFieldTypeTextRequestBody1Text,
+                Type: operations.FieldUpdateTemplateFieldTypeTextRequest1Text,
                 ID: 1792.29,
             },
         ),
@@ -293,7 +293,7 @@ func main() {
         Fields: []operations.FieldUpdateTemplateFieldsFieldUnion{
             operations.CreateFieldUpdateTemplateFieldsFieldUnionFieldUpdateTemplateFieldsFieldDropdown(
                 operations.FieldUpdateTemplateFieldsFieldDropdown{
-                    Type: operations.FieldUpdateTemplateFieldsTypeDropdownRequestBody1Dropdown,
+                    Type: operations.FieldUpdateTemplateFieldsTypeDropdownRequest1Dropdown,
                     ID: 2460.72,
                 },
             ),
