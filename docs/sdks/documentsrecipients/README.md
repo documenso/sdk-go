@@ -95,7 +95,7 @@ func main() {
         Recipient: operations.RecipientCreateDocumentRecipientRecipient{
             Email: "Ila.Steuber@yahoo.com",
             Name: "<value>",
-            Role: operations.RecipientCreateDocumentRecipientRoleRequestBodyAssistant,
+            Role: operations.RecipientCreateDocumentRecipientRoleRequestAssistant,
         },
     })
     if err != nil {
@@ -153,11 +153,11 @@ func main() {
 
     res, err := s.Documents.Recipients.CreateMany(ctx, operations.RecipientCreateDocumentRecipientsRequest{
         DocumentID: 9983.95,
-        Recipients: []operations.RecipientCreateDocumentRecipientsRecipientRequestBody{
-            operations.RecipientCreateDocumentRecipientsRecipientRequestBody{
+        Recipients: []operations.RecipientCreateDocumentRecipientsRecipientRequest{
+            operations.RecipientCreateDocumentRecipientsRecipientRequest{
                 Email: "Roosevelt_Baumbach@yahoo.com",
                 Name: "<value>",
-                Role: operations.RecipientCreateDocumentRecipientsRoleRequestBodyCc,
+                Role: operations.RecipientCreateDocumentRecipientsRoleRequestCc,
             },
         },
     })
@@ -275,7 +275,7 @@ func main() {
 
     res, err := s.Documents.Recipients.UpdateMany(ctx, operations.RecipientUpdateDocumentRecipientsRequest{
         DocumentID: 3189.76,
-        Recipients: []operations.RecipientUpdateDocumentRecipientsRecipientRequestBody{},
+        Recipients: []operations.RecipientUpdateDocumentRecipientsRecipientRequest{},
     })
     if err != nil {
         log.Fatal(err)

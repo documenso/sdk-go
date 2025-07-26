@@ -8,20 +8,20 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type RecipientCreateTemplateRecipientRoleRequestBody string
+type RecipientCreateTemplateRecipientRoleRequest string
 
 const (
-	RecipientCreateTemplateRecipientRoleRequestBodyCc        RecipientCreateTemplateRecipientRoleRequestBody = "CC"
-	RecipientCreateTemplateRecipientRoleRequestBodySigner    RecipientCreateTemplateRecipientRoleRequestBody = "SIGNER"
-	RecipientCreateTemplateRecipientRoleRequestBodyViewer    RecipientCreateTemplateRecipientRoleRequestBody = "VIEWER"
-	RecipientCreateTemplateRecipientRoleRequestBodyApprover  RecipientCreateTemplateRecipientRoleRequestBody = "APPROVER"
-	RecipientCreateTemplateRecipientRoleRequestBodyAssistant RecipientCreateTemplateRecipientRoleRequestBody = "ASSISTANT"
+	RecipientCreateTemplateRecipientRoleRequestCc        RecipientCreateTemplateRecipientRoleRequest = "CC"
+	RecipientCreateTemplateRecipientRoleRequestSigner    RecipientCreateTemplateRecipientRoleRequest = "SIGNER"
+	RecipientCreateTemplateRecipientRoleRequestViewer    RecipientCreateTemplateRecipientRoleRequest = "VIEWER"
+	RecipientCreateTemplateRecipientRoleRequestApprover  RecipientCreateTemplateRecipientRoleRequest = "APPROVER"
+	RecipientCreateTemplateRecipientRoleRequestAssistant RecipientCreateTemplateRecipientRoleRequest = "ASSISTANT"
 )
 
-func (e RecipientCreateTemplateRecipientRoleRequestBody) ToPointer() *RecipientCreateTemplateRecipientRoleRequestBody {
+func (e RecipientCreateTemplateRecipientRoleRequest) ToPointer() *RecipientCreateTemplateRecipientRoleRequest {
 	return &e
 }
-func (e *RecipientCreateTemplateRecipientRoleRequestBody) UnmarshalJSON(data []byte) error {
+func (e *RecipientCreateTemplateRecipientRoleRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -36,51 +36,52 @@ func (e *RecipientCreateTemplateRecipientRoleRequestBody) UnmarshalJSON(data []b
 	case "APPROVER":
 		fallthrough
 	case "ASSISTANT":
-		*e = RecipientCreateTemplateRecipientRoleRequestBody(v)
+		*e = RecipientCreateTemplateRecipientRoleRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientCreateTemplateRecipientRoleRequestBody: %v", v)
+		return fmt.Errorf("invalid value for RecipientCreateTemplateRecipientRoleRequest: %v", v)
 	}
 }
 
-// RecipientCreateTemplateRecipientAccessAuthRequestBody - The type of authentication required for the recipient to access the document.
-type RecipientCreateTemplateRecipientAccessAuthRequestBody string
+// RecipientCreateTemplateRecipientAccessAuthRequest - The type of authentication required for the recipient to access the document.
+type RecipientCreateTemplateRecipientAccessAuthRequest string
 
 const (
-	RecipientCreateTemplateRecipientAccessAuthRequestBodyAccount RecipientCreateTemplateRecipientAccessAuthRequestBody = "ACCOUNT"
+	RecipientCreateTemplateRecipientAccessAuthRequestAccount RecipientCreateTemplateRecipientAccessAuthRequest = "ACCOUNT"
 )
 
-func (e RecipientCreateTemplateRecipientAccessAuthRequestBody) ToPointer() *RecipientCreateTemplateRecipientAccessAuthRequestBody {
+func (e RecipientCreateTemplateRecipientAccessAuthRequest) ToPointer() *RecipientCreateTemplateRecipientAccessAuthRequest {
 	return &e
 }
-func (e *RecipientCreateTemplateRecipientAccessAuthRequestBody) UnmarshalJSON(data []byte) error {
+func (e *RecipientCreateTemplateRecipientAccessAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "ACCOUNT":
-		*e = RecipientCreateTemplateRecipientAccessAuthRequestBody(v)
+		*e = RecipientCreateTemplateRecipientAccessAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientCreateTemplateRecipientAccessAuthRequestBody: %v", v)
+		return fmt.Errorf("invalid value for RecipientCreateTemplateRecipientAccessAuthRequest: %v", v)
 	}
 }
 
-// RecipientCreateTemplateRecipientActionAuthRequestBody - The type of authentication required for the recipient to sign the document.
-type RecipientCreateTemplateRecipientActionAuthRequestBody string
+// RecipientCreateTemplateRecipientActionAuthRequest - The type of authentication required for the recipient to sign the document.
+type RecipientCreateTemplateRecipientActionAuthRequest string
 
 const (
-	RecipientCreateTemplateRecipientActionAuthRequestBodyAccount       RecipientCreateTemplateRecipientActionAuthRequestBody = "ACCOUNT"
-	RecipientCreateTemplateRecipientActionAuthRequestBodyPasskey       RecipientCreateTemplateRecipientActionAuthRequestBody = "PASSKEY"
-	RecipientCreateTemplateRecipientActionAuthRequestBodyTwoFactorAuth RecipientCreateTemplateRecipientActionAuthRequestBody = "TWO_FACTOR_AUTH"
-	RecipientCreateTemplateRecipientActionAuthRequestBodyExplicitNone  RecipientCreateTemplateRecipientActionAuthRequestBody = "EXPLICIT_NONE"
+	RecipientCreateTemplateRecipientActionAuthRequestAccount       RecipientCreateTemplateRecipientActionAuthRequest = "ACCOUNT"
+	RecipientCreateTemplateRecipientActionAuthRequestPasskey       RecipientCreateTemplateRecipientActionAuthRequest = "PASSKEY"
+	RecipientCreateTemplateRecipientActionAuthRequestTwoFactorAuth RecipientCreateTemplateRecipientActionAuthRequest = "TWO_FACTOR_AUTH"
+	RecipientCreateTemplateRecipientActionAuthRequestPassword      RecipientCreateTemplateRecipientActionAuthRequest = "PASSWORD"
+	RecipientCreateTemplateRecipientActionAuthRequestExplicitNone  RecipientCreateTemplateRecipientActionAuthRequest = "EXPLICIT_NONE"
 )
 
-func (e RecipientCreateTemplateRecipientActionAuthRequestBody) ToPointer() *RecipientCreateTemplateRecipientActionAuthRequestBody {
+func (e RecipientCreateTemplateRecipientActionAuthRequest) ToPointer() *RecipientCreateTemplateRecipientActionAuthRequest {
 	return &e
 }
-func (e *RecipientCreateTemplateRecipientActionAuthRequestBody) UnmarshalJSON(data []byte) error {
+func (e *RecipientCreateTemplateRecipientActionAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -92,23 +93,23 @@ func (e *RecipientCreateTemplateRecipientActionAuthRequestBody) UnmarshalJSON(da
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
-		*e = RecipientCreateTemplateRecipientActionAuthRequestBody(v)
+		*e = RecipientCreateTemplateRecipientActionAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientCreateTemplateRecipientActionAuthRequestBody: %v", v)
+		return fmt.Errorf("invalid value for RecipientCreateTemplateRecipientActionAuthRequest: %v", v)
 	}
 }
 
 type RecipientCreateTemplateRecipientRecipient struct {
-	Email        string                                          `json:"email"`
-	Name         string                                          `json:"name"`
-	Role         RecipientCreateTemplateRecipientRoleRequestBody `json:"role"`
-	SigningOrder *float64                                        `json:"signingOrder,omitempty"`
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *RecipientCreateTemplateRecipientAccessAuthRequestBody `json:"accessAuth,omitempty"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *RecipientCreateTemplateRecipientActionAuthRequestBody `json:"actionAuth,omitempty"`
+	Email        string                                              `json:"email"`
+	Name         string                                              `json:"name"`
+	Role         RecipientCreateTemplateRecipientRoleRequest         `json:"role"`
+	SigningOrder *float64                                            `json:"signingOrder,omitempty"`
+	AccessAuth   []RecipientCreateTemplateRecipientAccessAuthRequest `json:"accessAuth,omitempty"`
+	ActionAuth   []RecipientCreateTemplateRecipientActionAuthRequest `json:"actionAuth,omitempty"`
 }
 
 func (o *RecipientCreateTemplateRecipientRecipient) GetEmail() string {
@@ -125,9 +126,9 @@ func (o *RecipientCreateTemplateRecipientRecipient) GetName() string {
 	return o.Name
 }
 
-func (o *RecipientCreateTemplateRecipientRecipient) GetRole() RecipientCreateTemplateRecipientRoleRequestBody {
+func (o *RecipientCreateTemplateRecipientRecipient) GetRole() RecipientCreateTemplateRecipientRoleRequest {
 	if o == nil {
-		return RecipientCreateTemplateRecipientRoleRequestBody("")
+		return RecipientCreateTemplateRecipientRoleRequest("")
 	}
 	return o.Role
 }
@@ -139,14 +140,14 @@ func (o *RecipientCreateTemplateRecipientRecipient) GetSigningOrder() *float64 {
 	return o.SigningOrder
 }
 
-func (o *RecipientCreateTemplateRecipientRecipient) GetAccessAuth() *RecipientCreateTemplateRecipientAccessAuthRequestBody {
+func (o *RecipientCreateTemplateRecipientRecipient) GetAccessAuth() []RecipientCreateTemplateRecipientAccessAuthRequest {
 	if o == nil {
 		return nil
 	}
 	return o.AccessAuth
 }
 
-func (o *RecipientCreateTemplateRecipientRecipient) GetActionAuth() *RecipientCreateTemplateRecipientActionAuthRequestBody {
+func (o *RecipientCreateTemplateRecipientRecipient) GetActionAuth() []RecipientCreateTemplateRecipientActionAuthRequest {
 	if o == nil {
 		return nil
 	}
@@ -319,6 +320,7 @@ const (
 	RecipientCreateTemplateRecipientActionAuthResponseAccount       RecipientCreateTemplateRecipientActionAuthResponse = "ACCOUNT"
 	RecipientCreateTemplateRecipientActionAuthResponsePasskey       RecipientCreateTemplateRecipientActionAuthResponse = "PASSKEY"
 	RecipientCreateTemplateRecipientActionAuthResponseTwoFactorAuth RecipientCreateTemplateRecipientActionAuthResponse = "TWO_FACTOR_AUTH"
+	RecipientCreateTemplateRecipientActionAuthResponsePassword      RecipientCreateTemplateRecipientActionAuthResponse = "PASSWORD"
 	RecipientCreateTemplateRecipientActionAuthResponseExplicitNone  RecipientCreateTemplateRecipientActionAuthResponse = "EXPLICIT_NONE"
 )
 
@@ -337,6 +339,8 @@ func (e *RecipientCreateTemplateRecipientActionAuthResponse) UnmarshalJSON(data 
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
 		*e = RecipientCreateTemplateRecipientActionAuthResponse(v)
 		return nil
@@ -346,22 +350,20 @@ func (e *RecipientCreateTemplateRecipientActionAuthResponse) UnmarshalJSON(data 
 }
 
 type RecipientCreateTemplateRecipientAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *RecipientCreateTemplateRecipientAccessAuthResponse `json:"accessAuth"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *RecipientCreateTemplateRecipientActionAuthResponse `json:"actionAuth"`
+	AccessAuth []RecipientCreateTemplateRecipientAccessAuthResponse `json:"accessAuth"`
+	ActionAuth []RecipientCreateTemplateRecipientActionAuthResponse `json:"actionAuth"`
 }
 
-func (o *RecipientCreateTemplateRecipientAuthOptions) GetAccessAuth() *RecipientCreateTemplateRecipientAccessAuthResponse {
+func (o *RecipientCreateTemplateRecipientAuthOptions) GetAccessAuth() []RecipientCreateTemplateRecipientAccessAuthResponse {
 	if o == nil {
-		return nil
+		return []RecipientCreateTemplateRecipientAccessAuthResponse{}
 	}
 	return o.AccessAuth
 }
 
-func (o *RecipientCreateTemplateRecipientAuthOptions) GetActionAuth() *RecipientCreateTemplateRecipientActionAuthResponse {
+func (o *RecipientCreateTemplateRecipientAuthOptions) GetActionAuth() []RecipientCreateTemplateRecipientActionAuthResponse {
 	if o == nil {
-		return nil
+		return []RecipientCreateTemplateRecipientActionAuthResponse{}
 	}
 	return o.ActionAuth
 }
