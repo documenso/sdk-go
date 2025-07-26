@@ -46,6 +46,8 @@ type TemplateFindTemplatesRequest struct {
 	PerPage *float64 `queryParam:"style=form,explode=true,name=perPage"`
 	// Filter templates by type.
 	Type *QueryParamType `queryParam:"style=form,explode=true,name=type"`
+	// The ID of the folder to filter templates by.
+	FolderID *string `queryParam:"style=form,explode=true,name=folderId"`
 }
 
 func (o *TemplateFindTemplatesRequest) GetQuery() *string {
@@ -74,6 +76,13 @@ func (o *TemplateFindTemplatesRequest) GetType() *QueryParamType {
 		return nil
 	}
 	return o.Type
+}
+
+func (o *TemplateFindTemplatesRequest) GetFolderID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FolderID
 }
 
 type TemplateFindTemplatesDataType string
@@ -162,6 +171,7 @@ const (
 	TemplateFindTemplatesGlobalActionAuthAccount       TemplateFindTemplatesGlobalActionAuth = "ACCOUNT"
 	TemplateFindTemplatesGlobalActionAuthPasskey       TemplateFindTemplatesGlobalActionAuth = "PASSKEY"
 	TemplateFindTemplatesGlobalActionAuthTwoFactorAuth TemplateFindTemplatesGlobalActionAuth = "TWO_FACTOR_AUTH"
+	TemplateFindTemplatesGlobalActionAuthPassword      TemplateFindTemplatesGlobalActionAuth = "PASSWORD"
 )
 
 func (e TemplateFindTemplatesGlobalActionAuth) ToPointer() *TemplateFindTemplatesGlobalActionAuth {
@@ -178,6 +188,8 @@ func (e *TemplateFindTemplatesGlobalActionAuth) UnmarshalJSON(data []byte) error
 	case "PASSKEY":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
+		fallthrough
+	case "PASSWORD":
 		*e = TemplateFindTemplatesGlobalActionAuth(v)
 		return nil
 	default:
@@ -186,22 +198,20 @@ func (e *TemplateFindTemplatesGlobalActionAuth) UnmarshalJSON(data []byte) error
 }
 
 type TemplateFindTemplatesAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	GlobalAccessAuth *TemplateFindTemplatesGlobalAccessAuth `json:"globalAccessAuth"`
-	// The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-	GlobalActionAuth *TemplateFindTemplatesGlobalActionAuth `json:"globalActionAuth"`
+	GlobalAccessAuth []TemplateFindTemplatesGlobalAccessAuth `json:"globalAccessAuth"`
+	GlobalActionAuth []TemplateFindTemplatesGlobalActionAuth `json:"globalActionAuth"`
 }
 
-func (o *TemplateFindTemplatesAuthOptions) GetGlobalAccessAuth() *TemplateFindTemplatesGlobalAccessAuth {
+func (o *TemplateFindTemplatesAuthOptions) GetGlobalAccessAuth() []TemplateFindTemplatesGlobalAccessAuth {
 	if o == nil {
-		return nil
+		return []TemplateFindTemplatesGlobalAccessAuth{}
 	}
 	return o.GlobalAccessAuth
 }
 
-func (o *TemplateFindTemplatesAuthOptions) GetGlobalActionAuth() *TemplateFindTemplatesGlobalActionAuth {
+func (o *TemplateFindTemplatesAuthOptions) GetGlobalActionAuth() []TemplateFindTemplatesGlobalActionAuth {
 	if o == nil {
-		return nil
+		return []TemplateFindTemplatesGlobalActionAuth{}
 	}
 	return o.GlobalActionAuth
 }
@@ -1783,6 +1793,7 @@ const (
 	TemplateFindTemplatesActionAuthAccount       TemplateFindTemplatesActionAuth = "ACCOUNT"
 	TemplateFindTemplatesActionAuthPasskey       TemplateFindTemplatesActionAuth = "PASSKEY"
 	TemplateFindTemplatesActionAuthTwoFactorAuth TemplateFindTemplatesActionAuth = "TWO_FACTOR_AUTH"
+	TemplateFindTemplatesActionAuthPassword      TemplateFindTemplatesActionAuth = "PASSWORD"
 	TemplateFindTemplatesActionAuthExplicitNone  TemplateFindTemplatesActionAuth = "EXPLICIT_NONE"
 )
 
@@ -1801,6 +1812,8 @@ func (e *TemplateFindTemplatesActionAuth) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
 		*e = TemplateFindTemplatesActionAuth(v)
 		return nil
@@ -1810,22 +1823,20 @@ func (e *TemplateFindTemplatesActionAuth) UnmarshalJSON(data []byte) error {
 }
 
 type TemplateFindTemplatesRecipientAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *TemplateFindTemplatesAccessAuth `json:"accessAuth"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *TemplateFindTemplatesActionAuth `json:"actionAuth"`
+	AccessAuth []TemplateFindTemplatesAccessAuth `json:"accessAuth"`
+	ActionAuth []TemplateFindTemplatesActionAuth `json:"actionAuth"`
 }
 
-func (o *TemplateFindTemplatesRecipientAuthOptions) GetAccessAuth() *TemplateFindTemplatesAccessAuth {
+func (o *TemplateFindTemplatesRecipientAuthOptions) GetAccessAuth() []TemplateFindTemplatesAccessAuth {
 	if o == nil {
-		return nil
+		return []TemplateFindTemplatesAccessAuth{}
 	}
 	return o.AccessAuth
 }
 
-func (o *TemplateFindTemplatesRecipientAuthOptions) GetActionAuth() *TemplateFindTemplatesActionAuth {
+func (o *TemplateFindTemplatesRecipientAuthOptions) GetActionAuth() []TemplateFindTemplatesActionAuth {
 	if o == nil {
-		return nil
+		return []TemplateFindTemplatesActionAuth{}
 	}
 	return o.ActionAuth
 }
@@ -2053,24 +2064,26 @@ func (o *TemplateFindTemplatesDirectLink) GetEnabled() bool {
 }
 
 type TemplateFindTemplatesData struct {
-	Type                   TemplateFindTemplatesDataType      `json:"type"`
-	Visibility             TemplateFindTemplatesVisibility    `json:"visibility"`
-	ID                     float64                            `json:"id"`
-	ExternalID             *string                            `json:"externalId"`
-	Title                  string                             `json:"title"`
-	UserID                 float64                            `json:"userId"`
-	TeamID                 *float64                           `json:"teamId"`
-	AuthOptions            *TemplateFindTemplatesAuthOptions  `json:"authOptions"`
-	TemplateDocumentDataID string                             `json:"templateDocumentDataId"`
-	CreatedAt              string                             `json:"createdAt"`
-	UpdatedAt              string                             `json:"updatedAt"`
-	PublicTitle            string                             `json:"publicTitle"`
-	PublicDescription      string                             `json:"publicDescription"`
-	Team                   *TemplateFindTemplatesTeam         `json:"team"`
-	Fields                 []TemplateFindTemplatesField       `json:"fields"`
-	Recipients             []TemplateFindTemplatesRecipient   `json:"recipients"`
-	TemplateMeta           *TemplateFindTemplatesTemplateMeta `json:"templateMeta"`
-	DirectLink             *TemplateFindTemplatesDirectLink   `json:"directLink"`
+	Type                    TemplateFindTemplatesDataType      `json:"type"`
+	Visibility              TemplateFindTemplatesVisibility    `json:"visibility"`
+	ID                      float64                            `json:"id"`
+	ExternalID              *string                            `json:"externalId"`
+	Title                   string                             `json:"title"`
+	UserID                  float64                            `json:"userId"`
+	TeamID                  float64                            `json:"teamId"`
+	AuthOptions             *TemplateFindTemplatesAuthOptions  `json:"authOptions"`
+	TemplateDocumentDataID  string                             `json:"templateDocumentDataId"`
+	CreatedAt               string                             `json:"createdAt"`
+	UpdatedAt               string                             `json:"updatedAt"`
+	PublicTitle             string                             `json:"publicTitle"`
+	PublicDescription       string                             `json:"publicDescription"`
+	FolderID                *string                            `json:"folderId"`
+	UseLegacyFieldInsertion bool                               `json:"useLegacyFieldInsertion"`
+	Team                    *TemplateFindTemplatesTeam         `json:"team"`
+	Fields                  []TemplateFindTemplatesField       `json:"fields"`
+	Recipients              []TemplateFindTemplatesRecipient   `json:"recipients"`
+	TemplateMeta            *TemplateFindTemplatesTemplateMeta `json:"templateMeta"`
+	DirectLink              *TemplateFindTemplatesDirectLink   `json:"directLink"`
 }
 
 func (o *TemplateFindTemplatesData) GetType() TemplateFindTemplatesDataType {
@@ -2115,9 +2128,9 @@ func (o *TemplateFindTemplatesData) GetUserID() float64 {
 	return o.UserID
 }
 
-func (o *TemplateFindTemplatesData) GetTeamID() *float64 {
+func (o *TemplateFindTemplatesData) GetTeamID() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.TeamID
 }
@@ -2162,6 +2175,20 @@ func (o *TemplateFindTemplatesData) GetPublicDescription() string {
 		return ""
 	}
 	return o.PublicDescription
+}
+
+func (o *TemplateFindTemplatesData) GetFolderID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FolderID
+}
+
+func (o *TemplateFindTemplatesData) GetUseLegacyFieldInsertion() bool {
+	if o == nil {
+		return false
+	}
+	return o.UseLegacyFieldInsertion
 }
 
 func (o *TemplateFindTemplatesData) GetTeam() *TemplateFindTemplatesTeam {
