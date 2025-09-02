@@ -168,6 +168,7 @@ const (
 	RecipientGetTemplateRecipientActionAuthAccount       RecipientGetTemplateRecipientActionAuth = "ACCOUNT"
 	RecipientGetTemplateRecipientActionAuthPasskey       RecipientGetTemplateRecipientActionAuth = "PASSKEY"
 	RecipientGetTemplateRecipientActionAuthTwoFactorAuth RecipientGetTemplateRecipientActionAuth = "TWO_FACTOR_AUTH"
+	RecipientGetTemplateRecipientActionAuthPassword      RecipientGetTemplateRecipientActionAuth = "PASSWORD"
 	RecipientGetTemplateRecipientActionAuthExplicitNone  RecipientGetTemplateRecipientActionAuth = "EXPLICIT_NONE"
 )
 
@@ -186,6 +187,8 @@ func (e *RecipientGetTemplateRecipientActionAuth) UnmarshalJSON(data []byte) err
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
 		*e = RecipientGetTemplateRecipientActionAuth(v)
 		return nil
@@ -195,22 +198,20 @@ func (e *RecipientGetTemplateRecipientActionAuth) UnmarshalJSON(data []byte) err
 }
 
 type RecipientGetTemplateRecipientAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *RecipientGetTemplateRecipientAccessAuth `json:"accessAuth"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *RecipientGetTemplateRecipientActionAuth `json:"actionAuth"`
+	AccessAuth []RecipientGetTemplateRecipientAccessAuth `json:"accessAuth"`
+	ActionAuth []RecipientGetTemplateRecipientActionAuth `json:"actionAuth"`
 }
 
-func (o *RecipientGetTemplateRecipientAuthOptions) GetAccessAuth() *RecipientGetTemplateRecipientAccessAuth {
+func (o *RecipientGetTemplateRecipientAuthOptions) GetAccessAuth() []RecipientGetTemplateRecipientAccessAuth {
 	if o == nil {
-		return nil
+		return []RecipientGetTemplateRecipientAccessAuth{}
 	}
 	return o.AccessAuth
 }
 
-func (o *RecipientGetTemplateRecipientAuthOptions) GetActionAuth() *RecipientGetTemplateRecipientActionAuth {
+func (o *RecipientGetTemplateRecipientAuthOptions) GetActionAuth() []RecipientGetTemplateRecipientActionAuth {
 	if o == nil {
-		return nil
+		return []RecipientGetTemplateRecipientActionAuth{}
 	}
 	return o.ActionAuth
 }
@@ -295,6 +296,17 @@ type RecipientGetTemplateRecipientValue3 struct {
 	Value string `json:"value"`
 }
 
+func (r RecipientGetTemplateRecipientValue3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetTemplateRecipientValue3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientGetTemplateRecipientValue3) GetValue() string {
 	if o == nil {
 		return ""
@@ -310,6 +322,17 @@ type RecipientGetTemplateRecipientFieldMetaDropdown struct {
 	Type         RecipientGetTemplateRecipientFieldMetaTypeDropdown `json:"type"`
 	Values       []RecipientGetTemplateRecipientValue3              `json:"values,omitempty"`
 	DefaultValue *string                                            `json:"defaultValue,omitempty"`
+}
+
+func (r RecipientGetTemplateRecipientFieldMetaDropdown) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetTemplateRecipientFieldMetaDropdown) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientGetTemplateRecipientFieldMetaDropdown) GetLabel() *string {
@@ -390,6 +413,17 @@ type RecipientGetTemplateRecipientValue2 struct {
 	Value   string  `json:"value"`
 }
 
+func (r RecipientGetTemplateRecipientValue2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetTemplateRecipientValue2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientGetTemplateRecipientValue2) GetID() float64 {
 	if o == nil {
 		return 0.0
@@ -420,6 +454,17 @@ type RecipientGetTemplateRecipientFieldMetaCheckbox struct {
 	Values           []RecipientGetTemplateRecipientValue2              `json:"values,omitempty"`
 	ValidationRule   *string                                            `json:"validationRule,omitempty"`
 	ValidationLength *float64                                           `json:"validationLength,omitempty"`
+}
+
+func (r RecipientGetTemplateRecipientFieldMetaCheckbox) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetTemplateRecipientFieldMetaCheckbox) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientGetTemplateRecipientFieldMetaCheckbox) GetLabel() *string {
@@ -507,6 +552,17 @@ type RecipientGetTemplateRecipientValue1 struct {
 	Value   string  `json:"value"`
 }
 
+func (r RecipientGetTemplateRecipientValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetTemplateRecipientValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientGetTemplateRecipientValue1) GetID() float64 {
 	if o == nil {
 		return 0.0
@@ -535,6 +591,17 @@ type RecipientGetTemplateRecipientFieldMetaRadio struct {
 	ReadOnly    *bool                                           `json:"readOnly,omitempty"`
 	Type        RecipientGetTemplateRecipientFieldMetaTypeRadio `json:"type"`
 	Values      []RecipientGetTemplateRecipientValue1           `json:"values,omitempty"`
+}
+
+func (r RecipientGetTemplateRecipientFieldMetaRadio) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetTemplateRecipientFieldMetaRadio) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientGetTemplateRecipientFieldMetaRadio) GetLabel() *string {
@@ -643,6 +710,17 @@ type RecipientGetTemplateRecipientFieldMetaNumber struct {
 	MaxValue     *float64                                         `json:"maxValue,omitempty"`
 	FontSize     *float64                                         `json:"fontSize,omitempty"`
 	TextAlign    *RecipientGetTemplateRecipientTextAlign6         `json:"textAlign,omitempty"`
+}
+
+func (r RecipientGetTemplateRecipientFieldMetaNumber) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetTemplateRecipientFieldMetaNumber) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientGetTemplateRecipientFieldMetaNumber) GetLabel() *string {
@@ -786,6 +864,17 @@ type RecipientGetTemplateRecipientFieldMetaText struct {
 	TextAlign      *RecipientGetTemplateRecipientTextAlign5       `json:"textAlign,omitempty"`
 }
 
+func (r RecipientGetTemplateRecipientFieldMetaText) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetTemplateRecipientFieldMetaText) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientGetTemplateRecipientFieldMetaText) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -911,6 +1000,17 @@ type RecipientGetTemplateRecipientFieldMetaDate struct {
 	TextAlign   *RecipientGetTemplateRecipientTextAlign4       `json:"textAlign,omitempty"`
 }
 
+func (r RecipientGetTemplateRecipientFieldMetaDate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetTemplateRecipientFieldMetaDate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientGetTemplateRecipientFieldMetaDate) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -1020,6 +1120,17 @@ type RecipientGetTemplateRecipientFieldMetaEmail struct {
 	Type        RecipientGetTemplateRecipientFieldMetaTypeEmail `json:"type"`
 	FontSize    *float64                                        `json:"fontSize,omitempty"`
 	TextAlign   *RecipientGetTemplateRecipientTextAlign3        `json:"textAlign,omitempty"`
+}
+
+func (r RecipientGetTemplateRecipientFieldMetaEmail) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetTemplateRecipientFieldMetaEmail) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientGetTemplateRecipientFieldMetaEmail) GetLabel() *string {
@@ -1133,6 +1244,17 @@ type RecipientGetTemplateRecipientFieldMetaName struct {
 	TextAlign   *RecipientGetTemplateRecipientTextAlign2       `json:"textAlign,omitempty"`
 }
 
+func (r RecipientGetTemplateRecipientFieldMetaName) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetTemplateRecipientFieldMetaName) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientGetTemplateRecipientFieldMetaName) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -1242,6 +1364,17 @@ type RecipientGetTemplateRecipientFieldMetaInitials struct {
 	Type        RecipientGetTemplateRecipientFieldMetaTypeInitials `json:"type"`
 	FontSize    *float64                                           `json:"fontSize,omitempty"`
 	TextAlign   *RecipientGetTemplateRecipientTextAlign1           `json:"textAlign,omitempty"`
+}
+
+func (r RecipientGetTemplateRecipientFieldMetaInitials) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetTemplateRecipientFieldMetaInitials) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientGetTemplateRecipientFieldMetaInitials) GetLabel() *string {
@@ -1404,66 +1537,66 @@ func CreateRecipientGetTemplateRecipientFieldMetaUnionRecipientGetTemplateRecipi
 
 func (u *RecipientGetTemplateRecipientFieldMetaUnion) UnmarshalJSON(data []byte) error {
 
-	var recipientGetTemplateRecipientFieldMetaRadio RecipientGetTemplateRecipientFieldMetaRadio = RecipientGetTemplateRecipientFieldMetaRadio{}
-	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaRadio, "", true, true); err == nil {
-		u.RecipientGetTemplateRecipientFieldMetaRadio = &recipientGetTemplateRecipientFieldMetaRadio
-		u.Type = RecipientGetTemplateRecipientFieldMetaUnionTypeRecipientGetTemplateRecipientFieldMetaRadio
-		return nil
-	}
-
 	var recipientGetTemplateRecipientFieldMetaInitials RecipientGetTemplateRecipientFieldMetaInitials = RecipientGetTemplateRecipientFieldMetaInitials{}
-	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaInitials, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaInitials, "", true, nil); err == nil {
 		u.RecipientGetTemplateRecipientFieldMetaInitials = &recipientGetTemplateRecipientFieldMetaInitials
 		u.Type = RecipientGetTemplateRecipientFieldMetaUnionTypeRecipientGetTemplateRecipientFieldMetaInitials
 		return nil
 	}
 
 	var recipientGetTemplateRecipientFieldMetaName RecipientGetTemplateRecipientFieldMetaName = RecipientGetTemplateRecipientFieldMetaName{}
-	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaName, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaName, "", true, nil); err == nil {
 		u.RecipientGetTemplateRecipientFieldMetaName = &recipientGetTemplateRecipientFieldMetaName
 		u.Type = RecipientGetTemplateRecipientFieldMetaUnionTypeRecipientGetTemplateRecipientFieldMetaName
 		return nil
 	}
 
 	var recipientGetTemplateRecipientFieldMetaEmail RecipientGetTemplateRecipientFieldMetaEmail = RecipientGetTemplateRecipientFieldMetaEmail{}
-	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaEmail, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaEmail, "", true, nil); err == nil {
 		u.RecipientGetTemplateRecipientFieldMetaEmail = &recipientGetTemplateRecipientFieldMetaEmail
 		u.Type = RecipientGetTemplateRecipientFieldMetaUnionTypeRecipientGetTemplateRecipientFieldMetaEmail
 		return nil
 	}
 
 	var recipientGetTemplateRecipientFieldMetaDate RecipientGetTemplateRecipientFieldMetaDate = RecipientGetTemplateRecipientFieldMetaDate{}
-	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaDate, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaDate, "", true, nil); err == nil {
 		u.RecipientGetTemplateRecipientFieldMetaDate = &recipientGetTemplateRecipientFieldMetaDate
 		u.Type = RecipientGetTemplateRecipientFieldMetaUnionTypeRecipientGetTemplateRecipientFieldMetaDate
 		return nil
 	}
 
-	var recipientGetTemplateRecipientFieldMetaDropdown RecipientGetTemplateRecipientFieldMetaDropdown = RecipientGetTemplateRecipientFieldMetaDropdown{}
-	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaDropdown, "", true, true); err == nil {
-		u.RecipientGetTemplateRecipientFieldMetaDropdown = &recipientGetTemplateRecipientFieldMetaDropdown
-		u.Type = RecipientGetTemplateRecipientFieldMetaUnionTypeRecipientGetTemplateRecipientFieldMetaDropdown
-		return nil
-	}
-
-	var recipientGetTemplateRecipientFieldMetaCheckbox RecipientGetTemplateRecipientFieldMetaCheckbox = RecipientGetTemplateRecipientFieldMetaCheckbox{}
-	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaCheckbox, "", true, true); err == nil {
-		u.RecipientGetTemplateRecipientFieldMetaCheckbox = &recipientGetTemplateRecipientFieldMetaCheckbox
-		u.Type = RecipientGetTemplateRecipientFieldMetaUnionTypeRecipientGetTemplateRecipientFieldMetaCheckbox
-		return nil
-	}
-
 	var recipientGetTemplateRecipientFieldMetaText RecipientGetTemplateRecipientFieldMetaText = RecipientGetTemplateRecipientFieldMetaText{}
-	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaText, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaText, "", true, nil); err == nil {
 		u.RecipientGetTemplateRecipientFieldMetaText = &recipientGetTemplateRecipientFieldMetaText
 		u.Type = RecipientGetTemplateRecipientFieldMetaUnionTypeRecipientGetTemplateRecipientFieldMetaText
 		return nil
 	}
 
 	var recipientGetTemplateRecipientFieldMetaNumber RecipientGetTemplateRecipientFieldMetaNumber = RecipientGetTemplateRecipientFieldMetaNumber{}
-	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaNumber, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaNumber, "", true, nil); err == nil {
 		u.RecipientGetTemplateRecipientFieldMetaNumber = &recipientGetTemplateRecipientFieldMetaNumber
 		u.Type = RecipientGetTemplateRecipientFieldMetaUnionTypeRecipientGetTemplateRecipientFieldMetaNumber
+		return nil
+	}
+
+	var recipientGetTemplateRecipientFieldMetaRadio RecipientGetTemplateRecipientFieldMetaRadio = RecipientGetTemplateRecipientFieldMetaRadio{}
+	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaRadio, "", true, nil); err == nil {
+		u.RecipientGetTemplateRecipientFieldMetaRadio = &recipientGetTemplateRecipientFieldMetaRadio
+		u.Type = RecipientGetTemplateRecipientFieldMetaUnionTypeRecipientGetTemplateRecipientFieldMetaRadio
+		return nil
+	}
+
+	var recipientGetTemplateRecipientFieldMetaCheckbox RecipientGetTemplateRecipientFieldMetaCheckbox = RecipientGetTemplateRecipientFieldMetaCheckbox{}
+	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaCheckbox, "", true, nil); err == nil {
+		u.RecipientGetTemplateRecipientFieldMetaCheckbox = &recipientGetTemplateRecipientFieldMetaCheckbox
+		u.Type = RecipientGetTemplateRecipientFieldMetaUnionTypeRecipientGetTemplateRecipientFieldMetaCheckbox
+		return nil
+	}
+
+	var recipientGetTemplateRecipientFieldMetaDropdown RecipientGetTemplateRecipientFieldMetaDropdown = RecipientGetTemplateRecipientFieldMetaDropdown{}
+	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaDropdown, "", true, nil); err == nil {
+		u.RecipientGetTemplateRecipientFieldMetaDropdown = &recipientGetTemplateRecipientFieldMetaDropdown
+		u.Type = RecipientGetTemplateRecipientFieldMetaUnionTypeRecipientGetTemplateRecipientFieldMetaDropdown
 		return nil
 	}
 

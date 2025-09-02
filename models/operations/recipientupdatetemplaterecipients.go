@@ -10,20 +10,20 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type RecipientUpdateTemplateRecipientsRoleRequestBody string
+type RecipientUpdateTemplateRecipientsRoleRequest string
 
 const (
-	RecipientUpdateTemplateRecipientsRoleRequestBodyCc        RecipientUpdateTemplateRecipientsRoleRequestBody = "CC"
-	RecipientUpdateTemplateRecipientsRoleRequestBodySigner    RecipientUpdateTemplateRecipientsRoleRequestBody = "SIGNER"
-	RecipientUpdateTemplateRecipientsRoleRequestBodyViewer    RecipientUpdateTemplateRecipientsRoleRequestBody = "VIEWER"
-	RecipientUpdateTemplateRecipientsRoleRequestBodyApprover  RecipientUpdateTemplateRecipientsRoleRequestBody = "APPROVER"
-	RecipientUpdateTemplateRecipientsRoleRequestBodyAssistant RecipientUpdateTemplateRecipientsRoleRequestBody = "ASSISTANT"
+	RecipientUpdateTemplateRecipientsRoleRequestCc        RecipientUpdateTemplateRecipientsRoleRequest = "CC"
+	RecipientUpdateTemplateRecipientsRoleRequestSigner    RecipientUpdateTemplateRecipientsRoleRequest = "SIGNER"
+	RecipientUpdateTemplateRecipientsRoleRequestViewer    RecipientUpdateTemplateRecipientsRoleRequest = "VIEWER"
+	RecipientUpdateTemplateRecipientsRoleRequestApprover  RecipientUpdateTemplateRecipientsRoleRequest = "APPROVER"
+	RecipientUpdateTemplateRecipientsRoleRequestAssistant RecipientUpdateTemplateRecipientsRoleRequest = "ASSISTANT"
 )
 
-func (e RecipientUpdateTemplateRecipientsRoleRequestBody) ToPointer() *RecipientUpdateTemplateRecipientsRoleRequestBody {
+func (e RecipientUpdateTemplateRecipientsRoleRequest) ToPointer() *RecipientUpdateTemplateRecipientsRoleRequest {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsRoleRequestBody) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsRoleRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -38,51 +38,52 @@ func (e *RecipientUpdateTemplateRecipientsRoleRequestBody) UnmarshalJSON(data []
 	case "APPROVER":
 		fallthrough
 	case "ASSISTANT":
-		*e = RecipientUpdateTemplateRecipientsRoleRequestBody(v)
+		*e = RecipientUpdateTemplateRecipientsRoleRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsRoleRequestBody: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsRoleRequest: %v", v)
 	}
 }
 
-// RecipientUpdateTemplateRecipientsAccessAuthRequestBody - The type of authentication required for the recipient to access the document.
-type RecipientUpdateTemplateRecipientsAccessAuthRequestBody string
+// RecipientUpdateTemplateRecipientsAccessAuthRequest - The type of authentication required for the recipient to access the document.
+type RecipientUpdateTemplateRecipientsAccessAuthRequest string
 
 const (
-	RecipientUpdateTemplateRecipientsAccessAuthRequestBodyAccount RecipientUpdateTemplateRecipientsAccessAuthRequestBody = "ACCOUNT"
+	RecipientUpdateTemplateRecipientsAccessAuthRequestAccount RecipientUpdateTemplateRecipientsAccessAuthRequest = "ACCOUNT"
 )
 
-func (e RecipientUpdateTemplateRecipientsAccessAuthRequestBody) ToPointer() *RecipientUpdateTemplateRecipientsAccessAuthRequestBody {
+func (e RecipientUpdateTemplateRecipientsAccessAuthRequest) ToPointer() *RecipientUpdateTemplateRecipientsAccessAuthRequest {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsAccessAuthRequestBody) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsAccessAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "ACCOUNT":
-		*e = RecipientUpdateTemplateRecipientsAccessAuthRequestBody(v)
+		*e = RecipientUpdateTemplateRecipientsAccessAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsAccessAuthRequestBody: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsAccessAuthRequest: %v", v)
 	}
 }
 
-// RecipientUpdateTemplateRecipientsActionAuthRequestBody - The type of authentication required for the recipient to sign the document.
-type RecipientUpdateTemplateRecipientsActionAuthRequestBody string
+// RecipientUpdateTemplateRecipientsActionAuthRequest - The type of authentication required for the recipient to sign the document.
+type RecipientUpdateTemplateRecipientsActionAuthRequest string
 
 const (
-	RecipientUpdateTemplateRecipientsActionAuthRequestBodyAccount       RecipientUpdateTemplateRecipientsActionAuthRequestBody = "ACCOUNT"
-	RecipientUpdateTemplateRecipientsActionAuthRequestBodyPasskey       RecipientUpdateTemplateRecipientsActionAuthRequestBody = "PASSKEY"
-	RecipientUpdateTemplateRecipientsActionAuthRequestBodyTwoFactorAuth RecipientUpdateTemplateRecipientsActionAuthRequestBody = "TWO_FACTOR_AUTH"
-	RecipientUpdateTemplateRecipientsActionAuthRequestBodyExplicitNone  RecipientUpdateTemplateRecipientsActionAuthRequestBody = "EXPLICIT_NONE"
+	RecipientUpdateTemplateRecipientsActionAuthRequestAccount       RecipientUpdateTemplateRecipientsActionAuthRequest = "ACCOUNT"
+	RecipientUpdateTemplateRecipientsActionAuthRequestPasskey       RecipientUpdateTemplateRecipientsActionAuthRequest = "PASSKEY"
+	RecipientUpdateTemplateRecipientsActionAuthRequestTwoFactorAuth RecipientUpdateTemplateRecipientsActionAuthRequest = "TWO_FACTOR_AUTH"
+	RecipientUpdateTemplateRecipientsActionAuthRequestPassword      RecipientUpdateTemplateRecipientsActionAuthRequest = "PASSWORD"
+	RecipientUpdateTemplateRecipientsActionAuthRequestExplicitNone  RecipientUpdateTemplateRecipientsActionAuthRequest = "EXPLICIT_NONE"
 )
 
-func (e RecipientUpdateTemplateRecipientsActionAuthRequestBody) ToPointer() *RecipientUpdateTemplateRecipientsActionAuthRequestBody {
+func (e RecipientUpdateTemplateRecipientsActionAuthRequest) ToPointer() *RecipientUpdateTemplateRecipientsActionAuthRequest {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientsActionAuthRequestBody) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientsActionAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -94,70 +95,70 @@ func (e *RecipientUpdateTemplateRecipientsActionAuthRequestBody) UnmarshalJSON(d
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
-		*e = RecipientUpdateTemplateRecipientsActionAuthRequestBody(v)
+		*e = RecipientUpdateTemplateRecipientsActionAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsActionAuthRequestBody: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientsActionAuthRequest: %v", v)
 	}
 }
 
-type RecipientUpdateTemplateRecipientsRecipientRequestBody struct {
+type RecipientUpdateTemplateRecipientsRecipientRequest struct {
 	// The ID of the recipient to update.
-	ID           float64                                           `json:"id"`
-	Email        *string                                           `json:"email,omitempty"`
-	Name         *string                                           `json:"name,omitempty"`
-	Role         *RecipientUpdateTemplateRecipientsRoleRequestBody `json:"role,omitempty"`
-	SigningOrder *float64                                          `json:"signingOrder,omitempty"`
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *RecipientUpdateTemplateRecipientsAccessAuthRequestBody `json:"accessAuth,omitempty"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *RecipientUpdateTemplateRecipientsActionAuthRequestBody `json:"actionAuth,omitempty"`
+	ID           float64                                              `json:"id"`
+	Email        *string                                              `json:"email,omitempty"`
+	Name         *string                                              `json:"name,omitempty"`
+	Role         *RecipientUpdateTemplateRecipientsRoleRequest        `json:"role,omitempty"`
+	SigningOrder *float64                                             `json:"signingOrder,omitempty"`
+	AccessAuth   []RecipientUpdateTemplateRecipientsAccessAuthRequest `json:"accessAuth,omitempty"`
+	ActionAuth   []RecipientUpdateTemplateRecipientsActionAuthRequest `json:"actionAuth,omitempty"`
 }
 
-func (o *RecipientUpdateTemplateRecipientsRecipientRequestBody) GetID() float64 {
+func (o *RecipientUpdateTemplateRecipientsRecipientRequest) GetID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ID
 }
 
-func (o *RecipientUpdateTemplateRecipientsRecipientRequestBody) GetEmail() *string {
+func (o *RecipientUpdateTemplateRecipientsRecipientRequest) GetEmail() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Email
 }
 
-func (o *RecipientUpdateTemplateRecipientsRecipientRequestBody) GetName() *string {
+func (o *RecipientUpdateTemplateRecipientsRecipientRequest) GetName() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Name
 }
 
-func (o *RecipientUpdateTemplateRecipientsRecipientRequestBody) GetRole() *RecipientUpdateTemplateRecipientsRoleRequestBody {
+func (o *RecipientUpdateTemplateRecipientsRecipientRequest) GetRole() *RecipientUpdateTemplateRecipientsRoleRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Role
 }
 
-func (o *RecipientUpdateTemplateRecipientsRecipientRequestBody) GetSigningOrder() *float64 {
+func (o *RecipientUpdateTemplateRecipientsRecipientRequest) GetSigningOrder() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.SigningOrder
 }
 
-func (o *RecipientUpdateTemplateRecipientsRecipientRequestBody) GetAccessAuth() *RecipientUpdateTemplateRecipientsAccessAuthRequestBody {
+func (o *RecipientUpdateTemplateRecipientsRecipientRequest) GetAccessAuth() []RecipientUpdateTemplateRecipientsAccessAuthRequest {
 	if o == nil {
 		return nil
 	}
 	return o.AccessAuth
 }
 
-func (o *RecipientUpdateTemplateRecipientsRecipientRequestBody) GetActionAuth() *RecipientUpdateTemplateRecipientsActionAuthRequestBody {
+func (o *RecipientUpdateTemplateRecipientsRecipientRequest) GetActionAuth() []RecipientUpdateTemplateRecipientsActionAuthRequest {
 	if o == nil {
 		return nil
 	}
@@ -165,8 +166,8 @@ func (o *RecipientUpdateTemplateRecipientsRecipientRequestBody) GetActionAuth() 
 }
 
 type RecipientUpdateTemplateRecipientsRequest struct {
-	TemplateID float64                                                 `json:"templateId"`
-	Recipients []RecipientUpdateTemplateRecipientsRecipientRequestBody `json:"recipients"`
+	TemplateID float64                                             `json:"templateId"`
+	Recipients []RecipientUpdateTemplateRecipientsRecipientRequest `json:"recipients"`
 }
 
 func (o *RecipientUpdateTemplateRecipientsRequest) GetTemplateID() float64 {
@@ -176,9 +177,9 @@ func (o *RecipientUpdateTemplateRecipientsRequest) GetTemplateID() float64 {
 	return o.TemplateID
 }
 
-func (o *RecipientUpdateTemplateRecipientsRequest) GetRecipients() []RecipientUpdateTemplateRecipientsRecipientRequestBody {
+func (o *RecipientUpdateTemplateRecipientsRequest) GetRecipients() []RecipientUpdateTemplateRecipientsRecipientRequest {
 	if o == nil {
-		return []RecipientUpdateTemplateRecipientsRecipientRequestBody{}
+		return []RecipientUpdateTemplateRecipientsRecipientRequest{}
 	}
 	return o.Recipients
 }
@@ -330,6 +331,7 @@ const (
 	RecipientUpdateTemplateRecipientsActionAuthResponseAccount       RecipientUpdateTemplateRecipientsActionAuthResponse = "ACCOUNT"
 	RecipientUpdateTemplateRecipientsActionAuthResponsePasskey       RecipientUpdateTemplateRecipientsActionAuthResponse = "PASSKEY"
 	RecipientUpdateTemplateRecipientsActionAuthResponseTwoFactorAuth RecipientUpdateTemplateRecipientsActionAuthResponse = "TWO_FACTOR_AUTH"
+	RecipientUpdateTemplateRecipientsActionAuthResponsePassword      RecipientUpdateTemplateRecipientsActionAuthResponse = "PASSWORD"
 	RecipientUpdateTemplateRecipientsActionAuthResponseExplicitNone  RecipientUpdateTemplateRecipientsActionAuthResponse = "EXPLICIT_NONE"
 )
 
@@ -348,6 +350,8 @@ func (e *RecipientUpdateTemplateRecipientsActionAuthResponse) UnmarshalJSON(data
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
 		*e = RecipientUpdateTemplateRecipientsActionAuthResponse(v)
 		return nil
@@ -357,22 +361,20 @@ func (e *RecipientUpdateTemplateRecipientsActionAuthResponse) UnmarshalJSON(data
 }
 
 type RecipientUpdateTemplateRecipientsAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *RecipientUpdateTemplateRecipientsAccessAuthResponse `json:"accessAuth"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *RecipientUpdateTemplateRecipientsActionAuthResponse `json:"actionAuth"`
+	AccessAuth []RecipientUpdateTemplateRecipientsAccessAuthResponse `json:"accessAuth"`
+	ActionAuth []RecipientUpdateTemplateRecipientsActionAuthResponse `json:"actionAuth"`
 }
 
-func (o *RecipientUpdateTemplateRecipientsAuthOptions) GetAccessAuth() *RecipientUpdateTemplateRecipientsAccessAuthResponse {
+func (o *RecipientUpdateTemplateRecipientsAuthOptions) GetAccessAuth() []RecipientUpdateTemplateRecipientsAccessAuthResponse {
 	if o == nil {
-		return nil
+		return []RecipientUpdateTemplateRecipientsAccessAuthResponse{}
 	}
 	return o.AccessAuth
 }
 
-func (o *RecipientUpdateTemplateRecipientsAuthOptions) GetActionAuth() *RecipientUpdateTemplateRecipientsActionAuthResponse {
+func (o *RecipientUpdateTemplateRecipientsAuthOptions) GetActionAuth() []RecipientUpdateTemplateRecipientsActionAuthResponse {
 	if o == nil {
-		return nil
+		return []RecipientUpdateTemplateRecipientsActionAuthResponse{}
 	}
 	return o.ActionAuth
 }
@@ -457,6 +459,17 @@ type RecipientUpdateTemplateRecipientsValue3 struct {
 	Value string `json:"value"`
 }
 
+func (r RecipientUpdateTemplateRecipientsValue3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientUpdateTemplateRecipientsValue3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientUpdateTemplateRecipientsValue3) GetValue() string {
 	if o == nil {
 		return ""
@@ -472,6 +485,17 @@ type RecipientUpdateTemplateRecipientsFieldMetaDropdown struct {
 	Type         RecipientUpdateTemplateRecipientsFieldMetaTypeDropdown `json:"type"`
 	Values       []RecipientUpdateTemplateRecipientsValue3              `json:"values,omitempty"`
 	DefaultValue *string                                                `json:"defaultValue,omitempty"`
+}
+
+func (r RecipientUpdateTemplateRecipientsFieldMetaDropdown) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientUpdateTemplateRecipientsFieldMetaDropdown) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientUpdateTemplateRecipientsFieldMetaDropdown) GetLabel() *string {
@@ -552,6 +576,17 @@ type RecipientUpdateTemplateRecipientsValue2 struct {
 	Value   string  `json:"value"`
 }
 
+func (r RecipientUpdateTemplateRecipientsValue2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientUpdateTemplateRecipientsValue2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientUpdateTemplateRecipientsValue2) GetID() float64 {
 	if o == nil {
 		return 0.0
@@ -582,6 +617,17 @@ type RecipientUpdateTemplateRecipientsFieldMetaCheckbox struct {
 	Values           []RecipientUpdateTemplateRecipientsValue2              `json:"values,omitempty"`
 	ValidationRule   *string                                                `json:"validationRule,omitempty"`
 	ValidationLength *float64                                               `json:"validationLength,omitempty"`
+}
+
+func (r RecipientUpdateTemplateRecipientsFieldMetaCheckbox) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientUpdateTemplateRecipientsFieldMetaCheckbox) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientUpdateTemplateRecipientsFieldMetaCheckbox) GetLabel() *string {
@@ -669,6 +715,17 @@ type RecipientUpdateTemplateRecipientsValue1 struct {
 	Value   string  `json:"value"`
 }
 
+func (r RecipientUpdateTemplateRecipientsValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientUpdateTemplateRecipientsValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientUpdateTemplateRecipientsValue1) GetID() float64 {
 	if o == nil {
 		return 0.0
@@ -697,6 +754,17 @@ type RecipientUpdateTemplateRecipientsFieldMetaRadio struct {
 	ReadOnly    *bool                                               `json:"readOnly,omitempty"`
 	Type        RecipientUpdateTemplateRecipientsFieldMetaTypeRadio `json:"type"`
 	Values      []RecipientUpdateTemplateRecipientsValue1           `json:"values,omitempty"`
+}
+
+func (r RecipientUpdateTemplateRecipientsFieldMetaRadio) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientUpdateTemplateRecipientsFieldMetaRadio) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientUpdateTemplateRecipientsFieldMetaRadio) GetLabel() *string {
@@ -805,6 +873,17 @@ type RecipientUpdateTemplateRecipientsFieldMetaNumber struct {
 	MaxValue     *float64                                             `json:"maxValue,omitempty"`
 	FontSize     *float64                                             `json:"fontSize,omitempty"`
 	TextAlign    *RecipientUpdateTemplateRecipientsTextAlign6         `json:"textAlign,omitempty"`
+}
+
+func (r RecipientUpdateTemplateRecipientsFieldMetaNumber) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientUpdateTemplateRecipientsFieldMetaNumber) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientUpdateTemplateRecipientsFieldMetaNumber) GetLabel() *string {
@@ -948,6 +1027,17 @@ type RecipientUpdateTemplateRecipientsFieldMetaText struct {
 	TextAlign      *RecipientUpdateTemplateRecipientsTextAlign5       `json:"textAlign,omitempty"`
 }
 
+func (r RecipientUpdateTemplateRecipientsFieldMetaText) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientUpdateTemplateRecipientsFieldMetaText) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientUpdateTemplateRecipientsFieldMetaText) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -1073,6 +1163,17 @@ type RecipientUpdateTemplateRecipientsFieldMetaDate struct {
 	TextAlign   *RecipientUpdateTemplateRecipientsTextAlign4       `json:"textAlign,omitempty"`
 }
 
+func (r RecipientUpdateTemplateRecipientsFieldMetaDate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientUpdateTemplateRecipientsFieldMetaDate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientUpdateTemplateRecipientsFieldMetaDate) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -1182,6 +1283,17 @@ type RecipientUpdateTemplateRecipientsFieldMetaEmail struct {
 	Type        RecipientUpdateTemplateRecipientsFieldMetaTypeEmail `json:"type"`
 	FontSize    *float64                                            `json:"fontSize,omitempty"`
 	TextAlign   *RecipientUpdateTemplateRecipientsTextAlign3        `json:"textAlign,omitempty"`
+}
+
+func (r RecipientUpdateTemplateRecipientsFieldMetaEmail) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientUpdateTemplateRecipientsFieldMetaEmail) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientUpdateTemplateRecipientsFieldMetaEmail) GetLabel() *string {
@@ -1295,6 +1407,17 @@ type RecipientUpdateTemplateRecipientsFieldMetaName struct {
 	TextAlign   *RecipientUpdateTemplateRecipientsTextAlign2       `json:"textAlign,omitempty"`
 }
 
+func (r RecipientUpdateTemplateRecipientsFieldMetaName) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientUpdateTemplateRecipientsFieldMetaName) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientUpdateTemplateRecipientsFieldMetaName) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -1404,6 +1527,17 @@ type RecipientUpdateTemplateRecipientsFieldMetaInitials struct {
 	Type        RecipientUpdateTemplateRecipientsFieldMetaTypeInitials `json:"type"`
 	FontSize    *float64                                               `json:"fontSize,omitempty"`
 	TextAlign   *RecipientUpdateTemplateRecipientsTextAlign1           `json:"textAlign,omitempty"`
+}
+
+func (r RecipientUpdateTemplateRecipientsFieldMetaInitials) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientUpdateTemplateRecipientsFieldMetaInitials) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientUpdateTemplateRecipientsFieldMetaInitials) GetLabel() *string {
@@ -1566,66 +1700,66 @@ func CreateRecipientUpdateTemplateRecipientsFieldMetaUnionRecipientUpdateTemplat
 
 func (u *RecipientUpdateTemplateRecipientsFieldMetaUnion) UnmarshalJSON(data []byte) error {
 
-	var recipientUpdateTemplateRecipientsFieldMetaRadio RecipientUpdateTemplateRecipientsFieldMetaRadio = RecipientUpdateTemplateRecipientsFieldMetaRadio{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaRadio, "", true, true); err == nil {
-		u.RecipientUpdateTemplateRecipientsFieldMetaRadio = &recipientUpdateTemplateRecipientsFieldMetaRadio
-		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaRadio
-		return nil
-	}
-
 	var recipientUpdateTemplateRecipientsFieldMetaInitials RecipientUpdateTemplateRecipientsFieldMetaInitials = RecipientUpdateTemplateRecipientsFieldMetaInitials{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaInitials, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaInitials, "", true, nil); err == nil {
 		u.RecipientUpdateTemplateRecipientsFieldMetaInitials = &recipientUpdateTemplateRecipientsFieldMetaInitials
 		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaInitials
 		return nil
 	}
 
 	var recipientUpdateTemplateRecipientsFieldMetaName RecipientUpdateTemplateRecipientsFieldMetaName = RecipientUpdateTemplateRecipientsFieldMetaName{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaName, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaName, "", true, nil); err == nil {
 		u.RecipientUpdateTemplateRecipientsFieldMetaName = &recipientUpdateTemplateRecipientsFieldMetaName
 		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaName
 		return nil
 	}
 
 	var recipientUpdateTemplateRecipientsFieldMetaEmail RecipientUpdateTemplateRecipientsFieldMetaEmail = RecipientUpdateTemplateRecipientsFieldMetaEmail{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaEmail, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaEmail, "", true, nil); err == nil {
 		u.RecipientUpdateTemplateRecipientsFieldMetaEmail = &recipientUpdateTemplateRecipientsFieldMetaEmail
 		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaEmail
 		return nil
 	}
 
 	var recipientUpdateTemplateRecipientsFieldMetaDate RecipientUpdateTemplateRecipientsFieldMetaDate = RecipientUpdateTemplateRecipientsFieldMetaDate{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaDate, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaDate, "", true, nil); err == nil {
 		u.RecipientUpdateTemplateRecipientsFieldMetaDate = &recipientUpdateTemplateRecipientsFieldMetaDate
 		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaDate
 		return nil
 	}
 
-	var recipientUpdateTemplateRecipientsFieldMetaDropdown RecipientUpdateTemplateRecipientsFieldMetaDropdown = RecipientUpdateTemplateRecipientsFieldMetaDropdown{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaDropdown, "", true, true); err == nil {
-		u.RecipientUpdateTemplateRecipientsFieldMetaDropdown = &recipientUpdateTemplateRecipientsFieldMetaDropdown
-		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaDropdown
-		return nil
-	}
-
-	var recipientUpdateTemplateRecipientsFieldMetaCheckbox RecipientUpdateTemplateRecipientsFieldMetaCheckbox = RecipientUpdateTemplateRecipientsFieldMetaCheckbox{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaCheckbox, "", true, true); err == nil {
-		u.RecipientUpdateTemplateRecipientsFieldMetaCheckbox = &recipientUpdateTemplateRecipientsFieldMetaCheckbox
-		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaCheckbox
-		return nil
-	}
-
 	var recipientUpdateTemplateRecipientsFieldMetaText RecipientUpdateTemplateRecipientsFieldMetaText = RecipientUpdateTemplateRecipientsFieldMetaText{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaText, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaText, "", true, nil); err == nil {
 		u.RecipientUpdateTemplateRecipientsFieldMetaText = &recipientUpdateTemplateRecipientsFieldMetaText
 		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaText
 		return nil
 	}
 
 	var recipientUpdateTemplateRecipientsFieldMetaNumber RecipientUpdateTemplateRecipientsFieldMetaNumber = RecipientUpdateTemplateRecipientsFieldMetaNumber{}
-	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaNumber, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaNumber, "", true, nil); err == nil {
 		u.RecipientUpdateTemplateRecipientsFieldMetaNumber = &recipientUpdateTemplateRecipientsFieldMetaNumber
 		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaNumber
+		return nil
+	}
+
+	var recipientUpdateTemplateRecipientsFieldMetaRadio RecipientUpdateTemplateRecipientsFieldMetaRadio = RecipientUpdateTemplateRecipientsFieldMetaRadio{}
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaRadio, "", true, nil); err == nil {
+		u.RecipientUpdateTemplateRecipientsFieldMetaRadio = &recipientUpdateTemplateRecipientsFieldMetaRadio
+		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaRadio
+		return nil
+	}
+
+	var recipientUpdateTemplateRecipientsFieldMetaCheckbox RecipientUpdateTemplateRecipientsFieldMetaCheckbox = RecipientUpdateTemplateRecipientsFieldMetaCheckbox{}
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaCheckbox, "", true, nil); err == nil {
+		u.RecipientUpdateTemplateRecipientsFieldMetaCheckbox = &recipientUpdateTemplateRecipientsFieldMetaCheckbox
+		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaCheckbox
+		return nil
+	}
+
+	var recipientUpdateTemplateRecipientsFieldMetaDropdown RecipientUpdateTemplateRecipientsFieldMetaDropdown = RecipientUpdateTemplateRecipientsFieldMetaDropdown{}
+	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientsFieldMetaDropdown, "", true, nil); err == nil {
+		u.RecipientUpdateTemplateRecipientsFieldMetaDropdown = &recipientUpdateTemplateRecipientsFieldMetaDropdown
+		u.Type = RecipientUpdateTemplateRecipientsFieldMetaUnionTypeRecipientUpdateTemplateRecipientsFieldMetaDropdown
 		return nil
 	}
 

@@ -164,12 +164,11 @@ func main() {
 
 ### [Documents](docs/sdks/documents/README.md)
 
+* [Update](docs/sdks/documents/README.md#update) - Update document
 * [Find](docs/sdks/documents/README.md#find) - Find documents
 * [Get](docs/sdks/documents/README.md#get) - Get document
 * [CreateV0](docs/sdks/documents/README.md#createv0) - Create document
-* [Update](docs/sdks/documents/README.md#update) - Update document
 * [Delete](docs/sdks/documents/README.md#delete) - Delete document
-* [MoveToTeam](docs/sdks/documents/README.md#movetoteam) - Move document
 * [Distribute](docs/sdks/documents/README.md#distribute) - Distribute document
 * [Redistribute](docs/sdks/documents/README.md#redistribute) - Redistribute document
 * [Duplicate](docs/sdks/documents/README.md#duplicate) - Duplicate document
@@ -192,6 +191,11 @@ func main() {
 * [UpdateMany](docs/sdks/documentsrecipients/README.md#updatemany) - Update document recipients
 * [Delete](docs/sdks/documentsrecipients/README.md#delete) - Delete document recipient
 
+### [Embedding](docs/sdks/embedding/README.md)
+
+* [EmbeddingPresignCreateEmbeddingPresignToken](docs/sdks/embedding/README.md#embeddingpresigncreateembeddingpresigntoken) - Create embedding presign token
+* [EmbeddingPresignVerifyEmbeddingPresignToken](docs/sdks/embedding/README.md#embeddingpresignverifyembeddingpresigntoken) - Verify embedding presign token
+
 ### [Templates](docs/sdks/templates/README.md)
 
 * [Find](docs/sdks/templates/README.md#find) - Find templates
@@ -200,7 +204,6 @@ func main() {
 * [Duplicate](docs/sdks/templates/README.md#duplicate) - Duplicate template
 * [Delete](docs/sdks/templates/README.md#delete) - Delete template
 * [Use](docs/sdks/templates/README.md#use) - Use template
-* [MoveToTeam](docs/sdks/templates/README.md#movetoteam) - Move template
 
 #### [Templates.DirectLink](docs/sdks/directlink/README.md)
 
@@ -255,7 +258,9 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{}, operations.WithRetries(
+	res, err := s.Documents.Update(ctx, operations.DocumentUpdateDocumentRequest{
+		DocumentID: 9701.92,
+	}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -307,7 +312,9 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
+	res, err := s.Documents.Update(ctx, operations.DocumentUpdateDocumentRequest{
+		DocumentID: 9701.92,
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -326,14 +333,13 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By Default, an API error will return `apierrors.APIError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
 
-For example, the `Find` function may return the following errors:
+For example, the `Update` function may return the following errors:
 
-| Error Type                                         | Status Code | Content Type     |
-| -------------------------------------------------- | ----------- | ---------------- |
-| apierrors.DocumentFindDocumentsBadRequestError     | 400         | application/json |
-| apierrors.DocumentFindDocumentsNotFoundError       | 404         | application/json |
-| apierrors.DocumentFindDocumentsInternalServerError | 500         | application/json |
-| apierrors.APIError                                 | 4XX, 5XX    | \*/\*            |
+| Error Type                                          | Status Code | Content Type     |
+| --------------------------------------------------- | ----------- | ---------------- |
+| apierrors.DocumentUpdateDocumentBadRequestError     | 400         | application/json |
+| apierrors.DocumentUpdateDocumentInternalServerError | 500         | application/json |
+| apierrors.APIError                                  | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
@@ -357,22 +363,18 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
+	res, err := s.Documents.Update(ctx, operations.DocumentUpdateDocumentRequest{
+		DocumentID: 9701.92,
+	})
 	if err != nil {
 
-		var e *apierrors.DocumentFindDocumentsBadRequestError
+		var e *apierrors.DocumentUpdateDocumentBadRequestError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
 		}
 
-		var e *apierrors.DocumentFindDocumentsNotFoundError
-		if errors.As(err, &e) {
-			// handle error
-			log.Fatal(e.Error())
-		}
-
-		var e *apierrors.DocumentFindDocumentsInternalServerError
+		var e *apierrors.DocumentUpdateDocumentInternalServerError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
@@ -414,7 +416,9 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Find(ctx, operations.DocumentFindDocumentsRequest{})
+	res, err := s.Documents.Update(ctx, operations.DocumentUpdateDocumentRequest{
+		DocumentID: 9701.92,
+	})
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -2,7 +2,7 @@
 
 package sdkgo
 
-// Generated from OpenAPI doc version 0.0.0 and generator version 2.623.0
+// Generated from OpenAPI doc version 0.0.0 and generator version 2.687.13
 
 import (
 	"context"
@@ -52,6 +52,7 @@ type Documenso struct {
 	SDKVersion string
 	Documents  *Documents
 	Templates  *Templates
+	Embedding  *Embedding
 
 	sdkConfiguration config.SDKConfiguration
 	hooks            *hooks.Hooks
@@ -128,9 +129,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Documenso {
 	sdk := &Documenso{
-		SDKVersion: "0.1.0",
+		SDKVersion: "0.2.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.1.0 2.623.0 0.0.0 github.com/documenso/sdk-go",
+			UserAgent:  "speakeasy-sdk/go 0.2.0 2.687.13 0.0.0 github.com/documenso/sdk-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
@@ -160,6 +161,7 @@ func New(opts ...SDKOption) *Documenso {
 
 	sdk.Documents = newDocuments(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Templates = newTemplates(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Embedding = newEmbedding(sdk, sdk.sdkConfiguration, sdk.hooks)
 
 	return sdk
 }

@@ -168,6 +168,7 @@ const (
 	RecipientGetDocumentRecipientActionAuthAccount       RecipientGetDocumentRecipientActionAuth = "ACCOUNT"
 	RecipientGetDocumentRecipientActionAuthPasskey       RecipientGetDocumentRecipientActionAuth = "PASSKEY"
 	RecipientGetDocumentRecipientActionAuthTwoFactorAuth RecipientGetDocumentRecipientActionAuth = "TWO_FACTOR_AUTH"
+	RecipientGetDocumentRecipientActionAuthPassword      RecipientGetDocumentRecipientActionAuth = "PASSWORD"
 	RecipientGetDocumentRecipientActionAuthExplicitNone  RecipientGetDocumentRecipientActionAuth = "EXPLICIT_NONE"
 )
 
@@ -186,6 +187,8 @@ func (e *RecipientGetDocumentRecipientActionAuth) UnmarshalJSON(data []byte) err
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
 		*e = RecipientGetDocumentRecipientActionAuth(v)
 		return nil
@@ -195,22 +198,20 @@ func (e *RecipientGetDocumentRecipientActionAuth) UnmarshalJSON(data []byte) err
 }
 
 type RecipientGetDocumentRecipientAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *RecipientGetDocumentRecipientAccessAuth `json:"accessAuth"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *RecipientGetDocumentRecipientActionAuth `json:"actionAuth"`
+	AccessAuth []RecipientGetDocumentRecipientAccessAuth `json:"accessAuth"`
+	ActionAuth []RecipientGetDocumentRecipientActionAuth `json:"actionAuth"`
 }
 
-func (o *RecipientGetDocumentRecipientAuthOptions) GetAccessAuth() *RecipientGetDocumentRecipientAccessAuth {
+func (o *RecipientGetDocumentRecipientAuthOptions) GetAccessAuth() []RecipientGetDocumentRecipientAccessAuth {
 	if o == nil {
-		return nil
+		return []RecipientGetDocumentRecipientAccessAuth{}
 	}
 	return o.AccessAuth
 }
 
-func (o *RecipientGetDocumentRecipientAuthOptions) GetActionAuth() *RecipientGetDocumentRecipientActionAuth {
+func (o *RecipientGetDocumentRecipientAuthOptions) GetActionAuth() []RecipientGetDocumentRecipientActionAuth {
 	if o == nil {
-		return nil
+		return []RecipientGetDocumentRecipientActionAuth{}
 	}
 	return o.ActionAuth
 }
@@ -295,6 +296,17 @@ type RecipientGetDocumentRecipientValue3 struct {
 	Value string `json:"value"`
 }
 
+func (r RecipientGetDocumentRecipientValue3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetDocumentRecipientValue3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientGetDocumentRecipientValue3) GetValue() string {
 	if o == nil {
 		return ""
@@ -310,6 +322,17 @@ type RecipientGetDocumentRecipientFieldMetaDropdown struct {
 	Type         RecipientGetDocumentRecipientFieldMetaTypeDropdown `json:"type"`
 	Values       []RecipientGetDocumentRecipientValue3              `json:"values,omitempty"`
 	DefaultValue *string                                            `json:"defaultValue,omitempty"`
+}
+
+func (r RecipientGetDocumentRecipientFieldMetaDropdown) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaDropdown) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientGetDocumentRecipientFieldMetaDropdown) GetLabel() *string {
@@ -390,6 +413,17 @@ type RecipientGetDocumentRecipientValue2 struct {
 	Value   string  `json:"value"`
 }
 
+func (r RecipientGetDocumentRecipientValue2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetDocumentRecipientValue2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientGetDocumentRecipientValue2) GetID() float64 {
 	if o == nil {
 		return 0.0
@@ -420,6 +454,17 @@ type RecipientGetDocumentRecipientFieldMetaCheckbox struct {
 	Values           []RecipientGetDocumentRecipientValue2              `json:"values,omitempty"`
 	ValidationRule   *string                                            `json:"validationRule,omitempty"`
 	ValidationLength *float64                                           `json:"validationLength,omitempty"`
+}
+
+func (r RecipientGetDocumentRecipientFieldMetaCheckbox) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientGetDocumentRecipientFieldMetaCheckbox) GetLabel() *string {
@@ -507,6 +552,17 @@ type RecipientGetDocumentRecipientValue1 struct {
 	Value   string  `json:"value"`
 }
 
+func (r RecipientGetDocumentRecipientValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetDocumentRecipientValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientGetDocumentRecipientValue1) GetID() float64 {
 	if o == nil {
 		return 0.0
@@ -535,6 +591,17 @@ type RecipientGetDocumentRecipientFieldMetaRadio struct {
 	ReadOnly    *bool                                           `json:"readOnly,omitempty"`
 	Type        RecipientGetDocumentRecipientFieldMetaTypeRadio `json:"type"`
 	Values      []RecipientGetDocumentRecipientValue1           `json:"values,omitempty"`
+}
+
+func (r RecipientGetDocumentRecipientFieldMetaRadio) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaRadio) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientGetDocumentRecipientFieldMetaRadio) GetLabel() *string {
@@ -643,6 +710,17 @@ type RecipientGetDocumentRecipientFieldMetaNumber struct {
 	MaxValue     *float64                                         `json:"maxValue,omitempty"`
 	FontSize     *float64                                         `json:"fontSize,omitempty"`
 	TextAlign    *RecipientGetDocumentRecipientTextAlign6         `json:"textAlign,omitempty"`
+}
+
+func (r RecipientGetDocumentRecipientFieldMetaNumber) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientGetDocumentRecipientFieldMetaNumber) GetLabel() *string {
@@ -786,6 +864,17 @@ type RecipientGetDocumentRecipientFieldMetaText struct {
 	TextAlign      *RecipientGetDocumentRecipientTextAlign5       `json:"textAlign,omitempty"`
 }
 
+func (r RecipientGetDocumentRecipientFieldMetaText) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaText) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientGetDocumentRecipientFieldMetaText) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -911,6 +1000,17 @@ type RecipientGetDocumentRecipientFieldMetaDate struct {
 	TextAlign   *RecipientGetDocumentRecipientTextAlign4       `json:"textAlign,omitempty"`
 }
 
+func (r RecipientGetDocumentRecipientFieldMetaDate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaDate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientGetDocumentRecipientFieldMetaDate) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -1020,6 +1120,17 @@ type RecipientGetDocumentRecipientFieldMetaEmail struct {
 	Type        RecipientGetDocumentRecipientFieldMetaTypeEmail `json:"type"`
 	FontSize    *float64                                        `json:"fontSize,omitempty"`
 	TextAlign   *RecipientGetDocumentRecipientTextAlign3        `json:"textAlign,omitempty"`
+}
+
+func (r RecipientGetDocumentRecipientFieldMetaEmail) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaEmail) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientGetDocumentRecipientFieldMetaEmail) GetLabel() *string {
@@ -1133,6 +1244,17 @@ type RecipientGetDocumentRecipientFieldMetaName struct {
 	TextAlign   *RecipientGetDocumentRecipientTextAlign2       `json:"textAlign,omitempty"`
 }
 
+func (r RecipientGetDocumentRecipientFieldMetaName) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaName) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *RecipientGetDocumentRecipientFieldMetaName) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -1242,6 +1364,17 @@ type RecipientGetDocumentRecipientFieldMetaInitials struct {
 	Type        RecipientGetDocumentRecipientFieldMetaTypeInitials `json:"type"`
 	FontSize    *float64                                           `json:"fontSize,omitempty"`
 	TextAlign   *RecipientGetDocumentRecipientTextAlign1           `json:"textAlign,omitempty"`
+}
+
+func (r RecipientGetDocumentRecipientFieldMetaInitials) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaInitials) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *RecipientGetDocumentRecipientFieldMetaInitials) GetLabel() *string {
@@ -1404,66 +1537,66 @@ func CreateRecipientGetDocumentRecipientFieldMetaUnionRecipientGetDocumentRecipi
 
 func (u *RecipientGetDocumentRecipientFieldMetaUnion) UnmarshalJSON(data []byte) error {
 
-	var recipientGetDocumentRecipientFieldMetaRadio RecipientGetDocumentRecipientFieldMetaRadio = RecipientGetDocumentRecipientFieldMetaRadio{}
-	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaRadio, "", true, true); err == nil {
-		u.RecipientGetDocumentRecipientFieldMetaRadio = &recipientGetDocumentRecipientFieldMetaRadio
-		u.Type = RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaRadio
-		return nil
-	}
-
 	var recipientGetDocumentRecipientFieldMetaInitials RecipientGetDocumentRecipientFieldMetaInitials = RecipientGetDocumentRecipientFieldMetaInitials{}
-	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaInitials, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaInitials, "", true, nil); err == nil {
 		u.RecipientGetDocumentRecipientFieldMetaInitials = &recipientGetDocumentRecipientFieldMetaInitials
 		u.Type = RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaInitials
 		return nil
 	}
 
 	var recipientGetDocumentRecipientFieldMetaName RecipientGetDocumentRecipientFieldMetaName = RecipientGetDocumentRecipientFieldMetaName{}
-	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaName, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaName, "", true, nil); err == nil {
 		u.RecipientGetDocumentRecipientFieldMetaName = &recipientGetDocumentRecipientFieldMetaName
 		u.Type = RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaName
 		return nil
 	}
 
 	var recipientGetDocumentRecipientFieldMetaEmail RecipientGetDocumentRecipientFieldMetaEmail = RecipientGetDocumentRecipientFieldMetaEmail{}
-	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaEmail, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaEmail, "", true, nil); err == nil {
 		u.RecipientGetDocumentRecipientFieldMetaEmail = &recipientGetDocumentRecipientFieldMetaEmail
 		u.Type = RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaEmail
 		return nil
 	}
 
 	var recipientGetDocumentRecipientFieldMetaDate RecipientGetDocumentRecipientFieldMetaDate = RecipientGetDocumentRecipientFieldMetaDate{}
-	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaDate, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaDate, "", true, nil); err == nil {
 		u.RecipientGetDocumentRecipientFieldMetaDate = &recipientGetDocumentRecipientFieldMetaDate
 		u.Type = RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaDate
 		return nil
 	}
 
-	var recipientGetDocumentRecipientFieldMetaDropdown RecipientGetDocumentRecipientFieldMetaDropdown = RecipientGetDocumentRecipientFieldMetaDropdown{}
-	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaDropdown, "", true, true); err == nil {
-		u.RecipientGetDocumentRecipientFieldMetaDropdown = &recipientGetDocumentRecipientFieldMetaDropdown
-		u.Type = RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaDropdown
-		return nil
-	}
-
-	var recipientGetDocumentRecipientFieldMetaCheckbox RecipientGetDocumentRecipientFieldMetaCheckbox = RecipientGetDocumentRecipientFieldMetaCheckbox{}
-	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaCheckbox, "", true, true); err == nil {
-		u.RecipientGetDocumentRecipientFieldMetaCheckbox = &recipientGetDocumentRecipientFieldMetaCheckbox
-		u.Type = RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaCheckbox
-		return nil
-	}
-
 	var recipientGetDocumentRecipientFieldMetaText RecipientGetDocumentRecipientFieldMetaText = RecipientGetDocumentRecipientFieldMetaText{}
-	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaText, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaText, "", true, nil); err == nil {
 		u.RecipientGetDocumentRecipientFieldMetaText = &recipientGetDocumentRecipientFieldMetaText
 		u.Type = RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaText
 		return nil
 	}
 
 	var recipientGetDocumentRecipientFieldMetaNumber RecipientGetDocumentRecipientFieldMetaNumber = RecipientGetDocumentRecipientFieldMetaNumber{}
-	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaNumber, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaNumber, "", true, nil); err == nil {
 		u.RecipientGetDocumentRecipientFieldMetaNumber = &recipientGetDocumentRecipientFieldMetaNumber
 		u.Type = RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaNumber
+		return nil
+	}
+
+	var recipientGetDocumentRecipientFieldMetaRadio RecipientGetDocumentRecipientFieldMetaRadio = RecipientGetDocumentRecipientFieldMetaRadio{}
+	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaRadio, "", true, nil); err == nil {
+		u.RecipientGetDocumentRecipientFieldMetaRadio = &recipientGetDocumentRecipientFieldMetaRadio
+		u.Type = RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaRadio
+		return nil
+	}
+
+	var recipientGetDocumentRecipientFieldMetaCheckbox RecipientGetDocumentRecipientFieldMetaCheckbox = RecipientGetDocumentRecipientFieldMetaCheckbox{}
+	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaCheckbox, "", true, nil); err == nil {
+		u.RecipientGetDocumentRecipientFieldMetaCheckbox = &recipientGetDocumentRecipientFieldMetaCheckbox
+		u.Type = RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaCheckbox
+		return nil
+	}
+
+	var recipientGetDocumentRecipientFieldMetaDropdown RecipientGetDocumentRecipientFieldMetaDropdown = RecipientGetDocumentRecipientFieldMetaDropdown{}
+	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaDropdown, "", true, nil); err == nil {
+		u.RecipientGetDocumentRecipientFieldMetaDropdown = &recipientGetDocumentRecipientFieldMetaDropdown
+		u.Type = RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaDropdown
 		return nil
 	}
 

@@ -101,6 +101,17 @@ type FieldGetDocumentFieldValue3 struct {
 	Value string `json:"value"`
 }
 
+func (f FieldGetDocumentFieldValue3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldGetDocumentFieldValue3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FieldGetDocumentFieldValue3) GetValue() string {
 	if o == nil {
 		return ""
@@ -116,6 +127,17 @@ type FieldGetDocumentFieldFieldMetaDropdown struct {
 	Type         FieldGetDocumentFieldFieldMetaTypeDropdown `json:"type"`
 	Values       []FieldGetDocumentFieldValue3              `json:"values,omitempty"`
 	DefaultValue *string                                    `json:"defaultValue,omitempty"`
+}
+
+func (f FieldGetDocumentFieldFieldMetaDropdown) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldGetDocumentFieldFieldMetaDropdown) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FieldGetDocumentFieldFieldMetaDropdown) GetLabel() *string {
@@ -196,6 +218,17 @@ type FieldGetDocumentFieldValue2 struct {
 	Value   string  `json:"value"`
 }
 
+func (f FieldGetDocumentFieldValue2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldGetDocumentFieldValue2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FieldGetDocumentFieldValue2) GetID() float64 {
 	if o == nil {
 		return 0.0
@@ -226,6 +259,17 @@ type FieldGetDocumentFieldFieldMetaCheckbox struct {
 	Values           []FieldGetDocumentFieldValue2              `json:"values,omitempty"`
 	ValidationRule   *string                                    `json:"validationRule,omitempty"`
 	ValidationLength *float64                                   `json:"validationLength,omitempty"`
+}
+
+func (f FieldGetDocumentFieldFieldMetaCheckbox) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldGetDocumentFieldFieldMetaCheckbox) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FieldGetDocumentFieldFieldMetaCheckbox) GetLabel() *string {
@@ -313,6 +357,17 @@ type FieldGetDocumentFieldValue1 struct {
 	Value   string  `json:"value"`
 }
 
+func (f FieldGetDocumentFieldValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldGetDocumentFieldValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FieldGetDocumentFieldValue1) GetID() float64 {
 	if o == nil {
 		return 0.0
@@ -341,6 +396,17 @@ type FieldGetDocumentFieldFieldMetaRadio struct {
 	ReadOnly    *bool                                   `json:"readOnly,omitempty"`
 	Type        FieldGetDocumentFieldFieldMetaTypeRadio `json:"type"`
 	Values      []FieldGetDocumentFieldValue1           `json:"values,omitempty"`
+}
+
+func (f FieldGetDocumentFieldFieldMetaRadio) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldGetDocumentFieldFieldMetaRadio) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FieldGetDocumentFieldFieldMetaRadio) GetLabel() *string {
@@ -449,6 +515,17 @@ type FieldGetDocumentFieldFieldMetaNumber struct {
 	MaxValue     *float64                                 `json:"maxValue,omitempty"`
 	FontSize     *float64                                 `json:"fontSize,omitempty"`
 	TextAlign    *FieldGetDocumentFieldTextAlign6         `json:"textAlign,omitempty"`
+}
+
+func (f FieldGetDocumentFieldFieldMetaNumber) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldGetDocumentFieldFieldMetaNumber) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FieldGetDocumentFieldFieldMetaNumber) GetLabel() *string {
@@ -592,6 +669,17 @@ type FieldGetDocumentFieldFieldMetaText struct {
 	TextAlign      *FieldGetDocumentFieldTextAlign5       `json:"textAlign,omitempty"`
 }
 
+func (f FieldGetDocumentFieldFieldMetaText) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldGetDocumentFieldFieldMetaText) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FieldGetDocumentFieldFieldMetaText) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -717,6 +805,17 @@ type FieldGetDocumentFieldFieldMetaDate struct {
 	TextAlign   *FieldGetDocumentFieldTextAlign4       `json:"textAlign,omitempty"`
 }
 
+func (f FieldGetDocumentFieldFieldMetaDate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldGetDocumentFieldFieldMetaDate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FieldGetDocumentFieldFieldMetaDate) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -826,6 +925,17 @@ type FieldGetDocumentFieldFieldMetaEmail struct {
 	Type        FieldGetDocumentFieldFieldMetaTypeEmail `json:"type"`
 	FontSize    *float64                                `json:"fontSize,omitempty"`
 	TextAlign   *FieldGetDocumentFieldTextAlign3        `json:"textAlign,omitempty"`
+}
+
+func (f FieldGetDocumentFieldFieldMetaEmail) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldGetDocumentFieldFieldMetaEmail) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FieldGetDocumentFieldFieldMetaEmail) GetLabel() *string {
@@ -939,6 +1049,17 @@ type FieldGetDocumentFieldFieldMetaName struct {
 	TextAlign   *FieldGetDocumentFieldTextAlign2       `json:"textAlign,omitempty"`
 }
 
+func (f FieldGetDocumentFieldFieldMetaName) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldGetDocumentFieldFieldMetaName) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FieldGetDocumentFieldFieldMetaName) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -1048,6 +1169,17 @@ type FieldGetDocumentFieldFieldMetaInitials struct {
 	Type        FieldGetDocumentFieldFieldMetaTypeInitials `json:"type"`
 	FontSize    *float64                                   `json:"fontSize,omitempty"`
 	TextAlign   *FieldGetDocumentFieldTextAlign1           `json:"textAlign,omitempty"`
+}
+
+func (f FieldGetDocumentFieldFieldMetaInitials) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldGetDocumentFieldFieldMetaInitials) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FieldGetDocumentFieldFieldMetaInitials) GetLabel() *string {
@@ -1210,66 +1342,66 @@ func CreateFieldGetDocumentFieldFieldMetaUnionFieldGetDocumentFieldFieldMetaDrop
 
 func (u *FieldGetDocumentFieldFieldMetaUnion) UnmarshalJSON(data []byte) error {
 
-	var fieldGetDocumentFieldFieldMetaRadio FieldGetDocumentFieldFieldMetaRadio = FieldGetDocumentFieldFieldMetaRadio{}
-	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaRadio, "", true, true); err == nil {
-		u.FieldGetDocumentFieldFieldMetaRadio = &fieldGetDocumentFieldFieldMetaRadio
-		u.Type = FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaRadio
-		return nil
-	}
-
 	var fieldGetDocumentFieldFieldMetaInitials FieldGetDocumentFieldFieldMetaInitials = FieldGetDocumentFieldFieldMetaInitials{}
-	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaInitials, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaInitials, "", true, nil); err == nil {
 		u.FieldGetDocumentFieldFieldMetaInitials = &fieldGetDocumentFieldFieldMetaInitials
 		u.Type = FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaInitials
 		return nil
 	}
 
 	var fieldGetDocumentFieldFieldMetaName FieldGetDocumentFieldFieldMetaName = FieldGetDocumentFieldFieldMetaName{}
-	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaName, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaName, "", true, nil); err == nil {
 		u.FieldGetDocumentFieldFieldMetaName = &fieldGetDocumentFieldFieldMetaName
 		u.Type = FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaName
 		return nil
 	}
 
 	var fieldGetDocumentFieldFieldMetaEmail FieldGetDocumentFieldFieldMetaEmail = FieldGetDocumentFieldFieldMetaEmail{}
-	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaEmail, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaEmail, "", true, nil); err == nil {
 		u.FieldGetDocumentFieldFieldMetaEmail = &fieldGetDocumentFieldFieldMetaEmail
 		u.Type = FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaEmail
 		return nil
 	}
 
 	var fieldGetDocumentFieldFieldMetaDate FieldGetDocumentFieldFieldMetaDate = FieldGetDocumentFieldFieldMetaDate{}
-	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaDate, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaDate, "", true, nil); err == nil {
 		u.FieldGetDocumentFieldFieldMetaDate = &fieldGetDocumentFieldFieldMetaDate
 		u.Type = FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaDate
 		return nil
 	}
 
-	var fieldGetDocumentFieldFieldMetaDropdown FieldGetDocumentFieldFieldMetaDropdown = FieldGetDocumentFieldFieldMetaDropdown{}
-	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaDropdown, "", true, true); err == nil {
-		u.FieldGetDocumentFieldFieldMetaDropdown = &fieldGetDocumentFieldFieldMetaDropdown
-		u.Type = FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaDropdown
-		return nil
-	}
-
-	var fieldGetDocumentFieldFieldMetaCheckbox FieldGetDocumentFieldFieldMetaCheckbox = FieldGetDocumentFieldFieldMetaCheckbox{}
-	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaCheckbox, "", true, true); err == nil {
-		u.FieldGetDocumentFieldFieldMetaCheckbox = &fieldGetDocumentFieldFieldMetaCheckbox
-		u.Type = FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaCheckbox
-		return nil
-	}
-
 	var fieldGetDocumentFieldFieldMetaText FieldGetDocumentFieldFieldMetaText = FieldGetDocumentFieldFieldMetaText{}
-	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaText, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaText, "", true, nil); err == nil {
 		u.FieldGetDocumentFieldFieldMetaText = &fieldGetDocumentFieldFieldMetaText
 		u.Type = FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaText
 		return nil
 	}
 
 	var fieldGetDocumentFieldFieldMetaNumber FieldGetDocumentFieldFieldMetaNumber = FieldGetDocumentFieldFieldMetaNumber{}
-	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaNumber, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaNumber, "", true, nil); err == nil {
 		u.FieldGetDocumentFieldFieldMetaNumber = &fieldGetDocumentFieldFieldMetaNumber
 		u.Type = FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaNumber
+		return nil
+	}
+
+	var fieldGetDocumentFieldFieldMetaRadio FieldGetDocumentFieldFieldMetaRadio = FieldGetDocumentFieldFieldMetaRadio{}
+	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaRadio, "", true, nil); err == nil {
+		u.FieldGetDocumentFieldFieldMetaRadio = &fieldGetDocumentFieldFieldMetaRadio
+		u.Type = FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaRadio
+		return nil
+	}
+
+	var fieldGetDocumentFieldFieldMetaCheckbox FieldGetDocumentFieldFieldMetaCheckbox = FieldGetDocumentFieldFieldMetaCheckbox{}
+	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaCheckbox, "", true, nil); err == nil {
+		u.FieldGetDocumentFieldFieldMetaCheckbox = &fieldGetDocumentFieldFieldMetaCheckbox
+		u.Type = FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaCheckbox
+		return nil
+	}
+
+	var fieldGetDocumentFieldFieldMetaDropdown FieldGetDocumentFieldFieldMetaDropdown = FieldGetDocumentFieldFieldMetaDropdown{}
+	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaDropdown, "", true, nil); err == nil {
+		u.FieldGetDocumentFieldFieldMetaDropdown = &fieldGetDocumentFieldFieldMetaDropdown
+		u.Type = FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaDropdown
 		return nil
 	}
 

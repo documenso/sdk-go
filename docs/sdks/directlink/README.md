@@ -15,6 +15,7 @@ Create a direct link for a template
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="template-createTemplateDirectLink" method="post" path="/template/direct/create" -->
 ```go
 package main
 
@@ -71,6 +72,7 @@ Delete a direct link for a template
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="template-deleteTemplateDirectLink" method="post" path="/template/direct/delete" -->
 ```go
 package main
 
@@ -127,6 +129,7 @@ Enable or disable a direct link for a template
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="template-toggleTemplateDirectLink" method="post" path="/template/direct/toggle" -->
 ```go
 package main
 

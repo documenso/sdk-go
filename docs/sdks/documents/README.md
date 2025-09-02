@@ -5,15 +5,71 @@
 
 ### Available Operations
 
+* [Update](#update) - Update document
 * [Find](#find) - Find documents
 * [Get](#get) - Get document
 * [CreateV0](#createv0) - Create document
-* [Update](#update) - Update document
 * [Delete](#delete) - Delete document
-* [MoveToTeam](#movetoteam) - Move document
 * [Distribute](#distribute) - Distribute document
 * [Redistribute](#redistribute) - Redistribute document
 * [Duplicate](#duplicate) - Duplicate document
+
+## Update
+
+Update document
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="document-updateDocument" method="post" path="/document/update" -->
+```go
+package main
+
+import(
+	"context"
+	"os"
+	sdkgo "github.com/documenso/sdk-go"
+	"github.com/documenso/sdk-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkgo.New(
+        sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
+    )
+
+    res, err := s.Documents.Update(ctx, operations.DocumentUpdateDocumentRequest{
+        DocumentID: 9701.92,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |
+| `request`                                                                                            | [operations.DocumentUpdateDocumentRequest](../../models/operations/documentupdatedocumentrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `opts`                                                                                               | [][operations.Option](../../models/operations/option.md)                                             | :heavy_minus_sign:                                                                                   | The options for this request.                                                                        |
+
+### Response
+
+**[*operations.DocumentUpdateDocumentResponse](../../models/operations/documentupdatedocumentresponse.md), error**
+
+### Errors
+
+| Error Type                                          | Status Code                                         | Content Type                                        |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| apierrors.DocumentUpdateDocumentBadRequestError     | 400                                                 | application/json                                    |
+| apierrors.DocumentUpdateDocumentInternalServerError | 500                                                 | application/json                                    |
+| apierrors.APIError                                  | 4XX, 5XX                                            | \*/\*                                               |
 
 ## Find
 
@@ -21,6 +77,7 @@ Find documents based on a search criteria
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="document-findDocuments" method="get" path="/document" -->
 ```go
 package main
 
@@ -76,6 +133,7 @@ Returns a document given an ID
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="document-getDocumentWithDetailsById" method="get" path="/document/{documentId}" -->
 ```go
 package main
 
@@ -93,7 +151,7 @@ func main() {
         sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
     )
 
-    res, err := s.Documents.Get(ctx, 7491.86)
+    res, err := s.Documents.Get(ctx, 7491.86, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -109,6 +167,7 @@ func main() {
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
 | `documentID`                                             | *float64*                                                | :heavy_check_mark:                                       | N/A                                                      |
+| `folderID`                                               | **string*                                                | :heavy_minus_sign:                                       | Filter documents by folder ID                            |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -130,6 +189,7 @@ You will need to upload the PDF to the provided URL returned. Note: Once V2 API 
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="document-createDocumentTemporary" method="post" path="/document/create/beta" -->
 ```go
 package main
 
@@ -180,68 +240,13 @@ func main() {
 | apierrors.DocumentCreateDocumentTemporaryInternalServerError | 500                                                          | application/json                                             |
 | apierrors.APIError                                           | 4XX, 5XX                                                     | \*/\*                                                        |
 
-## Update
-
-Update document
-
-### Example Usage
-
-```go
-package main
-
-import(
-	"context"
-	"os"
-	sdkgo "github.com/documenso/sdk-go"
-	"github.com/documenso/sdk-go/models/operations"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkgo.New(
-        sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
-    )
-
-    res, err := s.Documents.Update(ctx, operations.DocumentUpdateDocumentRequest{
-        DocumentID: 9701.92,
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.Object != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |
-| `request`                                                                                            | [operations.DocumentUpdateDocumentRequest](../../models/operations/documentupdatedocumentrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
-| `opts`                                                                                               | [][operations.Option](../../models/operations/option.md)                                             | :heavy_minus_sign:                                                                                   | The options for this request.                                                                        |
-
-### Response
-
-**[*operations.DocumentUpdateDocumentResponse](../../models/operations/documentupdatedocumentresponse.md), error**
-
-### Errors
-
-| Error Type                                          | Status Code                                         | Content Type                                        |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| apierrors.DocumentUpdateDocumentBadRequestError     | 400                                                 | application/json                                    |
-| apierrors.DocumentUpdateDocumentInternalServerError | 500                                                 | application/json                                    |
-| apierrors.APIError                                  | 4XX, 5XX                                            | \*/\*                                               |
-
 ## Delete
 
 Delete document
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="document-deleteDocument" method="post" path="/document/delete" -->
 ```go
 package main
 
@@ -292,69 +297,13 @@ func main() {
 | apierrors.DocumentDeleteDocumentInternalServerError | 500                                                 | application/json                                    |
 | apierrors.APIError                                  | 4XX, 5XX                                            | \*/\*                                               |
 
-## MoveToTeam
-
-Move a document from your personal account to a team
-
-### Example Usage
-
-```go
-package main
-
-import(
-	"context"
-	"os"
-	sdkgo "github.com/documenso/sdk-go"
-	"github.com/documenso/sdk-go/models/operations"
-	"log"
-)
-
-func main() {
-    ctx := context.Background()
-
-    s := sdkgo.New(
-        sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
-    )
-
-    res, err := s.Documents.MoveToTeam(ctx, operations.DocumentMoveDocumentToTeamRequest{
-        DocumentID: 7184.15,
-        TeamID: 4855.19,
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
-    if res.Object != nil {
-        // handle response
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                        | [context.Context](https://pkg.go.dev/context#Context)                                                        | :heavy_check_mark:                                                                                           | The context to use for the request.                                                                          |
-| `request`                                                                                                    | [operations.DocumentMoveDocumentToTeamRequest](../../models/operations/documentmovedocumenttoteamrequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
-| `opts`                                                                                                       | [][operations.Option](../../models/operations/option.md)                                                     | :heavy_minus_sign:                                                                                           | The options for this request.                                                                                |
-
-### Response
-
-**[*operations.DocumentMoveDocumentToTeamResponse](../../models/operations/documentmovedocumenttoteamresponse.md), error**
-
-### Errors
-
-| Error Type                                              | Status Code                                             | Content Type                                            |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| apierrors.DocumentMoveDocumentToTeamBadRequestError     | 400                                                     | application/json                                        |
-| apierrors.DocumentMoveDocumentToTeamInternalServerError | 500                                                     | application/json                                        |
-| apierrors.APIError                                      | 4XX, 5XX                                                | \*/\*                                                   |
-
 ## Distribute
 
 Send the document out to recipients based on your distribution method
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="document-sendDocument" method="post" path="/document/distribute" -->
 ```go
 package main
 
@@ -411,6 +360,7 @@ Redistribute the document to the provided recipients who have not actioned the d
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="document-resendDocument" method="post" path="/document/redistribute" -->
 ```go
 package main
 
@@ -468,6 +418,7 @@ Duplicate document
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="document-duplicateDocument" method="post" path="/document/duplicate" -->
 ```go
 package main
 

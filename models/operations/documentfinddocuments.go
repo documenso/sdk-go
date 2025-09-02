@@ -134,7 +134,9 @@ type DocumentFindDocumentsRequest struct {
 	// Filter documents by how it was created.
 	Source *QueryParamSource `queryParam:"style=form,explode=true,name=source"`
 	// Filter documents by the current status
-	Status           *QueryParamStatus `queryParam:"style=form,explode=true,name=status"`
+	Status *QueryParamStatus `queryParam:"style=form,explode=true,name=status"`
+	// Filter documents by folder ID
+	FolderID         *string           `queryParam:"style=form,explode=true,name=folderId"`
 	OrderByColumn    *OrderByColumn    `queryParam:"style=form,explode=true,name=orderByColumn"`
 	OrderByDirection *OrderByDirection `default:"desc" queryParam:"style=form,explode=true,name=orderByDirection"`
 }
@@ -144,7 +146,7 @@ func (d DocumentFindDocumentsRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DocumentFindDocumentsRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -190,6 +192,13 @@ func (o *DocumentFindDocumentsRequest) GetStatus() *QueryParamStatus {
 		return nil
 	}
 	return o.Status
+}
+
+func (o *DocumentFindDocumentsRequest) GetFolderID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FolderID
 }
 
 func (o *DocumentFindDocumentsRequest) GetOrderByColumn() *OrderByColumn {
@@ -327,6 +336,7 @@ const (
 	DocumentFindDocumentsGlobalActionAuthAccount       DocumentFindDocumentsGlobalActionAuth = "ACCOUNT"
 	DocumentFindDocumentsGlobalActionAuthPasskey       DocumentFindDocumentsGlobalActionAuth = "PASSKEY"
 	DocumentFindDocumentsGlobalActionAuthTwoFactorAuth DocumentFindDocumentsGlobalActionAuth = "TWO_FACTOR_AUTH"
+	DocumentFindDocumentsGlobalActionAuthPassword      DocumentFindDocumentsGlobalActionAuth = "PASSWORD"
 )
 
 func (e DocumentFindDocumentsGlobalActionAuth) ToPointer() *DocumentFindDocumentsGlobalActionAuth {
@@ -343,6 +353,8 @@ func (e *DocumentFindDocumentsGlobalActionAuth) UnmarshalJSON(data []byte) error
 	case "PASSKEY":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
+		fallthrough
+	case "PASSWORD":
 		*e = DocumentFindDocumentsGlobalActionAuth(v)
 		return nil
 	default:
@@ -351,22 +363,20 @@ func (e *DocumentFindDocumentsGlobalActionAuth) UnmarshalJSON(data []byte) error
 }
 
 type DocumentFindDocumentsAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	GlobalAccessAuth *DocumentFindDocumentsGlobalAccessAuth `json:"globalAccessAuth"`
-	// The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-	GlobalActionAuth *DocumentFindDocumentsGlobalActionAuth `json:"globalActionAuth"`
+	GlobalAccessAuth []DocumentFindDocumentsGlobalAccessAuth `json:"globalAccessAuth"`
+	GlobalActionAuth []DocumentFindDocumentsGlobalActionAuth `json:"globalActionAuth"`
 }
 
-func (o *DocumentFindDocumentsAuthOptions) GetGlobalAccessAuth() *DocumentFindDocumentsGlobalAccessAuth {
+func (o *DocumentFindDocumentsAuthOptions) GetGlobalAccessAuth() []DocumentFindDocumentsGlobalAccessAuth {
 	if o == nil {
-		return nil
+		return []DocumentFindDocumentsGlobalAccessAuth{}
 	}
 	return o.GlobalAccessAuth
 }
 
-func (o *DocumentFindDocumentsAuthOptions) GetGlobalActionAuth() *DocumentFindDocumentsGlobalActionAuth {
+func (o *DocumentFindDocumentsAuthOptions) GetGlobalActionAuth() []DocumentFindDocumentsGlobalActionAuth {
 	if o == nil {
-		return nil
+		return []DocumentFindDocumentsGlobalActionAuth{}
 	}
 	return o.GlobalActionAuth
 }
@@ -417,21 +427,21 @@ func CreateDocumentFindDocumentsFormValuesNumber(number float64) DocumentFindDoc
 func (u *DocumentFindDocumentsFormValues) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = DocumentFindDocumentsFormValuesTypeStr
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = DocumentFindDocumentsFormValuesTypeBoolean
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = DocumentFindDocumentsFormValuesTypeNumber
 		return nil
@@ -630,6 +640,7 @@ const (
 	DocumentFindDocumentsActionAuthAccount       DocumentFindDocumentsActionAuth = "ACCOUNT"
 	DocumentFindDocumentsActionAuthPasskey       DocumentFindDocumentsActionAuth = "PASSKEY"
 	DocumentFindDocumentsActionAuthTwoFactorAuth DocumentFindDocumentsActionAuth = "TWO_FACTOR_AUTH"
+	DocumentFindDocumentsActionAuthPassword      DocumentFindDocumentsActionAuth = "PASSWORD"
 	DocumentFindDocumentsActionAuthExplicitNone  DocumentFindDocumentsActionAuth = "EXPLICIT_NONE"
 )
 
@@ -648,6 +659,8 @@ func (e *DocumentFindDocumentsActionAuth) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
 		*e = DocumentFindDocumentsActionAuth(v)
 		return nil
@@ -657,22 +670,20 @@ func (e *DocumentFindDocumentsActionAuth) UnmarshalJSON(data []byte) error {
 }
 
 type DocumentFindDocumentsRecipientAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *DocumentFindDocumentsAccessAuth `json:"accessAuth"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *DocumentFindDocumentsActionAuth `json:"actionAuth"`
+	AccessAuth []DocumentFindDocumentsAccessAuth `json:"accessAuth"`
+	ActionAuth []DocumentFindDocumentsActionAuth `json:"actionAuth"`
 }
 
-func (o *DocumentFindDocumentsRecipientAuthOptions) GetAccessAuth() *DocumentFindDocumentsAccessAuth {
+func (o *DocumentFindDocumentsRecipientAuthOptions) GetAccessAuth() []DocumentFindDocumentsAccessAuth {
 	if o == nil {
-		return nil
+		return []DocumentFindDocumentsAccessAuth{}
 	}
 	return o.AccessAuth
 }
 
-func (o *DocumentFindDocumentsRecipientAuthOptions) GetActionAuth() *DocumentFindDocumentsActionAuth {
+func (o *DocumentFindDocumentsRecipientAuthOptions) GetActionAuth() []DocumentFindDocumentsActionAuth {
 	if o == nil {
-		return nil
+		return []DocumentFindDocumentsActionAuth{}
 	}
 	return o.ActionAuth
 }
@@ -836,20 +847,22 @@ type DocumentFindDocumentsData struct {
 	// A custom external ID you can use to identify the document.
 	ExternalID *string `json:"externalId"`
 	// The ID of the user that created this document.
-	UserID         float64                                    `json:"userId"`
-	AuthOptions    *DocumentFindDocumentsAuthOptions          `json:"authOptions"`
-	FormValues     map[string]DocumentFindDocumentsFormValues `json:"formValues"`
-	Title          string                                     `json:"title"`
-	DocumentDataID string                                     `json:"documentDataId"`
-	CreatedAt      string                                     `json:"createdAt"`
-	UpdatedAt      string                                     `json:"updatedAt"`
-	CompletedAt    *string                                    `json:"completedAt"`
-	DeletedAt      *string                                    `json:"deletedAt"`
-	TeamID         *float64                                   `json:"teamId"`
-	TemplateID     *float64                                   `json:"templateId"`
-	User           DocumentFindDocumentsUser                  `json:"user"`
-	Recipients     []DocumentFindDocumentsRecipient           `json:"recipients"`
-	Team           *DocumentFindDocumentsTeam                 `json:"team"`
+	UserID                  float64                                    `json:"userId"`
+	AuthOptions             *DocumentFindDocumentsAuthOptions          `json:"authOptions"`
+	FormValues              map[string]DocumentFindDocumentsFormValues `json:"formValues"`
+	Title                   string                                     `json:"title"`
+	DocumentDataID          string                                     `json:"documentDataId"`
+	CreatedAt               string                                     `json:"createdAt"`
+	UpdatedAt               string                                     `json:"updatedAt"`
+	CompletedAt             *string                                    `json:"completedAt"`
+	DeletedAt               *string                                    `json:"deletedAt"`
+	TeamID                  float64                                    `json:"teamId"`
+	TemplateID              *float64                                   `json:"templateId"`
+	FolderID                *string                                    `json:"folderId"`
+	UseLegacyFieldInsertion bool                                       `json:"useLegacyFieldInsertion"`
+	User                    DocumentFindDocumentsUser                  `json:"user"`
+	Recipients              []DocumentFindDocumentsRecipient           `json:"recipients"`
+	Team                    *DocumentFindDocumentsTeam                 `json:"team"`
 }
 
 func (o *DocumentFindDocumentsData) GetVisibility() DocumentFindDocumentsVisibility {
@@ -950,9 +963,9 @@ func (o *DocumentFindDocumentsData) GetDeletedAt() *string {
 	return o.DeletedAt
 }
 
-func (o *DocumentFindDocumentsData) GetTeamID() *float64 {
+func (o *DocumentFindDocumentsData) GetTeamID() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.TeamID
 }
@@ -962,6 +975,20 @@ func (o *DocumentFindDocumentsData) GetTemplateID() *float64 {
 		return nil
 	}
 	return o.TemplateID
+}
+
+func (o *DocumentFindDocumentsData) GetFolderID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FolderID
+}
+
+func (o *DocumentFindDocumentsData) GetUseLegacyFieldInsertion() bool {
+	if o == nil {
+		return false
+	}
+	return o.UseLegacyFieldInsertion
 }
 
 func (o *DocumentFindDocumentsData) GetUser() DocumentFindDocumentsUser {

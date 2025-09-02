@@ -10,3 +10,4 @@ The type of authentication required for the recipient to sign the document. This
 | `DocumentUpdateDocumentGlobalActionAuthResponseAccount`       | ACCOUNT                                                       |
 | `DocumentUpdateDocumentGlobalActionAuthResponsePasskey`       | PASSKEY                                                       |
 | `DocumentUpdateDocumentGlobalActionAuthResponseTwoFactorAuth` | TWO_FACTOR_AUTH                                               |
+| `DocumentUpdateDocumentGlobalActionAuthResponsePassword`      | PASSWORD                                                      |

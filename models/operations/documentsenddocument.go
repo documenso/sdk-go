@@ -149,7 +149,7 @@ func (d DocumentSendDocumentEmailSettings) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DocumentSendDocumentEmailSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -419,6 +419,7 @@ const (
 	DocumentSendDocumentGlobalActionAuthAccount       DocumentSendDocumentGlobalActionAuth = "ACCOUNT"
 	DocumentSendDocumentGlobalActionAuthPasskey       DocumentSendDocumentGlobalActionAuth = "PASSKEY"
 	DocumentSendDocumentGlobalActionAuthTwoFactorAuth DocumentSendDocumentGlobalActionAuth = "TWO_FACTOR_AUTH"
+	DocumentSendDocumentGlobalActionAuthPassword      DocumentSendDocumentGlobalActionAuth = "PASSWORD"
 )
 
 func (e DocumentSendDocumentGlobalActionAuth) ToPointer() *DocumentSendDocumentGlobalActionAuth {
@@ -435,6 +436,8 @@ func (e *DocumentSendDocumentGlobalActionAuth) UnmarshalJSON(data []byte) error 
 	case "PASSKEY":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
+		fallthrough
+	case "PASSWORD":
 		*e = DocumentSendDocumentGlobalActionAuth(v)
 		return nil
 	default:
@@ -443,22 +446,20 @@ func (e *DocumentSendDocumentGlobalActionAuth) UnmarshalJSON(data []byte) error 
 }
 
 type DocumentSendDocumentAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	GlobalAccessAuth *DocumentSendDocumentGlobalAccessAuth `json:"globalAccessAuth"`
-	// The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-	GlobalActionAuth *DocumentSendDocumentGlobalActionAuth `json:"globalActionAuth"`
+	GlobalAccessAuth []DocumentSendDocumentGlobalAccessAuth `json:"globalAccessAuth"`
+	GlobalActionAuth []DocumentSendDocumentGlobalActionAuth `json:"globalActionAuth"`
 }
 
-func (o *DocumentSendDocumentAuthOptions) GetGlobalAccessAuth() *DocumentSendDocumentGlobalAccessAuth {
+func (o *DocumentSendDocumentAuthOptions) GetGlobalAccessAuth() []DocumentSendDocumentGlobalAccessAuth {
 	if o == nil {
-		return nil
+		return []DocumentSendDocumentGlobalAccessAuth{}
 	}
 	return o.GlobalAccessAuth
 }
 
-func (o *DocumentSendDocumentAuthOptions) GetGlobalActionAuth() *DocumentSendDocumentGlobalActionAuth {
+func (o *DocumentSendDocumentAuthOptions) GetGlobalActionAuth() []DocumentSendDocumentGlobalActionAuth {
 	if o == nil {
-		return nil
+		return []DocumentSendDocumentGlobalActionAuth{}
 	}
 	return o.GlobalActionAuth
 }
@@ -509,21 +510,21 @@ func CreateDocumentSendDocumentFormValuesNumber(number float64) DocumentSendDocu
 func (u *DocumentSendDocumentFormValues) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = DocumentSendDocumentFormValuesTypeStr
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = DocumentSendDocumentFormValuesTypeBoolean
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = DocumentSendDocumentFormValuesTypeNumber
 		return nil
@@ -557,17 +558,19 @@ type DocumentSendDocumentResponseBody struct {
 	// A custom external ID you can use to identify the document.
 	ExternalID *string `json:"externalId"`
 	// The ID of the user that created this document.
-	UserID         float64                                   `json:"userId"`
-	AuthOptions    *DocumentSendDocumentAuthOptions          `json:"authOptions"`
-	FormValues     map[string]DocumentSendDocumentFormValues `json:"formValues"`
-	Title          string                                    `json:"title"`
-	DocumentDataID string                                    `json:"documentDataId"`
-	CreatedAt      string                                    `json:"createdAt"`
-	UpdatedAt      string                                    `json:"updatedAt"`
-	CompletedAt    *string                                   `json:"completedAt"`
-	DeletedAt      *string                                   `json:"deletedAt"`
-	TeamID         *float64                                  `json:"teamId"`
-	TemplateID     *float64                                  `json:"templateId"`
+	UserID                  float64                                   `json:"userId"`
+	AuthOptions             *DocumentSendDocumentAuthOptions          `json:"authOptions"`
+	FormValues              map[string]DocumentSendDocumentFormValues `json:"formValues"`
+	Title                   string                                    `json:"title"`
+	DocumentDataID          string                                    `json:"documentDataId"`
+	CreatedAt               string                                    `json:"createdAt"`
+	UpdatedAt               string                                    `json:"updatedAt"`
+	CompletedAt             *string                                   `json:"completedAt"`
+	DeletedAt               *string                                   `json:"deletedAt"`
+	TeamID                  float64                                   `json:"teamId"`
+	TemplateID              *float64                                  `json:"templateId"`
+	FolderID                *string                                   `json:"folderId"`
+	UseLegacyFieldInsertion bool                                      `json:"useLegacyFieldInsertion"`
 }
 
 func (o *DocumentSendDocumentResponseBody) GetVisibility() DocumentSendDocumentVisibility {
@@ -668,9 +671,9 @@ func (o *DocumentSendDocumentResponseBody) GetDeletedAt() *string {
 	return o.DeletedAt
 }
 
-func (o *DocumentSendDocumentResponseBody) GetTeamID() *float64 {
+func (o *DocumentSendDocumentResponseBody) GetTeamID() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.TeamID
 }
@@ -680,6 +683,20 @@ func (o *DocumentSendDocumentResponseBody) GetTemplateID() *float64 {
 		return nil
 	}
 	return o.TemplateID
+}
+
+func (o *DocumentSendDocumentResponseBody) GetFolderID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FolderID
+}
+
+func (o *DocumentSendDocumentResponseBody) GetUseLegacyFieldInsertion() bool {
+	if o == nil {
+		return false
+	}
+	return o.UseLegacyFieldInsertion
 }
 
 type DocumentSendDocumentResponse struct {
