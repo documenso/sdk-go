@@ -18,6 +18,7 @@ Returns a single recipient. If you want to retrieve all the recipients for a tem
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="recipient-getTemplateRecipient" method="get" path="/template/recipient/{recipientId}" -->
 ```go
 package main
 
@@ -72,6 +73,7 @@ Create a single recipient for a template.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="recipient-createTemplateRecipient" method="post" path="/template/recipient/create" -->
 ```go
 package main
 
@@ -95,7 +97,7 @@ func main() {
         Recipient: operations.RecipientCreateTemplateRecipientRecipient{
             Email: "Gerhard88@yahoo.com",
             Name: "<value>",
-            Role: operations.RecipientCreateTemplateRecipientRoleRequestBodySigner,
+            Role: operations.RecipientCreateTemplateRecipientRoleRequestSigner,
         },
     })
     if err != nil {
@@ -133,6 +135,7 @@ Create multiple recipients for a template.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="recipient-createTemplateRecipients" method="post" path="/template/recipient/create-many" -->
 ```go
 package main
 
@@ -153,7 +156,7 @@ func main() {
 
     res, err := s.Templates.Recipients.CreateMany(ctx, operations.RecipientCreateTemplateRecipientsRequest{
         TemplateID: 5642.48,
-        Recipients: []operations.RecipientCreateTemplateRecipientsRecipientRequestBody{},
+        Recipients: []operations.RecipientCreateTemplateRecipientsRecipientRequest{},
     })
     if err != nil {
         log.Fatal(err)
@@ -190,6 +193,7 @@ Update a single recipient for a template.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="recipient-updateTemplateRecipient" method="post" path="/template/recipient/update" -->
 ```go
 package main
 
@@ -249,6 +253,7 @@ Update multiple recipients for a template.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="recipient-updateTemplateRecipients" method="post" path="/template/recipient/update-many" -->
 ```go
 package main
 
@@ -269,8 +274,8 @@ func main() {
 
     res, err := s.Templates.Recipients.UpdateMany(ctx, operations.RecipientUpdateTemplateRecipientsRequest{
         TemplateID: 5597.58,
-        Recipients: []operations.RecipientUpdateTemplateRecipientsRecipientRequestBody{
-            operations.RecipientUpdateTemplateRecipientsRecipientRequestBody{
+        Recipients: []operations.RecipientUpdateTemplateRecipientsRecipientRequest{
+            operations.RecipientUpdateTemplateRecipientsRecipientRequest{
                 ID: 1630.42,
             },
         },
@@ -310,6 +315,7 @@ Delete template recipient
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="recipient-deleteTemplateRecipient" method="post" path="/template/recipient/delete" -->
 ```go
 package main
 

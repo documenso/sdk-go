@@ -18,6 +18,7 @@ Create a single field for a template.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="field-createTemplateField" method="post" path="/template/field/create" -->
 ```go
 package main
 
@@ -40,7 +41,7 @@ func main() {
         TemplateID: 1203.71,
         Field: operations.CreateFieldCreateTemplateFieldFieldUnionFieldCreateTemplateFieldFieldDate(
             operations.FieldCreateTemplateFieldFieldDate{
-                Type: operations.FieldCreateTemplateFieldTypeDateRequestBody1Date,
+                Type: operations.FieldCreateTemplateFieldTypeDateRequest1Date,
                 RecipientID: 2738.54,
                 PageNumber: 5735.12,
                 PageX: 2936.28,
@@ -85,6 +86,7 @@ Returns a single field. If you want to retrieve all the fields for a template, u
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="field-getTemplateField" method="get" path="/template/field/{fieldId}" -->
 ```go
 package main
 
@@ -139,6 +141,7 @@ Create multiple fields for a template.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="field-createTemplateFields" method="post" path="/template/field/create-many" -->
 ```go
 package main
 
@@ -208,6 +211,7 @@ Update a single field for a template.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="field-updateTemplateField" method="post" path="/template/field/update" -->
 ```go
 package main
 
@@ -230,7 +234,7 @@ func main() {
         TemplateID: 5083.07,
         Field: operations.CreateFieldUpdateTemplateFieldFieldUnionFieldUpdateTemplateFieldFieldText(
             operations.FieldUpdateTemplateFieldFieldText{
-                Type: operations.FieldUpdateTemplateFieldTypeTextRequestBody1Text,
+                Type: operations.FieldUpdateTemplateFieldTypeTextRequest1Text,
                 ID: 1792.29,
             },
         ),
@@ -270,6 +274,7 @@ Update multiple fields for a template.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="field-updateTemplateFields" method="post" path="/template/field/update-many" -->
 ```go
 package main
 
@@ -293,7 +298,7 @@ func main() {
         Fields: []operations.FieldUpdateTemplateFieldsFieldUnion{
             operations.CreateFieldUpdateTemplateFieldsFieldUnionFieldUpdateTemplateFieldsFieldDropdown(
                 operations.FieldUpdateTemplateFieldsFieldDropdown{
-                    Type: operations.FieldUpdateTemplateFieldsTypeDropdownRequestBody1Dropdown,
+                    Type: operations.FieldUpdateTemplateFieldsTypeDropdownRequest1Dropdown,
                     ID: 2460.72,
                 },
             ),
@@ -334,6 +339,7 @@ Delete template field
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="field-deleteTemplateField" method="post" path="/template/field/delete" -->
 ```go
 package main
 

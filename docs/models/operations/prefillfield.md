@@ -33,3 +33,9 @@ prefillField := operations.CreatePrefillFieldPrefillFieldCheckbox(operations.Pre
 prefillField := operations.CreatePrefillFieldPrefillFieldDropdown(operations.PrefillFieldDropdown{/* values here */})
 ```
 
+### PrefillFieldDate
+
+```go
+prefillField := operations.CreatePrefillFieldPrefillFieldDate(operations.PrefillFieldDate{/* values here */})
+```
+

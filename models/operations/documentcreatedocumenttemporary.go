@@ -10,19 +10,19 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-// VisibilityAccount - The visibility of the document.
-type VisibilityAccount string
+// DocumentCreateDocumentTemporaryVisibilityRequest - The visibility of the document.
+type DocumentCreateDocumentTemporaryVisibilityRequest string
 
 const (
-	VisibilityAccountEveryone        VisibilityAccount = "EVERYONE"
-	VisibilityAccountManagerAndAbove VisibilityAccount = "MANAGER_AND_ABOVE"
-	VisibilityAccountAdmin           VisibilityAccount = "ADMIN"
+	DocumentCreateDocumentTemporaryVisibilityRequestEveryone        DocumentCreateDocumentTemporaryVisibilityRequest = "EVERYONE"
+	DocumentCreateDocumentTemporaryVisibilityRequestManagerAndAbove DocumentCreateDocumentTemporaryVisibilityRequest = "MANAGER_AND_ABOVE"
+	DocumentCreateDocumentTemporaryVisibilityRequestAdmin           DocumentCreateDocumentTemporaryVisibilityRequest = "ADMIN"
 )
 
-func (e VisibilityAccount) ToPointer() *VisibilityAccount {
+func (e DocumentCreateDocumentTemporaryVisibilityRequest) ToPointer() *DocumentCreateDocumentTemporaryVisibilityRequest {
 	return &e
 }
-func (e *VisibilityAccount) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryVisibilityRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,10 +33,10 @@ func (e *VisibilityAccount) UnmarshalJSON(data []byte) error {
 	case "MANAGER_AND_ABOVE":
 		fallthrough
 	case "ADMIN":
-		*e = VisibilityAccount(v)
+		*e = DocumentCreateDocumentTemporaryVisibilityRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for VisibilityAccount: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryVisibilityRequest: %v", v)
 	}
 }
 
@@ -64,19 +64,20 @@ func (e *DocumentCreateDocumentTemporaryGlobalAccessAuthRequest) UnmarshalJSON(d
 	}
 }
 
-// GlobalActionAuthAccount - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-type GlobalActionAuthAccount string
+// DocumentCreateDocumentTemporaryGlobalActionAuthRequest - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
+type DocumentCreateDocumentTemporaryGlobalActionAuthRequest string
 
 const (
-	GlobalActionAuthAccountAccount       GlobalActionAuthAccount = "ACCOUNT"
-	GlobalActionAuthAccountPasskey       GlobalActionAuthAccount = "PASSKEY"
-	GlobalActionAuthAccountTwoFactorAuth GlobalActionAuthAccount = "TWO_FACTOR_AUTH"
+	DocumentCreateDocumentTemporaryGlobalActionAuthRequestAccount       DocumentCreateDocumentTemporaryGlobalActionAuthRequest = "ACCOUNT"
+	DocumentCreateDocumentTemporaryGlobalActionAuthRequestPasskey       DocumentCreateDocumentTemporaryGlobalActionAuthRequest = "PASSKEY"
+	DocumentCreateDocumentTemporaryGlobalActionAuthRequestTwoFactorAuth DocumentCreateDocumentTemporaryGlobalActionAuthRequest = "TWO_FACTOR_AUTH"
+	DocumentCreateDocumentTemporaryGlobalActionAuthRequestPassword      DocumentCreateDocumentTemporaryGlobalActionAuthRequest = "PASSWORD"
 )
 
-func (e GlobalActionAuthAccount) ToPointer() *GlobalActionAuthAccount {
+func (e DocumentCreateDocumentTemporaryGlobalActionAuthRequest) ToPointer() *DocumentCreateDocumentTemporaryGlobalActionAuthRequest {
 	return &e
 }
-func (e *GlobalActionAuthAccount) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryGlobalActionAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -87,10 +88,12 @@ func (e *GlobalActionAuthAccount) UnmarshalJSON(data []byte) error {
 	case "PASSKEY":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
-		*e = GlobalActionAuthAccount(v)
+		fallthrough
+	case "PASSWORD":
+		*e = DocumentCreateDocumentTemporaryGlobalActionAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GlobalActionAuthAccount: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryGlobalActionAuthRequest: %v", v)
 	}
 }
 
@@ -140,21 +143,21 @@ func CreateFormValuesRequestNumber(number float64) FormValuesRequest {
 func (u *FormValuesRequest) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = FormValuesRequestTypeStr
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = FormValuesRequestTypeBoolean
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = FormValuesRequestTypeNumber
 		return nil
@@ -179,20 +182,20 @@ func (u FormValuesRequest) MarshalJSON() ([]byte, error) {
 	return nil, errors.New("could not marshal union type FormValuesRequest: all fields are null")
 }
 
-type RoleAccount string
+type DocumentCreateDocumentTemporaryRoleRequest string
 
 const (
-	RoleAccountCc        RoleAccount = "CC"
-	RoleAccountSigner    RoleAccount = "SIGNER"
-	RoleAccountViewer    RoleAccount = "VIEWER"
-	RoleAccountApprover  RoleAccount = "APPROVER"
-	RoleAccountAssistant RoleAccount = "ASSISTANT"
+	DocumentCreateDocumentTemporaryRoleRequestCc        DocumentCreateDocumentTemporaryRoleRequest = "CC"
+	DocumentCreateDocumentTemporaryRoleRequestSigner    DocumentCreateDocumentTemporaryRoleRequest = "SIGNER"
+	DocumentCreateDocumentTemporaryRoleRequestViewer    DocumentCreateDocumentTemporaryRoleRequest = "VIEWER"
+	DocumentCreateDocumentTemporaryRoleRequestApprover  DocumentCreateDocumentTemporaryRoleRequest = "APPROVER"
+	DocumentCreateDocumentTemporaryRoleRequestAssistant DocumentCreateDocumentTemporaryRoleRequest = "ASSISTANT"
 )
 
-func (e RoleAccount) ToPointer() *RoleAccount {
+func (e DocumentCreateDocumentTemporaryRoleRequest) ToPointer() *DocumentCreateDocumentTemporaryRoleRequest {
 	return &e
 }
-func (e *RoleAccount) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRoleRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -207,10 +210,10 @@ func (e *RoleAccount) UnmarshalJSON(data []byte) error {
 	case "APPROVER":
 		fallthrough
 	case "ASSISTANT":
-		*e = RoleAccount(v)
+		*e = DocumentCreateDocumentTemporaryRoleRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RoleAccount: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRoleRequest: %v", v)
 	}
 }
 
@@ -238,20 +241,21 @@ func (e *DocumentCreateDocumentTemporaryAccessAuthRequest) UnmarshalJSON(data []
 	}
 }
 
-// ActionAuthAccount - The type of authentication required for the recipient to sign the document.
-type ActionAuthAccount string
+// DocumentCreateDocumentTemporaryActionAuthRequest - The type of authentication required for the recipient to sign the document.
+type DocumentCreateDocumentTemporaryActionAuthRequest string
 
 const (
-	ActionAuthAccountAccount       ActionAuthAccount = "ACCOUNT"
-	ActionAuthAccountPasskey       ActionAuthAccount = "PASSKEY"
-	ActionAuthAccountTwoFactorAuth ActionAuthAccount = "TWO_FACTOR_AUTH"
-	ActionAuthAccountExplicitNone  ActionAuthAccount = "EXPLICIT_NONE"
+	DocumentCreateDocumentTemporaryActionAuthRequestAccount       DocumentCreateDocumentTemporaryActionAuthRequest = "ACCOUNT"
+	DocumentCreateDocumentTemporaryActionAuthRequestPasskey       DocumentCreateDocumentTemporaryActionAuthRequest = "PASSKEY"
+	DocumentCreateDocumentTemporaryActionAuthRequestTwoFactorAuth DocumentCreateDocumentTemporaryActionAuthRequest = "TWO_FACTOR_AUTH"
+	DocumentCreateDocumentTemporaryActionAuthRequestPassword      DocumentCreateDocumentTemporaryActionAuthRequest = "PASSWORD"
+	DocumentCreateDocumentTemporaryActionAuthRequestExplicitNone  DocumentCreateDocumentTemporaryActionAuthRequest = "EXPLICIT_NONE"
 )
 
-func (e ActionAuthAccount) ToPointer() *ActionAuthAccount {
+func (e DocumentCreateDocumentTemporaryActionAuthRequest) ToPointer() *DocumentCreateDocumentTemporaryActionAuthRequest {
 	return &e
 }
-func (e *ActionAuthAccount) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryActionAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -263,133 +267,157 @@ func (e *ActionAuthAccount) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
-		*e = ActionAuthAccount(v)
+		*e = DocumentCreateDocumentTemporaryActionAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ActionAuthAccount: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryActionAuthRequest: %v", v)
 	}
 }
 
-type TypeAccountDropdown1 string
+type DocumentCreateDocumentTemporaryRecipientTypeDropdown1 string
 
 const (
-	TypeAccountDropdown1Dropdown TypeAccountDropdown1 = "DROPDOWN"
+	DocumentCreateDocumentTemporaryRecipientTypeDropdown1Dropdown DocumentCreateDocumentTemporaryRecipientTypeDropdown1 = "DROPDOWN"
 )
 
-func (e TypeAccountDropdown1) ToPointer() *TypeAccountDropdown1 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeDropdown1) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeDropdown1 {
 	return &e
 }
-func (e *TypeAccountDropdown1) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeDropdown1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "DROPDOWN":
-		*e = TypeAccountDropdown1(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeDropdown1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountDropdown1: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeDropdown1: %v", v)
 	}
 }
 
-type TypeAccountDropdown2 string
+type DocumentCreateDocumentTemporaryRecipientTypeDropdown2 string
 
 const (
-	TypeAccountDropdown2Dropdown TypeAccountDropdown2 = "dropdown"
+	DocumentCreateDocumentTemporaryRecipientTypeDropdown2Dropdown DocumentCreateDocumentTemporaryRecipientTypeDropdown2 = "dropdown"
 )
 
-func (e TypeAccountDropdown2) ToPointer() *TypeAccountDropdown2 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeDropdown2) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeDropdown2 {
 	return &e
 }
-func (e *TypeAccountDropdown2) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeDropdown2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "dropdown":
-		*e = TypeAccountDropdown2(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeDropdown2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountDropdown2: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeDropdown2: %v", v)
 	}
 }
 
-type ValueAccountDropdown struct {
+type DocumentCreateDocumentTemporaryValueDropdown struct {
 	Value string `json:"value"`
 }
 
-func (o *ValueAccountDropdown) GetValue() string {
+func (d DocumentCreateDocumentTemporaryValueDropdown) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryValueDropdown) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryValueDropdown) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type FieldMetaAccountDropdown struct {
-	Label        *string                `json:"label,omitempty"`
-	Placeholder  *string                `json:"placeholder,omitempty"`
-	Required     *bool                  `json:"required,omitempty"`
-	ReadOnly     *bool                  `json:"readOnly,omitempty"`
-	Type         TypeAccountDropdown2   `json:"type"`
-	Values       []ValueAccountDropdown `json:"values,omitempty"`
-	DefaultValue *string                `json:"defaultValue,omitempty"`
+type DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown struct {
+	Label        *string                                               `json:"label,omitempty"`
+	Placeholder  *string                                               `json:"placeholder,omitempty"`
+	Required     *bool                                                 `json:"required,omitempty"`
+	ReadOnly     *bool                                                 `json:"readOnly,omitempty"`
+	Type         DocumentCreateDocumentTemporaryRecipientTypeDropdown2 `json:"type"`
+	Values       []DocumentCreateDocumentTemporaryValueDropdown        `json:"values,omitempty"`
+	DefaultValue *string                                               `json:"defaultValue,omitempty"`
 }
 
-func (o *FieldMetaAccountDropdown) GetLabel() *string {
+func (d DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldMetaAccountDropdown) GetPlaceholder() *string {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldMetaAccountDropdown) GetRequired() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldMetaAccountDropdown) GetReadOnly() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldMetaAccountDropdown) GetType() TypeAccountDropdown2 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetType() DocumentCreateDocumentTemporaryRecipientTypeDropdown2 {
 	if o == nil {
-		return TypeAccountDropdown2("")
+		return DocumentCreateDocumentTemporaryRecipientTypeDropdown2("")
 	}
 	return o.Type
 }
 
-func (o *FieldMetaAccountDropdown) GetValues() []ValueAccountDropdown {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetValues() []DocumentCreateDocumentTemporaryValueDropdown {
 	if o == nil {
 		return nil
 	}
 	return o.Values
 }
 
-func (o *FieldMetaAccountDropdown) GetDefaultValue() *string {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetDefaultValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.DefaultValue
 }
 
-type FieldAccountDropdown struct {
-	Type      TypeAccountDropdown1      `json:"type"`
-	FieldMeta *FieldMetaAccountDropdown `json:"fieldMeta,omitempty"`
+type DocumentCreateDocumentTemporaryFieldDropdown struct {
+	Type      DocumentCreateDocumentTemporaryRecipientTypeDropdown1      `json:"type"`
+	FieldMeta *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown `json:"fieldMeta,omitempty"`
 	// The page number the field will be on.
 	PageNumber float64 `json:"pageNumber"`
 	// The X coordinate of where the field will be placed.
@@ -402,198 +430,231 @@ type FieldAccountDropdown struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldAccountDropdown) GetType() TypeAccountDropdown1 {
+func (d DocumentCreateDocumentTemporaryFieldDropdown) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryFieldDropdown) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "pageNumber", "pageX", "pageY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryFieldDropdown) GetType() DocumentCreateDocumentTemporaryRecipientTypeDropdown1 {
 	if o == nil {
-		return TypeAccountDropdown1("")
+		return DocumentCreateDocumentTemporaryRecipientTypeDropdown1("")
 	}
 	return o.Type
 }
 
-func (o *FieldAccountDropdown) GetFieldMeta() *FieldMetaAccountDropdown {
+func (o *DocumentCreateDocumentTemporaryFieldDropdown) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldAccountDropdown) GetPageNumber() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldDropdown) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldAccountDropdown) GetPageX() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldDropdown) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldAccountDropdown) GetPageY() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldDropdown) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldAccountDropdown) GetWidth() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldDropdown) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldAccountDropdown) GetHeight() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldDropdown) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type TypeAccountCheckbox1 string
+type DocumentCreateDocumentTemporaryRecipientTypeCheckbox1 string
 
 const (
-	TypeAccountCheckbox1Checkbox TypeAccountCheckbox1 = "CHECKBOX"
+	DocumentCreateDocumentTemporaryRecipientTypeCheckbox1Checkbox DocumentCreateDocumentTemporaryRecipientTypeCheckbox1 = "CHECKBOX"
 )
 
-func (e TypeAccountCheckbox1) ToPointer() *TypeAccountCheckbox1 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeCheckbox1) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeCheckbox1 {
 	return &e
 }
-func (e *TypeAccountCheckbox1) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeCheckbox1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "CHECKBOX":
-		*e = TypeAccountCheckbox1(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeCheckbox1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountCheckbox1: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeCheckbox1: %v", v)
 	}
 }
 
-type TypeAccountCheckbox2 string
+type DocumentCreateDocumentTemporaryRecipientTypeCheckbox2 string
 
 const (
-	TypeAccountCheckbox2Checkbox TypeAccountCheckbox2 = "checkbox"
+	DocumentCreateDocumentTemporaryRecipientTypeCheckbox2Checkbox DocumentCreateDocumentTemporaryRecipientTypeCheckbox2 = "checkbox"
 )
 
-func (e TypeAccountCheckbox2) ToPointer() *TypeAccountCheckbox2 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeCheckbox2) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeCheckbox2 {
 	return &e
 }
-func (e *TypeAccountCheckbox2) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeCheckbox2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "checkbox":
-		*e = TypeAccountCheckbox2(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeCheckbox2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountCheckbox2: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeCheckbox2: %v", v)
 	}
 }
 
-type ValueAccountCheckbox struct {
+type DocumentCreateDocumentTemporaryValueCheckbox struct {
 	ID      float64 `json:"id"`
 	Checked bool    `json:"checked"`
 	Value   string  `json:"value"`
 }
 
-func (o *ValueAccountCheckbox) GetID() float64 {
+func (d DocumentCreateDocumentTemporaryValueCheckbox) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryValueCheckbox) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryValueCheckbox) GetID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ID
 }
 
-func (o *ValueAccountCheckbox) GetChecked() bool {
+func (o *DocumentCreateDocumentTemporaryValueCheckbox) GetChecked() bool {
 	if o == nil {
 		return false
 	}
 	return o.Checked
 }
 
-func (o *ValueAccountCheckbox) GetValue() string {
+func (o *DocumentCreateDocumentTemporaryValueCheckbox) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type FieldMetaAccountCheckbox struct {
-	Label            *string                `json:"label,omitempty"`
-	Placeholder      *string                `json:"placeholder,omitempty"`
-	Required         *bool                  `json:"required,omitempty"`
-	ReadOnly         *bool                  `json:"readOnly,omitempty"`
-	Type             TypeAccountCheckbox2   `json:"type"`
-	Values           []ValueAccountCheckbox `json:"values,omitempty"`
-	ValidationRule   *string                `json:"validationRule,omitempty"`
-	ValidationLength *float64               `json:"validationLength,omitempty"`
+type DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox struct {
+	Label            *string                                               `json:"label,omitempty"`
+	Placeholder      *string                                               `json:"placeholder,omitempty"`
+	Required         *bool                                                 `json:"required,omitempty"`
+	ReadOnly         *bool                                                 `json:"readOnly,omitempty"`
+	Type             DocumentCreateDocumentTemporaryRecipientTypeCheckbox2 `json:"type"`
+	Values           []DocumentCreateDocumentTemporaryValueCheckbox        `json:"values,omitempty"`
+	ValidationRule   *string                                               `json:"validationRule,omitempty"`
+	ValidationLength *float64                                              `json:"validationLength,omitempty"`
 }
 
-func (o *FieldMetaAccountCheckbox) GetLabel() *string {
+func (d DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldMetaAccountCheckbox) GetPlaceholder() *string {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldMetaAccountCheckbox) GetRequired() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldMetaAccountCheckbox) GetReadOnly() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldMetaAccountCheckbox) GetType() TypeAccountCheckbox2 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetType() DocumentCreateDocumentTemporaryRecipientTypeCheckbox2 {
 	if o == nil {
-		return TypeAccountCheckbox2("")
+		return DocumentCreateDocumentTemporaryRecipientTypeCheckbox2("")
 	}
 	return o.Type
 }
 
-func (o *FieldMetaAccountCheckbox) GetValues() []ValueAccountCheckbox {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetValues() []DocumentCreateDocumentTemporaryValueCheckbox {
 	if o == nil {
 		return nil
 	}
 	return o.Values
 }
 
-func (o *FieldMetaAccountCheckbox) GetValidationRule() *string {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetValidationRule() *string {
 	if o == nil {
 		return nil
 	}
 	return o.ValidationRule
 }
 
-func (o *FieldMetaAccountCheckbox) GetValidationLength() *float64 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetValidationLength() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.ValidationLength
 }
 
-type FieldAccountCheckbox struct {
-	Type      TypeAccountCheckbox1      `json:"type"`
-	FieldMeta *FieldMetaAccountCheckbox `json:"fieldMeta,omitempty"`
+type DocumentCreateDocumentTemporaryFieldCheckbox struct {
+	Type      DocumentCreateDocumentTemporaryRecipientTypeCheckbox1      `json:"type"`
+	FieldMeta *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox `json:"fieldMeta,omitempty"`
 	// The page number the field will be on.
 	PageNumber float64 `json:"pageNumber"`
 	// The X coordinate of where the field will be placed.
@@ -606,182 +667,215 @@ type FieldAccountCheckbox struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldAccountCheckbox) GetType() TypeAccountCheckbox1 {
+func (d DocumentCreateDocumentTemporaryFieldCheckbox) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryFieldCheckbox) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "pageNumber", "pageX", "pageY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryFieldCheckbox) GetType() DocumentCreateDocumentTemporaryRecipientTypeCheckbox1 {
 	if o == nil {
-		return TypeAccountCheckbox1("")
+		return DocumentCreateDocumentTemporaryRecipientTypeCheckbox1("")
 	}
 	return o.Type
 }
 
-func (o *FieldAccountCheckbox) GetFieldMeta() *FieldMetaAccountCheckbox {
+func (o *DocumentCreateDocumentTemporaryFieldCheckbox) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldAccountCheckbox) GetPageNumber() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldCheckbox) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldAccountCheckbox) GetPageX() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldCheckbox) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldAccountCheckbox) GetPageY() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldCheckbox) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldAccountCheckbox) GetWidth() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldCheckbox) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldAccountCheckbox) GetHeight() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldCheckbox) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type TypeAccountRadio1 string
+type DocumentCreateDocumentTemporaryRecipientTypeRadio1 string
 
 const (
-	TypeAccountRadio1Radio TypeAccountRadio1 = "RADIO"
+	DocumentCreateDocumentTemporaryRecipientTypeRadio1Radio DocumentCreateDocumentTemporaryRecipientTypeRadio1 = "RADIO"
 )
 
-func (e TypeAccountRadio1) ToPointer() *TypeAccountRadio1 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeRadio1) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeRadio1 {
 	return &e
 }
-func (e *TypeAccountRadio1) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeRadio1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "RADIO":
-		*e = TypeAccountRadio1(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeRadio1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountRadio1: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeRadio1: %v", v)
 	}
 }
 
-type TypeAccountRadio2 string
+type DocumentCreateDocumentTemporaryRecipientTypeRadio2 string
 
 const (
-	TypeAccountRadio2Radio TypeAccountRadio2 = "radio"
+	DocumentCreateDocumentTemporaryRecipientTypeRadio2Radio DocumentCreateDocumentTemporaryRecipientTypeRadio2 = "radio"
 )
 
-func (e TypeAccountRadio2) ToPointer() *TypeAccountRadio2 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeRadio2) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeRadio2 {
 	return &e
 }
-func (e *TypeAccountRadio2) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeRadio2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "radio":
-		*e = TypeAccountRadio2(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeRadio2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountRadio2: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeRadio2: %v", v)
 	}
 }
 
-type ValueAccountRadio struct {
+type DocumentCreateDocumentTemporaryValueRadio struct {
 	ID      float64 `json:"id"`
 	Checked bool    `json:"checked"`
 	Value   string  `json:"value"`
 }
 
-func (o *ValueAccountRadio) GetID() float64 {
+func (d DocumentCreateDocumentTemporaryValueRadio) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryValueRadio) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryValueRadio) GetID() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.ID
 }
 
-func (o *ValueAccountRadio) GetChecked() bool {
+func (o *DocumentCreateDocumentTemporaryValueRadio) GetChecked() bool {
 	if o == nil {
 		return false
 	}
 	return o.Checked
 }
 
-func (o *ValueAccountRadio) GetValue() string {
+func (o *DocumentCreateDocumentTemporaryValueRadio) GetValue() string {
 	if o == nil {
 		return ""
 	}
 	return o.Value
 }
 
-type FieldMetaAccountRadio struct {
-	Label       *string             `json:"label,omitempty"`
-	Placeholder *string             `json:"placeholder,omitempty"`
-	Required    *bool               `json:"required,omitempty"`
-	ReadOnly    *bool               `json:"readOnly,omitempty"`
-	Type        TypeAccountRadio2   `json:"type"`
-	Values      []ValueAccountRadio `json:"values,omitempty"`
+type DocumentCreateDocumentTemporaryRecipientFieldMetaRadio struct {
+	Label       *string                                            `json:"label,omitempty"`
+	Placeholder *string                                            `json:"placeholder,omitempty"`
+	Required    *bool                                              `json:"required,omitempty"`
+	ReadOnly    *bool                                              `json:"readOnly,omitempty"`
+	Type        DocumentCreateDocumentTemporaryRecipientTypeRadio2 `json:"type"`
+	Values      []DocumentCreateDocumentTemporaryValueRadio        `json:"values,omitempty"`
 }
 
-func (o *FieldMetaAccountRadio) GetLabel() *string {
+func (d DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldMetaAccountRadio) GetPlaceholder() *string {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldMetaAccountRadio) GetRequired() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldMetaAccountRadio) GetReadOnly() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldMetaAccountRadio) GetType() TypeAccountRadio2 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetType() DocumentCreateDocumentTemporaryRecipientTypeRadio2 {
 	if o == nil {
-		return TypeAccountRadio2("")
+		return DocumentCreateDocumentTemporaryRecipientTypeRadio2("")
 	}
 	return o.Type
 }
 
-func (o *FieldMetaAccountRadio) GetValues() []ValueAccountRadio {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetValues() []DocumentCreateDocumentTemporaryValueRadio {
 	if o == nil {
 		return nil
 	}
 	return o.Values
 }
 
-type FieldAccountRadio struct {
-	Type      TypeAccountRadio1      `json:"type"`
-	FieldMeta *FieldMetaAccountRadio `json:"fieldMeta,omitempty"`
+type DocumentCreateDocumentTemporaryFieldRadio struct {
+	Type      DocumentCreateDocumentTemporaryRecipientTypeRadio1      `json:"type"`
+	FieldMeta *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio `json:"fieldMeta,omitempty"`
 	// The page number the field will be on.
 	PageNumber float64 `json:"pageNumber"`
 	// The X coordinate of where the field will be placed.
@@ -794,113 +888,124 @@ type FieldAccountRadio struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldAccountRadio) GetType() TypeAccountRadio1 {
+func (d DocumentCreateDocumentTemporaryFieldRadio) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryFieldRadio) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "pageNumber", "pageX", "pageY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryFieldRadio) GetType() DocumentCreateDocumentTemporaryRecipientTypeRadio1 {
 	if o == nil {
-		return TypeAccountRadio1("")
+		return DocumentCreateDocumentTemporaryRecipientTypeRadio1("")
 	}
 	return o.Type
 }
 
-func (o *FieldAccountRadio) GetFieldMeta() *FieldMetaAccountRadio {
+func (o *DocumentCreateDocumentTemporaryFieldRadio) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldAccountRadio) GetPageNumber() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldRadio) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldAccountRadio) GetPageX() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldRadio) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldAccountRadio) GetPageY() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldRadio) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldAccountRadio) GetWidth() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldRadio) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldAccountRadio) GetHeight() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldRadio) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type TypeAccountNumber1 string
+type DocumentCreateDocumentTemporaryRecipientTypeNumber1 string
 
 const (
-	TypeAccountNumber1Number TypeAccountNumber1 = "NUMBER"
+	DocumentCreateDocumentTemporaryRecipientTypeNumber1Number DocumentCreateDocumentTemporaryRecipientTypeNumber1 = "NUMBER"
 )
 
-func (e TypeAccountNumber1) ToPointer() *TypeAccountNumber1 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeNumber1) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeNumber1 {
 	return &e
 }
-func (e *TypeAccountNumber1) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeNumber1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "NUMBER":
-		*e = TypeAccountNumber1(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeNumber1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountNumber1: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeNumber1: %v", v)
 	}
 }
 
-type TypeAccountNumber2 string
+type DocumentCreateDocumentTemporaryRecipientTypeNumber2 string
 
 const (
-	TypeAccountNumber2Number TypeAccountNumber2 = "number"
+	DocumentCreateDocumentTemporaryRecipientTypeNumber2Number DocumentCreateDocumentTemporaryRecipientTypeNumber2 = "number"
 )
 
-func (e TypeAccountNumber2) ToPointer() *TypeAccountNumber2 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeNumber2) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeNumber2 {
 	return &e
 }
-func (e *TypeAccountNumber2) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeNumber2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "number":
-		*e = TypeAccountNumber2(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeNumber2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountNumber2: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeNumber2: %v", v)
 	}
 }
 
-type TextAlignAccountNumber string
+type DocumentCreateDocumentTemporaryTextAlignNumber string
 
 const (
-	TextAlignAccountNumberLeft   TextAlignAccountNumber = "left"
-	TextAlignAccountNumberCenter TextAlignAccountNumber = "center"
-	TextAlignAccountNumberRight  TextAlignAccountNumber = "right"
+	DocumentCreateDocumentTemporaryTextAlignNumberLeft   DocumentCreateDocumentTemporaryTextAlignNumber = "left"
+	DocumentCreateDocumentTemporaryTextAlignNumberCenter DocumentCreateDocumentTemporaryTextAlignNumber = "center"
+	DocumentCreateDocumentTemporaryTextAlignNumberRight  DocumentCreateDocumentTemporaryTextAlignNumber = "right"
 )
 
-func (e TextAlignAccountNumber) ToPointer() *TextAlignAccountNumber {
+func (e DocumentCreateDocumentTemporaryTextAlignNumber) ToPointer() *DocumentCreateDocumentTemporaryTextAlignNumber {
 	return &e
 }
-func (e *TextAlignAccountNumber) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryTextAlignNumber) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -911,107 +1016,118 @@ func (e *TextAlignAccountNumber) UnmarshalJSON(data []byte) error {
 	case "center":
 		fallthrough
 	case "right":
-		*e = TextAlignAccountNumber(v)
+		*e = DocumentCreateDocumentTemporaryTextAlignNumber(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TextAlignAccountNumber: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryTextAlignNumber: %v", v)
 	}
 }
 
-type FieldMetaAccountNumber struct {
-	Label        *string                 `json:"label,omitempty"`
-	Placeholder  *string                 `json:"placeholder,omitempty"`
-	Required     *bool                   `json:"required,omitempty"`
-	ReadOnly     *bool                   `json:"readOnly,omitempty"`
-	Type         TypeAccountNumber2      `json:"type"`
-	NumberFormat *string                 `json:"numberFormat,omitempty"`
-	Value        *string                 `json:"value,omitempty"`
-	MinValue     *float64                `json:"minValue,omitempty"`
-	MaxValue     *float64                `json:"maxValue,omitempty"`
-	FontSize     *float64                `json:"fontSize,omitempty"`
-	TextAlign    *TextAlignAccountNumber `json:"textAlign,omitempty"`
+type DocumentCreateDocumentTemporaryRecipientFieldMetaNumber struct {
+	Label        *string                                             `json:"label,omitempty"`
+	Placeholder  *string                                             `json:"placeholder,omitempty"`
+	Required     *bool                                               `json:"required,omitempty"`
+	ReadOnly     *bool                                               `json:"readOnly,omitempty"`
+	Type         DocumentCreateDocumentTemporaryRecipientTypeNumber2 `json:"type"`
+	NumberFormat *string                                             `json:"numberFormat,omitempty"`
+	Value        *string                                             `json:"value,omitempty"`
+	MinValue     *float64                                            `json:"minValue,omitempty"`
+	MaxValue     *float64                                            `json:"maxValue,omitempty"`
+	FontSize     *float64                                            `json:"fontSize,omitempty"`
+	TextAlign    *DocumentCreateDocumentTemporaryTextAlignNumber     `json:"textAlign,omitempty"`
 }
 
-func (o *FieldMetaAccountNumber) GetLabel() *string {
+func (d DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldMetaAccountNumber) GetPlaceholder() *string {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldMetaAccountNumber) GetRequired() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldMetaAccountNumber) GetReadOnly() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldMetaAccountNumber) GetType() TypeAccountNumber2 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetType() DocumentCreateDocumentTemporaryRecipientTypeNumber2 {
 	if o == nil {
-		return TypeAccountNumber2("")
+		return DocumentCreateDocumentTemporaryRecipientTypeNumber2("")
 	}
 	return o.Type
 }
 
-func (o *FieldMetaAccountNumber) GetNumberFormat() *string {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetNumberFormat() *string {
 	if o == nil {
 		return nil
 	}
 	return o.NumberFormat
 }
 
-func (o *FieldMetaAccountNumber) GetValue() *string {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetValue() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Value
 }
 
-func (o *FieldMetaAccountNumber) GetMinValue() *float64 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetMinValue() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MinValue
 }
 
-func (o *FieldMetaAccountNumber) GetMaxValue() *float64 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetMaxValue() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.MaxValue
 }
 
-func (o *FieldMetaAccountNumber) GetFontSize() *float64 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-func (o *FieldMetaAccountNumber) GetTextAlign() *TextAlignAccountNumber {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignNumber {
 	if o == nil {
 		return nil
 	}
 	return o.TextAlign
 }
 
-type FieldAccountNumber struct {
-	Type      TypeAccountNumber1      `json:"type"`
-	FieldMeta *FieldMetaAccountNumber `json:"fieldMeta,omitempty"`
+type DocumentCreateDocumentTemporaryFieldNumber struct {
+	Type      DocumentCreateDocumentTemporaryRecipientTypeNumber1      `json:"type"`
+	FieldMeta *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber `json:"fieldMeta,omitempty"`
 	// The page number the field will be on.
 	PageNumber float64 `json:"pageNumber"`
 	// The X coordinate of where the field will be placed.
@@ -1024,113 +1140,124 @@ type FieldAccountNumber struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldAccountNumber) GetType() TypeAccountNumber1 {
+func (d DocumentCreateDocumentTemporaryFieldNumber) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryFieldNumber) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "pageNumber", "pageX", "pageY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryFieldNumber) GetType() DocumentCreateDocumentTemporaryRecipientTypeNumber1 {
 	if o == nil {
-		return TypeAccountNumber1("")
+		return DocumentCreateDocumentTemporaryRecipientTypeNumber1("")
 	}
 	return o.Type
 }
 
-func (o *FieldAccountNumber) GetFieldMeta() *FieldMetaAccountNumber {
+func (o *DocumentCreateDocumentTemporaryFieldNumber) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldAccountNumber) GetPageNumber() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldNumber) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldAccountNumber) GetPageX() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldNumber) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldAccountNumber) GetPageY() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldNumber) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldAccountNumber) GetWidth() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldNumber) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldAccountNumber) GetHeight() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldNumber) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type TypeAccountText1 string
+type DocumentCreateDocumentTemporaryRecipientTypeText1 string
 
 const (
-	TypeAccountText1Text TypeAccountText1 = "TEXT"
+	DocumentCreateDocumentTemporaryRecipientTypeText1Text DocumentCreateDocumentTemporaryRecipientTypeText1 = "TEXT"
 )
 
-func (e TypeAccountText1) ToPointer() *TypeAccountText1 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeText1) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeText1 {
 	return &e
 }
-func (e *TypeAccountText1) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeText1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "TEXT":
-		*e = TypeAccountText1(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeText1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountText1: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeText1: %v", v)
 	}
 }
 
-type TypeAccountText2 string
+type DocumentCreateDocumentTemporaryRecipientTypeText2 string
 
 const (
-	TypeAccountText2Text TypeAccountText2 = "text"
+	DocumentCreateDocumentTemporaryRecipientTypeText2Text DocumentCreateDocumentTemporaryRecipientTypeText2 = "text"
 )
 
-func (e TypeAccountText2) ToPointer() *TypeAccountText2 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeText2) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeText2 {
 	return &e
 }
-func (e *TypeAccountText2) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeText2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "text":
-		*e = TypeAccountText2(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeText2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountText2: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeText2: %v", v)
 	}
 }
 
-type TextAlignAccountText string
+type DocumentCreateDocumentTemporaryTextAlignText string
 
 const (
-	TextAlignAccountTextLeft   TextAlignAccountText = "left"
-	TextAlignAccountTextCenter TextAlignAccountText = "center"
-	TextAlignAccountTextRight  TextAlignAccountText = "right"
+	DocumentCreateDocumentTemporaryTextAlignTextLeft   DocumentCreateDocumentTemporaryTextAlignText = "left"
+	DocumentCreateDocumentTemporaryTextAlignTextCenter DocumentCreateDocumentTemporaryTextAlignText = "center"
+	DocumentCreateDocumentTemporaryTextAlignTextRight  DocumentCreateDocumentTemporaryTextAlignText = "right"
 )
 
-func (e TextAlignAccountText) ToPointer() *TextAlignAccountText {
+func (e DocumentCreateDocumentTemporaryTextAlignText) ToPointer() *DocumentCreateDocumentTemporaryTextAlignText {
 	return &e
 }
-func (e *TextAlignAccountText) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryTextAlignText) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1141,91 +1268,102 @@ func (e *TextAlignAccountText) UnmarshalJSON(data []byte) error {
 	case "center":
 		fallthrough
 	case "right":
-		*e = TextAlignAccountText(v)
+		*e = DocumentCreateDocumentTemporaryTextAlignText(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TextAlignAccountText: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryTextAlignText: %v", v)
 	}
 }
 
-type FieldMetaAccountText struct {
-	Label          *string               `json:"label,omitempty"`
-	Placeholder    *string               `json:"placeholder,omitempty"`
-	Required       *bool                 `json:"required,omitempty"`
-	ReadOnly       *bool                 `json:"readOnly,omitempty"`
-	Type           TypeAccountText2      `json:"type"`
-	Text           *string               `json:"text,omitempty"`
-	CharacterLimit *float64              `json:"characterLimit,omitempty"`
-	FontSize       *float64              `json:"fontSize,omitempty"`
-	TextAlign      *TextAlignAccountText `json:"textAlign,omitempty"`
+type DocumentCreateDocumentTemporaryRecipientFieldMetaText struct {
+	Label          *string                                           `json:"label,omitempty"`
+	Placeholder    *string                                           `json:"placeholder,omitempty"`
+	Required       *bool                                             `json:"required,omitempty"`
+	ReadOnly       *bool                                             `json:"readOnly,omitempty"`
+	Type           DocumentCreateDocumentTemporaryRecipientTypeText2 `json:"type"`
+	Text           *string                                           `json:"text,omitempty"`
+	CharacterLimit *float64                                          `json:"characterLimit,omitempty"`
+	FontSize       *float64                                          `json:"fontSize,omitempty"`
+	TextAlign      *DocumentCreateDocumentTemporaryTextAlignText     `json:"textAlign,omitempty"`
 }
 
-func (o *FieldMetaAccountText) GetLabel() *string {
+func (d DocumentCreateDocumentTemporaryRecipientFieldMetaText) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaText) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldMetaAccountText) GetPlaceholder() *string {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldMetaAccountText) GetRequired() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldMetaAccountText) GetReadOnly() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldMetaAccountText) GetType() TypeAccountText2 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetType() DocumentCreateDocumentTemporaryRecipientTypeText2 {
 	if o == nil {
-		return TypeAccountText2("")
+		return DocumentCreateDocumentTemporaryRecipientTypeText2("")
 	}
 	return o.Type
 }
 
-func (o *FieldMetaAccountText) GetText() *string {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetText() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Text
 }
 
-func (o *FieldMetaAccountText) GetCharacterLimit() *float64 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetCharacterLimit() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.CharacterLimit
 }
 
-func (o *FieldMetaAccountText) GetFontSize() *float64 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-func (o *FieldMetaAccountText) GetTextAlign() *TextAlignAccountText {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignText {
 	if o == nil {
 		return nil
 	}
 	return o.TextAlign
 }
 
-type FieldAccountText struct {
-	Type      TypeAccountText1      `json:"type"`
-	FieldMeta *FieldMetaAccountText `json:"fieldMeta,omitempty"`
+type DocumentCreateDocumentTemporaryFieldText struct {
+	Type      DocumentCreateDocumentTemporaryRecipientTypeText1      `json:"type"`
+	FieldMeta *DocumentCreateDocumentTemporaryRecipientFieldMetaText `json:"fieldMeta,omitempty"`
 	// The page number the field will be on.
 	PageNumber float64 `json:"pageNumber"`
 	// The X coordinate of where the field will be placed.
@@ -1238,113 +1376,124 @@ type FieldAccountText struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldAccountText) GetType() TypeAccountText1 {
+func (d DocumentCreateDocumentTemporaryFieldText) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryFieldText) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "pageNumber", "pageX", "pageY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryFieldText) GetType() DocumentCreateDocumentTemporaryRecipientTypeText1 {
 	if o == nil {
-		return TypeAccountText1("")
+		return DocumentCreateDocumentTemporaryRecipientTypeText1("")
 	}
 	return o.Type
 }
 
-func (o *FieldAccountText) GetFieldMeta() *FieldMetaAccountText {
+func (o *DocumentCreateDocumentTemporaryFieldText) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaText {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldAccountText) GetPageNumber() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldText) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldAccountText) GetPageX() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldText) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldAccountText) GetPageY() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldText) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldAccountText) GetWidth() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldText) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldAccountText) GetHeight() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldText) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type TypeAccountDate1 string
+type DocumentCreateDocumentTemporaryRecipientTypeDate1 string
 
 const (
-	TypeAccountDate1Date TypeAccountDate1 = "DATE"
+	DocumentCreateDocumentTemporaryRecipientTypeDate1Date DocumentCreateDocumentTemporaryRecipientTypeDate1 = "DATE"
 )
 
-func (e TypeAccountDate1) ToPointer() *TypeAccountDate1 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeDate1) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeDate1 {
 	return &e
 }
-func (e *TypeAccountDate1) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeDate1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "DATE":
-		*e = TypeAccountDate1(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeDate1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountDate1: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeDate1: %v", v)
 	}
 }
 
-type TypeAccountDate2 string
+type DocumentCreateDocumentTemporaryRecipientTypeDate2 string
 
 const (
-	TypeAccountDate2Date TypeAccountDate2 = "date"
+	DocumentCreateDocumentTemporaryRecipientTypeDate2Date DocumentCreateDocumentTemporaryRecipientTypeDate2 = "date"
 )
 
-func (e TypeAccountDate2) ToPointer() *TypeAccountDate2 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeDate2) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeDate2 {
 	return &e
 }
-func (e *TypeAccountDate2) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeDate2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "date":
-		*e = TypeAccountDate2(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeDate2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountDate2: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeDate2: %v", v)
 	}
 }
 
-type TextAlignAccountDate string
+type DocumentCreateDocumentTemporaryTextAlignDate string
 
 const (
-	TextAlignAccountDateLeft   TextAlignAccountDate = "left"
-	TextAlignAccountDateCenter TextAlignAccountDate = "center"
-	TextAlignAccountDateRight  TextAlignAccountDate = "right"
+	DocumentCreateDocumentTemporaryTextAlignDateLeft   DocumentCreateDocumentTemporaryTextAlignDate = "left"
+	DocumentCreateDocumentTemporaryTextAlignDateCenter DocumentCreateDocumentTemporaryTextAlignDate = "center"
+	DocumentCreateDocumentTemporaryTextAlignDateRight  DocumentCreateDocumentTemporaryTextAlignDate = "right"
 )
 
-func (e TextAlignAccountDate) ToPointer() *TextAlignAccountDate {
+func (e DocumentCreateDocumentTemporaryTextAlignDate) ToPointer() *DocumentCreateDocumentTemporaryTextAlignDate {
 	return &e
 }
-func (e *TextAlignAccountDate) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryTextAlignDate) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1355,75 +1504,86 @@ func (e *TextAlignAccountDate) UnmarshalJSON(data []byte) error {
 	case "center":
 		fallthrough
 	case "right":
-		*e = TextAlignAccountDate(v)
+		*e = DocumentCreateDocumentTemporaryTextAlignDate(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TextAlignAccountDate: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryTextAlignDate: %v", v)
 	}
 }
 
-type FieldMetaAccountDate struct {
-	Label       *string               `json:"label,omitempty"`
-	Placeholder *string               `json:"placeholder,omitempty"`
-	Required    *bool                 `json:"required,omitempty"`
-	ReadOnly    *bool                 `json:"readOnly,omitempty"`
-	Type        TypeAccountDate2      `json:"type"`
-	FontSize    *float64              `json:"fontSize,omitempty"`
-	TextAlign   *TextAlignAccountDate `json:"textAlign,omitempty"`
+type DocumentCreateDocumentTemporaryRecipientFieldMetaDate struct {
+	Label       *string                                           `json:"label,omitempty"`
+	Placeholder *string                                           `json:"placeholder,omitempty"`
+	Required    *bool                                             `json:"required,omitempty"`
+	ReadOnly    *bool                                             `json:"readOnly,omitempty"`
+	Type        DocumentCreateDocumentTemporaryRecipientTypeDate2 `json:"type"`
+	FontSize    *float64                                          `json:"fontSize,omitempty"`
+	TextAlign   *DocumentCreateDocumentTemporaryTextAlignDate     `json:"textAlign,omitempty"`
 }
 
-func (o *FieldMetaAccountDate) GetLabel() *string {
+func (d DocumentCreateDocumentTemporaryRecipientFieldMetaDate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldMetaAccountDate) GetPlaceholder() *string {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldMetaAccountDate) GetRequired() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldMetaAccountDate) GetReadOnly() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldMetaAccountDate) GetType() TypeAccountDate2 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetType() DocumentCreateDocumentTemporaryRecipientTypeDate2 {
 	if o == nil {
-		return TypeAccountDate2("")
+		return DocumentCreateDocumentTemporaryRecipientTypeDate2("")
 	}
 	return o.Type
 }
 
-func (o *FieldMetaAccountDate) GetFontSize() *float64 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-func (o *FieldMetaAccountDate) GetTextAlign() *TextAlignAccountDate {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignDate {
 	if o == nil {
 		return nil
 	}
 	return o.TextAlign
 }
 
-type FieldAccountDate struct {
-	Type      TypeAccountDate1      `json:"type"`
-	FieldMeta *FieldMetaAccountDate `json:"fieldMeta,omitempty"`
+type DocumentCreateDocumentTemporaryFieldDate struct {
+	Type      DocumentCreateDocumentTemporaryRecipientTypeDate1      `json:"type"`
+	FieldMeta *DocumentCreateDocumentTemporaryRecipientFieldMetaDate `json:"fieldMeta,omitempty"`
 	// The page number the field will be on.
 	PageNumber float64 `json:"pageNumber"`
 	// The X coordinate of where the field will be placed.
@@ -1436,113 +1596,124 @@ type FieldAccountDate struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldAccountDate) GetType() TypeAccountDate1 {
+func (d DocumentCreateDocumentTemporaryFieldDate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryFieldDate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "pageNumber", "pageX", "pageY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryFieldDate) GetType() DocumentCreateDocumentTemporaryRecipientTypeDate1 {
 	if o == nil {
-		return TypeAccountDate1("")
+		return DocumentCreateDocumentTemporaryRecipientTypeDate1("")
 	}
 	return o.Type
 }
 
-func (o *FieldAccountDate) GetFieldMeta() *FieldMetaAccountDate {
+func (o *DocumentCreateDocumentTemporaryFieldDate) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaDate {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldAccountDate) GetPageNumber() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldDate) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldAccountDate) GetPageX() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldDate) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldAccountDate) GetPageY() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldDate) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldAccountDate) GetWidth() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldDate) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldAccountDate) GetHeight() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldDate) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type TypeAccountEmail1 string
+type DocumentCreateDocumentTemporaryRecipientTypeEmail1 string
 
 const (
-	TypeAccountEmail1Email TypeAccountEmail1 = "EMAIL"
+	DocumentCreateDocumentTemporaryRecipientTypeEmail1Email DocumentCreateDocumentTemporaryRecipientTypeEmail1 = "EMAIL"
 )
 
-func (e TypeAccountEmail1) ToPointer() *TypeAccountEmail1 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeEmail1) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeEmail1 {
 	return &e
 }
-func (e *TypeAccountEmail1) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeEmail1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "EMAIL":
-		*e = TypeAccountEmail1(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeEmail1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountEmail1: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeEmail1: %v", v)
 	}
 }
 
-type TypeAccountEmail2 string
+type DocumentCreateDocumentTemporaryRecipientTypeEmail2 string
 
 const (
-	TypeAccountEmail2Email TypeAccountEmail2 = "email"
+	DocumentCreateDocumentTemporaryRecipientTypeEmail2Email DocumentCreateDocumentTemporaryRecipientTypeEmail2 = "email"
 )
 
-func (e TypeAccountEmail2) ToPointer() *TypeAccountEmail2 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeEmail2) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeEmail2 {
 	return &e
 }
-func (e *TypeAccountEmail2) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeEmail2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "email":
-		*e = TypeAccountEmail2(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeEmail2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountEmail2: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeEmail2: %v", v)
 	}
 }
 
-type TextAlignAccountEmail string
+type DocumentCreateDocumentTemporaryTextAlignEmail string
 
 const (
-	TextAlignAccountEmailLeft   TextAlignAccountEmail = "left"
-	TextAlignAccountEmailCenter TextAlignAccountEmail = "center"
-	TextAlignAccountEmailRight  TextAlignAccountEmail = "right"
+	DocumentCreateDocumentTemporaryTextAlignEmailLeft   DocumentCreateDocumentTemporaryTextAlignEmail = "left"
+	DocumentCreateDocumentTemporaryTextAlignEmailCenter DocumentCreateDocumentTemporaryTextAlignEmail = "center"
+	DocumentCreateDocumentTemporaryTextAlignEmailRight  DocumentCreateDocumentTemporaryTextAlignEmail = "right"
 )
 
-func (e TextAlignAccountEmail) ToPointer() *TextAlignAccountEmail {
+func (e DocumentCreateDocumentTemporaryTextAlignEmail) ToPointer() *DocumentCreateDocumentTemporaryTextAlignEmail {
 	return &e
 }
-func (e *TextAlignAccountEmail) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryTextAlignEmail) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1553,75 +1724,86 @@ func (e *TextAlignAccountEmail) UnmarshalJSON(data []byte) error {
 	case "center":
 		fallthrough
 	case "right":
-		*e = TextAlignAccountEmail(v)
+		*e = DocumentCreateDocumentTemporaryTextAlignEmail(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TextAlignAccountEmail: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryTextAlignEmail: %v", v)
 	}
 }
 
-type FieldMetaAccountEmail struct {
-	Label       *string                `json:"label,omitempty"`
-	Placeholder *string                `json:"placeholder,omitempty"`
-	Required    *bool                  `json:"required,omitempty"`
-	ReadOnly    *bool                  `json:"readOnly,omitempty"`
-	Type        TypeAccountEmail2      `json:"type"`
-	FontSize    *float64               `json:"fontSize,omitempty"`
-	TextAlign   *TextAlignAccountEmail `json:"textAlign,omitempty"`
+type DocumentCreateDocumentTemporaryRecipientFieldMetaEmail struct {
+	Label       *string                                            `json:"label,omitempty"`
+	Placeholder *string                                            `json:"placeholder,omitempty"`
+	Required    *bool                                              `json:"required,omitempty"`
+	ReadOnly    *bool                                              `json:"readOnly,omitempty"`
+	Type        DocumentCreateDocumentTemporaryRecipientTypeEmail2 `json:"type"`
+	FontSize    *float64                                           `json:"fontSize,omitempty"`
+	TextAlign   *DocumentCreateDocumentTemporaryTextAlignEmail     `json:"textAlign,omitempty"`
 }
 
-func (o *FieldMetaAccountEmail) GetLabel() *string {
+func (d DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldMetaAccountEmail) GetPlaceholder() *string {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldMetaAccountEmail) GetRequired() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldMetaAccountEmail) GetReadOnly() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldMetaAccountEmail) GetType() TypeAccountEmail2 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetType() DocumentCreateDocumentTemporaryRecipientTypeEmail2 {
 	if o == nil {
-		return TypeAccountEmail2("")
+		return DocumentCreateDocumentTemporaryRecipientTypeEmail2("")
 	}
 	return o.Type
 }
 
-func (o *FieldMetaAccountEmail) GetFontSize() *float64 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-func (o *FieldMetaAccountEmail) GetTextAlign() *TextAlignAccountEmail {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignEmail {
 	if o == nil {
 		return nil
 	}
 	return o.TextAlign
 }
 
-type FieldAccountEmail struct {
-	Type      TypeAccountEmail1      `json:"type"`
-	FieldMeta *FieldMetaAccountEmail `json:"fieldMeta,omitempty"`
+type DocumentCreateDocumentTemporaryFieldEmail struct {
+	Type      DocumentCreateDocumentTemporaryRecipientTypeEmail1      `json:"type"`
+	FieldMeta *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail `json:"fieldMeta,omitempty"`
 	// The page number the field will be on.
 	PageNumber float64 `json:"pageNumber"`
 	// The X coordinate of where the field will be placed.
@@ -1634,113 +1816,124 @@ type FieldAccountEmail struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldAccountEmail) GetType() TypeAccountEmail1 {
+func (d DocumentCreateDocumentTemporaryFieldEmail) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryFieldEmail) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "pageNumber", "pageX", "pageY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryFieldEmail) GetType() DocumentCreateDocumentTemporaryRecipientTypeEmail1 {
 	if o == nil {
-		return TypeAccountEmail1("")
+		return DocumentCreateDocumentTemporaryRecipientTypeEmail1("")
 	}
 	return o.Type
 }
 
-func (o *FieldAccountEmail) GetFieldMeta() *FieldMetaAccountEmail {
+func (o *DocumentCreateDocumentTemporaryFieldEmail) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldAccountEmail) GetPageNumber() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldEmail) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldAccountEmail) GetPageX() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldEmail) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldAccountEmail) GetPageY() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldEmail) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldAccountEmail) GetWidth() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldEmail) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldAccountEmail) GetHeight() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldEmail) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type TypeAccountName1 string
+type DocumentCreateDocumentTemporaryRecipientTypeName1 string
 
 const (
-	TypeAccountName1Name TypeAccountName1 = "NAME"
+	DocumentCreateDocumentTemporaryRecipientTypeName1Name DocumentCreateDocumentTemporaryRecipientTypeName1 = "NAME"
 )
 
-func (e TypeAccountName1) ToPointer() *TypeAccountName1 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeName1) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeName1 {
 	return &e
 }
-func (e *TypeAccountName1) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeName1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "NAME":
-		*e = TypeAccountName1(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeName1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountName1: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeName1: %v", v)
 	}
 }
 
-type TypeAccountName2 string
+type DocumentCreateDocumentTemporaryRecipientTypeName2 string
 
 const (
-	TypeAccountName2Name TypeAccountName2 = "name"
+	DocumentCreateDocumentTemporaryRecipientTypeName2Name DocumentCreateDocumentTemporaryRecipientTypeName2 = "name"
 )
 
-func (e TypeAccountName2) ToPointer() *TypeAccountName2 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeName2) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeName2 {
 	return &e
 }
-func (e *TypeAccountName2) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeName2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "name":
-		*e = TypeAccountName2(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeName2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountName2: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeName2: %v", v)
 	}
 }
 
-type TextAlignAccountName string
+type DocumentCreateDocumentTemporaryTextAlignName string
 
 const (
-	TextAlignAccountNameLeft   TextAlignAccountName = "left"
-	TextAlignAccountNameCenter TextAlignAccountName = "center"
-	TextAlignAccountNameRight  TextAlignAccountName = "right"
+	DocumentCreateDocumentTemporaryTextAlignNameLeft   DocumentCreateDocumentTemporaryTextAlignName = "left"
+	DocumentCreateDocumentTemporaryTextAlignNameCenter DocumentCreateDocumentTemporaryTextAlignName = "center"
+	DocumentCreateDocumentTemporaryTextAlignNameRight  DocumentCreateDocumentTemporaryTextAlignName = "right"
 )
 
-func (e TextAlignAccountName) ToPointer() *TextAlignAccountName {
+func (e DocumentCreateDocumentTemporaryTextAlignName) ToPointer() *DocumentCreateDocumentTemporaryTextAlignName {
 	return &e
 }
-func (e *TextAlignAccountName) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryTextAlignName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1751,75 +1944,86 @@ func (e *TextAlignAccountName) UnmarshalJSON(data []byte) error {
 	case "center":
 		fallthrough
 	case "right":
-		*e = TextAlignAccountName(v)
+		*e = DocumentCreateDocumentTemporaryTextAlignName(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TextAlignAccountName: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryTextAlignName: %v", v)
 	}
 }
 
-type FieldMetaAccountName struct {
-	Label       *string               `json:"label,omitempty"`
-	Placeholder *string               `json:"placeholder,omitempty"`
-	Required    *bool                 `json:"required,omitempty"`
-	ReadOnly    *bool                 `json:"readOnly,omitempty"`
-	Type        TypeAccountName2      `json:"type"`
-	FontSize    *float64              `json:"fontSize,omitempty"`
-	TextAlign   *TextAlignAccountName `json:"textAlign,omitempty"`
+type DocumentCreateDocumentTemporaryRecipientFieldMetaName struct {
+	Label       *string                                           `json:"label,omitempty"`
+	Placeholder *string                                           `json:"placeholder,omitempty"`
+	Required    *bool                                             `json:"required,omitempty"`
+	ReadOnly    *bool                                             `json:"readOnly,omitempty"`
+	Type        DocumentCreateDocumentTemporaryRecipientTypeName2 `json:"type"`
+	FontSize    *float64                                          `json:"fontSize,omitempty"`
+	TextAlign   *DocumentCreateDocumentTemporaryTextAlignName     `json:"textAlign,omitempty"`
 }
 
-func (o *FieldMetaAccountName) GetLabel() *string {
+func (d DocumentCreateDocumentTemporaryRecipientFieldMetaName) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaName) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldMetaAccountName) GetPlaceholder() *string {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldMetaAccountName) GetRequired() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldMetaAccountName) GetReadOnly() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldMetaAccountName) GetType() TypeAccountName2 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetType() DocumentCreateDocumentTemporaryRecipientTypeName2 {
 	if o == nil {
-		return TypeAccountName2("")
+		return DocumentCreateDocumentTemporaryRecipientTypeName2("")
 	}
 	return o.Type
 }
 
-func (o *FieldMetaAccountName) GetFontSize() *float64 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-func (o *FieldMetaAccountName) GetTextAlign() *TextAlignAccountName {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignName {
 	if o == nil {
 		return nil
 	}
 	return o.TextAlign
 }
 
-type FieldAccountName struct {
-	Type      TypeAccountName1      `json:"type"`
-	FieldMeta *FieldMetaAccountName `json:"fieldMeta,omitempty"`
+type DocumentCreateDocumentTemporaryFieldName struct {
+	Type      DocumentCreateDocumentTemporaryRecipientTypeName1      `json:"type"`
+	FieldMeta *DocumentCreateDocumentTemporaryRecipientFieldMetaName `json:"fieldMeta,omitempty"`
 	// The page number the field will be on.
 	PageNumber float64 `json:"pageNumber"`
 	// The X coordinate of where the field will be placed.
@@ -1832,113 +2036,124 @@ type FieldAccountName struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldAccountName) GetType() TypeAccountName1 {
+func (d DocumentCreateDocumentTemporaryFieldName) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryFieldName) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "pageNumber", "pageX", "pageY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryFieldName) GetType() DocumentCreateDocumentTemporaryRecipientTypeName1 {
 	if o == nil {
-		return TypeAccountName1("")
+		return DocumentCreateDocumentTemporaryRecipientTypeName1("")
 	}
 	return o.Type
 }
 
-func (o *FieldAccountName) GetFieldMeta() *FieldMetaAccountName {
+func (o *DocumentCreateDocumentTemporaryFieldName) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaName {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldAccountName) GetPageNumber() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldName) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldAccountName) GetPageX() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldName) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldAccountName) GetPageY() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldName) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldAccountName) GetWidth() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldName) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldAccountName) GetHeight() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldName) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type TypeAccountInitials1 string
+type DocumentCreateDocumentTemporaryRecipientTypeInitials1 string
 
 const (
-	TypeAccountInitials1Initials TypeAccountInitials1 = "INITIALS"
+	DocumentCreateDocumentTemporaryRecipientTypeInitials1Initials DocumentCreateDocumentTemporaryRecipientTypeInitials1 = "INITIALS"
 )
 
-func (e TypeAccountInitials1) ToPointer() *TypeAccountInitials1 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeInitials1) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeInitials1 {
 	return &e
 }
-func (e *TypeAccountInitials1) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeInitials1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "INITIALS":
-		*e = TypeAccountInitials1(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeInitials1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountInitials1: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeInitials1: %v", v)
 	}
 }
 
-type TypeAccountInitials2 string
+type DocumentCreateDocumentTemporaryRecipientTypeInitials2 string
 
 const (
-	TypeAccountInitials2Initials TypeAccountInitials2 = "initials"
+	DocumentCreateDocumentTemporaryRecipientTypeInitials2Initials DocumentCreateDocumentTemporaryRecipientTypeInitials2 = "initials"
 )
 
-func (e TypeAccountInitials2) ToPointer() *TypeAccountInitials2 {
+func (e DocumentCreateDocumentTemporaryRecipientTypeInitials2) ToPointer() *DocumentCreateDocumentTemporaryRecipientTypeInitials2 {
 	return &e
 }
-func (e *TypeAccountInitials2) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryRecipientTypeInitials2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "initials":
-		*e = TypeAccountInitials2(v)
+		*e = DocumentCreateDocumentTemporaryRecipientTypeInitials2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountInitials2: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientTypeInitials2: %v", v)
 	}
 }
 
-type TextAlignAccountInitials string
+type DocumentCreateDocumentTemporaryTextAlignInitials string
 
 const (
-	TextAlignAccountInitialsLeft   TextAlignAccountInitials = "left"
-	TextAlignAccountInitialsCenter TextAlignAccountInitials = "center"
-	TextAlignAccountInitialsRight  TextAlignAccountInitials = "right"
+	DocumentCreateDocumentTemporaryTextAlignInitialsLeft   DocumentCreateDocumentTemporaryTextAlignInitials = "left"
+	DocumentCreateDocumentTemporaryTextAlignInitialsCenter DocumentCreateDocumentTemporaryTextAlignInitials = "center"
+	DocumentCreateDocumentTemporaryTextAlignInitialsRight  DocumentCreateDocumentTemporaryTextAlignInitials = "right"
 )
 
-func (e TextAlignAccountInitials) ToPointer() *TextAlignAccountInitials {
+func (e DocumentCreateDocumentTemporaryTextAlignInitials) ToPointer() *DocumentCreateDocumentTemporaryTextAlignInitials {
 	return &e
 }
-func (e *TextAlignAccountInitials) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryTextAlignInitials) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1949,75 +2164,86 @@ func (e *TextAlignAccountInitials) UnmarshalJSON(data []byte) error {
 	case "center":
 		fallthrough
 	case "right":
-		*e = TextAlignAccountInitials(v)
+		*e = DocumentCreateDocumentTemporaryTextAlignInitials(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TextAlignAccountInitials: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryTextAlignInitials: %v", v)
 	}
 }
 
-type FieldMetaAccountInitials struct {
-	Label       *string                   `json:"label,omitempty"`
-	Placeholder *string                   `json:"placeholder,omitempty"`
-	Required    *bool                     `json:"required,omitempty"`
-	ReadOnly    *bool                     `json:"readOnly,omitempty"`
-	Type        TypeAccountInitials2      `json:"type"`
-	FontSize    *float64                  `json:"fontSize,omitempty"`
-	TextAlign   *TextAlignAccountInitials `json:"textAlign,omitempty"`
+type DocumentCreateDocumentTemporaryRecipientFieldMetaInitials struct {
+	Label       *string                                               `json:"label,omitempty"`
+	Placeholder *string                                               `json:"placeholder,omitempty"`
+	Required    *bool                                                 `json:"required,omitempty"`
+	ReadOnly    *bool                                                 `json:"readOnly,omitempty"`
+	Type        DocumentCreateDocumentTemporaryRecipientTypeInitials2 `json:"type"`
+	FontSize    *float64                                              `json:"fontSize,omitempty"`
+	TextAlign   *DocumentCreateDocumentTemporaryTextAlignInitials     `json:"textAlign,omitempty"`
 }
 
-func (o *FieldMetaAccountInitials) GetLabel() *string {
+func (d DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetLabel() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Label
 }
 
-func (o *FieldMetaAccountInitials) GetPlaceholder() *string {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetPlaceholder() *string {
 	if o == nil {
 		return nil
 	}
 	return o.Placeholder
 }
 
-func (o *FieldMetaAccountInitials) GetRequired() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetRequired() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.Required
 }
 
-func (o *FieldMetaAccountInitials) GetReadOnly() *bool {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetReadOnly() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.ReadOnly
 }
 
-func (o *FieldMetaAccountInitials) GetType() TypeAccountInitials2 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetType() DocumentCreateDocumentTemporaryRecipientTypeInitials2 {
 	if o == nil {
-		return TypeAccountInitials2("")
+		return DocumentCreateDocumentTemporaryRecipientTypeInitials2("")
 	}
 	return o.Type
 }
 
-func (o *FieldMetaAccountInitials) GetFontSize() *float64 {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetFontSize() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.FontSize
 }
 
-func (o *FieldMetaAccountInitials) GetTextAlign() *TextAlignAccountInitials {
+func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignInitials {
 	if o == nil {
 		return nil
 	}
 	return o.TextAlign
 }
 
-type FieldAccountInitials struct {
-	Type      TypeAccountInitials1      `json:"type"`
-	FieldMeta *FieldMetaAccountInitials `json:"fieldMeta,omitempty"`
+type DocumentCreateDocumentTemporaryFieldInitials struct {
+	Type      DocumentCreateDocumentTemporaryRecipientTypeInitials1      `json:"type"`
+	FieldMeta *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials `json:"fieldMeta,omitempty"`
 	// The page number the field will be on.
 	PageNumber float64 `json:"pageNumber"`
 	// The X coordinate of where the field will be placed.
@@ -2030,80 +2256,91 @@ type FieldAccountInitials struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldAccountInitials) GetType() TypeAccountInitials1 {
+func (d DocumentCreateDocumentTemporaryFieldInitials) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryFieldInitials) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "pageNumber", "pageX", "pageY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryFieldInitials) GetType() DocumentCreateDocumentTemporaryRecipientTypeInitials1 {
 	if o == nil {
-		return TypeAccountInitials1("")
+		return DocumentCreateDocumentTemporaryRecipientTypeInitials1("")
 	}
 	return o.Type
 }
 
-func (o *FieldAccountInitials) GetFieldMeta() *FieldMetaAccountInitials {
+func (o *DocumentCreateDocumentTemporaryFieldInitials) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials {
 	if o == nil {
 		return nil
 	}
 	return o.FieldMeta
 }
 
-func (o *FieldAccountInitials) GetPageNumber() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldInitials) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldAccountInitials) GetPageX() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldInitials) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldAccountInitials) GetPageY() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldInitials) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldAccountInitials) GetWidth() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldInitials) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldAccountInitials) GetHeight() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldInitials) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type TypeAccountFreeSignature string
+type DocumentCreateDocumentTemporaryTypeFreeSignature string
 
 const (
-	TypeAccountFreeSignatureFreeSignature TypeAccountFreeSignature = "FREE_SIGNATURE"
+	DocumentCreateDocumentTemporaryTypeFreeSignatureFreeSignature DocumentCreateDocumentTemporaryTypeFreeSignature = "FREE_SIGNATURE"
 )
 
-func (e TypeAccountFreeSignature) ToPointer() *TypeAccountFreeSignature {
+func (e DocumentCreateDocumentTemporaryTypeFreeSignature) ToPointer() *DocumentCreateDocumentTemporaryTypeFreeSignature {
 	return &e
 }
-func (e *TypeAccountFreeSignature) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryTypeFreeSignature) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "FREE_SIGNATURE":
-		*e = TypeAccountFreeSignature(v)
+		*e = DocumentCreateDocumentTemporaryTypeFreeSignature(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountFreeSignature: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryTypeFreeSignature: %v", v)
 	}
 }
 
-type FieldAccountFreeSignature struct {
-	Type TypeAccountFreeSignature `json:"type"`
+type DocumentCreateDocumentTemporaryFieldFreeSignature struct {
+	Type DocumentCreateDocumentTemporaryTypeFreeSignature `json:"type"`
 	// The page number the field will be on.
 	PageNumber float64 `json:"pageNumber"`
 	// The X coordinate of where the field will be placed.
@@ -2116,73 +2353,84 @@ type FieldAccountFreeSignature struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldAccountFreeSignature) GetType() TypeAccountFreeSignature {
+func (d DocumentCreateDocumentTemporaryFieldFreeSignature) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryFieldFreeSignature) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "pageNumber", "pageX", "pageY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryFieldFreeSignature) GetType() DocumentCreateDocumentTemporaryTypeFreeSignature {
 	if o == nil {
-		return TypeAccountFreeSignature("")
+		return DocumentCreateDocumentTemporaryTypeFreeSignature("")
 	}
 	return o.Type
 }
 
-func (o *FieldAccountFreeSignature) GetPageNumber() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldFreeSignature) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldAccountFreeSignature) GetPageX() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldFreeSignature) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldAccountFreeSignature) GetPageY() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldFreeSignature) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldAccountFreeSignature) GetWidth() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldFreeSignature) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldAccountFreeSignature) GetHeight() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldFreeSignature) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type TypeAccountSignature string
+type DocumentCreateDocumentTemporaryTypeSignature string
 
 const (
-	TypeAccountSignatureSignature TypeAccountSignature = "SIGNATURE"
+	DocumentCreateDocumentTemporaryTypeSignatureSignature DocumentCreateDocumentTemporaryTypeSignature = "SIGNATURE"
 )
 
-func (e TypeAccountSignature) ToPointer() *TypeAccountSignature {
+func (e DocumentCreateDocumentTemporaryTypeSignature) ToPointer() *DocumentCreateDocumentTemporaryTypeSignature {
 	return &e
 }
-func (e *TypeAccountSignature) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryTypeSignature) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "SIGNATURE":
-		*e = TypeAccountSignature(v)
+		*e = DocumentCreateDocumentTemporaryTypeSignature(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypeAccountSignature: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryTypeSignature: %v", v)
 	}
 }
 
-type FieldAccountSignature struct {
-	Type TypeAccountSignature `json:"type"`
+type DocumentCreateDocumentTemporaryFieldSignature struct {
+	Type DocumentCreateDocumentTemporaryTypeSignature `json:"type"`
 	// The page number the field will be on.
 	PageNumber float64 `json:"pageNumber"`
 	// The X coordinate of where the field will be placed.
@@ -2195,364 +2443,373 @@ type FieldAccountSignature struct {
 	Height float64 `json:"height"`
 }
 
-func (o *FieldAccountSignature) GetType() TypeAccountSignature {
+func (d DocumentCreateDocumentTemporaryFieldSignature) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryFieldSignature) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "pageNumber", "pageX", "pageY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *DocumentCreateDocumentTemporaryFieldSignature) GetType() DocumentCreateDocumentTemporaryTypeSignature {
 	if o == nil {
-		return TypeAccountSignature("")
+		return DocumentCreateDocumentTemporaryTypeSignature("")
 	}
 	return o.Type
 }
 
-func (o *FieldAccountSignature) GetPageNumber() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldSignature) GetPageNumber() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageNumber
 }
 
-func (o *FieldAccountSignature) GetPageX() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldSignature) GetPageX() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageX
 }
 
-func (o *FieldAccountSignature) GetPageY() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldSignature) GetPageY() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.PageY
 }
 
-func (o *FieldAccountSignature) GetWidth() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldSignature) GetWidth() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Width
 }
 
-func (o *FieldAccountSignature) GetHeight() float64 {
+func (o *DocumentCreateDocumentTemporaryFieldSignature) GetHeight() float64 {
 	if o == nil {
 		return 0.0
 	}
 	return o.Height
 }
 
-type FieldAccountUnionType string
+type DocumentCreateDocumentTemporaryFieldUnionType string
 
 const (
-	FieldAccountUnionTypeFieldAccountSignature     FieldAccountUnionType = "field_Account_Signature"
-	FieldAccountUnionTypeFieldAccountFreeSignature FieldAccountUnionType = "field_Account_FreeSignature"
-	FieldAccountUnionTypeFieldAccountInitials      FieldAccountUnionType = "field_Account_Initials"
-	FieldAccountUnionTypeFieldAccountName          FieldAccountUnionType = "field_Account_Name"
-	FieldAccountUnionTypeFieldAccountEmail         FieldAccountUnionType = "field_Account_Email"
-	FieldAccountUnionTypeFieldAccountDate          FieldAccountUnionType = "field_Account_Date"
-	FieldAccountUnionTypeFieldAccountText          FieldAccountUnionType = "field_Account_Text"
-	FieldAccountUnionTypeFieldAccountNumber        FieldAccountUnionType = "field_Account_Number"
-	FieldAccountUnionTypeFieldAccountRadio         FieldAccountUnionType = "field_Account_Radio"
-	FieldAccountUnionTypeFieldAccountCheckbox      FieldAccountUnionType = "field_Account_Checkbox"
-	FieldAccountUnionTypeFieldAccountDropdown      FieldAccountUnionType = "field_Account_Dropdown"
+	DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldSignature     DocumentCreateDocumentTemporaryFieldUnionType = "document_createDocumentTemporary_field_Signature"
+	DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldFreeSignature DocumentCreateDocumentTemporaryFieldUnionType = "document_createDocumentTemporary_field_FreeSignature"
+	DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldInitials      DocumentCreateDocumentTemporaryFieldUnionType = "document_createDocumentTemporary_field_Initials"
+	DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldName          DocumentCreateDocumentTemporaryFieldUnionType = "document_createDocumentTemporary_field_Name"
+	DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldEmail         DocumentCreateDocumentTemporaryFieldUnionType = "document_createDocumentTemporary_field_Email"
+	DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldDate          DocumentCreateDocumentTemporaryFieldUnionType = "document_createDocumentTemporary_field_Date"
+	DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldText          DocumentCreateDocumentTemporaryFieldUnionType = "document_createDocumentTemporary_field_Text"
+	DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldNumber        DocumentCreateDocumentTemporaryFieldUnionType = "document_createDocumentTemporary_field_Number"
+	DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldRadio         DocumentCreateDocumentTemporaryFieldUnionType = "document_createDocumentTemporary_field_Radio"
+	DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldCheckbox      DocumentCreateDocumentTemporaryFieldUnionType = "document_createDocumentTemporary_field_Checkbox"
+	DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldDropdown      DocumentCreateDocumentTemporaryFieldUnionType = "document_createDocumentTemporary_field_Dropdown"
 )
 
-type FieldAccountUnion struct {
-	FieldAccountSignature     *FieldAccountSignature     `queryParam:"inline"`
-	FieldAccountFreeSignature *FieldAccountFreeSignature `queryParam:"inline"`
-	FieldAccountInitials      *FieldAccountInitials      `queryParam:"inline"`
-	FieldAccountName          *FieldAccountName          `queryParam:"inline"`
-	FieldAccountEmail         *FieldAccountEmail         `queryParam:"inline"`
-	FieldAccountDate          *FieldAccountDate          `queryParam:"inline"`
-	FieldAccountText          *FieldAccountText          `queryParam:"inline"`
-	FieldAccountNumber        *FieldAccountNumber        `queryParam:"inline"`
-	FieldAccountRadio         *FieldAccountRadio         `queryParam:"inline"`
-	FieldAccountCheckbox      *FieldAccountCheckbox      `queryParam:"inline"`
-	FieldAccountDropdown      *FieldAccountDropdown      `queryParam:"inline"`
+type DocumentCreateDocumentTemporaryFieldUnion struct {
+	DocumentCreateDocumentTemporaryFieldSignature     *DocumentCreateDocumentTemporaryFieldSignature     `queryParam:"inline"`
+	DocumentCreateDocumentTemporaryFieldFreeSignature *DocumentCreateDocumentTemporaryFieldFreeSignature `queryParam:"inline"`
+	DocumentCreateDocumentTemporaryFieldInitials      *DocumentCreateDocumentTemporaryFieldInitials      `queryParam:"inline"`
+	DocumentCreateDocumentTemporaryFieldName          *DocumentCreateDocumentTemporaryFieldName          `queryParam:"inline"`
+	DocumentCreateDocumentTemporaryFieldEmail         *DocumentCreateDocumentTemporaryFieldEmail         `queryParam:"inline"`
+	DocumentCreateDocumentTemporaryFieldDate          *DocumentCreateDocumentTemporaryFieldDate          `queryParam:"inline"`
+	DocumentCreateDocumentTemporaryFieldText          *DocumentCreateDocumentTemporaryFieldText          `queryParam:"inline"`
+	DocumentCreateDocumentTemporaryFieldNumber        *DocumentCreateDocumentTemporaryFieldNumber        `queryParam:"inline"`
+	DocumentCreateDocumentTemporaryFieldRadio         *DocumentCreateDocumentTemporaryFieldRadio         `queryParam:"inline"`
+	DocumentCreateDocumentTemporaryFieldCheckbox      *DocumentCreateDocumentTemporaryFieldCheckbox      `queryParam:"inline"`
+	DocumentCreateDocumentTemporaryFieldDropdown      *DocumentCreateDocumentTemporaryFieldDropdown      `queryParam:"inline"`
 
-	Type FieldAccountUnionType
+	Type DocumentCreateDocumentTemporaryFieldUnionType
 }
 
-func CreateFieldAccountUnionFieldAccountSignature(fieldAccountSignature FieldAccountSignature) FieldAccountUnion {
-	typ := FieldAccountUnionTypeFieldAccountSignature
+func CreateDocumentCreateDocumentTemporaryFieldUnionDocumentCreateDocumentTemporaryFieldSignature(documentCreateDocumentTemporaryFieldSignature DocumentCreateDocumentTemporaryFieldSignature) DocumentCreateDocumentTemporaryFieldUnion {
+	typ := DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldSignature
 
-	return FieldAccountUnion{
-		FieldAccountSignature: &fieldAccountSignature,
-		Type:                  typ,
+	return DocumentCreateDocumentTemporaryFieldUnion{
+		DocumentCreateDocumentTemporaryFieldSignature: &documentCreateDocumentTemporaryFieldSignature,
+		Type: typ,
 	}
 }
 
-func CreateFieldAccountUnionFieldAccountFreeSignature(fieldAccountFreeSignature FieldAccountFreeSignature) FieldAccountUnion {
-	typ := FieldAccountUnionTypeFieldAccountFreeSignature
+func CreateDocumentCreateDocumentTemporaryFieldUnionDocumentCreateDocumentTemporaryFieldFreeSignature(documentCreateDocumentTemporaryFieldFreeSignature DocumentCreateDocumentTemporaryFieldFreeSignature) DocumentCreateDocumentTemporaryFieldUnion {
+	typ := DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldFreeSignature
 
-	return FieldAccountUnion{
-		FieldAccountFreeSignature: &fieldAccountFreeSignature,
-		Type:                      typ,
+	return DocumentCreateDocumentTemporaryFieldUnion{
+		DocumentCreateDocumentTemporaryFieldFreeSignature: &documentCreateDocumentTemporaryFieldFreeSignature,
+		Type: typ,
 	}
 }
 
-func CreateFieldAccountUnionFieldAccountInitials(fieldAccountInitials FieldAccountInitials) FieldAccountUnion {
-	typ := FieldAccountUnionTypeFieldAccountInitials
+func CreateDocumentCreateDocumentTemporaryFieldUnionDocumentCreateDocumentTemporaryFieldInitials(documentCreateDocumentTemporaryFieldInitials DocumentCreateDocumentTemporaryFieldInitials) DocumentCreateDocumentTemporaryFieldUnion {
+	typ := DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldInitials
 
-	return FieldAccountUnion{
-		FieldAccountInitials: &fieldAccountInitials,
-		Type:                 typ,
+	return DocumentCreateDocumentTemporaryFieldUnion{
+		DocumentCreateDocumentTemporaryFieldInitials: &documentCreateDocumentTemporaryFieldInitials,
+		Type: typ,
 	}
 }
 
-func CreateFieldAccountUnionFieldAccountName(fieldAccountName FieldAccountName) FieldAccountUnion {
-	typ := FieldAccountUnionTypeFieldAccountName
+func CreateDocumentCreateDocumentTemporaryFieldUnionDocumentCreateDocumentTemporaryFieldName(documentCreateDocumentTemporaryFieldName DocumentCreateDocumentTemporaryFieldName) DocumentCreateDocumentTemporaryFieldUnion {
+	typ := DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldName
 
-	return FieldAccountUnion{
-		FieldAccountName: &fieldAccountName,
-		Type:             typ,
+	return DocumentCreateDocumentTemporaryFieldUnion{
+		DocumentCreateDocumentTemporaryFieldName: &documentCreateDocumentTemporaryFieldName,
+		Type:                                     typ,
 	}
 }
 
-func CreateFieldAccountUnionFieldAccountEmail(fieldAccountEmail FieldAccountEmail) FieldAccountUnion {
-	typ := FieldAccountUnionTypeFieldAccountEmail
+func CreateDocumentCreateDocumentTemporaryFieldUnionDocumentCreateDocumentTemporaryFieldEmail(documentCreateDocumentTemporaryFieldEmail DocumentCreateDocumentTemporaryFieldEmail) DocumentCreateDocumentTemporaryFieldUnion {
+	typ := DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldEmail
 
-	return FieldAccountUnion{
-		FieldAccountEmail: &fieldAccountEmail,
-		Type:              typ,
+	return DocumentCreateDocumentTemporaryFieldUnion{
+		DocumentCreateDocumentTemporaryFieldEmail: &documentCreateDocumentTemporaryFieldEmail,
+		Type: typ,
 	}
 }
 
-func CreateFieldAccountUnionFieldAccountDate(fieldAccountDate FieldAccountDate) FieldAccountUnion {
-	typ := FieldAccountUnionTypeFieldAccountDate
+func CreateDocumentCreateDocumentTemporaryFieldUnionDocumentCreateDocumentTemporaryFieldDate(documentCreateDocumentTemporaryFieldDate DocumentCreateDocumentTemporaryFieldDate) DocumentCreateDocumentTemporaryFieldUnion {
+	typ := DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldDate
 
-	return FieldAccountUnion{
-		FieldAccountDate: &fieldAccountDate,
-		Type:             typ,
+	return DocumentCreateDocumentTemporaryFieldUnion{
+		DocumentCreateDocumentTemporaryFieldDate: &documentCreateDocumentTemporaryFieldDate,
+		Type:                                     typ,
 	}
 }
 
-func CreateFieldAccountUnionFieldAccountText(fieldAccountText FieldAccountText) FieldAccountUnion {
-	typ := FieldAccountUnionTypeFieldAccountText
+func CreateDocumentCreateDocumentTemporaryFieldUnionDocumentCreateDocumentTemporaryFieldText(documentCreateDocumentTemporaryFieldText DocumentCreateDocumentTemporaryFieldText) DocumentCreateDocumentTemporaryFieldUnion {
+	typ := DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldText
 
-	return FieldAccountUnion{
-		FieldAccountText: &fieldAccountText,
-		Type:             typ,
+	return DocumentCreateDocumentTemporaryFieldUnion{
+		DocumentCreateDocumentTemporaryFieldText: &documentCreateDocumentTemporaryFieldText,
+		Type:                                     typ,
 	}
 }
 
-func CreateFieldAccountUnionFieldAccountNumber(fieldAccountNumber FieldAccountNumber) FieldAccountUnion {
-	typ := FieldAccountUnionTypeFieldAccountNumber
+func CreateDocumentCreateDocumentTemporaryFieldUnionDocumentCreateDocumentTemporaryFieldNumber(documentCreateDocumentTemporaryFieldNumber DocumentCreateDocumentTemporaryFieldNumber) DocumentCreateDocumentTemporaryFieldUnion {
+	typ := DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldNumber
 
-	return FieldAccountUnion{
-		FieldAccountNumber: &fieldAccountNumber,
-		Type:               typ,
+	return DocumentCreateDocumentTemporaryFieldUnion{
+		DocumentCreateDocumentTemporaryFieldNumber: &documentCreateDocumentTemporaryFieldNumber,
+		Type: typ,
 	}
 }
 
-func CreateFieldAccountUnionFieldAccountRadio(fieldAccountRadio FieldAccountRadio) FieldAccountUnion {
-	typ := FieldAccountUnionTypeFieldAccountRadio
+func CreateDocumentCreateDocumentTemporaryFieldUnionDocumentCreateDocumentTemporaryFieldRadio(documentCreateDocumentTemporaryFieldRadio DocumentCreateDocumentTemporaryFieldRadio) DocumentCreateDocumentTemporaryFieldUnion {
+	typ := DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldRadio
 
-	return FieldAccountUnion{
-		FieldAccountRadio: &fieldAccountRadio,
-		Type:              typ,
+	return DocumentCreateDocumentTemporaryFieldUnion{
+		DocumentCreateDocumentTemporaryFieldRadio: &documentCreateDocumentTemporaryFieldRadio,
+		Type: typ,
 	}
 }
 
-func CreateFieldAccountUnionFieldAccountCheckbox(fieldAccountCheckbox FieldAccountCheckbox) FieldAccountUnion {
-	typ := FieldAccountUnionTypeFieldAccountCheckbox
+func CreateDocumentCreateDocumentTemporaryFieldUnionDocumentCreateDocumentTemporaryFieldCheckbox(documentCreateDocumentTemporaryFieldCheckbox DocumentCreateDocumentTemporaryFieldCheckbox) DocumentCreateDocumentTemporaryFieldUnion {
+	typ := DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldCheckbox
 
-	return FieldAccountUnion{
-		FieldAccountCheckbox: &fieldAccountCheckbox,
-		Type:                 typ,
+	return DocumentCreateDocumentTemporaryFieldUnion{
+		DocumentCreateDocumentTemporaryFieldCheckbox: &documentCreateDocumentTemporaryFieldCheckbox,
+		Type: typ,
 	}
 }
 
-func CreateFieldAccountUnionFieldAccountDropdown(fieldAccountDropdown FieldAccountDropdown) FieldAccountUnion {
-	typ := FieldAccountUnionTypeFieldAccountDropdown
+func CreateDocumentCreateDocumentTemporaryFieldUnionDocumentCreateDocumentTemporaryFieldDropdown(documentCreateDocumentTemporaryFieldDropdown DocumentCreateDocumentTemporaryFieldDropdown) DocumentCreateDocumentTemporaryFieldUnion {
+	typ := DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldDropdown
 
-	return FieldAccountUnion{
-		FieldAccountDropdown: &fieldAccountDropdown,
-		Type:                 typ,
+	return DocumentCreateDocumentTemporaryFieldUnion{
+		DocumentCreateDocumentTemporaryFieldDropdown: &documentCreateDocumentTemporaryFieldDropdown,
+		Type: typ,
 	}
 }
 
-func (u *FieldAccountUnion) UnmarshalJSON(data []byte) error {
+func (u *DocumentCreateDocumentTemporaryFieldUnion) UnmarshalJSON(data []byte) error {
 
-	var fieldAccountSignature FieldAccountSignature = FieldAccountSignature{}
-	if err := utils.UnmarshalJSON(data, &fieldAccountSignature, "", true, true); err == nil {
-		u.FieldAccountSignature = &fieldAccountSignature
-		u.Type = FieldAccountUnionTypeFieldAccountSignature
+	var documentCreateDocumentTemporaryFieldSignature DocumentCreateDocumentTemporaryFieldSignature = DocumentCreateDocumentTemporaryFieldSignature{}
+	if err := utils.UnmarshalJSON(data, &documentCreateDocumentTemporaryFieldSignature, "", true, nil); err == nil {
+		u.DocumentCreateDocumentTemporaryFieldSignature = &documentCreateDocumentTemporaryFieldSignature
+		u.Type = DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldSignature
 		return nil
 	}
 
-	var fieldAccountFreeSignature FieldAccountFreeSignature = FieldAccountFreeSignature{}
-	if err := utils.UnmarshalJSON(data, &fieldAccountFreeSignature, "", true, true); err == nil {
-		u.FieldAccountFreeSignature = &fieldAccountFreeSignature
-		u.Type = FieldAccountUnionTypeFieldAccountFreeSignature
+	var documentCreateDocumentTemporaryFieldFreeSignature DocumentCreateDocumentTemporaryFieldFreeSignature = DocumentCreateDocumentTemporaryFieldFreeSignature{}
+	if err := utils.UnmarshalJSON(data, &documentCreateDocumentTemporaryFieldFreeSignature, "", true, nil); err == nil {
+		u.DocumentCreateDocumentTemporaryFieldFreeSignature = &documentCreateDocumentTemporaryFieldFreeSignature
+		u.Type = DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldFreeSignature
 		return nil
 	}
 
-	var fieldAccountInitials FieldAccountInitials = FieldAccountInitials{}
-	if err := utils.UnmarshalJSON(data, &fieldAccountInitials, "", true, true); err == nil {
-		u.FieldAccountInitials = &fieldAccountInitials
-		u.Type = FieldAccountUnionTypeFieldAccountInitials
+	var documentCreateDocumentTemporaryFieldInitials DocumentCreateDocumentTemporaryFieldInitials = DocumentCreateDocumentTemporaryFieldInitials{}
+	if err := utils.UnmarshalJSON(data, &documentCreateDocumentTemporaryFieldInitials, "", true, nil); err == nil {
+		u.DocumentCreateDocumentTemporaryFieldInitials = &documentCreateDocumentTemporaryFieldInitials
+		u.Type = DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldInitials
 		return nil
 	}
 
-	var fieldAccountName FieldAccountName = FieldAccountName{}
-	if err := utils.UnmarshalJSON(data, &fieldAccountName, "", true, true); err == nil {
-		u.FieldAccountName = &fieldAccountName
-		u.Type = FieldAccountUnionTypeFieldAccountName
+	var documentCreateDocumentTemporaryFieldName DocumentCreateDocumentTemporaryFieldName = DocumentCreateDocumentTemporaryFieldName{}
+	if err := utils.UnmarshalJSON(data, &documentCreateDocumentTemporaryFieldName, "", true, nil); err == nil {
+		u.DocumentCreateDocumentTemporaryFieldName = &documentCreateDocumentTemporaryFieldName
+		u.Type = DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldName
 		return nil
 	}
 
-	var fieldAccountEmail FieldAccountEmail = FieldAccountEmail{}
-	if err := utils.UnmarshalJSON(data, &fieldAccountEmail, "", true, true); err == nil {
-		u.FieldAccountEmail = &fieldAccountEmail
-		u.Type = FieldAccountUnionTypeFieldAccountEmail
+	var documentCreateDocumentTemporaryFieldEmail DocumentCreateDocumentTemporaryFieldEmail = DocumentCreateDocumentTemporaryFieldEmail{}
+	if err := utils.UnmarshalJSON(data, &documentCreateDocumentTemporaryFieldEmail, "", true, nil); err == nil {
+		u.DocumentCreateDocumentTemporaryFieldEmail = &documentCreateDocumentTemporaryFieldEmail
+		u.Type = DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldEmail
 		return nil
 	}
 
-	var fieldAccountDate FieldAccountDate = FieldAccountDate{}
-	if err := utils.UnmarshalJSON(data, &fieldAccountDate, "", true, true); err == nil {
-		u.FieldAccountDate = &fieldAccountDate
-		u.Type = FieldAccountUnionTypeFieldAccountDate
+	var documentCreateDocumentTemporaryFieldDate DocumentCreateDocumentTemporaryFieldDate = DocumentCreateDocumentTemporaryFieldDate{}
+	if err := utils.UnmarshalJSON(data, &documentCreateDocumentTemporaryFieldDate, "", true, nil); err == nil {
+		u.DocumentCreateDocumentTemporaryFieldDate = &documentCreateDocumentTemporaryFieldDate
+		u.Type = DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldDate
 		return nil
 	}
 
-	var fieldAccountText FieldAccountText = FieldAccountText{}
-	if err := utils.UnmarshalJSON(data, &fieldAccountText, "", true, true); err == nil {
-		u.FieldAccountText = &fieldAccountText
-		u.Type = FieldAccountUnionTypeFieldAccountText
+	var documentCreateDocumentTemporaryFieldText DocumentCreateDocumentTemporaryFieldText = DocumentCreateDocumentTemporaryFieldText{}
+	if err := utils.UnmarshalJSON(data, &documentCreateDocumentTemporaryFieldText, "", true, nil); err == nil {
+		u.DocumentCreateDocumentTemporaryFieldText = &documentCreateDocumentTemporaryFieldText
+		u.Type = DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldText
 		return nil
 	}
 
-	var fieldAccountNumber FieldAccountNumber = FieldAccountNumber{}
-	if err := utils.UnmarshalJSON(data, &fieldAccountNumber, "", true, true); err == nil {
-		u.FieldAccountNumber = &fieldAccountNumber
-		u.Type = FieldAccountUnionTypeFieldAccountNumber
+	var documentCreateDocumentTemporaryFieldNumber DocumentCreateDocumentTemporaryFieldNumber = DocumentCreateDocumentTemporaryFieldNumber{}
+	if err := utils.UnmarshalJSON(data, &documentCreateDocumentTemporaryFieldNumber, "", true, nil); err == nil {
+		u.DocumentCreateDocumentTemporaryFieldNumber = &documentCreateDocumentTemporaryFieldNumber
+		u.Type = DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldNumber
 		return nil
 	}
 
-	var fieldAccountRadio FieldAccountRadio = FieldAccountRadio{}
-	if err := utils.UnmarshalJSON(data, &fieldAccountRadio, "", true, true); err == nil {
-		u.FieldAccountRadio = &fieldAccountRadio
-		u.Type = FieldAccountUnionTypeFieldAccountRadio
+	var documentCreateDocumentTemporaryFieldRadio DocumentCreateDocumentTemporaryFieldRadio = DocumentCreateDocumentTemporaryFieldRadio{}
+	if err := utils.UnmarshalJSON(data, &documentCreateDocumentTemporaryFieldRadio, "", true, nil); err == nil {
+		u.DocumentCreateDocumentTemporaryFieldRadio = &documentCreateDocumentTemporaryFieldRadio
+		u.Type = DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldRadio
 		return nil
 	}
 
-	var fieldAccountCheckbox FieldAccountCheckbox = FieldAccountCheckbox{}
-	if err := utils.UnmarshalJSON(data, &fieldAccountCheckbox, "", true, true); err == nil {
-		u.FieldAccountCheckbox = &fieldAccountCheckbox
-		u.Type = FieldAccountUnionTypeFieldAccountCheckbox
+	var documentCreateDocumentTemporaryFieldCheckbox DocumentCreateDocumentTemporaryFieldCheckbox = DocumentCreateDocumentTemporaryFieldCheckbox{}
+	if err := utils.UnmarshalJSON(data, &documentCreateDocumentTemporaryFieldCheckbox, "", true, nil); err == nil {
+		u.DocumentCreateDocumentTemporaryFieldCheckbox = &documentCreateDocumentTemporaryFieldCheckbox
+		u.Type = DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldCheckbox
 		return nil
 	}
 
-	var fieldAccountDropdown FieldAccountDropdown = FieldAccountDropdown{}
-	if err := utils.UnmarshalJSON(data, &fieldAccountDropdown, "", true, true); err == nil {
-		u.FieldAccountDropdown = &fieldAccountDropdown
-		u.Type = FieldAccountUnionTypeFieldAccountDropdown
+	var documentCreateDocumentTemporaryFieldDropdown DocumentCreateDocumentTemporaryFieldDropdown = DocumentCreateDocumentTemporaryFieldDropdown{}
+	if err := utils.UnmarshalJSON(data, &documentCreateDocumentTemporaryFieldDropdown, "", true, nil); err == nil {
+		u.DocumentCreateDocumentTemporaryFieldDropdown = &documentCreateDocumentTemporaryFieldDropdown
+		u.Type = DocumentCreateDocumentTemporaryFieldUnionTypeDocumentCreateDocumentTemporaryFieldDropdown
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for FieldAccountUnion", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DocumentCreateDocumentTemporaryFieldUnion", string(data))
 }
 
-func (u FieldAccountUnion) MarshalJSON() ([]byte, error) {
-	if u.FieldAccountSignature != nil {
-		return utils.MarshalJSON(u.FieldAccountSignature, "", true)
+func (u DocumentCreateDocumentTemporaryFieldUnion) MarshalJSON() ([]byte, error) {
+	if u.DocumentCreateDocumentTemporaryFieldSignature != nil {
+		return utils.MarshalJSON(u.DocumentCreateDocumentTemporaryFieldSignature, "", true)
 	}
 
-	if u.FieldAccountFreeSignature != nil {
-		return utils.MarshalJSON(u.FieldAccountFreeSignature, "", true)
+	if u.DocumentCreateDocumentTemporaryFieldFreeSignature != nil {
+		return utils.MarshalJSON(u.DocumentCreateDocumentTemporaryFieldFreeSignature, "", true)
 	}
 
-	if u.FieldAccountInitials != nil {
-		return utils.MarshalJSON(u.FieldAccountInitials, "", true)
+	if u.DocumentCreateDocumentTemporaryFieldInitials != nil {
+		return utils.MarshalJSON(u.DocumentCreateDocumentTemporaryFieldInitials, "", true)
 	}
 
-	if u.FieldAccountName != nil {
-		return utils.MarshalJSON(u.FieldAccountName, "", true)
+	if u.DocumentCreateDocumentTemporaryFieldName != nil {
+		return utils.MarshalJSON(u.DocumentCreateDocumentTemporaryFieldName, "", true)
 	}
 
-	if u.FieldAccountEmail != nil {
-		return utils.MarshalJSON(u.FieldAccountEmail, "", true)
+	if u.DocumentCreateDocumentTemporaryFieldEmail != nil {
+		return utils.MarshalJSON(u.DocumentCreateDocumentTemporaryFieldEmail, "", true)
 	}
 
-	if u.FieldAccountDate != nil {
-		return utils.MarshalJSON(u.FieldAccountDate, "", true)
+	if u.DocumentCreateDocumentTemporaryFieldDate != nil {
+		return utils.MarshalJSON(u.DocumentCreateDocumentTemporaryFieldDate, "", true)
 	}
 
-	if u.FieldAccountText != nil {
-		return utils.MarshalJSON(u.FieldAccountText, "", true)
+	if u.DocumentCreateDocumentTemporaryFieldText != nil {
+		return utils.MarshalJSON(u.DocumentCreateDocumentTemporaryFieldText, "", true)
 	}
 
-	if u.FieldAccountNumber != nil {
-		return utils.MarshalJSON(u.FieldAccountNumber, "", true)
+	if u.DocumentCreateDocumentTemporaryFieldNumber != nil {
+		return utils.MarshalJSON(u.DocumentCreateDocumentTemporaryFieldNumber, "", true)
 	}
 
-	if u.FieldAccountRadio != nil {
-		return utils.MarshalJSON(u.FieldAccountRadio, "", true)
+	if u.DocumentCreateDocumentTemporaryFieldRadio != nil {
+		return utils.MarshalJSON(u.DocumentCreateDocumentTemporaryFieldRadio, "", true)
 	}
 
-	if u.FieldAccountCheckbox != nil {
-		return utils.MarshalJSON(u.FieldAccountCheckbox, "", true)
+	if u.DocumentCreateDocumentTemporaryFieldCheckbox != nil {
+		return utils.MarshalJSON(u.DocumentCreateDocumentTemporaryFieldCheckbox, "", true)
 	}
 
-	if u.FieldAccountDropdown != nil {
-		return utils.MarshalJSON(u.FieldAccountDropdown, "", true)
+	if u.DocumentCreateDocumentTemporaryFieldDropdown != nil {
+		return utils.MarshalJSON(u.DocumentCreateDocumentTemporaryFieldDropdown, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type FieldAccountUnion: all fields are null")
+	return nil, errors.New("could not marshal union type DocumentCreateDocumentTemporaryFieldUnion: all fields are null")
 }
 
-type RecipientAccount struct {
-	Email        string      `json:"email"`
-	Name         string      `json:"name"`
-	Role         RoleAccount `json:"role"`
-	SigningOrder *float64    `json:"signingOrder,omitempty"`
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *DocumentCreateDocumentTemporaryAccessAuthRequest `json:"accessAuth,omitempty"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *ActionAuthAccount  `json:"actionAuth,omitempty"`
-	Fields     []FieldAccountUnion `json:"fields,omitempty"`
+type DocumentCreateDocumentTemporaryRecipientRequest struct {
+	Email        string                                             `json:"email"`
+	Name         string                                             `json:"name"`
+	Role         DocumentCreateDocumentTemporaryRoleRequest         `json:"role"`
+	SigningOrder *float64                                           `json:"signingOrder,omitempty"`
+	AccessAuth   []DocumentCreateDocumentTemporaryAccessAuthRequest `json:"accessAuth,omitempty"`
+	ActionAuth   []DocumentCreateDocumentTemporaryActionAuthRequest `json:"actionAuth,omitempty"`
+	Fields       []DocumentCreateDocumentTemporaryFieldUnion        `json:"fields,omitempty"`
 }
 
-func (o *RecipientAccount) GetEmail() string {
+func (o *DocumentCreateDocumentTemporaryRecipientRequest) GetEmail() string {
 	if o == nil {
 		return ""
 	}
 	return o.Email
 }
 
-func (o *RecipientAccount) GetName() string {
+func (o *DocumentCreateDocumentTemporaryRecipientRequest) GetName() string {
 	if o == nil {
 		return ""
 	}
 	return o.Name
 }
 
-func (o *RecipientAccount) GetRole() RoleAccount {
+func (o *DocumentCreateDocumentTemporaryRecipientRequest) GetRole() DocumentCreateDocumentTemporaryRoleRequest {
 	if o == nil {
-		return RoleAccount("")
+		return DocumentCreateDocumentTemporaryRoleRequest("")
 	}
 	return o.Role
 }
 
-func (o *RecipientAccount) GetSigningOrder() *float64 {
+func (o *DocumentCreateDocumentTemporaryRecipientRequest) GetSigningOrder() *float64 {
 	if o == nil {
 		return nil
 	}
 	return o.SigningOrder
 }
 
-func (o *RecipientAccount) GetAccessAuth() *DocumentCreateDocumentTemporaryAccessAuthRequest {
+func (o *DocumentCreateDocumentTemporaryRecipientRequest) GetAccessAuth() []DocumentCreateDocumentTemporaryAccessAuthRequest {
 	if o == nil {
 		return nil
 	}
 	return o.AccessAuth
 }
 
-func (o *RecipientAccount) GetActionAuth() *ActionAuthAccount {
+func (o *DocumentCreateDocumentTemporaryRecipientRequest) GetActionAuth() []DocumentCreateDocumentTemporaryActionAuthRequest {
 	if o == nil {
 		return nil
 	}
 	return o.ActionAuth
 }
 
-func (o *RecipientAccount) GetFields() []FieldAccountUnion {
+func (o *DocumentCreateDocumentTemporaryRecipientRequest) GetFields() []DocumentCreateDocumentTemporaryFieldUnion {
 	if o == nil {
 		return nil
 	}
@@ -2610,18 +2867,18 @@ func (e *DocumentCreateDocumentTemporaryDateFormat) UnmarshalJSON(data []byte) e
 	}
 }
 
-// DistributionMethodAccount - The distribution method to use when sending the document to the recipients.
-type DistributionMethodAccount string
+// DocumentCreateDocumentTemporaryDistributionMethodRequest - The distribution method to use when sending the document to the recipients.
+type DocumentCreateDocumentTemporaryDistributionMethodRequest string
 
 const (
-	DistributionMethodAccountEmail DistributionMethodAccount = "EMAIL"
-	DistributionMethodAccountNone  DistributionMethodAccount = "NONE"
+	DocumentCreateDocumentTemporaryDistributionMethodRequestEmail DocumentCreateDocumentTemporaryDistributionMethodRequest = "EMAIL"
+	DocumentCreateDocumentTemporaryDistributionMethodRequestNone  DocumentCreateDocumentTemporaryDistributionMethodRequest = "NONE"
 )
 
-func (e DistributionMethodAccount) ToPointer() *DistributionMethodAccount {
+func (e DocumentCreateDocumentTemporaryDistributionMethodRequest) ToPointer() *DocumentCreateDocumentTemporaryDistributionMethodRequest {
 	return &e
 }
-func (e *DistributionMethodAccount) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporaryDistributionMethodRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2630,24 +2887,24 @@ func (e *DistributionMethodAccount) UnmarshalJSON(data []byte) error {
 	case "EMAIL":
 		fallthrough
 	case "NONE":
-		*e = DistributionMethodAccount(v)
+		*e = DocumentCreateDocumentTemporaryDistributionMethodRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DistributionMethodAccount: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryDistributionMethodRequest: %v", v)
 	}
 }
 
-type SigningOrderAccount string
+type DocumentCreateDocumentTemporarySigningOrderRequest string
 
 const (
-	SigningOrderAccountParallel   SigningOrderAccount = "PARALLEL"
-	SigningOrderAccountSequential SigningOrderAccount = "SEQUENTIAL"
+	DocumentCreateDocumentTemporarySigningOrderRequestParallel   DocumentCreateDocumentTemporarySigningOrderRequest = "PARALLEL"
+	DocumentCreateDocumentTemporarySigningOrderRequestSequential DocumentCreateDocumentTemporarySigningOrderRequest = "SEQUENTIAL"
 )
 
-func (e SigningOrderAccount) ToPointer() *SigningOrderAccount {
+func (e DocumentCreateDocumentTemporarySigningOrderRequest) ToPointer() *DocumentCreateDocumentTemporarySigningOrderRequest {
 	return &e
 }
-func (e *SigningOrderAccount) UnmarshalJSON(data []byte) error {
+func (e *DocumentCreateDocumentTemporarySigningOrderRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2656,10 +2913,10 @@ func (e *SigningOrderAccount) UnmarshalJSON(data []byte) error {
 	case "PARALLEL":
 		fallthrough
 	case "SEQUENTIAL":
-		*e = SigningOrderAccount(v)
+		*e = DocumentCreateDocumentTemporarySigningOrderRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SigningOrderAccount: %v", v)
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporarySigningOrderRequest: %v", v)
 	}
 }
 
@@ -2702,7 +2959,7 @@ func (e *DocumentCreateDocumentTemporaryLanguage) UnmarshalJSON(data []byte) err
 	}
 }
 
-type EmailSettingsAccount struct {
+type DocumentCreateDocumentTemporaryEmailSettingsRequest struct {
 	// Whether to send an email to all recipients that the document is ready for them to sign.
 	RecipientSigningRequest *bool `default:"true" json:"recipientSigningRequest"`
 	// Whether to send an email to the recipient who was removed from a pending document.
@@ -2719,60 +2976,60 @@ type EmailSettingsAccount struct {
 	OwnerDocumentCompleted *bool `default:"true" json:"ownerDocumentCompleted"`
 }
 
-func (e EmailSettingsAccount) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
+func (d DocumentCreateDocumentTemporaryEmailSettingsRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
 }
 
-func (e *EmailSettingsAccount) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+func (d *DocumentCreateDocumentTemporaryEmailSettingsRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *EmailSettingsAccount) GetRecipientSigningRequest() *bool {
+func (o *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetRecipientSigningRequest() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.RecipientSigningRequest
 }
 
-func (o *EmailSettingsAccount) GetRecipientRemoved() *bool {
+func (o *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetRecipientRemoved() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.RecipientRemoved
 }
 
-func (o *EmailSettingsAccount) GetRecipientSigned() *bool {
+func (o *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetRecipientSigned() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.RecipientSigned
 }
 
-func (o *EmailSettingsAccount) GetDocumentPending() *bool {
+func (o *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetDocumentPending() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.DocumentPending
 }
 
-func (o *EmailSettingsAccount) GetDocumentCompleted() *bool {
+func (o *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetDocumentCompleted() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.DocumentCompleted
 }
 
-func (o *EmailSettingsAccount) GetDocumentDeleted() *bool {
+func (o *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetDocumentDeleted() *bool {
 	if o == nil {
 		return nil
 	}
 	return o.DocumentDeleted
 }
 
-func (o *EmailSettingsAccount) GetOwnerDocumentCompleted() *bool {
+func (o *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetOwnerDocumentCompleted() *bool {
 	if o == nil {
 		return nil
 	}
@@ -2789,8 +3046,8 @@ type DocumentCreateDocumentTemporaryMeta struct {
 	// The date format to use for date fields and signing the document.
 	DateFormat *DocumentCreateDocumentTemporaryDateFormat `json:"dateFormat,omitempty"`
 	// The distribution method to use when sending the document to the recipients.
-	DistributionMethod *DistributionMethodAccount `json:"distributionMethod,omitempty"`
-	SigningOrder       *SigningOrderAccount       `json:"signingOrder,omitempty"`
+	DistributionMethod *DocumentCreateDocumentTemporaryDistributionMethodRequest `json:"distributionMethod,omitempty"`
+	SigningOrder       *DocumentCreateDocumentTemporarySigningOrderRequest       `json:"signingOrder,omitempty"`
 	// The URL to which the recipient should be redirected after signing the document.
 	RedirectURL *string `json:"redirectUrl,omitempty"`
 	// The language to use for email communications with recipients.
@@ -2800,8 +3057,8 @@ type DocumentCreateDocumentTemporaryMeta struct {
 	// Whether to allow recipients to sign using a draw signature.
 	DrawSignatureEnabled *bool `json:"drawSignatureEnabled,omitempty"`
 	// Whether to allow recipients to sign using an uploaded signature.
-	UploadSignatureEnabled *bool                 `json:"uploadSignatureEnabled,omitempty"`
-	EmailSettings          *EmailSettingsAccount `json:"emailSettings,omitempty"`
+	UploadSignatureEnabled *bool                                                `json:"uploadSignatureEnabled,omitempty"`
+	EmailSettings          *DocumentCreateDocumentTemporaryEmailSettingsRequest `json:"emailSettings,omitempty"`
 }
 
 func (o *DocumentCreateDocumentTemporaryMeta) GetSubject() *string {
@@ -2832,14 +3089,14 @@ func (o *DocumentCreateDocumentTemporaryMeta) GetDateFormat() *DocumentCreateDoc
 	return o.DateFormat
 }
 
-func (o *DocumentCreateDocumentTemporaryMeta) GetDistributionMethod() *DistributionMethodAccount {
+func (o *DocumentCreateDocumentTemporaryMeta) GetDistributionMethod() *DocumentCreateDocumentTemporaryDistributionMethodRequest {
 	if o == nil {
 		return nil
 	}
 	return o.DistributionMethod
 }
 
-func (o *DocumentCreateDocumentTemporaryMeta) GetSigningOrder() *SigningOrderAccount {
+func (o *DocumentCreateDocumentTemporaryMeta) GetSigningOrder() *DocumentCreateDocumentTemporarySigningOrderRequest {
 	if o == nil {
 		return nil
 	}
@@ -2881,7 +3138,7 @@ func (o *DocumentCreateDocumentTemporaryMeta) GetUploadSignatureEnabled() *bool 
 	return o.UploadSignatureEnabled
 }
 
-func (o *DocumentCreateDocumentTemporaryMeta) GetEmailSettings() *EmailSettingsAccount {
+func (o *DocumentCreateDocumentTemporaryMeta) GetEmailSettings() *DocumentCreateDocumentTemporaryEmailSettingsRequest {
 	if o == nil {
 		return nil
 	}
@@ -2894,14 +3151,12 @@ type DocumentCreateDocumentTemporaryRequest struct {
 	// The external ID of the document.
 	ExternalID *string `json:"externalId,omitempty"`
 	// The visibility of the document.
-	Visibility *VisibilityAccount `json:"visibility,omitempty"`
-	// The type of authentication required for the recipient to access the document.
-	GlobalAccessAuth *DocumentCreateDocumentTemporaryGlobalAccessAuthRequest `json:"globalAccessAuth,omitempty"`
-	// The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-	GlobalActionAuth *GlobalActionAuthAccount             `json:"globalActionAuth,omitempty"`
-	FormValues       map[string]FormValuesRequest         `json:"formValues,omitempty"`
-	Recipients       []RecipientAccount                   `json:"recipients,omitempty"`
-	Meta             *DocumentCreateDocumentTemporaryMeta `json:"meta,omitempty"`
+	Visibility       *DocumentCreateDocumentTemporaryVisibilityRequest        `json:"visibility,omitempty"`
+	GlobalAccessAuth []DocumentCreateDocumentTemporaryGlobalAccessAuthRequest `json:"globalAccessAuth,omitempty"`
+	GlobalActionAuth []DocumentCreateDocumentTemporaryGlobalActionAuthRequest `json:"globalActionAuth,omitempty"`
+	FormValues       map[string]FormValuesRequest                             `json:"formValues,omitempty"`
+	Recipients       []DocumentCreateDocumentTemporaryRecipientRequest        `json:"recipients,omitempty"`
+	Meta             *DocumentCreateDocumentTemporaryMeta                     `json:"meta,omitempty"`
 }
 
 func (o *DocumentCreateDocumentTemporaryRequest) GetTitle() string {
@@ -2918,21 +3173,21 @@ func (o *DocumentCreateDocumentTemporaryRequest) GetExternalID() *string {
 	return o.ExternalID
 }
 
-func (o *DocumentCreateDocumentTemporaryRequest) GetVisibility() *VisibilityAccount {
+func (o *DocumentCreateDocumentTemporaryRequest) GetVisibility() *DocumentCreateDocumentTemporaryVisibilityRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Visibility
 }
 
-func (o *DocumentCreateDocumentTemporaryRequest) GetGlobalAccessAuth() *DocumentCreateDocumentTemporaryGlobalAccessAuthRequest {
+func (o *DocumentCreateDocumentTemporaryRequest) GetGlobalAccessAuth() []DocumentCreateDocumentTemporaryGlobalAccessAuthRequest {
 	if o == nil {
 		return nil
 	}
 	return o.GlobalAccessAuth
 }
 
-func (o *DocumentCreateDocumentTemporaryRequest) GetGlobalActionAuth() *GlobalActionAuthAccount {
+func (o *DocumentCreateDocumentTemporaryRequest) GetGlobalActionAuth() []DocumentCreateDocumentTemporaryGlobalActionAuthRequest {
 	if o == nil {
 		return nil
 	}
@@ -2946,7 +3201,7 @@ func (o *DocumentCreateDocumentTemporaryRequest) GetFormValues() map[string]Form
 	return o.FormValues
 }
 
-func (o *DocumentCreateDocumentTemporaryRequest) GetRecipients() []RecipientAccount {
+func (o *DocumentCreateDocumentTemporaryRequest) GetRecipients() []DocumentCreateDocumentTemporaryRecipientRequest {
 	if o == nil {
 		return nil
 	}
@@ -3081,6 +3336,7 @@ const (
 	DocumentGlobalActionAuthAccount       DocumentGlobalActionAuth = "ACCOUNT"
 	DocumentGlobalActionAuthPasskey       DocumentGlobalActionAuth = "PASSKEY"
 	DocumentGlobalActionAuthTwoFactorAuth DocumentGlobalActionAuth = "TWO_FACTOR_AUTH"
+	DocumentGlobalActionAuthPassword      DocumentGlobalActionAuth = "PASSWORD"
 )
 
 func (e DocumentGlobalActionAuth) ToPointer() *DocumentGlobalActionAuth {
@@ -3097,6 +3353,8 @@ func (e *DocumentGlobalActionAuth) UnmarshalJSON(data []byte) error {
 	case "PASSKEY":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
+		fallthrough
+	case "PASSWORD":
 		*e = DocumentGlobalActionAuth(v)
 		return nil
 	default:
@@ -3105,22 +3363,20 @@ func (e *DocumentGlobalActionAuth) UnmarshalJSON(data []byte) error {
 }
 
 type DocumentCreateDocumentTemporaryAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	GlobalAccessAuth *DocumentGlobalAccessAuth `json:"globalAccessAuth"`
-	// The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-	GlobalActionAuth *DocumentGlobalActionAuth `json:"globalActionAuth"`
+	GlobalAccessAuth []DocumentGlobalAccessAuth `json:"globalAccessAuth"`
+	GlobalActionAuth []DocumentGlobalActionAuth `json:"globalActionAuth"`
 }
 
-func (o *DocumentCreateDocumentTemporaryAuthOptions) GetGlobalAccessAuth() *DocumentGlobalAccessAuth {
+func (o *DocumentCreateDocumentTemporaryAuthOptions) GetGlobalAccessAuth() []DocumentGlobalAccessAuth {
 	if o == nil {
-		return nil
+		return []DocumentGlobalAccessAuth{}
 	}
 	return o.GlobalAccessAuth
 }
 
-func (o *DocumentCreateDocumentTemporaryAuthOptions) GetGlobalActionAuth() *DocumentGlobalActionAuth {
+func (o *DocumentCreateDocumentTemporaryAuthOptions) GetGlobalActionAuth() []DocumentGlobalActionAuth {
 	if o == nil {
-		return nil
+		return []DocumentGlobalActionAuth{}
 	}
 	return o.GlobalActionAuth
 }
@@ -3171,21 +3427,21 @@ func CreateDocumentFormValuesNumber(number float64) DocumentFormValues {
 func (u *DocumentFormValues) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = DocumentFormValuesTypeStr
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = DocumentFormValuesTypeBoolean
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = DocumentFormValuesTypeNumber
 		return nil
@@ -3348,7 +3604,7 @@ func (d DocumentEmailSettings) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DocumentEmailSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -3534,6 +3790,144 @@ func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetEmailSettings() *Docume
 	return o.EmailSettings
 }
 
+type DocumentFolderType string
+
+const (
+	DocumentFolderTypeDocument DocumentFolderType = "DOCUMENT"
+	DocumentFolderTypeTemplate DocumentFolderType = "TEMPLATE"
+)
+
+func (e DocumentFolderType) ToPointer() *DocumentFolderType {
+	return &e
+}
+func (e *DocumentFolderType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "DOCUMENT":
+		fallthrough
+	case "TEMPLATE":
+		*e = DocumentFolderType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentFolderType: %v", v)
+	}
+}
+
+type DocumentFolderVisibility string
+
+const (
+	DocumentFolderVisibilityEveryone        DocumentFolderVisibility = "EVERYONE"
+	DocumentFolderVisibilityManagerAndAbove DocumentFolderVisibility = "MANAGER_AND_ABOVE"
+	DocumentFolderVisibilityAdmin           DocumentFolderVisibility = "ADMIN"
+)
+
+func (e DocumentFolderVisibility) ToPointer() *DocumentFolderVisibility {
+	return &e
+}
+func (e *DocumentFolderVisibility) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "EVERYONE":
+		fallthrough
+	case "MANAGER_AND_ABOVE":
+		fallthrough
+	case "ADMIN":
+		*e = DocumentFolderVisibility(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentFolderVisibility: %v", v)
+	}
+}
+
+type DocumentCreateDocumentTemporaryFolder struct {
+	ID         string                   `json:"id"`
+	Name       string                   `json:"name"`
+	Type       DocumentFolderType       `json:"type"`
+	Visibility DocumentFolderVisibility `json:"visibility"`
+	UserID     float64                  `json:"userId"`
+	TeamID     float64                  `json:"teamId"`
+	Pinned     bool                     `json:"pinned"`
+	ParentID   *string                  `json:"parentId"`
+	CreatedAt  string                   `json:"createdAt"`
+	UpdatedAt  string                   `json:"updatedAt"`
+}
+
+func (o *DocumentCreateDocumentTemporaryFolder) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *DocumentCreateDocumentTemporaryFolder) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *DocumentCreateDocumentTemporaryFolder) GetType() DocumentFolderType {
+	if o == nil {
+		return DocumentFolderType("")
+	}
+	return o.Type
+}
+
+func (o *DocumentCreateDocumentTemporaryFolder) GetVisibility() DocumentFolderVisibility {
+	if o == nil {
+		return DocumentFolderVisibility("")
+	}
+	return o.Visibility
+}
+
+func (o *DocumentCreateDocumentTemporaryFolder) GetUserID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UserID
+}
+
+func (o *DocumentCreateDocumentTemporaryFolder) GetTeamID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.TeamID
+}
+
+func (o *DocumentCreateDocumentTemporaryFolder) GetPinned() bool {
+	if o == nil {
+		return false
+	}
+	return o.Pinned
+}
+
+func (o *DocumentCreateDocumentTemporaryFolder) GetParentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ParentID
+}
+
+func (o *DocumentCreateDocumentTemporaryFolder) GetCreatedAt() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedAt
+}
+
+func (o *DocumentCreateDocumentTemporaryFolder) GetUpdatedAt() string {
+	if o == nil {
+		return ""
+	}
+	return o.UpdatedAt
+}
+
 type DocumentRole string
 
 const (
@@ -3681,6 +4075,7 @@ const (
 	DocumentActionAuthAccount       DocumentActionAuth = "ACCOUNT"
 	DocumentActionAuthPasskey       DocumentActionAuth = "PASSKEY"
 	DocumentActionAuthTwoFactorAuth DocumentActionAuth = "TWO_FACTOR_AUTH"
+	DocumentActionAuthPassword      DocumentActionAuth = "PASSWORD"
 	DocumentActionAuthExplicitNone  DocumentActionAuth = "EXPLICIT_NONE"
 )
 
@@ -3699,6 +4094,8 @@ func (e *DocumentActionAuth) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
 		*e = DocumentActionAuth(v)
 		return nil
@@ -3708,22 +4105,20 @@ func (e *DocumentActionAuth) UnmarshalJSON(data []byte) error {
 }
 
 type DocumentCreateDocumentTemporaryRecipientAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *DocumentAccessAuth `json:"accessAuth"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *DocumentActionAuth `json:"actionAuth"`
+	AccessAuth []DocumentAccessAuth `json:"accessAuth"`
+	ActionAuth []DocumentActionAuth `json:"actionAuth"`
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientAuthOptions) GetAccessAuth() *DocumentAccessAuth {
+func (o *DocumentCreateDocumentTemporaryRecipientAuthOptions) GetAccessAuth() []DocumentAccessAuth {
 	if o == nil {
-		return nil
+		return []DocumentAccessAuth{}
 	}
 	return o.AccessAuth
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientAuthOptions) GetActionAuth() *DocumentActionAuth {
+func (o *DocumentCreateDocumentTemporaryRecipientAuthOptions) GetActionAuth() []DocumentActionAuth {
 	if o == nil {
-		return nil
+		return []DocumentActionAuth{}
 	}
 	return o.ActionAuth
 }
@@ -3940,6 +4335,17 @@ type DocumentValue3 struct {
 	Value string `json:"value"`
 }
 
+func (d DocumentValue3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentValue3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DocumentValue3) GetValue() string {
 	if o == nil {
 		return ""
@@ -3955,6 +4361,17 @@ type FieldMetaDocumentDropdown struct {
 	Type         DocumentTypeDropdown `json:"type"`
 	Values       []DocumentValue3     `json:"values,omitempty"`
 	DefaultValue *string              `json:"defaultValue,omitempty"`
+}
+
+func (f FieldMetaDocumentDropdown) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldMetaDocumentDropdown) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FieldMetaDocumentDropdown) GetLabel() *string {
@@ -4035,6 +4452,17 @@ type DocumentValue2 struct {
 	Value   string  `json:"value"`
 }
 
+func (d DocumentValue2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentValue2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DocumentValue2) GetID() float64 {
 	if o == nil {
 		return 0.0
@@ -4065,6 +4493,17 @@ type FieldMetaDocumentCheckbox struct {
 	Values           []DocumentValue2     `json:"values,omitempty"`
 	ValidationRule   *string              `json:"validationRule,omitempty"`
 	ValidationLength *float64             `json:"validationLength,omitempty"`
+}
+
+func (f FieldMetaDocumentCheckbox) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldMetaDocumentCheckbox) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FieldMetaDocumentCheckbox) GetLabel() *string {
@@ -4152,6 +4591,17 @@ type DocumentValue1 struct {
 	Value   string  `json:"value"`
 }
 
+func (d DocumentValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DocumentValue1) GetID() float64 {
 	if o == nil {
 		return 0.0
@@ -4180,6 +4630,17 @@ type FieldMetaDocumentRadio struct {
 	ReadOnly    *bool             `json:"readOnly,omitempty"`
 	Type        DocumentTypeRadio `json:"type"`
 	Values      []DocumentValue1  `json:"values,omitempty"`
+}
+
+func (f FieldMetaDocumentRadio) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldMetaDocumentRadio) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FieldMetaDocumentRadio) GetLabel() *string {
@@ -4288,6 +4749,17 @@ type FieldMetaDocumentNumber struct {
 	MaxValue     *float64            `json:"maxValue,omitempty"`
 	FontSize     *float64            `json:"fontSize,omitempty"`
 	TextAlign    *DocumentTextAlign6 `json:"textAlign,omitempty"`
+}
+
+func (f FieldMetaDocumentNumber) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldMetaDocumentNumber) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FieldMetaDocumentNumber) GetLabel() *string {
@@ -4431,6 +4903,17 @@ type FieldMetaDocumentText struct {
 	TextAlign      *DocumentTextAlign5 `json:"textAlign,omitempty"`
 }
 
+func (f FieldMetaDocumentText) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldMetaDocumentText) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FieldMetaDocumentText) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -4556,6 +5039,17 @@ type FieldMetaDocumentDate struct {
 	TextAlign   *DocumentTextAlign4 `json:"textAlign,omitempty"`
 }
 
+func (f FieldMetaDocumentDate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldMetaDocumentDate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FieldMetaDocumentDate) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -4665,6 +5159,17 @@ type FieldMetaDocumentEmail struct {
 	Type        DocumentTypeEmail   `json:"type"`
 	FontSize    *float64            `json:"fontSize,omitempty"`
 	TextAlign   *DocumentTextAlign3 `json:"textAlign,omitempty"`
+}
+
+func (f FieldMetaDocumentEmail) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldMetaDocumentEmail) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FieldMetaDocumentEmail) GetLabel() *string {
@@ -4778,6 +5283,17 @@ type FieldMetaDocumentName struct {
 	TextAlign   *DocumentTextAlign2 `json:"textAlign,omitempty"`
 }
 
+func (f FieldMetaDocumentName) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldMetaDocumentName) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *FieldMetaDocumentName) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -4887,6 +5403,17 @@ type FieldMetaDocumentInitials struct {
 	Type        DocumentTypeInitials `json:"type"`
 	FontSize    *float64             `json:"fontSize,omitempty"`
 	TextAlign   *DocumentTextAlign1  `json:"textAlign,omitempty"`
+}
+
+func (f FieldMetaDocumentInitials) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldMetaDocumentInitials) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *FieldMetaDocumentInitials) GetLabel() *string {
@@ -5049,66 +5576,66 @@ func CreateDocumentFieldMetaUnionFieldMetaDocumentDropdown(fieldMetaDocumentDrop
 
 func (u *DocumentFieldMetaUnion) UnmarshalJSON(data []byte) error {
 
-	var fieldMetaDocumentRadio FieldMetaDocumentRadio = FieldMetaDocumentRadio{}
-	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentRadio, "", true, true); err == nil {
-		u.FieldMetaDocumentRadio = &fieldMetaDocumentRadio
-		u.Type = DocumentFieldMetaUnionTypeFieldMetaDocumentRadio
-		return nil
-	}
-
 	var fieldMetaDocumentInitials FieldMetaDocumentInitials = FieldMetaDocumentInitials{}
-	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentInitials, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentInitials, "", true, nil); err == nil {
 		u.FieldMetaDocumentInitials = &fieldMetaDocumentInitials
 		u.Type = DocumentFieldMetaUnionTypeFieldMetaDocumentInitials
 		return nil
 	}
 
 	var fieldMetaDocumentName FieldMetaDocumentName = FieldMetaDocumentName{}
-	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentName, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentName, "", true, nil); err == nil {
 		u.FieldMetaDocumentName = &fieldMetaDocumentName
 		u.Type = DocumentFieldMetaUnionTypeFieldMetaDocumentName
 		return nil
 	}
 
 	var fieldMetaDocumentEmail FieldMetaDocumentEmail = FieldMetaDocumentEmail{}
-	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentEmail, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentEmail, "", true, nil); err == nil {
 		u.FieldMetaDocumentEmail = &fieldMetaDocumentEmail
 		u.Type = DocumentFieldMetaUnionTypeFieldMetaDocumentEmail
 		return nil
 	}
 
 	var fieldMetaDocumentDate FieldMetaDocumentDate = FieldMetaDocumentDate{}
-	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentDate, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentDate, "", true, nil); err == nil {
 		u.FieldMetaDocumentDate = &fieldMetaDocumentDate
 		u.Type = DocumentFieldMetaUnionTypeFieldMetaDocumentDate
 		return nil
 	}
 
-	var fieldMetaDocumentDropdown FieldMetaDocumentDropdown = FieldMetaDocumentDropdown{}
-	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentDropdown, "", true, true); err == nil {
-		u.FieldMetaDocumentDropdown = &fieldMetaDocumentDropdown
-		u.Type = DocumentFieldMetaUnionTypeFieldMetaDocumentDropdown
-		return nil
-	}
-
-	var fieldMetaDocumentCheckbox FieldMetaDocumentCheckbox = FieldMetaDocumentCheckbox{}
-	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentCheckbox, "", true, true); err == nil {
-		u.FieldMetaDocumentCheckbox = &fieldMetaDocumentCheckbox
-		u.Type = DocumentFieldMetaUnionTypeFieldMetaDocumentCheckbox
-		return nil
-	}
-
 	var fieldMetaDocumentText FieldMetaDocumentText = FieldMetaDocumentText{}
-	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentText, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentText, "", true, nil); err == nil {
 		u.FieldMetaDocumentText = &fieldMetaDocumentText
 		u.Type = DocumentFieldMetaUnionTypeFieldMetaDocumentText
 		return nil
 	}
 
 	var fieldMetaDocumentNumber FieldMetaDocumentNumber = FieldMetaDocumentNumber{}
-	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentNumber, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentNumber, "", true, nil); err == nil {
 		u.FieldMetaDocumentNumber = &fieldMetaDocumentNumber
 		u.Type = DocumentFieldMetaUnionTypeFieldMetaDocumentNumber
+		return nil
+	}
+
+	var fieldMetaDocumentRadio FieldMetaDocumentRadio = FieldMetaDocumentRadio{}
+	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentRadio, "", true, nil); err == nil {
+		u.FieldMetaDocumentRadio = &fieldMetaDocumentRadio
+		u.Type = DocumentFieldMetaUnionTypeFieldMetaDocumentRadio
+		return nil
+	}
+
+	var fieldMetaDocumentCheckbox FieldMetaDocumentCheckbox = FieldMetaDocumentCheckbox{}
+	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentCheckbox, "", true, nil); err == nil {
+		u.FieldMetaDocumentCheckbox = &fieldMetaDocumentCheckbox
+		u.Type = DocumentFieldMetaUnionTypeFieldMetaDocumentCheckbox
+		return nil
+	}
+
+	var fieldMetaDocumentDropdown FieldMetaDocumentDropdown = FieldMetaDocumentDropdown{}
+	if err := utils.UnmarshalJSON(data, &fieldMetaDocumentDropdown, "", true, nil); err == nil {
+		u.FieldMetaDocumentDropdown = &fieldMetaDocumentDropdown
+		u.Type = DocumentFieldMetaUnionTypeFieldMetaDocumentDropdown
 		return nil
 	}
 
@@ -5288,10 +5815,12 @@ type Document struct {
 	UpdatedAt      string                                       `json:"updatedAt"`
 	CompletedAt    *string                                      `json:"completedAt"`
 	DeletedAt      *string                                      `json:"deletedAt"`
-	TeamID         *float64                                     `json:"teamId"`
+	TeamID         float64                                      `json:"teamId"`
 	TemplateID     *float64                                     `json:"templateId"`
+	FolderID       *string                                      `json:"folderId"`
 	DocumentData   DocumentCreateDocumentTemporaryDocumentData  `json:"documentData"`
 	DocumentMeta   *DocumentCreateDocumentTemporaryDocumentMeta `json:"documentMeta"`
+	Folder         *DocumentCreateDocumentTemporaryFolder       `json:"folder"`
 	Recipients     []DocumentRecipient                          `json:"recipients"`
 	Fields         []DocumentField                              `json:"fields"`
 }
@@ -5394,9 +5923,9 @@ func (o *Document) GetDeletedAt() *string {
 	return o.DeletedAt
 }
 
-func (o *Document) GetTeamID() *float64 {
+func (o *Document) GetTeamID() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.TeamID
 }
@@ -5406,6 +5935,13 @@ func (o *Document) GetTemplateID() *float64 {
 		return nil
 	}
 	return o.TemplateID
+}
+
+func (o *Document) GetFolderID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FolderID
 }
 
 func (o *Document) GetDocumentData() DocumentCreateDocumentTemporaryDocumentData {
@@ -5420,6 +5956,13 @@ func (o *Document) GetDocumentMeta() *DocumentCreateDocumentTemporaryDocumentMet
 		return nil
 	}
 	return o.DocumentMeta
+}
+
+func (o *Document) GetFolder() *DocumentCreateDocumentTemporaryFolder {
+	if o == nil {
+		return nil
+	}
+	return o.Folder
 }
 
 func (o *Document) GetRecipients() []DocumentRecipient {

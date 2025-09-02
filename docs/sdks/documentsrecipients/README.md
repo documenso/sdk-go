@@ -18,6 +18,7 @@ Returns a single recipient. If you want to retrieve all the recipients for a doc
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="recipient-getDocumentRecipient" method="get" path="/document/recipient/{recipientId}" -->
 ```go
 package main
 
@@ -72,6 +73,7 @@ Create a single recipient for a document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="recipient-createDocumentRecipient" method="post" path="/document/recipient/create" -->
 ```go
 package main
 
@@ -95,7 +97,7 @@ func main() {
         Recipient: operations.RecipientCreateDocumentRecipientRecipient{
             Email: "Ila.Steuber@yahoo.com",
             Name: "<value>",
-            Role: operations.RecipientCreateDocumentRecipientRoleRequestBodyAssistant,
+            Role: operations.RecipientCreateDocumentRecipientRoleRequestAssistant,
         },
     })
     if err != nil {
@@ -133,6 +135,7 @@ Create multiple recipients for a document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="recipient-createDocumentRecipients" method="post" path="/document/recipient/create-many" -->
 ```go
 package main
 
@@ -153,11 +156,11 @@ func main() {
 
     res, err := s.Documents.Recipients.CreateMany(ctx, operations.RecipientCreateDocumentRecipientsRequest{
         DocumentID: 9983.95,
-        Recipients: []operations.RecipientCreateDocumentRecipientsRecipientRequestBody{
-            operations.RecipientCreateDocumentRecipientsRecipientRequestBody{
+        Recipients: []operations.RecipientCreateDocumentRecipientsRecipientRequest{
+            operations.RecipientCreateDocumentRecipientsRecipientRequest{
                 Email: "Roosevelt_Baumbach@yahoo.com",
                 Name: "<value>",
-                Role: operations.RecipientCreateDocumentRecipientsRoleRequestBodyCc,
+                Role: operations.RecipientCreateDocumentRecipientsRoleRequestCc,
             },
         },
     })
@@ -196,6 +199,7 @@ Update a single recipient for a document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="recipient-updateDocumentRecipient" method="post" path="/document/recipient/update" -->
 ```go
 package main
 
@@ -255,6 +259,7 @@ Update multiple recipients for a document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="recipient-updateDocumentRecipients" method="post" path="/document/recipient/update-many" -->
 ```go
 package main
 
@@ -275,7 +280,7 @@ func main() {
 
     res, err := s.Documents.Recipients.UpdateMany(ctx, operations.RecipientUpdateDocumentRecipientsRequest{
         DocumentID: 3189.76,
-        Recipients: []operations.RecipientUpdateDocumentRecipientsRecipientRequestBody{},
+        Recipients: []operations.RecipientUpdateDocumentRecipientsRecipientRequest{},
     })
     if err != nil {
         log.Fatal(err)
@@ -312,6 +317,7 @@ Delete document recipient
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="recipient-deleteDocumentRecipient" method="post" path="/document/recipient/delete" -->
 ```go
 package main
 

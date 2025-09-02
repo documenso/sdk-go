@@ -10,19 +10,19 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-// DocumentUpdateDocumentVisibilityRequestBody - The visibility of the document.
-type DocumentUpdateDocumentVisibilityRequestBody string
+// DocumentUpdateDocumentVisibilityRequest - The visibility of the document.
+type DocumentUpdateDocumentVisibilityRequest string
 
 const (
-	DocumentUpdateDocumentVisibilityRequestBodyEveryone        DocumentUpdateDocumentVisibilityRequestBody = "EVERYONE"
-	DocumentUpdateDocumentVisibilityRequestBodyManagerAndAbove DocumentUpdateDocumentVisibilityRequestBody = "MANAGER_AND_ABOVE"
-	DocumentUpdateDocumentVisibilityRequestBodyAdmin           DocumentUpdateDocumentVisibilityRequestBody = "ADMIN"
+	DocumentUpdateDocumentVisibilityRequestEveryone        DocumentUpdateDocumentVisibilityRequest = "EVERYONE"
+	DocumentUpdateDocumentVisibilityRequestManagerAndAbove DocumentUpdateDocumentVisibilityRequest = "MANAGER_AND_ABOVE"
+	DocumentUpdateDocumentVisibilityRequestAdmin           DocumentUpdateDocumentVisibilityRequest = "ADMIN"
 )
 
-func (e DocumentUpdateDocumentVisibilityRequestBody) ToPointer() *DocumentUpdateDocumentVisibilityRequestBody {
+func (e DocumentUpdateDocumentVisibilityRequest) ToPointer() *DocumentUpdateDocumentVisibilityRequest {
 	return &e
 }
-func (e *DocumentUpdateDocumentVisibilityRequestBody) UnmarshalJSON(data []byte) error {
+func (e *DocumentUpdateDocumentVisibilityRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,50 +33,51 @@ func (e *DocumentUpdateDocumentVisibilityRequestBody) UnmarshalJSON(data []byte)
 	case "MANAGER_AND_ABOVE":
 		fallthrough
 	case "ADMIN":
-		*e = DocumentUpdateDocumentVisibilityRequestBody(v)
+		*e = DocumentUpdateDocumentVisibilityRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DocumentUpdateDocumentVisibilityRequestBody: %v", v)
+		return fmt.Errorf("invalid value for DocumentUpdateDocumentVisibilityRequest: %v", v)
 	}
 }
 
-// DocumentUpdateDocumentGlobalAccessAuthRequestBody - The type of authentication required for the recipient to access the document.
-type DocumentUpdateDocumentGlobalAccessAuthRequestBody string
+// DocumentUpdateDocumentGlobalAccessAuthRequest - The type of authentication required for the recipient to access the document.
+type DocumentUpdateDocumentGlobalAccessAuthRequest string
 
 const (
-	DocumentUpdateDocumentGlobalAccessAuthRequestBodyAccount DocumentUpdateDocumentGlobalAccessAuthRequestBody = "ACCOUNT"
+	DocumentUpdateDocumentGlobalAccessAuthRequestAccount DocumentUpdateDocumentGlobalAccessAuthRequest = "ACCOUNT"
 )
 
-func (e DocumentUpdateDocumentGlobalAccessAuthRequestBody) ToPointer() *DocumentUpdateDocumentGlobalAccessAuthRequestBody {
+func (e DocumentUpdateDocumentGlobalAccessAuthRequest) ToPointer() *DocumentUpdateDocumentGlobalAccessAuthRequest {
 	return &e
 }
-func (e *DocumentUpdateDocumentGlobalAccessAuthRequestBody) UnmarshalJSON(data []byte) error {
+func (e *DocumentUpdateDocumentGlobalAccessAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "ACCOUNT":
-		*e = DocumentUpdateDocumentGlobalAccessAuthRequestBody(v)
+		*e = DocumentUpdateDocumentGlobalAccessAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DocumentUpdateDocumentGlobalAccessAuthRequestBody: %v", v)
+		return fmt.Errorf("invalid value for DocumentUpdateDocumentGlobalAccessAuthRequest: %v", v)
 	}
 }
 
-// DocumentUpdateDocumentGlobalActionAuthRequestBody - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-type DocumentUpdateDocumentGlobalActionAuthRequestBody string
+// DocumentUpdateDocumentGlobalActionAuthRequest - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
+type DocumentUpdateDocumentGlobalActionAuthRequest string
 
 const (
-	DocumentUpdateDocumentGlobalActionAuthRequestBodyAccount       DocumentUpdateDocumentGlobalActionAuthRequestBody = "ACCOUNT"
-	DocumentUpdateDocumentGlobalActionAuthRequestBodyPasskey       DocumentUpdateDocumentGlobalActionAuthRequestBody = "PASSKEY"
-	DocumentUpdateDocumentGlobalActionAuthRequestBodyTwoFactorAuth DocumentUpdateDocumentGlobalActionAuthRequestBody = "TWO_FACTOR_AUTH"
+	DocumentUpdateDocumentGlobalActionAuthRequestAccount       DocumentUpdateDocumentGlobalActionAuthRequest = "ACCOUNT"
+	DocumentUpdateDocumentGlobalActionAuthRequestPasskey       DocumentUpdateDocumentGlobalActionAuthRequest = "PASSKEY"
+	DocumentUpdateDocumentGlobalActionAuthRequestTwoFactorAuth DocumentUpdateDocumentGlobalActionAuthRequest = "TWO_FACTOR_AUTH"
+	DocumentUpdateDocumentGlobalActionAuthRequestPassword      DocumentUpdateDocumentGlobalActionAuthRequest = "PASSWORD"
 )
 
-func (e DocumentUpdateDocumentGlobalActionAuthRequestBody) ToPointer() *DocumentUpdateDocumentGlobalActionAuthRequestBody {
+func (e DocumentUpdateDocumentGlobalActionAuthRequest) ToPointer() *DocumentUpdateDocumentGlobalActionAuthRequest {
 	return &e
 }
-func (e *DocumentUpdateDocumentGlobalActionAuthRequestBody) UnmarshalJSON(data []byte) error {
+func (e *DocumentUpdateDocumentGlobalActionAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -87,10 +88,12 @@ func (e *DocumentUpdateDocumentGlobalActionAuthRequestBody) UnmarshalJSON(data [
 	case "PASSKEY":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
-		*e = DocumentUpdateDocumentGlobalActionAuthRequestBody(v)
+		fallthrough
+	case "PASSWORD":
+		*e = DocumentUpdateDocumentGlobalActionAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DocumentUpdateDocumentGlobalActionAuthRequestBody: %v", v)
+		return fmt.Errorf("invalid value for DocumentUpdateDocumentGlobalActionAuthRequest: %v", v)
 	}
 }
 
@@ -100,11 +103,10 @@ type DocumentUpdateDocumentData struct {
 	// The external ID of the document.
 	ExternalID *string `json:"externalId,omitempty"`
 	// The visibility of the document.
-	Visibility *DocumentUpdateDocumentVisibilityRequestBody `json:"visibility,omitempty"`
-	// The type of authentication required for the recipient to access the document.
-	GlobalAccessAuth *DocumentUpdateDocumentGlobalAccessAuthRequestBody `json:"globalAccessAuth,omitempty"`
-	// The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-	GlobalActionAuth *DocumentUpdateDocumentGlobalActionAuthRequestBody `json:"globalActionAuth,omitempty"`
+	Visibility              *DocumentUpdateDocumentVisibilityRequest        `json:"visibility,omitempty"`
+	GlobalAccessAuth        []DocumentUpdateDocumentGlobalAccessAuthRequest `json:"globalAccessAuth,omitempty"`
+	GlobalActionAuth        []DocumentUpdateDocumentGlobalActionAuthRequest `json:"globalActionAuth,omitempty"`
+	UseLegacyFieldInsertion *bool                                           `json:"useLegacyFieldInsertion,omitempty"`
 }
 
 func (o *DocumentUpdateDocumentData) GetTitle() *string {
@@ -121,25 +123,32 @@ func (o *DocumentUpdateDocumentData) GetExternalID() *string {
 	return o.ExternalID
 }
 
-func (o *DocumentUpdateDocumentData) GetVisibility() *DocumentUpdateDocumentVisibilityRequestBody {
+func (o *DocumentUpdateDocumentData) GetVisibility() *DocumentUpdateDocumentVisibilityRequest {
 	if o == nil {
 		return nil
 	}
 	return o.Visibility
 }
 
-func (o *DocumentUpdateDocumentData) GetGlobalAccessAuth() *DocumentUpdateDocumentGlobalAccessAuthRequestBody {
+func (o *DocumentUpdateDocumentData) GetGlobalAccessAuth() []DocumentUpdateDocumentGlobalAccessAuthRequest {
 	if o == nil {
 		return nil
 	}
 	return o.GlobalAccessAuth
 }
 
-func (o *DocumentUpdateDocumentData) GetGlobalActionAuth() *DocumentUpdateDocumentGlobalActionAuthRequestBody {
+func (o *DocumentUpdateDocumentData) GetGlobalActionAuth() []DocumentUpdateDocumentGlobalActionAuthRequest {
 	if o == nil {
 		return nil
 	}
 	return o.GlobalActionAuth
+}
+
+func (o *DocumentUpdateDocumentData) GetUseLegacyFieldInsertion() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.UseLegacyFieldInsertion
 }
 
 // DocumentUpdateDocumentDateFormat - The date format to use for date fields and signing the document.
@@ -307,7 +316,7 @@ func (d DocumentUpdateDocumentEmailSettings) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DocumentUpdateDocumentEmailSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -627,6 +636,7 @@ const (
 	DocumentUpdateDocumentGlobalActionAuthResponseAccount       DocumentUpdateDocumentGlobalActionAuthResponse = "ACCOUNT"
 	DocumentUpdateDocumentGlobalActionAuthResponsePasskey       DocumentUpdateDocumentGlobalActionAuthResponse = "PASSKEY"
 	DocumentUpdateDocumentGlobalActionAuthResponseTwoFactorAuth DocumentUpdateDocumentGlobalActionAuthResponse = "TWO_FACTOR_AUTH"
+	DocumentUpdateDocumentGlobalActionAuthResponsePassword      DocumentUpdateDocumentGlobalActionAuthResponse = "PASSWORD"
 )
 
 func (e DocumentUpdateDocumentGlobalActionAuthResponse) ToPointer() *DocumentUpdateDocumentGlobalActionAuthResponse {
@@ -643,6 +653,8 @@ func (e *DocumentUpdateDocumentGlobalActionAuthResponse) UnmarshalJSON(data []by
 	case "PASSKEY":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
+		fallthrough
+	case "PASSWORD":
 		*e = DocumentUpdateDocumentGlobalActionAuthResponse(v)
 		return nil
 	default:
@@ -651,22 +663,20 @@ func (e *DocumentUpdateDocumentGlobalActionAuthResponse) UnmarshalJSON(data []by
 }
 
 type DocumentUpdateDocumentAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	GlobalAccessAuth *DocumentUpdateDocumentGlobalAccessAuthResponse `json:"globalAccessAuth"`
-	// The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-	GlobalActionAuth *DocumentUpdateDocumentGlobalActionAuthResponse `json:"globalActionAuth"`
+	GlobalAccessAuth []DocumentUpdateDocumentGlobalAccessAuthResponse `json:"globalAccessAuth"`
+	GlobalActionAuth []DocumentUpdateDocumentGlobalActionAuthResponse `json:"globalActionAuth"`
 }
 
-func (o *DocumentUpdateDocumentAuthOptions) GetGlobalAccessAuth() *DocumentUpdateDocumentGlobalAccessAuthResponse {
+func (o *DocumentUpdateDocumentAuthOptions) GetGlobalAccessAuth() []DocumentUpdateDocumentGlobalAccessAuthResponse {
 	if o == nil {
-		return nil
+		return []DocumentUpdateDocumentGlobalAccessAuthResponse{}
 	}
 	return o.GlobalAccessAuth
 }
 
-func (o *DocumentUpdateDocumentAuthOptions) GetGlobalActionAuth() *DocumentUpdateDocumentGlobalActionAuthResponse {
+func (o *DocumentUpdateDocumentAuthOptions) GetGlobalActionAuth() []DocumentUpdateDocumentGlobalActionAuthResponse {
 	if o == nil {
-		return nil
+		return []DocumentUpdateDocumentGlobalActionAuthResponse{}
 	}
 	return o.GlobalActionAuth
 }
@@ -717,21 +727,21 @@ func CreateDocumentUpdateDocumentFormValuesNumber(number float64) DocumentUpdate
 func (u *DocumentUpdateDocumentFormValues) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = DocumentUpdateDocumentFormValuesTypeStr
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = DocumentUpdateDocumentFormValuesTypeBoolean
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = DocumentUpdateDocumentFormValuesTypeNumber
 		return nil
@@ -765,17 +775,19 @@ type DocumentUpdateDocumentResponseBody struct {
 	// A custom external ID you can use to identify the document.
 	ExternalID *string `json:"externalId"`
 	// The ID of the user that created this document.
-	UserID         float64                                     `json:"userId"`
-	AuthOptions    *DocumentUpdateDocumentAuthOptions          `json:"authOptions"`
-	FormValues     map[string]DocumentUpdateDocumentFormValues `json:"formValues"`
-	Title          string                                      `json:"title"`
-	DocumentDataID string                                      `json:"documentDataId"`
-	CreatedAt      string                                      `json:"createdAt"`
-	UpdatedAt      string                                      `json:"updatedAt"`
-	CompletedAt    *string                                     `json:"completedAt"`
-	DeletedAt      *string                                     `json:"deletedAt"`
-	TeamID         *float64                                    `json:"teamId"`
-	TemplateID     *float64                                    `json:"templateId"`
+	UserID                  float64                                     `json:"userId"`
+	AuthOptions             *DocumentUpdateDocumentAuthOptions          `json:"authOptions"`
+	FormValues              map[string]DocumentUpdateDocumentFormValues `json:"formValues"`
+	Title                   string                                      `json:"title"`
+	DocumentDataID          string                                      `json:"documentDataId"`
+	CreatedAt               string                                      `json:"createdAt"`
+	UpdatedAt               string                                      `json:"updatedAt"`
+	CompletedAt             *string                                     `json:"completedAt"`
+	DeletedAt               *string                                     `json:"deletedAt"`
+	TeamID                  float64                                     `json:"teamId"`
+	TemplateID              *float64                                    `json:"templateId"`
+	FolderID                *string                                     `json:"folderId"`
+	UseLegacyFieldInsertion bool                                        `json:"useLegacyFieldInsertion"`
 }
 
 func (o *DocumentUpdateDocumentResponseBody) GetVisibility() DocumentUpdateDocumentVisibilityResponse {
@@ -876,9 +888,9 @@ func (o *DocumentUpdateDocumentResponseBody) GetDeletedAt() *string {
 	return o.DeletedAt
 }
 
-func (o *DocumentUpdateDocumentResponseBody) GetTeamID() *float64 {
+func (o *DocumentUpdateDocumentResponseBody) GetTeamID() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.TeamID
 }
@@ -888,6 +900,20 @@ func (o *DocumentUpdateDocumentResponseBody) GetTemplateID() *float64 {
 		return nil
 	}
 	return o.TemplateID
+}
+
+func (o *DocumentUpdateDocumentResponseBody) GetFolderID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FolderID
+}
+
+func (o *DocumentUpdateDocumentResponseBody) GetUseLegacyFieldInsertion() bool {
+	if o == nil {
+		return false
+	}
+	return o.UseLegacyFieldInsertion
 }
 
 type DocumentUpdateDocumentResponse struct {

@@ -12,6 +12,8 @@ import (
 
 type DocumentGetDocumentWithDetailsByIDRequest struct {
 	DocumentID float64 `pathParam:"style=simple,explode=false,name=documentId"`
+	// Filter documents by folder ID
+	FolderID *string `queryParam:"style=form,explode=true,name=folderId"`
 }
 
 func (o *DocumentGetDocumentWithDetailsByIDRequest) GetDocumentID() float64 {
@@ -19,6 +21,13 @@ func (o *DocumentGetDocumentWithDetailsByIDRequest) GetDocumentID() float64 {
 		return 0.0
 	}
 	return o.DocumentID
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDRequest) GetFolderID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FolderID
 }
 
 type DocumentGetDocumentWithDetailsByIDVisibility string
@@ -142,6 +151,7 @@ const (
 	DocumentGetDocumentWithDetailsByIDGlobalActionAuthAccount       DocumentGetDocumentWithDetailsByIDGlobalActionAuth = "ACCOUNT"
 	DocumentGetDocumentWithDetailsByIDGlobalActionAuthPasskey       DocumentGetDocumentWithDetailsByIDGlobalActionAuth = "PASSKEY"
 	DocumentGetDocumentWithDetailsByIDGlobalActionAuthTwoFactorAuth DocumentGetDocumentWithDetailsByIDGlobalActionAuth = "TWO_FACTOR_AUTH"
+	DocumentGetDocumentWithDetailsByIDGlobalActionAuthPassword      DocumentGetDocumentWithDetailsByIDGlobalActionAuth = "PASSWORD"
 )
 
 func (e DocumentGetDocumentWithDetailsByIDGlobalActionAuth) ToPointer() *DocumentGetDocumentWithDetailsByIDGlobalActionAuth {
@@ -158,6 +168,8 @@ func (e *DocumentGetDocumentWithDetailsByIDGlobalActionAuth) UnmarshalJSON(data 
 	case "PASSKEY":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
+		fallthrough
+	case "PASSWORD":
 		*e = DocumentGetDocumentWithDetailsByIDGlobalActionAuth(v)
 		return nil
 	default:
@@ -166,22 +178,20 @@ func (e *DocumentGetDocumentWithDetailsByIDGlobalActionAuth) UnmarshalJSON(data 
 }
 
 type DocumentGetDocumentWithDetailsByIDAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	GlobalAccessAuth *DocumentGetDocumentWithDetailsByIDGlobalAccessAuth `json:"globalAccessAuth"`
-	// The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-	GlobalActionAuth *DocumentGetDocumentWithDetailsByIDGlobalActionAuth `json:"globalActionAuth"`
+	GlobalAccessAuth []DocumentGetDocumentWithDetailsByIDGlobalAccessAuth `json:"globalAccessAuth"`
+	GlobalActionAuth []DocumentGetDocumentWithDetailsByIDGlobalActionAuth `json:"globalActionAuth"`
 }
 
-func (o *DocumentGetDocumentWithDetailsByIDAuthOptions) GetGlobalAccessAuth() *DocumentGetDocumentWithDetailsByIDGlobalAccessAuth {
+func (o *DocumentGetDocumentWithDetailsByIDAuthOptions) GetGlobalAccessAuth() []DocumentGetDocumentWithDetailsByIDGlobalAccessAuth {
 	if o == nil {
-		return nil
+		return []DocumentGetDocumentWithDetailsByIDGlobalAccessAuth{}
 	}
 	return o.GlobalAccessAuth
 }
 
-func (o *DocumentGetDocumentWithDetailsByIDAuthOptions) GetGlobalActionAuth() *DocumentGetDocumentWithDetailsByIDGlobalActionAuth {
+func (o *DocumentGetDocumentWithDetailsByIDAuthOptions) GetGlobalActionAuth() []DocumentGetDocumentWithDetailsByIDGlobalActionAuth {
 	if o == nil {
-		return nil
+		return []DocumentGetDocumentWithDetailsByIDGlobalActionAuth{}
 	}
 	return o.GlobalActionAuth
 }
@@ -232,21 +242,21 @@ func CreateDocumentGetDocumentWithDetailsByIDFormValuesNumber(number float64) Do
 func (u *DocumentGetDocumentWithDetailsByIDFormValues) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
-	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
 		u.Type = DocumentGetDocumentWithDetailsByIDFormValuesTypeStr
 		return nil
 	}
 
 	var boolean bool = false
-	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
 		u.Type = DocumentGetDocumentWithDetailsByIDFormValuesTypeBoolean
 		return nil
 	}
 
 	var number float64 = float64(0)
-	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
 		u.Type = DocumentGetDocumentWithDetailsByIDFormValuesTypeNumber
 		return nil
@@ -409,7 +419,7 @@ func (d DocumentGetDocumentWithDetailsByIDEmailSettings) MarshalJSON() ([]byte, 
 }
 
 func (d *DocumentGetDocumentWithDetailsByIDEmailSettings) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -595,6 +605,144 @@ func (o *DocumentGetDocumentWithDetailsByIDDocumentMeta) GetEmailSettings() *Doc
 	return o.EmailSettings
 }
 
+type DocumentGetDocumentWithDetailsByIDFolderType string
+
+const (
+	DocumentGetDocumentWithDetailsByIDFolderTypeDocument DocumentGetDocumentWithDetailsByIDFolderType = "DOCUMENT"
+	DocumentGetDocumentWithDetailsByIDFolderTypeTemplate DocumentGetDocumentWithDetailsByIDFolderType = "TEMPLATE"
+)
+
+func (e DocumentGetDocumentWithDetailsByIDFolderType) ToPointer() *DocumentGetDocumentWithDetailsByIDFolderType {
+	return &e
+}
+func (e *DocumentGetDocumentWithDetailsByIDFolderType) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "DOCUMENT":
+		fallthrough
+	case "TEMPLATE":
+		*e = DocumentGetDocumentWithDetailsByIDFolderType(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetDocumentWithDetailsByIDFolderType: %v", v)
+	}
+}
+
+type DocumentGetDocumentWithDetailsByIDFolderVisibility string
+
+const (
+	DocumentGetDocumentWithDetailsByIDFolderVisibilityEveryone        DocumentGetDocumentWithDetailsByIDFolderVisibility = "EVERYONE"
+	DocumentGetDocumentWithDetailsByIDFolderVisibilityManagerAndAbove DocumentGetDocumentWithDetailsByIDFolderVisibility = "MANAGER_AND_ABOVE"
+	DocumentGetDocumentWithDetailsByIDFolderVisibilityAdmin           DocumentGetDocumentWithDetailsByIDFolderVisibility = "ADMIN"
+)
+
+func (e DocumentGetDocumentWithDetailsByIDFolderVisibility) ToPointer() *DocumentGetDocumentWithDetailsByIDFolderVisibility {
+	return &e
+}
+func (e *DocumentGetDocumentWithDetailsByIDFolderVisibility) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "EVERYONE":
+		fallthrough
+	case "MANAGER_AND_ABOVE":
+		fallthrough
+	case "ADMIN":
+		*e = DocumentGetDocumentWithDetailsByIDFolderVisibility(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetDocumentWithDetailsByIDFolderVisibility: %v", v)
+	}
+}
+
+type DocumentGetDocumentWithDetailsByIDFolder struct {
+	ID         string                                             `json:"id"`
+	Name       string                                             `json:"name"`
+	Type       DocumentGetDocumentWithDetailsByIDFolderType       `json:"type"`
+	Visibility DocumentGetDocumentWithDetailsByIDFolderVisibility `json:"visibility"`
+	UserID     float64                                            `json:"userId"`
+	TeamID     float64                                            `json:"teamId"`
+	Pinned     bool                                               `json:"pinned"`
+	ParentID   *string                                            `json:"parentId"`
+	CreatedAt  string                                             `json:"createdAt"`
+	UpdatedAt  string                                             `json:"updatedAt"`
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetName() string {
+	if o == nil {
+		return ""
+	}
+	return o.Name
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetType() DocumentGetDocumentWithDetailsByIDFolderType {
+	if o == nil {
+		return DocumentGetDocumentWithDetailsByIDFolderType("")
+	}
+	return o.Type
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetVisibility() DocumentGetDocumentWithDetailsByIDFolderVisibility {
+	if o == nil {
+		return DocumentGetDocumentWithDetailsByIDFolderVisibility("")
+	}
+	return o.Visibility
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetUserID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.UserID
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetTeamID() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.TeamID
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetPinned() bool {
+	if o == nil {
+		return false
+	}
+	return o.Pinned
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetParentID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ParentID
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetCreatedAt() string {
+	if o == nil {
+		return ""
+	}
+	return o.CreatedAt
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDFolder) GetUpdatedAt() string {
+	if o == nil {
+		return ""
+	}
+	return o.UpdatedAt
+}
+
 type DocumentGetDocumentWithDetailsByIDRole string
 
 const (
@@ -742,6 +890,7 @@ const (
 	DocumentGetDocumentWithDetailsByIDActionAuthAccount       DocumentGetDocumentWithDetailsByIDActionAuth = "ACCOUNT"
 	DocumentGetDocumentWithDetailsByIDActionAuthPasskey       DocumentGetDocumentWithDetailsByIDActionAuth = "PASSKEY"
 	DocumentGetDocumentWithDetailsByIDActionAuthTwoFactorAuth DocumentGetDocumentWithDetailsByIDActionAuth = "TWO_FACTOR_AUTH"
+	DocumentGetDocumentWithDetailsByIDActionAuthPassword      DocumentGetDocumentWithDetailsByIDActionAuth = "PASSWORD"
 	DocumentGetDocumentWithDetailsByIDActionAuthExplicitNone  DocumentGetDocumentWithDetailsByIDActionAuth = "EXPLICIT_NONE"
 )
 
@@ -760,6 +909,8 @@ func (e *DocumentGetDocumentWithDetailsByIDActionAuth) UnmarshalJSON(data []byte
 		fallthrough
 	case "TWO_FACTOR_AUTH":
 		fallthrough
+	case "PASSWORD":
+		fallthrough
 	case "EXPLICIT_NONE":
 		*e = DocumentGetDocumentWithDetailsByIDActionAuth(v)
 		return nil
@@ -769,22 +920,20 @@ func (e *DocumentGetDocumentWithDetailsByIDActionAuth) UnmarshalJSON(data []byte
 }
 
 type DocumentGetDocumentWithDetailsByIDRecipientAuthOptions struct {
-	// The type of authentication required for the recipient to access the document.
-	AccessAuth *DocumentGetDocumentWithDetailsByIDAccessAuth `json:"accessAuth"`
-	// The type of authentication required for the recipient to sign the document.
-	ActionAuth *DocumentGetDocumentWithDetailsByIDActionAuth `json:"actionAuth"`
+	AccessAuth []DocumentGetDocumentWithDetailsByIDAccessAuth `json:"accessAuth"`
+	ActionAuth []DocumentGetDocumentWithDetailsByIDActionAuth `json:"actionAuth"`
 }
 
-func (o *DocumentGetDocumentWithDetailsByIDRecipientAuthOptions) GetAccessAuth() *DocumentGetDocumentWithDetailsByIDAccessAuth {
+func (o *DocumentGetDocumentWithDetailsByIDRecipientAuthOptions) GetAccessAuth() []DocumentGetDocumentWithDetailsByIDAccessAuth {
 	if o == nil {
-		return nil
+		return []DocumentGetDocumentWithDetailsByIDAccessAuth{}
 	}
 	return o.AccessAuth
 }
 
-func (o *DocumentGetDocumentWithDetailsByIDRecipientAuthOptions) GetActionAuth() *DocumentGetDocumentWithDetailsByIDActionAuth {
+func (o *DocumentGetDocumentWithDetailsByIDRecipientAuthOptions) GetActionAuth() []DocumentGetDocumentWithDetailsByIDActionAuth {
 	if o == nil {
-		return nil
+		return []DocumentGetDocumentWithDetailsByIDActionAuth{}
 	}
 	return o.ActionAuth
 }
@@ -1001,6 +1150,17 @@ type DocumentGetDocumentWithDetailsByIDValue3 struct {
 	Value string `json:"value"`
 }
 
+func (d DocumentGetDocumentWithDetailsByIDValue3) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetDocumentWithDetailsByIDValue3) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DocumentGetDocumentWithDetailsByIDValue3) GetValue() string {
 	if o == nil {
 		return ""
@@ -1016,6 +1176,17 @@ type DocumentGetDocumentWithDetailsByIDFieldMetaDropdown struct {
 	Type         DocumentGetDocumentWithDetailsByIDTypeDropdown `json:"type"`
 	Values       []DocumentGetDocumentWithDetailsByIDValue3     `json:"values,omitempty"`
 	DefaultValue *string                                        `json:"defaultValue,omitempty"`
+}
+
+func (d DocumentGetDocumentWithDetailsByIDFieldMetaDropdown) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetDocumentWithDetailsByIDFieldMetaDropdown) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DocumentGetDocumentWithDetailsByIDFieldMetaDropdown) GetLabel() *string {
@@ -1096,6 +1267,17 @@ type DocumentGetDocumentWithDetailsByIDValue2 struct {
 	Value   string  `json:"value"`
 }
 
+func (d DocumentGetDocumentWithDetailsByIDValue2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetDocumentWithDetailsByIDValue2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DocumentGetDocumentWithDetailsByIDValue2) GetID() float64 {
 	if o == nil {
 		return 0.0
@@ -1126,6 +1308,17 @@ type DocumentGetDocumentWithDetailsByIDFieldMetaCheckbox struct {
 	Values           []DocumentGetDocumentWithDetailsByIDValue2     `json:"values,omitempty"`
 	ValidationRule   *string                                        `json:"validationRule,omitempty"`
 	ValidationLength *float64                                       `json:"validationLength,omitempty"`
+}
+
+func (d DocumentGetDocumentWithDetailsByIDFieldMetaCheckbox) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetDocumentWithDetailsByIDFieldMetaCheckbox) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DocumentGetDocumentWithDetailsByIDFieldMetaCheckbox) GetLabel() *string {
@@ -1213,6 +1406,17 @@ type DocumentGetDocumentWithDetailsByIDValue1 struct {
 	Value   string  `json:"value"`
 }
 
+func (d DocumentGetDocumentWithDetailsByIDValue1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetDocumentWithDetailsByIDValue1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DocumentGetDocumentWithDetailsByIDValue1) GetID() float64 {
 	if o == nil {
 		return 0.0
@@ -1241,6 +1445,17 @@ type DocumentGetDocumentWithDetailsByIDFieldMetaRadio struct {
 	ReadOnly    *bool                                       `json:"readOnly,omitempty"`
 	Type        DocumentGetDocumentWithDetailsByIDTypeRadio `json:"type"`
 	Values      []DocumentGetDocumentWithDetailsByIDValue1  `json:"values,omitempty"`
+}
+
+func (d DocumentGetDocumentWithDetailsByIDFieldMetaRadio) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetDocumentWithDetailsByIDFieldMetaRadio) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DocumentGetDocumentWithDetailsByIDFieldMetaRadio) GetLabel() *string {
@@ -1349,6 +1564,17 @@ type DocumentGetDocumentWithDetailsByIDFieldMetaNumber struct {
 	MaxValue     *float64                                      `json:"maxValue,omitempty"`
 	FontSize     *float64                                      `json:"fontSize,omitempty"`
 	TextAlign    *DocumentGetDocumentWithDetailsByIDTextAlign6 `json:"textAlign,omitempty"`
+}
+
+func (d DocumentGetDocumentWithDetailsByIDFieldMetaNumber) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetDocumentWithDetailsByIDFieldMetaNumber) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DocumentGetDocumentWithDetailsByIDFieldMetaNumber) GetLabel() *string {
@@ -1492,6 +1718,17 @@ type DocumentGetDocumentWithDetailsByIDFieldMetaText struct {
 	TextAlign      *DocumentGetDocumentWithDetailsByIDTextAlign5 `json:"textAlign,omitempty"`
 }
 
+func (d DocumentGetDocumentWithDetailsByIDFieldMetaText) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetDocumentWithDetailsByIDFieldMetaText) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DocumentGetDocumentWithDetailsByIDFieldMetaText) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -1617,6 +1854,17 @@ type DocumentGetDocumentWithDetailsByIDFieldMetaDate struct {
 	TextAlign   *DocumentGetDocumentWithDetailsByIDTextAlign4 `json:"textAlign,omitempty"`
 }
 
+func (d DocumentGetDocumentWithDetailsByIDFieldMetaDate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetDocumentWithDetailsByIDFieldMetaDate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DocumentGetDocumentWithDetailsByIDFieldMetaDate) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -1726,6 +1974,17 @@ type DocumentGetDocumentWithDetailsByIDFieldMetaEmail struct {
 	Type        DocumentGetDocumentWithDetailsByIDTypeEmail   `json:"type"`
 	FontSize    *float64                                      `json:"fontSize,omitempty"`
 	TextAlign   *DocumentGetDocumentWithDetailsByIDTextAlign3 `json:"textAlign,omitempty"`
+}
+
+func (d DocumentGetDocumentWithDetailsByIDFieldMetaEmail) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetDocumentWithDetailsByIDFieldMetaEmail) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DocumentGetDocumentWithDetailsByIDFieldMetaEmail) GetLabel() *string {
@@ -1839,6 +2098,17 @@ type DocumentGetDocumentWithDetailsByIDFieldMetaName struct {
 	TextAlign   *DocumentGetDocumentWithDetailsByIDTextAlign2 `json:"textAlign,omitempty"`
 }
 
+func (d DocumentGetDocumentWithDetailsByIDFieldMetaName) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetDocumentWithDetailsByIDFieldMetaName) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *DocumentGetDocumentWithDetailsByIDFieldMetaName) GetLabel() *string {
 	if o == nil {
 		return nil
@@ -1948,6 +2218,17 @@ type DocumentGetDocumentWithDetailsByIDFieldMetaInitials struct {
 	Type        DocumentGetDocumentWithDetailsByIDTypeInitials `json:"type"`
 	FontSize    *float64                                       `json:"fontSize,omitempty"`
 	TextAlign   *DocumentGetDocumentWithDetailsByIDTextAlign1  `json:"textAlign,omitempty"`
+}
+
+func (d DocumentGetDocumentWithDetailsByIDFieldMetaInitials) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetDocumentWithDetailsByIDFieldMetaInitials) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *DocumentGetDocumentWithDetailsByIDFieldMetaInitials) GetLabel() *string {
@@ -2110,66 +2391,66 @@ func CreateDocumentGetDocumentWithDetailsByIDFieldMetaUnionDocumentGetDocumentWi
 
 func (u *DocumentGetDocumentWithDetailsByIDFieldMetaUnion) UnmarshalJSON(data []byte) error {
 
-	var documentGetDocumentWithDetailsByIDFieldMetaRadio DocumentGetDocumentWithDetailsByIDFieldMetaRadio = DocumentGetDocumentWithDetailsByIDFieldMetaRadio{}
-	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaRadio, "", true, true); err == nil {
-		u.DocumentGetDocumentWithDetailsByIDFieldMetaRadio = &documentGetDocumentWithDetailsByIDFieldMetaRadio
-		u.Type = DocumentGetDocumentWithDetailsByIDFieldMetaUnionTypeDocumentGetDocumentWithDetailsByIDFieldMetaRadio
-		return nil
-	}
-
 	var documentGetDocumentWithDetailsByIDFieldMetaInitials DocumentGetDocumentWithDetailsByIDFieldMetaInitials = DocumentGetDocumentWithDetailsByIDFieldMetaInitials{}
-	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaInitials, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaInitials, "", true, nil); err == nil {
 		u.DocumentGetDocumentWithDetailsByIDFieldMetaInitials = &documentGetDocumentWithDetailsByIDFieldMetaInitials
 		u.Type = DocumentGetDocumentWithDetailsByIDFieldMetaUnionTypeDocumentGetDocumentWithDetailsByIDFieldMetaInitials
 		return nil
 	}
 
 	var documentGetDocumentWithDetailsByIDFieldMetaName DocumentGetDocumentWithDetailsByIDFieldMetaName = DocumentGetDocumentWithDetailsByIDFieldMetaName{}
-	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaName, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaName, "", true, nil); err == nil {
 		u.DocumentGetDocumentWithDetailsByIDFieldMetaName = &documentGetDocumentWithDetailsByIDFieldMetaName
 		u.Type = DocumentGetDocumentWithDetailsByIDFieldMetaUnionTypeDocumentGetDocumentWithDetailsByIDFieldMetaName
 		return nil
 	}
 
 	var documentGetDocumentWithDetailsByIDFieldMetaEmail DocumentGetDocumentWithDetailsByIDFieldMetaEmail = DocumentGetDocumentWithDetailsByIDFieldMetaEmail{}
-	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaEmail, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaEmail, "", true, nil); err == nil {
 		u.DocumentGetDocumentWithDetailsByIDFieldMetaEmail = &documentGetDocumentWithDetailsByIDFieldMetaEmail
 		u.Type = DocumentGetDocumentWithDetailsByIDFieldMetaUnionTypeDocumentGetDocumentWithDetailsByIDFieldMetaEmail
 		return nil
 	}
 
 	var documentGetDocumentWithDetailsByIDFieldMetaDate DocumentGetDocumentWithDetailsByIDFieldMetaDate = DocumentGetDocumentWithDetailsByIDFieldMetaDate{}
-	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaDate, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaDate, "", true, nil); err == nil {
 		u.DocumentGetDocumentWithDetailsByIDFieldMetaDate = &documentGetDocumentWithDetailsByIDFieldMetaDate
 		u.Type = DocumentGetDocumentWithDetailsByIDFieldMetaUnionTypeDocumentGetDocumentWithDetailsByIDFieldMetaDate
 		return nil
 	}
 
-	var documentGetDocumentWithDetailsByIDFieldMetaDropdown DocumentGetDocumentWithDetailsByIDFieldMetaDropdown = DocumentGetDocumentWithDetailsByIDFieldMetaDropdown{}
-	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaDropdown, "", true, true); err == nil {
-		u.DocumentGetDocumentWithDetailsByIDFieldMetaDropdown = &documentGetDocumentWithDetailsByIDFieldMetaDropdown
-		u.Type = DocumentGetDocumentWithDetailsByIDFieldMetaUnionTypeDocumentGetDocumentWithDetailsByIDFieldMetaDropdown
-		return nil
-	}
-
-	var documentGetDocumentWithDetailsByIDFieldMetaCheckbox DocumentGetDocumentWithDetailsByIDFieldMetaCheckbox = DocumentGetDocumentWithDetailsByIDFieldMetaCheckbox{}
-	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaCheckbox, "", true, true); err == nil {
-		u.DocumentGetDocumentWithDetailsByIDFieldMetaCheckbox = &documentGetDocumentWithDetailsByIDFieldMetaCheckbox
-		u.Type = DocumentGetDocumentWithDetailsByIDFieldMetaUnionTypeDocumentGetDocumentWithDetailsByIDFieldMetaCheckbox
-		return nil
-	}
-
 	var documentGetDocumentWithDetailsByIDFieldMetaText DocumentGetDocumentWithDetailsByIDFieldMetaText = DocumentGetDocumentWithDetailsByIDFieldMetaText{}
-	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaText, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaText, "", true, nil); err == nil {
 		u.DocumentGetDocumentWithDetailsByIDFieldMetaText = &documentGetDocumentWithDetailsByIDFieldMetaText
 		u.Type = DocumentGetDocumentWithDetailsByIDFieldMetaUnionTypeDocumentGetDocumentWithDetailsByIDFieldMetaText
 		return nil
 	}
 
 	var documentGetDocumentWithDetailsByIDFieldMetaNumber DocumentGetDocumentWithDetailsByIDFieldMetaNumber = DocumentGetDocumentWithDetailsByIDFieldMetaNumber{}
-	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaNumber, "", true, true); err == nil {
+	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaNumber, "", true, nil); err == nil {
 		u.DocumentGetDocumentWithDetailsByIDFieldMetaNumber = &documentGetDocumentWithDetailsByIDFieldMetaNumber
 		u.Type = DocumentGetDocumentWithDetailsByIDFieldMetaUnionTypeDocumentGetDocumentWithDetailsByIDFieldMetaNumber
+		return nil
+	}
+
+	var documentGetDocumentWithDetailsByIDFieldMetaRadio DocumentGetDocumentWithDetailsByIDFieldMetaRadio = DocumentGetDocumentWithDetailsByIDFieldMetaRadio{}
+	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaRadio, "", true, nil); err == nil {
+		u.DocumentGetDocumentWithDetailsByIDFieldMetaRadio = &documentGetDocumentWithDetailsByIDFieldMetaRadio
+		u.Type = DocumentGetDocumentWithDetailsByIDFieldMetaUnionTypeDocumentGetDocumentWithDetailsByIDFieldMetaRadio
+		return nil
+	}
+
+	var documentGetDocumentWithDetailsByIDFieldMetaCheckbox DocumentGetDocumentWithDetailsByIDFieldMetaCheckbox = DocumentGetDocumentWithDetailsByIDFieldMetaCheckbox{}
+	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaCheckbox, "", true, nil); err == nil {
+		u.DocumentGetDocumentWithDetailsByIDFieldMetaCheckbox = &documentGetDocumentWithDetailsByIDFieldMetaCheckbox
+		u.Type = DocumentGetDocumentWithDetailsByIDFieldMetaUnionTypeDocumentGetDocumentWithDetailsByIDFieldMetaCheckbox
+		return nil
+	}
+
+	var documentGetDocumentWithDetailsByIDFieldMetaDropdown DocumentGetDocumentWithDetailsByIDFieldMetaDropdown = DocumentGetDocumentWithDetailsByIDFieldMetaDropdown{}
+	if err := utils.UnmarshalJSON(data, &documentGetDocumentWithDetailsByIDFieldMetaDropdown, "", true, nil); err == nil {
+		u.DocumentGetDocumentWithDetailsByIDFieldMetaDropdown = &documentGetDocumentWithDetailsByIDFieldMetaDropdown
+		u.Type = DocumentGetDocumentWithDetailsByIDFieldMetaUnionTypeDocumentGetDocumentWithDetailsByIDFieldMetaDropdown
 		return nil
 	}
 
@@ -2350,10 +2631,12 @@ type DocumentGetDocumentWithDetailsByIDResponseBody struct {
 	UpdatedAt      string                                                  `json:"updatedAt"`
 	CompletedAt    *string                                                 `json:"completedAt"`
 	DeletedAt      *string                                                 `json:"deletedAt"`
-	TeamID         *float64                                                `json:"teamId"`
+	TeamID         float64                                                 `json:"teamId"`
 	TemplateID     *float64                                                `json:"templateId"`
+	FolderID       *string                                                 `json:"folderId"`
 	DocumentData   DocumentGetDocumentWithDetailsByIDDocumentData          `json:"documentData"`
 	DocumentMeta   *DocumentGetDocumentWithDetailsByIDDocumentMeta         `json:"documentMeta"`
+	Folder         *DocumentGetDocumentWithDetailsByIDFolder               `json:"folder"`
 	Recipients     []DocumentGetDocumentWithDetailsByIDRecipient           `json:"recipients"`
 	Fields         []DocumentGetDocumentWithDetailsByIDField               `json:"fields"`
 }
@@ -2456,9 +2739,9 @@ func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetDeletedAt() *string 
 	return o.DeletedAt
 }
 
-func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetTeamID() *float64 {
+func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetTeamID() float64 {
 	if o == nil {
-		return nil
+		return 0.0
 	}
 	return o.TeamID
 }
@@ -2468,6 +2751,13 @@ func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetTemplateID() *float6
 		return nil
 	}
 	return o.TemplateID
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetFolderID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FolderID
 }
 
 func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetDocumentData() DocumentGetDocumentWithDetailsByIDDocumentData {
@@ -2482,6 +2772,13 @@ func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetDocumentMeta() *Docu
 		return nil
 	}
 	return o.DocumentMeta
+}
+
+func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetFolder() *DocumentGetDocumentWithDetailsByIDFolder {
+	if o == nil {
+		return nil
+	}
+	return o.Folder
 }
 
 func (o *DocumentGetDocumentWithDetailsByIDResponseBody) GetRecipients() []DocumentGetDocumentWithDetailsByIDRecipient {

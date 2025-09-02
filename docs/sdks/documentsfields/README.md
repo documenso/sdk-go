@@ -18,6 +18,7 @@ Returns a single field. If you want to retrieve all the fields for a document, u
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="field-getDocumentField" method="get" path="/document/field/{fieldId}" -->
 ```go
 package main
 
@@ -72,6 +73,7 @@ Create a single field for a document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="field-createDocumentField" method="post" path="/document/field/create" -->
 ```go
 package main
 
@@ -94,7 +96,7 @@ func main() {
         DocumentID: 8001.93,
         Field: operations.CreateFieldCreateDocumentFieldFieldUnionFieldCreateDocumentFieldFieldName(
             operations.FieldCreateDocumentFieldFieldName{
-                Type: operations.FieldCreateDocumentFieldTypeNameRequestBody1Name,
+                Type: operations.FieldCreateDocumentFieldTypeNameRequest1Name,
                 RecipientID: 2564.68,
                 PageNumber: 791.77,
                 PageX: 7845.22,
@@ -139,6 +141,7 @@ Create multiple fields for a document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="field-createDocumentFields" method="post" path="/document/field/create-many" -->
 ```go
 package main
 
@@ -208,6 +211,7 @@ Update a single field for a document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="field-updateDocumentField" method="post" path="/document/field/update" -->
 ```go
 package main
 
@@ -270,6 +274,7 @@ Update multiple fields for a document.
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="field-updateDocumentFields" method="post" path="/document/field/update-many" -->
 ```go
 package main
 
@@ -327,6 +332,7 @@ Delete document field
 
 ### Example Usage
 
+<!-- UsageSnippet language="go" operationID="field-deleteDocumentField" method="post" path="/document/field/delete" -->
 ```go
 package main
 

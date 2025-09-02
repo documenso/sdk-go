@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: bae11706-ab18-405c-b9f4-26138a36bedc
 management:
-  docChecksum: b9df9fae2378f00f791bf6823dd78fad
+  docChecksum: d196a9d657dff1b0b09905a63ce9aa76
   docVersion: 0.0.0
-  speakeasyVersion: 1.557.0
-  generationVersion: 2.623.0
-  releaseVersion: 0.1.0
-  configChecksum: 1b9681e116b7c8cd53929b8a9f63fb5e
+  speakeasyVersion: 1.606.10
+  generationVersion: 2.687.13
+  releaseVersion: 0.2.0
+  configChecksum: 16e15dba4ed21baec8b51c8372ab8780
   repoURL: https://github.com/documenso/sdk-go.git
   installationURL: https://github.com/documenso/sdk-go
 features:
   go:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.8.0
+    core: 3.9.3
     defaultEnabledRetries: 0.2.0
     devContainers: 2.90.0
     envVarSecurityUsage: 0.3.2
@@ -27,9 +27,9 @@ features:
     nameOverrides: 2.81.2
     nullables: 0.1.1
     responseFormat: 0.1.2
-    retries: 2.83.3
+    retries: 2.84.2
     sdkHooks: 0.2.0
-    unions: 2.85.10
+    unions: 2.85.13
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
@@ -40,10 +40,11 @@ generatedFiles:
   - /models/apierrors/documentduplicatedocument.go
   - /models/apierrors/documentfinddocuments.go
   - /models/apierrors/documentgetdocumentwithdetailsbyid.go
-  - /models/apierrors/documentmovedocumenttoteam.go
   - /models/apierrors/documentresenddocument.go
   - /models/apierrors/documentsenddocument.go
   - /models/apierrors/documentupdatedocument.go
+  - /models/apierrors/embeddingpresigncreateembeddingpresigntoken.go
+  - /models/apierrors/embeddingpresignverifyembeddingpresigntoken.go
   - /models/apierrors/fieldcreatedocumentfield.go
   - /models/apierrors/fieldcreatedocumentfields.go
   - /models/apierrors/fieldcreatetemplatefield.go
@@ -75,7 +76,6 @@ generatedFiles:
   - /models/apierrors/templateduplicatetemplate.go
   - /models/apierrors/templatefindtemplates.go
   - /models/apierrors/templategettemplatebyid.go
-  - /models/apierrors/templatemovetemplatetoteam.go
   - /models/apierrors/templatetoggletemplatedirectlink.go
   - /models/apierrors/templateupdatetemplate.go
   - /models/components/httpmetadata.go
@@ -85,10 +85,11 @@ generatedFiles:
   - /models/operations/documentduplicatedocument.go
   - /models/operations/documentfinddocuments.go
   - /models/operations/documentgetdocumentwithdetailsbyid.go
-  - /models/operations/documentmovedocumenttoteam.go
   - /models/operations/documentresenddocument.go
   - /models/operations/documentsenddocument.go
   - /models/operations/documentupdatedocument.go
+  - /models/operations/embeddingpresigncreateembeddingpresigntoken.go
+  - /models/operations/embeddingpresignverifyembeddingpresigntoken.go
   - /models/operations/fieldcreatedocumentfield.go
   - /models/operations/fieldcreatedocumentfields.go
   - /models/operations/fieldcreatetemplatefield.go
@@ -120,7 +121,6 @@ generatedFiles:
   - /models/operations/templateduplicatetemplate.go
   - /models/operations/templatefindtemplates.go
   - /models/operations/templategettemplatebyid.go
-  - /models/operations/templatemovetemplatetoteam.go
   - /models/operations/templatetoggletemplatedirectlink.go
   - /models/operations/templateupdatetemplate.go
   - USAGE.md
@@ -149,10 +149,6 @@ generatedFiles:
   - docs/models/apierrors/documentgetdocumentwithdetailsbyidinternalservererrorissue.md
   - docs/models/apierrors/documentgetdocumentwithdetailsbyidnotfounderror.md
   - docs/models/apierrors/documentgetdocumentwithdetailsbyidnotfoundissue.md
-  - docs/models/apierrors/documentmovedocumenttoteambadrequesterror.md
-  - docs/models/apierrors/documentmovedocumenttoteambadrequestissue.md
-  - docs/models/apierrors/documentmovedocumenttoteaminternalservererror.md
-  - docs/models/apierrors/documentmovedocumenttoteaminternalservererrorissue.md
   - docs/models/apierrors/documentresenddocumentbadrequesterror.md
   - docs/models/apierrors/documentresenddocumentbadrequestissue.md
   - docs/models/apierrors/documentresenddocumentinternalservererror.md
@@ -165,6 +161,14 @@ generatedFiles:
   - docs/models/apierrors/documentupdatedocumentbadrequestissue.md
   - docs/models/apierrors/documentupdatedocumentinternalservererror.md
   - docs/models/apierrors/documentupdatedocumentinternalservererrorissue.md
+  - docs/models/apierrors/embeddingpresigncreateembeddingpresigntokenbadrequesterror.md
+  - docs/models/apierrors/embeddingpresigncreateembeddingpresigntokenbadrequestissue.md
+  - docs/models/apierrors/embeddingpresigncreateembeddingpresigntokeninternalservererror.md
+  - docs/models/apierrors/embeddingpresigncreateembeddingpresigntokeninternalservererrorissue.md
+  - docs/models/apierrors/embeddingpresignverifyembeddingpresigntokenbadrequesterror.md
+  - docs/models/apierrors/embeddingpresignverifyembeddingpresigntokenbadrequestissue.md
+  - docs/models/apierrors/embeddingpresignverifyembeddingpresigntokeninternalservererror.md
+  - docs/models/apierrors/embeddingpresignverifyembeddingpresigntokeninternalservererrorissue.md
   - docs/models/apierrors/fieldcreatedocumentfieldbadrequesterror.md
   - docs/models/apierrors/fieldcreatedocumentfieldbadrequestissue.md
   - docs/models/apierrors/fieldcreatedocumentfieldinternalservererror.md
@@ -301,10 +305,6 @@ generatedFiles:
   - docs/models/apierrors/templategettemplatebyidinternalservererrorissue.md
   - docs/models/apierrors/templategettemplatebyidnotfounderror.md
   - docs/models/apierrors/templategettemplatebyidnotfoundissue.md
-  - docs/models/apierrors/templatemovetemplatetoteambadrequesterror.md
-  - docs/models/apierrors/templatemovetemplatetoteambadrequestissue.md
-  - docs/models/apierrors/templatemovetemplatetoteaminternalservererror.md
-  - docs/models/apierrors/templatemovetemplatetoteaminternalservererrorissue.md
   - docs/models/apierrors/templatetoggletemplatedirectlinkbadrequesterror.md
   - docs/models/apierrors/templatetoggletemplatedirectlinkbadrequestissue.md
   - docs/models/apierrors/templatetoggletemplatedirectlinkinternalservererror.md
@@ -315,30 +315,87 @@ generatedFiles:
   - docs/models/apierrors/templateupdatetemplateinternalservererrorissue.md
   - docs/models/components/httpmetadata.md
   - docs/models/components/security.md
-  - docs/models/operations/actionauthaccount.md
   - docs/models/operations/datasource.md
   - docs/models/operations/datastatus.md
-  - docs/models/operations/distributionmethodaccount.md
   - docs/models/operations/document.md
   - docs/models/operations/documentaccessauth.md
   - docs/models/operations/documentactionauth.md
   - docs/models/operations/documentcreatedocumenttemporaryaccessauthrequest.md
+  - docs/models/operations/documentcreatedocumenttemporaryactionauthrequest.md
   - docs/models/operations/documentcreatedocumenttemporaryauthoptions.md
   - docs/models/operations/documentcreatedocumenttemporarydateformat.md
+  - docs/models/operations/documentcreatedocumenttemporarydistributionmethodrequest.md
   - docs/models/operations/documentcreatedocumenttemporarydocumentdata.md
   - docs/models/operations/documentcreatedocumenttemporarydocumentmeta.md
+  - docs/models/operations/documentcreatedocumenttemporaryemailsettingsrequest.md
+  - docs/models/operations/documentcreatedocumenttemporaryfieldcheckbox.md
+  - docs/models/operations/documentcreatedocumenttemporaryfielddate.md
+  - docs/models/operations/documentcreatedocumenttemporaryfielddropdown.md
+  - docs/models/operations/documentcreatedocumenttemporaryfieldemail.md
+  - docs/models/operations/documentcreatedocumenttemporaryfieldfreesignature.md
+  - docs/models/operations/documentcreatedocumenttemporaryfieldinitials.md
+  - docs/models/operations/documentcreatedocumenttemporaryfieldname.md
+  - docs/models/operations/documentcreatedocumenttemporaryfieldnumber.md
+  - docs/models/operations/documentcreatedocumenttemporaryfieldradio.md
+  - docs/models/operations/documentcreatedocumenttemporaryfieldsignature.md
+  - docs/models/operations/documentcreatedocumenttemporaryfieldtext.md
+  - docs/models/operations/documentcreatedocumenttemporaryfieldunion.md
+  - docs/models/operations/documentcreatedocumenttemporaryfolder.md
   - docs/models/operations/documentcreatedocumenttemporaryglobalaccessauthrequest.md
+  - docs/models/operations/documentcreatedocumenttemporaryglobalactionauthrequest.md
   - docs/models/operations/documentcreatedocumenttemporarylanguage.md
   - docs/models/operations/documentcreatedocumenttemporarymeta.md
   - docs/models/operations/documentcreatedocumenttemporaryreadstatus.md
   - docs/models/operations/documentcreatedocumenttemporaryrecipientauthoptions.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipientfieldmetacheckbox.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipientfieldmetadate.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipientfieldmetadropdown.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipientfieldmetaemail.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipientfieldmetainitials.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipientfieldmetaname.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipientfieldmetanumber.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipientfieldmetaradio.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipientfieldmetatext.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipientrequest.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypecheckbox1.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypecheckbox2.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypedate1.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypedate2.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypedropdown1.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypedropdown2.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypeemail1.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypeemail2.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypeinitials1.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypeinitials2.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypename1.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypename2.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypenumber1.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypenumber2.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttyperadio1.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttyperadio2.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypetext1.md
+  - docs/models/operations/documentcreatedocumenttemporaryrecipienttypetext2.md
   - docs/models/operations/documentcreatedocumenttemporaryrequest.md
   - docs/models/operations/documentcreatedocumenttemporaryresponse.md
   - docs/models/operations/documentcreatedocumenttemporaryresponsebody.md
+  - docs/models/operations/documentcreatedocumenttemporaryrolerequest.md
   - docs/models/operations/documentcreatedocumenttemporarysendstatus.md
+  - docs/models/operations/documentcreatedocumenttemporarysigningorderrequest.md
   - docs/models/operations/documentcreatedocumenttemporarysigningstatus.md
   - docs/models/operations/documentcreatedocumenttemporarysource.md
   - docs/models/operations/documentcreatedocumenttemporarystatus.md
+  - docs/models/operations/documentcreatedocumenttemporarytextaligndate.md
+  - docs/models/operations/documentcreatedocumenttemporarytextalignemail.md
+  - docs/models/operations/documentcreatedocumenttemporarytextaligninitials.md
+  - docs/models/operations/documentcreatedocumenttemporarytextalignname.md
+  - docs/models/operations/documentcreatedocumenttemporarytextalignnumber.md
+  - docs/models/operations/documentcreatedocumenttemporarytextaligntext.md
+  - docs/models/operations/documentcreatedocumenttemporarytypefreesignature.md
+  - docs/models/operations/documentcreatedocumenttemporarytypesignature.md
+  - docs/models/operations/documentcreatedocumenttemporaryvaluecheckbox.md
+  - docs/models/operations/documentcreatedocumenttemporaryvaluedropdown.md
+  - docs/models/operations/documentcreatedocumenttemporaryvalueradio.md
+  - docs/models/operations/documentcreatedocumenttemporaryvisibilityrequest.md
   - docs/models/operations/documentdeletedocumentrequest.md
   - docs/models/operations/documentdeletedocumentresponse.md
   - docs/models/operations/documentdeletedocumentresponsebody.md
@@ -370,6 +427,8 @@ generatedFiles:
   - docs/models/operations/documentfinddocumentsteam.md
   - docs/models/operations/documentfinddocumentsuser.md
   - docs/models/operations/documentfinddocumentsvisibility.md
+  - docs/models/operations/documentfoldertype.md
+  - docs/models/operations/documentfoldervisibility.md
   - docs/models/operations/documentformvalues.md
   - docs/models/operations/documentgetdocumentwithdetailsbyidaccessauth.md
   - docs/models/operations/documentgetdocumentwithdetailsbyidactionauth.md
@@ -391,6 +450,9 @@ generatedFiles:
   - docs/models/operations/documentgetdocumentwithdetailsbyidfieldmetatext.md
   - docs/models/operations/documentgetdocumentwithdetailsbyidfieldmetaunion.md
   - docs/models/operations/documentgetdocumentwithdetailsbyidfieldtype.md
+  - docs/models/operations/documentgetdocumentwithdetailsbyidfolder.md
+  - docs/models/operations/documentgetdocumentwithdetailsbyidfoldertype.md
+  - docs/models/operations/documentgetdocumentwithdetailsbyidfoldervisibility.md
   - docs/models/operations/documentgetdocumentwithdetailsbyidformvalues.md
   - docs/models/operations/documentgetdocumentwithdetailsbyidglobalaccessauth.md
   - docs/models/operations/documentgetdocumentwithdetailsbyidglobalactionauth.md
@@ -427,16 +489,6 @@ generatedFiles:
   - docs/models/operations/documentgetdocumentwithdetailsbyidvisibility.md
   - docs/models/operations/documentglobalaccessauth.md
   - docs/models/operations/documentglobalactionauth.md
-  - docs/models/operations/documentmovedocumenttoteamauthoptions.md
-  - docs/models/operations/documentmovedocumenttoteamformvalues.md
-  - docs/models/operations/documentmovedocumenttoteamglobalaccessauth.md
-  - docs/models/operations/documentmovedocumenttoteamglobalactionauth.md
-  - docs/models/operations/documentmovedocumenttoteamrequest.md
-  - docs/models/operations/documentmovedocumenttoteamresponse.md
-  - docs/models/operations/documentmovedocumenttoteamresponsebody.md
-  - docs/models/operations/documentmovedocumenttoteamsource.md
-  - docs/models/operations/documentmovedocumenttoteamstatus.md
-  - docs/models/operations/documentmovedocumenttoteamvisibility.md
   - docs/models/operations/documentrecipient.md
   - docs/models/operations/documentresenddocumentrequest.md
   - docs/models/operations/documentresenddocumentresponse.md
@@ -479,9 +531,9 @@ generatedFiles:
   - docs/models/operations/documentupdatedocumentdistributionmethod.md
   - docs/models/operations/documentupdatedocumentemailsettings.md
   - docs/models/operations/documentupdatedocumentformvalues.md
-  - docs/models/operations/documentupdatedocumentglobalaccessauthrequestbody.md
+  - docs/models/operations/documentupdatedocumentglobalaccessauthrequest.md
   - docs/models/operations/documentupdatedocumentglobalaccessauthresponse.md
-  - docs/models/operations/documentupdatedocumentglobalactionauthrequestbody.md
+  - docs/models/operations/documentupdatedocumentglobalactionauthrequest.md
   - docs/models/operations/documentupdatedocumentglobalactionauthresponse.md
   - docs/models/operations/documentupdatedocumentlanguage.md
   - docs/models/operations/documentupdatedocumentmeta.md
@@ -491,48 +543,41 @@ generatedFiles:
   - docs/models/operations/documentupdatedocumentsigningorder.md
   - docs/models/operations/documentupdatedocumentsource.md
   - docs/models/operations/documentupdatedocumentstatus.md
-  - docs/models/operations/documentupdatedocumentvisibilityrequestbody.md
+  - docs/models/operations/documentupdatedocumentvisibilityrequest.md
   - docs/models/operations/documentupdatedocumentvisibilityresponse.md
   - docs/models/operations/documentvalue1.md
   - docs/models/operations/documentvalue2.md
   - docs/models/operations/documentvalue3.md
   - docs/models/operations/documentvisibility.md
-  - docs/models/operations/emailsettingsaccount.md
-  - docs/models/operations/fieldaccountcheckbox.md
-  - docs/models/operations/fieldaccountdate.md
-  - docs/models/operations/fieldaccountdropdown.md
-  - docs/models/operations/fieldaccountemail.md
-  - docs/models/operations/fieldaccountfreesignature.md
-  - docs/models/operations/fieldaccountinitials.md
-  - docs/models/operations/fieldaccountname.md
-  - docs/models/operations/fieldaccountnumber.md
-  - docs/models/operations/fieldaccountradio.md
-  - docs/models/operations/fieldaccountsignature.md
-  - docs/models/operations/fieldaccounttext.md
-  - docs/models/operations/fieldaccountunion.md
+  - docs/models/operations/embeddingpresigncreateembeddingpresigntokenrequest.md
+  - docs/models/operations/embeddingpresigncreateembeddingpresigntokenresponse.md
+  - docs/models/operations/embeddingpresigncreateembeddingpresigntokenresponsebody.md
+  - docs/models/operations/embeddingpresignverifyembeddingpresigntokenrequest.md
+  - docs/models/operations/embeddingpresignverifyembeddingpresigntokenresponse.md
+  - docs/models/operations/embeddingpresignverifyembeddingpresigntokenresponsebody.md
   - docs/models/operations/fieldcreatedocumentfieldfieldcheckbox.md
   - docs/models/operations/fieldcreatedocumentfieldfielddate.md
   - docs/models/operations/fieldcreatedocumentfieldfielddropdown.md
   - docs/models/operations/fieldcreatedocumentfieldfieldemail.md
   - docs/models/operations/fieldcreatedocumentfieldfieldfreesignature.md
   - docs/models/operations/fieldcreatedocumentfieldfieldinitials.md
-  - docs/models/operations/fieldcreatedocumentfieldfieldmetacheckboxrequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldfieldmetacheckboxrequest.md
   - docs/models/operations/fieldcreatedocumentfieldfieldmetacheckboxresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldfieldmetadaterequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldfieldmetadaterequest.md
   - docs/models/operations/fieldcreatedocumentfieldfieldmetadateresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldfieldmetadropdownrequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldfieldmetadropdownrequest.md
   - docs/models/operations/fieldcreatedocumentfieldfieldmetadropdownresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldfieldmetaemailrequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldfieldmetaemailrequest.md
   - docs/models/operations/fieldcreatedocumentfieldfieldmetaemailresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldfieldmetainitialsrequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldfieldmetainitialsrequest.md
   - docs/models/operations/fieldcreatedocumentfieldfieldmetainitialsresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldfieldmetanamerequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldfieldmetanamerequest.md
   - docs/models/operations/fieldcreatedocumentfieldfieldmetanameresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldfieldmetanumberrequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldfieldmetanumberrequest.md
   - docs/models/operations/fieldcreatedocumentfieldfieldmetanumberresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldfieldmetaradiorequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldfieldmetaradiorequest.md
   - docs/models/operations/fieldcreatedocumentfieldfieldmetaradioresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldfieldmetatextrequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldfieldmetatextrequest.md
   - docs/models/operations/fieldcreatedocumentfieldfieldmetatextresponse.md
   - docs/models/operations/fieldcreatedocumentfieldfieldmetatypecheckbox.md
   - docs/models/operations/fieldcreatedocumentfieldfieldmetatypedate.md
@@ -559,23 +604,23 @@ generatedFiles:
   - docs/models/operations/fieldcreatedocumentfieldsfieldemail.md
   - docs/models/operations/fieldcreatedocumentfieldsfieldfreesignature.md
   - docs/models/operations/fieldcreatedocumentfieldsfieldinitials.md
-  - docs/models/operations/fieldcreatedocumentfieldsfieldmetacheckboxrequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldsfieldmetacheckboxrequest.md
   - docs/models/operations/fieldcreatedocumentfieldsfieldmetacheckboxresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldsfieldmetadaterequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldsfieldmetadaterequest.md
   - docs/models/operations/fieldcreatedocumentfieldsfieldmetadateresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldsfieldmetadropdownrequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldsfieldmetadropdownrequest.md
   - docs/models/operations/fieldcreatedocumentfieldsfieldmetadropdownresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldsfieldmetaemailrequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldsfieldmetaemailrequest.md
   - docs/models/operations/fieldcreatedocumentfieldsfieldmetaemailresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldsfieldmetainitialsrequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldsfieldmetainitialsrequest.md
   - docs/models/operations/fieldcreatedocumentfieldsfieldmetainitialsresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldsfieldmetanamerequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldsfieldmetanamerequest.md
   - docs/models/operations/fieldcreatedocumentfieldsfieldmetanameresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldsfieldmetanumberrequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldsfieldmetanumberrequest.md
   - docs/models/operations/fieldcreatedocumentfieldsfieldmetanumberresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldsfieldmetaradiorequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldsfieldmetaradiorequest.md
   - docs/models/operations/fieldcreatedocumentfieldsfieldmetaradioresponse.md
-  - docs/models/operations/fieldcreatedocumentfieldsfieldmetatextrequestbody.md
+  - docs/models/operations/fieldcreatedocumentfieldsfieldmetatextrequest.md
   - docs/models/operations/fieldcreatedocumentfieldsfieldmetatextresponse.md
   - docs/models/operations/fieldcreatedocumentfieldsfieldmetatypecheckbox.md
   - docs/models/operations/fieldcreatedocumentfieldsfieldmetatypedate.md
@@ -609,27 +654,27 @@ generatedFiles:
   - docs/models/operations/fieldcreatedocumentfieldstextalignresponse5.md
   - docs/models/operations/fieldcreatedocumentfieldstextalignresponse6.md
   - docs/models/operations/fieldcreatedocumentfieldstextaligntext.md
-  - docs/models/operations/fieldcreatedocumentfieldstypecheckboxrequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldstypecheckboxrequestbody2.md
-  - docs/models/operations/fieldcreatedocumentfieldstypedaterequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldstypedaterequestbody2.md
-  - docs/models/operations/fieldcreatedocumentfieldstypedropdownrequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldstypedropdownrequestbody2.md
-  - docs/models/operations/fieldcreatedocumentfieldstypeemailrequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldstypeemailrequestbody2.md
+  - docs/models/operations/fieldcreatedocumentfieldstypecheckboxrequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldstypecheckboxrequest2.md
+  - docs/models/operations/fieldcreatedocumentfieldstypedaterequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldstypedaterequest2.md
+  - docs/models/operations/fieldcreatedocumentfieldstypedropdownrequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldstypedropdownrequest2.md
+  - docs/models/operations/fieldcreatedocumentfieldstypeemailrequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldstypeemailrequest2.md
   - docs/models/operations/fieldcreatedocumentfieldstypefreesignature.md
-  - docs/models/operations/fieldcreatedocumentfieldstypeinitialsrequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldstypeinitialsrequestbody2.md
-  - docs/models/operations/fieldcreatedocumentfieldstypenamerequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldstypenamerequestbody2.md
-  - docs/models/operations/fieldcreatedocumentfieldstypenumberrequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldstypenumberrequestbody2.md
-  - docs/models/operations/fieldcreatedocumentfieldstyperadiorequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldstyperadiorequestbody2.md
+  - docs/models/operations/fieldcreatedocumentfieldstypeinitialsrequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldstypeinitialsrequest2.md
+  - docs/models/operations/fieldcreatedocumentfieldstypenamerequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldstypenamerequest2.md
+  - docs/models/operations/fieldcreatedocumentfieldstypenumberrequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldstypenumberrequest2.md
+  - docs/models/operations/fieldcreatedocumentfieldstyperadiorequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldstyperadiorequest2.md
   - docs/models/operations/fieldcreatedocumentfieldstyperesponse.md
   - docs/models/operations/fieldcreatedocumentfieldstypesignature.md
-  - docs/models/operations/fieldcreatedocumentfieldstypetextrequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldstypetextrequestbody2.md
+  - docs/models/operations/fieldcreatedocumentfieldstypetextrequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldstypetextrequest2.md
   - docs/models/operations/fieldcreatedocumentfieldsvaluecheckbox.md
   - docs/models/operations/fieldcreatedocumentfieldsvaluedropdown.md
   - docs/models/operations/fieldcreatedocumentfieldsvalueradio.md
@@ -648,27 +693,27 @@ generatedFiles:
   - docs/models/operations/fieldcreatedocumentfieldtextalignresponse5.md
   - docs/models/operations/fieldcreatedocumentfieldtextalignresponse6.md
   - docs/models/operations/fieldcreatedocumentfieldtextaligntext.md
-  - docs/models/operations/fieldcreatedocumentfieldtypecheckboxrequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldtypecheckboxrequestbody2.md
-  - docs/models/operations/fieldcreatedocumentfieldtypedaterequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldtypedaterequestbody2.md
-  - docs/models/operations/fieldcreatedocumentfieldtypedropdownrequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldtypedropdownrequestbody2.md
-  - docs/models/operations/fieldcreatedocumentfieldtypeemailrequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldtypeemailrequestbody2.md
+  - docs/models/operations/fieldcreatedocumentfieldtypecheckboxrequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldtypecheckboxrequest2.md
+  - docs/models/operations/fieldcreatedocumentfieldtypedaterequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldtypedaterequest2.md
+  - docs/models/operations/fieldcreatedocumentfieldtypedropdownrequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldtypedropdownrequest2.md
+  - docs/models/operations/fieldcreatedocumentfieldtypeemailrequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldtypeemailrequest2.md
   - docs/models/operations/fieldcreatedocumentfieldtypefreesignature.md
-  - docs/models/operations/fieldcreatedocumentfieldtypeinitialsrequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldtypeinitialsrequestbody2.md
-  - docs/models/operations/fieldcreatedocumentfieldtypenamerequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldtypenamerequestbody2.md
-  - docs/models/operations/fieldcreatedocumentfieldtypenumberrequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldtypenumberrequestbody2.md
-  - docs/models/operations/fieldcreatedocumentfieldtyperadiorequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldtyperadiorequestbody2.md
+  - docs/models/operations/fieldcreatedocumentfieldtypeinitialsrequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldtypeinitialsrequest2.md
+  - docs/models/operations/fieldcreatedocumentfieldtypenamerequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldtypenamerequest2.md
+  - docs/models/operations/fieldcreatedocumentfieldtypenumberrequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldtypenumberrequest2.md
+  - docs/models/operations/fieldcreatedocumentfieldtyperadiorequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldtyperadiorequest2.md
   - docs/models/operations/fieldcreatedocumentfieldtyperesponse.md
   - docs/models/operations/fieldcreatedocumentfieldtypesignature.md
-  - docs/models/operations/fieldcreatedocumentfieldtypetextrequestbody1.md
-  - docs/models/operations/fieldcreatedocumentfieldtypetextrequestbody2.md
+  - docs/models/operations/fieldcreatedocumentfieldtypetextrequest1.md
+  - docs/models/operations/fieldcreatedocumentfieldtypetextrequest2.md
   - docs/models/operations/fieldcreatedocumentfieldvaluecheckbox.md
   - docs/models/operations/fieldcreatedocumentfieldvaluedropdown.md
   - docs/models/operations/fieldcreatedocumentfieldvalueradio.md
@@ -681,23 +726,23 @@ generatedFiles:
   - docs/models/operations/fieldcreatetemplatefieldfieldemail.md
   - docs/models/operations/fieldcreatetemplatefieldfieldfreesignature.md
   - docs/models/operations/fieldcreatetemplatefieldfieldinitials.md
-  - docs/models/operations/fieldcreatetemplatefieldfieldmetacheckboxrequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldfieldmetacheckboxrequest.md
   - docs/models/operations/fieldcreatetemplatefieldfieldmetacheckboxresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldfieldmetadaterequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldfieldmetadaterequest.md
   - docs/models/operations/fieldcreatetemplatefieldfieldmetadateresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldfieldmetadropdownrequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldfieldmetadropdownrequest.md
   - docs/models/operations/fieldcreatetemplatefieldfieldmetadropdownresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldfieldmetaemailrequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldfieldmetaemailrequest.md
   - docs/models/operations/fieldcreatetemplatefieldfieldmetaemailresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldfieldmetainitialsrequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldfieldmetainitialsrequest.md
   - docs/models/operations/fieldcreatetemplatefieldfieldmetainitialsresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldfieldmetanamerequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldfieldmetanamerequest.md
   - docs/models/operations/fieldcreatetemplatefieldfieldmetanameresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldfieldmetanumberrequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldfieldmetanumberrequest.md
   - docs/models/operations/fieldcreatetemplatefieldfieldmetanumberresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldfieldmetaradiorequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldfieldmetaradiorequest.md
   - docs/models/operations/fieldcreatetemplatefieldfieldmetaradioresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldfieldmetatextrequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldfieldmetatextrequest.md
   - docs/models/operations/fieldcreatetemplatefieldfieldmetatextresponse.md
   - docs/models/operations/fieldcreatetemplatefieldfieldmetatypecheckbox.md
   - docs/models/operations/fieldcreatetemplatefieldfieldmetatypedate.md
@@ -724,23 +769,23 @@ generatedFiles:
   - docs/models/operations/fieldcreatetemplatefieldsfieldemail.md
   - docs/models/operations/fieldcreatetemplatefieldsfieldfreesignature.md
   - docs/models/operations/fieldcreatetemplatefieldsfieldinitials.md
-  - docs/models/operations/fieldcreatetemplatefieldsfieldmetacheckboxrequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldsfieldmetacheckboxrequest.md
   - docs/models/operations/fieldcreatetemplatefieldsfieldmetacheckboxresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldsfieldmetadaterequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldsfieldmetadaterequest.md
   - docs/models/operations/fieldcreatetemplatefieldsfieldmetadateresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldsfieldmetadropdownrequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldsfieldmetadropdownrequest.md
   - docs/models/operations/fieldcreatetemplatefieldsfieldmetadropdownresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldsfieldmetaemailrequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldsfieldmetaemailrequest.md
   - docs/models/operations/fieldcreatetemplatefieldsfieldmetaemailresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldsfieldmetainitialsrequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldsfieldmetainitialsrequest.md
   - docs/models/operations/fieldcreatetemplatefieldsfieldmetainitialsresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldsfieldmetanamerequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldsfieldmetanamerequest.md
   - docs/models/operations/fieldcreatetemplatefieldsfieldmetanameresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldsfieldmetanumberrequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldsfieldmetanumberrequest.md
   - docs/models/operations/fieldcreatetemplatefieldsfieldmetanumberresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldsfieldmetaradiorequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldsfieldmetaradiorequest.md
   - docs/models/operations/fieldcreatetemplatefieldsfieldmetaradioresponse.md
-  - docs/models/operations/fieldcreatetemplatefieldsfieldmetatextrequestbody.md
+  - docs/models/operations/fieldcreatetemplatefieldsfieldmetatextrequest.md
   - docs/models/operations/fieldcreatetemplatefieldsfieldmetatextresponse.md
   - docs/models/operations/fieldcreatetemplatefieldsfieldmetatypecheckbox.md
   - docs/models/operations/fieldcreatetemplatefieldsfieldmetatypedate.md
@@ -774,27 +819,27 @@ generatedFiles:
   - docs/models/operations/fieldcreatetemplatefieldstextalignresponse5.md
   - docs/models/operations/fieldcreatetemplatefieldstextalignresponse6.md
   - docs/models/operations/fieldcreatetemplatefieldstextaligntext.md
-  - docs/models/operations/fieldcreatetemplatefieldstypecheckboxrequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldstypecheckboxrequestbody2.md
-  - docs/models/operations/fieldcreatetemplatefieldstypedaterequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldstypedaterequestbody2.md
-  - docs/models/operations/fieldcreatetemplatefieldstypedropdownrequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldstypedropdownrequestbody2.md
-  - docs/models/operations/fieldcreatetemplatefieldstypeemailrequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldstypeemailrequestbody2.md
+  - docs/models/operations/fieldcreatetemplatefieldstypecheckboxrequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldstypecheckboxrequest2.md
+  - docs/models/operations/fieldcreatetemplatefieldstypedaterequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldstypedaterequest2.md
+  - docs/models/operations/fieldcreatetemplatefieldstypedropdownrequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldstypedropdownrequest2.md
+  - docs/models/operations/fieldcreatetemplatefieldstypeemailrequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldstypeemailrequest2.md
   - docs/models/operations/fieldcreatetemplatefieldstypefreesignature.md
-  - docs/models/operations/fieldcreatetemplatefieldstypeinitialsrequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldstypeinitialsrequestbody2.md
-  - docs/models/operations/fieldcreatetemplatefieldstypenamerequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldstypenamerequestbody2.md
-  - docs/models/operations/fieldcreatetemplatefieldstypenumberrequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldstypenumberrequestbody2.md
-  - docs/models/operations/fieldcreatetemplatefieldstyperadiorequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldstyperadiorequestbody2.md
+  - docs/models/operations/fieldcreatetemplatefieldstypeinitialsrequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldstypeinitialsrequest2.md
+  - docs/models/operations/fieldcreatetemplatefieldstypenamerequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldstypenamerequest2.md
+  - docs/models/operations/fieldcreatetemplatefieldstypenumberrequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldstypenumberrequest2.md
+  - docs/models/operations/fieldcreatetemplatefieldstyperadiorequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldstyperadiorequest2.md
   - docs/models/operations/fieldcreatetemplatefieldstyperesponse.md
   - docs/models/operations/fieldcreatetemplatefieldstypesignature.md
-  - docs/models/operations/fieldcreatetemplatefieldstypetextrequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldstypetextrequestbody2.md
+  - docs/models/operations/fieldcreatetemplatefieldstypetextrequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldstypetextrequest2.md
   - docs/models/operations/fieldcreatetemplatefieldsvaluecheckbox.md
   - docs/models/operations/fieldcreatetemplatefieldsvaluedropdown.md
   - docs/models/operations/fieldcreatetemplatefieldsvalueradio.md
@@ -813,27 +858,27 @@ generatedFiles:
   - docs/models/operations/fieldcreatetemplatefieldtextalignresponse5.md
   - docs/models/operations/fieldcreatetemplatefieldtextalignresponse6.md
   - docs/models/operations/fieldcreatetemplatefieldtextaligntext.md
-  - docs/models/operations/fieldcreatetemplatefieldtypecheckboxrequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldtypecheckboxrequestbody2.md
-  - docs/models/operations/fieldcreatetemplatefieldtypedaterequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldtypedaterequestbody2.md
-  - docs/models/operations/fieldcreatetemplatefieldtypedropdownrequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldtypedropdownrequestbody2.md
-  - docs/models/operations/fieldcreatetemplatefieldtypeemailrequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldtypeemailrequestbody2.md
+  - docs/models/operations/fieldcreatetemplatefieldtypecheckboxrequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldtypecheckboxrequest2.md
+  - docs/models/operations/fieldcreatetemplatefieldtypedaterequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldtypedaterequest2.md
+  - docs/models/operations/fieldcreatetemplatefieldtypedropdownrequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldtypedropdownrequest2.md
+  - docs/models/operations/fieldcreatetemplatefieldtypeemailrequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldtypeemailrequest2.md
   - docs/models/operations/fieldcreatetemplatefieldtypefreesignature.md
-  - docs/models/operations/fieldcreatetemplatefieldtypeinitialsrequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldtypeinitialsrequestbody2.md
-  - docs/models/operations/fieldcreatetemplatefieldtypenamerequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldtypenamerequestbody2.md
-  - docs/models/operations/fieldcreatetemplatefieldtypenumberrequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldtypenumberrequestbody2.md
-  - docs/models/operations/fieldcreatetemplatefieldtyperadiorequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldtyperadiorequestbody2.md
+  - docs/models/operations/fieldcreatetemplatefieldtypeinitialsrequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldtypeinitialsrequest2.md
+  - docs/models/operations/fieldcreatetemplatefieldtypenamerequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldtypenamerequest2.md
+  - docs/models/operations/fieldcreatetemplatefieldtypenumberrequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldtypenumberrequest2.md
+  - docs/models/operations/fieldcreatetemplatefieldtyperadiorequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldtyperadiorequest2.md
   - docs/models/operations/fieldcreatetemplatefieldtyperesponse.md
   - docs/models/operations/fieldcreatetemplatefieldtypesignature.md
-  - docs/models/operations/fieldcreatetemplatefieldtypetextrequestbody1.md
-  - docs/models/operations/fieldcreatetemplatefieldtypetextrequestbody2.md
+  - docs/models/operations/fieldcreatetemplatefieldtypetextrequest1.md
+  - docs/models/operations/fieldcreatetemplatefieldtypetextrequest2.md
   - docs/models/operations/fieldcreatetemplatefieldvaluecheckbox.md
   - docs/models/operations/fieldcreatetemplatefieldvaluedropdown.md
   - docs/models/operations/fieldcreatetemplatefieldvalueradio.md
@@ -910,15 +955,6 @@ generatedFiles:
   - docs/models/operations/fieldgettemplatefieldvalue1.md
   - docs/models/operations/fieldgettemplatefieldvalue2.md
   - docs/models/operations/fieldgettemplatefieldvalue3.md
-  - docs/models/operations/fieldmetaaccountcheckbox.md
-  - docs/models/operations/fieldmetaaccountdate.md
-  - docs/models/operations/fieldmetaaccountdropdown.md
-  - docs/models/operations/fieldmetaaccountemail.md
-  - docs/models/operations/fieldmetaaccountinitials.md
-  - docs/models/operations/fieldmetaaccountname.md
-  - docs/models/operations/fieldmetaaccountnumber.md
-  - docs/models/operations/fieldmetaaccountradio.md
-  - docs/models/operations/fieldmetaaccounttext.md
   - docs/models/operations/fieldmetadocumentcheckbox.md
   - docs/models/operations/fieldmetadocumentdate.md
   - docs/models/operations/fieldmetadocumentdropdown.md
@@ -934,23 +970,23 @@ generatedFiles:
   - docs/models/operations/fieldupdatedocumentfieldfieldemail.md
   - docs/models/operations/fieldupdatedocumentfieldfieldfreesignature.md
   - docs/models/operations/fieldupdatedocumentfieldfieldinitials.md
-  - docs/models/operations/fieldupdatedocumentfieldfieldmetacheckboxrequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldfieldmetacheckboxrequest.md
   - docs/models/operations/fieldupdatedocumentfieldfieldmetacheckboxresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldfieldmetadaterequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldfieldmetadaterequest.md
   - docs/models/operations/fieldupdatedocumentfieldfieldmetadateresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldfieldmetadropdownrequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldfieldmetadropdownrequest.md
   - docs/models/operations/fieldupdatedocumentfieldfieldmetadropdownresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldfieldmetaemailrequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldfieldmetaemailrequest.md
   - docs/models/operations/fieldupdatedocumentfieldfieldmetaemailresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldfieldmetainitialsrequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldfieldmetainitialsrequest.md
   - docs/models/operations/fieldupdatedocumentfieldfieldmetainitialsresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldfieldmetanamerequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldfieldmetanamerequest.md
   - docs/models/operations/fieldupdatedocumentfieldfieldmetanameresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldfieldmetanumberrequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldfieldmetanumberrequest.md
   - docs/models/operations/fieldupdatedocumentfieldfieldmetanumberresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldfieldmetaradiorequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldfieldmetaradiorequest.md
   - docs/models/operations/fieldupdatedocumentfieldfieldmetaradioresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldfieldmetatextrequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldfieldmetatextrequest.md
   - docs/models/operations/fieldupdatedocumentfieldfieldmetatextresponse.md
   - docs/models/operations/fieldupdatedocumentfieldfieldmetatypecheckbox.md
   - docs/models/operations/fieldupdatedocumentfieldfieldmetatypedate.md
@@ -977,23 +1013,23 @@ generatedFiles:
   - docs/models/operations/fieldupdatedocumentfieldsfieldemail.md
   - docs/models/operations/fieldupdatedocumentfieldsfieldfreesignature.md
   - docs/models/operations/fieldupdatedocumentfieldsfieldinitials.md
-  - docs/models/operations/fieldupdatedocumentfieldsfieldmetacheckboxrequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldsfieldmetacheckboxrequest.md
   - docs/models/operations/fieldupdatedocumentfieldsfieldmetacheckboxresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldsfieldmetadaterequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldsfieldmetadaterequest.md
   - docs/models/operations/fieldupdatedocumentfieldsfieldmetadateresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldsfieldmetadropdownrequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldsfieldmetadropdownrequest.md
   - docs/models/operations/fieldupdatedocumentfieldsfieldmetadropdownresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldsfieldmetaemailrequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldsfieldmetaemailrequest.md
   - docs/models/operations/fieldupdatedocumentfieldsfieldmetaemailresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldsfieldmetainitialsrequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldsfieldmetainitialsrequest.md
   - docs/models/operations/fieldupdatedocumentfieldsfieldmetainitialsresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldsfieldmetanamerequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldsfieldmetanamerequest.md
   - docs/models/operations/fieldupdatedocumentfieldsfieldmetanameresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldsfieldmetanumberrequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldsfieldmetanumberrequest.md
   - docs/models/operations/fieldupdatedocumentfieldsfieldmetanumberresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldsfieldmetaradiorequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldsfieldmetaradiorequest.md
   - docs/models/operations/fieldupdatedocumentfieldsfieldmetaradioresponse.md
-  - docs/models/operations/fieldupdatedocumentfieldsfieldmetatextrequestbody.md
+  - docs/models/operations/fieldupdatedocumentfieldsfieldmetatextrequest.md
   - docs/models/operations/fieldupdatedocumentfieldsfieldmetatextresponse.md
   - docs/models/operations/fieldupdatedocumentfieldsfieldmetatypecheckbox.md
   - docs/models/operations/fieldupdatedocumentfieldsfieldmetatypedate.md
@@ -1027,27 +1063,27 @@ generatedFiles:
   - docs/models/operations/fieldupdatedocumentfieldstextalignresponse5.md
   - docs/models/operations/fieldupdatedocumentfieldstextalignresponse6.md
   - docs/models/operations/fieldupdatedocumentfieldstextaligntext.md
-  - docs/models/operations/fieldupdatedocumentfieldstypecheckboxrequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldstypecheckboxrequestbody2.md
-  - docs/models/operations/fieldupdatedocumentfieldstypedaterequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldstypedaterequestbody2.md
-  - docs/models/operations/fieldupdatedocumentfieldstypedropdownrequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldstypedropdownrequestbody2.md
-  - docs/models/operations/fieldupdatedocumentfieldstypeemailrequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldstypeemailrequestbody2.md
+  - docs/models/operations/fieldupdatedocumentfieldstypecheckboxrequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldstypecheckboxrequest2.md
+  - docs/models/operations/fieldupdatedocumentfieldstypedaterequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldstypedaterequest2.md
+  - docs/models/operations/fieldupdatedocumentfieldstypedropdownrequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldstypedropdownrequest2.md
+  - docs/models/operations/fieldupdatedocumentfieldstypeemailrequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldstypeemailrequest2.md
   - docs/models/operations/fieldupdatedocumentfieldstypefreesignature.md
-  - docs/models/operations/fieldupdatedocumentfieldstypeinitialsrequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldstypeinitialsrequestbody2.md
-  - docs/models/operations/fieldupdatedocumentfieldstypenamerequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldstypenamerequestbody2.md
-  - docs/models/operations/fieldupdatedocumentfieldstypenumberrequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldstypenumberrequestbody2.md
-  - docs/models/operations/fieldupdatedocumentfieldstyperadiorequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldstyperadiorequestbody2.md
+  - docs/models/operations/fieldupdatedocumentfieldstypeinitialsrequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldstypeinitialsrequest2.md
+  - docs/models/operations/fieldupdatedocumentfieldstypenamerequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldstypenamerequest2.md
+  - docs/models/operations/fieldupdatedocumentfieldstypenumberrequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldstypenumberrequest2.md
+  - docs/models/operations/fieldupdatedocumentfieldstyperadiorequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldstyperadiorequest2.md
   - docs/models/operations/fieldupdatedocumentfieldstyperesponse.md
   - docs/models/operations/fieldupdatedocumentfieldstypesignature.md
-  - docs/models/operations/fieldupdatedocumentfieldstypetextrequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldstypetextrequestbody2.md
+  - docs/models/operations/fieldupdatedocumentfieldstypetextrequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldstypetextrequest2.md
   - docs/models/operations/fieldupdatedocumentfieldsvaluecheckbox.md
   - docs/models/operations/fieldupdatedocumentfieldsvaluedropdown.md
   - docs/models/operations/fieldupdatedocumentfieldsvalueradio.md
@@ -1066,27 +1102,27 @@ generatedFiles:
   - docs/models/operations/fieldupdatedocumentfieldtextalignresponse5.md
   - docs/models/operations/fieldupdatedocumentfieldtextalignresponse6.md
   - docs/models/operations/fieldupdatedocumentfieldtextaligntext.md
-  - docs/models/operations/fieldupdatedocumentfieldtypecheckboxrequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldtypecheckboxrequestbody2.md
-  - docs/models/operations/fieldupdatedocumentfieldtypedaterequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldtypedaterequestbody2.md
-  - docs/models/operations/fieldupdatedocumentfieldtypedropdownrequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldtypedropdownrequestbody2.md
-  - docs/models/operations/fieldupdatedocumentfieldtypeemailrequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldtypeemailrequestbody2.md
+  - docs/models/operations/fieldupdatedocumentfieldtypecheckboxrequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldtypecheckboxrequest2.md
+  - docs/models/operations/fieldupdatedocumentfieldtypedaterequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldtypedaterequest2.md
+  - docs/models/operations/fieldupdatedocumentfieldtypedropdownrequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldtypedropdownrequest2.md
+  - docs/models/operations/fieldupdatedocumentfieldtypeemailrequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldtypeemailrequest2.md
   - docs/models/operations/fieldupdatedocumentfieldtypefreesignature.md
-  - docs/models/operations/fieldupdatedocumentfieldtypeinitialsrequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldtypeinitialsrequestbody2.md
-  - docs/models/operations/fieldupdatedocumentfieldtypenamerequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldtypenamerequestbody2.md
-  - docs/models/operations/fieldupdatedocumentfieldtypenumberrequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldtypenumberrequestbody2.md
-  - docs/models/operations/fieldupdatedocumentfieldtyperadiorequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldtyperadiorequestbody2.md
+  - docs/models/operations/fieldupdatedocumentfieldtypeinitialsrequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldtypeinitialsrequest2.md
+  - docs/models/operations/fieldupdatedocumentfieldtypenamerequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldtypenamerequest2.md
+  - docs/models/operations/fieldupdatedocumentfieldtypenumberrequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldtypenumberrequest2.md
+  - docs/models/operations/fieldupdatedocumentfieldtyperadiorequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldtyperadiorequest2.md
   - docs/models/operations/fieldupdatedocumentfieldtyperesponse.md
   - docs/models/operations/fieldupdatedocumentfieldtypesignature.md
-  - docs/models/operations/fieldupdatedocumentfieldtypetextrequestbody1.md
-  - docs/models/operations/fieldupdatedocumentfieldtypetextrequestbody2.md
+  - docs/models/operations/fieldupdatedocumentfieldtypetextrequest1.md
+  - docs/models/operations/fieldupdatedocumentfieldtypetextrequest2.md
   - docs/models/operations/fieldupdatedocumentfieldvaluecheckbox.md
   - docs/models/operations/fieldupdatedocumentfieldvaluedropdown.md
   - docs/models/operations/fieldupdatedocumentfieldvalueradio.md
@@ -1099,23 +1135,23 @@ generatedFiles:
   - docs/models/operations/fieldupdatetemplatefieldfieldemail.md
   - docs/models/operations/fieldupdatetemplatefieldfieldfreesignature.md
   - docs/models/operations/fieldupdatetemplatefieldfieldinitials.md
-  - docs/models/operations/fieldupdatetemplatefieldfieldmetacheckboxrequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldfieldmetacheckboxrequest.md
   - docs/models/operations/fieldupdatetemplatefieldfieldmetacheckboxresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldfieldmetadaterequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldfieldmetadaterequest.md
   - docs/models/operations/fieldupdatetemplatefieldfieldmetadateresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldfieldmetadropdownrequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldfieldmetadropdownrequest.md
   - docs/models/operations/fieldupdatetemplatefieldfieldmetadropdownresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldfieldmetaemailrequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldfieldmetaemailrequest.md
   - docs/models/operations/fieldupdatetemplatefieldfieldmetaemailresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldfieldmetainitialsrequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldfieldmetainitialsrequest.md
   - docs/models/operations/fieldupdatetemplatefieldfieldmetainitialsresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldfieldmetanamerequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldfieldmetanamerequest.md
   - docs/models/operations/fieldupdatetemplatefieldfieldmetanameresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldfieldmetanumberrequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldfieldmetanumberrequest.md
   - docs/models/operations/fieldupdatetemplatefieldfieldmetanumberresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldfieldmetaradiorequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldfieldmetaradiorequest.md
   - docs/models/operations/fieldupdatetemplatefieldfieldmetaradioresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldfieldmetatextrequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldfieldmetatextrequest.md
   - docs/models/operations/fieldupdatetemplatefieldfieldmetatextresponse.md
   - docs/models/operations/fieldupdatetemplatefieldfieldmetatypecheckbox.md
   - docs/models/operations/fieldupdatetemplatefieldfieldmetatypedate.md
@@ -1142,23 +1178,23 @@ generatedFiles:
   - docs/models/operations/fieldupdatetemplatefieldsfieldemail.md
   - docs/models/operations/fieldupdatetemplatefieldsfieldfreesignature.md
   - docs/models/operations/fieldupdatetemplatefieldsfieldinitials.md
-  - docs/models/operations/fieldupdatetemplatefieldsfieldmetacheckboxrequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldsfieldmetacheckboxrequest.md
   - docs/models/operations/fieldupdatetemplatefieldsfieldmetacheckboxresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldsfieldmetadaterequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldsfieldmetadaterequest.md
   - docs/models/operations/fieldupdatetemplatefieldsfieldmetadateresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldsfieldmetadropdownrequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldsfieldmetadropdownrequest.md
   - docs/models/operations/fieldupdatetemplatefieldsfieldmetadropdownresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldsfieldmetaemailrequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldsfieldmetaemailrequest.md
   - docs/models/operations/fieldupdatetemplatefieldsfieldmetaemailresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldsfieldmetainitialsrequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldsfieldmetainitialsrequest.md
   - docs/models/operations/fieldupdatetemplatefieldsfieldmetainitialsresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldsfieldmetanamerequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldsfieldmetanamerequest.md
   - docs/models/operations/fieldupdatetemplatefieldsfieldmetanameresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldsfieldmetanumberrequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldsfieldmetanumberrequest.md
   - docs/models/operations/fieldupdatetemplatefieldsfieldmetanumberresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldsfieldmetaradiorequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldsfieldmetaradiorequest.md
   - docs/models/operations/fieldupdatetemplatefieldsfieldmetaradioresponse.md
-  - docs/models/operations/fieldupdatetemplatefieldsfieldmetatextrequestbody.md
+  - docs/models/operations/fieldupdatetemplatefieldsfieldmetatextrequest.md
   - docs/models/operations/fieldupdatetemplatefieldsfieldmetatextresponse.md
   - docs/models/operations/fieldupdatetemplatefieldsfieldmetatypecheckbox.md
   - docs/models/operations/fieldupdatetemplatefieldsfieldmetatypedate.md
@@ -1192,27 +1228,27 @@ generatedFiles:
   - docs/models/operations/fieldupdatetemplatefieldstextalignresponse5.md
   - docs/models/operations/fieldupdatetemplatefieldstextalignresponse6.md
   - docs/models/operations/fieldupdatetemplatefieldstextaligntext.md
-  - docs/models/operations/fieldupdatetemplatefieldstypecheckboxrequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldstypecheckboxrequestbody2.md
-  - docs/models/operations/fieldupdatetemplatefieldstypedaterequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldstypedaterequestbody2.md
-  - docs/models/operations/fieldupdatetemplatefieldstypedropdownrequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldstypedropdownrequestbody2.md
-  - docs/models/operations/fieldupdatetemplatefieldstypeemailrequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldstypeemailrequestbody2.md
+  - docs/models/operations/fieldupdatetemplatefieldstypecheckboxrequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldstypecheckboxrequest2.md
+  - docs/models/operations/fieldupdatetemplatefieldstypedaterequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldstypedaterequest2.md
+  - docs/models/operations/fieldupdatetemplatefieldstypedropdownrequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldstypedropdownrequest2.md
+  - docs/models/operations/fieldupdatetemplatefieldstypeemailrequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldstypeemailrequest2.md
   - docs/models/operations/fieldupdatetemplatefieldstypefreesignature.md
-  - docs/models/operations/fieldupdatetemplatefieldstypeinitialsrequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldstypeinitialsrequestbody2.md
-  - docs/models/operations/fieldupdatetemplatefieldstypenamerequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldstypenamerequestbody2.md
-  - docs/models/operations/fieldupdatetemplatefieldstypenumberrequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldstypenumberrequestbody2.md
-  - docs/models/operations/fieldupdatetemplatefieldstyperadiorequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldstyperadiorequestbody2.md
+  - docs/models/operations/fieldupdatetemplatefieldstypeinitialsrequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldstypeinitialsrequest2.md
+  - docs/models/operations/fieldupdatetemplatefieldstypenamerequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldstypenamerequest2.md
+  - docs/models/operations/fieldupdatetemplatefieldstypenumberrequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldstypenumberrequest2.md
+  - docs/models/operations/fieldupdatetemplatefieldstyperadiorequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldstyperadiorequest2.md
   - docs/models/operations/fieldupdatetemplatefieldstyperesponse.md
   - docs/models/operations/fieldupdatetemplatefieldstypesignature.md
-  - docs/models/operations/fieldupdatetemplatefieldstypetextrequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldstypetextrequestbody2.md
+  - docs/models/operations/fieldupdatetemplatefieldstypetextrequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldstypetextrequest2.md
   - docs/models/operations/fieldupdatetemplatefieldsvaluecheckbox.md
   - docs/models/operations/fieldupdatetemplatefieldsvaluedropdown.md
   - docs/models/operations/fieldupdatetemplatefieldsvalueradio.md
@@ -1231,27 +1267,27 @@ generatedFiles:
   - docs/models/operations/fieldupdatetemplatefieldtextalignresponse5.md
   - docs/models/operations/fieldupdatetemplatefieldtextalignresponse6.md
   - docs/models/operations/fieldupdatetemplatefieldtextaligntext.md
-  - docs/models/operations/fieldupdatetemplatefieldtypecheckboxrequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldtypecheckboxrequestbody2.md
-  - docs/models/operations/fieldupdatetemplatefieldtypedaterequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldtypedaterequestbody2.md
-  - docs/models/operations/fieldupdatetemplatefieldtypedropdownrequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldtypedropdownrequestbody2.md
-  - docs/models/operations/fieldupdatetemplatefieldtypeemailrequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldtypeemailrequestbody2.md
+  - docs/models/operations/fieldupdatetemplatefieldtypecheckboxrequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldtypecheckboxrequest2.md
+  - docs/models/operations/fieldupdatetemplatefieldtypedaterequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldtypedaterequest2.md
+  - docs/models/operations/fieldupdatetemplatefieldtypedropdownrequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldtypedropdownrequest2.md
+  - docs/models/operations/fieldupdatetemplatefieldtypeemailrequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldtypeemailrequest2.md
   - docs/models/operations/fieldupdatetemplatefieldtypefreesignature.md
-  - docs/models/operations/fieldupdatetemplatefieldtypeinitialsrequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldtypeinitialsrequestbody2.md
-  - docs/models/operations/fieldupdatetemplatefieldtypenamerequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldtypenamerequestbody2.md
-  - docs/models/operations/fieldupdatetemplatefieldtypenumberrequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldtypenumberrequestbody2.md
-  - docs/models/operations/fieldupdatetemplatefieldtyperadiorequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldtyperadiorequestbody2.md
+  - docs/models/operations/fieldupdatetemplatefieldtypeinitialsrequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldtypeinitialsrequest2.md
+  - docs/models/operations/fieldupdatetemplatefieldtypenamerequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldtypenamerequest2.md
+  - docs/models/operations/fieldupdatetemplatefieldtypenumberrequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldtypenumberrequest2.md
+  - docs/models/operations/fieldupdatetemplatefieldtyperadiorequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldtyperadiorequest2.md
   - docs/models/operations/fieldupdatetemplatefieldtyperesponse.md
   - docs/models/operations/fieldupdatetemplatefieldtypesignature.md
-  - docs/models/operations/fieldupdatetemplatefieldtypetextrequestbody1.md
-  - docs/models/operations/fieldupdatetemplatefieldtypetextrequestbody2.md
+  - docs/models/operations/fieldupdatetemplatefieldtypetextrequest1.md
+  - docs/models/operations/fieldupdatetemplatefieldtypetextrequest2.md
   - docs/models/operations/fieldupdatetemplatefieldvaluecheckbox.md
   - docs/models/operations/fieldupdatetemplatefieldvaluedropdown.md
   - docs/models/operations/fieldupdatetemplatefieldvalueradio.md
@@ -1259,17 +1295,18 @@ generatedFiles:
   - docs/models/operations/fieldupdatetemplatefieldvalueresponse2.md
   - docs/models/operations/fieldupdatetemplatefieldvalueresponse3.md
   - docs/models/operations/formvaluesrequest.md
-  - docs/models/operations/globalactionauthaccount.md
   - docs/models/operations/option.md
   - docs/models/operations/orderbycolumn.md
   - docs/models/operations/orderbydirection.md
   - docs/models/operations/prefillfield.md
   - docs/models/operations/prefillfieldcheckbox.md
+  - docs/models/operations/prefillfielddate.md
   - docs/models/operations/prefillfielddropdown.md
   - docs/models/operations/prefillfieldnumber.md
   - docs/models/operations/prefillfieldradio.md
   - docs/models/operations/prefillfieldtext.md
   - docs/models/operations/prefillfieldtypecheckbox.md
+  - docs/models/operations/prefillfieldtypedate.md
   - docs/models/operations/prefillfieldtypedropdown.md
   - docs/models/operations/prefillfieldtypenumber.md
   - docs/models/operations/prefillfieldtyperadio.md
@@ -1277,10 +1314,9 @@ generatedFiles:
   - docs/models/operations/queryparamsource.md
   - docs/models/operations/queryparamstatus.md
   - docs/models/operations/queryparamtype.md
-  - docs/models/operations/recipientaccount.md
-  - docs/models/operations/recipientcreatedocumentrecipientaccessauthrequestbody.md
+  - docs/models/operations/recipientcreatedocumentrecipientaccessauthrequest.md
   - docs/models/operations/recipientcreatedocumentrecipientaccessauthresponse.md
-  - docs/models/operations/recipientcreatedocumentrecipientactionauthrequestbody.md
+  - docs/models/operations/recipientcreatedocumentrecipientactionauthrequest.md
   - docs/models/operations/recipientcreatedocumentrecipientactionauthresponse.md
   - docs/models/operations/recipientcreatedocumentrecipientauthoptions.md
   - docs/models/operations/recipientcreatedocumentrecipientreadstatus.md
@@ -1288,28 +1324,28 @@ generatedFiles:
   - docs/models/operations/recipientcreatedocumentrecipientrequest.md
   - docs/models/operations/recipientcreatedocumentrecipientresponse.md
   - docs/models/operations/recipientcreatedocumentrecipientresponsebody.md
-  - docs/models/operations/recipientcreatedocumentrecipientrolerequestbody.md
+  - docs/models/operations/recipientcreatedocumentrecipientrolerequest.md
   - docs/models/operations/recipientcreatedocumentrecipientroleresponse.md
-  - docs/models/operations/recipientcreatedocumentrecipientsaccessauthrequestbody.md
+  - docs/models/operations/recipientcreatedocumentrecipientsaccessauthrequest.md
   - docs/models/operations/recipientcreatedocumentrecipientsaccessauthresponse.md
-  - docs/models/operations/recipientcreatedocumentrecipientsactionauthrequestbody.md
+  - docs/models/operations/recipientcreatedocumentrecipientsactionauthrequest.md
   - docs/models/operations/recipientcreatedocumentrecipientsactionauthresponse.md
   - docs/models/operations/recipientcreatedocumentrecipientsauthoptions.md
   - docs/models/operations/recipientcreatedocumentrecipientsendstatus.md
   - docs/models/operations/recipientcreatedocumentrecipientsigningstatus.md
   - docs/models/operations/recipientcreatedocumentrecipientsreadstatus.md
-  - docs/models/operations/recipientcreatedocumentrecipientsrecipientrequestbody.md
+  - docs/models/operations/recipientcreatedocumentrecipientsrecipientrequest.md
   - docs/models/operations/recipientcreatedocumentrecipientsrecipientresponse.md
   - docs/models/operations/recipientcreatedocumentrecipientsrequest.md
   - docs/models/operations/recipientcreatedocumentrecipientsresponse.md
   - docs/models/operations/recipientcreatedocumentrecipientsresponsebody.md
-  - docs/models/operations/recipientcreatedocumentrecipientsrolerequestbody.md
+  - docs/models/operations/recipientcreatedocumentrecipientsrolerequest.md
   - docs/models/operations/recipientcreatedocumentrecipientsroleresponse.md
   - docs/models/operations/recipientcreatedocumentrecipientssendstatus.md
   - docs/models/operations/recipientcreatedocumentrecipientssigningstatus.md
-  - docs/models/operations/recipientcreatetemplaterecipientaccessauthrequestbody.md
+  - docs/models/operations/recipientcreatetemplaterecipientaccessauthrequest.md
   - docs/models/operations/recipientcreatetemplaterecipientaccessauthresponse.md
-  - docs/models/operations/recipientcreatetemplaterecipientactionauthrequestbody.md
+  - docs/models/operations/recipientcreatetemplaterecipientactionauthrequest.md
   - docs/models/operations/recipientcreatetemplaterecipientactionauthresponse.md
   - docs/models/operations/recipientcreatetemplaterecipientauthoptions.md
   - docs/models/operations/recipientcreatetemplaterecipientreadstatus.md
@@ -1317,22 +1353,22 @@ generatedFiles:
   - docs/models/operations/recipientcreatetemplaterecipientrequest.md
   - docs/models/operations/recipientcreatetemplaterecipientresponse.md
   - docs/models/operations/recipientcreatetemplaterecipientresponsebody.md
-  - docs/models/operations/recipientcreatetemplaterecipientrolerequestbody.md
+  - docs/models/operations/recipientcreatetemplaterecipientrolerequest.md
   - docs/models/operations/recipientcreatetemplaterecipientroleresponse.md
-  - docs/models/operations/recipientcreatetemplaterecipientsaccessauthrequestbody.md
+  - docs/models/operations/recipientcreatetemplaterecipientsaccessauthrequest.md
   - docs/models/operations/recipientcreatetemplaterecipientsaccessauthresponse.md
-  - docs/models/operations/recipientcreatetemplaterecipientsactionauthrequestbody.md
+  - docs/models/operations/recipientcreatetemplaterecipientsactionauthrequest.md
   - docs/models/operations/recipientcreatetemplaterecipientsactionauthresponse.md
   - docs/models/operations/recipientcreatetemplaterecipientsauthoptions.md
   - docs/models/operations/recipientcreatetemplaterecipientsendstatus.md
   - docs/models/operations/recipientcreatetemplaterecipientsigningstatus.md
   - docs/models/operations/recipientcreatetemplaterecipientsreadstatus.md
-  - docs/models/operations/recipientcreatetemplaterecipientsrecipientrequestbody.md
+  - docs/models/operations/recipientcreatetemplaterecipientsrecipientrequest.md
   - docs/models/operations/recipientcreatetemplaterecipientsrecipientresponse.md
   - docs/models/operations/recipientcreatetemplaterecipientsrequest.md
   - docs/models/operations/recipientcreatetemplaterecipientsresponse.md
   - docs/models/operations/recipientcreatetemplaterecipientsresponsebody.md
-  - docs/models/operations/recipientcreatetemplaterecipientsrolerequestbody.md
+  - docs/models/operations/recipientcreatetemplaterecipientsrolerequest.md
   - docs/models/operations/recipientcreatetemplaterecipientsroleresponse.md
   - docs/models/operations/recipientcreatetemplaterecipientssendstatus.md
   - docs/models/operations/recipientcreatetemplaterecipientssigningstatus.md
@@ -1422,9 +1458,9 @@ generatedFiles:
   - docs/models/operations/recipientgettemplaterecipientvalue1.md
   - docs/models/operations/recipientgettemplaterecipientvalue2.md
   - docs/models/operations/recipientgettemplaterecipientvalue3.md
-  - docs/models/operations/recipientupdatedocumentrecipientaccessauthrequestbody.md
+  - docs/models/operations/recipientupdatedocumentrecipientaccessauthrequest.md
   - docs/models/operations/recipientupdatedocumentrecipientaccessauthresponse.md
-  - docs/models/operations/recipientupdatedocumentrecipientactionauthrequestbody.md
+  - docs/models/operations/recipientupdatedocumentrecipientactionauthrequest.md
   - docs/models/operations/recipientupdatedocumentrecipientactionauthresponse.md
   - docs/models/operations/recipientupdatedocumentrecipientauthoptions.md
   - docs/models/operations/recipientupdatedocumentrecipientfield.md
@@ -1452,11 +1488,11 @@ generatedFiles:
   - docs/models/operations/recipientupdatedocumentrecipientrequest.md
   - docs/models/operations/recipientupdatedocumentrecipientresponse.md
   - docs/models/operations/recipientupdatedocumentrecipientresponsebody.md
-  - docs/models/operations/recipientupdatedocumentrecipientrolerequestbody.md
+  - docs/models/operations/recipientupdatedocumentrecipientrolerequest.md
   - docs/models/operations/recipientupdatedocumentrecipientroleresponse.md
-  - docs/models/operations/recipientupdatedocumentrecipientsaccessauthrequestbody.md
+  - docs/models/operations/recipientupdatedocumentrecipientsaccessauthrequest.md
   - docs/models/operations/recipientupdatedocumentrecipientsaccessauthresponse.md
-  - docs/models/operations/recipientupdatedocumentrecipientsactionauthrequestbody.md
+  - docs/models/operations/recipientupdatedocumentrecipientsactionauthrequest.md
   - docs/models/operations/recipientupdatedocumentrecipientsactionauthresponse.md
   - docs/models/operations/recipientupdatedocumentrecipientsauthoptions.md
   - docs/models/operations/recipientupdatedocumentrecipientsendstatus.md
@@ -1482,12 +1518,12 @@ generatedFiles:
   - docs/models/operations/recipientupdatedocumentrecipientsfieldmetaunion.md
   - docs/models/operations/recipientupdatedocumentrecipientsigningstatus.md
   - docs/models/operations/recipientupdatedocumentrecipientsreadstatus.md
-  - docs/models/operations/recipientupdatedocumentrecipientsrecipientrequestbody.md
+  - docs/models/operations/recipientupdatedocumentrecipientsrecipientrequest.md
   - docs/models/operations/recipientupdatedocumentrecipientsrecipientresponse.md
   - docs/models/operations/recipientupdatedocumentrecipientsrequest.md
   - docs/models/operations/recipientupdatedocumentrecipientsresponse.md
   - docs/models/operations/recipientupdatedocumentrecipientsresponsebody.md
-  - docs/models/operations/recipientupdatedocumentrecipientsrolerequestbody.md
+  - docs/models/operations/recipientupdatedocumentrecipientsrolerequest.md
   - docs/models/operations/recipientupdatedocumentrecipientsroleresponse.md
   - docs/models/operations/recipientupdatedocumentrecipientssendstatus.md
   - docs/models/operations/recipientupdatedocumentrecipientssigningstatus.md
@@ -1511,9 +1547,9 @@ generatedFiles:
   - docs/models/operations/recipientupdatedocumentrecipientvalue1.md
   - docs/models/operations/recipientupdatedocumentrecipientvalue2.md
   - docs/models/operations/recipientupdatedocumentrecipientvalue3.md
-  - docs/models/operations/recipientupdatetemplaterecipientaccessauthrequestbody.md
+  - docs/models/operations/recipientupdatetemplaterecipientaccessauthrequest.md
   - docs/models/operations/recipientupdatetemplaterecipientaccessauthresponse.md
-  - docs/models/operations/recipientupdatetemplaterecipientactionauthrequestbody.md
+  - docs/models/operations/recipientupdatetemplaterecipientactionauthrequest.md
   - docs/models/operations/recipientupdatetemplaterecipientactionauthresponse.md
   - docs/models/operations/recipientupdatetemplaterecipientauthoptions.md
   - docs/models/operations/recipientupdatetemplaterecipientfield.md
@@ -1541,11 +1577,11 @@ generatedFiles:
   - docs/models/operations/recipientupdatetemplaterecipientrequest.md
   - docs/models/operations/recipientupdatetemplaterecipientresponse.md
   - docs/models/operations/recipientupdatetemplaterecipientresponsebody.md
-  - docs/models/operations/recipientupdatetemplaterecipientrolerequestbody.md
+  - docs/models/operations/recipientupdatetemplaterecipientrolerequest.md
   - docs/models/operations/recipientupdatetemplaterecipientroleresponse.md
-  - docs/models/operations/recipientupdatetemplaterecipientsaccessauthrequestbody.md
+  - docs/models/operations/recipientupdatetemplaterecipientsaccessauthrequest.md
   - docs/models/operations/recipientupdatetemplaterecipientsaccessauthresponse.md
-  - docs/models/operations/recipientupdatetemplaterecipientsactionauthrequestbody.md
+  - docs/models/operations/recipientupdatetemplaterecipientsactionauthrequest.md
   - docs/models/operations/recipientupdatetemplaterecipientsactionauthresponse.md
   - docs/models/operations/recipientupdatetemplaterecipientsauthoptions.md
   - docs/models/operations/recipientupdatetemplaterecipientsendstatus.md
@@ -1571,12 +1607,12 @@ generatedFiles:
   - docs/models/operations/recipientupdatetemplaterecipientsfieldmetaunion.md
   - docs/models/operations/recipientupdatetemplaterecipientsigningstatus.md
   - docs/models/operations/recipientupdatetemplaterecipientsreadstatus.md
-  - docs/models/operations/recipientupdatetemplaterecipientsrecipientrequestbody.md
+  - docs/models/operations/recipientupdatetemplaterecipientsrecipientrequest.md
   - docs/models/operations/recipientupdatetemplaterecipientsrecipientresponse.md
   - docs/models/operations/recipientupdatetemplaterecipientsrequest.md
   - docs/models/operations/recipientupdatetemplaterecipientsresponse.md
   - docs/models/operations/recipientupdatetemplaterecipientsresponsebody.md
-  - docs/models/operations/recipientupdatetemplaterecipientsrolerequestbody.md
+  - docs/models/operations/recipientupdatetemplaterecipientsrolerequest.md
   - docs/models/operations/recipientupdatetemplaterecipientsroleresponse.md
   - docs/models/operations/recipientupdatetemplaterecipientssendstatus.md
   - docs/models/operations/recipientupdatetemplaterecipientssigningstatus.md
@@ -1600,8 +1636,6 @@ generatedFiles:
   - docs/models/operations/recipientupdatetemplaterecipientvalue1.md
   - docs/models/operations/recipientupdatetemplaterecipientvalue2.md
   - docs/models/operations/recipientupdatetemplaterecipientvalue3.md
-  - docs/models/operations/roleaccount.md
-  - docs/models/operations/signingorderaccount.md
   - docs/models/operations/templatecreatedocumentfromtemplateaccessauth.md
   - docs/models/operations/templatecreatedocumentfromtemplateactionauth.md
   - docs/models/operations/templatecreatedocumentfromtemplateauthoptions.md
@@ -1621,18 +1655,22 @@ generatedFiles:
   - docs/models/operations/templatecreatedocumentfromtemplatefieldmetaradio.md
   - docs/models/operations/templatecreatedocumentfromtemplatefieldmetatext.md
   - docs/models/operations/templatecreatedocumentfromtemplatefieldmetatypecheckbox.md
+  - docs/models/operations/templatecreatedocumentfromtemplatefieldmetatypedate.md
   - docs/models/operations/templatecreatedocumentfromtemplatefieldmetatypedropdown.md
   - docs/models/operations/templatecreatedocumentfromtemplatefieldmetatypenumber.md
   - docs/models/operations/templatecreatedocumentfromtemplatefieldmetatyperadio.md
   - docs/models/operations/templatecreatedocumentfromtemplatefieldmetatypetext.md
   - docs/models/operations/templatecreatedocumentfromtemplatefieldmetaunion.md
   - docs/models/operations/templatecreatedocumentfromtemplatefieldtype.md
+  - docs/models/operations/templatecreatedocumentfromtemplatefolder.md
+  - docs/models/operations/templatecreatedocumentfromtemplatefoldertype.md
+  - docs/models/operations/templatecreatedocumentfromtemplatefoldervisibility.md
   - docs/models/operations/templatecreatedocumentfromtemplateformvalues.md
   - docs/models/operations/templatecreatedocumentfromtemplateglobalaccessauth.md
   - docs/models/operations/templatecreatedocumentfromtemplateglobalactionauth.md
   - docs/models/operations/templatecreatedocumentfromtemplatereadstatus.md
   - docs/models/operations/templatecreatedocumentfromtemplaterecipientauthoptions.md
-  - docs/models/operations/templatecreatedocumentfromtemplaterecipientrequestbody.md
+  - docs/models/operations/templatecreatedocumentfromtemplaterecipientrequest.md
   - docs/models/operations/templatecreatedocumentfromtemplaterecipientresponse.md
   - docs/models/operations/templatecreatedocumentfromtemplaterequest.md
   - docs/models/operations/templatecreatedocumentfromtemplateresponse.md
@@ -1649,7 +1687,6 @@ generatedFiles:
   - docs/models/operations/templatecreatedocumentfromtemplatetextalign4.md
   - docs/models/operations/templatecreatedocumentfromtemplatetextalign5.md
   - docs/models/operations/templatecreatedocumentfromtemplatetextalign6.md
-  - docs/models/operations/templatecreatedocumentfromtemplatetypedate.md
   - docs/models/operations/templatecreatedocumentfromtemplatetypeemail.md
   - docs/models/operations/templatecreatedocumentfromtemplatetypeinitials.md
   - docs/models/operations/templatecreatedocumentfromtemplatetypename.md
@@ -1746,6 +1783,9 @@ generatedFiles:
   - docs/models/operations/templategettemplatebyidfieldmetatext.md
   - docs/models/operations/templategettemplatebyidfieldmetaunion.md
   - docs/models/operations/templategettemplatebyidfieldtype.md
+  - docs/models/operations/templategettemplatebyidfolder.md
+  - docs/models/operations/templategettemplatebyidfoldertype.md
+  - docs/models/operations/templategettemplatebyidfoldervisibility.md
   - docs/models/operations/templategettemplatebyidglobalaccessauth.md
   - docs/models/operations/templategettemplatebyidglobalactionauth.md
   - docs/models/operations/templategettemplatebyidreadstatus.md
@@ -1780,14 +1820,6 @@ generatedFiles:
   - docs/models/operations/templategettemplatebyidvalue2.md
   - docs/models/operations/templategettemplatebyidvalue3.md
   - docs/models/operations/templategettemplatebyidvisibility.md
-  - docs/models/operations/templatemovetemplatetoteamauthoptions.md
-  - docs/models/operations/templatemovetemplatetoteamglobalaccessauth.md
-  - docs/models/operations/templatemovetemplatetoteamglobalactionauth.md
-  - docs/models/operations/templatemovetemplatetoteamrequest.md
-  - docs/models/operations/templatemovetemplatetoteamresponse.md
-  - docs/models/operations/templatemovetemplatetoteamresponsebody.md
-  - docs/models/operations/templatemovetemplatetoteamtype.md
-  - docs/models/operations/templatemovetemplatetoteamvisibility.md
   - docs/models/operations/templatetoggletemplatedirectlinkrequest.md
   - docs/models/operations/templatetoggletemplatedirectlinkresponse.md
   - docs/models/operations/templatetoggletemplatedirectlinkresponsebody.md
@@ -1797,9 +1829,9 @@ generatedFiles:
   - docs/models/operations/templateupdatetemplatedateformat.md
   - docs/models/operations/templateupdatetemplatedistributionmethod.md
   - docs/models/operations/templateupdatetemplateemailsettings.md
-  - docs/models/operations/templateupdatetemplateglobalaccessauthrequestbody.md
+  - docs/models/operations/templateupdatetemplateglobalaccessauthrequest.md
   - docs/models/operations/templateupdatetemplateglobalaccessauthresponse.md
-  - docs/models/operations/templateupdatetemplateglobalactionauthrequestbody.md
+  - docs/models/operations/templateupdatetemplateglobalactionauthrequest.md
   - docs/models/operations/templateupdatetemplateglobalactionauthresponse.md
   - docs/models/operations/templateupdatetemplatelanguage.md
   - docs/models/operations/templateupdatetemplatemeta.md
@@ -1808,43 +1840,14 @@ generatedFiles:
   - docs/models/operations/templateupdatetemplateresponsebody.md
   - docs/models/operations/templateupdatetemplatesigningorder.md
   - docs/models/operations/templateupdatetemplatetyperesponse.md
-  - docs/models/operations/templateupdatetemplatevisibilityrequestbody.md
+  - docs/models/operations/templateupdatetemplatevisibilityrequest.md
   - docs/models/operations/templateupdatetemplatevisibilityresponse.md
-  - docs/models/operations/textalignaccountdate.md
-  - docs/models/operations/textalignaccountemail.md
-  - docs/models/operations/textalignaccountinitials.md
-  - docs/models/operations/textalignaccountname.md
-  - docs/models/operations/textalignaccountnumber.md
-  - docs/models/operations/textalignaccounttext.md
-  - docs/models/operations/typeaccountcheckbox1.md
-  - docs/models/operations/typeaccountcheckbox2.md
-  - docs/models/operations/typeaccountdate1.md
-  - docs/models/operations/typeaccountdate2.md
-  - docs/models/operations/typeaccountdropdown1.md
-  - docs/models/operations/typeaccountdropdown2.md
-  - docs/models/operations/typeaccountemail1.md
-  - docs/models/operations/typeaccountemail2.md
-  - docs/models/operations/typeaccountfreesignature.md
-  - docs/models/operations/typeaccountinitials1.md
-  - docs/models/operations/typeaccountinitials2.md
-  - docs/models/operations/typeaccountname1.md
-  - docs/models/operations/typeaccountname2.md
-  - docs/models/operations/typeaccountnumber1.md
-  - docs/models/operations/typeaccountnumber2.md
-  - docs/models/operations/typeaccountradio1.md
-  - docs/models/operations/typeaccountradio2.md
-  - docs/models/operations/typeaccountsignature.md
-  - docs/models/operations/typeaccounttext1.md
-  - docs/models/operations/typeaccounttext2.md
-  - docs/models/operations/valueaccountcheckbox.md
-  - docs/models/operations/valueaccountdropdown.md
-  - docs/models/operations/valueaccountradio.md
-  - docs/models/operations/visibilityaccount.md
   - docs/sdks/directlink/README.md
   - docs/sdks/documenso/README.md
   - docs/sdks/documents/README.md
   - docs/sdks/documentsfields/README.md
   - docs/sdks/documentsrecipients/README.md
+  - docs/sdks/embedding/README.md
   - docs/sdks/templates/README.md
   - docs/sdks/templatesfields/README.md
   - docs/sdks/templatesrecipients/README.md
@@ -1852,6 +1855,7 @@ generatedFiles:
   - documents.go
   - documentsfields.go
   - documentsrecipients.go
+  - embedding.go
   - go.mod
   - internal/config/sdkconfiguration.go
   - internal/hooks/hooks.go
@@ -1899,7 +1903,7 @@ examples:
           documentId: 7491.86
       responses:
         "200":
-          application/json: {"visibility": "MANAGER_AND_ABOVE", "status": "REJECTED", "source": "DOCUMENT", "id": 9948.62, "externalId": "<id>", "userId": 7310.1, "authOptions": null, "formValues": {"key": 9722.59}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1728854634372", "updatedAt": "1735677688657", "completedAt": "<value>", "deletedAt": null, "teamId": null, "templateId": 8596.74, "documentData": {"type": "BYTES_64", "id": "<id>", "data": "<value>", "initialData": "<value>"}, "documentMeta": {"signingOrder": "SEQUENTIAL", "distributionMethod": "NONE", "id": "<id>", "subject": "<value>", "message": "<value>", "timezone": "Asia/Almaty", "password": "CAn4uQ3h1FpmG0q", "dateFormat": "<value>", "documentId": 204.94, "redirectUrl": "https://edible-masterpiece.info/", "typedSignatureEnabled": false, "uploadSignatureEnabled": true, "drawSignatureEnabled": false, "allowDictateNextSigner": false, "language": "<value>", "emailSettings": {"recipientSigningRequest": true, "recipientRemoved": true, "recipientSigned": true, "documentPending": true, "documentCompleted": true, "documentDeleted": true, "ownerDocumentCompleted": true}}, "recipients": [{"role": "APPROVER", "readStatus": "OPENED", "signingStatus": "NOT_SIGNED", "sendStatus": "SENT", "id": 3096.11, "documentId": 6260.62, "templateId": 3140.33, "email": "Rhoda3@yahoo.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": null, "signingOrder": 1425.68, "rejectionReason": "<value>"}], "fields": [{"type": "EMAIL", "id": 4088.47, "secondaryId": "<id>", "documentId": 1641.37, "templateId": 2458.58, "recipientId": 3621.83, "page": 9960.35, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "checkbox"}}]}
+          application/json: {"visibility": "MANAGER_AND_ABOVE", "status": "REJECTED", "source": "DOCUMENT", "id": 9948.62, "externalId": "<id>", "userId": 7310.1, "authOptions": null, "formValues": {"key": 9722.59}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1728854634372", "updatedAt": "1735677688657", "completedAt": "<value>", "deletedAt": null, "teamId": 7491.86, "templateId": 8596.74, "folderId": "<id>", "documentData": {"type": "BYTES_64", "id": "<id>", "data": "<value>", "initialData": "<value>"}, "documentMeta": {"signingOrder": "SEQUENTIAL", "distributionMethod": "NONE", "id": "<id>", "subject": "<value>", "message": "<value>", "timezone": "Asia/Almaty", "password": "CAn4uQ3h1FpmG0q", "dateFormat": "<value>", "documentId": 204.94, "redirectUrl": "https://edible-masterpiece.info/", "typedSignatureEnabled": false, "uploadSignatureEnabled": true, "drawSignatureEnabled": false, "allowDictateNextSigner": false, "language": "<value>", "emailSettings": {"recipientSigningRequest": true, "recipientRemoved": true, "recipientSigned": true, "documentPending": true, "documentCompleted": true, "documentDeleted": true, "ownerDocumentCompleted": true}}, "folder": {"id": "<id>", "name": "<value>", "type": "DOCUMENT", "visibility": "ADMIN", "userId": 7353.37, "teamId": 7310.1, "pinned": true, "parentId": "<id>", "createdAt": "1721782508624", "updatedAt": "1735668135352"}, "recipients": [{"role": "APPROVER", "readStatus": "OPENED", "signingStatus": "NOT_SIGNED", "sendStatus": "SENT", "id": 3096.11, "documentId": 6260.62, "templateId": 3140.33, "email": "Rhoda3@yahoo.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": null, "signingOrder": 1425.68, "rejectionReason": "<value>"}], "fields": [{"type": "EMAIL", "id": 4088.47, "secondaryId": "<id>", "documentId": 1641.37, "templateId": 2458.58, "recipientId": 3621.83, "page": 9960.35, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "checkbox"}}]}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "404":
@@ -1912,7 +1916,7 @@ examples:
         application/json: {"title": "<value>"}
       responses:
         "200":
-          application/json: {"document": {"visibility": "MANAGER_AND_ABOVE", "status": "DRAFT", "source": "TEMPLATE_DIRECT_LINK", "id": 9025.78, "externalId": "<id>", "userId": 3553.42, "authOptions": null, "formValues": {}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1727678986659", "updatedAt": "1735619356040", "completedAt": null, "deletedAt": "<value>", "teamId": 2366.18, "templateId": 5940.67, "documentData": {"type": "BYTES_64", "id": "<id>", "data": "<value>", "initialData": "<value>"}, "documentMeta": {"signingOrder": "PARALLEL", "distributionMethod": "NONE", "id": "<id>", "subject": "<value>", "message": "<value>", "timezone": "America/Detroit", "password": "R2lXhpWYWQqLVzM", "dateFormat": "<value>", "documentId": 4554.27, "redirectUrl": "https://ugly-interior.org", "typedSignatureEnabled": false, "uploadSignatureEnabled": false, "drawSignatureEnabled": false, "allowDictateNextSigner": true, "language": "<value>", "emailSettings": {"recipientSigningRequest": true, "recipientRemoved": true, "recipientSigned": true, "documentPending": true, "documentCompleted": true, "documentDeleted": true, "ownerDocumentCompleted": true}}, "recipients": [{"role": "APPROVER", "readStatus": "NOT_OPENED", "signingStatus": "SIGNED", "sendStatus": "SENT", "id": 8131.59, "documentId": 7061.91, "templateId": 1136.33, "email": "Isabell_Koch@hotmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "TWO_FACTOR_AUTH"}, "signingOrder": 4474.72, "rejectionReason": "<value>"}], "fields": []}, "uploadUrl": "https://esteemed-hubris.net/"}
+          application/json: {"document": {"visibility": "MANAGER_AND_ABOVE", "status": "DRAFT", "source": "TEMPLATE_DIRECT_LINK", "id": 9025.78, "externalId": "<id>", "userId": 3553.42, "authOptions": null, "formValues": {}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1727678986659", "updatedAt": "1735619356040", "completedAt": null, "deletedAt": "<value>", "teamId": 2366.18, "templateId": 5940.67, "folderId": "<id>", "documentData": {"type": "BYTES_64", "id": "<id>", "data": "<value>", "initialData": "<value>"}, "documentMeta": {"signingOrder": "PARALLEL", "distributionMethod": "NONE", "id": "<id>", "subject": "<value>", "message": "<value>", "timezone": "America/Detroit", "password": "R2lXhpWYWQqLVzM", "dateFormat": "<value>", "documentId": 4554.27, "redirectUrl": "https://ugly-interior.org", "typedSignatureEnabled": false, "uploadSignatureEnabled": false, "drawSignatureEnabled": false, "allowDictateNextSigner": true, "language": "<value>", "emailSettings": {"recipientSigningRequest": true, "recipientRemoved": true, "recipientSigned": true, "documentPending": true, "documentCompleted": true, "documentDeleted": true, "ownerDocumentCompleted": true}}, "folder": null, "recipients": [{"role": "APPROVER", "readStatus": "NOT_OPENED", "signingStatus": "SIGNED", "sendStatus": "SENT", "id": 8131.59, "documentId": 7061.91, "templateId": 1136.33, "email": "Isabell_Koch@hotmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": ["ACCOUNT"], "actionAuth": ["TWO_FACTOR_AUTH"]}, "signingOrder": 4474.72, "rejectionReason": "<value>"}], "fields": []}, "uploadUrl": "https://esteemed-hubris.net/"}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "500":
@@ -1923,7 +1927,7 @@ examples:
         application/json: {"documentId": 9701.92}
       responses:
         "200":
-          application/json: {"visibility": "EVERYONE", "status": "COMPLETED", "source": "TEMPLATE_DIRECT_LINK", "id": 7711.36, "externalId": "<id>", "userId": 1460.21, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "ACCOUNT"}, "formValues": {"key": "<value>"}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1715880453134", "updatedAt": "1735660871824", "completedAt": "<value>", "deletedAt": "<value>", "teamId": 6223.67, "templateId": 4671.64}
+          application/json: {"visibility": "EVERYONE", "status": "COMPLETED", "source": "TEMPLATE_DIRECT_LINK", "id": 7711.36, "externalId": "<id>", "userId": 1460.21, "authOptions": {"globalAccessAuth": ["ACCOUNT"], "globalActionAuth": ["ACCOUNT"]}, "formValues": {"key": "<value>"}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1715880453134", "updatedAt": "1735660871824", "completedAt": "<value>", "deletedAt": "<value>", "teamId": 6223.67, "templateId": 4671.64, "folderId": "<id>", "useLegacyFieldInsertion": true}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "500":
@@ -1956,7 +1960,7 @@ examples:
         application/json: {"documentId": 7930.82}
       responses:
         "200":
-          application/json: {"visibility": "ADMIN", "status": "COMPLETED", "source": "TEMPLATE", "id": 2475.32, "externalId": "<id>", "userId": 4752, "authOptions": null, "formValues": {"key": true}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1724351084117", "updatedAt": "1735646832154", "completedAt": "<value>", "deletedAt": "<value>", "teamId": 9125.9, "templateId": 9327.64}
+          application/json: {"visibility": "ADMIN", "status": "COMPLETED", "source": "TEMPLATE", "id": 2475.32, "externalId": "<id>", "userId": 4752, "authOptions": null, "formValues": {"key": true}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1724351084117", "updatedAt": "1735646832154", "completedAt": "<value>", "deletedAt": "<value>", "teamId": 9125.9, "templateId": 9327.64, "folderId": "<id>", "useLegacyFieldInsertion": false}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "500":
@@ -2059,7 +2063,7 @@ examples:
           recipientId: 874.3
       responses:
         "200":
-          application/json: {"role": "VIEWER", "readStatus": "OPENED", "signingStatus": "REJECTED", "sendStatus": "SENT", "id": 2011.21, "documentId": 8537.53, "templateId": 7026.32, "email": "Micaela.McCullough@hotmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": null, "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "ACCOUNT"}, "signingOrder": 2776.88, "rejectionReason": "<value>", "fields": [{"type": "FREE_SIGNATURE", "id": 6796.74, "secondaryId": "<id>", "documentId": null, "templateId": null, "recipientId": 4324.4, "page": 7869.52, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "checkbox"}}]}
+          application/json: {"role": "VIEWER", "readStatus": "OPENED", "signingStatus": "REJECTED", "sendStatus": "SENT", "id": 2011.21, "documentId": 8537.53, "templateId": 7026.32, "email": "Micaela.McCullough@hotmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": null, "authOptions": {"accessAuth": ["ACCOUNT"], "actionAuth": ["ACCOUNT"]}, "signingOrder": 2776.88, "rejectionReason": "<value>", "fields": [{"type": "FREE_SIGNATURE", "id": 6796.74, "secondaryId": "<id>", "documentId": null, "templateId": null, "recipientId": 4324.4, "page": 7869.52, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "checkbox"}}]}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "404":
@@ -2072,7 +2076,7 @@ examples:
         application/json: {"documentId": 3058.31, "recipient": {"email": "Ila.Steuber@yahoo.com", "name": "<value>", "role": "ASSISTANT"}}
       responses:
         "200":
-          application/json: {"role": "ASSISTANT", "readStatus": "NOT_OPENED", "signingStatus": "SIGNED", "sendStatus": "NOT_SENT", "id": 4556.07, "documentId": 2327.54, "templateId": 7160.46, "email": "Kitty_Heathcote-Huels@gmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "TWO_FACTOR_AUTH"}, "signingOrder": 3961.73, "rejectionReason": null}
+          application/json: {"role": "ASSISTANT", "readStatus": "NOT_OPENED", "signingStatus": "SIGNED", "sendStatus": "NOT_SENT", "id": 4556.07, "documentId": 2327.54, "templateId": 7160.46, "email": "Kitty_Heathcote-Huels@gmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": ["ACCOUNT"], "actionAuth": ["TWO_FACTOR_AUTH"]}, "signingOrder": 3961.73, "rejectionReason": null}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "500":
@@ -2094,7 +2098,7 @@ examples:
         application/json: {"documentId": 7045.62, "recipient": {"id": 2224.05}}
       responses:
         "200":
-          application/json: {"role": "ASSISTANT", "readStatus": "OPENED", "signingStatus": "REJECTED", "sendStatus": "SENT", "id": 6679.58, "documentId": 1962.76, "templateId": 8876.44, "email": "Ned42@yahoo.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "PASSKEY"}, "signingOrder": 231.61, "rejectionReason": "<value>", "fields": []}
+          application/json: {"role": "ASSISTANT", "readStatus": "OPENED", "signingStatus": "REJECTED", "sendStatus": "SENT", "id": 6679.58, "documentId": 1962.76, "templateId": 8876.44, "email": "Ned42@yahoo.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": ["ACCOUNT"], "actionAuth": ["PASSKEY"]}, "signingOrder": 231.61, "rejectionReason": "<value>", "fields": []}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "500":
@@ -2105,7 +2109,7 @@ examples:
         application/json: {"documentId": 3189.76, "recipients": []}
       responses:
         "200":
-          application/json: {"recipients": [{"role": "VIEWER", "readStatus": "NOT_OPENED", "signingStatus": "SIGNED", "sendStatus": "NOT_SENT", "id": 7967.19, "documentId": 366.25, "templateId": 5896.63, "email": "Burley.Kuhn68@hotmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": null, "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "PASSKEY"}, "signingOrder": 4432.77, "rejectionReason": "<value>", "fields": []}]}
+          application/json: {"recipients": [{"role": "VIEWER", "readStatus": "NOT_OPENED", "signingStatus": "SIGNED", "sendStatus": "NOT_SENT", "id": 7967.19, "documentId": 366.25, "templateId": 5896.63, "email": "Burley.Kuhn68@hotmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": null, "signedAt": "<value>", "authOptions": {"accessAuth": ["ACCOUNT"], "actionAuth": ["PASSKEY"]}, "signingOrder": 4432.77, "rejectionReason": "<value>", "fields": []}]}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "500":
@@ -2125,7 +2129,7 @@ examples:
     speakeasy-default-template-find-templates:
       responses:
         "200":
-          application/json: {"data": [{"type": "PRIVATE", "visibility": "ADMIN", "id": 8353.5, "externalId": "<id>", "title": "<value>", "userId": 3928.48, "teamId": 3159.46, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "TWO_FACTOR_AUTH"}, "templateDocumentDataId": "<id>", "createdAt": "1714153048686", "updatedAt": "1735669673106", "publicTitle": "<value>", "publicDescription": "<value>", "team": {"id": 4826.51, "url": "https://fearless-cd.name/"}, "fields": [], "recipients": [], "templateMeta": {"signingOrder": "SEQUENTIAL", "distributionMethod": "EMAIL"}, "directLink": {"token": "<value>", "enabled": true}}], "count": 2399.32, "currentPage": 1008.79, "perPage": 7002.73, "totalPages": 1006.98}
+          application/json: {"data": [{"type": "PRIVATE", "visibility": "ADMIN", "id": 8353.5, "externalId": "<id>", "title": "<value>", "userId": 3928.48, "teamId": 3159.46, "authOptions": {"globalAccessAuth": ["ACCOUNT"], "globalActionAuth": ["TWO_FACTOR_AUTH"]}, "templateDocumentDataId": "<id>", "createdAt": "1714153048686", "updatedAt": "1735669673106", "publicTitle": "<value>", "publicDescription": "<value>", "folderId": "<id>", "useLegacyFieldInsertion": false, "team": {"id": 4826.51, "url": "https://fearless-cd.name/"}, "fields": [], "recipients": [], "templateMeta": {"signingOrder": "SEQUENTIAL", "distributionMethod": "EMAIL"}, "directLink": {"token": "<value>", "enabled": true}}], "count": 2399.32, "currentPage": 1008.79, "perPage": 7002.73, "totalPages": 1006.98}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "404":
@@ -2139,7 +2143,7 @@ examples:
           templateId: 2128.54
       responses:
         "200":
-          application/json: {"type": "PUBLIC", "visibility": "MANAGER_AND_ABOVE", "id": 2786.55, "externalId": "<id>", "title": "<value>", "userId": 6940.89, "teamId": 3976.59, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "PASSKEY"}, "templateDocumentDataId": "<id>", "createdAt": "1730357255418", "updatedAt": "1735658892432", "publicTitle": "<value>", "publicDescription": "<value>", "templateDocumentData": {"type": "S3_PATH", "id": "<id>", "data": "<value>", "initialData": "<value>"}, "templateMeta": null, "directLink": {"id": "<id>", "templateId": 7277.86, "token": "<value>", "createdAt": "1717601799828", "enabled": false, "directTemplateRecipientId": 834.56}, "user": {"id": 9738.42, "name": null, "email": "Mack_Medhurst1@yahoo.com"}, "recipients": [{"role": "SIGNER", "readStatus": "OPENED", "signingStatus": "REJECTED", "sendStatus": "SENT", "id": 4032.33, "documentId": 1928.67, "templateId": 8554.25, "email": "Jerod84@gmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": null, "signingOrder": 2256.36, "rejectionReason": "<value>"}], "fields": [{"type": "DROPDOWN", "id": 5010.54, "secondaryId": "<id>", "documentId": 7051.15, "templateId": 2232.05, "recipientId": 1178.91, "page": 6095.28, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "number"}}]}
+          application/json: {"type": "PUBLIC", "visibility": "MANAGER_AND_ABOVE", "id": 2786.55, "externalId": "<id>", "title": "<value>", "userId": 6940.89, "teamId": 3976.59, "authOptions": {"globalAccessAuth": ["ACCOUNT"], "globalActionAuth": ["PASSKEY"]}, "templateDocumentDataId": "<id>", "createdAt": "1730357255418", "updatedAt": "1735658892432", "publicTitle": "<value>", "publicDescription": "<value>", "folderId": "<id>", "templateDocumentData": {"type": "S3_PATH", "id": "<id>", "data": "<value>", "initialData": "<value>"}, "templateMeta": null, "directLink": {"id": "<id>", "templateId": 7277.86, "token": "<value>", "createdAt": "1717601799828", "enabled": false, "directTemplateRecipientId": 834.56}, "user": {"id": 9738.42, "name": null, "email": "Mack_Medhurst1@yahoo.com"}, "recipients": [{"role": "SIGNER", "readStatus": "OPENED", "signingStatus": "REJECTED", "sendStatus": "SENT", "id": 4032.33, "documentId": 1928.67, "templateId": 8554.25, "email": "Jerod84@gmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": null, "signingOrder": 2256.36, "rejectionReason": "<value>"}], "fields": [{"type": "DROPDOWN", "id": 5010.54, "secondaryId": "<id>", "documentId": 7051.15, "templateId": 2232.05, "recipientId": 1178.91, "page": 6095.28, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "number"}}], "folder": {"id": "<id>", "name": "<value>", "type": "DOCUMENT", "visibility": "EVERYONE", "userId": 4312.16, "teamId": 6940.89, "pinned": true, "parentId": "<id>", "createdAt": "1722107407943", "updatedAt": "1735666987948"}}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "404":
@@ -2152,7 +2156,7 @@ examples:
         application/json: {"templateId": 9404.77}
       responses:
         "200":
-          application/json: {"type": "PUBLIC", "visibility": "MANAGER_AND_ABOVE", "id": 5983.02, "externalId": "<id>", "title": "<value>", "userId": 9111.71, "teamId": 6120.86, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "ACCOUNT"}, "templateDocumentDataId": "<id>", "createdAt": "1713421873205", "updatedAt": "1735604426304", "publicTitle": "<value>", "publicDescription": "<value>"}
+          application/json: {"type": "PUBLIC", "visibility": "MANAGER_AND_ABOVE", "id": 5983.02, "externalId": "<id>", "title": "<value>", "userId": 9111.71, "teamId": 6120.86, "authOptions": {"globalAccessAuth": ["ACCOUNT"], "globalActionAuth": ["ACCOUNT"]}, "templateDocumentDataId": "<id>", "createdAt": "1713421873205", "updatedAt": "1735604426304", "publicTitle": "<value>", "publicDescription": "<value>", "folderId": "<id>", "useLegacyFieldInsertion": true}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "500":
@@ -2163,7 +2167,7 @@ examples:
         application/json: {"templateId": 2490.16}
       responses:
         "200":
-          application/json: {"type": "PUBLIC", "visibility": "MANAGER_AND_ABOVE", "id": 4866.89, "externalId": "<id>", "title": "<value>", "userId": 9126.65, "teamId": 4478.26, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "ACCOUNT"}, "templateDocumentDataId": "<id>", "createdAt": "1724731479749", "updatedAt": "1735650902968", "publicTitle": "<value>", "publicDescription": "<value>"}
+          application/json: {"type": "PUBLIC", "visibility": "MANAGER_AND_ABOVE", "id": 4866.89, "externalId": "<id>", "title": "<value>", "userId": 9126.65, "teamId": 4478.26, "authOptions": {"globalAccessAuth": ["ACCOUNT"], "globalActionAuth": ["ACCOUNT"]}, "templateDocumentDataId": "<id>", "createdAt": "1724731479749", "updatedAt": "1735650902968", "publicTitle": "<value>", "publicDescription": "<value>", "folderId": "<id>", "useLegacyFieldInsertion": true}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "500":
@@ -2185,7 +2189,7 @@ examples:
         application/json: {"templateId": 7392.96, "recipients": []}
       responses:
         "200":
-          application/json: {"visibility": "EVERYONE", "status": "DRAFT", "source": "DOCUMENT", "id": 5310.67, "externalId": "<id>", "userId": 4199.74, "authOptions": {"globalAccessAuth": "ACCOUNT", "globalActionAuth": "TWO_FACTOR_AUTH"}, "formValues": {"key": "<value>"}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1713071497395", "updatedAt": "1735653497198", "completedAt": "<value>", "deletedAt": "<value>", "teamId": 7804.64, "templateId": null, "documentData": {"type": "S3_PATH", "id": "<id>", "data": "<value>", "initialData": "<value>"}, "documentMeta": {"signingOrder": "PARALLEL", "distributionMethod": "EMAIL", "id": "<id>", "subject": "<value>", "message": "<value>", "timezone": "America/Detroit", "password": "sYbkNhe0kXAWK9U", "dateFormat": null, "documentId": 9505.54, "redirectUrl": "https://wide-bump.org/", "typedSignatureEnabled": false, "uploadSignatureEnabled": true, "drawSignatureEnabled": true, "allowDictateNextSigner": true, "language": "<value>", "emailSettings": {"recipientSigningRequest": true, "recipientRemoved": true, "recipientSigned": true, "documentPending": true, "documentCompleted": true, "documentDeleted": true, "ownerDocumentCompleted": true}}, "recipients": [], "fields": [{"type": "DATE", "id": 4993.43, "secondaryId": "<id>", "documentId": 518.53, "templateId": 9453.15, "recipientId": 9324.88, "page": 5546.12, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "radio"}}]}
+          application/json: {"visibility": "EVERYONE", "status": "DRAFT", "source": "DOCUMENT", "id": 5310.67, "externalId": "<id>", "userId": 4199.74, "authOptions": {"globalAccessAuth": ["ACCOUNT"], "globalActionAuth": ["TWO_FACTOR_AUTH"]}, "formValues": {"key": "<value>"}, "title": "<value>", "documentDataId": "<id>", "createdAt": "1713071497395", "updatedAt": "1735653497198", "completedAt": "<value>", "deletedAt": "<value>", "teamId": 7804.64, "templateId": null, "folderId": "<id>", "documentData": {"type": "S3_PATH", "id": "<id>", "data": "<value>", "initialData": "<value>"}, "documentMeta": {"signingOrder": "PARALLEL", "distributionMethod": "EMAIL", "id": "<id>", "subject": "<value>", "message": "<value>", "timezone": "America/Detroit", "password": "sYbkNhe0kXAWK9U", "dateFormat": null, "documentId": 9505.54, "redirectUrl": "https://wide-bump.org/", "typedSignatureEnabled": false, "uploadSignatureEnabled": true, "drawSignatureEnabled": true, "allowDictateNextSigner": true, "language": "<value>", "emailSettings": {"recipientSigningRequest": true, "recipientRemoved": true, "recipientSigned": true, "documentPending": true, "documentCompleted": true, "documentDeleted": true, "ownerDocumentCompleted": true}}, "folder": {"id": "<id>", "name": "<value>", "type": "DOCUMENT", "visibility": "EVERYONE", "userId": 2922.71, "teamId": 5310.67, "pinned": true, "parentId": "<id>", "createdAt": "1727134759765", "updatedAt": "1735631030392"}, "recipients": [], "fields": [{"type": "DATE", "id": 4993.43, "secondaryId": "<id>", "documentId": 518.53, "templateId": 9453.15, "recipientId": 9324.88, "page": 5546.12, "customText": "<value>", "inserted": true, "fieldMeta": {"type": "radio"}}]}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "500":
@@ -2277,7 +2281,7 @@ examples:
           recipientId: 9436.42
       responses:
         "200":
-          application/json: {"role": "SIGNER", "readStatus": "OPENED", "signingStatus": "SIGNED", "sendStatus": "NOT_SENT", "id": 3084.26, "documentId": 9767.45, "templateId": 4075, "email": "Clovis_Stoltenberg@gmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": null, "signedAt": "<value>", "authOptions": {"accessAuth": null, "actionAuth": "EXPLICIT_NONE"}, "signingOrder": 5048.3, "rejectionReason": null, "fields": [{"type": "DROPDOWN", "id": 1498.08, "secondaryId": "<id>", "documentId": 3041.54, "templateId": 8898.39, "recipientId": 5421.45, "page": 5530.65, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "radio"}}]}
+          application/json: {"role": "SIGNER", "readStatus": "OPENED", "signingStatus": "SIGNED", "sendStatus": "NOT_SENT", "id": 3084.26, "documentId": 9767.45, "templateId": 4075, "email": "Clovis_Stoltenberg@gmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": null, "signedAt": "<value>", "authOptions": {"accessAuth": ["ACCOUNT"], "actionAuth": ["EXPLICIT_NONE"]}, "signingOrder": 5048.3, "rejectionReason": null, "fields": [{"type": "DROPDOWN", "id": 1498.08, "secondaryId": "<id>", "documentId": 3041.54, "templateId": 8898.39, "recipientId": 5421.45, "page": 5530.65, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "radio"}}]}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "404":
@@ -2312,7 +2316,7 @@ examples:
         application/json: {"templateId": 2984.61, "recipient": {"id": 8617.99}}
       responses:
         "200":
-          application/json: {"role": "ASSISTANT", "readStatus": "OPENED", "signingStatus": "REJECTED", "sendStatus": "SENT", "id": 3174.79, "documentId": 149.88, "templateId": 5506.77, "email": "Esperanza_Moen@gmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "PASSKEY"}, "signingOrder": 8121.07, "rejectionReason": null, "fields": [{"type": "DROPDOWN", "id": 6673.61, "secondaryId": "<id>", "documentId": null, "templateId": null, "recipientId": 1427.37, "page": 6941.53, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "radio"}}]}
+          application/json: {"role": "ASSISTANT", "readStatus": "OPENED", "signingStatus": "REJECTED", "sendStatus": "SENT", "id": 3174.79, "documentId": 149.88, "templateId": 5506.77, "email": "Esperanza_Moen@gmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": "<value>", "authOptions": {"accessAuth": ["ACCOUNT"], "actionAuth": ["PASSKEY"]}, "signingOrder": 8121.07, "rejectionReason": null, "fields": [{"type": "DROPDOWN", "id": 6673.61, "secondaryId": "<id>", "documentId": null, "templateId": null, "recipientId": 1427.37, "page": 6941.53, "customText": "<value>", "inserted": false, "fieldMeta": {"type": "radio"}}]}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "500":
@@ -2323,7 +2327,7 @@ examples:
         application/json: {"templateId": 5597.58, "recipients": [{"id": 1630.42}]}
       responses:
         "200":
-          application/json: {"recipients": [{"role": "CC", "readStatus": "NOT_OPENED", "signingStatus": "REJECTED", "sendStatus": "SENT", "id": 653.82, "documentId": 3004.48, "templateId": null, "email": "Ramona58@hotmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": null, "authOptions": {"accessAuth": "ACCOUNT", "actionAuth": "EXPLICIT_NONE"}, "signingOrder": 8960.7, "rejectionReason": "<value>", "fields": []}]}
+          application/json: {"recipients": [{"role": "CC", "readStatus": "NOT_OPENED", "signingStatus": "REJECTED", "sendStatus": "SENT", "id": 653.82, "documentId": 3004.48, "templateId": null, "email": "Ramona58@hotmail.com", "name": "<value>", "token": "<value>", "documentDeletedAt": "<value>", "expired": "<value>", "signedAt": null, "authOptions": {"accessAuth": ["ACCOUNT"], "actionAuth": ["EXPLICIT_NONE"]}, "signingOrder": 8960.7, "rejectionReason": "<value>", "fields": []}]}
         "400":
           application/json: {"message": "<value>", "code": "<value>"}
         "500":
@@ -2372,5 +2376,28 @@ examples:
           application/json: {"message": "<value>", "code": "<value>"}
         "500":
           application/json: {"message": "<value>", "code": "<value>"}
+  embeddingPresign-createEmbeddingPresignToken:
+    speakeasy-default-embedding-presign-create-embedding-presign-token:
+      requestBody:
+        application/json: {"expiresIn": 60}
+      responses:
+        "200":
+          application/json: {"token": "<value>", "expiresAt": "1743086153582", "expiresIn": 8694.78}
+        "400":
+          application/json: {"message": "<value>", "code": "<value>"}
+        "500":
+          application/json: {"message": "<value>", "code": "<value>"}
+  embeddingPresign-verifyEmbeddingPresignToken:
+    speakeasy-default-embedding-presign-verify-embedding-presign-token:
+      requestBody:
+        application/json: {"token": "<value>"}
+      responses:
+        "200":
+          application/json: {"success": false}
+        "400":
+          application/json: {"message": "<value>", "code": "<value>"}
+        "500":
+          application/json: {"message": "<value>", "code": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## SDK Changes Detected:\n* `Documenso.Documents.Recipients.Update()`: \n  *  `request.Request.Recipient` **Changed** **Breaking** :warning:\n  *  `response.AuthOptions` **Changed** **Breaking** :warning:\n* `Documenso.Documents.CreateV0()`: \n  *  `request.Request` **Changed** **Breaking** :warning:\n  *  `response.Document` **Changed** **Breaking** :warning:\n* `Documenso.Templates.Recipients.UpdateMany()`: \n  *  `request.Request.Recipients.[]` **Changed** **Breaking** :warning:\n  *  `response.Recipients.[].AuthOptions` **Changed** **Breaking** :warning:\n* `Documenso.Templates.Recipients.Update()`: \n  *  `request.Request.Recipient` **Changed** **Breaking** :warning:\n  *  `response.AuthOptions` **Changed** **Breaking** :warning:\n* `Documenso.Documents.Find()`: \n  *  `request.Request.FolderId` **Added**\n  *  `response.Data.[]` **Changed** **Breaking** :warning:\n* `Documenso.Documents.Get()`: \n  *  `request.FolderId` **Added**\n  *  `response` **Changed** **Breaking** :warning:\n* `Documenso.Documents.Recipients.CreateMany()`: \n  *  `request.Request.Recipients.[]` **Changed** **Breaking** :warning:\n  *  `response.Recipients.[].AuthOptions` **Changed** **Breaking** :warning:\n* `Documenso.Documents.Update()`: \n  *  `request.Request.Data` **Changed** **Breaking** :warning:\n  *  `response` **Changed** **Breaking** :warning:\n* `Documenso.Documents.Distribute()`:  `response` **Changed** **Breaking** :warning:\n* `Documenso.Documents.Recipients.Get()`:  `response.AuthOptions` **Changed** **Breaking** :warning:\n* `Documenso.Templates.Recipients.CreateMany()`: \n  *  `request.Request.Recipients.[]` **Changed** **Breaking** :warning:\n  *  `response.Recipients.[].AuthOptions` **Changed** **Breaking** :warning:\n* `Documenso.Documents.Recipients.Create()`: \n  *  `request.Request.Recipient` **Changed** **Breaking** :warning:\n  *  `response.AuthOptions` **Changed** **Breaking** :warning:\n* `Documenso.Templates.Update()`: \n  *  `request.Request.Data` **Changed** **Breaking** :warning:\n  *  `response` **Changed** **Breaking** :warning:\n* `Documenso.Documents.Recipients.UpdateMany()`: \n  *  `request.Request.Recipients.[]` **Changed** **Breaking** :warning:\n  *  `response.Recipients.[].AuthOptions` **Changed** **Breaking** :warning:\n* `Documenso.Templates.Find()`: \n  *  `request` **Changed** **Breaking** :warning:\n  *  `response.Data.[]` **Changed** **Breaking** :warning:\n* `Documenso.Templates.Get()`:  `response` **Changed** **Breaking** :warning:\n* `Documenso.Templates.Recipients.Create()`: \n  *  `request.Request.Recipient` **Changed** **Breaking** :warning:\n  *  `response.AuthOptions` **Changed** **Breaking** :warning:\n* `Documenso.Templates.Duplicate()`:  `response` **Changed** **Breaking** :warning:\n* `Documenso.Templates.Use()`: \n  *  `request.Request.PrefillFields.[].[class]` **Added**\n  *  `response` **Changed** **Breaking** :warning:\n* `Documenso.Templates.Recipients.Get()`:  `response.AuthOptions` **Changed** **Breaking** :warning:\n* `Documenso.Embedding.EmbeddingPresign-CreateEmbeddingPresignToken()`: **Added**\n* `Documenso.Embedding.EmbeddingPresign-VerifyEmbeddingPresignToken()`: **Added**\n* `Documenso.Templates.MoveToTeam()`: **Deleted** **Breaking** :warning:\n* `Documenso.Documents.MoveToTeam()`: **Deleted** **Breaking** :warning:\n"
