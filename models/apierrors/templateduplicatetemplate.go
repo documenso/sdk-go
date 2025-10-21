@@ -11,11 +11,11 @@ type TemplateDuplicateTemplateInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateDuplicateTemplateInternalServerErrorIssue) GetMessage() string {
-	if o == nil {
+func (t *TemplateDuplicateTemplateInternalServerErrorIssue) GetMessage() string {
+	if t == nil {
 		return ""
 	}
-	return o.Message
+	return t.Message
 }
 
 // TemplateDuplicateTemplateInternalServerError - Internal server error
@@ -37,11 +37,11 @@ type TemplateDuplicateTemplateBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateDuplicateTemplateBadRequestIssue) GetMessage() string {
-	if o == nil {
+func (t *TemplateDuplicateTemplateBadRequestIssue) GetMessage() string {
+	if t == nil {
 		return ""
 	}
-	return o.Message
+	return t.Message
 }
 
 // TemplateDuplicateTemplateBadRequestError - Invalid input data

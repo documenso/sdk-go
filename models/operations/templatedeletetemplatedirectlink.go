@@ -10,11 +10,11 @@ type TemplateDeleteTemplateDirectLinkRequest struct {
 	TemplateID float64 `json:"templateId"`
 }
 
-func (o *TemplateDeleteTemplateDirectLinkRequest) GetTemplateID() float64 {
-	if o == nil {
+func (t *TemplateDeleteTemplateDirectLinkRequest) GetTemplateID() float64 {
+	if t == nil {
 		return 0.0
 	}
-	return o.TemplateID
+	return t.TemplateID
 }
 
 // TemplateDeleteTemplateDirectLinkResponseBody - Successful response
@@ -22,11 +22,11 @@ type TemplateDeleteTemplateDirectLinkResponseBody struct {
 	Success bool `json:"success"`
 }
 
-func (o *TemplateDeleteTemplateDirectLinkResponseBody) GetSuccess() bool {
-	if o == nil {
+func (t *TemplateDeleteTemplateDirectLinkResponseBody) GetSuccess() bool {
+	if t == nil {
 		return false
 	}
-	return o.Success
+	return t.Success
 }
 
 type TemplateDeleteTemplateDirectLinkResponse struct {
@@ -35,16 +35,16 @@ type TemplateDeleteTemplateDirectLinkResponse struct {
 	Object *TemplateDeleteTemplateDirectLinkResponseBody
 }
 
-func (o *TemplateDeleteTemplateDirectLinkResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (t *TemplateDeleteTemplateDirectLinkResponse) GetHTTPMeta() components.HTTPMetadata {
+	if t == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return t.HTTPMeta
 }
 
-func (o *TemplateDeleteTemplateDirectLinkResponse) GetObject() *TemplateDeleteTemplateDirectLinkResponseBody {
-	if o == nil {
+func (t *TemplateDeleteTemplateDirectLinkResponse) GetObject() *TemplateDeleteTemplateDirectLinkResponseBody {
+	if t == nil {
 		return nil
 	}
-	return o.Object
+	return t.Object
 }

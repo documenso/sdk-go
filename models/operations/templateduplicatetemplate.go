@@ -5,6 +5,7 @@ package operations
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/documenso/sdk-go/internal/utils"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -12,11 +13,11 @@ type TemplateDuplicateTemplateRequest struct {
 	TemplateID float64 `json:"templateId"`
 }
 
-func (o *TemplateDuplicateTemplateRequest) GetTemplateID() float64 {
-	if o == nil {
+func (t *TemplateDuplicateTemplateRequest) GetTemplateID() float64 {
+	if t == nil {
 		return 0.0
 	}
-	return o.TemplateID
+	return t.TemplateID
 }
 
 type TemplateDuplicateTemplateType string
@@ -78,7 +79,8 @@ func (e *TemplateDuplicateTemplateVisibility) UnmarshalJSON(data []byte) error {
 type TemplateDuplicateTemplateGlobalAccessAuth string
 
 const (
-	TemplateDuplicateTemplateGlobalAccessAuthAccount TemplateDuplicateTemplateGlobalAccessAuth = "ACCOUNT"
+	TemplateDuplicateTemplateGlobalAccessAuthAccount       TemplateDuplicateTemplateGlobalAccessAuth = "ACCOUNT"
+	TemplateDuplicateTemplateGlobalAccessAuthTwoFactorAuth TemplateDuplicateTemplateGlobalAccessAuth = "TWO_FACTOR_AUTH"
 )
 
 func (e TemplateDuplicateTemplateGlobalAccessAuth) ToPointer() *TemplateDuplicateTemplateGlobalAccessAuth {
@@ -91,6 +93,8 @@ func (e *TemplateDuplicateTemplateGlobalAccessAuth) UnmarshalJSON(data []byte) e
 	}
 	switch v {
 	case "ACCOUNT":
+		fallthrough
+	case "TWO_FACTOR_AUTH":
 		*e = TemplateDuplicateTemplateGlobalAccessAuth(v)
 		return nil
 	default:
@@ -136,18 +140,18 @@ type TemplateDuplicateTemplateAuthOptions struct {
 	GlobalActionAuth []TemplateDuplicateTemplateGlobalActionAuth `json:"globalActionAuth"`
 }
 
-func (o *TemplateDuplicateTemplateAuthOptions) GetGlobalAccessAuth() []TemplateDuplicateTemplateGlobalAccessAuth {
-	if o == nil {
+func (t *TemplateDuplicateTemplateAuthOptions) GetGlobalAccessAuth() []TemplateDuplicateTemplateGlobalAccessAuth {
+	if t == nil {
 		return []TemplateDuplicateTemplateGlobalAccessAuth{}
 	}
-	return o.GlobalAccessAuth
+	return t.GlobalAccessAuth
 }
 
-func (o *TemplateDuplicateTemplateAuthOptions) GetGlobalActionAuth() []TemplateDuplicateTemplateGlobalActionAuth {
-	if o == nil {
+func (t *TemplateDuplicateTemplateAuthOptions) GetGlobalActionAuth() []TemplateDuplicateTemplateGlobalActionAuth {
+	if t == nil {
 		return []TemplateDuplicateTemplateGlobalActionAuth{}
 	}
-	return o.GlobalActionAuth
+	return t.GlobalActionAuth
 }
 
 // TemplateDuplicateTemplateResponseBody - Successful response
@@ -160,118 +164,137 @@ type TemplateDuplicateTemplateResponseBody struct {
 	UserID                  float64                               `json:"userId"`
 	TeamID                  float64                               `json:"teamId"`
 	AuthOptions             *TemplateDuplicateTemplateAuthOptions `json:"authOptions"`
-	TemplateDocumentDataID  string                                `json:"templateDocumentDataId"`
 	CreatedAt               string                                `json:"createdAt"`
 	UpdatedAt               string                                `json:"updatedAt"`
 	PublicTitle             string                                `json:"publicTitle"`
 	PublicDescription       string                                `json:"publicDescription"`
 	FolderID                *string                               `json:"folderId"`
 	UseLegacyFieldInsertion bool                                  `json:"useLegacyFieldInsertion"`
+	EnvelopeID              string                                `json:"envelopeId"`
+	TemplateDocumentDataID  *string                               `default:"" json:"templateDocumentDataId"`
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetType() TemplateDuplicateTemplateType {
-	if o == nil {
+func (t TemplateDuplicateTemplateResponseBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateDuplicateTemplateResponseBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "visibility", "id", "title", "userId", "teamId", "createdAt", "updatedAt", "publicTitle", "publicDescription", "useLegacyFieldInsertion", "envelopeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TemplateDuplicateTemplateResponseBody) GetType() TemplateDuplicateTemplateType {
+	if t == nil {
 		return TemplateDuplicateTemplateType("")
 	}
-	return o.Type
+	return t.Type
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetVisibility() TemplateDuplicateTemplateVisibility {
-	if o == nil {
+func (t *TemplateDuplicateTemplateResponseBody) GetVisibility() TemplateDuplicateTemplateVisibility {
+	if t == nil {
 		return TemplateDuplicateTemplateVisibility("")
 	}
-	return o.Visibility
+	return t.Visibility
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetID() float64 {
-	if o == nil {
+func (t *TemplateDuplicateTemplateResponseBody) GetID() float64 {
+	if t == nil {
 		return 0.0
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetExternalID() *string {
-	if o == nil {
+func (t *TemplateDuplicateTemplateResponseBody) GetExternalID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ExternalID
+	return t.ExternalID
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetTitle() string {
-	if o == nil {
+func (t *TemplateDuplicateTemplateResponseBody) GetTitle() string {
+	if t == nil {
 		return ""
 	}
-	return o.Title
+	return t.Title
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetUserID() float64 {
-	if o == nil {
+func (t *TemplateDuplicateTemplateResponseBody) GetUserID() float64 {
+	if t == nil {
 		return 0.0
 	}
-	return o.UserID
+	return t.UserID
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetTeamID() float64 {
-	if o == nil {
+func (t *TemplateDuplicateTemplateResponseBody) GetTeamID() float64 {
+	if t == nil {
 		return 0.0
 	}
-	return o.TeamID
+	return t.TeamID
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetAuthOptions() *TemplateDuplicateTemplateAuthOptions {
-	if o == nil {
+func (t *TemplateDuplicateTemplateResponseBody) GetAuthOptions() *TemplateDuplicateTemplateAuthOptions {
+	if t == nil {
 		return nil
 	}
-	return o.AuthOptions
+	return t.AuthOptions
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetTemplateDocumentDataID() string {
-	if o == nil {
+func (t *TemplateDuplicateTemplateResponseBody) GetCreatedAt() string {
+	if t == nil {
 		return ""
 	}
-	return o.TemplateDocumentDataID
+	return t.CreatedAt
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetCreatedAt() string {
-	if o == nil {
+func (t *TemplateDuplicateTemplateResponseBody) GetUpdatedAt() string {
+	if t == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return t.UpdatedAt
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetUpdatedAt() string {
-	if o == nil {
+func (t *TemplateDuplicateTemplateResponseBody) GetPublicTitle() string {
+	if t == nil {
 		return ""
 	}
-	return o.UpdatedAt
+	return t.PublicTitle
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetPublicTitle() string {
-	if o == nil {
+func (t *TemplateDuplicateTemplateResponseBody) GetPublicDescription() string {
+	if t == nil {
 		return ""
 	}
-	return o.PublicTitle
+	return t.PublicDescription
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetPublicDescription() string {
-	if o == nil {
-		return ""
-	}
-	return o.PublicDescription
-}
-
-func (o *TemplateDuplicateTemplateResponseBody) GetFolderID() *string {
-	if o == nil {
+func (t *TemplateDuplicateTemplateResponseBody) GetFolderID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.FolderID
+	return t.FolderID
 }
 
-func (o *TemplateDuplicateTemplateResponseBody) GetUseLegacyFieldInsertion() bool {
-	if o == nil {
+func (t *TemplateDuplicateTemplateResponseBody) GetUseLegacyFieldInsertion() bool {
+	if t == nil {
 		return false
 	}
-	return o.UseLegacyFieldInsertion
+	return t.UseLegacyFieldInsertion
+}
+
+func (t *TemplateDuplicateTemplateResponseBody) GetEnvelopeID() string {
+	if t == nil {
+		return ""
+	}
+	return t.EnvelopeID
+}
+
+func (t *TemplateDuplicateTemplateResponseBody) GetTemplateDocumentDataID() *string {
+	if t == nil {
+		return nil
+	}
+	return t.TemplateDocumentDataID
 }
 
 type TemplateDuplicateTemplateResponse struct {
@@ -280,16 +303,16 @@ type TemplateDuplicateTemplateResponse struct {
 	Object *TemplateDuplicateTemplateResponseBody
 }
 
-func (o *TemplateDuplicateTemplateResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (t *TemplateDuplicateTemplateResponse) GetHTTPMeta() components.HTTPMetadata {
+	if t == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return t.HTTPMeta
 }
 
-func (o *TemplateDuplicateTemplateResponse) GetObject() *TemplateDuplicateTemplateResponseBody {
-	if o == nil {
+func (t *TemplateDuplicateTemplateResponse) GetObject() *TemplateDuplicateTemplateResponseBody {
+	if t == nil {
 		return nil
 	}
-	return o.Object
+	return t.Object
 }

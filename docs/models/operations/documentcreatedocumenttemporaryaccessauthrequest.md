@@ -5,6 +5,7 @@ The type of authentication required for the recipient to access the document.
 
 ## Values
 
-| Name                                                      | Value                                                     |
-| --------------------------------------------------------- | --------------------------------------------------------- |
-| `DocumentCreateDocumentTemporaryAccessAuthRequestAccount` | ACCOUNT                                                   |
+| Name                                                            | Value                                                           |
+| --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `DocumentCreateDocumentTemporaryAccessAuthRequestAccount`       | ACCOUNT                                                         |
+| `DocumentCreateDocumentTemporaryAccessAuthRequestTwoFactorAuth` | TWO_FACTOR_AUTH                                                 |

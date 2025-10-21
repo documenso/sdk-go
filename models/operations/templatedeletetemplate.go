@@ -10,11 +10,11 @@ type TemplateDeleteTemplateRequest struct {
 	TemplateID float64 `json:"templateId"`
 }
 
-func (o *TemplateDeleteTemplateRequest) GetTemplateID() float64 {
-	if o == nil {
+func (t *TemplateDeleteTemplateRequest) GetTemplateID() float64 {
+	if t == nil {
 		return 0.0
 	}
-	return o.TemplateID
+	return t.TemplateID
 }
 
 // TemplateDeleteTemplateResponseBody - Successful response
@@ -22,11 +22,11 @@ type TemplateDeleteTemplateResponseBody struct {
 	Success bool `json:"success"`
 }
 
-func (o *TemplateDeleteTemplateResponseBody) GetSuccess() bool {
-	if o == nil {
+func (t *TemplateDeleteTemplateResponseBody) GetSuccess() bool {
+	if t == nil {
 		return false
 	}
-	return o.Success
+	return t.Success
 }
 
 type TemplateDeleteTemplateResponse struct {
@@ -35,16 +35,16 @@ type TemplateDeleteTemplateResponse struct {
 	Object *TemplateDeleteTemplateResponseBody
 }
 
-func (o *TemplateDeleteTemplateResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (t *TemplateDeleteTemplateResponse) GetHTTPMeta() components.HTTPMetadata {
+	if t == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return t.HTTPMeta
 }
 
-func (o *TemplateDeleteTemplateResponse) GetObject() *TemplateDeleteTemplateResponseBody {
-	if o == nil {
+func (t *TemplateDeleteTemplateResponse) GetObject() *TemplateDeleteTemplateResponseBody {
+	if t == nil {
 		return nil
 	}
-	return o.Object
+	return t.Object
 }

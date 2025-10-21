@@ -11,11 +11,11 @@ type DocumentCreateDocumentTemporaryInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentCreateDocumentTemporaryInternalServerErrorIssue) GetMessage() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryInternalServerErrorIssue) GetMessage() string {
+	if d == nil {
 		return ""
 	}
-	return o.Message
+	return d.Message
 }
 
 // DocumentCreateDocumentTemporaryInternalServerError - Internal server error
@@ -37,11 +37,11 @@ type DocumentCreateDocumentTemporaryBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *DocumentCreateDocumentTemporaryBadRequestIssue) GetMessage() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryBadRequestIssue) GetMessage() string {
+	if d == nil {
 		return ""
 	}
-	return o.Message
+	return d.Message
 }
 
 // DocumentCreateDocumentTemporaryBadRequestError - Invalid input data

@@ -11,11 +11,11 @@ type TemplateToggleTemplateDirectLinkInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateToggleTemplateDirectLinkInternalServerErrorIssue) GetMessage() string {
-	if o == nil {
+func (t *TemplateToggleTemplateDirectLinkInternalServerErrorIssue) GetMessage() string {
+	if t == nil {
 		return ""
 	}
-	return o.Message
+	return t.Message
 }
 
 // TemplateToggleTemplateDirectLinkInternalServerError - Internal server error
@@ -37,11 +37,11 @@ type TemplateToggleTemplateDirectLinkBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateToggleTemplateDirectLinkBadRequestIssue) GetMessage() string {
-	if o == nil {
+func (t *TemplateToggleTemplateDirectLinkBadRequestIssue) GetMessage() string {
+	if t == nil {
 		return ""
 	}
-	return o.Message
+	return t.Message
 }
 
 // TemplateToggleTemplateDirectLinkBadRequestError - Invalid input data

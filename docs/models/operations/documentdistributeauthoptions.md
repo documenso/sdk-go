@@ -1,0 +1,9 @@
+# DocumentDistributeAuthOptions
+
+
+## Fields
+
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `GlobalAccessAuth`                                                                                               | [][operations.DocumentDistributeGlobalAccessAuth](../../models/operations/documentdistributeglobalaccessauth.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `GlobalActionAuth`                                                                                               | [][operations.DocumentDistributeGlobalActionAuth](../../models/operations/documentdistributeglobalactionauth.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |

@@ -5,6 +5,7 @@ The type of authentication required for the recipient to access the document.
 
 ## Values
 
-| Name                                       | Value                                      |
-| ------------------------------------------ | ------------------------------------------ |
-| `TemplateGetTemplateByIDAccessAuthAccount` | ACCOUNT                                    |
+| Name                                             | Value                                            |
+| ------------------------------------------------ | ------------------------------------------------ |
+| `TemplateGetTemplateByIDAccessAuthAccount`       | ACCOUNT                                          |
+| `TemplateGetTemplateByIDAccessAuthTwoFactorAuth` | TWO_FACTOR_AUTH                                  |

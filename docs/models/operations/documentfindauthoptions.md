@@ -1,0 +1,9 @@
+# DocumentFindAuthOptions
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `GlobalAccessAuth`                                                                                   | [][operations.DocumentFindGlobalAccessAuth](../../models/operations/documentfindglobalaccessauth.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `GlobalActionAuth`                                                                                   | [][operations.DocumentFindGlobalActionAuth](../../models/operations/documentfindglobalactionauth.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

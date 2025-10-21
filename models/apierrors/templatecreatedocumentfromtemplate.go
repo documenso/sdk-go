@@ -11,11 +11,11 @@ type TemplateCreateDocumentFromTemplateInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateInternalServerErrorIssue) GetMessage() string {
-	if o == nil {
+func (t *TemplateCreateDocumentFromTemplateInternalServerErrorIssue) GetMessage() string {
+	if t == nil {
 		return ""
 	}
-	return o.Message
+	return t.Message
 }
 
 // TemplateCreateDocumentFromTemplateInternalServerError - Internal server error
@@ -37,11 +37,11 @@ type TemplateCreateDocumentFromTemplateBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateCreateDocumentFromTemplateBadRequestIssue) GetMessage() string {
-	if o == nil {
+func (t *TemplateCreateDocumentFromTemplateBadRequestIssue) GetMessage() string {
+	if t == nil {
 		return ""
 	}
-	return o.Message
+	return t.Message
 }
 
 // TemplateCreateDocumentFromTemplateBadRequestError - Invalid input data

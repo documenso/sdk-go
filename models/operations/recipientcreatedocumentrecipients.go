@@ -47,7 +47,8 @@ func (e *RecipientCreateDocumentRecipientsRoleRequest) UnmarshalJSON(data []byte
 type RecipientCreateDocumentRecipientsAccessAuthRequest string
 
 const (
-	RecipientCreateDocumentRecipientsAccessAuthRequestAccount RecipientCreateDocumentRecipientsAccessAuthRequest = "ACCOUNT"
+	RecipientCreateDocumentRecipientsAccessAuthRequestAccount       RecipientCreateDocumentRecipientsAccessAuthRequest = "ACCOUNT"
+	RecipientCreateDocumentRecipientsAccessAuthRequestTwoFactorAuth RecipientCreateDocumentRecipientsAccessAuthRequest = "TWO_FACTOR_AUTH"
 )
 
 func (e RecipientCreateDocumentRecipientsAccessAuthRequest) ToPointer() *RecipientCreateDocumentRecipientsAccessAuthRequest {
@@ -60,6 +61,8 @@ func (e *RecipientCreateDocumentRecipientsAccessAuthRequest) UnmarshalJSON(data 
 	}
 	switch v {
 	case "ACCOUNT":
+		fallthrough
+	case "TWO_FACTOR_AUTH":
 		*e = RecipientCreateDocumentRecipientsAccessAuthRequest(v)
 		return nil
 	default:
@@ -112,46 +115,46 @@ type RecipientCreateDocumentRecipientsRecipientRequest struct {
 	ActionAuth   []RecipientCreateDocumentRecipientsActionAuthRequest `json:"actionAuth,omitempty"`
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientRequest) GetEmail() string {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientRequest) GetEmail() string {
+	if r == nil {
 		return ""
 	}
-	return o.Email
+	return r.Email
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientRequest) GetName() string {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientRequest) GetName() string {
+	if r == nil {
 		return ""
 	}
-	return o.Name
+	return r.Name
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientRequest) GetRole() RecipientCreateDocumentRecipientsRoleRequest {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientRequest) GetRole() RecipientCreateDocumentRecipientsRoleRequest {
+	if r == nil {
 		return RecipientCreateDocumentRecipientsRoleRequest("")
 	}
-	return o.Role
+	return r.Role
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientRequest) GetSigningOrder() *float64 {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientRequest) GetSigningOrder() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.SigningOrder
+	return r.SigningOrder
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientRequest) GetAccessAuth() []RecipientCreateDocumentRecipientsAccessAuthRequest {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientRequest) GetAccessAuth() []RecipientCreateDocumentRecipientsAccessAuthRequest {
+	if r == nil {
 		return nil
 	}
-	return o.AccessAuth
+	return r.AccessAuth
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientRequest) GetActionAuth() []RecipientCreateDocumentRecipientsActionAuthRequest {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientRequest) GetActionAuth() []RecipientCreateDocumentRecipientsActionAuthRequest {
+	if r == nil {
 		return nil
 	}
-	return o.ActionAuth
+	return r.ActionAuth
 }
 
 type RecipientCreateDocumentRecipientsRequest struct {
@@ -159,18 +162,18 @@ type RecipientCreateDocumentRecipientsRequest struct {
 	Recipients []RecipientCreateDocumentRecipientsRecipientRequest `json:"recipients"`
 }
 
-func (o *RecipientCreateDocumentRecipientsRequest) GetDocumentID() float64 {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRequest) GetDocumentID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.DocumentID
+	return r.DocumentID
 }
 
-func (o *RecipientCreateDocumentRecipientsRequest) GetRecipients() []RecipientCreateDocumentRecipientsRecipientRequest {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRequest) GetRecipients() []RecipientCreateDocumentRecipientsRecipientRequest {
+	if r == nil {
 		return []RecipientCreateDocumentRecipientsRecipientRequest{}
 	}
-	return o.Recipients
+	return r.Recipients
 }
 
 type RecipientCreateDocumentRecipientsRoleResponse string
@@ -293,7 +296,8 @@ func (e *RecipientCreateDocumentRecipientsSendStatus) UnmarshalJSON(data []byte)
 type RecipientCreateDocumentRecipientsAccessAuthResponse string
 
 const (
-	RecipientCreateDocumentRecipientsAccessAuthResponseAccount RecipientCreateDocumentRecipientsAccessAuthResponse = "ACCOUNT"
+	RecipientCreateDocumentRecipientsAccessAuthResponseAccount       RecipientCreateDocumentRecipientsAccessAuthResponse = "ACCOUNT"
+	RecipientCreateDocumentRecipientsAccessAuthResponseTwoFactorAuth RecipientCreateDocumentRecipientsAccessAuthResponse = "TWO_FACTOR_AUTH"
 )
 
 func (e RecipientCreateDocumentRecipientsAccessAuthResponse) ToPointer() *RecipientCreateDocumentRecipientsAccessAuthResponse {
@@ -306,6 +310,8 @@ func (e *RecipientCreateDocumentRecipientsAccessAuthResponse) UnmarshalJSON(data
 	}
 	switch v {
 	case "ACCOUNT":
+		fallthrough
+	case "TWO_FACTOR_AUTH":
 		*e = RecipientCreateDocumentRecipientsAccessAuthResponse(v)
 		return nil
 	default:
@@ -354,28 +360,27 @@ type RecipientCreateDocumentRecipientsAuthOptions struct {
 	ActionAuth []RecipientCreateDocumentRecipientsActionAuthResponse `json:"actionAuth"`
 }
 
-func (o *RecipientCreateDocumentRecipientsAuthOptions) GetAccessAuth() []RecipientCreateDocumentRecipientsAccessAuthResponse {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsAuthOptions) GetAccessAuth() []RecipientCreateDocumentRecipientsAccessAuthResponse {
+	if r == nil {
 		return []RecipientCreateDocumentRecipientsAccessAuthResponse{}
 	}
-	return o.AccessAuth
+	return r.AccessAuth
 }
 
-func (o *RecipientCreateDocumentRecipientsAuthOptions) GetActionAuth() []RecipientCreateDocumentRecipientsActionAuthResponse {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsAuthOptions) GetActionAuth() []RecipientCreateDocumentRecipientsActionAuthResponse {
+	if r == nil {
 		return []RecipientCreateDocumentRecipientsActionAuthResponse{}
 	}
-	return o.ActionAuth
+	return r.ActionAuth
 }
 
 type RecipientCreateDocumentRecipientsRecipientResponse struct {
+	EnvelopeID        string                                         `json:"envelopeId"`
 	Role              RecipientCreateDocumentRecipientsRoleResponse  `json:"role"`
 	ReadStatus        RecipientCreateDocumentRecipientsReadStatus    `json:"readStatus"`
 	SigningStatus     RecipientCreateDocumentRecipientsSigningStatus `json:"signingStatus"`
 	SendStatus        RecipientCreateDocumentRecipientsSendStatus    `json:"sendStatus"`
 	ID                float64                                        `json:"id"`
-	DocumentID        *float64                                       `json:"documentId"`
-	TemplateID        *float64                                       `json:"templateId"`
 	Email             string                                         `json:"email"`
 	Name              string                                         `json:"name"`
 	Token             string                                         `json:"token"`
@@ -386,118 +391,127 @@ type RecipientCreateDocumentRecipientsRecipientResponse struct {
 	// The order in which the recipient should sign the document. Only works if the document is set to sequential signing.
 	SigningOrder    *float64 `json:"signingOrder"`
 	RejectionReason *string  `json:"rejectionReason"`
+	DocumentID      *float64 `json:"documentId,omitempty"`
+	TemplateID      *float64 `json:"templateId,omitempty"`
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetRole() RecipientCreateDocumentRecipientsRoleResponse {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetEnvelopeID() string {
+	if r == nil {
+		return ""
+	}
+	return r.EnvelopeID
+}
+
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetRole() RecipientCreateDocumentRecipientsRoleResponse {
+	if r == nil {
 		return RecipientCreateDocumentRecipientsRoleResponse("")
 	}
-	return o.Role
+	return r.Role
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetReadStatus() RecipientCreateDocumentRecipientsReadStatus {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetReadStatus() RecipientCreateDocumentRecipientsReadStatus {
+	if r == nil {
 		return RecipientCreateDocumentRecipientsReadStatus("")
 	}
-	return o.ReadStatus
+	return r.ReadStatus
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetSigningStatus() RecipientCreateDocumentRecipientsSigningStatus {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetSigningStatus() RecipientCreateDocumentRecipientsSigningStatus {
+	if r == nil {
 		return RecipientCreateDocumentRecipientsSigningStatus("")
 	}
-	return o.SigningStatus
+	return r.SigningStatus
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetSendStatus() RecipientCreateDocumentRecipientsSendStatus {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetSendStatus() RecipientCreateDocumentRecipientsSendStatus {
+	if r == nil {
 		return RecipientCreateDocumentRecipientsSendStatus("")
 	}
-	return o.SendStatus
+	return r.SendStatus
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetID() float64 {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetDocumentID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DocumentID
-}
-
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetTemplateID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.TemplateID
-}
-
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetEmail() string {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetEmail() string {
+	if r == nil {
 		return ""
 	}
-	return o.Email
+	return r.Email
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetName() string {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetName() string {
+	if r == nil {
 		return ""
 	}
-	return o.Name
+	return r.Name
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetToken() string {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetToken() string {
+	if r == nil {
 		return ""
 	}
-	return o.Token
+	return r.Token
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetDocumentDeletedAt() *string {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetDocumentDeletedAt() *string {
+	if r == nil {
 		return nil
 	}
-	return o.DocumentDeletedAt
+	return r.DocumentDeletedAt
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetExpired() *string {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetExpired() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Expired
+	return r.Expired
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetSignedAt() *string {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetSignedAt() *string {
+	if r == nil {
 		return nil
 	}
-	return o.SignedAt
+	return r.SignedAt
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetAuthOptions() *RecipientCreateDocumentRecipientsAuthOptions {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetAuthOptions() *RecipientCreateDocumentRecipientsAuthOptions {
+	if r == nil {
 		return nil
 	}
-	return o.AuthOptions
+	return r.AuthOptions
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetSigningOrder() *float64 {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetSigningOrder() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.SigningOrder
+	return r.SigningOrder
 }
 
-func (o *RecipientCreateDocumentRecipientsRecipientResponse) GetRejectionReason() *string {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetRejectionReason() *string {
+	if r == nil {
 		return nil
 	}
-	return o.RejectionReason
+	return r.RejectionReason
+}
+
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetDocumentID() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.DocumentID
+}
+
+func (r *RecipientCreateDocumentRecipientsRecipientResponse) GetTemplateID() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.TemplateID
 }
 
 // RecipientCreateDocumentRecipientsResponseBody - Successful response
@@ -505,11 +519,11 @@ type RecipientCreateDocumentRecipientsResponseBody struct {
 	Recipients []RecipientCreateDocumentRecipientsRecipientResponse `json:"recipients"`
 }
 
-func (o *RecipientCreateDocumentRecipientsResponseBody) GetRecipients() []RecipientCreateDocumentRecipientsRecipientResponse {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsResponseBody) GetRecipients() []RecipientCreateDocumentRecipientsRecipientResponse {
+	if r == nil {
 		return []RecipientCreateDocumentRecipientsRecipientResponse{}
 	}
-	return o.Recipients
+	return r.Recipients
 }
 
 type RecipientCreateDocumentRecipientsResponse struct {
@@ -518,16 +532,16 @@ type RecipientCreateDocumentRecipientsResponse struct {
 	Object *RecipientCreateDocumentRecipientsResponseBody
 }
 
-func (o *RecipientCreateDocumentRecipientsResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsResponse) GetHTTPMeta() components.HTTPMetadata {
+	if r == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return r.HTTPMeta
 }
 
-func (o *RecipientCreateDocumentRecipientsResponse) GetObject() *RecipientCreateDocumentRecipientsResponseBody {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsResponse) GetObject() *RecipientCreateDocumentRecipientsResponseBody {
+	if r == nil {
 		return nil
 	}
-	return o.Object
+	return r.Object
 }

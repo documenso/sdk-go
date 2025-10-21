@@ -44,7 +44,8 @@ func (e *DocumentCreateDocumentTemporaryVisibilityRequest) UnmarshalJSON(data []
 type DocumentCreateDocumentTemporaryGlobalAccessAuthRequest string
 
 const (
-	DocumentCreateDocumentTemporaryGlobalAccessAuthRequestAccount DocumentCreateDocumentTemporaryGlobalAccessAuthRequest = "ACCOUNT"
+	DocumentCreateDocumentTemporaryGlobalAccessAuthRequestAccount       DocumentCreateDocumentTemporaryGlobalAccessAuthRequest = "ACCOUNT"
+	DocumentCreateDocumentTemporaryGlobalAccessAuthRequestTwoFactorAuth DocumentCreateDocumentTemporaryGlobalAccessAuthRequest = "TWO_FACTOR_AUTH"
 )
 
 func (e DocumentCreateDocumentTemporaryGlobalAccessAuthRequest) ToPointer() *DocumentCreateDocumentTemporaryGlobalAccessAuthRequest {
@@ -57,6 +58,8 @@ func (e *DocumentCreateDocumentTemporaryGlobalAccessAuthRequest) UnmarshalJSON(d
 	}
 	switch v {
 	case "ACCOUNT":
+		fallthrough
+	case "TWO_FACTOR_AUTH":
 		*e = DocumentCreateDocumentTemporaryGlobalAccessAuthRequest(v)
 		return nil
 	default:
@@ -106,9 +109,9 @@ const (
 )
 
 type FormValuesRequest struct {
-	Str     *string  `queryParam:"inline"`
-	Boolean *bool    `queryParam:"inline"`
-	Number  *float64 `queryParam:"inline"`
+	Str     *string  `queryParam:"inline,name=formValues"`
+	Boolean *bool    `queryParam:"inline,name=formValues"`
+	Number  *float64 `queryParam:"inline,name=formValues"`
 
 	Type FormValuesRequestType
 }
@@ -221,7 +224,8 @@ func (e *DocumentCreateDocumentTemporaryRoleRequest) UnmarshalJSON(data []byte) 
 type DocumentCreateDocumentTemporaryAccessAuthRequest string
 
 const (
-	DocumentCreateDocumentTemporaryAccessAuthRequestAccount DocumentCreateDocumentTemporaryAccessAuthRequest = "ACCOUNT"
+	DocumentCreateDocumentTemporaryAccessAuthRequestAccount       DocumentCreateDocumentTemporaryAccessAuthRequest = "ACCOUNT"
+	DocumentCreateDocumentTemporaryAccessAuthRequestTwoFactorAuth DocumentCreateDocumentTemporaryAccessAuthRequest = "TWO_FACTOR_AUTH"
 )
 
 func (e DocumentCreateDocumentTemporaryAccessAuthRequest) ToPointer() *DocumentCreateDocumentTemporaryAccessAuthRequest {
@@ -234,6 +238,8 @@ func (e *DocumentCreateDocumentTemporaryAccessAuthRequest) UnmarshalJSON(data []
 	}
 	switch v {
 	case "ACCOUNT":
+		fallthrough
+	case "TWO_FACTOR_AUTH":
 		*e = DocumentCreateDocumentTemporaryAccessAuthRequest(v)
 		return nil
 	default:
@@ -338,11 +344,11 @@ func (d *DocumentCreateDocumentTemporaryValueDropdown) UnmarshalJSON(data []byte
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryValueDropdown) GetValue() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryValueDropdown) GetValue() string {
+	if d == nil {
 		return ""
 	}
-	return o.Value
+	return d.Value
 }
 
 type DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown struct {
@@ -366,53 +372,53 @@ func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) UnmarshalJSO
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetLabel() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetLabel() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Label
+	return d.Label
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetPlaceholder() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetPlaceholder() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Placeholder
+	return d.Placeholder
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetRequired() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetRequired() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Required
+	return d.Required
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetReadOnly() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetReadOnly() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return d.ReadOnly
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetType() DocumentCreateDocumentTemporaryRecipientTypeDropdown2 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetType() DocumentCreateDocumentTemporaryRecipientTypeDropdown2 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeDropdown2("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetValues() []DocumentCreateDocumentTemporaryValueDropdown {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetValues() []DocumentCreateDocumentTemporaryValueDropdown {
+	if d == nil {
 		return nil
 	}
-	return o.Values
+	return d.Values
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetDefaultValue() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown) GetDefaultValue() *string {
+	if d == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return d.DefaultValue
 }
 
 type DocumentCreateDocumentTemporaryFieldDropdown struct {
@@ -441,53 +447,53 @@ func (d *DocumentCreateDocumentTemporaryFieldDropdown) UnmarshalJSON(data []byte
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldDropdown) GetType() DocumentCreateDocumentTemporaryRecipientTypeDropdown1 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldDropdown) GetType() DocumentCreateDocumentTemporaryRecipientTypeDropdown1 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeDropdown1("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldDropdown) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldDropdown) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaDropdown {
+	if d == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return d.FieldMeta
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldDropdown) GetPageNumber() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldDropdown) GetPageNumber() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageNumber
+	return d.PageNumber
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldDropdown) GetPageX() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldDropdown) GetPageX() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageX
+	return d.PageX
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldDropdown) GetPageY() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldDropdown) GetPageY() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageY
+	return d.PageY
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldDropdown) GetWidth() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldDropdown) GetWidth() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Width
+	return d.Width
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldDropdown) GetHeight() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldDropdown) GetHeight() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Height
+	return d.Height
 }
 
 type DocumentCreateDocumentTemporaryRecipientTypeCheckbox1 string
@@ -553,25 +559,51 @@ func (d *DocumentCreateDocumentTemporaryValueCheckbox) UnmarshalJSON(data []byte
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryValueCheckbox) GetID() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryValueCheckbox) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DocumentCreateDocumentTemporaryValueCheckbox) GetChecked() bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryValueCheckbox) GetChecked() bool {
+	if d == nil {
 		return false
 	}
-	return o.Checked
+	return d.Checked
 }
 
-func (o *DocumentCreateDocumentTemporaryValueCheckbox) GetValue() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryValueCheckbox) GetValue() string {
+	if d == nil {
 		return ""
 	}
-	return o.Value
+	return d.Value
+}
+
+type DocumentCreateDocumentTemporaryRecipientDirection string
+
+const (
+	DocumentCreateDocumentTemporaryRecipientDirectionVertical   DocumentCreateDocumentTemporaryRecipientDirection = "vertical"
+	DocumentCreateDocumentTemporaryRecipientDirectionHorizontal DocumentCreateDocumentTemporaryRecipientDirection = "horizontal"
+)
+
+func (e DocumentCreateDocumentTemporaryRecipientDirection) ToPointer() *DocumentCreateDocumentTemporaryRecipientDirection {
+	return &e
+}
+func (e *DocumentCreateDocumentTemporaryRecipientDirection) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = DocumentCreateDocumentTemporaryRecipientDirection(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentCreateDocumentTemporaryRecipientDirection: %v", v)
+	}
 }
 
 type DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox struct {
@@ -583,6 +615,7 @@ type DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox struct {
 	Values           []DocumentCreateDocumentTemporaryValueCheckbox        `json:"values,omitempty"`
 	ValidationRule   *string                                               `json:"validationRule,omitempty"`
 	ValidationLength *float64                                              `json:"validationLength,omitempty"`
+	Direction        *DocumentCreateDocumentTemporaryRecipientDirection    `default:"vertical" json:"direction"`
 }
 
 func (d DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) MarshalJSON() ([]byte, error) {
@@ -596,60 +629,67 @@ func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) UnmarshalJSO
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetLabel() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetLabel() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Label
+	return d.Label
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetPlaceholder() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetPlaceholder() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Placeholder
+	return d.Placeholder
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetRequired() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetRequired() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Required
+	return d.Required
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetReadOnly() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetReadOnly() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return d.ReadOnly
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetType() DocumentCreateDocumentTemporaryRecipientTypeCheckbox2 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetType() DocumentCreateDocumentTemporaryRecipientTypeCheckbox2 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeCheckbox2("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetValues() []DocumentCreateDocumentTemporaryValueCheckbox {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetValues() []DocumentCreateDocumentTemporaryValueCheckbox {
+	if d == nil {
 		return nil
 	}
-	return o.Values
+	return d.Values
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetValidationRule() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetValidationRule() *string {
+	if d == nil {
 		return nil
 	}
-	return o.ValidationRule
+	return d.ValidationRule
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetValidationLength() *float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetValidationLength() *float64 {
+	if d == nil {
 		return nil
 	}
-	return o.ValidationLength
+	return d.ValidationLength
+}
+
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox) GetDirection() *DocumentCreateDocumentTemporaryRecipientDirection {
+	if d == nil {
+		return nil
+	}
+	return d.Direction
 }
 
 type DocumentCreateDocumentTemporaryFieldCheckbox struct {
@@ -678,53 +718,53 @@ func (d *DocumentCreateDocumentTemporaryFieldCheckbox) UnmarshalJSON(data []byte
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldCheckbox) GetType() DocumentCreateDocumentTemporaryRecipientTypeCheckbox1 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldCheckbox) GetType() DocumentCreateDocumentTemporaryRecipientTypeCheckbox1 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeCheckbox1("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldCheckbox) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldCheckbox) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaCheckbox {
+	if d == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return d.FieldMeta
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldCheckbox) GetPageNumber() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldCheckbox) GetPageNumber() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageNumber
+	return d.PageNumber
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldCheckbox) GetPageX() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldCheckbox) GetPageX() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageX
+	return d.PageX
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldCheckbox) GetPageY() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldCheckbox) GetPageY() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageY
+	return d.PageY
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldCheckbox) GetWidth() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldCheckbox) GetWidth() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Width
+	return d.Width
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldCheckbox) GetHeight() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldCheckbox) GetHeight() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Height
+	return d.Height
 }
 
 type DocumentCreateDocumentTemporaryRecipientTypeRadio1 string
@@ -790,25 +830,25 @@ func (d *DocumentCreateDocumentTemporaryValueRadio) UnmarshalJSON(data []byte) e
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryValueRadio) GetID() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryValueRadio) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DocumentCreateDocumentTemporaryValueRadio) GetChecked() bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryValueRadio) GetChecked() bool {
+	if d == nil {
 		return false
 	}
-	return o.Checked
+	return d.Checked
 }
 
-func (o *DocumentCreateDocumentTemporaryValueRadio) GetValue() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryValueRadio) GetValue() string {
+	if d == nil {
 		return ""
 	}
-	return o.Value
+	return d.Value
 }
 
 type DocumentCreateDocumentTemporaryRecipientFieldMetaRadio struct {
@@ -831,46 +871,46 @@ func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) UnmarshalJSON(d
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetLabel() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetLabel() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Label
+	return d.Label
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetPlaceholder() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetPlaceholder() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Placeholder
+	return d.Placeholder
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetRequired() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetRequired() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Required
+	return d.Required
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetReadOnly() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetReadOnly() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return d.ReadOnly
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetType() DocumentCreateDocumentTemporaryRecipientTypeRadio2 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetType() DocumentCreateDocumentTemporaryRecipientTypeRadio2 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeRadio2("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetValues() []DocumentCreateDocumentTemporaryValueRadio {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio) GetValues() []DocumentCreateDocumentTemporaryValueRadio {
+	if d == nil {
 		return nil
 	}
-	return o.Values
+	return d.Values
 }
 
 type DocumentCreateDocumentTemporaryFieldRadio struct {
@@ -899,53 +939,53 @@ func (d *DocumentCreateDocumentTemporaryFieldRadio) UnmarshalJSON(data []byte) e
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldRadio) GetType() DocumentCreateDocumentTemporaryRecipientTypeRadio1 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldRadio) GetType() DocumentCreateDocumentTemporaryRecipientTypeRadio1 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeRadio1("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldRadio) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldRadio) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaRadio {
+	if d == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return d.FieldMeta
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldRadio) GetPageNumber() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldRadio) GetPageNumber() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageNumber
+	return d.PageNumber
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldRadio) GetPageX() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldRadio) GetPageX() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageX
+	return d.PageX
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldRadio) GetPageY() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldRadio) GetPageY() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageY
+	return d.PageY
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldRadio) GetWidth() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldRadio) GetWidth() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Width
+	return d.Width
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldRadio) GetHeight() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldRadio) GetHeight() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Height
+	return d.Height
 }
 
 type DocumentCreateDocumentTemporaryRecipientTypeNumber1 string
@@ -1048,81 +1088,81 @@ func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) UnmarshalJSON(
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetLabel() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetLabel() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Label
+	return d.Label
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetPlaceholder() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetPlaceholder() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Placeholder
+	return d.Placeholder
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetRequired() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetRequired() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Required
+	return d.Required
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetReadOnly() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetReadOnly() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return d.ReadOnly
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetType() DocumentCreateDocumentTemporaryRecipientTypeNumber2 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetType() DocumentCreateDocumentTemporaryRecipientTypeNumber2 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeNumber2("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetNumberFormat() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetNumberFormat() *string {
+	if d == nil {
 		return nil
 	}
-	return o.NumberFormat
+	return d.NumberFormat
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetValue() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetValue() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Value
+	return d.Value
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetMinValue() *float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetMinValue() *float64 {
+	if d == nil {
 		return nil
 	}
-	return o.MinValue
+	return d.MinValue
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetMaxValue() *float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetMaxValue() *float64 {
+	if d == nil {
 		return nil
 	}
-	return o.MaxValue
+	return d.MaxValue
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetFontSize() *float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetFontSize() *float64 {
+	if d == nil {
 		return nil
 	}
-	return o.FontSize
+	return d.FontSize
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignNumber {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignNumber {
+	if d == nil {
 		return nil
 	}
-	return o.TextAlign
+	return d.TextAlign
 }
 
 type DocumentCreateDocumentTemporaryFieldNumber struct {
@@ -1151,53 +1191,53 @@ func (d *DocumentCreateDocumentTemporaryFieldNumber) UnmarshalJSON(data []byte) 
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldNumber) GetType() DocumentCreateDocumentTemporaryRecipientTypeNumber1 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldNumber) GetType() DocumentCreateDocumentTemporaryRecipientTypeNumber1 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeNumber1("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldNumber) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldNumber) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaNumber {
+	if d == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return d.FieldMeta
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldNumber) GetPageNumber() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldNumber) GetPageNumber() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageNumber
+	return d.PageNumber
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldNumber) GetPageX() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldNumber) GetPageX() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageX
+	return d.PageX
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldNumber) GetPageY() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldNumber) GetPageY() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageY
+	return d.PageY
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldNumber) GetWidth() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldNumber) GetWidth() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Width
+	return d.Width
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldNumber) GetHeight() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldNumber) GetHeight() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Height
+	return d.Height
 }
 
 type DocumentCreateDocumentTemporaryRecipientTypeText1 string
@@ -1298,67 +1338,67 @@ func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaText) UnmarshalJSON(da
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetLabel() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetLabel() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Label
+	return d.Label
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetPlaceholder() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetPlaceholder() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Placeholder
+	return d.Placeholder
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetRequired() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetRequired() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Required
+	return d.Required
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetReadOnly() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetReadOnly() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return d.ReadOnly
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetType() DocumentCreateDocumentTemporaryRecipientTypeText2 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetType() DocumentCreateDocumentTemporaryRecipientTypeText2 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeText2("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetText() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetText() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Text
+	return d.Text
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetCharacterLimit() *float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetCharacterLimit() *float64 {
+	if d == nil {
 		return nil
 	}
-	return o.CharacterLimit
+	return d.CharacterLimit
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetFontSize() *float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetFontSize() *float64 {
+	if d == nil {
 		return nil
 	}
-	return o.FontSize
+	return d.FontSize
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignText {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaText) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignText {
+	if d == nil {
 		return nil
 	}
-	return o.TextAlign
+	return d.TextAlign
 }
 
 type DocumentCreateDocumentTemporaryFieldText struct {
@@ -1387,53 +1427,53 @@ func (d *DocumentCreateDocumentTemporaryFieldText) UnmarshalJSON(data []byte) er
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldText) GetType() DocumentCreateDocumentTemporaryRecipientTypeText1 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldText) GetType() DocumentCreateDocumentTemporaryRecipientTypeText1 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeText1("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldText) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaText {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldText) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaText {
+	if d == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return d.FieldMeta
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldText) GetPageNumber() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldText) GetPageNumber() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageNumber
+	return d.PageNumber
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldText) GetPageX() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldText) GetPageX() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageX
+	return d.PageX
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldText) GetPageY() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldText) GetPageY() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageY
+	return d.PageY
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldText) GetWidth() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldText) GetWidth() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Width
+	return d.Width
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldText) GetHeight() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldText) GetHeight() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Height
+	return d.Height
 }
 
 type DocumentCreateDocumentTemporaryRecipientTypeDate1 string
@@ -1532,53 +1572,53 @@ func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) UnmarshalJSON(da
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetLabel() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetLabel() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Label
+	return d.Label
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetPlaceholder() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetPlaceholder() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Placeholder
+	return d.Placeholder
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetRequired() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetRequired() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Required
+	return d.Required
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetReadOnly() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetReadOnly() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return d.ReadOnly
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetType() DocumentCreateDocumentTemporaryRecipientTypeDate2 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetType() DocumentCreateDocumentTemporaryRecipientTypeDate2 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeDate2("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetFontSize() *float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetFontSize() *float64 {
+	if d == nil {
 		return nil
 	}
-	return o.FontSize
+	return d.FontSize
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignDate {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaDate) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignDate {
+	if d == nil {
 		return nil
 	}
-	return o.TextAlign
+	return d.TextAlign
 }
 
 type DocumentCreateDocumentTemporaryFieldDate struct {
@@ -1607,53 +1647,53 @@ func (d *DocumentCreateDocumentTemporaryFieldDate) UnmarshalJSON(data []byte) er
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldDate) GetType() DocumentCreateDocumentTemporaryRecipientTypeDate1 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldDate) GetType() DocumentCreateDocumentTemporaryRecipientTypeDate1 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeDate1("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldDate) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaDate {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldDate) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaDate {
+	if d == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return d.FieldMeta
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldDate) GetPageNumber() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldDate) GetPageNumber() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageNumber
+	return d.PageNumber
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldDate) GetPageX() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldDate) GetPageX() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageX
+	return d.PageX
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldDate) GetPageY() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldDate) GetPageY() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageY
+	return d.PageY
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldDate) GetWidth() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldDate) GetWidth() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Width
+	return d.Width
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldDate) GetHeight() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldDate) GetHeight() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Height
+	return d.Height
 }
 
 type DocumentCreateDocumentTemporaryRecipientTypeEmail1 string
@@ -1752,53 +1792,53 @@ func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) UnmarshalJSON(d
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetLabel() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetLabel() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Label
+	return d.Label
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetPlaceholder() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetPlaceholder() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Placeholder
+	return d.Placeholder
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetRequired() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetRequired() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Required
+	return d.Required
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetReadOnly() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetReadOnly() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return d.ReadOnly
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetType() DocumentCreateDocumentTemporaryRecipientTypeEmail2 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetType() DocumentCreateDocumentTemporaryRecipientTypeEmail2 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeEmail2("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetFontSize() *float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetFontSize() *float64 {
+	if d == nil {
 		return nil
 	}
-	return o.FontSize
+	return d.FontSize
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignEmail {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignEmail {
+	if d == nil {
 		return nil
 	}
-	return o.TextAlign
+	return d.TextAlign
 }
 
 type DocumentCreateDocumentTemporaryFieldEmail struct {
@@ -1827,53 +1867,53 @@ func (d *DocumentCreateDocumentTemporaryFieldEmail) UnmarshalJSON(data []byte) e
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldEmail) GetType() DocumentCreateDocumentTemporaryRecipientTypeEmail1 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldEmail) GetType() DocumentCreateDocumentTemporaryRecipientTypeEmail1 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeEmail1("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldEmail) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldEmail) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaEmail {
+	if d == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return d.FieldMeta
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldEmail) GetPageNumber() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldEmail) GetPageNumber() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageNumber
+	return d.PageNumber
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldEmail) GetPageX() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldEmail) GetPageX() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageX
+	return d.PageX
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldEmail) GetPageY() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldEmail) GetPageY() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageY
+	return d.PageY
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldEmail) GetWidth() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldEmail) GetWidth() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Width
+	return d.Width
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldEmail) GetHeight() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldEmail) GetHeight() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Height
+	return d.Height
 }
 
 type DocumentCreateDocumentTemporaryRecipientTypeName1 string
@@ -1972,53 +2012,53 @@ func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaName) UnmarshalJSON(da
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetLabel() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetLabel() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Label
+	return d.Label
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetPlaceholder() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetPlaceholder() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Placeholder
+	return d.Placeholder
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetRequired() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetRequired() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Required
+	return d.Required
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetReadOnly() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetReadOnly() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return d.ReadOnly
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetType() DocumentCreateDocumentTemporaryRecipientTypeName2 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetType() DocumentCreateDocumentTemporaryRecipientTypeName2 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeName2("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetFontSize() *float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetFontSize() *float64 {
+	if d == nil {
 		return nil
 	}
-	return o.FontSize
+	return d.FontSize
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignName {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaName) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignName {
+	if d == nil {
 		return nil
 	}
-	return o.TextAlign
+	return d.TextAlign
 }
 
 type DocumentCreateDocumentTemporaryFieldName struct {
@@ -2047,53 +2087,53 @@ func (d *DocumentCreateDocumentTemporaryFieldName) UnmarshalJSON(data []byte) er
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldName) GetType() DocumentCreateDocumentTemporaryRecipientTypeName1 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldName) GetType() DocumentCreateDocumentTemporaryRecipientTypeName1 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeName1("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldName) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaName {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldName) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaName {
+	if d == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return d.FieldMeta
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldName) GetPageNumber() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldName) GetPageNumber() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageNumber
+	return d.PageNumber
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldName) GetPageX() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldName) GetPageX() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageX
+	return d.PageX
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldName) GetPageY() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldName) GetPageY() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageY
+	return d.PageY
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldName) GetWidth() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldName) GetWidth() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Width
+	return d.Width
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldName) GetHeight() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldName) GetHeight() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Height
+	return d.Height
 }
 
 type DocumentCreateDocumentTemporaryRecipientTypeInitials1 string
@@ -2192,53 +2232,53 @@ func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) UnmarshalJSO
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetLabel() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetLabel() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Label
+	return d.Label
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetPlaceholder() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetPlaceholder() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Placeholder
+	return d.Placeholder
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetRequired() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetRequired() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.Required
+	return d.Required
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetReadOnly() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetReadOnly() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return d.ReadOnly
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetType() DocumentCreateDocumentTemporaryRecipientTypeInitials2 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetType() DocumentCreateDocumentTemporaryRecipientTypeInitials2 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeInitials2("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetFontSize() *float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetFontSize() *float64 {
+	if d == nil {
 		return nil
 	}
-	return o.FontSize
+	return d.FontSize
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignInitials {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials) GetTextAlign() *DocumentCreateDocumentTemporaryTextAlignInitials {
+	if d == nil {
 		return nil
 	}
-	return o.TextAlign
+	return d.TextAlign
 }
 
 type DocumentCreateDocumentTemporaryFieldInitials struct {
@@ -2267,53 +2307,53 @@ func (d *DocumentCreateDocumentTemporaryFieldInitials) UnmarshalJSON(data []byte
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldInitials) GetType() DocumentCreateDocumentTemporaryRecipientTypeInitials1 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldInitials) GetType() DocumentCreateDocumentTemporaryRecipientTypeInitials1 {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRecipientTypeInitials1("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldInitials) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldInitials) GetFieldMeta() *DocumentCreateDocumentTemporaryRecipientFieldMetaInitials {
+	if d == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return d.FieldMeta
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldInitials) GetPageNumber() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldInitials) GetPageNumber() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageNumber
+	return d.PageNumber
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldInitials) GetPageX() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldInitials) GetPageX() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageX
+	return d.PageX
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldInitials) GetPageY() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldInitials) GetPageY() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageY
+	return d.PageY
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldInitials) GetWidth() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldInitials) GetWidth() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Width
+	return d.Width
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldInitials) GetHeight() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldInitials) GetHeight() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Height
+	return d.Height
 }
 
 type DocumentCreateDocumentTemporaryTypeFreeSignature string
@@ -2364,46 +2404,46 @@ func (d *DocumentCreateDocumentTemporaryFieldFreeSignature) UnmarshalJSON(data [
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldFreeSignature) GetType() DocumentCreateDocumentTemporaryTypeFreeSignature {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldFreeSignature) GetType() DocumentCreateDocumentTemporaryTypeFreeSignature {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryTypeFreeSignature("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldFreeSignature) GetPageNumber() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldFreeSignature) GetPageNumber() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageNumber
+	return d.PageNumber
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldFreeSignature) GetPageX() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldFreeSignature) GetPageX() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageX
+	return d.PageX
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldFreeSignature) GetPageY() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldFreeSignature) GetPageY() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageY
+	return d.PageY
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldFreeSignature) GetWidth() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldFreeSignature) GetWidth() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Width
+	return d.Width
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldFreeSignature) GetHeight() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldFreeSignature) GetHeight() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Height
+	return d.Height
 }
 
 type DocumentCreateDocumentTemporaryTypeSignature string
@@ -2454,46 +2494,46 @@ func (d *DocumentCreateDocumentTemporaryFieldSignature) UnmarshalJSON(data []byt
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldSignature) GetType() DocumentCreateDocumentTemporaryTypeSignature {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldSignature) GetType() DocumentCreateDocumentTemporaryTypeSignature {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryTypeSignature("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldSignature) GetPageNumber() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldSignature) GetPageNumber() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageNumber
+	return d.PageNumber
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldSignature) GetPageX() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldSignature) GetPageX() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageX
+	return d.PageX
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldSignature) GetPageY() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldSignature) GetPageY() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.PageY
+	return d.PageY
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldSignature) GetWidth() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldSignature) GetWidth() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Width
+	return d.Width
 }
 
-func (o *DocumentCreateDocumentTemporaryFieldSignature) GetHeight() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFieldSignature) GetHeight() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Height
+	return d.Height
 }
 
 type DocumentCreateDocumentTemporaryFieldUnionType string
@@ -2513,17 +2553,17 @@ const (
 )
 
 type DocumentCreateDocumentTemporaryFieldUnion struct {
-	DocumentCreateDocumentTemporaryFieldSignature     *DocumentCreateDocumentTemporaryFieldSignature     `queryParam:"inline"`
-	DocumentCreateDocumentTemporaryFieldFreeSignature *DocumentCreateDocumentTemporaryFieldFreeSignature `queryParam:"inline"`
-	DocumentCreateDocumentTemporaryFieldInitials      *DocumentCreateDocumentTemporaryFieldInitials      `queryParam:"inline"`
-	DocumentCreateDocumentTemporaryFieldName          *DocumentCreateDocumentTemporaryFieldName          `queryParam:"inline"`
-	DocumentCreateDocumentTemporaryFieldEmail         *DocumentCreateDocumentTemporaryFieldEmail         `queryParam:"inline"`
-	DocumentCreateDocumentTemporaryFieldDate          *DocumentCreateDocumentTemporaryFieldDate          `queryParam:"inline"`
-	DocumentCreateDocumentTemporaryFieldText          *DocumentCreateDocumentTemporaryFieldText          `queryParam:"inline"`
-	DocumentCreateDocumentTemporaryFieldNumber        *DocumentCreateDocumentTemporaryFieldNumber        `queryParam:"inline"`
-	DocumentCreateDocumentTemporaryFieldRadio         *DocumentCreateDocumentTemporaryFieldRadio         `queryParam:"inline"`
-	DocumentCreateDocumentTemporaryFieldCheckbox      *DocumentCreateDocumentTemporaryFieldCheckbox      `queryParam:"inline"`
-	DocumentCreateDocumentTemporaryFieldDropdown      *DocumentCreateDocumentTemporaryFieldDropdown      `queryParam:"inline"`
+	DocumentCreateDocumentTemporaryFieldSignature     *DocumentCreateDocumentTemporaryFieldSignature     `queryParam:"inline,name=field"`
+	DocumentCreateDocumentTemporaryFieldFreeSignature *DocumentCreateDocumentTemporaryFieldFreeSignature `queryParam:"inline,name=field"`
+	DocumentCreateDocumentTemporaryFieldInitials      *DocumentCreateDocumentTemporaryFieldInitials      `queryParam:"inline,name=field"`
+	DocumentCreateDocumentTemporaryFieldName          *DocumentCreateDocumentTemporaryFieldName          `queryParam:"inline,name=field"`
+	DocumentCreateDocumentTemporaryFieldEmail         *DocumentCreateDocumentTemporaryFieldEmail         `queryParam:"inline,name=field"`
+	DocumentCreateDocumentTemporaryFieldDate          *DocumentCreateDocumentTemporaryFieldDate          `queryParam:"inline,name=field"`
+	DocumentCreateDocumentTemporaryFieldText          *DocumentCreateDocumentTemporaryFieldText          `queryParam:"inline,name=field"`
+	DocumentCreateDocumentTemporaryFieldNumber        *DocumentCreateDocumentTemporaryFieldNumber        `queryParam:"inline,name=field"`
+	DocumentCreateDocumentTemporaryFieldRadio         *DocumentCreateDocumentTemporaryFieldRadio         `queryParam:"inline,name=field"`
+	DocumentCreateDocumentTemporaryFieldCheckbox      *DocumentCreateDocumentTemporaryFieldCheckbox      `queryParam:"inline,name=field"`
+	DocumentCreateDocumentTemporaryFieldDropdown      *DocumentCreateDocumentTemporaryFieldDropdown      `queryParam:"inline,name=field"`
 
 	Type DocumentCreateDocumentTemporaryFieldUnionType
 }
@@ -2767,69 +2807,81 @@ type DocumentCreateDocumentTemporaryRecipientRequest struct {
 	Fields       []DocumentCreateDocumentTemporaryFieldUnion        `json:"fields,omitempty"`
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientRequest) GetEmail() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientRequest) GetEmail() string {
+	if d == nil {
 		return ""
 	}
-	return o.Email
+	return d.Email
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientRequest) GetName() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientRequest) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientRequest) GetRole() DocumentCreateDocumentTemporaryRoleRequest {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientRequest) GetRole() DocumentCreateDocumentTemporaryRoleRequest {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryRoleRequest("")
 	}
-	return o.Role
+	return d.Role
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientRequest) GetSigningOrder() *float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientRequest) GetSigningOrder() *float64 {
+	if d == nil {
 		return nil
 	}
-	return o.SigningOrder
+	return d.SigningOrder
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientRequest) GetAccessAuth() []DocumentCreateDocumentTemporaryAccessAuthRequest {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientRequest) GetAccessAuth() []DocumentCreateDocumentTemporaryAccessAuthRequest {
+	if d == nil {
 		return nil
 	}
-	return o.AccessAuth
+	return d.AccessAuth
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientRequest) GetActionAuth() []DocumentCreateDocumentTemporaryActionAuthRequest {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientRequest) GetActionAuth() []DocumentCreateDocumentTemporaryActionAuthRequest {
+	if d == nil {
 		return nil
 	}
-	return o.ActionAuth
+	return d.ActionAuth
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientRequest) GetFields() []DocumentCreateDocumentTemporaryFieldUnion {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientRequest) GetFields() []DocumentCreateDocumentTemporaryFieldUnion {
+	if d == nil {
 		return nil
 	}
-	return o.Fields
+	return d.Fields
 }
 
 // DocumentCreateDocumentTemporaryDateFormat - The date format to use for date fields and signing the document.
 type DocumentCreateDocumentTemporaryDateFormat string
 
 const (
-	DocumentCreateDocumentTemporaryDateFormatYyyyMmDdHhMmA         DocumentCreateDocumentTemporaryDateFormat = "yyyy-MM-dd hh:mm a"
-	DocumentCreateDocumentTemporaryDateFormatYyyyMmDd              DocumentCreateDocumentTemporaryDateFormat = "yyyy-MM-dd"
-	DocumentCreateDocumentTemporaryDateFormatDdMmYyyyHhMmA         DocumentCreateDocumentTemporaryDateFormat = "dd/MM/yyyy hh:mm a"
-	DocumentCreateDocumentTemporaryDateFormatMmDdYyyyHhMmA         DocumentCreateDocumentTemporaryDateFormat = "MM/dd/yyyy hh:mm a"
-	DocumentCreateDocumentTemporaryDateFormatYyyyMmDdHhMm          DocumentCreateDocumentTemporaryDateFormat = "yyyy-MM-dd HH:mm"
-	DocumentCreateDocumentTemporaryDateFormatYyMmDdHhMmA           DocumentCreateDocumentTemporaryDateFormat = "yy-MM-dd hh:mm a"
-	DocumentCreateDocumentTemporaryDateFormatYyyyMmDdHhMmSs        DocumentCreateDocumentTemporaryDateFormat = "yyyy-MM-dd HH:mm:ss"
-	DocumentCreateDocumentTemporaryDateFormatMmmmDdYyyyHhMmA       DocumentCreateDocumentTemporaryDateFormat = "MMMM dd, yyyy hh:mm a"
-	DocumentCreateDocumentTemporaryDateFormatEeeeMmmmDdYyyyHhMmA   DocumentCreateDocumentTemporaryDateFormat = "EEEE, MMMM dd, yyyy hh:mm a"
-	DocumentCreateDocumentTemporaryDateFormatYyyyMmDdTHhMmSsSssxxx DocumentCreateDocumentTemporaryDateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+	DocumentCreateDocumentTemporaryDateFormatYyyyMMddHhMmA            DocumentCreateDocumentTemporaryDateFormat = "yyyy-MM-dd hh:mm a"
+	DocumentCreateDocumentTemporaryDateFormatYyyyMMdd                 DocumentCreateDocumentTemporaryDateFormat = "yyyy-MM-dd"
+	DocumentCreateDocumentTemporaryDateFormatDdMmSlashYyyy            DocumentCreateDocumentTemporaryDateFormat = "dd/MM/yyyy"
+	DocumentCreateDocumentTemporaryDateFormatMmDdSlashYyyy            DocumentCreateDocumentTemporaryDateFormat = "MM/dd/yyyy"
+	DocumentCreateDocumentTemporaryDateFormatYyMMdd                   DocumentCreateDocumentTemporaryDateFormat = "yy-MM-dd"
+	DocumentCreateDocumentTemporaryDateFormatMmmmDdCommaYyyy          DocumentCreateDocumentTemporaryDateFormat = "MMMM dd, yyyy"
+	DocumentCreateDocumentTemporaryDateFormatEeeeMmmmDdCommaYyyy      DocumentCreateDocumentTemporaryDateFormat = "EEEE, MMMM dd, yyyy"
+	DocumentCreateDocumentTemporaryDateFormatDdMmSlashYyyyHhMmA       DocumentCreateDocumentTemporaryDateFormat = "dd/MM/yyyy hh:mm a"
+	DocumentCreateDocumentTemporaryDateFormatDdMmSlashYyyyHHmm        DocumentCreateDocumentTemporaryDateFormat = "dd/MM/yyyy HH:mm"
+	DocumentCreateDocumentTemporaryDateFormatMmDdSlashYyyyHhMmA       DocumentCreateDocumentTemporaryDateFormat = "MM/dd/yyyy hh:mm a"
+	DocumentCreateDocumentTemporaryDateFormatMmDdSlashYyyyHHmm        DocumentCreateDocumentTemporaryDateFormat = "MM/dd/yyyy HH:mm"
+	DocumentCreateDocumentTemporaryDateFormatDdDotMmDotYyyy           DocumentCreateDocumentTemporaryDateFormat = "dd.MM.yyyy"
+	DocumentCreateDocumentTemporaryDateFormatDdDotMmDotYyyyHHmm       DocumentCreateDocumentTemporaryDateFormat = "dd.MM.yyyy HH:mm"
+	DocumentCreateDocumentTemporaryDateFormatYyyyMMddHHmm             DocumentCreateDocumentTemporaryDateFormat = "yyyy-MM-dd HH:mm"
+	DocumentCreateDocumentTemporaryDateFormatYyMMddHhMmA              DocumentCreateDocumentTemporaryDateFormat = "yy-MM-dd hh:mm a"
+	DocumentCreateDocumentTemporaryDateFormatYyMMddHHmm               DocumentCreateDocumentTemporaryDateFormat = "yy-MM-dd HH:mm"
+	DocumentCreateDocumentTemporaryDateFormatYyyyMMddHHmmss           DocumentCreateDocumentTemporaryDateFormat = "yyyy-MM-dd HH:mm:ss"
+	DocumentCreateDocumentTemporaryDateFormatMmmmDdCommaYyyyHhMmA     DocumentCreateDocumentTemporaryDateFormat = "MMMM dd, yyyy hh:mm a"
+	DocumentCreateDocumentTemporaryDateFormatMmmmDdCommaYyyyHHmm      DocumentCreateDocumentTemporaryDateFormat = "MMMM dd, yyyy HH:mm"
+	DocumentCreateDocumentTemporaryDateFormatEeeeMmmmDdCommaYyyyHhMmA DocumentCreateDocumentTemporaryDateFormat = "EEEE, MMMM dd, yyyy hh:mm a"
+	DocumentCreateDocumentTemporaryDateFormatEeeeMmmmDdCommaYyyyHHmm  DocumentCreateDocumentTemporaryDateFormat = "EEEE, MMMM dd, yyyy HH:mm"
+	DocumentCreateDocumentTemporaryDateFormatIso8601Full              DocumentCreateDocumentTemporaryDateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
 )
 
 func (e DocumentCreateDocumentTemporaryDateFormat) ToPointer() *DocumentCreateDocumentTemporaryDateFormat {
@@ -2845,19 +2897,43 @@ func (e *DocumentCreateDocumentTemporaryDateFormat) UnmarshalJSON(data []byte) e
 		fallthrough
 	case "yyyy-MM-dd":
 		fallthrough
+	case "dd/MM/yyyy":
+		fallthrough
+	case "MM/dd/yyyy":
+		fallthrough
+	case "yy-MM-dd":
+		fallthrough
+	case "MMMM dd, yyyy":
+		fallthrough
+	case "EEEE, MMMM dd, yyyy":
+		fallthrough
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
+	case "dd/MM/yyyy HH:mm":
+		fallthrough
 	case "MM/dd/yyyy hh:mm a":
+		fallthrough
+	case "MM/dd/yyyy HH:mm":
+		fallthrough
+	case "dd.MM.yyyy":
+		fallthrough
+	case "dd.MM.yyyy HH:mm":
 		fallthrough
 	case "yyyy-MM-dd HH:mm":
 		fallthrough
 	case "yy-MM-dd hh:mm a":
 		fallthrough
+	case "yy-MM-dd HH:mm":
+		fallthrough
 	case "yyyy-MM-dd HH:mm:ss":
 		fallthrough
 	case "MMMM dd, yyyy hh:mm a":
 		fallthrough
+	case "MMMM dd, yyyy HH:mm":
+		fallthrough
 	case "EEEE, MMMM dd, yyyy hh:mm a":
+		fallthrough
+	case "EEEE, MMMM dd, yyyy HH:mm":
 		fallthrough
 	case "yyyy-MM-dd'T'HH:mm:ss.SSSXXX":
 		*e = DocumentCreateDocumentTemporaryDateFormat(v)
@@ -2987,53 +3063,53 @@ func (d *DocumentCreateDocumentTemporaryEmailSettingsRequest) UnmarshalJSON(data
 	return nil
 }
 
-func (o *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetRecipientSigningRequest() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetRecipientSigningRequest() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.RecipientSigningRequest
+	return d.RecipientSigningRequest
 }
 
-func (o *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetRecipientRemoved() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetRecipientRemoved() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.RecipientRemoved
+	return d.RecipientRemoved
 }
 
-func (o *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetRecipientSigned() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetRecipientSigned() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.RecipientSigned
+	return d.RecipientSigned
 }
 
-func (o *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetDocumentPending() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetDocumentPending() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.DocumentPending
+	return d.DocumentPending
 }
 
-func (o *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetDocumentCompleted() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetDocumentCompleted() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.DocumentCompleted
+	return d.DocumentCompleted
 }
 
-func (o *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetDocumentDeleted() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetDocumentDeleted() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.DocumentDeleted
+	return d.DocumentDeleted
 }
 
-func (o *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetOwnerDocumentCompleted() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryEmailSettingsRequest) GetOwnerDocumentCompleted() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.OwnerDocumentCompleted
+	return d.OwnerDocumentCompleted
 }
 
 type DocumentCreateDocumentTemporaryMeta struct {
@@ -3046,103 +3122,127 @@ type DocumentCreateDocumentTemporaryMeta struct {
 	// The date format to use for date fields and signing the document.
 	DateFormat *DocumentCreateDocumentTemporaryDateFormat `json:"dateFormat,omitempty"`
 	// The distribution method to use when sending the document to the recipients.
-	DistributionMethod *DocumentCreateDocumentTemporaryDistributionMethodRequest `json:"distributionMethod,omitempty"`
-	SigningOrder       *DocumentCreateDocumentTemporarySigningOrderRequest       `json:"signingOrder,omitempty"`
+	DistributionMethod     *DocumentCreateDocumentTemporaryDistributionMethodRequest `json:"distributionMethod,omitempty"`
+	SigningOrder           *DocumentCreateDocumentTemporarySigningOrderRequest       `json:"signingOrder,omitempty"`
+	AllowDictateNextSigner *bool                                                     `json:"allowDictateNextSigner,omitempty"`
 	// The URL to which the recipient should be redirected after signing the document.
 	RedirectURL *string `json:"redirectUrl,omitempty"`
 	// The language to use for email communications with recipients.
 	Language *DocumentCreateDocumentTemporaryLanguage `json:"language,omitempty"`
 	// Whether to allow recipients to sign using a typed signature.
 	TypedSignatureEnabled *bool `json:"typedSignatureEnabled,omitempty"`
-	// Whether to allow recipients to sign using a draw signature.
-	DrawSignatureEnabled *bool `json:"drawSignatureEnabled,omitempty"`
 	// Whether to allow recipients to sign using an uploaded signature.
-	UploadSignatureEnabled *bool                                                `json:"uploadSignatureEnabled,omitempty"`
-	EmailSettings          *DocumentCreateDocumentTemporaryEmailSettingsRequest `json:"emailSettings,omitempty"`
+	UploadSignatureEnabled *bool `json:"uploadSignatureEnabled,omitempty"`
+	// Whether to allow recipients to sign using a draw signature.
+	DrawSignatureEnabled *bool                                                `json:"drawSignatureEnabled,omitempty"`
+	EmailID              *string                                              `json:"emailId,omitempty"`
+	EmailReplyTo         *string                                              `json:"emailReplyTo,omitempty"`
+	EmailSettings        *DocumentCreateDocumentTemporaryEmailSettingsRequest `json:"emailSettings,omitempty"`
 }
 
-func (o *DocumentCreateDocumentTemporaryMeta) GetSubject() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryMeta) GetSubject() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Subject
+	return d.Subject
 }
 
-func (o *DocumentCreateDocumentTemporaryMeta) GetMessage() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryMeta) GetMessage() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Message
+	return d.Message
 }
 
-func (o *DocumentCreateDocumentTemporaryMeta) GetTimezone() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryMeta) GetTimezone() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Timezone
+	return d.Timezone
 }
 
-func (o *DocumentCreateDocumentTemporaryMeta) GetDateFormat() *DocumentCreateDocumentTemporaryDateFormat {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryMeta) GetDateFormat() *DocumentCreateDocumentTemporaryDateFormat {
+	if d == nil {
 		return nil
 	}
-	return o.DateFormat
+	return d.DateFormat
 }
 
-func (o *DocumentCreateDocumentTemporaryMeta) GetDistributionMethod() *DocumentCreateDocumentTemporaryDistributionMethodRequest {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryMeta) GetDistributionMethod() *DocumentCreateDocumentTemporaryDistributionMethodRequest {
+	if d == nil {
 		return nil
 	}
-	return o.DistributionMethod
+	return d.DistributionMethod
 }
 
-func (o *DocumentCreateDocumentTemporaryMeta) GetSigningOrder() *DocumentCreateDocumentTemporarySigningOrderRequest {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryMeta) GetSigningOrder() *DocumentCreateDocumentTemporarySigningOrderRequest {
+	if d == nil {
 		return nil
 	}
-	return o.SigningOrder
+	return d.SigningOrder
 }
 
-func (o *DocumentCreateDocumentTemporaryMeta) GetRedirectURL() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryMeta) GetAllowDictateNextSigner() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.RedirectURL
+	return d.AllowDictateNextSigner
 }
 
-func (o *DocumentCreateDocumentTemporaryMeta) GetLanguage() *DocumentCreateDocumentTemporaryLanguage {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryMeta) GetRedirectURL() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Language
+	return d.RedirectURL
 }
 
-func (o *DocumentCreateDocumentTemporaryMeta) GetTypedSignatureEnabled() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryMeta) GetLanguage() *DocumentCreateDocumentTemporaryLanguage {
+	if d == nil {
 		return nil
 	}
-	return o.TypedSignatureEnabled
+	return d.Language
 }
 
-func (o *DocumentCreateDocumentTemporaryMeta) GetDrawSignatureEnabled() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryMeta) GetTypedSignatureEnabled() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.DrawSignatureEnabled
+	return d.TypedSignatureEnabled
 }
 
-func (o *DocumentCreateDocumentTemporaryMeta) GetUploadSignatureEnabled() *bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryMeta) GetUploadSignatureEnabled() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.UploadSignatureEnabled
+	return d.UploadSignatureEnabled
 }
 
-func (o *DocumentCreateDocumentTemporaryMeta) GetEmailSettings() *DocumentCreateDocumentTemporaryEmailSettingsRequest {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryMeta) GetDrawSignatureEnabled() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.EmailSettings
+	return d.DrawSignatureEnabled
+}
+
+func (d *DocumentCreateDocumentTemporaryMeta) GetEmailID() *string {
+	if d == nil {
+		return nil
+	}
+	return d.EmailID
+}
+
+func (d *DocumentCreateDocumentTemporaryMeta) GetEmailReplyTo() *string {
+	if d == nil {
+		return nil
+	}
+	return d.EmailReplyTo
+}
+
+func (d *DocumentCreateDocumentTemporaryMeta) GetEmailSettings() *DocumentCreateDocumentTemporaryEmailSettingsRequest {
+	if d == nil {
+		return nil
+	}
+	return d.EmailSettings
 }
 
 type DocumentCreateDocumentTemporaryRequest struct {
@@ -3155,64 +3255,73 @@ type DocumentCreateDocumentTemporaryRequest struct {
 	GlobalAccessAuth []DocumentCreateDocumentTemporaryGlobalAccessAuthRequest `json:"globalAccessAuth,omitempty"`
 	GlobalActionAuth []DocumentCreateDocumentTemporaryGlobalActionAuthRequest `json:"globalActionAuth,omitempty"`
 	FormValues       map[string]FormValuesRequest                             `json:"formValues,omitempty"`
-	Recipients       []DocumentCreateDocumentTemporaryRecipientRequest        `json:"recipients,omitempty"`
-	Meta             *DocumentCreateDocumentTemporaryMeta                     `json:"meta,omitempty"`
+	// The ID of the folder to create the document in. If not provided, the document will be created in the root folder.
+	FolderID   *string                                           `json:"folderId,omitempty"`
+	Recipients []DocumentCreateDocumentTemporaryRecipientRequest `json:"recipients,omitempty"`
+	Meta       *DocumentCreateDocumentTemporaryMeta              `json:"meta,omitempty"`
 }
 
-func (o *DocumentCreateDocumentTemporaryRequest) GetTitle() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRequest) GetTitle() string {
+	if d == nil {
 		return ""
 	}
-	return o.Title
+	return d.Title
 }
 
-func (o *DocumentCreateDocumentTemporaryRequest) GetExternalID() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRequest) GetExternalID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.ExternalID
+	return d.ExternalID
 }
 
-func (o *DocumentCreateDocumentTemporaryRequest) GetVisibility() *DocumentCreateDocumentTemporaryVisibilityRequest {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRequest) GetVisibility() *DocumentCreateDocumentTemporaryVisibilityRequest {
+	if d == nil {
 		return nil
 	}
-	return o.Visibility
+	return d.Visibility
 }
 
-func (o *DocumentCreateDocumentTemporaryRequest) GetGlobalAccessAuth() []DocumentCreateDocumentTemporaryGlobalAccessAuthRequest {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRequest) GetGlobalAccessAuth() []DocumentCreateDocumentTemporaryGlobalAccessAuthRequest {
+	if d == nil {
 		return nil
 	}
-	return o.GlobalAccessAuth
+	return d.GlobalAccessAuth
 }
 
-func (o *DocumentCreateDocumentTemporaryRequest) GetGlobalActionAuth() []DocumentCreateDocumentTemporaryGlobalActionAuthRequest {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRequest) GetGlobalActionAuth() []DocumentCreateDocumentTemporaryGlobalActionAuthRequest {
+	if d == nil {
 		return nil
 	}
-	return o.GlobalActionAuth
+	return d.GlobalActionAuth
 }
 
-func (o *DocumentCreateDocumentTemporaryRequest) GetFormValues() map[string]FormValuesRequest {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRequest) GetFormValues() map[string]FormValuesRequest {
+	if d == nil {
 		return nil
 	}
-	return o.FormValues
+	return d.FormValues
 }
 
-func (o *DocumentCreateDocumentTemporaryRequest) GetRecipients() []DocumentCreateDocumentTemporaryRecipientRequest {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRequest) GetFolderID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Recipients
+	return d.FolderID
 }
 
-func (o *DocumentCreateDocumentTemporaryRequest) GetMeta() *DocumentCreateDocumentTemporaryMeta {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRequest) GetRecipients() []DocumentCreateDocumentTemporaryRecipientRequest {
+	if d == nil {
 		return nil
 	}
-	return o.Meta
+	return d.Recipients
+}
+
+func (d *DocumentCreateDocumentTemporaryRequest) GetMeta() *DocumentCreateDocumentTemporaryMeta {
+	if d == nil {
+		return nil
+	}
+	return d.Meta
 }
 
 type DocumentVisibility string
@@ -3309,7 +3418,8 @@ func (e *DocumentCreateDocumentTemporarySource) UnmarshalJSON(data []byte) error
 type DocumentGlobalAccessAuth string
 
 const (
-	DocumentGlobalAccessAuthAccount DocumentGlobalAccessAuth = "ACCOUNT"
+	DocumentGlobalAccessAuthAccount       DocumentGlobalAccessAuth = "ACCOUNT"
+	DocumentGlobalAccessAuthTwoFactorAuth DocumentGlobalAccessAuth = "TWO_FACTOR_AUTH"
 )
 
 func (e DocumentGlobalAccessAuth) ToPointer() *DocumentGlobalAccessAuth {
@@ -3322,6 +3432,8 @@ func (e *DocumentGlobalAccessAuth) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "ACCOUNT":
+		fallthrough
+	case "TWO_FACTOR_AUTH":
 		*e = DocumentGlobalAccessAuth(v)
 		return nil
 	default:
@@ -3367,18 +3479,18 @@ type DocumentCreateDocumentTemporaryAuthOptions struct {
 	GlobalActionAuth []DocumentGlobalActionAuth `json:"globalActionAuth"`
 }
 
-func (o *DocumentCreateDocumentTemporaryAuthOptions) GetGlobalAccessAuth() []DocumentGlobalAccessAuth {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryAuthOptions) GetGlobalAccessAuth() []DocumentGlobalAccessAuth {
+	if d == nil {
 		return []DocumentGlobalAccessAuth{}
 	}
-	return o.GlobalAccessAuth
+	return d.GlobalAccessAuth
 }
 
-func (o *DocumentCreateDocumentTemporaryAuthOptions) GetGlobalActionAuth() []DocumentGlobalActionAuth {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryAuthOptions) GetGlobalActionAuth() []DocumentGlobalActionAuth {
+	if d == nil {
 		return []DocumentGlobalActionAuth{}
 	}
-	return o.GlobalActionAuth
+	return d.GlobalActionAuth
 }
 
 type DocumentFormValuesType string
@@ -3390,9 +3502,9 @@ const (
 )
 
 type DocumentFormValues struct {
-	Str     *string  `queryParam:"inline"`
-	Boolean *bool    `queryParam:"inline"`
-	Number  *float64 `queryParam:"inline"`
+	Str     *string  `queryParam:"inline,name=formValues"`
+	Boolean *bool    `queryParam:"inline,name=formValues"`
+	Number  *float64 `queryParam:"inline,name=formValues"`
 
 	Type DocumentFormValuesType
 }
@@ -3496,38 +3608,46 @@ func (e *DocumentDocumentDataType) UnmarshalJSON(data []byte) error {
 }
 
 type DocumentCreateDocumentTemporaryDocumentData struct {
-	Type        DocumentDocumentDataType `json:"type"`
-	ID          string                   `json:"id"`
-	Data        string                   `json:"data"`
-	InitialData string                   `json:"initialData"`
+	Type           DocumentDocumentDataType `json:"type"`
+	ID             string                   `json:"id"`
+	Data           string                   `json:"data"`
+	InitialData    string                   `json:"initialData"`
+	EnvelopeItemID string                   `json:"envelopeItemId"`
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentData) GetType() DocumentDocumentDataType {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentData) GetType() DocumentDocumentDataType {
+	if d == nil {
 		return DocumentDocumentDataType("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentData) GetID() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentData) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentData) GetData() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentData) GetData() string {
+	if d == nil {
 		return ""
 	}
-	return o.Data
+	return d.Data
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentData) GetInitialData() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentData) GetInitialData() string {
+	if d == nil {
 		return ""
 	}
-	return o.InitialData
+	return d.InitialData
+}
+
+func (d *DocumentCreateDocumentTemporaryDocumentData) GetEnvelopeItemID() string {
+	if d == nil {
+		return ""
+	}
+	return d.EnvelopeItemID
 }
 
 type DocumentSigningOrder string
@@ -3610,53 +3730,53 @@ func (d *DocumentEmailSettings) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DocumentEmailSettings) GetRecipientSigningRequest() *bool {
-	if o == nil {
+func (d *DocumentEmailSettings) GetRecipientSigningRequest() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.RecipientSigningRequest
+	return d.RecipientSigningRequest
 }
 
-func (o *DocumentEmailSettings) GetRecipientRemoved() *bool {
-	if o == nil {
+func (d *DocumentEmailSettings) GetRecipientRemoved() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.RecipientRemoved
+	return d.RecipientRemoved
 }
 
-func (o *DocumentEmailSettings) GetRecipientSigned() *bool {
-	if o == nil {
+func (d *DocumentEmailSettings) GetRecipientSigned() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.RecipientSigned
+	return d.RecipientSigned
 }
 
-func (o *DocumentEmailSettings) GetDocumentPending() *bool {
-	if o == nil {
+func (d *DocumentEmailSettings) GetDocumentPending() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.DocumentPending
+	return d.DocumentPending
 }
 
-func (o *DocumentEmailSettings) GetDocumentCompleted() *bool {
-	if o == nil {
+func (d *DocumentEmailSettings) GetDocumentCompleted() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.DocumentCompleted
+	return d.DocumentCompleted
 }
 
-func (o *DocumentEmailSettings) GetDocumentDeleted() *bool {
-	if o == nil {
+func (d *DocumentEmailSettings) GetDocumentDeleted() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.DocumentDeleted
+	return d.DocumentDeleted
 }
 
-func (o *DocumentEmailSettings) GetOwnerDocumentCompleted() *bool {
-	if o == nil {
+func (d *DocumentEmailSettings) GetOwnerDocumentCompleted() *bool {
+	if d == nil {
 		return nil
 	}
-	return o.OwnerDocumentCompleted
+	return d.OwnerDocumentCompleted
 }
 
 type DocumentCreateDocumentTemporaryDocumentMeta struct {
@@ -3666,9 +3786,7 @@ type DocumentCreateDocumentTemporaryDocumentMeta struct {
 	Subject                *string                    `json:"subject"`
 	Message                *string                    `json:"message"`
 	Timezone               *string                    `json:"timezone"`
-	Password               *string                    `json:"password"`
 	DateFormat             *string                    `json:"dateFormat"`
-	DocumentID             float64                    `json:"documentId"`
 	RedirectURL            *string                    `json:"redirectUrl"`
 	TypedSignatureEnabled  bool                       `json:"typedSignatureEnabled"`
 	UploadSignatureEnabled bool                       `json:"uploadSignatureEnabled"`
@@ -3676,118 +3794,147 @@ type DocumentCreateDocumentTemporaryDocumentMeta struct {
 	AllowDictateNextSigner bool                       `json:"allowDictateNextSigner"`
 	Language               string                     `json:"language"`
 	EmailSettings          *DocumentEmailSettings     `json:"emailSettings"`
+	EmailID                *string                    `json:"emailId"`
+	EmailReplyTo           *string                    `json:"emailReplyTo"`
+	Password               *string                    `default:"null" json:"password"`
+	DocumentID             *float64                   `default:"-1" json:"documentId"`
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetSigningOrder() DocumentSigningOrder {
-	if o == nil {
+func (d DocumentCreateDocumentTemporaryDocumentMeta) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"signingOrder", "distributionMethod", "id", "typedSignatureEnabled", "uploadSignatureEnabled", "drawSignatureEnabled", "allowDictateNextSigner", "language"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetSigningOrder() DocumentSigningOrder {
+	if d == nil {
 		return DocumentSigningOrder("")
 	}
-	return o.SigningOrder
+	return d.SigningOrder
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetDistributionMethod() DocumentDistributionMethod {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetDistributionMethod() DocumentDistributionMethod {
+	if d == nil {
 		return DocumentDistributionMethod("")
 	}
-	return o.DistributionMethod
+	return d.DistributionMethod
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetID() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetSubject() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetSubject() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Subject
+	return d.Subject
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetMessage() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetMessage() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Message
+	return d.Message
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetTimezone() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetTimezone() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Timezone
+	return d.Timezone
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetPassword() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetDateFormat() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Password
+	return d.DateFormat
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetDateFormat() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetRedirectURL() *string {
+	if d == nil {
 		return nil
 	}
-	return o.DateFormat
+	return d.RedirectURL
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetDocumentID() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.DocumentID
-}
-
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetRedirectURL() *string {
-	if o == nil {
-		return nil
-	}
-	return o.RedirectURL
-}
-
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetTypedSignatureEnabled() bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetTypedSignatureEnabled() bool {
+	if d == nil {
 		return false
 	}
-	return o.TypedSignatureEnabled
+	return d.TypedSignatureEnabled
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetUploadSignatureEnabled() bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetUploadSignatureEnabled() bool {
+	if d == nil {
 		return false
 	}
-	return o.UploadSignatureEnabled
+	return d.UploadSignatureEnabled
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetDrawSignatureEnabled() bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetDrawSignatureEnabled() bool {
+	if d == nil {
 		return false
 	}
-	return o.DrawSignatureEnabled
+	return d.DrawSignatureEnabled
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetAllowDictateNextSigner() bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetAllowDictateNextSigner() bool {
+	if d == nil {
 		return false
 	}
-	return o.AllowDictateNextSigner
+	return d.AllowDictateNextSigner
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetLanguage() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetLanguage() string {
+	if d == nil {
 		return ""
 	}
-	return o.Language
+	return d.Language
 }
 
-func (o *DocumentCreateDocumentTemporaryDocumentMeta) GetEmailSettings() *DocumentEmailSettings {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetEmailSettings() *DocumentEmailSettings {
+	if d == nil {
 		return nil
 	}
-	return o.EmailSettings
+	return d.EmailSettings
+}
+
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetEmailID() *string {
+	if d == nil {
+		return nil
+	}
+	return d.EmailID
+}
+
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetEmailReplyTo() *string {
+	if d == nil {
+		return nil
+	}
+	return d.EmailReplyTo
+}
+
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetPassword() *string {
+	if d == nil {
+		return nil
+	}
+	return d.Password
+}
+
+func (d *DocumentCreateDocumentTemporaryDocumentMeta) GetDocumentID() *float64 {
+	if d == nil {
+		return nil
+	}
+	return d.DocumentID
 }
 
 type DocumentFolderType string
@@ -3858,74 +4005,74 @@ type DocumentCreateDocumentTemporaryFolder struct {
 	UpdatedAt  string                   `json:"updatedAt"`
 }
 
-func (o *DocumentCreateDocumentTemporaryFolder) GetID() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFolder) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DocumentCreateDocumentTemporaryFolder) GetName() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFolder) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DocumentCreateDocumentTemporaryFolder) GetType() DocumentFolderType {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFolder) GetType() DocumentFolderType {
+	if d == nil {
 		return DocumentFolderType("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentCreateDocumentTemporaryFolder) GetVisibility() DocumentFolderVisibility {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFolder) GetVisibility() DocumentFolderVisibility {
+	if d == nil {
 		return DocumentFolderVisibility("")
 	}
-	return o.Visibility
+	return d.Visibility
 }
 
-func (o *DocumentCreateDocumentTemporaryFolder) GetUserID() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFolder) GetUserID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.UserID
+	return d.UserID
 }
 
-func (o *DocumentCreateDocumentTemporaryFolder) GetTeamID() float64 {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFolder) GetTeamID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.TeamID
+	return d.TeamID
 }
 
-func (o *DocumentCreateDocumentTemporaryFolder) GetPinned() bool {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFolder) GetPinned() bool {
+	if d == nil {
 		return false
 	}
-	return o.Pinned
+	return d.Pinned
 }
 
-func (o *DocumentCreateDocumentTemporaryFolder) GetParentID() *string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFolder) GetParentID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.ParentID
+	return d.ParentID
 }
 
-func (o *DocumentCreateDocumentTemporaryFolder) GetCreatedAt() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFolder) GetCreatedAt() string {
+	if d == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return d.CreatedAt
 }
 
-func (o *DocumentCreateDocumentTemporaryFolder) GetUpdatedAt() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryFolder) GetUpdatedAt() string {
+	if d == nil {
 		return ""
 	}
-	return o.UpdatedAt
+	return d.UpdatedAt
 }
 
 type DocumentRole string
@@ -4048,7 +4195,8 @@ func (e *DocumentCreateDocumentTemporarySendStatus) UnmarshalJSON(data []byte) e
 type DocumentAccessAuth string
 
 const (
-	DocumentAccessAuthAccount DocumentAccessAuth = "ACCOUNT"
+	DocumentAccessAuthAccount       DocumentAccessAuth = "ACCOUNT"
+	DocumentAccessAuthTwoFactorAuth DocumentAccessAuth = "TWO_FACTOR_AUTH"
 )
 
 func (e DocumentAccessAuth) ToPointer() *DocumentAccessAuth {
@@ -4061,6 +4209,8 @@ func (e *DocumentAccessAuth) UnmarshalJSON(data []byte) error {
 	}
 	switch v {
 	case "ACCOUNT":
+		fallthrough
+	case "TWO_FACTOR_AUTH":
 		*e = DocumentAccessAuth(v)
 		return nil
 	default:
@@ -4109,28 +4259,27 @@ type DocumentCreateDocumentTemporaryRecipientAuthOptions struct {
 	ActionAuth []DocumentActionAuth `json:"actionAuth"`
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientAuthOptions) GetAccessAuth() []DocumentAccessAuth {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientAuthOptions) GetAccessAuth() []DocumentAccessAuth {
+	if d == nil {
 		return []DocumentAccessAuth{}
 	}
-	return o.AccessAuth
+	return d.AccessAuth
 }
 
-func (o *DocumentCreateDocumentTemporaryRecipientAuthOptions) GetActionAuth() []DocumentActionAuth {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryRecipientAuthOptions) GetActionAuth() []DocumentActionAuth {
+	if d == nil {
 		return []DocumentActionAuth{}
 	}
-	return o.ActionAuth
+	return d.ActionAuth
 }
 
 type DocumentRecipient struct {
+	EnvelopeID        string                                               `json:"envelopeId"`
 	Role              DocumentRole                                         `json:"role"`
 	ReadStatus        DocumentCreateDocumentTemporaryReadStatus            `json:"readStatus"`
 	SigningStatus     DocumentCreateDocumentTemporarySigningStatus         `json:"signingStatus"`
 	SendStatus        DocumentCreateDocumentTemporarySendStatus            `json:"sendStatus"`
 	ID                float64                                              `json:"id"`
-	DocumentID        *float64                                             `json:"documentId"`
-	TemplateID        *float64                                             `json:"templateId"`
 	Email             string                                               `json:"email"`
 	Name              string                                               `json:"name"`
 	Token             string                                               `json:"token"`
@@ -4141,118 +4290,127 @@ type DocumentRecipient struct {
 	// The order in which the recipient should sign the document. Only works if the document is set to sequential signing.
 	SigningOrder    *float64 `json:"signingOrder"`
 	RejectionReason *string  `json:"rejectionReason"`
+	DocumentID      *float64 `json:"documentId,omitempty"`
+	TemplateID      *float64 `json:"templateId,omitempty"`
 }
 
-func (o *DocumentRecipient) GetRole() DocumentRole {
-	if o == nil {
+func (d *DocumentRecipient) GetEnvelopeID() string {
+	if d == nil {
+		return ""
+	}
+	return d.EnvelopeID
+}
+
+func (d *DocumentRecipient) GetRole() DocumentRole {
+	if d == nil {
 		return DocumentRole("")
 	}
-	return o.Role
+	return d.Role
 }
 
-func (o *DocumentRecipient) GetReadStatus() DocumentCreateDocumentTemporaryReadStatus {
-	if o == nil {
+func (d *DocumentRecipient) GetReadStatus() DocumentCreateDocumentTemporaryReadStatus {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryReadStatus("")
 	}
-	return o.ReadStatus
+	return d.ReadStatus
 }
 
-func (o *DocumentRecipient) GetSigningStatus() DocumentCreateDocumentTemporarySigningStatus {
-	if o == nil {
+func (d *DocumentRecipient) GetSigningStatus() DocumentCreateDocumentTemporarySigningStatus {
+	if d == nil {
 		return DocumentCreateDocumentTemporarySigningStatus("")
 	}
-	return o.SigningStatus
+	return d.SigningStatus
 }
 
-func (o *DocumentRecipient) GetSendStatus() DocumentCreateDocumentTemporarySendStatus {
-	if o == nil {
+func (d *DocumentRecipient) GetSendStatus() DocumentCreateDocumentTemporarySendStatus {
+	if d == nil {
 		return DocumentCreateDocumentTemporarySendStatus("")
 	}
-	return o.SendStatus
+	return d.SendStatus
 }
 
-func (o *DocumentRecipient) GetID() float64 {
-	if o == nil {
+func (d *DocumentRecipient) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DocumentRecipient) GetDocumentID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DocumentID
-}
-
-func (o *DocumentRecipient) GetTemplateID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.TemplateID
-}
-
-func (o *DocumentRecipient) GetEmail() string {
-	if o == nil {
+func (d *DocumentRecipient) GetEmail() string {
+	if d == nil {
 		return ""
 	}
-	return o.Email
+	return d.Email
 }
 
-func (o *DocumentRecipient) GetName() string {
-	if o == nil {
+func (d *DocumentRecipient) GetName() string {
+	if d == nil {
 		return ""
 	}
-	return o.Name
+	return d.Name
 }
 
-func (o *DocumentRecipient) GetToken() string {
-	if o == nil {
+func (d *DocumentRecipient) GetToken() string {
+	if d == nil {
 		return ""
 	}
-	return o.Token
+	return d.Token
 }
 
-func (o *DocumentRecipient) GetDocumentDeletedAt() *string {
-	if o == nil {
+func (d *DocumentRecipient) GetDocumentDeletedAt() *string {
+	if d == nil {
 		return nil
 	}
-	return o.DocumentDeletedAt
+	return d.DocumentDeletedAt
 }
 
-func (o *DocumentRecipient) GetExpired() *string {
-	if o == nil {
+func (d *DocumentRecipient) GetExpired() *string {
+	if d == nil {
 		return nil
 	}
-	return o.Expired
+	return d.Expired
 }
 
-func (o *DocumentRecipient) GetSignedAt() *string {
-	if o == nil {
+func (d *DocumentRecipient) GetSignedAt() *string {
+	if d == nil {
 		return nil
 	}
-	return o.SignedAt
+	return d.SignedAt
 }
 
-func (o *DocumentRecipient) GetAuthOptions() *DocumentCreateDocumentTemporaryRecipientAuthOptions {
-	if o == nil {
+func (d *DocumentRecipient) GetAuthOptions() *DocumentCreateDocumentTemporaryRecipientAuthOptions {
+	if d == nil {
 		return nil
 	}
-	return o.AuthOptions
+	return d.AuthOptions
 }
 
-func (o *DocumentRecipient) GetSigningOrder() *float64 {
-	if o == nil {
+func (d *DocumentRecipient) GetSigningOrder() *float64 {
+	if d == nil {
 		return nil
 	}
-	return o.SigningOrder
+	return d.SigningOrder
 }
 
-func (o *DocumentRecipient) GetRejectionReason() *string {
-	if o == nil {
+func (d *DocumentRecipient) GetRejectionReason() *string {
+	if d == nil {
 		return nil
 	}
-	return o.RejectionReason
+	return d.RejectionReason
+}
+
+func (d *DocumentRecipient) GetDocumentID() *float64 {
+	if d == nil {
+		return nil
+	}
+	return d.DocumentID
+}
+
+func (d *DocumentRecipient) GetTemplateID() *float64 {
+	if d == nil {
+		return nil
+	}
+	return d.TemplateID
 }
 
 type DocumentFieldType string
@@ -4346,11 +4504,11 @@ func (d *DocumentValue3) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DocumentValue3) GetValue() string {
-	if o == nil {
+func (d *DocumentValue3) GetValue() string {
+	if d == nil {
 		return ""
 	}
-	return o.Value
+	return d.Value
 }
 
 type FieldMetaDocumentDropdown struct {
@@ -4374,53 +4532,53 @@ func (f *FieldMetaDocumentDropdown) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldMetaDocumentDropdown) GetLabel() *string {
-	if o == nil {
+func (f *FieldMetaDocumentDropdown) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldMetaDocumentDropdown) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldMetaDocumentDropdown) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldMetaDocumentDropdown) GetRequired() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentDropdown) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldMetaDocumentDropdown) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentDropdown) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldMetaDocumentDropdown) GetType() DocumentTypeDropdown {
-	if o == nil {
+func (f *FieldMetaDocumentDropdown) GetType() DocumentTypeDropdown {
+	if f == nil {
 		return DocumentTypeDropdown("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldMetaDocumentDropdown) GetValues() []DocumentValue3 {
-	if o == nil {
+func (f *FieldMetaDocumentDropdown) GetValues() []DocumentValue3 {
+	if f == nil {
 		return nil
 	}
-	return o.Values
+	return f.Values
 }
 
-func (o *FieldMetaDocumentDropdown) GetDefaultValue() *string {
-	if o == nil {
+func (f *FieldMetaDocumentDropdown) GetDefaultValue() *string {
+	if f == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return f.DefaultValue
 }
 
 type DocumentTypeCheckbox string
@@ -4463,25 +4621,51 @@ func (d *DocumentValue2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DocumentValue2) GetID() float64 {
-	if o == nil {
+func (d *DocumentValue2) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DocumentValue2) GetChecked() bool {
-	if o == nil {
+func (d *DocumentValue2) GetChecked() bool {
+	if d == nil {
 		return false
 	}
-	return o.Checked
+	return d.Checked
 }
 
-func (o *DocumentValue2) GetValue() string {
-	if o == nil {
+func (d *DocumentValue2) GetValue() string {
+	if d == nil {
 		return ""
 	}
-	return o.Value
+	return d.Value
+}
+
+type DocumentDirection string
+
+const (
+	DocumentDirectionVertical   DocumentDirection = "vertical"
+	DocumentDirectionHorizontal DocumentDirection = "horizontal"
+)
+
+func (e DocumentDirection) ToPointer() *DocumentDirection {
+	return &e
+}
+func (e *DocumentDirection) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = DocumentDirection(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentDirection: %v", v)
+	}
 }
 
 type FieldMetaDocumentCheckbox struct {
@@ -4493,6 +4677,7 @@ type FieldMetaDocumentCheckbox struct {
 	Values           []DocumentValue2     `json:"values,omitempty"`
 	ValidationRule   *string              `json:"validationRule,omitempty"`
 	ValidationLength *float64             `json:"validationLength,omitempty"`
+	Direction        *DocumentDirection   `default:"vertical" json:"direction"`
 }
 
 func (f FieldMetaDocumentCheckbox) MarshalJSON() ([]byte, error) {
@@ -4506,60 +4691,67 @@ func (f *FieldMetaDocumentCheckbox) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldMetaDocumentCheckbox) GetLabel() *string {
-	if o == nil {
+func (f *FieldMetaDocumentCheckbox) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldMetaDocumentCheckbox) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldMetaDocumentCheckbox) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldMetaDocumentCheckbox) GetRequired() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentCheckbox) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldMetaDocumentCheckbox) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentCheckbox) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldMetaDocumentCheckbox) GetType() DocumentTypeCheckbox {
-	if o == nil {
+func (f *FieldMetaDocumentCheckbox) GetType() DocumentTypeCheckbox {
+	if f == nil {
 		return DocumentTypeCheckbox("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldMetaDocumentCheckbox) GetValues() []DocumentValue2 {
-	if o == nil {
+func (f *FieldMetaDocumentCheckbox) GetValues() []DocumentValue2 {
+	if f == nil {
 		return nil
 	}
-	return o.Values
+	return f.Values
 }
 
-func (o *FieldMetaDocumentCheckbox) GetValidationRule() *string {
-	if o == nil {
+func (f *FieldMetaDocumentCheckbox) GetValidationRule() *string {
+	if f == nil {
 		return nil
 	}
-	return o.ValidationRule
+	return f.ValidationRule
 }
 
-func (o *FieldMetaDocumentCheckbox) GetValidationLength() *float64 {
-	if o == nil {
+func (f *FieldMetaDocumentCheckbox) GetValidationLength() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.ValidationLength
+	return f.ValidationLength
+}
+
+func (f *FieldMetaDocumentCheckbox) GetDirection() *DocumentDirection {
+	if f == nil {
+		return nil
+	}
+	return f.Direction
 }
 
 type DocumentTypeRadio string
@@ -4602,25 +4794,25 @@ func (d *DocumentValue1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *DocumentValue1) GetID() float64 {
-	if o == nil {
+func (d *DocumentValue1) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DocumentValue1) GetChecked() bool {
-	if o == nil {
+func (d *DocumentValue1) GetChecked() bool {
+	if d == nil {
 		return false
 	}
-	return o.Checked
+	return d.Checked
 }
 
-func (o *DocumentValue1) GetValue() string {
-	if o == nil {
+func (d *DocumentValue1) GetValue() string {
+	if d == nil {
 		return ""
 	}
-	return o.Value
+	return d.Value
 }
 
 type FieldMetaDocumentRadio struct {
@@ -4643,46 +4835,46 @@ func (f *FieldMetaDocumentRadio) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldMetaDocumentRadio) GetLabel() *string {
-	if o == nil {
+func (f *FieldMetaDocumentRadio) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldMetaDocumentRadio) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldMetaDocumentRadio) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldMetaDocumentRadio) GetRequired() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentRadio) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldMetaDocumentRadio) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentRadio) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldMetaDocumentRadio) GetType() DocumentTypeRadio {
-	if o == nil {
+func (f *FieldMetaDocumentRadio) GetType() DocumentTypeRadio {
+	if f == nil {
 		return DocumentTypeRadio("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldMetaDocumentRadio) GetValues() []DocumentValue1 {
-	if o == nil {
+func (f *FieldMetaDocumentRadio) GetValues() []DocumentValue1 {
+	if f == nil {
 		return nil
 	}
-	return o.Values
+	return f.Values
 }
 
 type DocumentTypeNumber string
@@ -4762,81 +4954,81 @@ func (f *FieldMetaDocumentNumber) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldMetaDocumentNumber) GetLabel() *string {
-	if o == nil {
+func (f *FieldMetaDocumentNumber) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldMetaDocumentNumber) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldMetaDocumentNumber) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldMetaDocumentNumber) GetRequired() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentNumber) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldMetaDocumentNumber) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentNumber) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldMetaDocumentNumber) GetType() DocumentTypeNumber {
-	if o == nil {
+func (f *FieldMetaDocumentNumber) GetType() DocumentTypeNumber {
+	if f == nil {
 		return DocumentTypeNumber("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldMetaDocumentNumber) GetNumberFormat() *string {
-	if o == nil {
+func (f *FieldMetaDocumentNumber) GetNumberFormat() *string {
+	if f == nil {
 		return nil
 	}
-	return o.NumberFormat
+	return f.NumberFormat
 }
 
-func (o *FieldMetaDocumentNumber) GetValue() *string {
-	if o == nil {
+func (f *FieldMetaDocumentNumber) GetValue() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Value
+	return f.Value
 }
 
-func (o *FieldMetaDocumentNumber) GetMinValue() *float64 {
-	if o == nil {
+func (f *FieldMetaDocumentNumber) GetMinValue() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.MinValue
+	return f.MinValue
 }
 
-func (o *FieldMetaDocumentNumber) GetMaxValue() *float64 {
-	if o == nil {
+func (f *FieldMetaDocumentNumber) GetMaxValue() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.MaxValue
+	return f.MaxValue
 }
 
-func (o *FieldMetaDocumentNumber) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldMetaDocumentNumber) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldMetaDocumentNumber) GetTextAlign() *DocumentTextAlign6 {
-	if o == nil {
+func (f *FieldMetaDocumentNumber) GetTextAlign() *DocumentTextAlign6 {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type DocumentTypeText string
@@ -4914,67 +5106,67 @@ func (f *FieldMetaDocumentText) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldMetaDocumentText) GetLabel() *string {
-	if o == nil {
+func (f *FieldMetaDocumentText) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldMetaDocumentText) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldMetaDocumentText) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldMetaDocumentText) GetRequired() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentText) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldMetaDocumentText) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentText) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldMetaDocumentText) GetType() DocumentTypeText {
-	if o == nil {
+func (f *FieldMetaDocumentText) GetType() DocumentTypeText {
+	if f == nil {
 		return DocumentTypeText("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldMetaDocumentText) GetText() *string {
-	if o == nil {
+func (f *FieldMetaDocumentText) GetText() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Text
+	return f.Text
 }
 
-func (o *FieldMetaDocumentText) GetCharacterLimit() *float64 {
-	if o == nil {
+func (f *FieldMetaDocumentText) GetCharacterLimit() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.CharacterLimit
+	return f.CharacterLimit
 }
 
-func (o *FieldMetaDocumentText) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldMetaDocumentText) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldMetaDocumentText) GetTextAlign() *DocumentTextAlign5 {
-	if o == nil {
+func (f *FieldMetaDocumentText) GetTextAlign() *DocumentTextAlign5 {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type DocumentTypeDate string
@@ -5050,53 +5242,53 @@ func (f *FieldMetaDocumentDate) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldMetaDocumentDate) GetLabel() *string {
-	if o == nil {
+func (f *FieldMetaDocumentDate) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldMetaDocumentDate) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldMetaDocumentDate) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldMetaDocumentDate) GetRequired() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentDate) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldMetaDocumentDate) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentDate) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldMetaDocumentDate) GetType() DocumentTypeDate {
-	if o == nil {
+func (f *FieldMetaDocumentDate) GetType() DocumentTypeDate {
+	if f == nil {
 		return DocumentTypeDate("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldMetaDocumentDate) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldMetaDocumentDate) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldMetaDocumentDate) GetTextAlign() *DocumentTextAlign4 {
-	if o == nil {
+func (f *FieldMetaDocumentDate) GetTextAlign() *DocumentTextAlign4 {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type DocumentTypeEmail string
@@ -5172,53 +5364,53 @@ func (f *FieldMetaDocumentEmail) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldMetaDocumentEmail) GetLabel() *string {
-	if o == nil {
+func (f *FieldMetaDocumentEmail) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldMetaDocumentEmail) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldMetaDocumentEmail) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldMetaDocumentEmail) GetRequired() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentEmail) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldMetaDocumentEmail) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentEmail) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldMetaDocumentEmail) GetType() DocumentTypeEmail {
-	if o == nil {
+func (f *FieldMetaDocumentEmail) GetType() DocumentTypeEmail {
+	if f == nil {
 		return DocumentTypeEmail("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldMetaDocumentEmail) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldMetaDocumentEmail) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldMetaDocumentEmail) GetTextAlign() *DocumentTextAlign3 {
-	if o == nil {
+func (f *FieldMetaDocumentEmail) GetTextAlign() *DocumentTextAlign3 {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type DocumentTypeName string
@@ -5294,53 +5486,53 @@ func (f *FieldMetaDocumentName) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldMetaDocumentName) GetLabel() *string {
-	if o == nil {
+func (f *FieldMetaDocumentName) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldMetaDocumentName) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldMetaDocumentName) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldMetaDocumentName) GetRequired() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentName) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldMetaDocumentName) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentName) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldMetaDocumentName) GetType() DocumentTypeName {
-	if o == nil {
+func (f *FieldMetaDocumentName) GetType() DocumentTypeName {
+	if f == nil {
 		return DocumentTypeName("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldMetaDocumentName) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldMetaDocumentName) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldMetaDocumentName) GetTextAlign() *DocumentTextAlign2 {
-	if o == nil {
+func (f *FieldMetaDocumentName) GetTextAlign() *DocumentTextAlign2 {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type DocumentTypeInitials string
@@ -5416,53 +5608,53 @@ func (f *FieldMetaDocumentInitials) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldMetaDocumentInitials) GetLabel() *string {
-	if o == nil {
+func (f *FieldMetaDocumentInitials) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldMetaDocumentInitials) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldMetaDocumentInitials) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldMetaDocumentInitials) GetRequired() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentInitials) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldMetaDocumentInitials) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldMetaDocumentInitials) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldMetaDocumentInitials) GetType() DocumentTypeInitials {
-	if o == nil {
+func (f *FieldMetaDocumentInitials) GetType() DocumentTypeInitials {
+	if f == nil {
 		return DocumentTypeInitials("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldMetaDocumentInitials) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldMetaDocumentInitials) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldMetaDocumentInitials) GetTextAlign() *DocumentTextAlign1 {
-	if o == nil {
+func (f *FieldMetaDocumentInitials) GetTextAlign() *DocumentTextAlign1 {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type DocumentFieldMetaUnionType string
@@ -5480,15 +5672,15 @@ const (
 )
 
 type DocumentFieldMetaUnion struct {
-	FieldMetaDocumentInitials *FieldMetaDocumentInitials `queryParam:"inline"`
-	FieldMetaDocumentName     *FieldMetaDocumentName     `queryParam:"inline"`
-	FieldMetaDocumentEmail    *FieldMetaDocumentEmail    `queryParam:"inline"`
-	FieldMetaDocumentDate     *FieldMetaDocumentDate     `queryParam:"inline"`
-	FieldMetaDocumentText     *FieldMetaDocumentText     `queryParam:"inline"`
-	FieldMetaDocumentNumber   *FieldMetaDocumentNumber   `queryParam:"inline"`
-	FieldMetaDocumentRadio    *FieldMetaDocumentRadio    `queryParam:"inline"`
-	FieldMetaDocumentCheckbox *FieldMetaDocumentCheckbox `queryParam:"inline"`
-	FieldMetaDocumentDropdown *FieldMetaDocumentDropdown `queryParam:"inline"`
+	FieldMetaDocumentInitials *FieldMetaDocumentInitials `queryParam:"inline,name=fieldMeta"`
+	FieldMetaDocumentName     *FieldMetaDocumentName     `queryParam:"inline,name=fieldMeta"`
+	FieldMetaDocumentEmail    *FieldMetaDocumentEmail    `queryParam:"inline,name=fieldMeta"`
+	FieldMetaDocumentDate     *FieldMetaDocumentDate     `queryParam:"inline,name=fieldMeta"`
+	FieldMetaDocumentText     *FieldMetaDocumentText     `queryParam:"inline,name=fieldMeta"`
+	FieldMetaDocumentNumber   *FieldMetaDocumentNumber   `queryParam:"inline,name=fieldMeta"`
+	FieldMetaDocumentRadio    *FieldMetaDocumentRadio    `queryParam:"inline,name=fieldMeta"`
+	FieldMetaDocumentCheckbox *FieldMetaDocumentCheckbox `queryParam:"inline,name=fieldMeta"`
+	FieldMetaDocumentDropdown *FieldMetaDocumentDropdown `queryParam:"inline,name=fieldMeta"`
 
 	Type DocumentFieldMetaUnionType
 }
@@ -5683,12 +5875,12 @@ func (u DocumentFieldMetaUnion) MarshalJSON() ([]byte, error) {
 }
 
 type DocumentField struct {
-	Type        DocumentFieldType `json:"type"`
-	ID          float64           `json:"id"`
-	SecondaryID string            `json:"secondaryId"`
-	DocumentID  *float64          `json:"documentId"`
-	TemplateID  *float64          `json:"templateId"`
-	RecipientID float64           `json:"recipientId"`
+	EnvelopeID     string            `json:"envelopeId"`
+	EnvelopeItemID string            `json:"envelopeItemId"`
+	Type           DocumentFieldType `json:"type"`
+	ID             float64           `json:"id"`
+	SecondaryID    string            `json:"secondaryId"`
+	RecipientID    float64           `json:"recipientId"`
 	// The page number of the field on the document. Starts from 1.
 	Page       float64                 `json:"page"`
 	PositionX  any                     `json:"positionX,omitempty"`
@@ -5698,104 +5890,120 @@ type DocumentField struct {
 	CustomText string                  `json:"customText"`
 	Inserted   bool                    `json:"inserted"`
 	FieldMeta  *DocumentFieldMetaUnion `json:"fieldMeta"`
+	DocumentID *float64                `json:"documentId,omitempty"`
+	TemplateID *float64                `json:"templateId,omitempty"`
 }
 
-func (o *DocumentField) GetType() DocumentFieldType {
-	if o == nil {
+func (d *DocumentField) GetEnvelopeID() string {
+	if d == nil {
+		return ""
+	}
+	return d.EnvelopeID
+}
+
+func (d *DocumentField) GetEnvelopeItemID() string {
+	if d == nil {
+		return ""
+	}
+	return d.EnvelopeItemID
+}
+
+func (d *DocumentField) GetType() DocumentFieldType {
+	if d == nil {
 		return DocumentFieldType("")
 	}
-	return o.Type
+	return d.Type
 }
 
-func (o *DocumentField) GetID() float64 {
-	if o == nil {
+func (d *DocumentField) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *DocumentField) GetSecondaryID() string {
-	if o == nil {
+func (d *DocumentField) GetSecondaryID() string {
+	if d == nil {
 		return ""
 	}
-	return o.SecondaryID
+	return d.SecondaryID
 }
 
-func (o *DocumentField) GetDocumentID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DocumentID
-}
-
-func (o *DocumentField) GetTemplateID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.TemplateID
-}
-
-func (o *DocumentField) GetRecipientID() float64 {
-	if o == nil {
+func (d *DocumentField) GetRecipientID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.RecipientID
+	return d.RecipientID
 }
 
-func (o *DocumentField) GetPage() float64 {
-	if o == nil {
+func (d *DocumentField) GetPage() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.Page
+	return d.Page
 }
 
-func (o *DocumentField) GetPositionX() any {
-	if o == nil {
+func (d *DocumentField) GetPositionX() any {
+	if d == nil {
 		return nil
 	}
-	return o.PositionX
+	return d.PositionX
 }
 
-func (o *DocumentField) GetPositionY() any {
-	if o == nil {
+func (d *DocumentField) GetPositionY() any {
+	if d == nil {
 		return nil
 	}
-	return o.PositionY
+	return d.PositionY
 }
 
-func (o *DocumentField) GetWidth() any {
-	if o == nil {
+func (d *DocumentField) GetWidth() any {
+	if d == nil {
 		return nil
 	}
-	return o.Width
+	return d.Width
 }
 
-func (o *DocumentField) GetHeight() any {
-	if o == nil {
+func (d *DocumentField) GetHeight() any {
+	if d == nil {
 		return nil
 	}
-	return o.Height
+	return d.Height
 }
 
-func (o *DocumentField) GetCustomText() string {
-	if o == nil {
+func (d *DocumentField) GetCustomText() string {
+	if d == nil {
 		return ""
 	}
-	return o.CustomText
+	return d.CustomText
 }
 
-func (o *DocumentField) GetInserted() bool {
-	if o == nil {
+func (d *DocumentField) GetInserted() bool {
+	if d == nil {
 		return false
 	}
-	return o.Inserted
+	return d.Inserted
 }
 
-func (o *DocumentField) GetFieldMeta() *DocumentFieldMetaUnion {
-	if o == nil {
+func (d *DocumentField) GetFieldMeta() *DocumentFieldMetaUnion {
+	if d == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return d.FieldMeta
+}
+
+func (d *DocumentField) GetDocumentID() *float64 {
+	if d == nil {
+		return nil
+	}
+	return d.DocumentID
+}
+
+func (d *DocumentField) GetTemplateID() *float64 {
+	if d == nil {
+		return nil
+	}
+	return d.TemplateID
 }
 
 type Document struct {
@@ -5806,177 +6014,197 @@ type Document struct {
 	// A custom external ID you can use to identify the document.
 	ExternalID *string `json:"externalId"`
 	// The ID of the user that created this document.
-	UserID         float64                                      `json:"userId"`
-	AuthOptions    *DocumentCreateDocumentTemporaryAuthOptions  `json:"authOptions"`
-	FormValues     map[string]DocumentFormValues                `json:"formValues"`
-	Title          string                                       `json:"title"`
-	DocumentDataID string                                       `json:"documentDataId"`
-	CreatedAt      string                                       `json:"createdAt"`
-	UpdatedAt      string                                       `json:"updatedAt"`
-	CompletedAt    *string                                      `json:"completedAt"`
-	DeletedAt      *string                                      `json:"deletedAt"`
-	TeamID         float64                                      `json:"teamId"`
-	TemplateID     *float64                                     `json:"templateId"`
-	FolderID       *string                                      `json:"folderId"`
-	DocumentData   DocumentCreateDocumentTemporaryDocumentData  `json:"documentData"`
-	DocumentMeta   *DocumentCreateDocumentTemporaryDocumentMeta `json:"documentMeta"`
-	Folder         *DocumentCreateDocumentTemporaryFolder       `json:"folder"`
-	Recipients     []DocumentRecipient                          `json:"recipients"`
-	Fields         []DocumentField                              `json:"fields"`
+	UserID      float64                                     `json:"userId"`
+	AuthOptions *DocumentCreateDocumentTemporaryAuthOptions `json:"authOptions"`
+	FormValues  map[string]DocumentFormValues               `json:"formValues"`
+	Title       string                                      `json:"title"`
+	CreatedAt   string                                      `json:"createdAt"`
+	UpdatedAt   string                                      `json:"updatedAt"`
+	CompletedAt *string                                     `json:"completedAt"`
+	DeletedAt   *string                                     `json:"deletedAt"`
+	TeamID      float64                                     `json:"teamId"`
+	FolderID    *string                                     `json:"folderId"`
+	EnvelopeID  string                                      `json:"envelopeId"`
+	// The ID of the template that the document was created from, if any.
+	TemplateID     *float64                                    `json:"templateId,omitempty"`
+	DocumentDataID *string                                     `default:"" json:"documentDataId"`
+	DocumentData   DocumentCreateDocumentTemporaryDocumentData `json:"documentData"`
+	DocumentMeta   DocumentCreateDocumentTemporaryDocumentMeta `json:"documentMeta"`
+	Folder         *DocumentCreateDocumentTemporaryFolder      `json:"folder"`
+	Recipients     []DocumentRecipient                         `json:"recipients"`
+	Fields         []DocumentField                             `json:"fields"`
 }
 
-func (o *Document) GetVisibility() DocumentVisibility {
-	if o == nil {
+func (d Document) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *Document) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"visibility", "status", "source", "id", "userId", "title", "createdAt", "updatedAt", "teamId", "envelopeId", "documentData", "documentMeta", "recipients", "fields"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *Document) GetVisibility() DocumentVisibility {
+	if d == nil {
 		return DocumentVisibility("")
 	}
-	return o.Visibility
+	return d.Visibility
 }
 
-func (o *Document) GetStatus() DocumentCreateDocumentTemporaryStatus {
-	if o == nil {
+func (d *Document) GetStatus() DocumentCreateDocumentTemporaryStatus {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryStatus("")
 	}
-	return o.Status
+	return d.Status
 }
 
-func (o *Document) GetSource() DocumentCreateDocumentTemporarySource {
-	if o == nil {
+func (d *Document) GetSource() DocumentCreateDocumentTemporarySource {
+	if d == nil {
 		return DocumentCreateDocumentTemporarySource("")
 	}
-	return o.Source
+	return d.Source
 }
 
-func (o *Document) GetID() float64 {
-	if o == nil {
+func (d *Document) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.ID
+	return d.ID
 }
 
-func (o *Document) GetExternalID() *string {
-	if o == nil {
+func (d *Document) GetExternalID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.ExternalID
+	return d.ExternalID
 }
 
-func (o *Document) GetUserID() float64 {
-	if o == nil {
+func (d *Document) GetUserID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.UserID
+	return d.UserID
 }
 
-func (o *Document) GetAuthOptions() *DocumentCreateDocumentTemporaryAuthOptions {
-	if o == nil {
+func (d *Document) GetAuthOptions() *DocumentCreateDocumentTemporaryAuthOptions {
+	if d == nil {
 		return nil
 	}
-	return o.AuthOptions
+	return d.AuthOptions
 }
 
-func (o *Document) GetFormValues() map[string]DocumentFormValues {
-	if o == nil {
+func (d *Document) GetFormValues() map[string]DocumentFormValues {
+	if d == nil {
 		return nil
 	}
-	return o.FormValues
+	return d.FormValues
 }
 
-func (o *Document) GetTitle() string {
-	if o == nil {
+func (d *Document) GetTitle() string {
+	if d == nil {
 		return ""
 	}
-	return o.Title
+	return d.Title
 }
 
-func (o *Document) GetDocumentDataID() string {
-	if o == nil {
+func (d *Document) GetCreatedAt() string {
+	if d == nil {
 		return ""
 	}
-	return o.DocumentDataID
+	return d.CreatedAt
 }
 
-func (o *Document) GetCreatedAt() string {
-	if o == nil {
+func (d *Document) GetUpdatedAt() string {
+	if d == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return d.UpdatedAt
 }
 
-func (o *Document) GetUpdatedAt() string {
-	if o == nil {
-		return ""
-	}
-	return o.UpdatedAt
-}
-
-func (o *Document) GetCompletedAt() *string {
-	if o == nil {
+func (d *Document) GetCompletedAt() *string {
+	if d == nil {
 		return nil
 	}
-	return o.CompletedAt
+	return d.CompletedAt
 }
 
-func (o *Document) GetDeletedAt() *string {
-	if o == nil {
+func (d *Document) GetDeletedAt() *string {
+	if d == nil {
 		return nil
 	}
-	return o.DeletedAt
+	return d.DeletedAt
 }
 
-func (o *Document) GetTeamID() float64 {
-	if o == nil {
+func (d *Document) GetTeamID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return o.TeamID
+	return d.TeamID
 }
 
-func (o *Document) GetTemplateID() *float64 {
-	if o == nil {
+func (d *Document) GetFolderID() *string {
+	if d == nil {
 		return nil
 	}
-	return o.TemplateID
+	return d.FolderID
 }
 
-func (o *Document) GetFolderID() *string {
-	if o == nil {
+func (d *Document) GetEnvelopeID() string {
+	if d == nil {
+		return ""
+	}
+	return d.EnvelopeID
+}
+
+func (d *Document) GetTemplateID() *float64 {
+	if d == nil {
 		return nil
 	}
-	return o.FolderID
+	return d.TemplateID
 }
 
-func (o *Document) GetDocumentData() DocumentCreateDocumentTemporaryDocumentData {
-	if o == nil {
+func (d *Document) GetDocumentDataID() *string {
+	if d == nil {
+		return nil
+	}
+	return d.DocumentDataID
+}
+
+func (d *Document) GetDocumentData() DocumentCreateDocumentTemporaryDocumentData {
+	if d == nil {
 		return DocumentCreateDocumentTemporaryDocumentData{}
 	}
-	return o.DocumentData
+	return d.DocumentData
 }
 
-func (o *Document) GetDocumentMeta() *DocumentCreateDocumentTemporaryDocumentMeta {
-	if o == nil {
+func (d *Document) GetDocumentMeta() DocumentCreateDocumentTemporaryDocumentMeta {
+	if d == nil {
+		return DocumentCreateDocumentTemporaryDocumentMeta{}
+	}
+	return d.DocumentMeta
+}
+
+func (d *Document) GetFolder() *DocumentCreateDocumentTemporaryFolder {
+	if d == nil {
 		return nil
 	}
-	return o.DocumentMeta
+	return d.Folder
 }
 
-func (o *Document) GetFolder() *DocumentCreateDocumentTemporaryFolder {
-	if o == nil {
-		return nil
-	}
-	return o.Folder
-}
-
-func (o *Document) GetRecipients() []DocumentRecipient {
-	if o == nil {
+func (d *Document) GetRecipients() []DocumentRecipient {
+	if d == nil {
 		return []DocumentRecipient{}
 	}
-	return o.Recipients
+	return d.Recipients
 }
 
-func (o *Document) GetFields() []DocumentField {
-	if o == nil {
+func (d *Document) GetFields() []DocumentField {
+	if d == nil {
 		return []DocumentField{}
 	}
-	return o.Fields
+	return d.Fields
 }
 
 // DocumentCreateDocumentTemporaryResponseBody - Successful response
@@ -5986,18 +6214,18 @@ type DocumentCreateDocumentTemporaryResponseBody struct {
 	UploadURL string `json:"uploadUrl"`
 }
 
-func (o *DocumentCreateDocumentTemporaryResponseBody) GetDocument() Document {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryResponseBody) GetDocument() Document {
+	if d == nil {
 		return Document{}
 	}
-	return o.Document
+	return d.Document
 }
 
-func (o *DocumentCreateDocumentTemporaryResponseBody) GetUploadURL() string {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryResponseBody) GetUploadURL() string {
+	if d == nil {
 		return ""
 	}
-	return o.UploadURL
+	return d.UploadURL
 }
 
 type DocumentCreateDocumentTemporaryResponse struct {
@@ -6006,16 +6234,16 @@ type DocumentCreateDocumentTemporaryResponse struct {
 	Object *DocumentCreateDocumentTemporaryResponseBody
 }
 
-func (o *DocumentCreateDocumentTemporaryResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryResponse) GetHTTPMeta() components.HTTPMetadata {
+	if d == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return d.HTTPMeta
 }
 
-func (o *DocumentCreateDocumentTemporaryResponse) GetObject() *DocumentCreateDocumentTemporaryResponseBody {
-	if o == nil {
+func (d *DocumentCreateDocumentTemporaryResponse) GetObject() *DocumentCreateDocumentTemporaryResponseBody {
+	if d == nil {
 		return nil
 	}
-	return o.Object
+	return d.Object
 }

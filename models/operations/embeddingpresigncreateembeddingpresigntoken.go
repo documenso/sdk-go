@@ -23,11 +23,11 @@ func (e *EmbeddingPresignCreateEmbeddingPresignTokenRequest) UnmarshalJSON(data 
 	return nil
 }
 
-func (o *EmbeddingPresignCreateEmbeddingPresignTokenRequest) GetExpiresIn() *float64 {
-	if o == nil {
+func (e *EmbeddingPresignCreateEmbeddingPresignTokenRequest) GetExpiresIn() *float64 {
+	if e == nil {
 		return nil
 	}
-	return o.ExpiresIn
+	return e.ExpiresIn
 }
 
 // EmbeddingPresignCreateEmbeddingPresignTokenResponseBody - Successful response
@@ -38,25 +38,25 @@ type EmbeddingPresignCreateEmbeddingPresignTokenResponseBody struct {
 	ExpiresIn float64 `json:"expiresIn"`
 }
 
-func (o *EmbeddingPresignCreateEmbeddingPresignTokenResponseBody) GetToken() string {
-	if o == nil {
+func (e *EmbeddingPresignCreateEmbeddingPresignTokenResponseBody) GetToken() string {
+	if e == nil {
 		return ""
 	}
-	return o.Token
+	return e.Token
 }
 
-func (o *EmbeddingPresignCreateEmbeddingPresignTokenResponseBody) GetExpiresAt() string {
-	if o == nil {
+func (e *EmbeddingPresignCreateEmbeddingPresignTokenResponseBody) GetExpiresAt() string {
+	if e == nil {
 		return ""
 	}
-	return o.ExpiresAt
+	return e.ExpiresAt
 }
 
-func (o *EmbeddingPresignCreateEmbeddingPresignTokenResponseBody) GetExpiresIn() float64 {
-	if o == nil {
+func (e *EmbeddingPresignCreateEmbeddingPresignTokenResponseBody) GetExpiresIn() float64 {
+	if e == nil {
 		return 0.0
 	}
-	return o.ExpiresIn
+	return e.ExpiresIn
 }
 
 type EmbeddingPresignCreateEmbeddingPresignTokenResponse struct {
@@ -65,16 +65,16 @@ type EmbeddingPresignCreateEmbeddingPresignTokenResponse struct {
 	Object *EmbeddingPresignCreateEmbeddingPresignTokenResponseBody
 }
 
-func (o *EmbeddingPresignCreateEmbeddingPresignTokenResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (e *EmbeddingPresignCreateEmbeddingPresignTokenResponse) GetHTTPMeta() components.HTTPMetadata {
+	if e == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return e.HTTPMeta
 }
 
-func (o *EmbeddingPresignCreateEmbeddingPresignTokenResponse) GetObject() *EmbeddingPresignCreateEmbeddingPresignTokenResponseBody {
-	if o == nil {
+func (e *EmbeddingPresignCreateEmbeddingPresignTokenResponse) GetObject() *EmbeddingPresignCreateEmbeddingPresignTokenResponseBody {
+	if e == nil {
 		return nil
 	}
-	return o.Object
+	return e.Object
 }

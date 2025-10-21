@@ -11,11 +11,11 @@ type TemplateFindTemplatesInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateFindTemplatesInternalServerErrorIssue) GetMessage() string {
-	if o == nil {
+func (t *TemplateFindTemplatesInternalServerErrorIssue) GetMessage() string {
+	if t == nil {
 		return ""
 	}
-	return o.Message
+	return t.Message
 }
 
 // TemplateFindTemplatesInternalServerError - Internal server error
@@ -37,11 +37,11 @@ type TemplateFindTemplatesNotFoundIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateFindTemplatesNotFoundIssue) GetMessage() string {
-	if o == nil {
+func (t *TemplateFindTemplatesNotFoundIssue) GetMessage() string {
+	if t == nil {
 		return ""
 	}
-	return o.Message
+	return t.Message
 }
 
 // TemplateFindTemplatesNotFoundError - Not found
@@ -63,11 +63,11 @@ type TemplateFindTemplatesBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateFindTemplatesBadRequestIssue) GetMessage() string {
-	if o == nil {
+func (t *TemplateFindTemplatesBadRequestIssue) GetMessage() string {
+	if t == nil {
 		return ""
 	}
-	return o.Message
+	return t.Message
 }
 
 // TemplateFindTemplatesBadRequestError - Invalid input data

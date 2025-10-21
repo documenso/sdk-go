@@ -11,11 +11,11 @@ type RecipientCreateDocumentRecipientsInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *RecipientCreateDocumentRecipientsInternalServerErrorIssue) GetMessage() string {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsInternalServerErrorIssue) GetMessage() string {
+	if r == nil {
 		return ""
 	}
-	return o.Message
+	return r.Message
 }
 
 // RecipientCreateDocumentRecipientsInternalServerError - Internal server error
@@ -37,11 +37,11 @@ type RecipientCreateDocumentRecipientsBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *RecipientCreateDocumentRecipientsBadRequestIssue) GetMessage() string {
-	if o == nil {
+func (r *RecipientCreateDocumentRecipientsBadRequestIssue) GetMessage() string {
+	if r == nil {
 		return ""
 	}
-	return o.Message
+	return r.Message
 }
 
 // RecipientCreateDocumentRecipientsBadRequestError - Invalid input data

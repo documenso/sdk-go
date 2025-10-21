@@ -19,12 +19,15 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 go:
-  version: 0.2.0
+  version: 0.3.0
   additionalDependencies: {}
   allowUnknownFieldsInWeakUnions: false
   baseErrorName: DocumensoError
@@ -44,7 +47,9 @@ go:
   maxMethodParams: 4
   methodArguments: require-security-and-request
   modulePath: ""
+  nullableOptionalWrapper: false
   outputModelSuffix: output
   packageName: github.com/documenso/sdk-go
+  respectRequiredFields: false
   responseFormat: envelope-http
   sdkPackageName: ""

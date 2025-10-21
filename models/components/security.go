@@ -6,9 +6,9 @@ type Security struct {
 	APIKey *string `security:"scheme,type=apiKey,subtype=header,name=Authorization,env=documenso_api_key"`
 }
 
-func (o *Security) GetAPIKey() *string {
-	if o == nil {
+func (s *Security) GetAPIKey() *string {
+	if s == nil {
 		return nil
 	}
-	return o.APIKey
+	return s.APIKey
 }

@@ -1,9 +1,0 @@
-# DocumentFindDocumentsRecipientAuthOptions
-
-
-## Fields
-
-| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `AccessAuth`                                                                                               | [][operations.DocumentFindDocumentsAccessAuth](../../models/operations/documentfinddocumentsaccessauth.md) | :heavy_check_mark:                                                                                         | N/A                                                                                                        |
-| `ActionAuth`                                                                                               | [][operations.DocumentFindDocumentsActionAuth](../../models/operations/documentfinddocumentsactionauth.md) | :heavy_check_mark:                                                                                         | N/A                                                                                                        |

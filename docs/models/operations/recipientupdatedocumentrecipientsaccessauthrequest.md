@@ -5,6 +5,7 @@ The type of authentication required for the recipient to access the document.
 
 ## Values
 
-| Name                                                        | Value                                                       |
-| ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `RecipientUpdateDocumentRecipientsAccessAuthRequestAccount` | ACCOUNT                                                     |
+| Name                                                              | Value                                                             |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `RecipientUpdateDocumentRecipientsAccessAuthRequestAccount`       | ACCOUNT                                                           |
+| `RecipientUpdateDocumentRecipientsAccessAuthRequestTwoFactorAuth` | TWO_FACTOR_AUTH                                                   |

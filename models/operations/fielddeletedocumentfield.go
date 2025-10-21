@@ -10,11 +10,11 @@ type FieldDeleteDocumentFieldRequest struct {
 	FieldID float64 `json:"fieldId"`
 }
 
-func (o *FieldDeleteDocumentFieldRequest) GetFieldID() float64 {
-	if o == nil {
+func (f *FieldDeleteDocumentFieldRequest) GetFieldID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.FieldID
+	return f.FieldID
 }
 
 // FieldDeleteDocumentFieldResponseBody - Successful response
@@ -22,11 +22,11 @@ type FieldDeleteDocumentFieldResponseBody struct {
 	Success bool `json:"success"`
 }
 
-func (o *FieldDeleteDocumentFieldResponseBody) GetSuccess() bool {
-	if o == nil {
+func (f *FieldDeleteDocumentFieldResponseBody) GetSuccess() bool {
+	if f == nil {
 		return false
 	}
-	return o.Success
+	return f.Success
 }
 
 type FieldDeleteDocumentFieldResponse struct {
@@ -35,16 +35,16 @@ type FieldDeleteDocumentFieldResponse struct {
 	Object *FieldDeleteDocumentFieldResponseBody
 }
 
-func (o *FieldDeleteDocumentFieldResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (f *FieldDeleteDocumentFieldResponse) GetHTTPMeta() components.HTTPMetadata {
+	if f == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return f.HTTPMeta
 }
 
-func (o *FieldDeleteDocumentFieldResponse) GetObject() *FieldDeleteDocumentFieldResponseBody {
-	if o == nil {
+func (f *FieldDeleteDocumentFieldResponse) GetObject() *FieldDeleteDocumentFieldResponseBody {
+	if f == nil {
 		return nil
 	}
-	return o.Object
+	return f.Object
 }

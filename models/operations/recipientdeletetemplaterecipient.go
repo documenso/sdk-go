@@ -10,11 +10,11 @@ type RecipientDeleteTemplateRecipientRequest struct {
 	RecipientID float64 `json:"recipientId"`
 }
 
-func (o *RecipientDeleteTemplateRecipientRequest) GetRecipientID() float64 {
-	if o == nil {
+func (r *RecipientDeleteTemplateRecipientRequest) GetRecipientID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.RecipientID
+	return r.RecipientID
 }
 
 // RecipientDeleteTemplateRecipientResponseBody - Successful response
@@ -22,11 +22,11 @@ type RecipientDeleteTemplateRecipientResponseBody struct {
 	Success bool `json:"success"`
 }
 
-func (o *RecipientDeleteTemplateRecipientResponseBody) GetSuccess() bool {
-	if o == nil {
+func (r *RecipientDeleteTemplateRecipientResponseBody) GetSuccess() bool {
+	if r == nil {
 		return false
 	}
-	return o.Success
+	return r.Success
 }
 
 type RecipientDeleteTemplateRecipientResponse struct {
@@ -35,16 +35,16 @@ type RecipientDeleteTemplateRecipientResponse struct {
 	Object *RecipientDeleteTemplateRecipientResponseBody
 }
 
-func (o *RecipientDeleteTemplateRecipientResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (r *RecipientDeleteTemplateRecipientResponse) GetHTTPMeta() components.HTTPMetadata {
+	if r == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return r.HTTPMeta
 }
 
-func (o *RecipientDeleteTemplateRecipientResponse) GetObject() *RecipientDeleteTemplateRecipientResponseBody {
-	if o == nil {
+func (r *RecipientDeleteTemplateRecipientResponse) GetObject() *RecipientDeleteTemplateRecipientResponseBody {
+	if r == nil {
 		return nil
 	}
-	return o.Object
+	return r.Object
 }

@@ -11,11 +11,11 @@ type FieldCreateTemplateFieldInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *FieldCreateTemplateFieldInternalServerErrorIssue) GetMessage() string {
-	if o == nil {
+func (f *FieldCreateTemplateFieldInternalServerErrorIssue) GetMessage() string {
+	if f == nil {
 		return ""
 	}
-	return o.Message
+	return f.Message
 }
 
 // FieldCreateTemplateFieldInternalServerError - Internal server error
@@ -37,11 +37,11 @@ type FieldCreateTemplateFieldBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *FieldCreateTemplateFieldBadRequestIssue) GetMessage() string {
-	if o == nil {
+func (f *FieldCreateTemplateFieldBadRequestIssue) GetMessage() string {
+	if f == nil {
 		return ""
 	}
-	return o.Message
+	return f.Message
 }
 
 // FieldCreateTemplateFieldBadRequestError - Invalid input data

@@ -1,0 +1,9 @@
+# DocumentGetAuthOptions
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `GlobalAccessAuth`                                                                                 | [][operations.DocumentGetGlobalAccessAuth](../../models/operations/documentgetglobalaccessauth.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `GlobalActionAuth`                                                                                 | [][operations.DocumentGetGlobalActionAuth](../../models/operations/documentgetglobalactionauth.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
