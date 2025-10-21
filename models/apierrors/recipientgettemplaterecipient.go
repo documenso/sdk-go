@@ -11,11 +11,11 @@ type RecipientGetTemplateRecipientInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *RecipientGetTemplateRecipientInternalServerErrorIssue) GetMessage() string {
-	if o == nil {
+func (r *RecipientGetTemplateRecipientInternalServerErrorIssue) GetMessage() string {
+	if r == nil {
 		return ""
 	}
-	return o.Message
+	return r.Message
 }
 
 // RecipientGetTemplateRecipientInternalServerError - Internal server error
@@ -37,11 +37,11 @@ type RecipientGetTemplateRecipientNotFoundIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *RecipientGetTemplateRecipientNotFoundIssue) GetMessage() string {
-	if o == nil {
+func (r *RecipientGetTemplateRecipientNotFoundIssue) GetMessage() string {
+	if r == nil {
 		return ""
 	}
-	return o.Message
+	return r.Message
 }
 
 // RecipientGetTemplateRecipientNotFoundError - Not found
@@ -63,11 +63,11 @@ type RecipientGetTemplateRecipientBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *RecipientGetTemplateRecipientBadRequestIssue) GetMessage() string {
-	if o == nil {
+func (r *RecipientGetTemplateRecipientBadRequestIssue) GetMessage() string {
+	if r == nil {
 		return ""
 	}
-	return o.Message
+	return r.Message
 }
 
 // RecipientGetTemplateRecipientBadRequestError - Invalid input data

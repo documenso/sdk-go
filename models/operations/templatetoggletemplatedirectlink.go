@@ -11,70 +11,78 @@ type TemplateToggleTemplateDirectLinkRequest struct {
 	Enabled    bool    `json:"enabled"`
 }
 
-func (o *TemplateToggleTemplateDirectLinkRequest) GetTemplateID() float64 {
-	if o == nil {
+func (t *TemplateToggleTemplateDirectLinkRequest) GetTemplateID() float64 {
+	if t == nil {
 		return 0.0
 	}
-	return o.TemplateID
+	return t.TemplateID
 }
 
-func (o *TemplateToggleTemplateDirectLinkRequest) GetEnabled() bool {
-	if o == nil {
+func (t *TemplateToggleTemplateDirectLinkRequest) GetEnabled() bool {
+	if t == nil {
 		return false
 	}
-	return o.Enabled
+	return t.Enabled
 }
 
 // TemplateToggleTemplateDirectLinkResponseBody - Successful response
 type TemplateToggleTemplateDirectLinkResponseBody struct {
 	ID                        string  `json:"id"`
-	TemplateID                float64 `json:"templateId"`
 	Token                     string  `json:"token"`
 	CreatedAt                 string  `json:"createdAt"`
 	Enabled                   bool    `json:"enabled"`
 	DirectTemplateRecipientID float64 `json:"directTemplateRecipientId"`
+	EnvelopeID                string  `json:"envelopeId"`
+	TemplateID                float64 `json:"templateId"`
 }
 
-func (o *TemplateToggleTemplateDirectLinkResponseBody) GetID() string {
-	if o == nil {
+func (t *TemplateToggleTemplateDirectLinkResponseBody) GetID() string {
+	if t == nil {
 		return ""
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *TemplateToggleTemplateDirectLinkResponseBody) GetTemplateID() float64 {
-	if o == nil {
-		return 0.0
-	}
-	return o.TemplateID
-}
-
-func (o *TemplateToggleTemplateDirectLinkResponseBody) GetToken() string {
-	if o == nil {
+func (t *TemplateToggleTemplateDirectLinkResponseBody) GetToken() string {
+	if t == nil {
 		return ""
 	}
-	return o.Token
+	return t.Token
 }
 
-func (o *TemplateToggleTemplateDirectLinkResponseBody) GetCreatedAt() string {
-	if o == nil {
+func (t *TemplateToggleTemplateDirectLinkResponseBody) GetCreatedAt() string {
+	if t == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return t.CreatedAt
 }
 
-func (o *TemplateToggleTemplateDirectLinkResponseBody) GetEnabled() bool {
-	if o == nil {
+func (t *TemplateToggleTemplateDirectLinkResponseBody) GetEnabled() bool {
+	if t == nil {
 		return false
 	}
-	return o.Enabled
+	return t.Enabled
 }
 
-func (o *TemplateToggleTemplateDirectLinkResponseBody) GetDirectTemplateRecipientID() float64 {
-	if o == nil {
+func (t *TemplateToggleTemplateDirectLinkResponseBody) GetDirectTemplateRecipientID() float64 {
+	if t == nil {
 		return 0.0
 	}
-	return o.DirectTemplateRecipientID
+	return t.DirectTemplateRecipientID
+}
+
+func (t *TemplateToggleTemplateDirectLinkResponseBody) GetEnvelopeID() string {
+	if t == nil {
+		return ""
+	}
+	return t.EnvelopeID
+}
+
+func (t *TemplateToggleTemplateDirectLinkResponseBody) GetTemplateID() float64 {
+	if t == nil {
+		return 0.0
+	}
+	return t.TemplateID
 }
 
 type TemplateToggleTemplateDirectLinkResponse struct {
@@ -83,16 +91,16 @@ type TemplateToggleTemplateDirectLinkResponse struct {
 	Object *TemplateToggleTemplateDirectLinkResponseBody
 }
 
-func (o *TemplateToggleTemplateDirectLinkResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (t *TemplateToggleTemplateDirectLinkResponse) GetHTTPMeta() components.HTTPMetadata {
+	if t == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return t.HTTPMeta
 }
 
-func (o *TemplateToggleTemplateDirectLinkResponse) GetObject() *TemplateToggleTemplateDirectLinkResponseBody {
-	if o == nil {
+func (t *TemplateToggleTemplateDirectLinkResponse) GetObject() *TemplateToggleTemplateDirectLinkResponseBody {
+	if t == nil {
 		return nil
 	}
-	return o.Object
+	return t.Object
 }

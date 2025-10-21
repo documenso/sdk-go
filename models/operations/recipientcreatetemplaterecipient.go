@@ -47,7 +47,8 @@ func (e *RecipientCreateTemplateRecipientRoleRequest) UnmarshalJSON(data []byte)
 type RecipientCreateTemplateRecipientAccessAuthRequest string
 
 const (
-	RecipientCreateTemplateRecipientAccessAuthRequestAccount RecipientCreateTemplateRecipientAccessAuthRequest = "ACCOUNT"
+	RecipientCreateTemplateRecipientAccessAuthRequestAccount       RecipientCreateTemplateRecipientAccessAuthRequest = "ACCOUNT"
+	RecipientCreateTemplateRecipientAccessAuthRequestTwoFactorAuth RecipientCreateTemplateRecipientAccessAuthRequest = "TWO_FACTOR_AUTH"
 )
 
 func (e RecipientCreateTemplateRecipientAccessAuthRequest) ToPointer() *RecipientCreateTemplateRecipientAccessAuthRequest {
@@ -60,6 +61,8 @@ func (e *RecipientCreateTemplateRecipientAccessAuthRequest) UnmarshalJSON(data [
 	}
 	switch v {
 	case "ACCOUNT":
+		fallthrough
+	case "TWO_FACTOR_AUTH":
 		*e = RecipientCreateTemplateRecipientAccessAuthRequest(v)
 		return nil
 	default:
@@ -112,46 +115,46 @@ type RecipientCreateTemplateRecipientRecipient struct {
 	ActionAuth   []RecipientCreateTemplateRecipientActionAuthRequest `json:"actionAuth,omitempty"`
 }
 
-func (o *RecipientCreateTemplateRecipientRecipient) GetEmail() string {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientRecipient) GetEmail() string {
+	if r == nil {
 		return ""
 	}
-	return o.Email
+	return r.Email
 }
 
-func (o *RecipientCreateTemplateRecipientRecipient) GetName() string {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientRecipient) GetName() string {
+	if r == nil {
 		return ""
 	}
-	return o.Name
+	return r.Name
 }
 
-func (o *RecipientCreateTemplateRecipientRecipient) GetRole() RecipientCreateTemplateRecipientRoleRequest {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientRecipient) GetRole() RecipientCreateTemplateRecipientRoleRequest {
+	if r == nil {
 		return RecipientCreateTemplateRecipientRoleRequest("")
 	}
-	return o.Role
+	return r.Role
 }
 
-func (o *RecipientCreateTemplateRecipientRecipient) GetSigningOrder() *float64 {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientRecipient) GetSigningOrder() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.SigningOrder
+	return r.SigningOrder
 }
 
-func (o *RecipientCreateTemplateRecipientRecipient) GetAccessAuth() []RecipientCreateTemplateRecipientAccessAuthRequest {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientRecipient) GetAccessAuth() []RecipientCreateTemplateRecipientAccessAuthRequest {
+	if r == nil {
 		return nil
 	}
-	return o.AccessAuth
+	return r.AccessAuth
 }
 
-func (o *RecipientCreateTemplateRecipientRecipient) GetActionAuth() []RecipientCreateTemplateRecipientActionAuthRequest {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientRecipient) GetActionAuth() []RecipientCreateTemplateRecipientActionAuthRequest {
+	if r == nil {
 		return nil
 	}
-	return o.ActionAuth
+	return r.ActionAuth
 }
 
 type RecipientCreateTemplateRecipientRequest struct {
@@ -159,18 +162,18 @@ type RecipientCreateTemplateRecipientRequest struct {
 	Recipient  RecipientCreateTemplateRecipientRecipient `json:"recipient"`
 }
 
-func (o *RecipientCreateTemplateRecipientRequest) GetTemplateID() float64 {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientRequest) GetTemplateID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.TemplateID
+	return r.TemplateID
 }
 
-func (o *RecipientCreateTemplateRecipientRequest) GetRecipient() RecipientCreateTemplateRecipientRecipient {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientRequest) GetRecipient() RecipientCreateTemplateRecipientRecipient {
+	if r == nil {
 		return RecipientCreateTemplateRecipientRecipient{}
 	}
-	return o.Recipient
+	return r.Recipient
 }
 
 type RecipientCreateTemplateRecipientRoleResponse string
@@ -293,7 +296,8 @@ func (e *RecipientCreateTemplateRecipientSendStatus) UnmarshalJSON(data []byte) 
 type RecipientCreateTemplateRecipientAccessAuthResponse string
 
 const (
-	RecipientCreateTemplateRecipientAccessAuthResponseAccount RecipientCreateTemplateRecipientAccessAuthResponse = "ACCOUNT"
+	RecipientCreateTemplateRecipientAccessAuthResponseAccount       RecipientCreateTemplateRecipientAccessAuthResponse = "ACCOUNT"
+	RecipientCreateTemplateRecipientAccessAuthResponseTwoFactorAuth RecipientCreateTemplateRecipientAccessAuthResponse = "TWO_FACTOR_AUTH"
 )
 
 func (e RecipientCreateTemplateRecipientAccessAuthResponse) ToPointer() *RecipientCreateTemplateRecipientAccessAuthResponse {
@@ -306,6 +310,8 @@ func (e *RecipientCreateTemplateRecipientAccessAuthResponse) UnmarshalJSON(data 
 	}
 	switch v {
 	case "ACCOUNT":
+		fallthrough
+	case "TWO_FACTOR_AUTH":
 		*e = RecipientCreateTemplateRecipientAccessAuthResponse(v)
 		return nil
 	default:
@@ -354,29 +360,28 @@ type RecipientCreateTemplateRecipientAuthOptions struct {
 	ActionAuth []RecipientCreateTemplateRecipientActionAuthResponse `json:"actionAuth"`
 }
 
-func (o *RecipientCreateTemplateRecipientAuthOptions) GetAccessAuth() []RecipientCreateTemplateRecipientAccessAuthResponse {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientAuthOptions) GetAccessAuth() []RecipientCreateTemplateRecipientAccessAuthResponse {
+	if r == nil {
 		return []RecipientCreateTemplateRecipientAccessAuthResponse{}
 	}
-	return o.AccessAuth
+	return r.AccessAuth
 }
 
-func (o *RecipientCreateTemplateRecipientAuthOptions) GetActionAuth() []RecipientCreateTemplateRecipientActionAuthResponse {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientAuthOptions) GetActionAuth() []RecipientCreateTemplateRecipientActionAuthResponse {
+	if r == nil {
 		return []RecipientCreateTemplateRecipientActionAuthResponse{}
 	}
-	return o.ActionAuth
+	return r.ActionAuth
 }
 
 // RecipientCreateTemplateRecipientResponseBody - Successful response
 type RecipientCreateTemplateRecipientResponseBody struct {
+	EnvelopeID        string                                        `json:"envelopeId"`
 	Role              RecipientCreateTemplateRecipientRoleResponse  `json:"role"`
 	ReadStatus        RecipientCreateTemplateRecipientReadStatus    `json:"readStatus"`
 	SigningStatus     RecipientCreateTemplateRecipientSigningStatus `json:"signingStatus"`
 	SendStatus        RecipientCreateTemplateRecipientSendStatus    `json:"sendStatus"`
 	ID                float64                                       `json:"id"`
-	DocumentID        *float64                                      `json:"documentId"`
-	TemplateID        *float64                                      `json:"templateId"`
 	Email             string                                        `json:"email"`
 	Name              string                                        `json:"name"`
 	Token             string                                        `json:"token"`
@@ -387,118 +392,127 @@ type RecipientCreateTemplateRecipientResponseBody struct {
 	// The order in which the recipient should sign the document. Only works if the document is set to sequential signing.
 	SigningOrder    *float64 `json:"signingOrder"`
 	RejectionReason *string  `json:"rejectionReason"`
+	DocumentID      *float64 `json:"documentId,omitempty"`
+	TemplateID      *float64 `json:"templateId,omitempty"`
 }
 
-func (o *RecipientCreateTemplateRecipientResponseBody) GetRole() RecipientCreateTemplateRecipientRoleResponse {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponseBody) GetEnvelopeID() string {
+	if r == nil {
+		return ""
+	}
+	return r.EnvelopeID
+}
+
+func (r *RecipientCreateTemplateRecipientResponseBody) GetRole() RecipientCreateTemplateRecipientRoleResponse {
+	if r == nil {
 		return RecipientCreateTemplateRecipientRoleResponse("")
 	}
-	return o.Role
+	return r.Role
 }
 
-func (o *RecipientCreateTemplateRecipientResponseBody) GetReadStatus() RecipientCreateTemplateRecipientReadStatus {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponseBody) GetReadStatus() RecipientCreateTemplateRecipientReadStatus {
+	if r == nil {
 		return RecipientCreateTemplateRecipientReadStatus("")
 	}
-	return o.ReadStatus
+	return r.ReadStatus
 }
 
-func (o *RecipientCreateTemplateRecipientResponseBody) GetSigningStatus() RecipientCreateTemplateRecipientSigningStatus {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponseBody) GetSigningStatus() RecipientCreateTemplateRecipientSigningStatus {
+	if r == nil {
 		return RecipientCreateTemplateRecipientSigningStatus("")
 	}
-	return o.SigningStatus
+	return r.SigningStatus
 }
 
-func (o *RecipientCreateTemplateRecipientResponseBody) GetSendStatus() RecipientCreateTemplateRecipientSendStatus {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponseBody) GetSendStatus() RecipientCreateTemplateRecipientSendStatus {
+	if r == nil {
 		return RecipientCreateTemplateRecipientSendStatus("")
 	}
-	return o.SendStatus
+	return r.SendStatus
 }
 
-func (o *RecipientCreateTemplateRecipientResponseBody) GetID() float64 {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponseBody) GetID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RecipientCreateTemplateRecipientResponseBody) GetDocumentID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DocumentID
-}
-
-func (o *RecipientCreateTemplateRecipientResponseBody) GetTemplateID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.TemplateID
-}
-
-func (o *RecipientCreateTemplateRecipientResponseBody) GetEmail() string {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponseBody) GetEmail() string {
+	if r == nil {
 		return ""
 	}
-	return o.Email
+	return r.Email
 }
 
-func (o *RecipientCreateTemplateRecipientResponseBody) GetName() string {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponseBody) GetName() string {
+	if r == nil {
 		return ""
 	}
-	return o.Name
+	return r.Name
 }
 
-func (o *RecipientCreateTemplateRecipientResponseBody) GetToken() string {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponseBody) GetToken() string {
+	if r == nil {
 		return ""
 	}
-	return o.Token
+	return r.Token
 }
 
-func (o *RecipientCreateTemplateRecipientResponseBody) GetDocumentDeletedAt() *string {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponseBody) GetDocumentDeletedAt() *string {
+	if r == nil {
 		return nil
 	}
-	return o.DocumentDeletedAt
+	return r.DocumentDeletedAt
 }
 
-func (o *RecipientCreateTemplateRecipientResponseBody) GetExpired() *string {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponseBody) GetExpired() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Expired
+	return r.Expired
 }
 
-func (o *RecipientCreateTemplateRecipientResponseBody) GetSignedAt() *string {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponseBody) GetSignedAt() *string {
+	if r == nil {
 		return nil
 	}
-	return o.SignedAt
+	return r.SignedAt
 }
 
-func (o *RecipientCreateTemplateRecipientResponseBody) GetAuthOptions() *RecipientCreateTemplateRecipientAuthOptions {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponseBody) GetAuthOptions() *RecipientCreateTemplateRecipientAuthOptions {
+	if r == nil {
 		return nil
 	}
-	return o.AuthOptions
+	return r.AuthOptions
 }
 
-func (o *RecipientCreateTemplateRecipientResponseBody) GetSigningOrder() *float64 {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponseBody) GetSigningOrder() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.SigningOrder
+	return r.SigningOrder
 }
 
-func (o *RecipientCreateTemplateRecipientResponseBody) GetRejectionReason() *string {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponseBody) GetRejectionReason() *string {
+	if r == nil {
 		return nil
 	}
-	return o.RejectionReason
+	return r.RejectionReason
+}
+
+func (r *RecipientCreateTemplateRecipientResponseBody) GetDocumentID() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.DocumentID
+}
+
+func (r *RecipientCreateTemplateRecipientResponseBody) GetTemplateID() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.TemplateID
 }
 
 type RecipientCreateTemplateRecipientResponse struct {
@@ -507,16 +521,16 @@ type RecipientCreateTemplateRecipientResponse struct {
 	Object *RecipientCreateTemplateRecipientResponseBody
 }
 
-func (o *RecipientCreateTemplateRecipientResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponse) GetHTTPMeta() components.HTTPMetadata {
+	if r == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return r.HTTPMeta
 }
 
-func (o *RecipientCreateTemplateRecipientResponse) GetObject() *RecipientCreateTemplateRecipientResponseBody {
-	if o == nil {
+func (r *RecipientCreateTemplateRecipientResponse) GetObject() *RecipientCreateTemplateRecipientResponseBody {
+	if r == nil {
 		return nil
 	}
-	return o.Object
+	return r.Object
 }

@@ -11,11 +11,11 @@ type EmbeddingPresignVerifyEmbeddingPresignTokenRequest struct {
 	Token string `json:"token"`
 }
 
-func (o *EmbeddingPresignVerifyEmbeddingPresignTokenRequest) GetToken() string {
-	if o == nil {
+func (e *EmbeddingPresignVerifyEmbeddingPresignTokenRequest) GetToken() string {
+	if e == nil {
 		return ""
 	}
-	return o.Token
+	return e.Token
 }
 
 // EmbeddingPresignVerifyEmbeddingPresignTokenResponseBody - Successful response
@@ -23,11 +23,11 @@ type EmbeddingPresignVerifyEmbeddingPresignTokenResponseBody struct {
 	Success bool `json:"success"`
 }
 
-func (o *EmbeddingPresignVerifyEmbeddingPresignTokenResponseBody) GetSuccess() bool {
-	if o == nil {
+func (e *EmbeddingPresignVerifyEmbeddingPresignTokenResponseBody) GetSuccess() bool {
+	if e == nil {
 		return false
 	}
-	return o.Success
+	return e.Success
 }
 
 type EmbeddingPresignVerifyEmbeddingPresignTokenResponse struct {
@@ -36,16 +36,16 @@ type EmbeddingPresignVerifyEmbeddingPresignTokenResponse struct {
 	Object *EmbeddingPresignVerifyEmbeddingPresignTokenResponseBody
 }
 
-func (o *EmbeddingPresignVerifyEmbeddingPresignTokenResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (e *EmbeddingPresignVerifyEmbeddingPresignTokenResponse) GetHTTPMeta() components.HTTPMetadata {
+	if e == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return e.HTTPMeta
 }
 
-func (o *EmbeddingPresignVerifyEmbeddingPresignTokenResponse) GetObject() *EmbeddingPresignVerifyEmbeddingPresignTokenResponseBody {
-	if o == nil {
+func (e *EmbeddingPresignVerifyEmbeddingPresignTokenResponse) GetObject() *EmbeddingPresignVerifyEmbeddingPresignTokenResponseBody {
+	if e == nil {
 		return nil
 	}
-	return o.Object
+	return e.Object
 }

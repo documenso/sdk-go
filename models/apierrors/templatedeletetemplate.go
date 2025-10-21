@@ -11,11 +11,11 @@ type TemplateDeleteTemplateInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateDeleteTemplateInternalServerErrorIssue) GetMessage() string {
-	if o == nil {
+func (t *TemplateDeleteTemplateInternalServerErrorIssue) GetMessage() string {
+	if t == nil {
 		return ""
 	}
-	return o.Message
+	return t.Message
 }
 
 // TemplateDeleteTemplateInternalServerError - Internal server error
@@ -37,11 +37,11 @@ type TemplateDeleteTemplateBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateDeleteTemplateBadRequestIssue) GetMessage() string {
-	if o == nil {
+func (t *TemplateDeleteTemplateBadRequestIssue) GetMessage() string {
+	if t == nil {
 		return ""
 	}
-	return o.Message
+	return t.Message
 }
 
 // TemplateDeleteTemplateBadRequestError - Invalid input data

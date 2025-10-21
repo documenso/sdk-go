@@ -49,7 +49,8 @@ func (e *RecipientUpdateTemplateRecipientRoleRequest) UnmarshalJSON(data []byte)
 type RecipientUpdateTemplateRecipientAccessAuthRequest string
 
 const (
-	RecipientUpdateTemplateRecipientAccessAuthRequestAccount RecipientUpdateTemplateRecipientAccessAuthRequest = "ACCOUNT"
+	RecipientUpdateTemplateRecipientAccessAuthRequestAccount       RecipientUpdateTemplateRecipientAccessAuthRequest = "ACCOUNT"
+	RecipientUpdateTemplateRecipientAccessAuthRequestTwoFactorAuth RecipientUpdateTemplateRecipientAccessAuthRequest = "TWO_FACTOR_AUTH"
 )
 
 func (e RecipientUpdateTemplateRecipientAccessAuthRequest) ToPointer() *RecipientUpdateTemplateRecipientAccessAuthRequest {
@@ -62,6 +63,8 @@ func (e *RecipientUpdateTemplateRecipientAccessAuthRequest) UnmarshalJSON(data [
 	}
 	switch v {
 	case "ACCOUNT":
+		fallthrough
+	case "TWO_FACTOR_AUTH":
 		*e = RecipientUpdateTemplateRecipientAccessAuthRequest(v)
 		return nil
 	default:
@@ -116,53 +119,53 @@ type RecipientUpdateTemplateRecipientRecipient struct {
 	ActionAuth   []RecipientUpdateTemplateRecipientActionAuthRequest `json:"actionAuth,omitempty"`
 }
 
-func (o *RecipientUpdateTemplateRecipientRecipient) GetID() float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientRecipient) GetID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RecipientUpdateTemplateRecipientRecipient) GetEmail() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientRecipient) GetEmail() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Email
+	return r.Email
 }
 
-func (o *RecipientUpdateTemplateRecipientRecipient) GetName() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientRecipient) GetName() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Name
+	return r.Name
 }
 
-func (o *RecipientUpdateTemplateRecipientRecipient) GetRole() *RecipientUpdateTemplateRecipientRoleRequest {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientRecipient) GetRole() *RecipientUpdateTemplateRecipientRoleRequest {
+	if r == nil {
 		return nil
 	}
-	return o.Role
+	return r.Role
 }
 
-func (o *RecipientUpdateTemplateRecipientRecipient) GetSigningOrder() *float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientRecipient) GetSigningOrder() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.SigningOrder
+	return r.SigningOrder
 }
 
-func (o *RecipientUpdateTemplateRecipientRecipient) GetAccessAuth() []RecipientUpdateTemplateRecipientAccessAuthRequest {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientRecipient) GetAccessAuth() []RecipientUpdateTemplateRecipientAccessAuthRequest {
+	if r == nil {
 		return nil
 	}
-	return o.AccessAuth
+	return r.AccessAuth
 }
 
-func (o *RecipientUpdateTemplateRecipientRecipient) GetActionAuth() []RecipientUpdateTemplateRecipientActionAuthRequest {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientRecipient) GetActionAuth() []RecipientUpdateTemplateRecipientActionAuthRequest {
+	if r == nil {
 		return nil
 	}
-	return o.ActionAuth
+	return r.ActionAuth
 }
 
 type RecipientUpdateTemplateRecipientRequest struct {
@@ -170,18 +173,18 @@ type RecipientUpdateTemplateRecipientRequest struct {
 	Recipient  RecipientUpdateTemplateRecipientRecipient `json:"recipient"`
 }
 
-func (o *RecipientUpdateTemplateRecipientRequest) GetTemplateID() float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientRequest) GetTemplateID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.TemplateID
+	return r.TemplateID
 }
 
-func (o *RecipientUpdateTemplateRecipientRequest) GetRecipient() RecipientUpdateTemplateRecipientRecipient {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientRequest) GetRecipient() RecipientUpdateTemplateRecipientRecipient {
+	if r == nil {
 		return RecipientUpdateTemplateRecipientRecipient{}
 	}
-	return o.Recipient
+	return r.Recipient
 }
 
 type RecipientUpdateTemplateRecipientRoleResponse string
@@ -304,7 +307,8 @@ func (e *RecipientUpdateTemplateRecipientSendStatus) UnmarshalJSON(data []byte) 
 type RecipientUpdateTemplateRecipientAccessAuthResponse string
 
 const (
-	RecipientUpdateTemplateRecipientAccessAuthResponseAccount RecipientUpdateTemplateRecipientAccessAuthResponse = "ACCOUNT"
+	RecipientUpdateTemplateRecipientAccessAuthResponseAccount       RecipientUpdateTemplateRecipientAccessAuthResponse = "ACCOUNT"
+	RecipientUpdateTemplateRecipientAccessAuthResponseTwoFactorAuth RecipientUpdateTemplateRecipientAccessAuthResponse = "TWO_FACTOR_AUTH"
 )
 
 func (e RecipientUpdateTemplateRecipientAccessAuthResponse) ToPointer() *RecipientUpdateTemplateRecipientAccessAuthResponse {
@@ -317,6 +321,8 @@ func (e *RecipientUpdateTemplateRecipientAccessAuthResponse) UnmarshalJSON(data 
 	}
 	switch v {
 	case "ACCOUNT":
+		fallthrough
+	case "TWO_FACTOR_AUTH":
 		*e = RecipientUpdateTemplateRecipientAccessAuthResponse(v)
 		return nil
 	default:
@@ -365,18 +371,18 @@ type RecipientUpdateTemplateRecipientAuthOptions struct {
 	ActionAuth []RecipientUpdateTemplateRecipientActionAuthResponse `json:"actionAuth"`
 }
 
-func (o *RecipientUpdateTemplateRecipientAuthOptions) GetAccessAuth() []RecipientUpdateTemplateRecipientAccessAuthResponse {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientAuthOptions) GetAccessAuth() []RecipientUpdateTemplateRecipientAccessAuthResponse {
+	if r == nil {
 		return []RecipientUpdateTemplateRecipientAccessAuthResponse{}
 	}
-	return o.AccessAuth
+	return r.AccessAuth
 }
 
-func (o *RecipientUpdateTemplateRecipientAuthOptions) GetActionAuth() []RecipientUpdateTemplateRecipientActionAuthResponse {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientAuthOptions) GetActionAuth() []RecipientUpdateTemplateRecipientActionAuthResponse {
+	if r == nil {
 		return []RecipientUpdateTemplateRecipientActionAuthResponse{}
 	}
-	return o.ActionAuth
+	return r.ActionAuth
 }
 
 type RecipientUpdateTemplateRecipientType string
@@ -470,11 +476,11 @@ func (r *RecipientUpdateTemplateRecipientValue3) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (o *RecipientUpdateTemplateRecipientValue3) GetValue() string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientValue3) GetValue() string {
+	if r == nil {
 		return ""
 	}
-	return o.Value
+	return r.Value
 }
 
 type RecipientUpdateTemplateRecipientFieldMetaDropdown struct {
@@ -498,53 +504,53 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaDropdown) UnmarshalJSON(data [
 	return nil
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetLabel() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeDropdown {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeDropdown {
+	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeDropdown("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetValues() []RecipientUpdateTemplateRecipientValue3 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetValues() []RecipientUpdateTemplateRecipientValue3 {
+	if r == nil {
 		return nil
 	}
-	return o.Values
+	return r.Values
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetDefaultValue() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetDefaultValue() *string {
+	if r == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return r.DefaultValue
 }
 
 type RecipientUpdateTemplateRecipientFieldMetaTypeCheckbox string
@@ -587,25 +593,51 @@ func (r *RecipientUpdateTemplateRecipientValue2) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (o *RecipientUpdateTemplateRecipientValue2) GetID() float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientValue2) GetID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RecipientUpdateTemplateRecipientValue2) GetChecked() bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientValue2) GetChecked() bool {
+	if r == nil {
 		return false
 	}
-	return o.Checked
+	return r.Checked
 }
 
-func (o *RecipientUpdateTemplateRecipientValue2) GetValue() string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientValue2) GetValue() string {
+	if r == nil {
 		return ""
 	}
-	return o.Value
+	return r.Value
+}
+
+type RecipientUpdateTemplateRecipientDirection string
+
+const (
+	RecipientUpdateTemplateRecipientDirectionVertical   RecipientUpdateTemplateRecipientDirection = "vertical"
+	RecipientUpdateTemplateRecipientDirectionHorizontal RecipientUpdateTemplateRecipientDirection = "horizontal"
+)
+
+func (e RecipientUpdateTemplateRecipientDirection) ToPointer() *RecipientUpdateTemplateRecipientDirection {
+	return &e
+}
+func (e *RecipientUpdateTemplateRecipientDirection) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = RecipientUpdateTemplateRecipientDirection(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientDirection: %v", v)
+	}
 }
 
 type RecipientUpdateTemplateRecipientFieldMetaCheckbox struct {
@@ -617,6 +649,7 @@ type RecipientUpdateTemplateRecipientFieldMetaCheckbox struct {
 	Values           []RecipientUpdateTemplateRecipientValue2              `json:"values,omitempty"`
 	ValidationRule   *string                                               `json:"validationRule,omitempty"`
 	ValidationLength *float64                                              `json:"validationLength,omitempty"`
+	Direction        *RecipientUpdateTemplateRecipientDirection            `default:"vertical" json:"direction"`
 }
 
 func (r RecipientUpdateTemplateRecipientFieldMetaCheckbox) MarshalJSON() ([]byte, error) {
@@ -630,60 +663,67 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaCheckbox) UnmarshalJSON(data [
 	return nil
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetLabel() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeCheckbox {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeCheckbox {
+	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeCheckbox("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetValues() []RecipientUpdateTemplateRecipientValue2 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetValues() []RecipientUpdateTemplateRecipientValue2 {
+	if r == nil {
 		return nil
 	}
-	return o.Values
+	return r.Values
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetValidationRule() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetValidationRule() *string {
+	if r == nil {
 		return nil
 	}
-	return o.ValidationRule
+	return r.ValidationRule
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetValidationLength() *float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetValidationLength() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.ValidationLength
+	return r.ValidationLength
+}
+
+func (r *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetDirection() *RecipientUpdateTemplateRecipientDirection {
+	if r == nil {
+		return nil
+	}
+	return r.Direction
 }
 
 type RecipientUpdateTemplateRecipientFieldMetaTypeRadio string
@@ -726,25 +766,25 @@ func (r *RecipientUpdateTemplateRecipientValue1) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (o *RecipientUpdateTemplateRecipientValue1) GetID() float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientValue1) GetID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RecipientUpdateTemplateRecipientValue1) GetChecked() bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientValue1) GetChecked() bool {
+	if r == nil {
 		return false
 	}
-	return o.Checked
+	return r.Checked
 }
 
-func (o *RecipientUpdateTemplateRecipientValue1) GetValue() string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientValue1) GetValue() string {
+	if r == nil {
 		return ""
 	}
-	return o.Value
+	return r.Value
 }
 
 type RecipientUpdateTemplateRecipientFieldMetaRadio struct {
@@ -767,46 +807,46 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaRadio) UnmarshalJSON(data []by
 	return nil
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaRadio) GetLabel() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaRadio) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaRadio) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaRadio) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaRadio) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaRadio) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaRadio) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaRadio) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaRadio) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeRadio {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaRadio) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeRadio {
+	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeRadio("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaRadio) GetValues() []RecipientUpdateTemplateRecipientValue1 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaRadio) GetValues() []RecipientUpdateTemplateRecipientValue1 {
+	if r == nil {
 		return nil
 	}
-	return o.Values
+	return r.Values
 }
 
 type RecipientUpdateTemplateRecipientFieldMetaTypeNumber string
@@ -886,81 +926,81 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) UnmarshalJSON(data []b
 	return nil
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaNumber) GetLabel() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaNumber) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaNumber) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaNumber) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaNumber) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeNumber {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeNumber {
+	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeNumber("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaNumber) GetNumberFormat() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) GetNumberFormat() *string {
+	if r == nil {
 		return nil
 	}
-	return o.NumberFormat
+	return r.NumberFormat
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaNumber) GetValue() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) GetValue() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Value
+	return r.Value
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaNumber) GetMinValue() *float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) GetMinValue() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.MinValue
+	return r.MinValue
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaNumber) GetMaxValue() *float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) GetMaxValue() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.MaxValue
+	return r.MaxValue
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaNumber) GetFontSize() *float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) GetFontSize() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.FontSize
+	return r.FontSize
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaNumber) GetTextAlign() *RecipientUpdateTemplateRecipientTextAlign6 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) GetTextAlign() *RecipientUpdateTemplateRecipientTextAlign6 {
+	if r == nil {
 		return nil
 	}
-	return o.TextAlign
+	return r.TextAlign
 }
 
 type RecipientUpdateTemplateRecipientFieldMetaTypeText string
@@ -1038,67 +1078,67 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaText) UnmarshalJSON(data []byt
 	return nil
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaText) GetLabel() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaText) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaText) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaText) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaText) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaText) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaText) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaText) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaText) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeText {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaText) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeText {
+	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeText("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaText) GetText() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaText) GetText() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Text
+	return r.Text
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaText) GetCharacterLimit() *float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaText) GetCharacterLimit() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.CharacterLimit
+	return r.CharacterLimit
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaText) GetFontSize() *float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaText) GetFontSize() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.FontSize
+	return r.FontSize
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaText) GetTextAlign() *RecipientUpdateTemplateRecipientTextAlign5 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaText) GetTextAlign() *RecipientUpdateTemplateRecipientTextAlign5 {
+	if r == nil {
 		return nil
 	}
-	return o.TextAlign
+	return r.TextAlign
 }
 
 type RecipientUpdateTemplateRecipientFieldMetaTypeDate string
@@ -1174,53 +1214,53 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaDate) UnmarshalJSON(data []byt
 	return nil
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaDate) GetLabel() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaDate) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaDate) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaDate) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaDate) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaDate) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaDate) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaDate) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaDate) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeDate {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaDate) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeDate {
+	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeDate("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaDate) GetFontSize() *float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaDate) GetFontSize() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.FontSize
+	return r.FontSize
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaDate) GetTextAlign() *RecipientUpdateTemplateRecipientTextAlign4 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaDate) GetTextAlign() *RecipientUpdateTemplateRecipientTextAlign4 {
+	if r == nil {
 		return nil
 	}
-	return o.TextAlign
+	return r.TextAlign
 }
 
 type RecipientUpdateTemplateRecipientFieldMetaTypeEmail string
@@ -1296,53 +1336,53 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaEmail) UnmarshalJSON(data []by
 	return nil
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaEmail) GetLabel() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaEmail) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaEmail) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaEmail) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaEmail) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaEmail) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaEmail) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaEmail) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaEmail) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeEmail {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaEmail) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeEmail {
+	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeEmail("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaEmail) GetFontSize() *float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaEmail) GetFontSize() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.FontSize
+	return r.FontSize
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaEmail) GetTextAlign() *RecipientUpdateTemplateRecipientTextAlign3 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaEmail) GetTextAlign() *RecipientUpdateTemplateRecipientTextAlign3 {
+	if r == nil {
 		return nil
 	}
-	return o.TextAlign
+	return r.TextAlign
 }
 
 type RecipientUpdateTemplateRecipientFieldMetaTypeName string
@@ -1418,53 +1458,53 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaName) UnmarshalJSON(data []byt
 	return nil
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaName) GetLabel() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaName) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaName) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaName) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaName) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaName) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaName) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaName) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaName) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeName {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaName) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeName {
+	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeName("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaName) GetFontSize() *float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaName) GetFontSize() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.FontSize
+	return r.FontSize
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaName) GetTextAlign() *RecipientUpdateTemplateRecipientTextAlign2 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaName) GetTextAlign() *RecipientUpdateTemplateRecipientTextAlign2 {
+	if r == nil {
 		return nil
 	}
-	return o.TextAlign
+	return r.TextAlign
 }
 
 type RecipientUpdateTemplateRecipientFieldMetaTypeInitials string
@@ -1540,53 +1580,53 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaInitials) UnmarshalJSON(data [
 	return nil
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaInitials) GetLabel() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaInitials) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaInitials) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaInitials) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaInitials) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaInitials) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaInitials) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaInitials) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaInitials) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeInitials {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaInitials) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeInitials {
+	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeInitials("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaInitials) GetFontSize() *float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaInitials) GetFontSize() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.FontSize
+	return r.FontSize
 }
 
-func (o *RecipientUpdateTemplateRecipientFieldMetaInitials) GetTextAlign() *RecipientUpdateTemplateRecipientTextAlign1 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientFieldMetaInitials) GetTextAlign() *RecipientUpdateTemplateRecipientTextAlign1 {
+	if r == nil {
 		return nil
 	}
-	return o.TextAlign
+	return r.TextAlign
 }
 
 type RecipientUpdateTemplateRecipientFieldMetaUnionType string
@@ -1604,15 +1644,15 @@ const (
 )
 
 type RecipientUpdateTemplateRecipientFieldMetaUnion struct {
-	RecipientUpdateTemplateRecipientFieldMetaInitials *RecipientUpdateTemplateRecipientFieldMetaInitials `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientFieldMetaName     *RecipientUpdateTemplateRecipientFieldMetaName     `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientFieldMetaEmail    *RecipientUpdateTemplateRecipientFieldMetaEmail    `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientFieldMetaDate     *RecipientUpdateTemplateRecipientFieldMetaDate     `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientFieldMetaText     *RecipientUpdateTemplateRecipientFieldMetaText     `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientFieldMetaNumber   *RecipientUpdateTemplateRecipientFieldMetaNumber   `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientFieldMetaRadio    *RecipientUpdateTemplateRecipientFieldMetaRadio    `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientFieldMetaCheckbox *RecipientUpdateTemplateRecipientFieldMetaCheckbox `queryParam:"inline"`
-	RecipientUpdateTemplateRecipientFieldMetaDropdown *RecipientUpdateTemplateRecipientFieldMetaDropdown `queryParam:"inline"`
+	RecipientUpdateTemplateRecipientFieldMetaInitials *RecipientUpdateTemplateRecipientFieldMetaInitials `queryParam:"inline,name=fieldMeta"`
+	RecipientUpdateTemplateRecipientFieldMetaName     *RecipientUpdateTemplateRecipientFieldMetaName     `queryParam:"inline,name=fieldMeta"`
+	RecipientUpdateTemplateRecipientFieldMetaEmail    *RecipientUpdateTemplateRecipientFieldMetaEmail    `queryParam:"inline,name=fieldMeta"`
+	RecipientUpdateTemplateRecipientFieldMetaDate     *RecipientUpdateTemplateRecipientFieldMetaDate     `queryParam:"inline,name=fieldMeta"`
+	RecipientUpdateTemplateRecipientFieldMetaText     *RecipientUpdateTemplateRecipientFieldMetaText     `queryParam:"inline,name=fieldMeta"`
+	RecipientUpdateTemplateRecipientFieldMetaNumber   *RecipientUpdateTemplateRecipientFieldMetaNumber   `queryParam:"inline,name=fieldMeta"`
+	RecipientUpdateTemplateRecipientFieldMetaRadio    *RecipientUpdateTemplateRecipientFieldMetaRadio    `queryParam:"inline,name=fieldMeta"`
+	RecipientUpdateTemplateRecipientFieldMetaCheckbox *RecipientUpdateTemplateRecipientFieldMetaCheckbox `queryParam:"inline,name=fieldMeta"`
+	RecipientUpdateTemplateRecipientFieldMetaDropdown *RecipientUpdateTemplateRecipientFieldMetaDropdown `queryParam:"inline,name=fieldMeta"`
 
 	Type RecipientUpdateTemplateRecipientFieldMetaUnionType
 }
@@ -1807,12 +1847,12 @@ func (u RecipientUpdateTemplateRecipientFieldMetaUnion) MarshalJSON() ([]byte, e
 }
 
 type RecipientUpdateTemplateRecipientField struct {
-	Type        RecipientUpdateTemplateRecipientType `json:"type"`
-	ID          float64                              `json:"id"`
-	SecondaryID string                               `json:"secondaryId"`
-	DocumentID  *float64                             `json:"documentId"`
-	TemplateID  *float64                             `json:"templateId"`
-	RecipientID float64                              `json:"recipientId"`
+	EnvelopeID     string                               `json:"envelopeId"`
+	EnvelopeItemID string                               `json:"envelopeItemId"`
+	Type           RecipientUpdateTemplateRecipientType `json:"type"`
+	ID             float64                              `json:"id"`
+	SecondaryID    string                               `json:"secondaryId"`
+	RecipientID    float64                              `json:"recipientId"`
 	// The page number of the field on the document. Starts from 1.
 	Page       float64                                         `json:"page"`
 	PositionX  any                                             `json:"positionX,omitempty"`
@@ -1822,115 +1862,130 @@ type RecipientUpdateTemplateRecipientField struct {
 	CustomText string                                          `json:"customText"`
 	Inserted   bool                                            `json:"inserted"`
 	FieldMeta  *RecipientUpdateTemplateRecipientFieldMetaUnion `json:"fieldMeta"`
+	DocumentID *float64                                        `json:"documentId,omitempty"`
+	TemplateID *float64                                        `json:"templateId,omitempty"`
 }
 
-func (o *RecipientUpdateTemplateRecipientField) GetType() RecipientUpdateTemplateRecipientType {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientField) GetEnvelopeID() string {
+	if r == nil {
+		return ""
+	}
+	return r.EnvelopeID
+}
+
+func (r *RecipientUpdateTemplateRecipientField) GetEnvelopeItemID() string {
+	if r == nil {
+		return ""
+	}
+	return r.EnvelopeItemID
+}
+
+func (r *RecipientUpdateTemplateRecipientField) GetType() RecipientUpdateTemplateRecipientType {
+	if r == nil {
 		return RecipientUpdateTemplateRecipientType("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientUpdateTemplateRecipientField) GetID() float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientField) GetID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RecipientUpdateTemplateRecipientField) GetSecondaryID() string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientField) GetSecondaryID() string {
+	if r == nil {
 		return ""
 	}
-	return o.SecondaryID
+	return r.SecondaryID
 }
 
-func (o *RecipientUpdateTemplateRecipientField) GetDocumentID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DocumentID
-}
-
-func (o *RecipientUpdateTemplateRecipientField) GetTemplateID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.TemplateID
-}
-
-func (o *RecipientUpdateTemplateRecipientField) GetRecipientID() float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientField) GetRecipientID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.RecipientID
+	return r.RecipientID
 }
 
-func (o *RecipientUpdateTemplateRecipientField) GetPage() float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientField) GetPage() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.Page
+	return r.Page
 }
 
-func (o *RecipientUpdateTemplateRecipientField) GetPositionX() any {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientField) GetPositionX() any {
+	if r == nil {
 		return nil
 	}
-	return o.PositionX
+	return r.PositionX
 }
 
-func (o *RecipientUpdateTemplateRecipientField) GetPositionY() any {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientField) GetPositionY() any {
+	if r == nil {
 		return nil
 	}
-	return o.PositionY
+	return r.PositionY
 }
 
-func (o *RecipientUpdateTemplateRecipientField) GetWidth() any {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientField) GetWidth() any {
+	if r == nil {
 		return nil
 	}
-	return o.Width
+	return r.Width
 }
 
-func (o *RecipientUpdateTemplateRecipientField) GetHeight() any {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientField) GetHeight() any {
+	if r == nil {
 		return nil
 	}
-	return o.Height
+	return r.Height
 }
 
-func (o *RecipientUpdateTemplateRecipientField) GetCustomText() string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientField) GetCustomText() string {
+	if r == nil {
 		return ""
 	}
-	return o.CustomText
+	return r.CustomText
 }
 
-func (o *RecipientUpdateTemplateRecipientField) GetInserted() bool {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientField) GetInserted() bool {
+	if r == nil {
 		return false
 	}
-	return o.Inserted
+	return r.Inserted
 }
 
-func (o *RecipientUpdateTemplateRecipientField) GetFieldMeta() *RecipientUpdateTemplateRecipientFieldMetaUnion {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientField) GetFieldMeta() *RecipientUpdateTemplateRecipientFieldMetaUnion {
+	if r == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return r.FieldMeta
+}
+
+func (r *RecipientUpdateTemplateRecipientField) GetDocumentID() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.DocumentID
+}
+
+func (r *RecipientUpdateTemplateRecipientField) GetTemplateID() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.TemplateID
 }
 
 // RecipientUpdateTemplateRecipientResponseBody - Successful response
 type RecipientUpdateTemplateRecipientResponseBody struct {
+	EnvelopeID        string                                        `json:"envelopeId"`
 	Role              RecipientUpdateTemplateRecipientRoleResponse  `json:"role"`
 	ReadStatus        RecipientUpdateTemplateRecipientReadStatus    `json:"readStatus"`
 	SigningStatus     RecipientUpdateTemplateRecipientSigningStatus `json:"signingStatus"`
 	SendStatus        RecipientUpdateTemplateRecipientSendStatus    `json:"sendStatus"`
 	ID                float64                                       `json:"id"`
-	DocumentID        *float64                                      `json:"documentId"`
-	TemplateID        *float64                                      `json:"templateId"`
 	Email             string                                        `json:"email"`
 	Name              string                                        `json:"name"`
 	Token             string                                        `json:"token"`
@@ -1942,125 +1997,134 @@ type RecipientUpdateTemplateRecipientResponseBody struct {
 	SigningOrder    *float64                                `json:"signingOrder"`
 	RejectionReason *string                                 `json:"rejectionReason"`
 	Fields          []RecipientUpdateTemplateRecipientField `json:"fields"`
+	DocumentID      *float64                                `json:"documentId,omitempty"`
+	TemplateID      *float64                                `json:"templateId,omitempty"`
 }
 
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetRole() RecipientUpdateTemplateRecipientRoleResponse {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetEnvelopeID() string {
+	if r == nil {
+		return ""
+	}
+	return r.EnvelopeID
+}
+
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetRole() RecipientUpdateTemplateRecipientRoleResponse {
+	if r == nil {
 		return RecipientUpdateTemplateRecipientRoleResponse("")
 	}
-	return o.Role
+	return r.Role
 }
 
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetReadStatus() RecipientUpdateTemplateRecipientReadStatus {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetReadStatus() RecipientUpdateTemplateRecipientReadStatus {
+	if r == nil {
 		return RecipientUpdateTemplateRecipientReadStatus("")
 	}
-	return o.ReadStatus
+	return r.ReadStatus
 }
 
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetSigningStatus() RecipientUpdateTemplateRecipientSigningStatus {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetSigningStatus() RecipientUpdateTemplateRecipientSigningStatus {
+	if r == nil {
 		return RecipientUpdateTemplateRecipientSigningStatus("")
 	}
-	return o.SigningStatus
+	return r.SigningStatus
 }
 
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetSendStatus() RecipientUpdateTemplateRecipientSendStatus {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetSendStatus() RecipientUpdateTemplateRecipientSendStatus {
+	if r == nil {
 		return RecipientUpdateTemplateRecipientSendStatus("")
 	}
-	return o.SendStatus
+	return r.SendStatus
 }
 
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetID() float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetDocumentID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DocumentID
-}
-
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetTemplateID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.TemplateID
-}
-
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetEmail() string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetEmail() string {
+	if r == nil {
 		return ""
 	}
-	return o.Email
+	return r.Email
 }
 
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetName() string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetName() string {
+	if r == nil {
 		return ""
 	}
-	return o.Name
+	return r.Name
 }
 
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetToken() string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetToken() string {
+	if r == nil {
 		return ""
 	}
-	return o.Token
+	return r.Token
 }
 
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetDocumentDeletedAt() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetDocumentDeletedAt() *string {
+	if r == nil {
 		return nil
 	}
-	return o.DocumentDeletedAt
+	return r.DocumentDeletedAt
 }
 
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetExpired() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetExpired() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Expired
+	return r.Expired
 }
 
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetSignedAt() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetSignedAt() *string {
+	if r == nil {
 		return nil
 	}
-	return o.SignedAt
+	return r.SignedAt
 }
 
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetAuthOptions() *RecipientUpdateTemplateRecipientAuthOptions {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetAuthOptions() *RecipientUpdateTemplateRecipientAuthOptions {
+	if r == nil {
 		return nil
 	}
-	return o.AuthOptions
+	return r.AuthOptions
 }
 
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetSigningOrder() *float64 {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetSigningOrder() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.SigningOrder
+	return r.SigningOrder
 }
 
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetRejectionReason() *string {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetRejectionReason() *string {
+	if r == nil {
 		return nil
 	}
-	return o.RejectionReason
+	return r.RejectionReason
 }
 
-func (o *RecipientUpdateTemplateRecipientResponseBody) GetFields() []RecipientUpdateTemplateRecipientField {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetFields() []RecipientUpdateTemplateRecipientField {
+	if r == nil {
 		return []RecipientUpdateTemplateRecipientField{}
 	}
-	return o.Fields
+	return r.Fields
+}
+
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetDocumentID() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.DocumentID
+}
+
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetTemplateID() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.TemplateID
 }
 
 type RecipientUpdateTemplateRecipientResponse struct {
@@ -2069,16 +2133,16 @@ type RecipientUpdateTemplateRecipientResponse struct {
 	Object *RecipientUpdateTemplateRecipientResponseBody
 }
 
-func (o *RecipientUpdateTemplateRecipientResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponse) GetHTTPMeta() components.HTTPMetadata {
+	if r == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return r.HTTPMeta
 }
 
-func (o *RecipientUpdateTemplateRecipientResponse) GetObject() *RecipientUpdateTemplateRecipientResponseBody {
-	if o == nil {
+func (r *RecipientUpdateTemplateRecipientResponse) GetObject() *RecipientUpdateTemplateRecipientResponseBody {
+	if r == nil {
 		return nil
 	}
-	return o.Object
+	return r.Object
 }

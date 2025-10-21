@@ -11,11 +11,11 @@ type FieldDeleteDocumentFieldInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *FieldDeleteDocumentFieldInternalServerErrorIssue) GetMessage() string {
-	if o == nil {
+func (f *FieldDeleteDocumentFieldInternalServerErrorIssue) GetMessage() string {
+	if f == nil {
 		return ""
 	}
-	return o.Message
+	return f.Message
 }
 
 // FieldDeleteDocumentFieldInternalServerError - Internal server error
@@ -37,11 +37,11 @@ type FieldDeleteDocumentFieldBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *FieldDeleteDocumentFieldBadRequestIssue) GetMessage() string {
-	if o == nil {
+func (f *FieldDeleteDocumentFieldBadRequestIssue) GetMessage() string {
+	if f == nil {
 		return ""
 	}
-	return o.Message
+	return f.Message
 }
 
 // FieldDeleteDocumentFieldBadRequestError - Invalid input data

@@ -11,11 +11,11 @@ type RecipientDeleteDocumentRecipientInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *RecipientDeleteDocumentRecipientInternalServerErrorIssue) GetMessage() string {
-	if o == nil {
+func (r *RecipientDeleteDocumentRecipientInternalServerErrorIssue) GetMessage() string {
+	if r == nil {
 		return ""
 	}
-	return o.Message
+	return r.Message
 }
 
 // RecipientDeleteDocumentRecipientInternalServerError - Internal server error
@@ -37,11 +37,11 @@ type RecipientDeleteDocumentRecipientBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *RecipientDeleteDocumentRecipientBadRequestIssue) GetMessage() string {
-	if o == nil {
+func (r *RecipientDeleteDocumentRecipientBadRequestIssue) GetMessage() string {
+	if r == nil {
 		return ""
 	}
-	return o.Message
+	return r.Message
 }
 
 // RecipientDeleteDocumentRecipientBadRequestError - Invalid input data

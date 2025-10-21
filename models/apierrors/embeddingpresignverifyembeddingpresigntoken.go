@@ -11,11 +11,11 @@ type EmbeddingPresignVerifyEmbeddingPresignTokenInternalServerErrorIssue struct 
 	Message string `json:"message"`
 }
 
-func (o *EmbeddingPresignVerifyEmbeddingPresignTokenInternalServerErrorIssue) GetMessage() string {
-	if o == nil {
+func (e *EmbeddingPresignVerifyEmbeddingPresignTokenInternalServerErrorIssue) GetMessage() string {
+	if e == nil {
 		return ""
 	}
-	return o.Message
+	return e.Message
 }
 
 // EmbeddingPresignVerifyEmbeddingPresignTokenInternalServerError - Internal server error
@@ -37,11 +37,11 @@ type EmbeddingPresignVerifyEmbeddingPresignTokenBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *EmbeddingPresignVerifyEmbeddingPresignTokenBadRequestIssue) GetMessage() string {
-	if o == nil {
+func (e *EmbeddingPresignVerifyEmbeddingPresignTokenBadRequestIssue) GetMessage() string {
+	if e == nil {
 		return ""
 	}
-	return o.Message
+	return e.Message
 }
 
 // EmbeddingPresignVerifyEmbeddingPresignTokenBadRequestError - Invalid input data

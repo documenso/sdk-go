@@ -71,11 +71,11 @@ func (f *FieldUpdateDocumentFieldValueDropdown) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldValueDropdown) GetValue() string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldValueDropdown) GetValue() string {
+	if f == nil {
 		return ""
 	}
-	return o.Value
+	return f.Value
 }
 
 type FieldUpdateDocumentFieldFieldMetaDropdownRequest struct {
@@ -99,53 +99,53 @@ func (f *FieldUpdateDocumentFieldFieldMetaDropdownRequest) UnmarshalJSON(data []
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDropdownRequest) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDropdownRequest) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDropdownRequest) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDropdownRequest) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDropdownRequest) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDropdownRequest) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDropdownRequest) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDropdownRequest) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDropdownRequest) GetType() FieldUpdateDocumentFieldTypeDropdownRequest2 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDropdownRequest) GetType() FieldUpdateDocumentFieldTypeDropdownRequest2 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeDropdownRequest2("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDropdownRequest) GetValues() []FieldUpdateDocumentFieldValueDropdown {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDropdownRequest) GetValues() []FieldUpdateDocumentFieldValueDropdown {
+	if f == nil {
 		return nil
 	}
-	return o.Values
+	return f.Values
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDropdownRequest) GetDefaultValue() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDropdownRequest) GetDefaultValue() *string {
+	if f == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return f.DefaultValue
 }
 
 type FieldUpdateDocumentFieldFieldDropdown struct {
@@ -176,60 +176,60 @@ func (f *FieldUpdateDocumentFieldFieldDropdown) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldDropdown) GetType() FieldUpdateDocumentFieldTypeDropdownRequest1 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDropdown) GetType() FieldUpdateDocumentFieldTypeDropdownRequest1 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeDropdownRequest1("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldDropdown) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaDropdownRequest {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDropdown) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaDropdownRequest {
+	if f == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return f.FieldMeta
 }
 
-func (o *FieldUpdateDocumentFieldFieldDropdown) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDropdown) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldFieldDropdown) GetPageNumber() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDropdown) GetPageNumber() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageNumber
+	return f.PageNumber
 }
 
-func (o *FieldUpdateDocumentFieldFieldDropdown) GetPageX() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDropdown) GetPageX() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageX
+	return f.PageX
 }
 
-func (o *FieldUpdateDocumentFieldFieldDropdown) GetPageY() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDropdown) GetPageY() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageY
+	return f.PageY
 }
 
-func (o *FieldUpdateDocumentFieldFieldDropdown) GetWidth() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDropdown) GetWidth() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Width
+	return f.Width
 }
 
-func (o *FieldUpdateDocumentFieldFieldDropdown) GetHeight() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDropdown) GetHeight() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Height
+	return f.Height
 }
 
 type FieldUpdateDocumentFieldTypeCheckboxRequest1 string
@@ -295,25 +295,51 @@ func (f *FieldUpdateDocumentFieldValueCheckbox) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldValueCheckbox) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldValueCheckbox) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldValueCheckbox) GetChecked() bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldValueCheckbox) GetChecked() bool {
+	if f == nil {
 		return false
 	}
-	return o.Checked
+	return f.Checked
 }
 
-func (o *FieldUpdateDocumentFieldValueCheckbox) GetValue() string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldValueCheckbox) GetValue() string {
+	if f == nil {
 		return ""
 	}
-	return o.Value
+	return f.Value
+}
+
+type FieldUpdateDocumentFieldDirectionRequest string
+
+const (
+	FieldUpdateDocumentFieldDirectionRequestVertical   FieldUpdateDocumentFieldDirectionRequest = "vertical"
+	FieldUpdateDocumentFieldDirectionRequestHorizontal FieldUpdateDocumentFieldDirectionRequest = "horizontal"
+)
+
+func (e FieldUpdateDocumentFieldDirectionRequest) ToPointer() *FieldUpdateDocumentFieldDirectionRequest {
+	return &e
+}
+func (e *FieldUpdateDocumentFieldDirectionRequest) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = FieldUpdateDocumentFieldDirectionRequest(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldUpdateDocumentFieldDirectionRequest: %v", v)
+	}
 }
 
 type FieldUpdateDocumentFieldFieldMetaCheckboxRequest struct {
@@ -325,6 +351,7 @@ type FieldUpdateDocumentFieldFieldMetaCheckboxRequest struct {
 	Values           []FieldUpdateDocumentFieldValueCheckbox      `json:"values,omitempty"`
 	ValidationRule   *string                                      `json:"validationRule,omitempty"`
 	ValidationLength *float64                                     `json:"validationLength,omitempty"`
+	Direction        *FieldUpdateDocumentFieldDirectionRequest    `default:"vertical" json:"direction"`
 }
 
 func (f FieldUpdateDocumentFieldFieldMetaCheckboxRequest) MarshalJSON() ([]byte, error) {
@@ -338,60 +365,67 @@ func (f *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) UnmarshalJSON(data []
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetType() FieldUpdateDocumentFieldTypeCheckboxRequest2 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetType() FieldUpdateDocumentFieldTypeCheckboxRequest2 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeCheckboxRequest2("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetValues() []FieldUpdateDocumentFieldValueCheckbox {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetValues() []FieldUpdateDocumentFieldValueCheckbox {
+	if f == nil {
 		return nil
 	}
-	return o.Values
+	return f.Values
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetValidationRule() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetValidationRule() *string {
+	if f == nil {
 		return nil
 	}
-	return o.ValidationRule
+	return f.ValidationRule
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetValidationLength() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetValidationLength() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.ValidationLength
+	return f.ValidationLength
+}
+
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxRequest) GetDirection() *FieldUpdateDocumentFieldDirectionRequest {
+	if f == nil {
+		return nil
+	}
+	return f.Direction
 }
 
 type FieldUpdateDocumentFieldFieldCheckbox struct {
@@ -422,60 +456,60 @@ func (f *FieldUpdateDocumentFieldFieldCheckbox) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldCheckbox) GetType() FieldUpdateDocumentFieldTypeCheckboxRequest1 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldCheckbox) GetType() FieldUpdateDocumentFieldTypeCheckboxRequest1 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeCheckboxRequest1("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldCheckbox) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaCheckboxRequest {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldCheckbox) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaCheckboxRequest {
+	if f == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return f.FieldMeta
 }
 
-func (o *FieldUpdateDocumentFieldFieldCheckbox) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldCheckbox) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldFieldCheckbox) GetPageNumber() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldCheckbox) GetPageNumber() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageNumber
+	return f.PageNumber
 }
 
-func (o *FieldUpdateDocumentFieldFieldCheckbox) GetPageX() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldCheckbox) GetPageX() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageX
+	return f.PageX
 }
 
-func (o *FieldUpdateDocumentFieldFieldCheckbox) GetPageY() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldCheckbox) GetPageY() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageY
+	return f.PageY
 }
 
-func (o *FieldUpdateDocumentFieldFieldCheckbox) GetWidth() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldCheckbox) GetWidth() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Width
+	return f.Width
 }
 
-func (o *FieldUpdateDocumentFieldFieldCheckbox) GetHeight() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldCheckbox) GetHeight() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Height
+	return f.Height
 }
 
 type FieldUpdateDocumentFieldTypeRadioRequest1 string
@@ -541,25 +575,25 @@ func (f *FieldUpdateDocumentFieldValueRadio) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldValueRadio) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldValueRadio) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldValueRadio) GetChecked() bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldValueRadio) GetChecked() bool {
+	if f == nil {
 		return false
 	}
-	return o.Checked
+	return f.Checked
 }
 
-func (o *FieldUpdateDocumentFieldValueRadio) GetValue() string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldValueRadio) GetValue() string {
+	if f == nil {
 		return ""
 	}
-	return o.Value
+	return f.Value
 }
 
 type FieldUpdateDocumentFieldFieldMetaRadioRequest struct {
@@ -582,46 +616,46 @@ func (f *FieldUpdateDocumentFieldFieldMetaRadioRequest) UnmarshalJSON(data []byt
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaRadioRequest) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaRadioRequest) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaRadioRequest) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaRadioRequest) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaRadioRequest) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaRadioRequest) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaRadioRequest) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaRadioRequest) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaRadioRequest) GetType() FieldUpdateDocumentFieldTypeRadioRequest2 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaRadioRequest) GetType() FieldUpdateDocumentFieldTypeRadioRequest2 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeRadioRequest2("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaRadioRequest) GetValues() []FieldUpdateDocumentFieldValueRadio {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaRadioRequest) GetValues() []FieldUpdateDocumentFieldValueRadio {
+	if f == nil {
 		return nil
 	}
-	return o.Values
+	return f.Values
 }
 
 type FieldUpdateDocumentFieldFieldRadio struct {
@@ -652,60 +686,60 @@ func (f *FieldUpdateDocumentFieldFieldRadio) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldRadio) GetType() FieldUpdateDocumentFieldTypeRadioRequest1 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldRadio) GetType() FieldUpdateDocumentFieldTypeRadioRequest1 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeRadioRequest1("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldRadio) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaRadioRequest {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldRadio) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaRadioRequest {
+	if f == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return f.FieldMeta
 }
 
-func (o *FieldUpdateDocumentFieldFieldRadio) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldRadio) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldFieldRadio) GetPageNumber() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldRadio) GetPageNumber() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageNumber
+	return f.PageNumber
 }
 
-func (o *FieldUpdateDocumentFieldFieldRadio) GetPageX() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldRadio) GetPageX() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageX
+	return f.PageX
 }
 
-func (o *FieldUpdateDocumentFieldFieldRadio) GetPageY() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldRadio) GetPageY() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageY
+	return f.PageY
 }
 
-func (o *FieldUpdateDocumentFieldFieldRadio) GetWidth() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldRadio) GetWidth() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Width
+	return f.Width
 }
 
-func (o *FieldUpdateDocumentFieldFieldRadio) GetHeight() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldRadio) GetHeight() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Height
+	return f.Height
 }
 
 type FieldUpdateDocumentFieldTypeNumberRequest1 string
@@ -808,81 +842,81 @@ func (f *FieldUpdateDocumentFieldFieldMetaNumberRequest) UnmarshalJSON(data []by
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetType() FieldUpdateDocumentFieldTypeNumberRequest2 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetType() FieldUpdateDocumentFieldTypeNumberRequest2 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeNumberRequest2("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetNumberFormat() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetNumberFormat() *string {
+	if f == nil {
 		return nil
 	}
-	return o.NumberFormat
+	return f.NumberFormat
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetValue() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetValue() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Value
+	return f.Value
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetMinValue() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetMinValue() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.MinValue
+	return f.MinValue
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetMaxValue() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetMaxValue() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.MaxValue
+	return f.MaxValue
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetTextAlign() *FieldUpdateDocumentFieldTextAlignNumber {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberRequest) GetTextAlign() *FieldUpdateDocumentFieldTextAlignNumber {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type FieldUpdateDocumentFieldFieldNumber struct {
@@ -913,60 +947,60 @@ func (f *FieldUpdateDocumentFieldFieldNumber) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldNumber) GetType() FieldUpdateDocumentFieldTypeNumberRequest1 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldNumber) GetType() FieldUpdateDocumentFieldTypeNumberRequest1 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeNumberRequest1("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldNumber) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaNumberRequest {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldNumber) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaNumberRequest {
+	if f == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return f.FieldMeta
 }
 
-func (o *FieldUpdateDocumentFieldFieldNumber) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldNumber) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldFieldNumber) GetPageNumber() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldNumber) GetPageNumber() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageNumber
+	return f.PageNumber
 }
 
-func (o *FieldUpdateDocumentFieldFieldNumber) GetPageX() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldNumber) GetPageX() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageX
+	return f.PageX
 }
 
-func (o *FieldUpdateDocumentFieldFieldNumber) GetPageY() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldNumber) GetPageY() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageY
+	return f.PageY
 }
 
-func (o *FieldUpdateDocumentFieldFieldNumber) GetWidth() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldNumber) GetWidth() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Width
+	return f.Width
 }
 
-func (o *FieldUpdateDocumentFieldFieldNumber) GetHeight() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldNumber) GetHeight() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Height
+	return f.Height
 }
 
 type FieldUpdateDocumentFieldTypeTextRequest1 string
@@ -1067,67 +1101,67 @@ func (f *FieldUpdateDocumentFieldFieldMetaTextRequest) UnmarshalJSON(data []byte
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextRequest) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextRequest) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextRequest) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextRequest) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextRequest) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextRequest) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextRequest) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextRequest) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextRequest) GetType() FieldUpdateDocumentFieldTypeTextRequest2 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextRequest) GetType() FieldUpdateDocumentFieldTypeTextRequest2 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeTextRequest2("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextRequest) GetText() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextRequest) GetText() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Text
+	return f.Text
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextRequest) GetCharacterLimit() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextRequest) GetCharacterLimit() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.CharacterLimit
+	return f.CharacterLimit
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextRequest) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextRequest) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextRequest) GetTextAlign() *FieldUpdateDocumentFieldTextAlignText {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextRequest) GetTextAlign() *FieldUpdateDocumentFieldTextAlignText {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type FieldUpdateDocumentFieldFieldText struct {
@@ -1158,60 +1192,60 @@ func (f *FieldUpdateDocumentFieldFieldText) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldText) GetType() FieldUpdateDocumentFieldTypeTextRequest1 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldText) GetType() FieldUpdateDocumentFieldTypeTextRequest1 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeTextRequest1("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldText) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaTextRequest {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldText) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaTextRequest {
+	if f == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return f.FieldMeta
 }
 
-func (o *FieldUpdateDocumentFieldFieldText) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldText) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldFieldText) GetPageNumber() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldText) GetPageNumber() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageNumber
+	return f.PageNumber
 }
 
-func (o *FieldUpdateDocumentFieldFieldText) GetPageX() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldText) GetPageX() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageX
+	return f.PageX
 }
 
-func (o *FieldUpdateDocumentFieldFieldText) GetPageY() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldText) GetPageY() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageY
+	return f.PageY
 }
 
-func (o *FieldUpdateDocumentFieldFieldText) GetWidth() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldText) GetWidth() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Width
+	return f.Width
 }
 
-func (o *FieldUpdateDocumentFieldFieldText) GetHeight() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldText) GetHeight() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Height
+	return f.Height
 }
 
 type FieldUpdateDocumentFieldTypeDateRequest1 string
@@ -1310,53 +1344,53 @@ func (f *FieldUpdateDocumentFieldFieldMetaDateRequest) UnmarshalJSON(data []byte
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDateRequest) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDateRequest) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDateRequest) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDateRequest) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDateRequest) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDateRequest) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDateRequest) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDateRequest) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDateRequest) GetType() FieldUpdateDocumentFieldTypeDateRequest2 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDateRequest) GetType() FieldUpdateDocumentFieldTypeDateRequest2 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeDateRequest2("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDateRequest) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDateRequest) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDateRequest) GetTextAlign() *FieldUpdateDocumentFieldTextAlignDate {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDateRequest) GetTextAlign() *FieldUpdateDocumentFieldTextAlignDate {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type FieldUpdateDocumentFieldFieldDate struct {
@@ -1387,60 +1421,60 @@ func (f *FieldUpdateDocumentFieldFieldDate) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldDate) GetType() FieldUpdateDocumentFieldTypeDateRequest1 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDate) GetType() FieldUpdateDocumentFieldTypeDateRequest1 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeDateRequest1("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldDate) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaDateRequest {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDate) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaDateRequest {
+	if f == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return f.FieldMeta
 }
 
-func (o *FieldUpdateDocumentFieldFieldDate) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDate) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldFieldDate) GetPageNumber() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDate) GetPageNumber() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageNumber
+	return f.PageNumber
 }
 
-func (o *FieldUpdateDocumentFieldFieldDate) GetPageX() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDate) GetPageX() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageX
+	return f.PageX
 }
 
-func (o *FieldUpdateDocumentFieldFieldDate) GetPageY() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDate) GetPageY() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageY
+	return f.PageY
 }
 
-func (o *FieldUpdateDocumentFieldFieldDate) GetWidth() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDate) GetWidth() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Width
+	return f.Width
 }
 
-func (o *FieldUpdateDocumentFieldFieldDate) GetHeight() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldDate) GetHeight() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Height
+	return f.Height
 }
 
 type FieldUpdateDocumentFieldTypeEmailRequest1 string
@@ -1539,53 +1573,53 @@ func (f *FieldUpdateDocumentFieldFieldMetaEmailRequest) UnmarshalJSON(data []byt
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaEmailRequest) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaEmailRequest) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaEmailRequest) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaEmailRequest) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaEmailRequest) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaEmailRequest) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaEmailRequest) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaEmailRequest) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaEmailRequest) GetType() FieldUpdateDocumentFieldTypeEmailRequest2 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaEmailRequest) GetType() FieldUpdateDocumentFieldTypeEmailRequest2 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeEmailRequest2("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaEmailRequest) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaEmailRequest) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaEmailRequest) GetTextAlign() *FieldUpdateDocumentFieldTextAlignEmail {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaEmailRequest) GetTextAlign() *FieldUpdateDocumentFieldTextAlignEmail {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type FieldUpdateDocumentFieldFieldEmail struct {
@@ -1616,60 +1650,60 @@ func (f *FieldUpdateDocumentFieldFieldEmail) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldEmail) GetType() FieldUpdateDocumentFieldTypeEmailRequest1 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldEmail) GetType() FieldUpdateDocumentFieldTypeEmailRequest1 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeEmailRequest1("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldEmail) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaEmailRequest {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldEmail) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaEmailRequest {
+	if f == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return f.FieldMeta
 }
 
-func (o *FieldUpdateDocumentFieldFieldEmail) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldEmail) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldFieldEmail) GetPageNumber() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldEmail) GetPageNumber() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageNumber
+	return f.PageNumber
 }
 
-func (o *FieldUpdateDocumentFieldFieldEmail) GetPageX() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldEmail) GetPageX() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageX
+	return f.PageX
 }
 
-func (o *FieldUpdateDocumentFieldFieldEmail) GetPageY() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldEmail) GetPageY() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageY
+	return f.PageY
 }
 
-func (o *FieldUpdateDocumentFieldFieldEmail) GetWidth() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldEmail) GetWidth() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Width
+	return f.Width
 }
 
-func (o *FieldUpdateDocumentFieldFieldEmail) GetHeight() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldEmail) GetHeight() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Height
+	return f.Height
 }
 
 type FieldUpdateDocumentFieldTypeNameRequest1 string
@@ -1768,53 +1802,53 @@ func (f *FieldUpdateDocumentFieldFieldMetaNameRequest) UnmarshalJSON(data []byte
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNameRequest) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNameRequest) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNameRequest) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNameRequest) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNameRequest) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNameRequest) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNameRequest) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNameRequest) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNameRequest) GetType() FieldUpdateDocumentFieldTypeNameRequest2 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNameRequest) GetType() FieldUpdateDocumentFieldTypeNameRequest2 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeNameRequest2("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNameRequest) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNameRequest) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNameRequest) GetTextAlign() *FieldUpdateDocumentFieldTextAlignName {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNameRequest) GetTextAlign() *FieldUpdateDocumentFieldTextAlignName {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type FieldUpdateDocumentFieldFieldName struct {
@@ -1845,60 +1879,60 @@ func (f *FieldUpdateDocumentFieldFieldName) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldName) GetType() FieldUpdateDocumentFieldTypeNameRequest1 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldName) GetType() FieldUpdateDocumentFieldTypeNameRequest1 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeNameRequest1("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldName) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaNameRequest {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldName) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaNameRequest {
+	if f == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return f.FieldMeta
 }
 
-func (o *FieldUpdateDocumentFieldFieldName) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldName) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldFieldName) GetPageNumber() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldName) GetPageNumber() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageNumber
+	return f.PageNumber
 }
 
-func (o *FieldUpdateDocumentFieldFieldName) GetPageX() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldName) GetPageX() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageX
+	return f.PageX
 }
 
-func (o *FieldUpdateDocumentFieldFieldName) GetPageY() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldName) GetPageY() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageY
+	return f.PageY
 }
 
-func (o *FieldUpdateDocumentFieldFieldName) GetWidth() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldName) GetWidth() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Width
+	return f.Width
 }
 
-func (o *FieldUpdateDocumentFieldFieldName) GetHeight() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldName) GetHeight() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Height
+	return f.Height
 }
 
 type FieldUpdateDocumentFieldTypeInitialsRequest1 string
@@ -1997,53 +2031,53 @@ func (f *FieldUpdateDocumentFieldFieldMetaInitialsRequest) UnmarshalJSON(data []
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaInitialsRequest) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaInitialsRequest) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaInitialsRequest) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaInitialsRequest) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaInitialsRequest) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaInitialsRequest) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaInitialsRequest) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaInitialsRequest) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaInitialsRequest) GetType() FieldUpdateDocumentFieldTypeInitialsRequest2 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaInitialsRequest) GetType() FieldUpdateDocumentFieldTypeInitialsRequest2 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeInitialsRequest2("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaInitialsRequest) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaInitialsRequest) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaInitialsRequest) GetTextAlign() *FieldUpdateDocumentFieldTextAlignInitials {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaInitialsRequest) GetTextAlign() *FieldUpdateDocumentFieldTextAlignInitials {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type FieldUpdateDocumentFieldFieldInitials struct {
@@ -2074,60 +2108,60 @@ func (f *FieldUpdateDocumentFieldFieldInitials) UnmarshalJSON(data []byte) error
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldInitials) GetType() FieldUpdateDocumentFieldTypeInitialsRequest1 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldInitials) GetType() FieldUpdateDocumentFieldTypeInitialsRequest1 {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeInitialsRequest1("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldInitials) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaInitialsRequest {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldInitials) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaInitialsRequest {
+	if f == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return f.FieldMeta
 }
 
-func (o *FieldUpdateDocumentFieldFieldInitials) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldInitials) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldFieldInitials) GetPageNumber() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldInitials) GetPageNumber() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageNumber
+	return f.PageNumber
 }
 
-func (o *FieldUpdateDocumentFieldFieldInitials) GetPageX() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldInitials) GetPageX() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageX
+	return f.PageX
 }
 
-func (o *FieldUpdateDocumentFieldFieldInitials) GetPageY() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldInitials) GetPageY() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageY
+	return f.PageY
 }
 
-func (o *FieldUpdateDocumentFieldFieldInitials) GetWidth() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldInitials) GetWidth() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Width
+	return f.Width
 }
 
-func (o *FieldUpdateDocumentFieldFieldInitials) GetHeight() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldInitials) GetHeight() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Height
+	return f.Height
 }
 
 type FieldUpdateDocumentFieldTypeFreeSignature string
@@ -2180,53 +2214,53 @@ func (f *FieldUpdateDocumentFieldFieldFreeSignature) UnmarshalJSON(data []byte) 
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldFreeSignature) GetType() FieldUpdateDocumentFieldTypeFreeSignature {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldFreeSignature) GetType() FieldUpdateDocumentFieldTypeFreeSignature {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeFreeSignature("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldFreeSignature) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldFreeSignature) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldFieldFreeSignature) GetPageNumber() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldFreeSignature) GetPageNumber() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageNumber
+	return f.PageNumber
 }
 
-func (o *FieldUpdateDocumentFieldFieldFreeSignature) GetPageX() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldFreeSignature) GetPageX() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageX
+	return f.PageX
 }
 
-func (o *FieldUpdateDocumentFieldFieldFreeSignature) GetPageY() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldFreeSignature) GetPageY() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageY
+	return f.PageY
 }
 
-func (o *FieldUpdateDocumentFieldFieldFreeSignature) GetWidth() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldFreeSignature) GetWidth() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Width
+	return f.Width
 }
 
-func (o *FieldUpdateDocumentFieldFieldFreeSignature) GetHeight() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldFreeSignature) GetHeight() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Height
+	return f.Height
 }
 
 type FieldUpdateDocumentFieldTypeSignature string
@@ -2279,53 +2313,53 @@ func (f *FieldUpdateDocumentFieldFieldSignature) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldSignature) GetType() FieldUpdateDocumentFieldTypeSignature {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldSignature) GetType() FieldUpdateDocumentFieldTypeSignature {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeSignature("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldSignature) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldSignature) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldFieldSignature) GetPageNumber() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldSignature) GetPageNumber() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageNumber
+	return f.PageNumber
 }
 
-func (o *FieldUpdateDocumentFieldFieldSignature) GetPageX() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldSignature) GetPageX() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageX
+	return f.PageX
 }
 
-func (o *FieldUpdateDocumentFieldFieldSignature) GetPageY() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldSignature) GetPageY() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.PageY
+	return f.PageY
 }
 
-func (o *FieldUpdateDocumentFieldFieldSignature) GetWidth() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldSignature) GetWidth() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Width
+	return f.Width
 }
 
-func (o *FieldUpdateDocumentFieldFieldSignature) GetHeight() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldSignature) GetHeight() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.Height
+	return f.Height
 }
 
 type FieldUpdateDocumentFieldFieldUnionType string
@@ -2345,17 +2379,17 @@ const (
 )
 
 type FieldUpdateDocumentFieldFieldUnion struct {
-	FieldUpdateDocumentFieldFieldSignature     *FieldUpdateDocumentFieldFieldSignature     `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldFreeSignature *FieldUpdateDocumentFieldFieldFreeSignature `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldInitials      *FieldUpdateDocumentFieldFieldInitials      `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldName          *FieldUpdateDocumentFieldFieldName          `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldEmail         *FieldUpdateDocumentFieldFieldEmail         `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldDate          *FieldUpdateDocumentFieldFieldDate          `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldText          *FieldUpdateDocumentFieldFieldText          `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldNumber        *FieldUpdateDocumentFieldFieldNumber        `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldRadio         *FieldUpdateDocumentFieldFieldRadio         `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldCheckbox      *FieldUpdateDocumentFieldFieldCheckbox      `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldDropdown      *FieldUpdateDocumentFieldFieldDropdown      `queryParam:"inline"`
+	FieldUpdateDocumentFieldFieldSignature     *FieldUpdateDocumentFieldFieldSignature     `queryParam:"inline,name=field"`
+	FieldUpdateDocumentFieldFieldFreeSignature *FieldUpdateDocumentFieldFieldFreeSignature `queryParam:"inline,name=field"`
+	FieldUpdateDocumentFieldFieldInitials      *FieldUpdateDocumentFieldFieldInitials      `queryParam:"inline,name=field"`
+	FieldUpdateDocumentFieldFieldName          *FieldUpdateDocumentFieldFieldName          `queryParam:"inline,name=field"`
+	FieldUpdateDocumentFieldFieldEmail         *FieldUpdateDocumentFieldFieldEmail         `queryParam:"inline,name=field"`
+	FieldUpdateDocumentFieldFieldDate          *FieldUpdateDocumentFieldFieldDate          `queryParam:"inline,name=field"`
+	FieldUpdateDocumentFieldFieldText          *FieldUpdateDocumentFieldFieldText          `queryParam:"inline,name=field"`
+	FieldUpdateDocumentFieldFieldNumber        *FieldUpdateDocumentFieldFieldNumber        `queryParam:"inline,name=field"`
+	FieldUpdateDocumentFieldFieldRadio         *FieldUpdateDocumentFieldFieldRadio         `queryParam:"inline,name=field"`
+	FieldUpdateDocumentFieldFieldCheckbox      *FieldUpdateDocumentFieldFieldCheckbox      `queryParam:"inline,name=field"`
+	FieldUpdateDocumentFieldFieldDropdown      *FieldUpdateDocumentFieldFieldDropdown      `queryParam:"inline,name=field"`
 
 	Type FieldUpdateDocumentFieldFieldUnionType
 }
@@ -2594,18 +2628,18 @@ type FieldUpdateDocumentFieldRequest struct {
 	Field      FieldUpdateDocumentFieldFieldUnion `json:"field"`
 }
 
-func (o *FieldUpdateDocumentFieldRequest) GetDocumentID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldRequest) GetDocumentID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.DocumentID
+	return f.DocumentID
 }
 
-func (o *FieldUpdateDocumentFieldRequest) GetField() FieldUpdateDocumentFieldFieldUnion {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldRequest) GetField() FieldUpdateDocumentFieldFieldUnion {
+	if f == nil {
 		return FieldUpdateDocumentFieldFieldUnion{}
 	}
-	return o.Field
+	return f.Field
 }
 
 type FieldUpdateDocumentFieldTypeResponse string
@@ -2699,11 +2733,11 @@ func (f *FieldUpdateDocumentFieldValueResponse3) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldValueResponse3) GetValue() string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldValueResponse3) GetValue() string {
+	if f == nil {
 		return ""
 	}
-	return o.Value
+	return f.Value
 }
 
 type FieldUpdateDocumentFieldFieldMetaDropdownResponse struct {
@@ -2727,53 +2761,53 @@ func (f *FieldUpdateDocumentFieldFieldMetaDropdownResponse) UnmarshalJSON(data [
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDropdownResponse) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDropdownResponse) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDropdownResponse) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDropdownResponse) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDropdownResponse) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDropdownResponse) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDropdownResponse) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDropdownResponse) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDropdownResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeDropdown {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDropdownResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeDropdown {
+	if f == nil {
 		return FieldUpdateDocumentFieldFieldMetaTypeDropdown("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDropdownResponse) GetValues() []FieldUpdateDocumentFieldValueResponse3 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDropdownResponse) GetValues() []FieldUpdateDocumentFieldValueResponse3 {
+	if f == nil {
 		return nil
 	}
-	return o.Values
+	return f.Values
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDropdownResponse) GetDefaultValue() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDropdownResponse) GetDefaultValue() *string {
+	if f == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return f.DefaultValue
 }
 
 type FieldUpdateDocumentFieldFieldMetaTypeCheckbox string
@@ -2816,25 +2850,51 @@ func (f *FieldUpdateDocumentFieldValueResponse2) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldValueResponse2) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldValueResponse2) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldValueResponse2) GetChecked() bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldValueResponse2) GetChecked() bool {
+	if f == nil {
 		return false
 	}
-	return o.Checked
+	return f.Checked
 }
 
-func (o *FieldUpdateDocumentFieldValueResponse2) GetValue() string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldValueResponse2) GetValue() string {
+	if f == nil {
 		return ""
 	}
-	return o.Value
+	return f.Value
+}
+
+type FieldUpdateDocumentFieldDirectionResponse string
+
+const (
+	FieldUpdateDocumentFieldDirectionResponseVertical   FieldUpdateDocumentFieldDirectionResponse = "vertical"
+	FieldUpdateDocumentFieldDirectionResponseHorizontal FieldUpdateDocumentFieldDirectionResponse = "horizontal"
+)
+
+func (e FieldUpdateDocumentFieldDirectionResponse) ToPointer() *FieldUpdateDocumentFieldDirectionResponse {
+	return &e
+}
+func (e *FieldUpdateDocumentFieldDirectionResponse) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = FieldUpdateDocumentFieldDirectionResponse(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldUpdateDocumentFieldDirectionResponse: %v", v)
+	}
 }
 
 type FieldUpdateDocumentFieldFieldMetaCheckboxResponse struct {
@@ -2846,6 +2906,7 @@ type FieldUpdateDocumentFieldFieldMetaCheckboxResponse struct {
 	Values           []FieldUpdateDocumentFieldValueResponse2      `json:"values,omitempty"`
 	ValidationRule   *string                                       `json:"validationRule,omitempty"`
 	ValidationLength *float64                                      `json:"validationLength,omitempty"`
+	Direction        *FieldUpdateDocumentFieldDirectionResponse    `default:"vertical" json:"direction"`
 }
 
 func (f FieldUpdateDocumentFieldFieldMetaCheckboxResponse) MarshalJSON() ([]byte, error) {
@@ -2859,60 +2920,67 @@ func (f *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) UnmarshalJSON(data [
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeCheckbox {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeCheckbox {
+	if f == nil {
 		return FieldUpdateDocumentFieldFieldMetaTypeCheckbox("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetValues() []FieldUpdateDocumentFieldValueResponse2 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetValues() []FieldUpdateDocumentFieldValueResponse2 {
+	if f == nil {
 		return nil
 	}
-	return o.Values
+	return f.Values
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetValidationRule() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetValidationRule() *string {
+	if f == nil {
 		return nil
 	}
-	return o.ValidationRule
+	return f.ValidationRule
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetValidationLength() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetValidationLength() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.ValidationLength
+	return f.ValidationLength
+}
+
+func (f *FieldUpdateDocumentFieldFieldMetaCheckboxResponse) GetDirection() *FieldUpdateDocumentFieldDirectionResponse {
+	if f == nil {
+		return nil
+	}
+	return f.Direction
 }
 
 type FieldUpdateDocumentFieldFieldMetaTypeRadio string
@@ -2955,25 +3023,25 @@ func (f *FieldUpdateDocumentFieldValueResponse1) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldValueResponse1) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldValueResponse1) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldValueResponse1) GetChecked() bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldValueResponse1) GetChecked() bool {
+	if f == nil {
 		return false
 	}
-	return o.Checked
+	return f.Checked
 }
 
-func (o *FieldUpdateDocumentFieldValueResponse1) GetValue() string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldValueResponse1) GetValue() string {
+	if f == nil {
 		return ""
 	}
-	return o.Value
+	return f.Value
 }
 
 type FieldUpdateDocumentFieldFieldMetaRadioResponse struct {
@@ -2996,46 +3064,46 @@ func (f *FieldUpdateDocumentFieldFieldMetaRadioResponse) UnmarshalJSON(data []by
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaRadioResponse) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaRadioResponse) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaRadioResponse) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaRadioResponse) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaRadioResponse) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaRadioResponse) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaRadioResponse) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaRadioResponse) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaRadioResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeRadio {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaRadioResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeRadio {
+	if f == nil {
 		return FieldUpdateDocumentFieldFieldMetaTypeRadio("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaRadioResponse) GetValues() []FieldUpdateDocumentFieldValueResponse1 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaRadioResponse) GetValues() []FieldUpdateDocumentFieldValueResponse1 {
+	if f == nil {
 		return nil
 	}
-	return o.Values
+	return f.Values
 }
 
 type FieldUpdateDocumentFieldFieldMetaTypeNumber string
@@ -3115,81 +3183,81 @@ func (f *FieldUpdateDocumentFieldFieldMetaNumberResponse) UnmarshalJSON(data []b
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeNumber {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeNumber {
+	if f == nil {
 		return FieldUpdateDocumentFieldFieldMetaTypeNumber("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetNumberFormat() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetNumberFormat() *string {
+	if f == nil {
 		return nil
 	}
-	return o.NumberFormat
+	return f.NumberFormat
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetValue() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetValue() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Value
+	return f.Value
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetMinValue() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetMinValue() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.MinValue
+	return f.MinValue
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetMaxValue() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetMaxValue() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.MaxValue
+	return f.MaxValue
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetTextAlign() *FieldUpdateDocumentFieldTextAlignResponse6 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNumberResponse) GetTextAlign() *FieldUpdateDocumentFieldTextAlignResponse6 {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type FieldUpdateDocumentFieldFieldMetaTypeText string
@@ -3267,67 +3335,67 @@ func (f *FieldUpdateDocumentFieldFieldMetaTextResponse) UnmarshalJSON(data []byt
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextResponse) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextResponse) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextResponse) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextResponse) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextResponse) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextResponse) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextResponse) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextResponse) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeText {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeText {
+	if f == nil {
 		return FieldUpdateDocumentFieldFieldMetaTypeText("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextResponse) GetText() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextResponse) GetText() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Text
+	return f.Text
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextResponse) GetCharacterLimit() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextResponse) GetCharacterLimit() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.CharacterLimit
+	return f.CharacterLimit
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextResponse) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextResponse) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaTextResponse) GetTextAlign() *FieldUpdateDocumentFieldTextAlignResponse5 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaTextResponse) GetTextAlign() *FieldUpdateDocumentFieldTextAlignResponse5 {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type FieldUpdateDocumentFieldFieldMetaTypeDate string
@@ -3403,53 +3471,53 @@ func (f *FieldUpdateDocumentFieldFieldMetaDateResponse) UnmarshalJSON(data []byt
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDateResponse) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDateResponse) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDateResponse) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDateResponse) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDateResponse) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDateResponse) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDateResponse) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDateResponse) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDateResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeDate {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDateResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeDate {
+	if f == nil {
 		return FieldUpdateDocumentFieldFieldMetaTypeDate("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDateResponse) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDateResponse) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaDateResponse) GetTextAlign() *FieldUpdateDocumentFieldTextAlignResponse4 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaDateResponse) GetTextAlign() *FieldUpdateDocumentFieldTextAlignResponse4 {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type FieldUpdateDocumentFieldFieldMetaTypeEmail string
@@ -3525,53 +3593,53 @@ func (f *FieldUpdateDocumentFieldFieldMetaEmailResponse) UnmarshalJSON(data []by
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaEmailResponse) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaEmailResponse) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaEmailResponse) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaEmailResponse) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaEmailResponse) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaEmailResponse) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaEmailResponse) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaEmailResponse) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaEmailResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeEmail {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaEmailResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeEmail {
+	if f == nil {
 		return FieldUpdateDocumentFieldFieldMetaTypeEmail("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaEmailResponse) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaEmailResponse) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaEmailResponse) GetTextAlign() *FieldUpdateDocumentFieldTextAlignResponse3 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaEmailResponse) GetTextAlign() *FieldUpdateDocumentFieldTextAlignResponse3 {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type FieldUpdateDocumentFieldFieldMetaTypeName string
@@ -3647,53 +3715,53 @@ func (f *FieldUpdateDocumentFieldFieldMetaNameResponse) UnmarshalJSON(data []byt
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNameResponse) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNameResponse) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNameResponse) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNameResponse) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNameResponse) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNameResponse) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNameResponse) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNameResponse) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNameResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeName {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNameResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeName {
+	if f == nil {
 		return FieldUpdateDocumentFieldFieldMetaTypeName("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNameResponse) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNameResponse) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaNameResponse) GetTextAlign() *FieldUpdateDocumentFieldTextAlignResponse2 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaNameResponse) GetTextAlign() *FieldUpdateDocumentFieldTextAlignResponse2 {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type FieldUpdateDocumentFieldFieldMetaTypeInitials string
@@ -3769,53 +3837,53 @@ func (f *FieldUpdateDocumentFieldFieldMetaInitialsResponse) UnmarshalJSON(data [
 	return nil
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaInitialsResponse) GetLabel() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaInitialsResponse) GetLabel() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Label
+	return f.Label
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaInitialsResponse) GetPlaceholder() *string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaInitialsResponse) GetPlaceholder() *string {
+	if f == nil {
 		return nil
 	}
-	return o.Placeholder
+	return f.Placeholder
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaInitialsResponse) GetRequired() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaInitialsResponse) GetRequired() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.Required
+	return f.Required
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaInitialsResponse) GetReadOnly() *bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaInitialsResponse) GetReadOnly() *bool {
+	if f == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return f.ReadOnly
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaInitialsResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeInitials {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaInitialsResponse) GetType() FieldUpdateDocumentFieldFieldMetaTypeInitials {
+	if f == nil {
 		return FieldUpdateDocumentFieldFieldMetaTypeInitials("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaInitialsResponse) GetFontSize() *float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaInitialsResponse) GetFontSize() *float64 {
+	if f == nil {
 		return nil
 	}
-	return o.FontSize
+	return f.FontSize
 }
 
-func (o *FieldUpdateDocumentFieldFieldMetaInitialsResponse) GetTextAlign() *FieldUpdateDocumentFieldTextAlignResponse1 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldFieldMetaInitialsResponse) GetTextAlign() *FieldUpdateDocumentFieldTextAlignResponse1 {
+	if f == nil {
 		return nil
 	}
-	return o.TextAlign
+	return f.TextAlign
 }
 
 type FieldUpdateDocumentFieldFieldMetaUnionType string
@@ -3833,15 +3901,15 @@ const (
 )
 
 type FieldUpdateDocumentFieldFieldMetaUnion struct {
-	FieldUpdateDocumentFieldFieldMetaInitialsResponse *FieldUpdateDocumentFieldFieldMetaInitialsResponse `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldMetaNameResponse     *FieldUpdateDocumentFieldFieldMetaNameResponse     `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldMetaEmailResponse    *FieldUpdateDocumentFieldFieldMetaEmailResponse    `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldMetaDateResponse     *FieldUpdateDocumentFieldFieldMetaDateResponse     `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldMetaTextResponse     *FieldUpdateDocumentFieldFieldMetaTextResponse     `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldMetaNumberResponse   *FieldUpdateDocumentFieldFieldMetaNumberResponse   `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldMetaRadioResponse    *FieldUpdateDocumentFieldFieldMetaRadioResponse    `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldMetaCheckboxResponse *FieldUpdateDocumentFieldFieldMetaCheckboxResponse `queryParam:"inline"`
-	FieldUpdateDocumentFieldFieldMetaDropdownResponse *FieldUpdateDocumentFieldFieldMetaDropdownResponse `queryParam:"inline"`
+	FieldUpdateDocumentFieldFieldMetaInitialsResponse *FieldUpdateDocumentFieldFieldMetaInitialsResponse `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateDocumentFieldFieldMetaNameResponse     *FieldUpdateDocumentFieldFieldMetaNameResponse     `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateDocumentFieldFieldMetaEmailResponse    *FieldUpdateDocumentFieldFieldMetaEmailResponse    `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateDocumentFieldFieldMetaDateResponse     *FieldUpdateDocumentFieldFieldMetaDateResponse     `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateDocumentFieldFieldMetaTextResponse     *FieldUpdateDocumentFieldFieldMetaTextResponse     `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateDocumentFieldFieldMetaNumberResponse   *FieldUpdateDocumentFieldFieldMetaNumberResponse   `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateDocumentFieldFieldMetaRadioResponse    *FieldUpdateDocumentFieldFieldMetaRadioResponse    `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateDocumentFieldFieldMetaCheckboxResponse *FieldUpdateDocumentFieldFieldMetaCheckboxResponse `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateDocumentFieldFieldMetaDropdownResponse *FieldUpdateDocumentFieldFieldMetaDropdownResponse `queryParam:"inline,name=fieldMeta"`
 
 	Type FieldUpdateDocumentFieldFieldMetaUnionType
 }
@@ -4037,12 +4105,12 @@ func (u FieldUpdateDocumentFieldFieldMetaUnion) MarshalJSON() ([]byte, error) {
 
 // FieldUpdateDocumentFieldResponseBody - Successful response
 type FieldUpdateDocumentFieldResponseBody struct {
-	Type        FieldUpdateDocumentFieldTypeResponse `json:"type"`
-	ID          float64                              `json:"id"`
-	SecondaryID string                               `json:"secondaryId"`
-	DocumentID  *float64                             `json:"documentId"`
-	TemplateID  *float64                             `json:"templateId"`
-	RecipientID float64                              `json:"recipientId"`
+	EnvelopeID     string                               `json:"envelopeId"`
+	EnvelopeItemID string                               `json:"envelopeItemId"`
+	Type           FieldUpdateDocumentFieldTypeResponse `json:"type"`
+	ID             float64                              `json:"id"`
+	SecondaryID    string                               `json:"secondaryId"`
+	RecipientID    float64                              `json:"recipientId"`
 	// The page number of the field on the document. Starts from 1.
 	Page       float64                                 `json:"page"`
 	PositionX  any                                     `json:"positionX,omitempty"`
@@ -4052,104 +4120,120 @@ type FieldUpdateDocumentFieldResponseBody struct {
 	CustomText string                                  `json:"customText"`
 	Inserted   bool                                    `json:"inserted"`
 	FieldMeta  *FieldUpdateDocumentFieldFieldMetaUnion `json:"fieldMeta"`
+	DocumentID *float64                                `json:"documentId,omitempty"`
+	TemplateID *float64                                `json:"templateId,omitempty"`
 }
 
-func (o *FieldUpdateDocumentFieldResponseBody) GetType() FieldUpdateDocumentFieldTypeResponse {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldResponseBody) GetEnvelopeID() string {
+	if f == nil {
+		return ""
+	}
+	return f.EnvelopeID
+}
+
+func (f *FieldUpdateDocumentFieldResponseBody) GetEnvelopeItemID() string {
+	if f == nil {
+		return ""
+	}
+	return f.EnvelopeItemID
+}
+
+func (f *FieldUpdateDocumentFieldResponseBody) GetType() FieldUpdateDocumentFieldTypeResponse {
+	if f == nil {
 		return FieldUpdateDocumentFieldTypeResponse("")
 	}
-	return o.Type
+	return f.Type
 }
 
-func (o *FieldUpdateDocumentFieldResponseBody) GetID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldResponseBody) GetID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.ID
+	return f.ID
 }
 
-func (o *FieldUpdateDocumentFieldResponseBody) GetSecondaryID() string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldResponseBody) GetSecondaryID() string {
+	if f == nil {
 		return ""
 	}
-	return o.SecondaryID
+	return f.SecondaryID
 }
 
-func (o *FieldUpdateDocumentFieldResponseBody) GetDocumentID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DocumentID
-}
-
-func (o *FieldUpdateDocumentFieldResponseBody) GetTemplateID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.TemplateID
-}
-
-func (o *FieldUpdateDocumentFieldResponseBody) GetRecipientID() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldResponseBody) GetRecipientID() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.RecipientID
+	return f.RecipientID
 }
 
-func (o *FieldUpdateDocumentFieldResponseBody) GetPage() float64 {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldResponseBody) GetPage() float64 {
+	if f == nil {
 		return 0.0
 	}
-	return o.Page
+	return f.Page
 }
 
-func (o *FieldUpdateDocumentFieldResponseBody) GetPositionX() any {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldResponseBody) GetPositionX() any {
+	if f == nil {
 		return nil
 	}
-	return o.PositionX
+	return f.PositionX
 }
 
-func (o *FieldUpdateDocumentFieldResponseBody) GetPositionY() any {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldResponseBody) GetPositionY() any {
+	if f == nil {
 		return nil
 	}
-	return o.PositionY
+	return f.PositionY
 }
 
-func (o *FieldUpdateDocumentFieldResponseBody) GetWidth() any {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldResponseBody) GetWidth() any {
+	if f == nil {
 		return nil
 	}
-	return o.Width
+	return f.Width
 }
 
-func (o *FieldUpdateDocumentFieldResponseBody) GetHeight() any {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldResponseBody) GetHeight() any {
+	if f == nil {
 		return nil
 	}
-	return o.Height
+	return f.Height
 }
 
-func (o *FieldUpdateDocumentFieldResponseBody) GetCustomText() string {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldResponseBody) GetCustomText() string {
+	if f == nil {
 		return ""
 	}
-	return o.CustomText
+	return f.CustomText
 }
 
-func (o *FieldUpdateDocumentFieldResponseBody) GetInserted() bool {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldResponseBody) GetInserted() bool {
+	if f == nil {
 		return false
 	}
-	return o.Inserted
+	return f.Inserted
 }
 
-func (o *FieldUpdateDocumentFieldResponseBody) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaUnion {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldResponseBody) GetFieldMeta() *FieldUpdateDocumentFieldFieldMetaUnion {
+	if f == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return f.FieldMeta
+}
+
+func (f *FieldUpdateDocumentFieldResponseBody) GetDocumentID() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.DocumentID
+}
+
+func (f *FieldUpdateDocumentFieldResponseBody) GetTemplateID() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.TemplateID
 }
 
 type FieldUpdateDocumentFieldResponse struct {
@@ -4158,16 +4242,16 @@ type FieldUpdateDocumentFieldResponse struct {
 	Object *FieldUpdateDocumentFieldResponseBody
 }
 
-func (o *FieldUpdateDocumentFieldResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldResponse) GetHTTPMeta() components.HTTPMetadata {
+	if f == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return f.HTTPMeta
 }
 
-func (o *FieldUpdateDocumentFieldResponse) GetObject() *FieldUpdateDocumentFieldResponseBody {
-	if o == nil {
+func (f *FieldUpdateDocumentFieldResponse) GetObject() *FieldUpdateDocumentFieldResponseBody {
+	if f == nil {
 		return nil
 	}
-	return o.Object
+	return f.Object
 }

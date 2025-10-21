@@ -5,7 +5,6 @@ package main
 import (
 	"context"
 	sdkgo "github.com/documenso/sdk-go"
-	"github.com/documenso/sdk-go/models/operations"
 	"log"
 	"os"
 )
@@ -17,9 +16,7 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Update(ctx, operations.DocumentUpdateDocumentRequest{
-		DocumentID: 9701.92,
-	})
+	res, err := s.Documents.Get(ctx, 6150.61)
 	if err != nil {
 		log.Fatal(err)
 	}

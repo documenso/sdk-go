@@ -161,17 +161,20 @@ func main() {
 <details open>
 <summary>Available methods</summary>
 
+### [Document](docs/sdks/document/README.md)
+
+* [DocumentDownload](docs/sdks/document/README.md#documentdownload) - Download document (beta)
 
 ### [Documents](docs/sdks/documents/README.md)
 
-* [Update](docs/sdks/documents/README.md#update) - Update document
-* [Find](docs/sdks/documents/README.md#find) - Find documents
 * [Get](docs/sdks/documents/README.md#get) - Get document
-* [CreateV0](docs/sdks/documents/README.md#createv0) - Create document
+* [Find](docs/sdks/documents/README.md#find) - Find documents
+* [Update](docs/sdks/documents/README.md#update) - Update document
 * [Delete](docs/sdks/documents/README.md#delete) - Delete document
+* [Duplicate](docs/sdks/documents/README.md#duplicate) - Duplicate document
 * [Distribute](docs/sdks/documents/README.md#distribute) - Distribute document
 * [Redistribute](docs/sdks/documents/README.md#redistribute) - Redistribute document
-* [Duplicate](docs/sdks/documents/README.md#duplicate) - Duplicate document
+* [CreateV0](docs/sdks/documents/README.md#createv0) - Create document
 
 #### [Documents.Fields](docs/sdks/documentsfields/README.md)
 
@@ -195,6 +198,10 @@ func main() {
 
 * [EmbeddingPresignCreateEmbeddingPresignToken](docs/sdks/embedding/README.md#embeddingpresigncreateembeddingpresigntoken) - Create embedding presign token
 * [EmbeddingPresignVerifyEmbeddingPresignToken](docs/sdks/embedding/README.md#embeddingpresignverifyembeddingpresigntoken) - Verify embedding presign token
+
+### [Template](docs/sdks/template/README.md)
+
+* [TemplateCreateTemplateTemporary](docs/sdks/template/README.md#templatecreatetemplatetemporary) - Create template
 
 ### [Templates](docs/sdks/templates/README.md)
 
@@ -244,7 +251,6 @@ package main
 import (
 	"context"
 	sdkgo "github.com/documenso/sdk-go"
-	"github.com/documenso/sdk-go/models/operations"
 	"github.com/documenso/sdk-go/retry"
 	"log"
 	"models/operations"
@@ -258,9 +264,7 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Update(ctx, operations.DocumentUpdateDocumentRequest{
-		DocumentID: 9701.92,
-	}, operations.WithRetries(
+	res, err := s.Documents.Get(ctx, 6150.61, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -288,7 +292,6 @@ package main
 import (
 	"context"
 	sdkgo "github.com/documenso/sdk-go"
-	"github.com/documenso/sdk-go/models/operations"
 	"github.com/documenso/sdk-go/retry"
 	"log"
 	"os"
@@ -312,9 +315,7 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Update(ctx, operations.DocumentUpdateDocumentRequest{
-		DocumentID: 9701.92,
-	})
+	res, err := s.Documents.Get(ctx, 6150.61)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -333,13 +334,14 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By Default, an API error will return `apierrors.APIError`. When custom error responses are specified for an operation, the SDK may also return their associated error. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation.
 
-For example, the `Update` function may return the following errors:
+For example, the `Get` function may return the following errors:
 
-| Error Type                                          | Status Code | Content Type     |
-| --------------------------------------------------- | ----------- | ---------------- |
-| apierrors.DocumentUpdateDocumentBadRequestError     | 400         | application/json |
-| apierrors.DocumentUpdateDocumentInternalServerError | 500         | application/json |
-| apierrors.APIError                                  | 4XX, 5XX    | \*/\*            |
+| Error Type                               | Status Code | Content Type     |
+| ---------------------------------------- | ----------- | ---------------- |
+| apierrors.DocumentGetBadRequestError     | 400         | application/json |
+| apierrors.DocumentGetNotFoundError       | 404         | application/json |
+| apierrors.DocumentGetInternalServerError | 500         | application/json |
+| apierrors.APIError                       | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
@@ -351,7 +353,6 @@ import (
 	"errors"
 	sdkgo "github.com/documenso/sdk-go"
 	"github.com/documenso/sdk-go/models/apierrors"
-	"github.com/documenso/sdk-go/models/operations"
 	"log"
 	"os"
 )
@@ -363,18 +364,22 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Update(ctx, operations.DocumentUpdateDocumentRequest{
-		DocumentID: 9701.92,
-	})
+	res, err := s.Documents.Get(ctx, 6150.61)
 	if err != nil {
 
-		var e *apierrors.DocumentUpdateDocumentBadRequestError
+		var e *apierrors.DocumentGetBadRequestError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
 		}
 
-		var e *apierrors.DocumentUpdateDocumentInternalServerError
+		var e *apierrors.DocumentGetNotFoundError
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
+
+		var e *apierrors.DocumentGetInternalServerError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
@@ -403,7 +408,6 @@ package main
 import (
 	"context"
 	sdkgo "github.com/documenso/sdk-go"
-	"github.com/documenso/sdk-go/models/operations"
 	"log"
 	"os"
 )
@@ -416,9 +420,7 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Update(ctx, operations.DocumentUpdateDocumentRequest{
-		DocumentID: 9701.92,
-	})
+	res, err := s.Documents.Get(ctx, 6150.61)
 	if err != nil {
 		log.Fatal(err)
 	}

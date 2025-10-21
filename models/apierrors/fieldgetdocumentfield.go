@@ -11,11 +11,11 @@ type FieldGetDocumentFieldInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *FieldGetDocumentFieldInternalServerErrorIssue) GetMessage() string {
-	if o == nil {
+func (f *FieldGetDocumentFieldInternalServerErrorIssue) GetMessage() string {
+	if f == nil {
 		return ""
 	}
-	return o.Message
+	return f.Message
 }
 
 // FieldGetDocumentFieldInternalServerError - Internal server error
@@ -37,11 +37,11 @@ type FieldGetDocumentFieldNotFoundIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *FieldGetDocumentFieldNotFoundIssue) GetMessage() string {
-	if o == nil {
+func (f *FieldGetDocumentFieldNotFoundIssue) GetMessage() string {
+	if f == nil {
 		return ""
 	}
-	return o.Message
+	return f.Message
 }
 
 // FieldGetDocumentFieldNotFoundError - Not found
@@ -63,11 +63,11 @@ type FieldGetDocumentFieldBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *FieldGetDocumentFieldBadRequestIssue) GetMessage() string {
-	if o == nil {
+func (f *FieldGetDocumentFieldBadRequestIssue) GetMessage() string {
+	if f == nil {
 		return ""
 	}
-	return o.Message
+	return f.Message
 }
 
 // FieldGetDocumentFieldBadRequestError - Invalid input data

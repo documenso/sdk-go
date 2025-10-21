@@ -11,11 +11,11 @@ type RecipientGetDocumentRecipientInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *RecipientGetDocumentRecipientInternalServerErrorIssue) GetMessage() string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientInternalServerErrorIssue) GetMessage() string {
+	if r == nil {
 		return ""
 	}
-	return o.Message
+	return r.Message
 }
 
 // RecipientGetDocumentRecipientInternalServerError - Internal server error
@@ -37,11 +37,11 @@ type RecipientGetDocumentRecipientNotFoundIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *RecipientGetDocumentRecipientNotFoundIssue) GetMessage() string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientNotFoundIssue) GetMessage() string {
+	if r == nil {
 		return ""
 	}
-	return o.Message
+	return r.Message
 }
 
 // RecipientGetDocumentRecipientNotFoundError - Not found
@@ -63,11 +63,11 @@ type RecipientGetDocumentRecipientBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *RecipientGetDocumentRecipientBadRequestIssue) GetMessage() string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientBadRequestIssue) GetMessage() string {
+	if r == nil {
 		return ""
 	}
-	return o.Message
+	return r.Message
 }
 
 // RecipientGetDocumentRecipientBadRequestError - Invalid input data

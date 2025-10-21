@@ -14,11 +14,11 @@ type RecipientGetDocumentRecipientRequest struct {
 	RecipientID float64 `pathParam:"style=simple,explode=false,name=recipientId"`
 }
 
-func (o *RecipientGetDocumentRecipientRequest) GetRecipientID() float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientRequest) GetRecipientID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.RecipientID
+	return r.RecipientID
 }
 
 type RecipientGetDocumentRecipientRole string
@@ -141,7 +141,8 @@ func (e *RecipientGetDocumentRecipientSendStatus) UnmarshalJSON(data []byte) err
 type RecipientGetDocumentRecipientAccessAuth string
 
 const (
-	RecipientGetDocumentRecipientAccessAuthAccount RecipientGetDocumentRecipientAccessAuth = "ACCOUNT"
+	RecipientGetDocumentRecipientAccessAuthAccount       RecipientGetDocumentRecipientAccessAuth = "ACCOUNT"
+	RecipientGetDocumentRecipientAccessAuthTwoFactorAuth RecipientGetDocumentRecipientAccessAuth = "TWO_FACTOR_AUTH"
 )
 
 func (e RecipientGetDocumentRecipientAccessAuth) ToPointer() *RecipientGetDocumentRecipientAccessAuth {
@@ -154,6 +155,8 @@ func (e *RecipientGetDocumentRecipientAccessAuth) UnmarshalJSON(data []byte) err
 	}
 	switch v {
 	case "ACCOUNT":
+		fallthrough
+	case "TWO_FACTOR_AUTH":
 		*e = RecipientGetDocumentRecipientAccessAuth(v)
 		return nil
 	default:
@@ -202,18 +205,18 @@ type RecipientGetDocumentRecipientAuthOptions struct {
 	ActionAuth []RecipientGetDocumentRecipientActionAuth `json:"actionAuth"`
 }
 
-func (o *RecipientGetDocumentRecipientAuthOptions) GetAccessAuth() []RecipientGetDocumentRecipientAccessAuth {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientAuthOptions) GetAccessAuth() []RecipientGetDocumentRecipientAccessAuth {
+	if r == nil {
 		return []RecipientGetDocumentRecipientAccessAuth{}
 	}
-	return o.AccessAuth
+	return r.AccessAuth
 }
 
-func (o *RecipientGetDocumentRecipientAuthOptions) GetActionAuth() []RecipientGetDocumentRecipientActionAuth {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientAuthOptions) GetActionAuth() []RecipientGetDocumentRecipientActionAuth {
+	if r == nil {
 		return []RecipientGetDocumentRecipientActionAuth{}
 	}
-	return o.ActionAuth
+	return r.ActionAuth
 }
 
 type RecipientGetDocumentRecipientType string
@@ -307,11 +310,11 @@ func (r *RecipientGetDocumentRecipientValue3) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *RecipientGetDocumentRecipientValue3) GetValue() string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientValue3) GetValue() string {
+	if r == nil {
 		return ""
 	}
-	return o.Value
+	return r.Value
 }
 
 type RecipientGetDocumentRecipientFieldMetaDropdown struct {
@@ -335,53 +338,53 @@ func (r *RecipientGetDocumentRecipientFieldMetaDropdown) UnmarshalJSON(data []by
 	return nil
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaDropdown) GetLabel() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaDropdown) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaDropdown) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaDropdown) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaDropdown) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaDropdown) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaDropdown) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaDropdown) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaDropdown) GetType() RecipientGetDocumentRecipientFieldMetaTypeDropdown {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaDropdown) GetType() RecipientGetDocumentRecipientFieldMetaTypeDropdown {
+	if r == nil {
 		return RecipientGetDocumentRecipientFieldMetaTypeDropdown("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaDropdown) GetValues() []RecipientGetDocumentRecipientValue3 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaDropdown) GetValues() []RecipientGetDocumentRecipientValue3 {
+	if r == nil {
 		return nil
 	}
-	return o.Values
+	return r.Values
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaDropdown) GetDefaultValue() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaDropdown) GetDefaultValue() *string {
+	if r == nil {
 		return nil
 	}
-	return o.DefaultValue
+	return r.DefaultValue
 }
 
 type RecipientGetDocumentRecipientFieldMetaTypeCheckbox string
@@ -424,25 +427,51 @@ func (r *RecipientGetDocumentRecipientValue2) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *RecipientGetDocumentRecipientValue2) GetID() float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientValue2) GetID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RecipientGetDocumentRecipientValue2) GetChecked() bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientValue2) GetChecked() bool {
+	if r == nil {
 		return false
 	}
-	return o.Checked
+	return r.Checked
 }
 
-func (o *RecipientGetDocumentRecipientValue2) GetValue() string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientValue2) GetValue() string {
+	if r == nil {
 		return ""
 	}
-	return o.Value
+	return r.Value
+}
+
+type RecipientGetDocumentRecipientDirection string
+
+const (
+	RecipientGetDocumentRecipientDirectionVertical   RecipientGetDocumentRecipientDirection = "vertical"
+	RecipientGetDocumentRecipientDirectionHorizontal RecipientGetDocumentRecipientDirection = "horizontal"
+)
+
+func (e RecipientGetDocumentRecipientDirection) ToPointer() *RecipientGetDocumentRecipientDirection {
+	return &e
+}
+func (e *RecipientGetDocumentRecipientDirection) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = RecipientGetDocumentRecipientDirection(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientGetDocumentRecipientDirection: %v", v)
+	}
 }
 
 type RecipientGetDocumentRecipientFieldMetaCheckbox struct {
@@ -454,6 +483,7 @@ type RecipientGetDocumentRecipientFieldMetaCheckbox struct {
 	Values           []RecipientGetDocumentRecipientValue2              `json:"values,omitempty"`
 	ValidationRule   *string                                            `json:"validationRule,omitempty"`
 	ValidationLength *float64                                           `json:"validationLength,omitempty"`
+	Direction        *RecipientGetDocumentRecipientDirection            `default:"vertical" json:"direction"`
 }
 
 func (r RecipientGetDocumentRecipientFieldMetaCheckbox) MarshalJSON() ([]byte, error) {
@@ -467,60 +497,67 @@ func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) UnmarshalJSON(data []by
 	return nil
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaCheckbox) GetLabel() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaCheckbox) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaCheckbox) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaCheckbox) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaCheckbox) GetType() RecipientGetDocumentRecipientFieldMetaTypeCheckbox {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) GetType() RecipientGetDocumentRecipientFieldMetaTypeCheckbox {
+	if r == nil {
 		return RecipientGetDocumentRecipientFieldMetaTypeCheckbox("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaCheckbox) GetValues() []RecipientGetDocumentRecipientValue2 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) GetValues() []RecipientGetDocumentRecipientValue2 {
+	if r == nil {
 		return nil
 	}
-	return o.Values
+	return r.Values
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaCheckbox) GetValidationRule() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) GetValidationRule() *string {
+	if r == nil {
 		return nil
 	}
-	return o.ValidationRule
+	return r.ValidationRule
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaCheckbox) GetValidationLength() *float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) GetValidationLength() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.ValidationLength
+	return r.ValidationLength
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) GetDirection() *RecipientGetDocumentRecipientDirection {
+	if r == nil {
+		return nil
+	}
+	return r.Direction
 }
 
 type RecipientGetDocumentRecipientFieldMetaTypeRadio string
@@ -563,25 +600,25 @@ func (r *RecipientGetDocumentRecipientValue1) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *RecipientGetDocumentRecipientValue1) GetID() float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientValue1) GetID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RecipientGetDocumentRecipientValue1) GetChecked() bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientValue1) GetChecked() bool {
+	if r == nil {
 		return false
 	}
-	return o.Checked
+	return r.Checked
 }
 
-func (o *RecipientGetDocumentRecipientValue1) GetValue() string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientValue1) GetValue() string {
+	if r == nil {
 		return ""
 	}
-	return o.Value
+	return r.Value
 }
 
 type RecipientGetDocumentRecipientFieldMetaRadio struct {
@@ -604,46 +641,46 @@ func (r *RecipientGetDocumentRecipientFieldMetaRadio) UnmarshalJSON(data []byte)
 	return nil
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaRadio) GetLabel() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaRadio) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaRadio) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaRadio) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaRadio) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaRadio) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaRadio) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaRadio) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaRadio) GetType() RecipientGetDocumentRecipientFieldMetaTypeRadio {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaRadio) GetType() RecipientGetDocumentRecipientFieldMetaTypeRadio {
+	if r == nil {
 		return RecipientGetDocumentRecipientFieldMetaTypeRadio("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaRadio) GetValues() []RecipientGetDocumentRecipientValue1 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaRadio) GetValues() []RecipientGetDocumentRecipientValue1 {
+	if r == nil {
 		return nil
 	}
-	return o.Values
+	return r.Values
 }
 
 type RecipientGetDocumentRecipientFieldMetaTypeNumber string
@@ -723,81 +760,81 @@ func (r *RecipientGetDocumentRecipientFieldMetaNumber) UnmarshalJSON(data []byte
 	return nil
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaNumber) GetLabel() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaNumber) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaNumber) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaNumber) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaNumber) GetType() RecipientGetDocumentRecipientFieldMetaTypeNumber {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetType() RecipientGetDocumentRecipientFieldMetaTypeNumber {
+	if r == nil {
 		return RecipientGetDocumentRecipientFieldMetaTypeNumber("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaNumber) GetNumberFormat() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetNumberFormat() *string {
+	if r == nil {
 		return nil
 	}
-	return o.NumberFormat
+	return r.NumberFormat
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaNumber) GetValue() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetValue() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Value
+	return r.Value
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaNumber) GetMinValue() *float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetMinValue() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.MinValue
+	return r.MinValue
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaNumber) GetMaxValue() *float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetMaxValue() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.MaxValue
+	return r.MaxValue
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaNumber) GetFontSize() *float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetFontSize() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.FontSize
+	return r.FontSize
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaNumber) GetTextAlign() *RecipientGetDocumentRecipientTextAlign6 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetTextAlign() *RecipientGetDocumentRecipientTextAlign6 {
+	if r == nil {
 		return nil
 	}
-	return o.TextAlign
+	return r.TextAlign
 }
 
 type RecipientGetDocumentRecipientFieldMetaTypeText string
@@ -875,67 +912,67 @@ func (r *RecipientGetDocumentRecipientFieldMetaText) UnmarshalJSON(data []byte) 
 	return nil
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaText) GetLabel() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaText) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaText) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaText) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaText) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaText) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaText) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaText) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaText) GetType() RecipientGetDocumentRecipientFieldMetaTypeText {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaText) GetType() RecipientGetDocumentRecipientFieldMetaTypeText {
+	if r == nil {
 		return RecipientGetDocumentRecipientFieldMetaTypeText("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaText) GetText() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaText) GetText() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Text
+	return r.Text
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaText) GetCharacterLimit() *float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaText) GetCharacterLimit() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.CharacterLimit
+	return r.CharacterLimit
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaText) GetFontSize() *float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaText) GetFontSize() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.FontSize
+	return r.FontSize
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaText) GetTextAlign() *RecipientGetDocumentRecipientTextAlign5 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaText) GetTextAlign() *RecipientGetDocumentRecipientTextAlign5 {
+	if r == nil {
 		return nil
 	}
-	return o.TextAlign
+	return r.TextAlign
 }
 
 type RecipientGetDocumentRecipientFieldMetaTypeDate string
@@ -1011,53 +1048,53 @@ func (r *RecipientGetDocumentRecipientFieldMetaDate) UnmarshalJSON(data []byte) 
 	return nil
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaDate) GetLabel() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaDate) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaDate) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaDate) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaDate) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaDate) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaDate) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaDate) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaDate) GetType() RecipientGetDocumentRecipientFieldMetaTypeDate {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaDate) GetType() RecipientGetDocumentRecipientFieldMetaTypeDate {
+	if r == nil {
 		return RecipientGetDocumentRecipientFieldMetaTypeDate("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaDate) GetFontSize() *float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaDate) GetFontSize() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.FontSize
+	return r.FontSize
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaDate) GetTextAlign() *RecipientGetDocumentRecipientTextAlign4 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaDate) GetTextAlign() *RecipientGetDocumentRecipientTextAlign4 {
+	if r == nil {
 		return nil
 	}
-	return o.TextAlign
+	return r.TextAlign
 }
 
 type RecipientGetDocumentRecipientFieldMetaTypeEmail string
@@ -1133,53 +1170,53 @@ func (r *RecipientGetDocumentRecipientFieldMetaEmail) UnmarshalJSON(data []byte)
 	return nil
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaEmail) GetLabel() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaEmail) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaEmail) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaEmail) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaEmail) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaEmail) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaEmail) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaEmail) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaEmail) GetType() RecipientGetDocumentRecipientFieldMetaTypeEmail {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaEmail) GetType() RecipientGetDocumentRecipientFieldMetaTypeEmail {
+	if r == nil {
 		return RecipientGetDocumentRecipientFieldMetaTypeEmail("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaEmail) GetFontSize() *float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaEmail) GetFontSize() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.FontSize
+	return r.FontSize
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaEmail) GetTextAlign() *RecipientGetDocumentRecipientTextAlign3 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaEmail) GetTextAlign() *RecipientGetDocumentRecipientTextAlign3 {
+	if r == nil {
 		return nil
 	}
-	return o.TextAlign
+	return r.TextAlign
 }
 
 type RecipientGetDocumentRecipientFieldMetaTypeName string
@@ -1255,53 +1292,53 @@ func (r *RecipientGetDocumentRecipientFieldMetaName) UnmarshalJSON(data []byte) 
 	return nil
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaName) GetLabel() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaName) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaName) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaName) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaName) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaName) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaName) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaName) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaName) GetType() RecipientGetDocumentRecipientFieldMetaTypeName {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaName) GetType() RecipientGetDocumentRecipientFieldMetaTypeName {
+	if r == nil {
 		return RecipientGetDocumentRecipientFieldMetaTypeName("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaName) GetFontSize() *float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaName) GetFontSize() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.FontSize
+	return r.FontSize
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaName) GetTextAlign() *RecipientGetDocumentRecipientTextAlign2 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaName) GetTextAlign() *RecipientGetDocumentRecipientTextAlign2 {
+	if r == nil {
 		return nil
 	}
-	return o.TextAlign
+	return r.TextAlign
 }
 
 type RecipientGetDocumentRecipientFieldMetaTypeInitials string
@@ -1377,53 +1414,53 @@ func (r *RecipientGetDocumentRecipientFieldMetaInitials) UnmarshalJSON(data []by
 	return nil
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaInitials) GetLabel() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaInitials) GetLabel() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Label
+	return r.Label
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaInitials) GetPlaceholder() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaInitials) GetPlaceholder() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Placeholder
+	return r.Placeholder
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaInitials) GetRequired() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaInitials) GetRequired() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Required
+	return r.Required
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaInitials) GetReadOnly() *bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaInitials) GetReadOnly() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.ReadOnly
+	return r.ReadOnly
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaInitials) GetType() RecipientGetDocumentRecipientFieldMetaTypeInitials {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaInitials) GetType() RecipientGetDocumentRecipientFieldMetaTypeInitials {
+	if r == nil {
 		return RecipientGetDocumentRecipientFieldMetaTypeInitials("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaInitials) GetFontSize() *float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaInitials) GetFontSize() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.FontSize
+	return r.FontSize
 }
 
-func (o *RecipientGetDocumentRecipientFieldMetaInitials) GetTextAlign() *RecipientGetDocumentRecipientTextAlign1 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientFieldMetaInitials) GetTextAlign() *RecipientGetDocumentRecipientTextAlign1 {
+	if r == nil {
 		return nil
 	}
-	return o.TextAlign
+	return r.TextAlign
 }
 
 type RecipientGetDocumentRecipientFieldMetaUnionType string
@@ -1441,15 +1478,15 @@ const (
 )
 
 type RecipientGetDocumentRecipientFieldMetaUnion struct {
-	RecipientGetDocumentRecipientFieldMetaInitials *RecipientGetDocumentRecipientFieldMetaInitials `queryParam:"inline"`
-	RecipientGetDocumentRecipientFieldMetaName     *RecipientGetDocumentRecipientFieldMetaName     `queryParam:"inline"`
-	RecipientGetDocumentRecipientFieldMetaEmail    *RecipientGetDocumentRecipientFieldMetaEmail    `queryParam:"inline"`
-	RecipientGetDocumentRecipientFieldMetaDate     *RecipientGetDocumentRecipientFieldMetaDate     `queryParam:"inline"`
-	RecipientGetDocumentRecipientFieldMetaText     *RecipientGetDocumentRecipientFieldMetaText     `queryParam:"inline"`
-	RecipientGetDocumentRecipientFieldMetaNumber   *RecipientGetDocumentRecipientFieldMetaNumber   `queryParam:"inline"`
-	RecipientGetDocumentRecipientFieldMetaRadio    *RecipientGetDocumentRecipientFieldMetaRadio    `queryParam:"inline"`
-	RecipientGetDocumentRecipientFieldMetaCheckbox *RecipientGetDocumentRecipientFieldMetaCheckbox `queryParam:"inline"`
-	RecipientGetDocumentRecipientFieldMetaDropdown *RecipientGetDocumentRecipientFieldMetaDropdown `queryParam:"inline"`
+	RecipientGetDocumentRecipientFieldMetaInitials *RecipientGetDocumentRecipientFieldMetaInitials `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaName     *RecipientGetDocumentRecipientFieldMetaName     `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaEmail    *RecipientGetDocumentRecipientFieldMetaEmail    `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaDate     *RecipientGetDocumentRecipientFieldMetaDate     `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaText     *RecipientGetDocumentRecipientFieldMetaText     `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaNumber   *RecipientGetDocumentRecipientFieldMetaNumber   `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaRadio    *RecipientGetDocumentRecipientFieldMetaRadio    `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaCheckbox *RecipientGetDocumentRecipientFieldMetaCheckbox `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaDropdown *RecipientGetDocumentRecipientFieldMetaDropdown `queryParam:"inline,name=fieldMeta"`
 
 	Type RecipientGetDocumentRecipientFieldMetaUnionType
 }
@@ -1644,12 +1681,12 @@ func (u RecipientGetDocumentRecipientFieldMetaUnion) MarshalJSON() ([]byte, erro
 }
 
 type RecipientGetDocumentRecipientField struct {
-	Type        RecipientGetDocumentRecipientType `json:"type"`
-	ID          float64                           `json:"id"`
-	SecondaryID string                            `json:"secondaryId"`
-	DocumentID  *float64                          `json:"documentId"`
-	TemplateID  *float64                          `json:"templateId"`
-	RecipientID float64                           `json:"recipientId"`
+	EnvelopeID     string                            `json:"envelopeId"`
+	EnvelopeItemID string                            `json:"envelopeItemId"`
+	Type           RecipientGetDocumentRecipientType `json:"type"`
+	ID             float64                           `json:"id"`
+	SecondaryID    string                            `json:"secondaryId"`
+	RecipientID    float64                           `json:"recipientId"`
 	// The page number of the field on the document. Starts from 1.
 	Page       float64                                      `json:"page"`
 	PositionX  any                                          `json:"positionX,omitempty"`
@@ -1659,115 +1696,130 @@ type RecipientGetDocumentRecipientField struct {
 	CustomText string                                       `json:"customText"`
 	Inserted   bool                                         `json:"inserted"`
 	FieldMeta  *RecipientGetDocumentRecipientFieldMetaUnion `json:"fieldMeta"`
+	DocumentID *float64                                     `json:"documentId,omitempty"`
+	TemplateID *float64                                     `json:"templateId,omitempty"`
 }
 
-func (o *RecipientGetDocumentRecipientField) GetType() RecipientGetDocumentRecipientType {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientField) GetEnvelopeID() string {
+	if r == nil {
+		return ""
+	}
+	return r.EnvelopeID
+}
+
+func (r *RecipientGetDocumentRecipientField) GetEnvelopeItemID() string {
+	if r == nil {
+		return ""
+	}
+	return r.EnvelopeItemID
+}
+
+func (r *RecipientGetDocumentRecipientField) GetType() RecipientGetDocumentRecipientType {
+	if r == nil {
 		return RecipientGetDocumentRecipientType("")
 	}
-	return o.Type
+	return r.Type
 }
 
-func (o *RecipientGetDocumentRecipientField) GetID() float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientField) GetID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RecipientGetDocumentRecipientField) GetSecondaryID() string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientField) GetSecondaryID() string {
+	if r == nil {
 		return ""
 	}
-	return o.SecondaryID
+	return r.SecondaryID
 }
 
-func (o *RecipientGetDocumentRecipientField) GetDocumentID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DocumentID
-}
-
-func (o *RecipientGetDocumentRecipientField) GetTemplateID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.TemplateID
-}
-
-func (o *RecipientGetDocumentRecipientField) GetRecipientID() float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientField) GetRecipientID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.RecipientID
+	return r.RecipientID
 }
 
-func (o *RecipientGetDocumentRecipientField) GetPage() float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientField) GetPage() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.Page
+	return r.Page
 }
 
-func (o *RecipientGetDocumentRecipientField) GetPositionX() any {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientField) GetPositionX() any {
+	if r == nil {
 		return nil
 	}
-	return o.PositionX
+	return r.PositionX
 }
 
-func (o *RecipientGetDocumentRecipientField) GetPositionY() any {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientField) GetPositionY() any {
+	if r == nil {
 		return nil
 	}
-	return o.PositionY
+	return r.PositionY
 }
 
-func (o *RecipientGetDocumentRecipientField) GetWidth() any {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientField) GetWidth() any {
+	if r == nil {
 		return nil
 	}
-	return o.Width
+	return r.Width
 }
 
-func (o *RecipientGetDocumentRecipientField) GetHeight() any {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientField) GetHeight() any {
+	if r == nil {
 		return nil
 	}
-	return o.Height
+	return r.Height
 }
 
-func (o *RecipientGetDocumentRecipientField) GetCustomText() string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientField) GetCustomText() string {
+	if r == nil {
 		return ""
 	}
-	return o.CustomText
+	return r.CustomText
 }
 
-func (o *RecipientGetDocumentRecipientField) GetInserted() bool {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientField) GetInserted() bool {
+	if r == nil {
 		return false
 	}
-	return o.Inserted
+	return r.Inserted
 }
 
-func (o *RecipientGetDocumentRecipientField) GetFieldMeta() *RecipientGetDocumentRecipientFieldMetaUnion {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientField) GetFieldMeta() *RecipientGetDocumentRecipientFieldMetaUnion {
+	if r == nil {
 		return nil
 	}
-	return o.FieldMeta
+	return r.FieldMeta
+}
+
+func (r *RecipientGetDocumentRecipientField) GetDocumentID() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.DocumentID
+}
+
+func (r *RecipientGetDocumentRecipientField) GetTemplateID() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.TemplateID
 }
 
 // RecipientGetDocumentRecipientResponseBody - Successful response
 type RecipientGetDocumentRecipientResponseBody struct {
+	EnvelopeID        string                                     `json:"envelopeId"`
 	Role              RecipientGetDocumentRecipientRole          `json:"role"`
 	ReadStatus        RecipientGetDocumentRecipientReadStatus    `json:"readStatus"`
 	SigningStatus     RecipientGetDocumentRecipientSigningStatus `json:"signingStatus"`
 	SendStatus        RecipientGetDocumentRecipientSendStatus    `json:"sendStatus"`
 	ID                float64                                    `json:"id"`
-	DocumentID        *float64                                   `json:"documentId"`
-	TemplateID        *float64                                   `json:"templateId"`
 	Email             string                                     `json:"email"`
 	Name              string                                     `json:"name"`
 	Token             string                                     `json:"token"`
@@ -1779,125 +1831,134 @@ type RecipientGetDocumentRecipientResponseBody struct {
 	SigningOrder    *float64                             `json:"signingOrder"`
 	RejectionReason *string                              `json:"rejectionReason"`
 	Fields          []RecipientGetDocumentRecipientField `json:"fields"`
+	DocumentID      *float64                             `json:"documentId,omitempty"`
+	TemplateID      *float64                             `json:"templateId,omitempty"`
 }
 
-func (o *RecipientGetDocumentRecipientResponseBody) GetRole() RecipientGetDocumentRecipientRole {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponseBody) GetEnvelopeID() string {
+	if r == nil {
+		return ""
+	}
+	return r.EnvelopeID
+}
+
+func (r *RecipientGetDocumentRecipientResponseBody) GetRole() RecipientGetDocumentRecipientRole {
+	if r == nil {
 		return RecipientGetDocumentRecipientRole("")
 	}
-	return o.Role
+	return r.Role
 }
 
-func (o *RecipientGetDocumentRecipientResponseBody) GetReadStatus() RecipientGetDocumentRecipientReadStatus {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponseBody) GetReadStatus() RecipientGetDocumentRecipientReadStatus {
+	if r == nil {
 		return RecipientGetDocumentRecipientReadStatus("")
 	}
-	return o.ReadStatus
+	return r.ReadStatus
 }
 
-func (o *RecipientGetDocumentRecipientResponseBody) GetSigningStatus() RecipientGetDocumentRecipientSigningStatus {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponseBody) GetSigningStatus() RecipientGetDocumentRecipientSigningStatus {
+	if r == nil {
 		return RecipientGetDocumentRecipientSigningStatus("")
 	}
-	return o.SigningStatus
+	return r.SigningStatus
 }
 
-func (o *RecipientGetDocumentRecipientResponseBody) GetSendStatus() RecipientGetDocumentRecipientSendStatus {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponseBody) GetSendStatus() RecipientGetDocumentRecipientSendStatus {
+	if r == nil {
 		return RecipientGetDocumentRecipientSendStatus("")
 	}
-	return o.SendStatus
+	return r.SendStatus
 }
 
-func (o *RecipientGetDocumentRecipientResponseBody) GetID() float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponseBody) GetID() float64 {
+	if r == nil {
 		return 0.0
 	}
-	return o.ID
+	return r.ID
 }
 
-func (o *RecipientGetDocumentRecipientResponseBody) GetDocumentID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.DocumentID
-}
-
-func (o *RecipientGetDocumentRecipientResponseBody) GetTemplateID() *float64 {
-	if o == nil {
-		return nil
-	}
-	return o.TemplateID
-}
-
-func (o *RecipientGetDocumentRecipientResponseBody) GetEmail() string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponseBody) GetEmail() string {
+	if r == nil {
 		return ""
 	}
-	return o.Email
+	return r.Email
 }
 
-func (o *RecipientGetDocumentRecipientResponseBody) GetName() string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponseBody) GetName() string {
+	if r == nil {
 		return ""
 	}
-	return o.Name
+	return r.Name
 }
 
-func (o *RecipientGetDocumentRecipientResponseBody) GetToken() string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponseBody) GetToken() string {
+	if r == nil {
 		return ""
 	}
-	return o.Token
+	return r.Token
 }
 
-func (o *RecipientGetDocumentRecipientResponseBody) GetDocumentDeletedAt() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponseBody) GetDocumentDeletedAt() *string {
+	if r == nil {
 		return nil
 	}
-	return o.DocumentDeletedAt
+	return r.DocumentDeletedAt
 }
 
-func (o *RecipientGetDocumentRecipientResponseBody) GetExpired() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponseBody) GetExpired() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Expired
+	return r.Expired
 }
 
-func (o *RecipientGetDocumentRecipientResponseBody) GetSignedAt() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponseBody) GetSignedAt() *string {
+	if r == nil {
 		return nil
 	}
-	return o.SignedAt
+	return r.SignedAt
 }
 
-func (o *RecipientGetDocumentRecipientResponseBody) GetAuthOptions() *RecipientGetDocumentRecipientAuthOptions {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponseBody) GetAuthOptions() *RecipientGetDocumentRecipientAuthOptions {
+	if r == nil {
 		return nil
 	}
-	return o.AuthOptions
+	return r.AuthOptions
 }
 
-func (o *RecipientGetDocumentRecipientResponseBody) GetSigningOrder() *float64 {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponseBody) GetSigningOrder() *float64 {
+	if r == nil {
 		return nil
 	}
-	return o.SigningOrder
+	return r.SigningOrder
 }
 
-func (o *RecipientGetDocumentRecipientResponseBody) GetRejectionReason() *string {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponseBody) GetRejectionReason() *string {
+	if r == nil {
 		return nil
 	}
-	return o.RejectionReason
+	return r.RejectionReason
 }
 
-func (o *RecipientGetDocumentRecipientResponseBody) GetFields() []RecipientGetDocumentRecipientField {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponseBody) GetFields() []RecipientGetDocumentRecipientField {
+	if r == nil {
 		return []RecipientGetDocumentRecipientField{}
 	}
-	return o.Fields
+	return r.Fields
+}
+
+func (r *RecipientGetDocumentRecipientResponseBody) GetDocumentID() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.DocumentID
+}
+
+func (r *RecipientGetDocumentRecipientResponseBody) GetTemplateID() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.TemplateID
 }
 
 type RecipientGetDocumentRecipientResponse struct {
@@ -1906,16 +1967,16 @@ type RecipientGetDocumentRecipientResponse struct {
 	Object *RecipientGetDocumentRecipientResponseBody
 }
 
-func (o *RecipientGetDocumentRecipientResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponse) GetHTTPMeta() components.HTTPMetadata {
+	if r == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return r.HTTPMeta
 }
 
-func (o *RecipientGetDocumentRecipientResponse) GetObject() *RecipientGetDocumentRecipientResponseBody {
-	if o == nil {
+func (r *RecipientGetDocumentRecipientResponse) GetObject() *RecipientGetDocumentRecipientResponseBody {
+	if r == nil {
 		return nil
 	}
-	return o.Object
+	return r.Object
 }

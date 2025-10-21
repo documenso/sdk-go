@@ -5,15 +5,27 @@ The date format to use for date fields and signing the document.
 
 ## Values
 
-| Name                                                    | Value                                                   |
-| ------------------------------------------------------- | ------------------------------------------------------- |
-| `TemplateUpdateTemplateDateFormatYyyyMmDdHhMmA`         | yyyy-MM-dd hh:mm a                                      |
-| `TemplateUpdateTemplateDateFormatYyyyMmDd`              | yyyy-MM-dd                                              |
-| `TemplateUpdateTemplateDateFormatDdMmYyyyHhMmA`         | dd/MM/yyyy hh:mm a                                      |
-| `TemplateUpdateTemplateDateFormatMmDdYyyyHhMmA`         | MM/dd/yyyy hh:mm a                                      |
-| `TemplateUpdateTemplateDateFormatYyyyMmDdHhMm`          | yyyy-MM-dd HH:mm                                        |
-| `TemplateUpdateTemplateDateFormatYyMmDdHhMmA`           | yy-MM-dd hh:mm a                                        |
-| `TemplateUpdateTemplateDateFormatYyyyMmDdHhMmSs`        | yyyy-MM-dd HH:mm:ss                                     |
-| `TemplateUpdateTemplateDateFormatMmmmDdYyyyHhMmA`       | MMMM dd, yyyy hh:mm a                                   |
-| `TemplateUpdateTemplateDateFormatEeeeMmmmDdYyyyHhMmA`   | EEEE, MMMM dd, yyyy hh:mm a                             |
-| `TemplateUpdateTemplateDateFormatYyyyMmDdTHhMmSsSssxxx` | yyyy-MM-dd'T'HH:mm:ss.SSSXXX                            |
+| Name                                                       | Value                                                      |
+| ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `TemplateUpdateTemplateDateFormatYyyyMMddHhMmA`            | yyyy-MM-dd hh:mm a                                         |
+| `TemplateUpdateTemplateDateFormatYyyyMMdd`                 | yyyy-MM-dd                                                 |
+| `TemplateUpdateTemplateDateFormatDdMmSlashYyyy`            | dd/MM/yyyy                                                 |
+| `TemplateUpdateTemplateDateFormatMmDdSlashYyyy`            | MM/dd/yyyy                                                 |
+| `TemplateUpdateTemplateDateFormatYyMMdd`                   | yy-MM-dd                                                   |
+| `TemplateUpdateTemplateDateFormatMmmmDdCommaYyyy`          | MMMM dd, yyyy                                              |
+| `TemplateUpdateTemplateDateFormatEeeeMmmmDdCommaYyyy`      | EEEE, MMMM dd, yyyy                                        |
+| `TemplateUpdateTemplateDateFormatDdMmSlashYyyyHhMmA`       | dd/MM/yyyy hh:mm a                                         |
+| `TemplateUpdateTemplateDateFormatDdMmSlashYyyyHHmm`        | dd/MM/yyyy HH:mm                                           |
+| `TemplateUpdateTemplateDateFormatMmDdSlashYyyyHhMmA`       | MM/dd/yyyy hh:mm a                                         |
+| `TemplateUpdateTemplateDateFormatMmDdSlashYyyyHHmm`        | MM/dd/yyyy HH:mm                                           |
+| `TemplateUpdateTemplateDateFormatDdDotMmDotYyyy`           | dd.MM.yyyy                                                 |
+| `TemplateUpdateTemplateDateFormatDdDotMmDotYyyyHHmm`       | dd.MM.yyyy HH:mm                                           |
+| `TemplateUpdateTemplateDateFormatYyyyMMddHHmm`             | yyyy-MM-dd HH:mm                                           |
+| `TemplateUpdateTemplateDateFormatYyMMddHhMmA`              | yy-MM-dd hh:mm a                                           |
+| `TemplateUpdateTemplateDateFormatYyMMddHHmm`               | yy-MM-dd HH:mm                                             |
+| `TemplateUpdateTemplateDateFormatYyyyMMddHHmmss`           | yyyy-MM-dd HH:mm:ss                                        |
+| `TemplateUpdateTemplateDateFormatMmmmDdCommaYyyyHhMmA`     | MMMM dd, yyyy hh:mm a                                      |
+| `TemplateUpdateTemplateDateFormatMmmmDdCommaYyyyHHmm`      | MMMM dd, yyyy HH:mm                                        |
+| `TemplateUpdateTemplateDateFormatEeeeMmmmDdCommaYyyyHhMmA` | EEEE, MMMM dd, yyyy hh:mm a                                |
+| `TemplateUpdateTemplateDateFormatEeeeMmmmDdCommaYyyyHHmm`  | EEEE, MMMM dd, yyyy HH:mm                                  |
+| `TemplateUpdateTemplateDateFormatIso8601Full`              | yyyy-MM-dd'T'HH:mm:ss.SSSXXX                               |

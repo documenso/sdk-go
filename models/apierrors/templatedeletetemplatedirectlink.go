@@ -11,11 +11,11 @@ type TemplateDeleteTemplateDirectLinkInternalServerErrorIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateDeleteTemplateDirectLinkInternalServerErrorIssue) GetMessage() string {
-	if o == nil {
+func (t *TemplateDeleteTemplateDirectLinkInternalServerErrorIssue) GetMessage() string {
+	if t == nil {
 		return ""
 	}
-	return o.Message
+	return t.Message
 }
 
 // TemplateDeleteTemplateDirectLinkInternalServerError - Internal server error
@@ -37,11 +37,11 @@ type TemplateDeleteTemplateDirectLinkBadRequestIssue struct {
 	Message string `json:"message"`
 }
 
-func (o *TemplateDeleteTemplateDirectLinkBadRequestIssue) GetMessage() string {
-	if o == nil {
+func (t *TemplateDeleteTemplateDirectLinkBadRequestIssue) GetMessage() string {
+	if t == nil {
 		return ""
 	}
-	return o.Message
+	return t.Message
 }
 
 // TemplateDeleteTemplateDirectLinkBadRequestError - Invalid input data

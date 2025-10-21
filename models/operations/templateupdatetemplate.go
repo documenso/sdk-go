@@ -42,7 +42,8 @@ func (e *TemplateUpdateTemplateVisibilityRequest) UnmarshalJSON(data []byte) err
 type TemplateUpdateTemplateGlobalAccessAuthRequest string
 
 const (
-	TemplateUpdateTemplateGlobalAccessAuthRequestAccount TemplateUpdateTemplateGlobalAccessAuthRequest = "ACCOUNT"
+	TemplateUpdateTemplateGlobalAccessAuthRequestAccount       TemplateUpdateTemplateGlobalAccessAuthRequest = "ACCOUNT"
+	TemplateUpdateTemplateGlobalAccessAuthRequestTwoFactorAuth TemplateUpdateTemplateGlobalAccessAuthRequest = "TWO_FACTOR_AUTH"
 )
 
 func (e TemplateUpdateTemplateGlobalAccessAuthRequest) ToPointer() *TemplateUpdateTemplateGlobalAccessAuthRequest {
@@ -55,6 +56,8 @@ func (e *TemplateUpdateTemplateGlobalAccessAuthRequest) UnmarshalJSON(data []byt
 	}
 	switch v {
 	case "ACCOUNT":
+		fallthrough
+	case "TWO_FACTOR_AUTH":
 		*e = TemplateUpdateTemplateGlobalAccessAuthRequest(v)
 		return nil
 	default:
@@ -122,6 +125,7 @@ func (e *TemplateUpdateTemplateDataType) UnmarshalJSON(data []byte) error {
 }
 
 type TemplateUpdateTemplateData struct {
+	// The title of the document.
 	Title            *string                                         `json:"title,omitempty"`
 	ExternalID       *string                                         `json:"externalId,omitempty"`
 	Visibility       *TemplateUpdateTemplateVisibilityRequest        `json:"visibility,omitempty"`
@@ -133,85 +137,105 @@ type TemplateUpdateTemplateData struct {
 	PublicDescription       *string                         `json:"publicDescription,omitempty"`
 	Type                    *TemplateUpdateTemplateDataType `json:"type,omitempty"`
 	UseLegacyFieldInsertion *bool                           `json:"useLegacyFieldInsertion,omitempty"`
+	FolderID                *string                         `json:"folderId,omitempty"`
 }
 
-func (o *TemplateUpdateTemplateData) GetTitle() *string {
-	if o == nil {
+func (t *TemplateUpdateTemplateData) GetTitle() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Title
+	return t.Title
 }
 
-func (o *TemplateUpdateTemplateData) GetExternalID() *string {
-	if o == nil {
+func (t *TemplateUpdateTemplateData) GetExternalID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ExternalID
+	return t.ExternalID
 }
 
-func (o *TemplateUpdateTemplateData) GetVisibility() *TemplateUpdateTemplateVisibilityRequest {
-	if o == nil {
+func (t *TemplateUpdateTemplateData) GetVisibility() *TemplateUpdateTemplateVisibilityRequest {
+	if t == nil {
 		return nil
 	}
-	return o.Visibility
+	return t.Visibility
 }
 
-func (o *TemplateUpdateTemplateData) GetGlobalAccessAuth() []TemplateUpdateTemplateGlobalAccessAuthRequest {
-	if o == nil {
+func (t *TemplateUpdateTemplateData) GetGlobalAccessAuth() []TemplateUpdateTemplateGlobalAccessAuthRequest {
+	if t == nil {
 		return nil
 	}
-	return o.GlobalAccessAuth
+	return t.GlobalAccessAuth
 }
 
-func (o *TemplateUpdateTemplateData) GetGlobalActionAuth() []TemplateUpdateTemplateGlobalActionAuthRequest {
-	if o == nil {
+func (t *TemplateUpdateTemplateData) GetGlobalActionAuth() []TemplateUpdateTemplateGlobalActionAuthRequest {
+	if t == nil {
 		return nil
 	}
-	return o.GlobalActionAuth
+	return t.GlobalActionAuth
 }
 
-func (o *TemplateUpdateTemplateData) GetPublicTitle() *string {
-	if o == nil {
+func (t *TemplateUpdateTemplateData) GetPublicTitle() *string {
+	if t == nil {
 		return nil
 	}
-	return o.PublicTitle
+	return t.PublicTitle
 }
 
-func (o *TemplateUpdateTemplateData) GetPublicDescription() *string {
-	if o == nil {
+func (t *TemplateUpdateTemplateData) GetPublicDescription() *string {
+	if t == nil {
 		return nil
 	}
-	return o.PublicDescription
+	return t.PublicDescription
 }
 
-func (o *TemplateUpdateTemplateData) GetType() *TemplateUpdateTemplateDataType {
-	if o == nil {
+func (t *TemplateUpdateTemplateData) GetType() *TemplateUpdateTemplateDataType {
+	if t == nil {
 		return nil
 	}
-	return o.Type
+	return t.Type
 }
 
-func (o *TemplateUpdateTemplateData) GetUseLegacyFieldInsertion() *bool {
-	if o == nil {
+func (t *TemplateUpdateTemplateData) GetUseLegacyFieldInsertion() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.UseLegacyFieldInsertion
+	return t.UseLegacyFieldInsertion
+}
+
+func (t *TemplateUpdateTemplateData) GetFolderID() *string {
+	if t == nil {
+		return nil
+	}
+	return t.FolderID
 }
 
 // TemplateUpdateTemplateDateFormat - The date format to use for date fields and signing the document.
 type TemplateUpdateTemplateDateFormat string
 
 const (
-	TemplateUpdateTemplateDateFormatYyyyMmDdHhMmA         TemplateUpdateTemplateDateFormat = "yyyy-MM-dd hh:mm a"
-	TemplateUpdateTemplateDateFormatYyyyMmDd              TemplateUpdateTemplateDateFormat = "yyyy-MM-dd"
-	TemplateUpdateTemplateDateFormatDdMmYyyyHhMmA         TemplateUpdateTemplateDateFormat = "dd/MM/yyyy hh:mm a"
-	TemplateUpdateTemplateDateFormatMmDdYyyyHhMmA         TemplateUpdateTemplateDateFormat = "MM/dd/yyyy hh:mm a"
-	TemplateUpdateTemplateDateFormatYyyyMmDdHhMm          TemplateUpdateTemplateDateFormat = "yyyy-MM-dd HH:mm"
-	TemplateUpdateTemplateDateFormatYyMmDdHhMmA           TemplateUpdateTemplateDateFormat = "yy-MM-dd hh:mm a"
-	TemplateUpdateTemplateDateFormatYyyyMmDdHhMmSs        TemplateUpdateTemplateDateFormat = "yyyy-MM-dd HH:mm:ss"
-	TemplateUpdateTemplateDateFormatMmmmDdYyyyHhMmA       TemplateUpdateTemplateDateFormat = "MMMM dd, yyyy hh:mm a"
-	TemplateUpdateTemplateDateFormatEeeeMmmmDdYyyyHhMmA   TemplateUpdateTemplateDateFormat = "EEEE, MMMM dd, yyyy hh:mm a"
-	TemplateUpdateTemplateDateFormatYyyyMmDdTHhMmSsSssxxx TemplateUpdateTemplateDateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+	TemplateUpdateTemplateDateFormatYyyyMMddHhMmA            TemplateUpdateTemplateDateFormat = "yyyy-MM-dd hh:mm a"
+	TemplateUpdateTemplateDateFormatYyyyMMdd                 TemplateUpdateTemplateDateFormat = "yyyy-MM-dd"
+	TemplateUpdateTemplateDateFormatDdMmSlashYyyy            TemplateUpdateTemplateDateFormat = "dd/MM/yyyy"
+	TemplateUpdateTemplateDateFormatMmDdSlashYyyy            TemplateUpdateTemplateDateFormat = "MM/dd/yyyy"
+	TemplateUpdateTemplateDateFormatYyMMdd                   TemplateUpdateTemplateDateFormat = "yy-MM-dd"
+	TemplateUpdateTemplateDateFormatMmmmDdCommaYyyy          TemplateUpdateTemplateDateFormat = "MMMM dd, yyyy"
+	TemplateUpdateTemplateDateFormatEeeeMmmmDdCommaYyyy      TemplateUpdateTemplateDateFormat = "EEEE, MMMM dd, yyyy"
+	TemplateUpdateTemplateDateFormatDdMmSlashYyyyHhMmA       TemplateUpdateTemplateDateFormat = "dd/MM/yyyy hh:mm a"
+	TemplateUpdateTemplateDateFormatDdMmSlashYyyyHHmm        TemplateUpdateTemplateDateFormat = "dd/MM/yyyy HH:mm"
+	TemplateUpdateTemplateDateFormatMmDdSlashYyyyHhMmA       TemplateUpdateTemplateDateFormat = "MM/dd/yyyy hh:mm a"
+	TemplateUpdateTemplateDateFormatMmDdSlashYyyyHHmm        TemplateUpdateTemplateDateFormat = "MM/dd/yyyy HH:mm"
+	TemplateUpdateTemplateDateFormatDdDotMmDotYyyy           TemplateUpdateTemplateDateFormat = "dd.MM.yyyy"
+	TemplateUpdateTemplateDateFormatDdDotMmDotYyyyHHmm       TemplateUpdateTemplateDateFormat = "dd.MM.yyyy HH:mm"
+	TemplateUpdateTemplateDateFormatYyyyMMddHHmm             TemplateUpdateTemplateDateFormat = "yyyy-MM-dd HH:mm"
+	TemplateUpdateTemplateDateFormatYyMMddHhMmA              TemplateUpdateTemplateDateFormat = "yy-MM-dd hh:mm a"
+	TemplateUpdateTemplateDateFormatYyMMddHHmm               TemplateUpdateTemplateDateFormat = "yy-MM-dd HH:mm"
+	TemplateUpdateTemplateDateFormatYyyyMMddHHmmss           TemplateUpdateTemplateDateFormat = "yyyy-MM-dd HH:mm:ss"
+	TemplateUpdateTemplateDateFormatMmmmDdCommaYyyyHhMmA     TemplateUpdateTemplateDateFormat = "MMMM dd, yyyy hh:mm a"
+	TemplateUpdateTemplateDateFormatMmmmDdCommaYyyyHHmm      TemplateUpdateTemplateDateFormat = "MMMM dd, yyyy HH:mm"
+	TemplateUpdateTemplateDateFormatEeeeMmmmDdCommaYyyyHhMmA TemplateUpdateTemplateDateFormat = "EEEE, MMMM dd, yyyy hh:mm a"
+	TemplateUpdateTemplateDateFormatEeeeMmmmDdCommaYyyyHHmm  TemplateUpdateTemplateDateFormat = "EEEE, MMMM dd, yyyy HH:mm"
+	TemplateUpdateTemplateDateFormatIso8601Full              TemplateUpdateTemplateDateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
 )
 
 func (e TemplateUpdateTemplateDateFormat) ToPointer() *TemplateUpdateTemplateDateFormat {
@@ -227,19 +251,43 @@ func (e *TemplateUpdateTemplateDateFormat) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "yyyy-MM-dd":
 		fallthrough
+	case "dd/MM/yyyy":
+		fallthrough
+	case "MM/dd/yyyy":
+		fallthrough
+	case "yy-MM-dd":
+		fallthrough
+	case "MMMM dd, yyyy":
+		fallthrough
+	case "EEEE, MMMM dd, yyyy":
+		fallthrough
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
+	case "dd/MM/yyyy HH:mm":
+		fallthrough
 	case "MM/dd/yyyy hh:mm a":
+		fallthrough
+	case "MM/dd/yyyy HH:mm":
+		fallthrough
+	case "dd.MM.yyyy":
+		fallthrough
+	case "dd.MM.yyyy HH:mm":
 		fallthrough
 	case "yyyy-MM-dd HH:mm":
 		fallthrough
 	case "yy-MM-dd hh:mm a":
 		fallthrough
+	case "yy-MM-dd HH:mm":
+		fallthrough
 	case "yyyy-MM-dd HH:mm:ss":
 		fallthrough
 	case "MMMM dd, yyyy hh:mm a":
 		fallthrough
+	case "MMMM dd, yyyy HH:mm":
+		fallthrough
 	case "EEEE, MMMM dd, yyyy hh:mm a":
+		fallthrough
+	case "EEEE, MMMM dd, yyyy HH:mm":
 		fallthrough
 	case "yyyy-MM-dd'T'HH:mm:ss.SSSXXX":
 		*e = TemplateUpdateTemplateDateFormat(v)
@@ -304,53 +352,53 @@ func (t *TemplateUpdateTemplateEmailSettings) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (o *TemplateUpdateTemplateEmailSettings) GetRecipientSigningRequest() *bool {
-	if o == nil {
+func (t *TemplateUpdateTemplateEmailSettings) GetRecipientSigningRequest() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.RecipientSigningRequest
+	return t.RecipientSigningRequest
 }
 
-func (o *TemplateUpdateTemplateEmailSettings) GetRecipientRemoved() *bool {
-	if o == nil {
+func (t *TemplateUpdateTemplateEmailSettings) GetRecipientRemoved() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.RecipientRemoved
+	return t.RecipientRemoved
 }
 
-func (o *TemplateUpdateTemplateEmailSettings) GetRecipientSigned() *bool {
-	if o == nil {
+func (t *TemplateUpdateTemplateEmailSettings) GetRecipientSigned() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.RecipientSigned
+	return t.RecipientSigned
 }
 
-func (o *TemplateUpdateTemplateEmailSettings) GetDocumentPending() *bool {
-	if o == nil {
+func (t *TemplateUpdateTemplateEmailSettings) GetDocumentPending() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.DocumentPending
+	return t.DocumentPending
 }
 
-func (o *TemplateUpdateTemplateEmailSettings) GetDocumentCompleted() *bool {
-	if o == nil {
+func (t *TemplateUpdateTemplateEmailSettings) GetDocumentCompleted() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.DocumentCompleted
+	return t.DocumentCompleted
 }
 
-func (o *TemplateUpdateTemplateEmailSettings) GetDocumentDeleted() *bool {
-	if o == nil {
+func (t *TemplateUpdateTemplateEmailSettings) GetDocumentDeleted() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.DocumentDeleted
+	return t.DocumentDeleted
 }
 
-func (o *TemplateUpdateTemplateEmailSettings) GetOwnerDocumentCompleted() *bool {
-	if o == nil {
+func (t *TemplateUpdateTemplateEmailSettings) GetOwnerDocumentCompleted() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.OwnerDocumentCompleted
+	return t.OwnerDocumentCompleted
 }
 
 // TemplateUpdateTemplateLanguage - The language to use for email communications with recipients.
@@ -429,6 +477,8 @@ type TemplateUpdateTemplateMeta struct {
 	DateFormat *TemplateUpdateTemplateDateFormat `json:"dateFormat,omitempty"`
 	// The distribution method to use when sending the document to the recipients.
 	DistributionMethod *TemplateUpdateTemplateDistributionMethod `json:"distributionMethod,omitempty"`
+	EmailID            *string                                   `json:"emailId,omitempty"`
+	EmailReplyTo       *string                                   `json:"emailReplyTo,omitempty"`
 	EmailSettings      *TemplateUpdateTemplateEmailSettings      `json:"emailSettings,omitempty"`
 	// The URL to which the recipient should be redirected after signing the document.
 	RedirectURL *string `json:"redirectUrl,omitempty"`
@@ -444,95 +494,109 @@ type TemplateUpdateTemplateMeta struct {
 	AllowDictateNextSigner *bool                               `json:"allowDictateNextSigner,omitempty"`
 }
 
-func (o *TemplateUpdateTemplateMeta) GetSubject() *string {
-	if o == nil {
+func (t *TemplateUpdateTemplateMeta) GetSubject() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Subject
+	return t.Subject
 }
 
-func (o *TemplateUpdateTemplateMeta) GetMessage() *string {
-	if o == nil {
+func (t *TemplateUpdateTemplateMeta) GetMessage() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Message
+	return t.Message
 }
 
-func (o *TemplateUpdateTemplateMeta) GetTimezone() *string {
-	if o == nil {
+func (t *TemplateUpdateTemplateMeta) GetTimezone() *string {
+	if t == nil {
 		return nil
 	}
-	return o.Timezone
+	return t.Timezone
 }
 
-func (o *TemplateUpdateTemplateMeta) GetDateFormat() *TemplateUpdateTemplateDateFormat {
-	if o == nil {
+func (t *TemplateUpdateTemplateMeta) GetDateFormat() *TemplateUpdateTemplateDateFormat {
+	if t == nil {
 		return nil
 	}
-	return o.DateFormat
+	return t.DateFormat
 }
 
-func (o *TemplateUpdateTemplateMeta) GetDistributionMethod() *TemplateUpdateTemplateDistributionMethod {
-	if o == nil {
+func (t *TemplateUpdateTemplateMeta) GetDistributionMethod() *TemplateUpdateTemplateDistributionMethod {
+	if t == nil {
 		return nil
 	}
-	return o.DistributionMethod
+	return t.DistributionMethod
 }
 
-func (o *TemplateUpdateTemplateMeta) GetEmailSettings() *TemplateUpdateTemplateEmailSettings {
-	if o == nil {
+func (t *TemplateUpdateTemplateMeta) GetEmailID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.EmailSettings
+	return t.EmailID
 }
 
-func (o *TemplateUpdateTemplateMeta) GetRedirectURL() *string {
-	if o == nil {
+func (t *TemplateUpdateTemplateMeta) GetEmailReplyTo() *string {
+	if t == nil {
 		return nil
 	}
-	return o.RedirectURL
+	return t.EmailReplyTo
 }
 
-func (o *TemplateUpdateTemplateMeta) GetLanguage() *TemplateUpdateTemplateLanguage {
-	if o == nil {
+func (t *TemplateUpdateTemplateMeta) GetEmailSettings() *TemplateUpdateTemplateEmailSettings {
+	if t == nil {
 		return nil
 	}
-	return o.Language
+	return t.EmailSettings
 }
 
-func (o *TemplateUpdateTemplateMeta) GetTypedSignatureEnabled() *bool {
-	if o == nil {
+func (t *TemplateUpdateTemplateMeta) GetRedirectURL() *string {
+	if t == nil {
 		return nil
 	}
-	return o.TypedSignatureEnabled
+	return t.RedirectURL
 }
 
-func (o *TemplateUpdateTemplateMeta) GetUploadSignatureEnabled() *bool {
-	if o == nil {
+func (t *TemplateUpdateTemplateMeta) GetLanguage() *TemplateUpdateTemplateLanguage {
+	if t == nil {
 		return nil
 	}
-	return o.UploadSignatureEnabled
+	return t.Language
 }
 
-func (o *TemplateUpdateTemplateMeta) GetDrawSignatureEnabled() *bool {
-	if o == nil {
+func (t *TemplateUpdateTemplateMeta) GetTypedSignatureEnabled() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.DrawSignatureEnabled
+	return t.TypedSignatureEnabled
 }
 
-func (o *TemplateUpdateTemplateMeta) GetSigningOrder() *TemplateUpdateTemplateSigningOrder {
-	if o == nil {
+func (t *TemplateUpdateTemplateMeta) GetUploadSignatureEnabled() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.SigningOrder
+	return t.UploadSignatureEnabled
 }
 
-func (o *TemplateUpdateTemplateMeta) GetAllowDictateNextSigner() *bool {
-	if o == nil {
+func (t *TemplateUpdateTemplateMeta) GetDrawSignatureEnabled() *bool {
+	if t == nil {
 		return nil
 	}
-	return o.AllowDictateNextSigner
+	return t.DrawSignatureEnabled
+}
+
+func (t *TemplateUpdateTemplateMeta) GetSigningOrder() *TemplateUpdateTemplateSigningOrder {
+	if t == nil {
+		return nil
+	}
+	return t.SigningOrder
+}
+
+func (t *TemplateUpdateTemplateMeta) GetAllowDictateNextSigner() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.AllowDictateNextSigner
 }
 
 type TemplateUpdateTemplateRequest struct {
@@ -541,25 +605,25 @@ type TemplateUpdateTemplateRequest struct {
 	Meta       *TemplateUpdateTemplateMeta `json:"meta,omitempty"`
 }
 
-func (o *TemplateUpdateTemplateRequest) GetTemplateID() float64 {
-	if o == nil {
+func (t *TemplateUpdateTemplateRequest) GetTemplateID() float64 {
+	if t == nil {
 		return 0.0
 	}
-	return o.TemplateID
+	return t.TemplateID
 }
 
-func (o *TemplateUpdateTemplateRequest) GetData() *TemplateUpdateTemplateData {
-	if o == nil {
+func (t *TemplateUpdateTemplateRequest) GetData() *TemplateUpdateTemplateData {
+	if t == nil {
 		return nil
 	}
-	return o.Data
+	return t.Data
 }
 
-func (o *TemplateUpdateTemplateRequest) GetMeta() *TemplateUpdateTemplateMeta {
-	if o == nil {
+func (t *TemplateUpdateTemplateRequest) GetMeta() *TemplateUpdateTemplateMeta {
+	if t == nil {
 		return nil
 	}
-	return o.Meta
+	return t.Meta
 }
 
 type TemplateUpdateTemplateTypeResponse string
@@ -621,7 +685,8 @@ func (e *TemplateUpdateTemplateVisibilityResponse) UnmarshalJSON(data []byte) er
 type TemplateUpdateTemplateGlobalAccessAuthResponse string
 
 const (
-	TemplateUpdateTemplateGlobalAccessAuthResponseAccount TemplateUpdateTemplateGlobalAccessAuthResponse = "ACCOUNT"
+	TemplateUpdateTemplateGlobalAccessAuthResponseAccount       TemplateUpdateTemplateGlobalAccessAuthResponse = "ACCOUNT"
+	TemplateUpdateTemplateGlobalAccessAuthResponseTwoFactorAuth TemplateUpdateTemplateGlobalAccessAuthResponse = "TWO_FACTOR_AUTH"
 )
 
 func (e TemplateUpdateTemplateGlobalAccessAuthResponse) ToPointer() *TemplateUpdateTemplateGlobalAccessAuthResponse {
@@ -634,6 +699,8 @@ func (e *TemplateUpdateTemplateGlobalAccessAuthResponse) UnmarshalJSON(data []by
 	}
 	switch v {
 	case "ACCOUNT":
+		fallthrough
+	case "TWO_FACTOR_AUTH":
 		*e = TemplateUpdateTemplateGlobalAccessAuthResponse(v)
 		return nil
 	default:
@@ -679,18 +746,18 @@ type TemplateUpdateTemplateAuthOptions struct {
 	GlobalActionAuth []TemplateUpdateTemplateGlobalActionAuthResponse `json:"globalActionAuth"`
 }
 
-func (o *TemplateUpdateTemplateAuthOptions) GetGlobalAccessAuth() []TemplateUpdateTemplateGlobalAccessAuthResponse {
-	if o == nil {
+func (t *TemplateUpdateTemplateAuthOptions) GetGlobalAccessAuth() []TemplateUpdateTemplateGlobalAccessAuthResponse {
+	if t == nil {
 		return []TemplateUpdateTemplateGlobalAccessAuthResponse{}
 	}
-	return o.GlobalAccessAuth
+	return t.GlobalAccessAuth
 }
 
-func (o *TemplateUpdateTemplateAuthOptions) GetGlobalActionAuth() []TemplateUpdateTemplateGlobalActionAuthResponse {
-	if o == nil {
+func (t *TemplateUpdateTemplateAuthOptions) GetGlobalActionAuth() []TemplateUpdateTemplateGlobalActionAuthResponse {
+	if t == nil {
 		return []TemplateUpdateTemplateGlobalActionAuthResponse{}
 	}
-	return o.GlobalActionAuth
+	return t.GlobalActionAuth
 }
 
 // TemplateUpdateTemplateResponseBody - Successful response
@@ -703,118 +770,137 @@ type TemplateUpdateTemplateResponseBody struct {
 	UserID                  float64                                  `json:"userId"`
 	TeamID                  float64                                  `json:"teamId"`
 	AuthOptions             *TemplateUpdateTemplateAuthOptions       `json:"authOptions"`
-	TemplateDocumentDataID  string                                   `json:"templateDocumentDataId"`
 	CreatedAt               string                                   `json:"createdAt"`
 	UpdatedAt               string                                   `json:"updatedAt"`
 	PublicTitle             string                                   `json:"publicTitle"`
 	PublicDescription       string                                   `json:"publicDescription"`
 	FolderID                *string                                  `json:"folderId"`
 	UseLegacyFieldInsertion bool                                     `json:"useLegacyFieldInsertion"`
+	EnvelopeID              string                                   `json:"envelopeId"`
+	TemplateDocumentDataID  *string                                  `default:"" json:"templateDocumentDataId"`
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetType() TemplateUpdateTemplateTypeResponse {
-	if o == nil {
+func (t TemplateUpdateTemplateResponseBody) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateUpdateTemplateResponseBody) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "visibility", "id", "title", "userId", "teamId", "createdAt", "updatedAt", "publicTitle", "publicDescription", "useLegacyFieldInsertion", "envelopeId"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TemplateUpdateTemplateResponseBody) GetType() TemplateUpdateTemplateTypeResponse {
+	if t == nil {
 		return TemplateUpdateTemplateTypeResponse("")
 	}
-	return o.Type
+	return t.Type
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetVisibility() TemplateUpdateTemplateVisibilityResponse {
-	if o == nil {
+func (t *TemplateUpdateTemplateResponseBody) GetVisibility() TemplateUpdateTemplateVisibilityResponse {
+	if t == nil {
 		return TemplateUpdateTemplateVisibilityResponse("")
 	}
-	return o.Visibility
+	return t.Visibility
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetID() float64 {
-	if o == nil {
+func (t *TemplateUpdateTemplateResponseBody) GetID() float64 {
+	if t == nil {
 		return 0.0
 	}
-	return o.ID
+	return t.ID
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetExternalID() *string {
-	if o == nil {
+func (t *TemplateUpdateTemplateResponseBody) GetExternalID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.ExternalID
+	return t.ExternalID
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetTitle() string {
-	if o == nil {
+func (t *TemplateUpdateTemplateResponseBody) GetTitle() string {
+	if t == nil {
 		return ""
 	}
-	return o.Title
+	return t.Title
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetUserID() float64 {
-	if o == nil {
+func (t *TemplateUpdateTemplateResponseBody) GetUserID() float64 {
+	if t == nil {
 		return 0.0
 	}
-	return o.UserID
+	return t.UserID
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetTeamID() float64 {
-	if o == nil {
+func (t *TemplateUpdateTemplateResponseBody) GetTeamID() float64 {
+	if t == nil {
 		return 0.0
 	}
-	return o.TeamID
+	return t.TeamID
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetAuthOptions() *TemplateUpdateTemplateAuthOptions {
-	if o == nil {
+func (t *TemplateUpdateTemplateResponseBody) GetAuthOptions() *TemplateUpdateTemplateAuthOptions {
+	if t == nil {
 		return nil
 	}
-	return o.AuthOptions
+	return t.AuthOptions
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetTemplateDocumentDataID() string {
-	if o == nil {
+func (t *TemplateUpdateTemplateResponseBody) GetCreatedAt() string {
+	if t == nil {
 		return ""
 	}
-	return o.TemplateDocumentDataID
+	return t.CreatedAt
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetCreatedAt() string {
-	if o == nil {
+func (t *TemplateUpdateTemplateResponseBody) GetUpdatedAt() string {
+	if t == nil {
 		return ""
 	}
-	return o.CreatedAt
+	return t.UpdatedAt
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetUpdatedAt() string {
-	if o == nil {
+func (t *TemplateUpdateTemplateResponseBody) GetPublicTitle() string {
+	if t == nil {
 		return ""
 	}
-	return o.UpdatedAt
+	return t.PublicTitle
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetPublicTitle() string {
-	if o == nil {
+func (t *TemplateUpdateTemplateResponseBody) GetPublicDescription() string {
+	if t == nil {
 		return ""
 	}
-	return o.PublicTitle
+	return t.PublicDescription
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetPublicDescription() string {
-	if o == nil {
-		return ""
-	}
-	return o.PublicDescription
-}
-
-func (o *TemplateUpdateTemplateResponseBody) GetFolderID() *string {
-	if o == nil {
+func (t *TemplateUpdateTemplateResponseBody) GetFolderID() *string {
+	if t == nil {
 		return nil
 	}
-	return o.FolderID
+	return t.FolderID
 }
 
-func (o *TemplateUpdateTemplateResponseBody) GetUseLegacyFieldInsertion() bool {
-	if o == nil {
+func (t *TemplateUpdateTemplateResponseBody) GetUseLegacyFieldInsertion() bool {
+	if t == nil {
 		return false
 	}
-	return o.UseLegacyFieldInsertion
+	return t.UseLegacyFieldInsertion
+}
+
+func (t *TemplateUpdateTemplateResponseBody) GetEnvelopeID() string {
+	if t == nil {
+		return ""
+	}
+	return t.EnvelopeID
+}
+
+func (t *TemplateUpdateTemplateResponseBody) GetTemplateDocumentDataID() *string {
+	if t == nil {
+		return nil
+	}
+	return t.TemplateDocumentDataID
 }
 
 type TemplateUpdateTemplateResponse struct {
@@ -823,16 +909,16 @@ type TemplateUpdateTemplateResponse struct {
 	Object *TemplateUpdateTemplateResponseBody
 }
 
-func (o *TemplateUpdateTemplateResponse) GetHTTPMeta() components.HTTPMetadata {
-	if o == nil {
+func (t *TemplateUpdateTemplateResponse) GetHTTPMeta() components.HTTPMetadata {
+	if t == nil {
 		return components.HTTPMetadata{}
 	}
-	return o.HTTPMeta
+	return t.HTTPMeta
 }
 
-func (o *TemplateUpdateTemplateResponse) GetObject() *TemplateUpdateTemplateResponseBody {
-	if o == nil {
+func (t *TemplateUpdateTemplateResponse) GetObject() *TemplateUpdateTemplateResponseBody {
+	if t == nil {
 		return nil
 	}
-	return o.Object
+	return t.Object
 }
