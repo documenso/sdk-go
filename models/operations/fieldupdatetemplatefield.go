@@ -83,6 +83,7 @@ type FieldUpdateTemplateFieldFieldMetaDropdownRequest struct {
 	Placeholder  *string                                      `json:"placeholder,omitempty"`
 	Required     *bool                                        `json:"required,omitempty"`
 	ReadOnly     *bool                                        `json:"readOnly,omitempty"`
+	FontSize     *float64                                     `default:"12" json:"fontSize"`
 	Type         FieldUpdateTemplateFieldTypeDropdownRequest2 `json:"type"`
 	Values       []FieldUpdateTemplateFieldValueDropdown      `json:"values,omitempty"`
 	DefaultValue *string                                      `json:"defaultValue,omitempty"`
@@ -127,6 +128,13 @@ func (f *FieldUpdateTemplateFieldFieldMetaDropdownRequest) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
+func (f *FieldUpdateTemplateFieldFieldMetaDropdownRequest) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldUpdateTemplateFieldFieldMetaDropdownRequest) GetType() FieldUpdateTemplateFieldTypeDropdownRequest2 {
 	if f == nil {
 		return FieldUpdateTemplateFieldTypeDropdownRequest2("")
@@ -149,20 +157,14 @@ func (f *FieldUpdateTemplateFieldFieldMetaDropdownRequest) GetDefaultValue() *st
 }
 
 type FieldUpdateTemplateFieldFieldDropdown struct {
-	Type      FieldUpdateTemplateFieldTypeDropdownRequest1      `json:"type"`
-	FieldMeta *FieldUpdateTemplateFieldFieldMetaDropdownRequest `json:"fieldMeta,omitempty"`
-	// The ID of the field to update.
-	ID float64 `json:"id"`
-	// The page number the field will be on.
-	PageNumber *float64 `json:"pageNumber,omitempty"`
-	// The X coordinate of where the field will be placed.
-	PageX *float64 `json:"pageX,omitempty"`
-	// The Y coordinate of where the field will be placed.
-	PageY *float64 `json:"pageY,omitempty"`
-	// The width of the field.
-	Width *float64 `json:"width,omitempty"`
-	// The height of the field.
-	Height *float64 `json:"height,omitempty"`
+	Type       FieldUpdateTemplateFieldTypeDropdownRequest1      `json:"type"`
+	FieldMeta  *FieldUpdateTemplateFieldFieldMetaDropdownRequest `json:"fieldMeta,omitempty"`
+	ID         float64                                           `json:"id"`
+	PageNumber *float64                                          `json:"pageNumber,omitempty"`
+	PageX      *float64                                          `json:"pageX,omitempty"`
+	PageY      *float64                                          `json:"pageY,omitempty"`
+	Width      *float64                                          `json:"width,omitempty"`
+	Height     *float64                                          `json:"height,omitempty"`
 }
 
 func (f FieldUpdateTemplateFieldFieldDropdown) MarshalJSON() ([]byte, error) {
@@ -316,17 +318,17 @@ func (f *FieldUpdateTemplateFieldValueCheckbox) GetValue() string {
 	return f.Value
 }
 
-type FieldUpdateTemplateFieldDirectionRequest string
+type FieldUpdateTemplateFieldDirectionCheckbox string
 
 const (
-	FieldUpdateTemplateFieldDirectionRequestVertical   FieldUpdateTemplateFieldDirectionRequest = "vertical"
-	FieldUpdateTemplateFieldDirectionRequestHorizontal FieldUpdateTemplateFieldDirectionRequest = "horizontal"
+	FieldUpdateTemplateFieldDirectionCheckboxVertical   FieldUpdateTemplateFieldDirectionCheckbox = "vertical"
+	FieldUpdateTemplateFieldDirectionCheckboxHorizontal FieldUpdateTemplateFieldDirectionCheckbox = "horizontal"
 )
 
-func (e FieldUpdateTemplateFieldDirectionRequest) ToPointer() *FieldUpdateTemplateFieldDirectionRequest {
+func (e FieldUpdateTemplateFieldDirectionCheckbox) ToPointer() *FieldUpdateTemplateFieldDirectionCheckbox {
 	return &e
 }
-func (e *FieldUpdateTemplateFieldDirectionRequest) UnmarshalJSON(data []byte) error {
+func (e *FieldUpdateTemplateFieldDirectionCheckbox) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -335,10 +337,10 @@ func (e *FieldUpdateTemplateFieldDirectionRequest) UnmarshalJSON(data []byte) er
 	case "vertical":
 		fallthrough
 	case "horizontal":
-		*e = FieldUpdateTemplateFieldDirectionRequest(v)
+		*e = FieldUpdateTemplateFieldDirectionCheckbox(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldUpdateTemplateFieldDirectionRequest: %v", v)
+		return fmt.Errorf("invalid value for FieldUpdateTemplateFieldDirectionCheckbox: %v", v)
 	}
 }
 
@@ -347,11 +349,12 @@ type FieldUpdateTemplateFieldFieldMetaCheckboxRequest struct {
 	Placeholder      *string                                      `json:"placeholder,omitempty"`
 	Required         *bool                                        `json:"required,omitempty"`
 	ReadOnly         *bool                                        `json:"readOnly,omitempty"`
+	FontSize         *float64                                     `default:"12" json:"fontSize"`
 	Type             FieldUpdateTemplateFieldTypeCheckboxRequest2 `json:"type"`
 	Values           []FieldUpdateTemplateFieldValueCheckbox      `json:"values,omitempty"`
 	ValidationRule   *string                                      `json:"validationRule,omitempty"`
 	ValidationLength *float64                                     `json:"validationLength,omitempty"`
-	Direction        *FieldUpdateTemplateFieldDirectionRequest    `default:"vertical" json:"direction"`
+	Direction        *FieldUpdateTemplateFieldDirectionCheckbox   `default:"vertical" json:"direction"`
 }
 
 func (f FieldUpdateTemplateFieldFieldMetaCheckboxRequest) MarshalJSON() ([]byte, error) {
@@ -393,6 +396,13 @@ func (f *FieldUpdateTemplateFieldFieldMetaCheckboxRequest) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
+func (f *FieldUpdateTemplateFieldFieldMetaCheckboxRequest) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldUpdateTemplateFieldFieldMetaCheckboxRequest) GetType() FieldUpdateTemplateFieldTypeCheckboxRequest2 {
 	if f == nil {
 		return FieldUpdateTemplateFieldTypeCheckboxRequest2("")
@@ -421,7 +431,7 @@ func (f *FieldUpdateTemplateFieldFieldMetaCheckboxRequest) GetValidationLength()
 	return f.ValidationLength
 }
 
-func (f *FieldUpdateTemplateFieldFieldMetaCheckboxRequest) GetDirection() *FieldUpdateTemplateFieldDirectionRequest {
+func (f *FieldUpdateTemplateFieldFieldMetaCheckboxRequest) GetDirection() *FieldUpdateTemplateFieldDirectionCheckbox {
 	if f == nil {
 		return nil
 	}
@@ -429,20 +439,14 @@ func (f *FieldUpdateTemplateFieldFieldMetaCheckboxRequest) GetDirection() *Field
 }
 
 type FieldUpdateTemplateFieldFieldCheckbox struct {
-	Type      FieldUpdateTemplateFieldTypeCheckboxRequest1      `json:"type"`
-	FieldMeta *FieldUpdateTemplateFieldFieldMetaCheckboxRequest `json:"fieldMeta,omitempty"`
-	// The ID of the field to update.
-	ID float64 `json:"id"`
-	// The page number the field will be on.
-	PageNumber *float64 `json:"pageNumber,omitempty"`
-	// The X coordinate of where the field will be placed.
-	PageX *float64 `json:"pageX,omitempty"`
-	// The Y coordinate of where the field will be placed.
-	PageY *float64 `json:"pageY,omitempty"`
-	// The width of the field.
-	Width *float64 `json:"width,omitempty"`
-	// The height of the field.
-	Height *float64 `json:"height,omitempty"`
+	Type       FieldUpdateTemplateFieldTypeCheckboxRequest1      `json:"type"`
+	FieldMeta  *FieldUpdateTemplateFieldFieldMetaCheckboxRequest `json:"fieldMeta,omitempty"`
+	ID         float64                                           `json:"id"`
+	PageNumber *float64                                          `json:"pageNumber,omitempty"`
+	PageX      *float64                                          `json:"pageX,omitempty"`
+	PageY      *float64                                          `json:"pageY,omitempty"`
+	Width      *float64                                          `json:"width,omitempty"`
+	Height     *float64                                          `json:"height,omitempty"`
 }
 
 func (f FieldUpdateTemplateFieldFieldCheckbox) MarshalJSON() ([]byte, error) {
@@ -596,13 +600,41 @@ func (f *FieldUpdateTemplateFieldValueRadio) GetValue() string {
 	return f.Value
 }
 
+type FieldUpdateTemplateFieldDirectionRadio string
+
+const (
+	FieldUpdateTemplateFieldDirectionRadioVertical   FieldUpdateTemplateFieldDirectionRadio = "vertical"
+	FieldUpdateTemplateFieldDirectionRadioHorizontal FieldUpdateTemplateFieldDirectionRadio = "horizontal"
+)
+
+func (e FieldUpdateTemplateFieldDirectionRadio) ToPointer() *FieldUpdateTemplateFieldDirectionRadio {
+	return &e
+}
+func (e *FieldUpdateTemplateFieldDirectionRadio) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = FieldUpdateTemplateFieldDirectionRadio(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldUpdateTemplateFieldDirectionRadio: %v", v)
+	}
+}
+
 type FieldUpdateTemplateFieldFieldMetaRadioRequest struct {
 	Label       *string                                   `json:"label,omitempty"`
 	Placeholder *string                                   `json:"placeholder,omitempty"`
 	Required    *bool                                     `json:"required,omitempty"`
 	ReadOnly    *bool                                     `json:"readOnly,omitempty"`
+	FontSize    *float64                                  `default:"12" json:"fontSize"`
 	Type        FieldUpdateTemplateFieldTypeRadioRequest2 `json:"type"`
 	Values      []FieldUpdateTemplateFieldValueRadio      `json:"values,omitempty"`
+	Direction   *FieldUpdateTemplateFieldDirectionRadio   `default:"vertical" json:"direction"`
 }
 
 func (f FieldUpdateTemplateFieldFieldMetaRadioRequest) MarshalJSON() ([]byte, error) {
@@ -644,6 +676,13 @@ func (f *FieldUpdateTemplateFieldFieldMetaRadioRequest) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
+func (f *FieldUpdateTemplateFieldFieldMetaRadioRequest) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldUpdateTemplateFieldFieldMetaRadioRequest) GetType() FieldUpdateTemplateFieldTypeRadioRequest2 {
 	if f == nil {
 		return FieldUpdateTemplateFieldTypeRadioRequest2("")
@@ -658,21 +697,22 @@ func (f *FieldUpdateTemplateFieldFieldMetaRadioRequest) GetValues() []FieldUpdat
 	return f.Values
 }
 
+func (f *FieldUpdateTemplateFieldFieldMetaRadioRequest) GetDirection() *FieldUpdateTemplateFieldDirectionRadio {
+	if f == nil {
+		return nil
+	}
+	return f.Direction
+}
+
 type FieldUpdateTemplateFieldFieldRadio struct {
-	Type      FieldUpdateTemplateFieldTypeRadioRequest1      `json:"type"`
-	FieldMeta *FieldUpdateTemplateFieldFieldMetaRadioRequest `json:"fieldMeta,omitempty"`
-	// The ID of the field to update.
-	ID float64 `json:"id"`
-	// The page number the field will be on.
-	PageNumber *float64 `json:"pageNumber,omitempty"`
-	// The X coordinate of where the field will be placed.
-	PageX *float64 `json:"pageX,omitempty"`
-	// The Y coordinate of where the field will be placed.
-	PageY *float64 `json:"pageY,omitempty"`
-	// The width of the field.
-	Width *float64 `json:"width,omitempty"`
-	// The height of the field.
-	Height *float64 `json:"height,omitempty"`
+	Type       FieldUpdateTemplateFieldTypeRadioRequest1      `json:"type"`
+	FieldMeta  *FieldUpdateTemplateFieldFieldMetaRadioRequest `json:"fieldMeta,omitempty"`
+	ID         float64                                        `json:"id"`
+	PageNumber *float64                                       `json:"pageNumber,omitempty"`
+	PageX      *float64                                       `json:"pageX,omitempty"`
+	PageY      *float64                                       `json:"pageY,omitempty"`
+	Width      *float64                                       `json:"width,omitempty"`
+	Height     *float64                                       `json:"height,omitempty"`
 }
 
 func (f FieldUpdateTemplateFieldFieldRadio) MarshalJSON() ([]byte, error) {
@@ -817,18 +857,50 @@ func (e *FieldUpdateTemplateFieldTextAlignNumber) UnmarshalJSON(data []byte) err
 	}
 }
 
+type FieldUpdateTemplateFieldVerticalAlignNumber string
+
+const (
+	FieldUpdateTemplateFieldVerticalAlignNumberTop    FieldUpdateTemplateFieldVerticalAlignNumber = "top"
+	FieldUpdateTemplateFieldVerticalAlignNumberMiddle FieldUpdateTemplateFieldVerticalAlignNumber = "middle"
+	FieldUpdateTemplateFieldVerticalAlignNumberBottom FieldUpdateTemplateFieldVerticalAlignNumber = "bottom"
+)
+
+func (e FieldUpdateTemplateFieldVerticalAlignNumber) ToPointer() *FieldUpdateTemplateFieldVerticalAlignNumber {
+	return &e
+}
+func (e *FieldUpdateTemplateFieldVerticalAlignNumber) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = FieldUpdateTemplateFieldVerticalAlignNumber(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldUpdateTemplateFieldVerticalAlignNumber: %v", v)
+	}
+}
+
 type FieldUpdateTemplateFieldFieldMetaNumberRequest struct {
-	Label        *string                                    `json:"label,omitempty"`
-	Placeholder  *string                                    `json:"placeholder,omitempty"`
-	Required     *bool                                      `json:"required,omitempty"`
-	ReadOnly     *bool                                      `json:"readOnly,omitempty"`
-	Type         FieldUpdateTemplateFieldTypeNumberRequest2 `json:"type"`
-	NumberFormat *string                                    `json:"numberFormat,omitempty"`
-	Value        *string                                    `json:"value,omitempty"`
-	MinValue     *float64                                   `json:"minValue,omitempty"`
-	MaxValue     *float64                                   `json:"maxValue,omitempty"`
-	FontSize     *float64                                   `json:"fontSize,omitempty"`
-	TextAlign    *FieldUpdateTemplateFieldTextAlignNumber   `json:"textAlign,omitempty"`
+	Label         *string                                      `json:"label,omitempty"`
+	Placeholder   *string                                      `json:"placeholder,omitempty"`
+	Required      *bool                                        `json:"required,omitempty"`
+	ReadOnly      *bool                                        `json:"readOnly,omitempty"`
+	FontSize      *float64                                     `default:"12" json:"fontSize"`
+	Type          FieldUpdateTemplateFieldTypeNumberRequest2   `json:"type"`
+	NumberFormat  *string                                      `json:"numberFormat,omitempty"`
+	Value         *string                                      `json:"value,omitempty"`
+	MinValue      *float64                                     `json:"minValue,omitempty"`
+	MaxValue      *float64                                     `json:"maxValue,omitempty"`
+	TextAlign     *FieldUpdateTemplateFieldTextAlignNumber     `json:"textAlign,omitempty"`
+	LineHeight    *float64                                     `json:"lineHeight,omitempty"`
+	LetterSpacing *float64                                     `json:"letterSpacing,omitempty"`
+	VerticalAlign *FieldUpdateTemplateFieldVerticalAlignNumber `json:"verticalAlign,omitempty"`
 }
 
 func (f FieldUpdateTemplateFieldFieldMetaNumberRequest) MarshalJSON() ([]byte, error) {
@@ -870,6 +942,13 @@ func (f *FieldUpdateTemplateFieldFieldMetaNumberRequest) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
+func (f *FieldUpdateTemplateFieldFieldMetaNumberRequest) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldUpdateTemplateFieldFieldMetaNumberRequest) GetType() FieldUpdateTemplateFieldTypeNumberRequest2 {
 	if f == nil {
 		return FieldUpdateTemplateFieldTypeNumberRequest2("")
@@ -905,13 +984,6 @@ func (f *FieldUpdateTemplateFieldFieldMetaNumberRequest) GetMaxValue() *float64 
 	return f.MaxValue
 }
 
-func (f *FieldUpdateTemplateFieldFieldMetaNumberRequest) GetFontSize() *float64 {
-	if f == nil {
-		return nil
-	}
-	return f.FontSize
-}
-
 func (f *FieldUpdateTemplateFieldFieldMetaNumberRequest) GetTextAlign() *FieldUpdateTemplateFieldTextAlignNumber {
 	if f == nil {
 		return nil
@@ -919,21 +991,36 @@ func (f *FieldUpdateTemplateFieldFieldMetaNumberRequest) GetTextAlign() *FieldUp
 	return f.TextAlign
 }
 
+func (f *FieldUpdateTemplateFieldFieldMetaNumberRequest) GetLineHeight() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LineHeight
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaNumberRequest) GetLetterSpacing() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LetterSpacing
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaNumberRequest) GetVerticalAlign() *FieldUpdateTemplateFieldVerticalAlignNumber {
+	if f == nil {
+		return nil
+	}
+	return f.VerticalAlign
+}
+
 type FieldUpdateTemplateFieldFieldNumber struct {
-	Type      FieldUpdateTemplateFieldTypeNumberRequest1      `json:"type"`
-	FieldMeta *FieldUpdateTemplateFieldFieldMetaNumberRequest `json:"fieldMeta,omitempty"`
-	// The ID of the field to update.
-	ID float64 `json:"id"`
-	// The page number the field will be on.
-	PageNumber *float64 `json:"pageNumber,omitempty"`
-	// The X coordinate of where the field will be placed.
-	PageX *float64 `json:"pageX,omitempty"`
-	// The Y coordinate of where the field will be placed.
-	PageY *float64 `json:"pageY,omitempty"`
-	// The width of the field.
-	Width *float64 `json:"width,omitempty"`
-	// The height of the field.
-	Height *float64 `json:"height,omitempty"`
+	Type       FieldUpdateTemplateFieldTypeNumberRequest1      `json:"type"`
+	FieldMeta  *FieldUpdateTemplateFieldFieldMetaNumberRequest `json:"fieldMeta,omitempty"`
+	ID         float64                                         `json:"id"`
+	PageNumber *float64                                        `json:"pageNumber,omitempty"`
+	PageX      *float64                                        `json:"pageX,omitempty"`
+	PageY      *float64                                        `json:"pageY,omitempty"`
+	Width      *float64                                        `json:"width,omitempty"`
+	Height     *float64                                        `json:"height,omitempty"`
 }
 
 func (f FieldUpdateTemplateFieldFieldNumber) MarshalJSON() ([]byte, error) {
@@ -1078,16 +1165,48 @@ func (e *FieldUpdateTemplateFieldTextAlignText) UnmarshalJSON(data []byte) error
 	}
 }
 
+type FieldUpdateTemplateFieldVerticalAlignText string
+
+const (
+	FieldUpdateTemplateFieldVerticalAlignTextTop    FieldUpdateTemplateFieldVerticalAlignText = "top"
+	FieldUpdateTemplateFieldVerticalAlignTextMiddle FieldUpdateTemplateFieldVerticalAlignText = "middle"
+	FieldUpdateTemplateFieldVerticalAlignTextBottom FieldUpdateTemplateFieldVerticalAlignText = "bottom"
+)
+
+func (e FieldUpdateTemplateFieldVerticalAlignText) ToPointer() *FieldUpdateTemplateFieldVerticalAlignText {
+	return &e
+}
+func (e *FieldUpdateTemplateFieldVerticalAlignText) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = FieldUpdateTemplateFieldVerticalAlignText(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldUpdateTemplateFieldVerticalAlignText: %v", v)
+	}
+}
+
 type FieldUpdateTemplateFieldFieldMetaTextRequest struct {
-	Label          *string                                  `json:"label,omitempty"`
-	Placeholder    *string                                  `json:"placeholder,omitempty"`
-	Required       *bool                                    `json:"required,omitempty"`
-	ReadOnly       *bool                                    `json:"readOnly,omitempty"`
-	Type           FieldUpdateTemplateFieldTypeTextRequest2 `json:"type"`
-	Text           *string                                  `json:"text,omitempty"`
-	CharacterLimit *float64                                 `json:"characterLimit,omitempty"`
-	FontSize       *float64                                 `json:"fontSize,omitempty"`
-	TextAlign      *FieldUpdateTemplateFieldTextAlignText   `json:"textAlign,omitempty"`
+	Label          *string                                    `json:"label,omitempty"`
+	Placeholder    *string                                    `json:"placeholder,omitempty"`
+	Required       *bool                                      `json:"required,omitempty"`
+	ReadOnly       *bool                                      `json:"readOnly,omitempty"`
+	FontSize       *float64                                   `default:"12" json:"fontSize"`
+	Type           FieldUpdateTemplateFieldTypeTextRequest2   `json:"type"`
+	Text           *string                                    `json:"text,omitempty"`
+	CharacterLimit *float64                                   `json:"characterLimit,omitempty"`
+	TextAlign      *FieldUpdateTemplateFieldTextAlignText     `json:"textAlign,omitempty"`
+	LineHeight     *float64                                   `json:"lineHeight,omitempty"`
+	LetterSpacing  *float64                                   `json:"letterSpacing,omitempty"`
+	VerticalAlign  *FieldUpdateTemplateFieldVerticalAlignText `json:"verticalAlign,omitempty"`
 }
 
 func (f FieldUpdateTemplateFieldFieldMetaTextRequest) MarshalJSON() ([]byte, error) {
@@ -1129,6 +1248,13 @@ func (f *FieldUpdateTemplateFieldFieldMetaTextRequest) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
+func (f *FieldUpdateTemplateFieldFieldMetaTextRequest) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldUpdateTemplateFieldFieldMetaTextRequest) GetType() FieldUpdateTemplateFieldTypeTextRequest2 {
 	if f == nil {
 		return FieldUpdateTemplateFieldTypeTextRequest2("")
@@ -1150,13 +1276,6 @@ func (f *FieldUpdateTemplateFieldFieldMetaTextRequest) GetCharacterLimit() *floa
 	return f.CharacterLimit
 }
 
-func (f *FieldUpdateTemplateFieldFieldMetaTextRequest) GetFontSize() *float64 {
-	if f == nil {
-		return nil
-	}
-	return f.FontSize
-}
-
 func (f *FieldUpdateTemplateFieldFieldMetaTextRequest) GetTextAlign() *FieldUpdateTemplateFieldTextAlignText {
 	if f == nil {
 		return nil
@@ -1164,21 +1283,36 @@ func (f *FieldUpdateTemplateFieldFieldMetaTextRequest) GetTextAlign() *FieldUpda
 	return f.TextAlign
 }
 
+func (f *FieldUpdateTemplateFieldFieldMetaTextRequest) GetLineHeight() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LineHeight
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaTextRequest) GetLetterSpacing() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LetterSpacing
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaTextRequest) GetVerticalAlign() *FieldUpdateTemplateFieldVerticalAlignText {
+	if f == nil {
+		return nil
+	}
+	return f.VerticalAlign
+}
+
 type FieldUpdateTemplateFieldFieldText struct {
-	Type      FieldUpdateTemplateFieldTypeTextRequest1      `json:"type"`
-	FieldMeta *FieldUpdateTemplateFieldFieldMetaTextRequest `json:"fieldMeta,omitempty"`
-	// The ID of the field to update.
-	ID float64 `json:"id"`
-	// The page number the field will be on.
-	PageNumber *float64 `json:"pageNumber,omitempty"`
-	// The X coordinate of where the field will be placed.
-	PageX *float64 `json:"pageX,omitempty"`
-	// The Y coordinate of where the field will be placed.
-	PageY *float64 `json:"pageY,omitempty"`
-	// The width of the field.
-	Width *float64 `json:"width,omitempty"`
-	// The height of the field.
-	Height *float64 `json:"height,omitempty"`
+	Type       FieldUpdateTemplateFieldTypeTextRequest1      `json:"type"`
+	FieldMeta  *FieldUpdateTemplateFieldFieldMetaTextRequest `json:"fieldMeta,omitempty"`
+	ID         float64                                       `json:"id"`
+	PageNumber *float64                                      `json:"pageNumber,omitempty"`
+	PageX      *float64                                      `json:"pageX,omitempty"`
+	PageY      *float64                                      `json:"pageY,omitempty"`
+	Width      *float64                                      `json:"width,omitempty"`
+	Height     *float64                                      `json:"height,omitempty"`
 }
 
 func (f FieldUpdateTemplateFieldFieldText) MarshalJSON() ([]byte, error) {
@@ -1328,8 +1462,8 @@ type FieldUpdateTemplateFieldFieldMetaDateRequest struct {
 	Placeholder *string                                  `json:"placeholder,omitempty"`
 	Required    *bool                                    `json:"required,omitempty"`
 	ReadOnly    *bool                                    `json:"readOnly,omitempty"`
+	FontSize    *float64                                 `default:"12" json:"fontSize"`
 	Type        FieldUpdateTemplateFieldTypeDateRequest2 `json:"type"`
-	FontSize    *float64                                 `json:"fontSize,omitempty"`
 	TextAlign   *FieldUpdateTemplateFieldTextAlignDate   `json:"textAlign,omitempty"`
 }
 
@@ -1372,18 +1506,18 @@ func (f *FieldUpdateTemplateFieldFieldMetaDateRequest) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
-func (f *FieldUpdateTemplateFieldFieldMetaDateRequest) GetType() FieldUpdateTemplateFieldTypeDateRequest2 {
-	if f == nil {
-		return FieldUpdateTemplateFieldTypeDateRequest2("")
-	}
-	return f.Type
-}
-
 func (f *FieldUpdateTemplateFieldFieldMetaDateRequest) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaDateRequest) GetType() FieldUpdateTemplateFieldTypeDateRequest2 {
+	if f == nil {
+		return FieldUpdateTemplateFieldTypeDateRequest2("")
+	}
+	return f.Type
 }
 
 func (f *FieldUpdateTemplateFieldFieldMetaDateRequest) GetTextAlign() *FieldUpdateTemplateFieldTextAlignDate {
@@ -1394,20 +1528,14 @@ func (f *FieldUpdateTemplateFieldFieldMetaDateRequest) GetTextAlign() *FieldUpda
 }
 
 type FieldUpdateTemplateFieldFieldDate struct {
-	Type      FieldUpdateTemplateFieldTypeDateRequest1      `json:"type"`
-	FieldMeta *FieldUpdateTemplateFieldFieldMetaDateRequest `json:"fieldMeta,omitempty"`
-	// The ID of the field to update.
-	ID float64 `json:"id"`
-	// The page number the field will be on.
-	PageNumber *float64 `json:"pageNumber,omitempty"`
-	// The X coordinate of where the field will be placed.
-	PageX *float64 `json:"pageX,omitempty"`
-	// The Y coordinate of where the field will be placed.
-	PageY *float64 `json:"pageY,omitempty"`
-	// The width of the field.
-	Width *float64 `json:"width,omitempty"`
-	// The height of the field.
-	Height *float64 `json:"height,omitempty"`
+	Type       FieldUpdateTemplateFieldTypeDateRequest1      `json:"type"`
+	FieldMeta  *FieldUpdateTemplateFieldFieldMetaDateRequest `json:"fieldMeta,omitempty"`
+	ID         float64                                       `json:"id"`
+	PageNumber *float64                                      `json:"pageNumber,omitempty"`
+	PageX      *float64                                      `json:"pageX,omitempty"`
+	PageY      *float64                                      `json:"pageY,omitempty"`
+	Width      *float64                                      `json:"width,omitempty"`
+	Height     *float64                                      `json:"height,omitempty"`
 }
 
 func (f FieldUpdateTemplateFieldFieldDate) MarshalJSON() ([]byte, error) {
@@ -1557,8 +1685,8 @@ type FieldUpdateTemplateFieldFieldMetaEmailRequest struct {
 	Placeholder *string                                   `json:"placeholder,omitempty"`
 	Required    *bool                                     `json:"required,omitempty"`
 	ReadOnly    *bool                                     `json:"readOnly,omitempty"`
+	FontSize    *float64                                  `default:"12" json:"fontSize"`
 	Type        FieldUpdateTemplateFieldTypeEmailRequest2 `json:"type"`
-	FontSize    *float64                                  `json:"fontSize,omitempty"`
 	TextAlign   *FieldUpdateTemplateFieldTextAlignEmail   `json:"textAlign,omitempty"`
 }
 
@@ -1601,18 +1729,18 @@ func (f *FieldUpdateTemplateFieldFieldMetaEmailRequest) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
-func (f *FieldUpdateTemplateFieldFieldMetaEmailRequest) GetType() FieldUpdateTemplateFieldTypeEmailRequest2 {
-	if f == nil {
-		return FieldUpdateTemplateFieldTypeEmailRequest2("")
-	}
-	return f.Type
-}
-
 func (f *FieldUpdateTemplateFieldFieldMetaEmailRequest) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaEmailRequest) GetType() FieldUpdateTemplateFieldTypeEmailRequest2 {
+	if f == nil {
+		return FieldUpdateTemplateFieldTypeEmailRequest2("")
+	}
+	return f.Type
 }
 
 func (f *FieldUpdateTemplateFieldFieldMetaEmailRequest) GetTextAlign() *FieldUpdateTemplateFieldTextAlignEmail {
@@ -1623,20 +1751,14 @@ func (f *FieldUpdateTemplateFieldFieldMetaEmailRequest) GetTextAlign() *FieldUpd
 }
 
 type FieldUpdateTemplateFieldFieldEmail struct {
-	Type      FieldUpdateTemplateFieldTypeEmailRequest1      `json:"type"`
-	FieldMeta *FieldUpdateTemplateFieldFieldMetaEmailRequest `json:"fieldMeta,omitempty"`
-	// The ID of the field to update.
-	ID float64 `json:"id"`
-	// The page number the field will be on.
-	PageNumber *float64 `json:"pageNumber,omitempty"`
-	// The X coordinate of where the field will be placed.
-	PageX *float64 `json:"pageX,omitempty"`
-	// The Y coordinate of where the field will be placed.
-	PageY *float64 `json:"pageY,omitempty"`
-	// The width of the field.
-	Width *float64 `json:"width,omitempty"`
-	// The height of the field.
-	Height *float64 `json:"height,omitempty"`
+	Type       FieldUpdateTemplateFieldTypeEmailRequest1      `json:"type"`
+	FieldMeta  *FieldUpdateTemplateFieldFieldMetaEmailRequest `json:"fieldMeta,omitempty"`
+	ID         float64                                        `json:"id"`
+	PageNumber *float64                                       `json:"pageNumber,omitempty"`
+	PageX      *float64                                       `json:"pageX,omitempty"`
+	PageY      *float64                                       `json:"pageY,omitempty"`
+	Width      *float64                                       `json:"width,omitempty"`
+	Height     *float64                                       `json:"height,omitempty"`
 }
 
 func (f FieldUpdateTemplateFieldFieldEmail) MarshalJSON() ([]byte, error) {
@@ -1786,8 +1908,8 @@ type FieldUpdateTemplateFieldFieldMetaNameRequest struct {
 	Placeholder *string                                  `json:"placeholder,omitempty"`
 	Required    *bool                                    `json:"required,omitempty"`
 	ReadOnly    *bool                                    `json:"readOnly,omitempty"`
+	FontSize    *float64                                 `default:"12" json:"fontSize"`
 	Type        FieldUpdateTemplateFieldTypeNameRequest2 `json:"type"`
-	FontSize    *float64                                 `json:"fontSize,omitempty"`
 	TextAlign   *FieldUpdateTemplateFieldTextAlignName   `json:"textAlign,omitempty"`
 }
 
@@ -1830,18 +1952,18 @@ func (f *FieldUpdateTemplateFieldFieldMetaNameRequest) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
-func (f *FieldUpdateTemplateFieldFieldMetaNameRequest) GetType() FieldUpdateTemplateFieldTypeNameRequest2 {
-	if f == nil {
-		return FieldUpdateTemplateFieldTypeNameRequest2("")
-	}
-	return f.Type
-}
-
 func (f *FieldUpdateTemplateFieldFieldMetaNameRequest) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaNameRequest) GetType() FieldUpdateTemplateFieldTypeNameRequest2 {
+	if f == nil {
+		return FieldUpdateTemplateFieldTypeNameRequest2("")
+	}
+	return f.Type
 }
 
 func (f *FieldUpdateTemplateFieldFieldMetaNameRequest) GetTextAlign() *FieldUpdateTemplateFieldTextAlignName {
@@ -1852,20 +1974,14 @@ func (f *FieldUpdateTemplateFieldFieldMetaNameRequest) GetTextAlign() *FieldUpda
 }
 
 type FieldUpdateTemplateFieldFieldName struct {
-	Type      FieldUpdateTemplateFieldTypeNameRequest1      `json:"type"`
-	FieldMeta *FieldUpdateTemplateFieldFieldMetaNameRequest `json:"fieldMeta,omitempty"`
-	// The ID of the field to update.
-	ID float64 `json:"id"`
-	// The page number the field will be on.
-	PageNumber *float64 `json:"pageNumber,omitempty"`
-	// The X coordinate of where the field will be placed.
-	PageX *float64 `json:"pageX,omitempty"`
-	// The Y coordinate of where the field will be placed.
-	PageY *float64 `json:"pageY,omitempty"`
-	// The width of the field.
-	Width *float64 `json:"width,omitempty"`
-	// The height of the field.
-	Height *float64 `json:"height,omitempty"`
+	Type       FieldUpdateTemplateFieldTypeNameRequest1      `json:"type"`
+	FieldMeta  *FieldUpdateTemplateFieldFieldMetaNameRequest `json:"fieldMeta,omitempty"`
+	ID         float64                                       `json:"id"`
+	PageNumber *float64                                      `json:"pageNumber,omitempty"`
+	PageX      *float64                                      `json:"pageX,omitempty"`
+	PageY      *float64                                      `json:"pageY,omitempty"`
+	Width      *float64                                      `json:"width,omitempty"`
+	Height     *float64                                      `json:"height,omitempty"`
 }
 
 func (f FieldUpdateTemplateFieldFieldName) MarshalJSON() ([]byte, error) {
@@ -2015,8 +2131,8 @@ type FieldUpdateTemplateFieldFieldMetaInitialsRequest struct {
 	Placeholder *string                                      `json:"placeholder,omitempty"`
 	Required    *bool                                        `json:"required,omitempty"`
 	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
+	FontSize    *float64                                     `default:"12" json:"fontSize"`
 	Type        FieldUpdateTemplateFieldTypeInitialsRequest2 `json:"type"`
-	FontSize    *float64                                     `json:"fontSize,omitempty"`
 	TextAlign   *FieldUpdateTemplateFieldTextAlignInitials   `json:"textAlign,omitempty"`
 }
 
@@ -2059,18 +2175,18 @@ func (f *FieldUpdateTemplateFieldFieldMetaInitialsRequest) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
-func (f *FieldUpdateTemplateFieldFieldMetaInitialsRequest) GetType() FieldUpdateTemplateFieldTypeInitialsRequest2 {
-	if f == nil {
-		return FieldUpdateTemplateFieldTypeInitialsRequest2("")
-	}
-	return f.Type
-}
-
 func (f *FieldUpdateTemplateFieldFieldMetaInitialsRequest) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaInitialsRequest) GetType() FieldUpdateTemplateFieldTypeInitialsRequest2 {
+	if f == nil {
+		return FieldUpdateTemplateFieldTypeInitialsRequest2("")
+	}
+	return f.Type
 }
 
 func (f *FieldUpdateTemplateFieldFieldMetaInitialsRequest) GetTextAlign() *FieldUpdateTemplateFieldTextAlignInitials {
@@ -2081,20 +2197,14 @@ func (f *FieldUpdateTemplateFieldFieldMetaInitialsRequest) GetTextAlign() *Field
 }
 
 type FieldUpdateTemplateFieldFieldInitials struct {
-	Type      FieldUpdateTemplateFieldTypeInitialsRequest1      `json:"type"`
-	FieldMeta *FieldUpdateTemplateFieldFieldMetaInitialsRequest `json:"fieldMeta,omitempty"`
-	// The ID of the field to update.
-	ID float64 `json:"id"`
-	// The page number the field will be on.
-	PageNumber *float64 `json:"pageNumber,omitempty"`
-	// The X coordinate of where the field will be placed.
-	PageX *float64 `json:"pageX,omitempty"`
-	// The Y coordinate of where the field will be placed.
-	PageY *float64 `json:"pageY,omitempty"`
-	// The width of the field.
-	Width *float64 `json:"width,omitempty"`
-	// The height of the field.
-	Height *float64 `json:"height,omitempty"`
+	Type       FieldUpdateTemplateFieldTypeInitialsRequest1      `json:"type"`
+	FieldMeta  *FieldUpdateTemplateFieldFieldMetaInitialsRequest `json:"fieldMeta,omitempty"`
+	ID         float64                                           `json:"id"`
+	PageNumber *float64                                          `json:"pageNumber,omitempty"`
+	PageX      *float64                                          `json:"pageX,omitempty"`
+	PageY      *float64                                          `json:"pageY,omitempty"`
+	Width      *float64                                          `json:"width,omitempty"`
+	Height     *float64                                          `json:"height,omitempty"`
 }
 
 func (f FieldUpdateTemplateFieldFieldInitials) MarshalJSON() ([]byte, error) {
@@ -2188,19 +2298,13 @@ func (e *FieldUpdateTemplateFieldTypeFreeSignature) UnmarshalJSON(data []byte) e
 }
 
 type FieldUpdateTemplateFieldFieldFreeSignature struct {
-	Type FieldUpdateTemplateFieldTypeFreeSignature `json:"type"`
-	// The ID of the field to update.
-	ID float64 `json:"id"`
-	// The page number the field will be on.
-	PageNumber *float64 `json:"pageNumber,omitempty"`
-	// The X coordinate of where the field will be placed.
-	PageX *float64 `json:"pageX,omitempty"`
-	// The Y coordinate of where the field will be placed.
-	PageY *float64 `json:"pageY,omitempty"`
-	// The width of the field.
-	Width *float64 `json:"width,omitempty"`
-	// The height of the field.
-	Height *float64 `json:"height,omitempty"`
+	Type       FieldUpdateTemplateFieldTypeFreeSignature `json:"type"`
+	ID         float64                                   `json:"id"`
+	PageNumber *float64                                  `json:"pageNumber,omitempty"`
+	PageX      *float64                                  `json:"pageX,omitempty"`
+	PageY      *float64                                  `json:"pageY,omitempty"`
+	Width      *float64                                  `json:"width,omitempty"`
+	Height     *float64                                  `json:"height,omitempty"`
 }
 
 func (f FieldUpdateTemplateFieldFieldFreeSignature) MarshalJSON() ([]byte, error) {
@@ -2263,43 +2367,123 @@ func (f *FieldUpdateTemplateFieldFieldFreeSignature) GetHeight() *float64 {
 	return f.Height
 }
 
-type FieldUpdateTemplateFieldTypeSignature string
+type FieldUpdateTemplateFieldTypeSignatureRequest1 string
 
 const (
-	FieldUpdateTemplateFieldTypeSignatureSignature FieldUpdateTemplateFieldTypeSignature = "SIGNATURE"
+	FieldUpdateTemplateFieldTypeSignatureRequest1Signature FieldUpdateTemplateFieldTypeSignatureRequest1 = "SIGNATURE"
 )
 
-func (e FieldUpdateTemplateFieldTypeSignature) ToPointer() *FieldUpdateTemplateFieldTypeSignature {
+func (e FieldUpdateTemplateFieldTypeSignatureRequest1) ToPointer() *FieldUpdateTemplateFieldTypeSignatureRequest1 {
 	return &e
 }
-func (e *FieldUpdateTemplateFieldTypeSignature) UnmarshalJSON(data []byte) error {
+func (e *FieldUpdateTemplateFieldTypeSignatureRequest1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "SIGNATURE":
-		*e = FieldUpdateTemplateFieldTypeSignature(v)
+		*e = FieldUpdateTemplateFieldTypeSignatureRequest1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldUpdateTemplateFieldTypeSignature: %v", v)
+		return fmt.Errorf("invalid value for FieldUpdateTemplateFieldTypeSignatureRequest1: %v", v)
 	}
 }
 
+type FieldUpdateTemplateFieldTypeSignatureRequest2 string
+
+const (
+	FieldUpdateTemplateFieldTypeSignatureRequest2Signature FieldUpdateTemplateFieldTypeSignatureRequest2 = "signature"
+)
+
+func (e FieldUpdateTemplateFieldTypeSignatureRequest2) ToPointer() *FieldUpdateTemplateFieldTypeSignatureRequest2 {
+	return &e
+}
+func (e *FieldUpdateTemplateFieldTypeSignatureRequest2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "signature":
+		*e = FieldUpdateTemplateFieldTypeSignatureRequest2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldUpdateTemplateFieldTypeSignatureRequest2: %v", v)
+	}
+}
+
+type FieldUpdateTemplateFieldFieldMetaSignatureRequest struct {
+	Label       *string                                       `json:"label,omitempty"`
+	Placeholder *string                                       `json:"placeholder,omitempty"`
+	Required    *bool                                         `json:"required,omitempty"`
+	ReadOnly    *bool                                         `json:"readOnly,omitempty"`
+	FontSize    *float64                                      `default:"12" json:"fontSize"`
+	Type        FieldUpdateTemplateFieldTypeSignatureRequest2 `json:"type"`
+}
+
+func (f FieldUpdateTemplateFieldFieldMetaSignatureRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaSignatureRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaSignatureRequest) GetLabel() *string {
+	if f == nil {
+		return nil
+	}
+	return f.Label
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaSignatureRequest) GetPlaceholder() *string {
+	if f == nil {
+		return nil
+	}
+	return f.Placeholder
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaSignatureRequest) GetRequired() *bool {
+	if f == nil {
+		return nil
+	}
+	return f.Required
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaSignatureRequest) GetReadOnly() *bool {
+	if f == nil {
+		return nil
+	}
+	return f.ReadOnly
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaSignatureRequest) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaSignatureRequest) GetType() FieldUpdateTemplateFieldTypeSignatureRequest2 {
+	if f == nil {
+		return FieldUpdateTemplateFieldTypeSignatureRequest2("")
+	}
+	return f.Type
+}
+
 type FieldUpdateTemplateFieldFieldSignature struct {
-	Type FieldUpdateTemplateFieldTypeSignature `json:"type"`
-	// The ID of the field to update.
-	ID float64 `json:"id"`
-	// The page number the field will be on.
-	PageNumber *float64 `json:"pageNumber,omitempty"`
-	// The X coordinate of where the field will be placed.
-	PageX *float64 `json:"pageX,omitempty"`
-	// The Y coordinate of where the field will be placed.
-	PageY *float64 `json:"pageY,omitempty"`
-	// The width of the field.
-	Width *float64 `json:"width,omitempty"`
-	// The height of the field.
-	Height *float64 `json:"height,omitempty"`
+	Type       FieldUpdateTemplateFieldTypeSignatureRequest1      `json:"type"`
+	FieldMeta  *FieldUpdateTemplateFieldFieldMetaSignatureRequest `json:"fieldMeta,omitempty"`
+	ID         float64                                            `json:"id"`
+	PageNumber *float64                                           `json:"pageNumber,omitempty"`
+	PageX      *float64                                           `json:"pageX,omitempty"`
+	PageY      *float64                                           `json:"pageY,omitempty"`
+	Width      *float64                                           `json:"width,omitempty"`
+	Height     *float64                                           `json:"height,omitempty"`
 }
 
 func (f FieldUpdateTemplateFieldFieldSignature) MarshalJSON() ([]byte, error) {
@@ -2313,11 +2497,18 @@ func (f *FieldUpdateTemplateFieldFieldSignature) UnmarshalJSON(data []byte) erro
 	return nil
 }
 
-func (f *FieldUpdateTemplateFieldFieldSignature) GetType() FieldUpdateTemplateFieldTypeSignature {
+func (f *FieldUpdateTemplateFieldFieldSignature) GetType() FieldUpdateTemplateFieldTypeSignatureRequest1 {
 	if f == nil {
-		return FieldUpdateTemplateFieldTypeSignature("")
+		return FieldUpdateTemplateFieldTypeSignatureRequest1("")
 	}
 	return f.Type
+}
+
+func (f *FieldUpdateTemplateFieldFieldSignature) GetFieldMeta() *FieldUpdateTemplateFieldFieldMetaSignatureRequest {
+	if f == nil {
+		return nil
+	}
+	return f.FieldMeta
 }
 
 func (f *FieldUpdateTemplateFieldFieldSignature) GetID() float64 {
@@ -2745,6 +2936,7 @@ type FieldUpdateTemplateFieldFieldMetaDropdownResponse struct {
 	Placeholder  *string                                       `json:"placeholder,omitempty"`
 	Required     *bool                                         `json:"required,omitempty"`
 	ReadOnly     *bool                                         `json:"readOnly,omitempty"`
+	FontSize     *float64                                      `default:"12" json:"fontSize"`
 	Type         FieldUpdateTemplateFieldFieldMetaTypeDropdown `json:"type"`
 	Values       []FieldUpdateTemplateFieldValueResponse3      `json:"values,omitempty"`
 	DefaultValue *string                                       `json:"defaultValue,omitempty"`
@@ -2787,6 +2979,13 @@ func (f *FieldUpdateTemplateFieldFieldMetaDropdownResponse) GetReadOnly() *bool 
 		return nil
 	}
 	return f.ReadOnly
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaDropdownResponse) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
 }
 
 func (f *FieldUpdateTemplateFieldFieldMetaDropdownResponse) GetType() FieldUpdateTemplateFieldFieldMetaTypeDropdown {
@@ -2871,17 +3070,17 @@ func (f *FieldUpdateTemplateFieldValueResponse2) GetValue() string {
 	return f.Value
 }
 
-type FieldUpdateTemplateFieldDirectionResponse string
+type FieldUpdateTemplateFieldDirectionResponse2 string
 
 const (
-	FieldUpdateTemplateFieldDirectionResponseVertical   FieldUpdateTemplateFieldDirectionResponse = "vertical"
-	FieldUpdateTemplateFieldDirectionResponseHorizontal FieldUpdateTemplateFieldDirectionResponse = "horizontal"
+	FieldUpdateTemplateFieldDirectionResponse2Vertical   FieldUpdateTemplateFieldDirectionResponse2 = "vertical"
+	FieldUpdateTemplateFieldDirectionResponse2Horizontal FieldUpdateTemplateFieldDirectionResponse2 = "horizontal"
 )
 
-func (e FieldUpdateTemplateFieldDirectionResponse) ToPointer() *FieldUpdateTemplateFieldDirectionResponse {
+func (e FieldUpdateTemplateFieldDirectionResponse2) ToPointer() *FieldUpdateTemplateFieldDirectionResponse2 {
 	return &e
 }
-func (e *FieldUpdateTemplateFieldDirectionResponse) UnmarshalJSON(data []byte) error {
+func (e *FieldUpdateTemplateFieldDirectionResponse2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2890,10 +3089,10 @@ func (e *FieldUpdateTemplateFieldDirectionResponse) UnmarshalJSON(data []byte) e
 	case "vertical":
 		fallthrough
 	case "horizontal":
-		*e = FieldUpdateTemplateFieldDirectionResponse(v)
+		*e = FieldUpdateTemplateFieldDirectionResponse2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldUpdateTemplateFieldDirectionResponse: %v", v)
+		return fmt.Errorf("invalid value for FieldUpdateTemplateFieldDirectionResponse2: %v", v)
 	}
 }
 
@@ -2902,11 +3101,12 @@ type FieldUpdateTemplateFieldFieldMetaCheckboxResponse struct {
 	Placeholder      *string                                       `json:"placeholder,omitempty"`
 	Required         *bool                                         `json:"required,omitempty"`
 	ReadOnly         *bool                                         `json:"readOnly,omitempty"`
+	FontSize         *float64                                      `default:"12" json:"fontSize"`
 	Type             FieldUpdateTemplateFieldFieldMetaTypeCheckbox `json:"type"`
 	Values           []FieldUpdateTemplateFieldValueResponse2      `json:"values,omitempty"`
 	ValidationRule   *string                                       `json:"validationRule,omitempty"`
 	ValidationLength *float64                                      `json:"validationLength,omitempty"`
-	Direction        *FieldUpdateTemplateFieldDirectionResponse    `default:"vertical" json:"direction"`
+	Direction        *FieldUpdateTemplateFieldDirectionResponse2   `default:"vertical" json:"direction"`
 }
 
 func (f FieldUpdateTemplateFieldFieldMetaCheckboxResponse) MarshalJSON() ([]byte, error) {
@@ -2948,6 +3148,13 @@ func (f *FieldUpdateTemplateFieldFieldMetaCheckboxResponse) GetReadOnly() *bool 
 	return f.ReadOnly
 }
 
+func (f *FieldUpdateTemplateFieldFieldMetaCheckboxResponse) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldUpdateTemplateFieldFieldMetaCheckboxResponse) GetType() FieldUpdateTemplateFieldFieldMetaTypeCheckbox {
 	if f == nil {
 		return FieldUpdateTemplateFieldFieldMetaTypeCheckbox("")
@@ -2976,7 +3183,7 @@ func (f *FieldUpdateTemplateFieldFieldMetaCheckboxResponse) GetValidationLength(
 	return f.ValidationLength
 }
 
-func (f *FieldUpdateTemplateFieldFieldMetaCheckboxResponse) GetDirection() *FieldUpdateTemplateFieldDirectionResponse {
+func (f *FieldUpdateTemplateFieldFieldMetaCheckboxResponse) GetDirection() *FieldUpdateTemplateFieldDirectionResponse2 {
 	if f == nil {
 		return nil
 	}
@@ -3044,13 +3251,41 @@ func (f *FieldUpdateTemplateFieldValueResponse1) GetValue() string {
 	return f.Value
 }
 
+type FieldUpdateTemplateFieldDirectionResponse1 string
+
+const (
+	FieldUpdateTemplateFieldDirectionResponse1Vertical   FieldUpdateTemplateFieldDirectionResponse1 = "vertical"
+	FieldUpdateTemplateFieldDirectionResponse1Horizontal FieldUpdateTemplateFieldDirectionResponse1 = "horizontal"
+)
+
+func (e FieldUpdateTemplateFieldDirectionResponse1) ToPointer() *FieldUpdateTemplateFieldDirectionResponse1 {
+	return &e
+}
+func (e *FieldUpdateTemplateFieldDirectionResponse1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = FieldUpdateTemplateFieldDirectionResponse1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldUpdateTemplateFieldDirectionResponse1: %v", v)
+	}
+}
+
 type FieldUpdateTemplateFieldFieldMetaRadioResponse struct {
-	Label       *string                                    `json:"label,omitempty"`
-	Placeholder *string                                    `json:"placeholder,omitempty"`
-	Required    *bool                                      `json:"required,omitempty"`
-	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
-	Type        FieldUpdateTemplateFieldFieldMetaTypeRadio `json:"type"`
-	Values      []FieldUpdateTemplateFieldValueResponse1   `json:"values,omitempty"`
+	Label       *string                                     `json:"label,omitempty"`
+	Placeholder *string                                     `json:"placeholder,omitempty"`
+	Required    *bool                                       `json:"required,omitempty"`
+	ReadOnly    *bool                                       `json:"readOnly,omitempty"`
+	FontSize    *float64                                    `default:"12" json:"fontSize"`
+	Type        FieldUpdateTemplateFieldFieldMetaTypeRadio  `json:"type"`
+	Values      []FieldUpdateTemplateFieldValueResponse1    `json:"values,omitempty"`
+	Direction   *FieldUpdateTemplateFieldDirectionResponse1 `default:"vertical" json:"direction"`
 }
 
 func (f FieldUpdateTemplateFieldFieldMetaRadioResponse) MarshalJSON() ([]byte, error) {
@@ -3092,6 +3327,13 @@ func (f *FieldUpdateTemplateFieldFieldMetaRadioResponse) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
+func (f *FieldUpdateTemplateFieldFieldMetaRadioResponse) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldUpdateTemplateFieldFieldMetaRadioResponse) GetType() FieldUpdateTemplateFieldFieldMetaTypeRadio {
 	if f == nil {
 		return FieldUpdateTemplateFieldFieldMetaTypeRadio("")
@@ -3104,6 +3346,13 @@ func (f *FieldUpdateTemplateFieldFieldMetaRadioResponse) GetValues() []FieldUpda
 		return nil
 	}
 	return f.Values
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaRadioResponse) GetDirection() *FieldUpdateTemplateFieldDirectionResponse1 {
+	if f == nil {
+		return nil
+	}
+	return f.Direction
 }
 
 type FieldUpdateTemplateFieldFieldMetaTypeNumber string
@@ -3158,18 +3407,50 @@ func (e *FieldUpdateTemplateFieldTextAlignResponse6) UnmarshalJSON(data []byte) 
 	}
 }
 
+type FieldUpdateTemplateFieldVerticalAlignResponse2 string
+
+const (
+	FieldUpdateTemplateFieldVerticalAlignResponse2Top    FieldUpdateTemplateFieldVerticalAlignResponse2 = "top"
+	FieldUpdateTemplateFieldVerticalAlignResponse2Middle FieldUpdateTemplateFieldVerticalAlignResponse2 = "middle"
+	FieldUpdateTemplateFieldVerticalAlignResponse2Bottom FieldUpdateTemplateFieldVerticalAlignResponse2 = "bottom"
+)
+
+func (e FieldUpdateTemplateFieldVerticalAlignResponse2) ToPointer() *FieldUpdateTemplateFieldVerticalAlignResponse2 {
+	return &e
+}
+func (e *FieldUpdateTemplateFieldVerticalAlignResponse2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = FieldUpdateTemplateFieldVerticalAlignResponse2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldUpdateTemplateFieldVerticalAlignResponse2: %v", v)
+	}
+}
+
 type FieldUpdateTemplateFieldFieldMetaNumberResponse struct {
-	Label        *string                                     `json:"label,omitempty"`
-	Placeholder  *string                                     `json:"placeholder,omitempty"`
-	Required     *bool                                       `json:"required,omitempty"`
-	ReadOnly     *bool                                       `json:"readOnly,omitempty"`
-	Type         FieldUpdateTemplateFieldFieldMetaTypeNumber `json:"type"`
-	NumberFormat *string                                     `json:"numberFormat,omitempty"`
-	Value        *string                                     `json:"value,omitempty"`
-	MinValue     *float64                                    `json:"minValue,omitempty"`
-	MaxValue     *float64                                    `json:"maxValue,omitempty"`
-	FontSize     *float64                                    `json:"fontSize,omitempty"`
-	TextAlign    *FieldUpdateTemplateFieldTextAlignResponse6 `json:"textAlign,omitempty"`
+	Label         *string                                         `json:"label,omitempty"`
+	Placeholder   *string                                         `json:"placeholder,omitempty"`
+	Required      *bool                                           `json:"required,omitempty"`
+	ReadOnly      *bool                                           `json:"readOnly,omitempty"`
+	FontSize      *float64                                        `default:"12" json:"fontSize"`
+	Type          FieldUpdateTemplateFieldFieldMetaTypeNumber     `json:"type"`
+	NumberFormat  *string                                         `json:"numberFormat,omitempty"`
+	Value         *string                                         `json:"value,omitempty"`
+	MinValue      *float64                                        `json:"minValue,omitempty"`
+	MaxValue      *float64                                        `json:"maxValue,omitempty"`
+	TextAlign     *FieldUpdateTemplateFieldTextAlignResponse6     `json:"textAlign,omitempty"`
+	LineHeight    *float64                                        `json:"lineHeight,omitempty"`
+	LetterSpacing *float64                                        `json:"letterSpacing,omitempty"`
+	VerticalAlign *FieldUpdateTemplateFieldVerticalAlignResponse2 `json:"verticalAlign,omitempty"`
 }
 
 func (f FieldUpdateTemplateFieldFieldMetaNumberResponse) MarshalJSON() ([]byte, error) {
@@ -3211,6 +3492,13 @@ func (f *FieldUpdateTemplateFieldFieldMetaNumberResponse) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
+func (f *FieldUpdateTemplateFieldFieldMetaNumberResponse) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldUpdateTemplateFieldFieldMetaNumberResponse) GetType() FieldUpdateTemplateFieldFieldMetaTypeNumber {
 	if f == nil {
 		return FieldUpdateTemplateFieldFieldMetaTypeNumber("")
@@ -3246,18 +3534,32 @@ func (f *FieldUpdateTemplateFieldFieldMetaNumberResponse) GetMaxValue() *float64
 	return f.MaxValue
 }
 
-func (f *FieldUpdateTemplateFieldFieldMetaNumberResponse) GetFontSize() *float64 {
-	if f == nil {
-		return nil
-	}
-	return f.FontSize
-}
-
 func (f *FieldUpdateTemplateFieldFieldMetaNumberResponse) GetTextAlign() *FieldUpdateTemplateFieldTextAlignResponse6 {
 	if f == nil {
 		return nil
 	}
 	return f.TextAlign
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaNumberResponse) GetLineHeight() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LineHeight
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaNumberResponse) GetLetterSpacing() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LetterSpacing
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaNumberResponse) GetVerticalAlign() *FieldUpdateTemplateFieldVerticalAlignResponse2 {
+	if f == nil {
+		return nil
+	}
+	return f.VerticalAlign
 }
 
 type FieldUpdateTemplateFieldFieldMetaTypeText string
@@ -3312,16 +3614,48 @@ func (e *FieldUpdateTemplateFieldTextAlignResponse5) UnmarshalJSON(data []byte) 
 	}
 }
 
+type FieldUpdateTemplateFieldVerticalAlignResponse1 string
+
+const (
+	FieldUpdateTemplateFieldVerticalAlignResponse1Top    FieldUpdateTemplateFieldVerticalAlignResponse1 = "top"
+	FieldUpdateTemplateFieldVerticalAlignResponse1Middle FieldUpdateTemplateFieldVerticalAlignResponse1 = "middle"
+	FieldUpdateTemplateFieldVerticalAlignResponse1Bottom FieldUpdateTemplateFieldVerticalAlignResponse1 = "bottom"
+)
+
+func (e FieldUpdateTemplateFieldVerticalAlignResponse1) ToPointer() *FieldUpdateTemplateFieldVerticalAlignResponse1 {
+	return &e
+}
+func (e *FieldUpdateTemplateFieldVerticalAlignResponse1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = FieldUpdateTemplateFieldVerticalAlignResponse1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldUpdateTemplateFieldVerticalAlignResponse1: %v", v)
+	}
+}
+
 type FieldUpdateTemplateFieldFieldMetaTextResponse struct {
-	Label          *string                                     `json:"label,omitempty"`
-	Placeholder    *string                                     `json:"placeholder,omitempty"`
-	Required       *bool                                       `json:"required,omitempty"`
-	ReadOnly       *bool                                       `json:"readOnly,omitempty"`
-	Type           FieldUpdateTemplateFieldFieldMetaTypeText   `json:"type"`
-	Text           *string                                     `json:"text,omitempty"`
-	CharacterLimit *float64                                    `json:"characterLimit,omitempty"`
-	FontSize       *float64                                    `json:"fontSize,omitempty"`
-	TextAlign      *FieldUpdateTemplateFieldTextAlignResponse5 `json:"textAlign,omitempty"`
+	Label          *string                                         `json:"label,omitempty"`
+	Placeholder    *string                                         `json:"placeholder,omitempty"`
+	Required       *bool                                           `json:"required,omitempty"`
+	ReadOnly       *bool                                           `json:"readOnly,omitempty"`
+	FontSize       *float64                                        `default:"12" json:"fontSize"`
+	Type           FieldUpdateTemplateFieldFieldMetaTypeText       `json:"type"`
+	Text           *string                                         `json:"text,omitempty"`
+	CharacterLimit *float64                                        `json:"characterLimit,omitempty"`
+	TextAlign      *FieldUpdateTemplateFieldTextAlignResponse5     `json:"textAlign,omitempty"`
+	LineHeight     *float64                                        `json:"lineHeight,omitempty"`
+	LetterSpacing  *float64                                        `json:"letterSpacing,omitempty"`
+	VerticalAlign  *FieldUpdateTemplateFieldVerticalAlignResponse1 `json:"verticalAlign,omitempty"`
 }
 
 func (f FieldUpdateTemplateFieldFieldMetaTextResponse) MarshalJSON() ([]byte, error) {
@@ -3363,6 +3697,13 @@ func (f *FieldUpdateTemplateFieldFieldMetaTextResponse) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
+func (f *FieldUpdateTemplateFieldFieldMetaTextResponse) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldUpdateTemplateFieldFieldMetaTextResponse) GetType() FieldUpdateTemplateFieldFieldMetaTypeText {
 	if f == nil {
 		return FieldUpdateTemplateFieldFieldMetaTypeText("")
@@ -3384,18 +3725,32 @@ func (f *FieldUpdateTemplateFieldFieldMetaTextResponse) GetCharacterLimit() *flo
 	return f.CharacterLimit
 }
 
-func (f *FieldUpdateTemplateFieldFieldMetaTextResponse) GetFontSize() *float64 {
-	if f == nil {
-		return nil
-	}
-	return f.FontSize
-}
-
 func (f *FieldUpdateTemplateFieldFieldMetaTextResponse) GetTextAlign() *FieldUpdateTemplateFieldTextAlignResponse5 {
 	if f == nil {
 		return nil
 	}
 	return f.TextAlign
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaTextResponse) GetLineHeight() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LineHeight
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaTextResponse) GetLetterSpacing() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LetterSpacing
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaTextResponse) GetVerticalAlign() *FieldUpdateTemplateFieldVerticalAlignResponse1 {
+	if f == nil {
+		return nil
+	}
+	return f.VerticalAlign
 }
 
 type FieldUpdateTemplateFieldFieldMetaTypeDate string
@@ -3455,8 +3810,8 @@ type FieldUpdateTemplateFieldFieldMetaDateResponse struct {
 	Placeholder *string                                     `json:"placeholder,omitempty"`
 	Required    *bool                                       `json:"required,omitempty"`
 	ReadOnly    *bool                                       `json:"readOnly,omitempty"`
+	FontSize    *float64                                    `default:"12" json:"fontSize"`
 	Type        FieldUpdateTemplateFieldFieldMetaTypeDate   `json:"type"`
-	FontSize    *float64                                    `json:"fontSize,omitempty"`
 	TextAlign   *FieldUpdateTemplateFieldTextAlignResponse4 `json:"textAlign,omitempty"`
 }
 
@@ -3499,18 +3854,18 @@ func (f *FieldUpdateTemplateFieldFieldMetaDateResponse) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
-func (f *FieldUpdateTemplateFieldFieldMetaDateResponse) GetType() FieldUpdateTemplateFieldFieldMetaTypeDate {
-	if f == nil {
-		return FieldUpdateTemplateFieldFieldMetaTypeDate("")
-	}
-	return f.Type
-}
-
 func (f *FieldUpdateTemplateFieldFieldMetaDateResponse) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaDateResponse) GetType() FieldUpdateTemplateFieldFieldMetaTypeDate {
+	if f == nil {
+		return FieldUpdateTemplateFieldFieldMetaTypeDate("")
+	}
+	return f.Type
 }
 
 func (f *FieldUpdateTemplateFieldFieldMetaDateResponse) GetTextAlign() *FieldUpdateTemplateFieldTextAlignResponse4 {
@@ -3577,8 +3932,8 @@ type FieldUpdateTemplateFieldFieldMetaEmailResponse struct {
 	Placeholder *string                                     `json:"placeholder,omitempty"`
 	Required    *bool                                       `json:"required,omitempty"`
 	ReadOnly    *bool                                       `json:"readOnly,omitempty"`
+	FontSize    *float64                                    `default:"12" json:"fontSize"`
 	Type        FieldUpdateTemplateFieldFieldMetaTypeEmail  `json:"type"`
-	FontSize    *float64                                    `json:"fontSize,omitempty"`
 	TextAlign   *FieldUpdateTemplateFieldTextAlignResponse3 `json:"textAlign,omitempty"`
 }
 
@@ -3621,18 +3976,18 @@ func (f *FieldUpdateTemplateFieldFieldMetaEmailResponse) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
-func (f *FieldUpdateTemplateFieldFieldMetaEmailResponse) GetType() FieldUpdateTemplateFieldFieldMetaTypeEmail {
-	if f == nil {
-		return FieldUpdateTemplateFieldFieldMetaTypeEmail("")
-	}
-	return f.Type
-}
-
 func (f *FieldUpdateTemplateFieldFieldMetaEmailResponse) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaEmailResponse) GetType() FieldUpdateTemplateFieldFieldMetaTypeEmail {
+	if f == nil {
+		return FieldUpdateTemplateFieldFieldMetaTypeEmail("")
+	}
+	return f.Type
 }
 
 func (f *FieldUpdateTemplateFieldFieldMetaEmailResponse) GetTextAlign() *FieldUpdateTemplateFieldTextAlignResponse3 {
@@ -3699,8 +4054,8 @@ type FieldUpdateTemplateFieldFieldMetaNameResponse struct {
 	Placeholder *string                                     `json:"placeholder,omitempty"`
 	Required    *bool                                       `json:"required,omitempty"`
 	ReadOnly    *bool                                       `json:"readOnly,omitempty"`
+	FontSize    *float64                                    `default:"12" json:"fontSize"`
 	Type        FieldUpdateTemplateFieldFieldMetaTypeName   `json:"type"`
-	FontSize    *float64                                    `json:"fontSize,omitempty"`
 	TextAlign   *FieldUpdateTemplateFieldTextAlignResponse2 `json:"textAlign,omitempty"`
 }
 
@@ -3743,18 +4098,18 @@ func (f *FieldUpdateTemplateFieldFieldMetaNameResponse) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
-func (f *FieldUpdateTemplateFieldFieldMetaNameResponse) GetType() FieldUpdateTemplateFieldFieldMetaTypeName {
-	if f == nil {
-		return FieldUpdateTemplateFieldFieldMetaTypeName("")
-	}
-	return f.Type
-}
-
 func (f *FieldUpdateTemplateFieldFieldMetaNameResponse) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaNameResponse) GetType() FieldUpdateTemplateFieldFieldMetaTypeName {
+	if f == nil {
+		return FieldUpdateTemplateFieldFieldMetaTypeName("")
+	}
+	return f.Type
 }
 
 func (f *FieldUpdateTemplateFieldFieldMetaNameResponse) GetTextAlign() *FieldUpdateTemplateFieldTextAlignResponse2 {
@@ -3821,8 +4176,8 @@ type FieldUpdateTemplateFieldFieldMetaInitialsResponse struct {
 	Placeholder *string                                       `json:"placeholder,omitempty"`
 	Required    *bool                                         `json:"required,omitempty"`
 	ReadOnly    *bool                                         `json:"readOnly,omitempty"`
+	FontSize    *float64                                      `default:"12" json:"fontSize"`
 	Type        FieldUpdateTemplateFieldFieldMetaTypeInitials `json:"type"`
-	FontSize    *float64                                      `json:"fontSize,omitempty"`
 	TextAlign   *FieldUpdateTemplateFieldTextAlignResponse1   `json:"textAlign,omitempty"`
 }
 
@@ -3865,18 +4220,18 @@ func (f *FieldUpdateTemplateFieldFieldMetaInitialsResponse) GetReadOnly() *bool 
 	return f.ReadOnly
 }
 
-func (f *FieldUpdateTemplateFieldFieldMetaInitialsResponse) GetType() FieldUpdateTemplateFieldFieldMetaTypeInitials {
-	if f == nil {
-		return FieldUpdateTemplateFieldFieldMetaTypeInitials("")
-	}
-	return f.Type
-}
-
 func (f *FieldUpdateTemplateFieldFieldMetaInitialsResponse) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaInitialsResponse) GetType() FieldUpdateTemplateFieldFieldMetaTypeInitials {
+	if f == nil {
+		return FieldUpdateTemplateFieldFieldMetaTypeInitials("")
+	}
+	return f.Type
 }
 
 func (f *FieldUpdateTemplateFieldFieldMetaInitialsResponse) GetTextAlign() *FieldUpdateTemplateFieldTextAlignResponse1 {
@@ -3886,32 +4241,128 @@ func (f *FieldUpdateTemplateFieldFieldMetaInitialsResponse) GetTextAlign() *Fiel
 	return f.TextAlign
 }
 
+type FieldUpdateTemplateFieldFieldMetaTypeSignature string
+
+const (
+	FieldUpdateTemplateFieldFieldMetaTypeSignatureSignature FieldUpdateTemplateFieldFieldMetaTypeSignature = "signature"
+)
+
+func (e FieldUpdateTemplateFieldFieldMetaTypeSignature) ToPointer() *FieldUpdateTemplateFieldFieldMetaTypeSignature {
+	return &e
+}
+func (e *FieldUpdateTemplateFieldFieldMetaTypeSignature) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "signature":
+		*e = FieldUpdateTemplateFieldFieldMetaTypeSignature(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldUpdateTemplateFieldFieldMetaTypeSignature: %v", v)
+	}
+}
+
+type FieldUpdateTemplateFieldFieldMetaSignatureResponse struct {
+	Label       *string                                        `json:"label,omitempty"`
+	Placeholder *string                                        `json:"placeholder,omitempty"`
+	Required    *bool                                          `json:"required,omitempty"`
+	ReadOnly    *bool                                          `json:"readOnly,omitempty"`
+	FontSize    *float64                                       `default:"12" json:"fontSize"`
+	Type        FieldUpdateTemplateFieldFieldMetaTypeSignature `json:"type"`
+}
+
+func (f FieldUpdateTemplateFieldFieldMetaSignatureResponse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaSignatureResponse) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaSignatureResponse) GetLabel() *string {
+	if f == nil {
+		return nil
+	}
+	return f.Label
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaSignatureResponse) GetPlaceholder() *string {
+	if f == nil {
+		return nil
+	}
+	return f.Placeholder
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaSignatureResponse) GetRequired() *bool {
+	if f == nil {
+		return nil
+	}
+	return f.Required
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaSignatureResponse) GetReadOnly() *bool {
+	if f == nil {
+		return nil
+	}
+	return f.ReadOnly
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaSignatureResponse) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
+func (f *FieldUpdateTemplateFieldFieldMetaSignatureResponse) GetType() FieldUpdateTemplateFieldFieldMetaTypeSignature {
+	if f == nil {
+		return FieldUpdateTemplateFieldFieldMetaTypeSignature("")
+	}
+	return f.Type
+}
+
 type FieldUpdateTemplateFieldFieldMetaUnionType string
 
 const (
-	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaInitialsResponse FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Initials_response"
-	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaNameResponse     FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Name_response"
-	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaEmailResponse    FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Email_response"
-	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaDateResponse     FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Date_response"
-	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaTextResponse     FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Text_response"
-	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaNumberResponse   FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Number_response"
-	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaRadioResponse    FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Radio_response"
-	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaCheckboxResponse FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Checkbox_response"
-	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaDropdownResponse FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Dropdown_response"
+	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaSignatureResponse FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Signature_response"
+	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaInitialsResponse  FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Initials_response"
+	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaNameResponse      FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Name_response"
+	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaEmailResponse     FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Email_response"
+	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaDateResponse      FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Date_response"
+	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaTextResponse      FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Text_response"
+	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaNumberResponse    FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Number_response"
+	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaRadioResponse     FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Radio_response"
+	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaCheckboxResponse  FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Checkbox_response"
+	FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaDropdownResponse  FieldUpdateTemplateFieldFieldMetaUnionType = "field_updateTemplateField_fieldMeta_Dropdown_response"
 )
 
 type FieldUpdateTemplateFieldFieldMetaUnion struct {
-	FieldUpdateTemplateFieldFieldMetaInitialsResponse *FieldUpdateTemplateFieldFieldMetaInitialsResponse `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaNameResponse     *FieldUpdateTemplateFieldFieldMetaNameResponse     `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaEmailResponse    *FieldUpdateTemplateFieldFieldMetaEmailResponse    `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaDateResponse     *FieldUpdateTemplateFieldFieldMetaDateResponse     `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaTextResponse     *FieldUpdateTemplateFieldFieldMetaTextResponse     `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaNumberResponse   *FieldUpdateTemplateFieldFieldMetaNumberResponse   `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaRadioResponse    *FieldUpdateTemplateFieldFieldMetaRadioResponse    `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaCheckboxResponse *FieldUpdateTemplateFieldFieldMetaCheckboxResponse `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaDropdownResponse *FieldUpdateTemplateFieldFieldMetaDropdownResponse `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateTemplateFieldFieldMetaSignatureResponse *FieldUpdateTemplateFieldFieldMetaSignatureResponse `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateTemplateFieldFieldMetaInitialsResponse  *FieldUpdateTemplateFieldFieldMetaInitialsResponse  `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateTemplateFieldFieldMetaNameResponse      *FieldUpdateTemplateFieldFieldMetaNameResponse      `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateTemplateFieldFieldMetaEmailResponse     *FieldUpdateTemplateFieldFieldMetaEmailResponse     `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateTemplateFieldFieldMetaDateResponse      *FieldUpdateTemplateFieldFieldMetaDateResponse      `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateTemplateFieldFieldMetaTextResponse      *FieldUpdateTemplateFieldFieldMetaTextResponse      `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateTemplateFieldFieldMetaNumberResponse    *FieldUpdateTemplateFieldFieldMetaNumberResponse    `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateTemplateFieldFieldMetaRadioResponse     *FieldUpdateTemplateFieldFieldMetaRadioResponse     `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateTemplateFieldFieldMetaCheckboxResponse  *FieldUpdateTemplateFieldFieldMetaCheckboxResponse  `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateTemplateFieldFieldMetaDropdownResponse  *FieldUpdateTemplateFieldFieldMetaDropdownResponse  `queryParam:"inline,name=fieldMeta"`
 
 	Type FieldUpdateTemplateFieldFieldMetaUnionType
+}
+
+func CreateFieldUpdateTemplateFieldFieldMetaUnionFieldUpdateTemplateFieldFieldMetaSignatureResponse(fieldUpdateTemplateFieldFieldMetaSignatureResponse FieldUpdateTemplateFieldFieldMetaSignatureResponse) FieldUpdateTemplateFieldFieldMetaUnion {
+	typ := FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaSignatureResponse
+
+	return FieldUpdateTemplateFieldFieldMetaUnion{
+		FieldUpdateTemplateFieldFieldMetaSignatureResponse: &fieldUpdateTemplateFieldFieldMetaSignatureResponse,
+		Type: typ,
+	}
 }
 
 func CreateFieldUpdateTemplateFieldFieldMetaUnionFieldUpdateTemplateFieldFieldMetaInitialsResponse(fieldUpdateTemplateFieldFieldMetaInitialsResponse FieldUpdateTemplateFieldFieldMetaInitialsResponse) FieldUpdateTemplateFieldFieldMetaUnion {
@@ -3997,6 +4448,13 @@ func CreateFieldUpdateTemplateFieldFieldMetaUnionFieldUpdateTemplateFieldFieldMe
 
 func (u *FieldUpdateTemplateFieldFieldMetaUnion) UnmarshalJSON(data []byte) error {
 
+	var fieldUpdateTemplateFieldFieldMetaSignatureResponse FieldUpdateTemplateFieldFieldMetaSignatureResponse = FieldUpdateTemplateFieldFieldMetaSignatureResponse{}
+	if err := utils.UnmarshalJSON(data, &fieldUpdateTemplateFieldFieldMetaSignatureResponse, "", true, nil); err == nil {
+		u.FieldUpdateTemplateFieldFieldMetaSignatureResponse = &fieldUpdateTemplateFieldFieldMetaSignatureResponse
+		u.Type = FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaSignatureResponse
+		return nil
+	}
+
 	var fieldUpdateTemplateFieldFieldMetaInitialsResponse FieldUpdateTemplateFieldFieldMetaInitialsResponse = FieldUpdateTemplateFieldFieldMetaInitialsResponse{}
 	if err := utils.UnmarshalJSON(data, &fieldUpdateTemplateFieldFieldMetaInitialsResponse, "", true, nil); err == nil {
 		u.FieldUpdateTemplateFieldFieldMetaInitialsResponse = &fieldUpdateTemplateFieldFieldMetaInitialsResponse
@@ -4064,6 +4522,10 @@ func (u *FieldUpdateTemplateFieldFieldMetaUnion) UnmarshalJSON(data []byte) erro
 }
 
 func (u FieldUpdateTemplateFieldFieldMetaUnion) MarshalJSON() ([]byte, error) {
+	if u.FieldUpdateTemplateFieldFieldMetaSignatureResponse != nil {
+		return utils.MarshalJSON(u.FieldUpdateTemplateFieldFieldMetaSignatureResponse, "", true)
+	}
+
 	if u.FieldUpdateTemplateFieldFieldMetaInitialsResponse != nil {
 		return utils.MarshalJSON(u.FieldUpdateTemplateFieldFieldMetaInitialsResponse, "", true)
 	}
@@ -4105,23 +4567,22 @@ func (u FieldUpdateTemplateFieldFieldMetaUnion) MarshalJSON() ([]byte, error) {
 
 // FieldUpdateTemplateFieldResponseBody - Successful response
 type FieldUpdateTemplateFieldResponseBody struct {
-	EnvelopeID     string                               `json:"envelopeId"`
-	EnvelopeItemID string                               `json:"envelopeItemId"`
-	Type           FieldUpdateTemplateFieldTypeResponse `json:"type"`
-	ID             float64                              `json:"id"`
-	SecondaryID    string                               `json:"secondaryId"`
-	RecipientID    float64                              `json:"recipientId"`
-	// The page number of the field on the document. Starts from 1.
-	Page       float64                                 `json:"page"`
-	PositionX  any                                     `json:"positionX,omitempty"`
-	PositionY  any                                     `json:"positionY,omitempty"`
-	Width      any                                     `json:"width,omitempty"`
-	Height     any                                     `json:"height,omitempty"`
-	CustomText string                                  `json:"customText"`
-	Inserted   bool                                    `json:"inserted"`
-	FieldMeta  *FieldUpdateTemplateFieldFieldMetaUnion `json:"fieldMeta"`
-	DocumentID *float64                                `json:"documentId,omitempty"`
-	TemplateID *float64                                `json:"templateId,omitempty"`
+	EnvelopeID     string                                  `json:"envelopeId"`
+	EnvelopeItemID string                                  `json:"envelopeItemId"`
+	Type           FieldUpdateTemplateFieldTypeResponse    `json:"type"`
+	ID             float64                                 `json:"id"`
+	SecondaryID    string                                  `json:"secondaryId"`
+	RecipientID    float64                                 `json:"recipientId"`
+	Page           float64                                 `json:"page"`
+	PositionX      any                                     `json:"positionX"`
+	PositionY      any                                     `json:"positionY"`
+	Width          any                                     `json:"width"`
+	Height         any                                     `json:"height"`
+	CustomText     string                                  `json:"customText"`
+	Inserted       bool                                    `json:"inserted"`
+	FieldMeta      *FieldUpdateTemplateFieldFieldMetaUnion `json:"fieldMeta"`
+	DocumentID     *float64                                `json:"documentId,omitempty"`
+	TemplateID     *float64                                `json:"templateId,omitempty"`
 }
 
 func (f *FieldUpdateTemplateFieldResponseBody) GetEnvelopeID() string {

@@ -76,7 +76,6 @@ func (e *TemplateGetTemplateByIDVisibility) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// TemplateGetTemplateByIDGlobalAccessAuth - The type of authentication required for the recipient to access the document.
 type TemplateGetTemplateByIDGlobalAccessAuth string
 
 const (
@@ -103,7 +102,6 @@ func (e *TemplateGetTemplateByIDGlobalAccessAuth) UnmarshalJSON(data []byte) err
 	}
 }
 
-// TemplateGetTemplateByIDGlobalActionAuth - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
 type TemplateGetTemplateByIDGlobalActionAuth string
 
 const (
@@ -280,20 +278,13 @@ func (e *TemplateGetTemplateByIDDistributionMethod) UnmarshalJSON(data []byte) e
 }
 
 type TemplateGetTemplateByIDEmailSettings struct {
-	// Whether to send an email to all recipients that the document is ready for them to sign.
 	RecipientSigningRequest *bool `default:"true" json:"recipientSigningRequest"`
-	// Whether to send an email to the recipient who was removed from a pending document.
-	RecipientRemoved *bool `default:"true" json:"recipientRemoved"`
-	// Whether to send an email to the document owner when a recipient has signed the document.
-	RecipientSigned *bool `default:"true" json:"recipientSigned"`
-	// Whether to send an email to the recipient who has just signed the document indicating that there are still other recipients who need to sign the document. This will only be sent if the document is still pending after the recipient has signed.
-	DocumentPending *bool `default:"true" json:"documentPending"`
-	// Whether to send an email to all recipients when the document is complete.
-	DocumentCompleted *bool `default:"true" json:"documentCompleted"`
-	// Whether to send an email to all recipients if a pending document has been deleted.
-	DocumentDeleted *bool `default:"true" json:"documentDeleted"`
-	// Whether to send an email to the document owner when the document is complete.
-	OwnerDocumentCompleted *bool `default:"true" json:"ownerDocumentCompleted"`
+	RecipientRemoved        *bool `default:"true" json:"recipientRemoved"`
+	RecipientSigned         *bool `default:"true" json:"recipientSigned"`
+	DocumentPending         *bool `default:"true" json:"documentPending"`
+	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
+	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
+	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
 }
 
 func (t TemplateGetTemplateByIDEmailSettings) MarshalJSON() ([]byte, error) {
@@ -697,7 +688,6 @@ func (e *TemplateGetTemplateByIDSendStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// TemplateGetTemplateByIDAccessAuth - The type of authentication required for the recipient to access the document.
 type TemplateGetTemplateByIDAccessAuth string
 
 const (
@@ -724,7 +714,6 @@ func (e *TemplateGetTemplateByIDAccessAuth) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// TemplateGetTemplateByIDActionAuth - The type of authentication required for the recipient to sign the document.
 type TemplateGetTemplateByIDActionAuth string
 
 const (
@@ -793,11 +782,10 @@ type TemplateGetTemplateByIDRecipient struct {
 	Expired           *string                                      `json:"expired"`
 	SignedAt          *string                                      `json:"signedAt"`
 	AuthOptions       *TemplateGetTemplateByIDRecipientAuthOptions `json:"authOptions"`
-	// The order in which the recipient should sign the document. Only works if the document is set to sequential signing.
-	SigningOrder    *float64 `json:"signingOrder"`
-	RejectionReason *string  `json:"rejectionReason"`
-	DocumentID      *float64 `json:"documentId,omitempty"`
-	TemplateID      *float64 `json:"templateId,omitempty"`
+	SigningOrder      *float64                                     `json:"signingOrder"`
+	RejectionReason   *string                                      `json:"rejectionReason"`
+	DocumentID        *float64                                     `json:"documentId,omitempty"`
+	TemplateID        *float64                                     `json:"templateId,omitempty"`
 }
 
 func (t *TemplateGetTemplateByIDRecipient) GetEnvelopeID() string {
@@ -1022,6 +1010,7 @@ type TemplateGetTemplateByIDFieldMetaDropdown struct {
 	Placeholder  *string                             `json:"placeholder,omitempty"`
 	Required     *bool                               `json:"required,omitempty"`
 	ReadOnly     *bool                               `json:"readOnly,omitempty"`
+	FontSize     *float64                            `default:"12" json:"fontSize"`
 	Type         TemplateGetTemplateByIDTypeDropdown `json:"type"`
 	Values       []TemplateGetTemplateByIDValue3     `json:"values,omitempty"`
 	DefaultValue *string                             `json:"defaultValue,omitempty"`
@@ -1064,6 +1053,13 @@ func (t *TemplateGetTemplateByIDFieldMetaDropdown) GetReadOnly() *bool {
 		return nil
 	}
 	return t.ReadOnly
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaDropdown) GetFontSize() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.FontSize
 }
 
 func (t *TemplateGetTemplateByIDFieldMetaDropdown) GetType() TemplateGetTemplateByIDTypeDropdown {
@@ -1148,17 +1144,17 @@ func (t *TemplateGetTemplateByIDValue2) GetValue() string {
 	return t.Value
 }
 
-type TemplateGetTemplateByIDDirection string
+type TemplateGetTemplateByIDDirection2 string
 
 const (
-	TemplateGetTemplateByIDDirectionVertical   TemplateGetTemplateByIDDirection = "vertical"
-	TemplateGetTemplateByIDDirectionHorizontal TemplateGetTemplateByIDDirection = "horizontal"
+	TemplateGetTemplateByIDDirection2Vertical   TemplateGetTemplateByIDDirection2 = "vertical"
+	TemplateGetTemplateByIDDirection2Horizontal TemplateGetTemplateByIDDirection2 = "horizontal"
 )
 
-func (e TemplateGetTemplateByIDDirection) ToPointer() *TemplateGetTemplateByIDDirection {
+func (e TemplateGetTemplateByIDDirection2) ToPointer() *TemplateGetTemplateByIDDirection2 {
 	return &e
 }
-func (e *TemplateGetTemplateByIDDirection) UnmarshalJSON(data []byte) error {
+func (e *TemplateGetTemplateByIDDirection2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1167,10 +1163,10 @@ func (e *TemplateGetTemplateByIDDirection) UnmarshalJSON(data []byte) error {
 	case "vertical":
 		fallthrough
 	case "horizontal":
-		*e = TemplateGetTemplateByIDDirection(v)
+		*e = TemplateGetTemplateByIDDirection2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateGetTemplateByIDDirection: %v", v)
+		return fmt.Errorf("invalid value for TemplateGetTemplateByIDDirection2: %v", v)
 	}
 }
 
@@ -1179,11 +1175,12 @@ type TemplateGetTemplateByIDFieldMetaCheckbox struct {
 	Placeholder      *string                             `json:"placeholder,omitempty"`
 	Required         *bool                               `json:"required,omitempty"`
 	ReadOnly         *bool                               `json:"readOnly,omitempty"`
+	FontSize         *float64                            `default:"12" json:"fontSize"`
 	Type             TemplateGetTemplateByIDTypeCheckbox `json:"type"`
 	Values           []TemplateGetTemplateByIDValue2     `json:"values,omitempty"`
 	ValidationRule   *string                             `json:"validationRule,omitempty"`
 	ValidationLength *float64                            `json:"validationLength,omitempty"`
-	Direction        *TemplateGetTemplateByIDDirection   `default:"vertical" json:"direction"`
+	Direction        *TemplateGetTemplateByIDDirection2  `default:"vertical" json:"direction"`
 }
 
 func (t TemplateGetTemplateByIDFieldMetaCheckbox) MarshalJSON() ([]byte, error) {
@@ -1225,6 +1222,13 @@ func (t *TemplateGetTemplateByIDFieldMetaCheckbox) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
+func (t *TemplateGetTemplateByIDFieldMetaCheckbox) GetFontSize() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.FontSize
+}
+
 func (t *TemplateGetTemplateByIDFieldMetaCheckbox) GetType() TemplateGetTemplateByIDTypeCheckbox {
 	if t == nil {
 		return TemplateGetTemplateByIDTypeCheckbox("")
@@ -1253,7 +1257,7 @@ func (t *TemplateGetTemplateByIDFieldMetaCheckbox) GetValidationLength() *float6
 	return t.ValidationLength
 }
 
-func (t *TemplateGetTemplateByIDFieldMetaCheckbox) GetDirection() *TemplateGetTemplateByIDDirection {
+func (t *TemplateGetTemplateByIDFieldMetaCheckbox) GetDirection() *TemplateGetTemplateByIDDirection2 {
 	if t == nil {
 		return nil
 	}
@@ -1321,13 +1325,41 @@ func (t *TemplateGetTemplateByIDValue1) GetValue() string {
 	return t.Value
 }
 
+type TemplateGetTemplateByIDDirection1 string
+
+const (
+	TemplateGetTemplateByIDDirection1Vertical   TemplateGetTemplateByIDDirection1 = "vertical"
+	TemplateGetTemplateByIDDirection1Horizontal TemplateGetTemplateByIDDirection1 = "horizontal"
+)
+
+func (e TemplateGetTemplateByIDDirection1) ToPointer() *TemplateGetTemplateByIDDirection1 {
+	return &e
+}
+func (e *TemplateGetTemplateByIDDirection1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = TemplateGetTemplateByIDDirection1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateGetTemplateByIDDirection1: %v", v)
+	}
+}
+
 type TemplateGetTemplateByIDFieldMetaRadio struct {
-	Label       *string                          `json:"label,omitempty"`
-	Placeholder *string                          `json:"placeholder,omitempty"`
-	Required    *bool                            `json:"required,omitempty"`
-	ReadOnly    *bool                            `json:"readOnly,omitempty"`
-	Type        TemplateGetTemplateByIDTypeRadio `json:"type"`
-	Values      []TemplateGetTemplateByIDValue1  `json:"values,omitempty"`
+	Label       *string                            `json:"label,omitempty"`
+	Placeholder *string                            `json:"placeholder,omitempty"`
+	Required    *bool                              `json:"required,omitempty"`
+	ReadOnly    *bool                              `json:"readOnly,omitempty"`
+	FontSize    *float64                           `default:"12" json:"fontSize"`
+	Type        TemplateGetTemplateByIDTypeRadio   `json:"type"`
+	Values      []TemplateGetTemplateByIDValue1    `json:"values,omitempty"`
+	Direction   *TemplateGetTemplateByIDDirection1 `default:"vertical" json:"direction"`
 }
 
 func (t TemplateGetTemplateByIDFieldMetaRadio) MarshalJSON() ([]byte, error) {
@@ -1369,6 +1401,13 @@ func (t *TemplateGetTemplateByIDFieldMetaRadio) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
+func (t *TemplateGetTemplateByIDFieldMetaRadio) GetFontSize() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.FontSize
+}
+
 func (t *TemplateGetTemplateByIDFieldMetaRadio) GetType() TemplateGetTemplateByIDTypeRadio {
 	if t == nil {
 		return TemplateGetTemplateByIDTypeRadio("")
@@ -1381,6 +1420,13 @@ func (t *TemplateGetTemplateByIDFieldMetaRadio) GetValues() []TemplateGetTemplat
 		return nil
 	}
 	return t.Values
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaRadio) GetDirection() *TemplateGetTemplateByIDDirection1 {
+	if t == nil {
+		return nil
+	}
+	return t.Direction
 }
 
 type TemplateGetTemplateByIDTypeNumber string
@@ -1435,18 +1481,50 @@ func (e *TemplateGetTemplateByIDTextAlign6) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type TemplateGetTemplateByIDVerticalAlign2 string
+
+const (
+	TemplateGetTemplateByIDVerticalAlign2Top    TemplateGetTemplateByIDVerticalAlign2 = "top"
+	TemplateGetTemplateByIDVerticalAlign2Middle TemplateGetTemplateByIDVerticalAlign2 = "middle"
+	TemplateGetTemplateByIDVerticalAlign2Bottom TemplateGetTemplateByIDVerticalAlign2 = "bottom"
+)
+
+func (e TemplateGetTemplateByIDVerticalAlign2) ToPointer() *TemplateGetTemplateByIDVerticalAlign2 {
+	return &e
+}
+func (e *TemplateGetTemplateByIDVerticalAlign2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = TemplateGetTemplateByIDVerticalAlign2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateGetTemplateByIDVerticalAlign2: %v", v)
+	}
+}
+
 type TemplateGetTemplateByIDFieldMetaNumber struct {
-	Label        *string                            `json:"label,omitempty"`
-	Placeholder  *string                            `json:"placeholder,omitempty"`
-	Required     *bool                              `json:"required,omitempty"`
-	ReadOnly     *bool                              `json:"readOnly,omitempty"`
-	Type         TemplateGetTemplateByIDTypeNumber  `json:"type"`
-	NumberFormat *string                            `json:"numberFormat,omitempty"`
-	Value        *string                            `json:"value,omitempty"`
-	MinValue     *float64                           `json:"minValue,omitempty"`
-	MaxValue     *float64                           `json:"maxValue,omitempty"`
-	FontSize     *float64                           `json:"fontSize,omitempty"`
-	TextAlign    *TemplateGetTemplateByIDTextAlign6 `json:"textAlign,omitempty"`
+	Label         *string                                `json:"label,omitempty"`
+	Placeholder   *string                                `json:"placeholder,omitempty"`
+	Required      *bool                                  `json:"required,omitempty"`
+	ReadOnly      *bool                                  `json:"readOnly,omitempty"`
+	FontSize      *float64                               `default:"12" json:"fontSize"`
+	Type          TemplateGetTemplateByIDTypeNumber      `json:"type"`
+	NumberFormat  *string                                `json:"numberFormat,omitempty"`
+	Value         *string                                `json:"value,omitempty"`
+	MinValue      *float64                               `json:"minValue,omitempty"`
+	MaxValue      *float64                               `json:"maxValue,omitempty"`
+	TextAlign     *TemplateGetTemplateByIDTextAlign6     `json:"textAlign,omitempty"`
+	LineHeight    *float64                               `json:"lineHeight,omitempty"`
+	LetterSpacing *float64                               `json:"letterSpacing,omitempty"`
+	VerticalAlign *TemplateGetTemplateByIDVerticalAlign2 `json:"verticalAlign,omitempty"`
 }
 
 func (t TemplateGetTemplateByIDFieldMetaNumber) MarshalJSON() ([]byte, error) {
@@ -1488,6 +1566,13 @@ func (t *TemplateGetTemplateByIDFieldMetaNumber) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
+func (t *TemplateGetTemplateByIDFieldMetaNumber) GetFontSize() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.FontSize
+}
+
 func (t *TemplateGetTemplateByIDFieldMetaNumber) GetType() TemplateGetTemplateByIDTypeNumber {
 	if t == nil {
 		return TemplateGetTemplateByIDTypeNumber("")
@@ -1523,18 +1608,32 @@ func (t *TemplateGetTemplateByIDFieldMetaNumber) GetMaxValue() *float64 {
 	return t.MaxValue
 }
 
-func (t *TemplateGetTemplateByIDFieldMetaNumber) GetFontSize() *float64 {
-	if t == nil {
-		return nil
-	}
-	return t.FontSize
-}
-
 func (t *TemplateGetTemplateByIDFieldMetaNumber) GetTextAlign() *TemplateGetTemplateByIDTextAlign6 {
 	if t == nil {
 		return nil
 	}
 	return t.TextAlign
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaNumber) GetLineHeight() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.LineHeight
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaNumber) GetLetterSpacing() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.LetterSpacing
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaNumber) GetVerticalAlign() *TemplateGetTemplateByIDVerticalAlign2 {
+	if t == nil {
+		return nil
+	}
+	return t.VerticalAlign
 }
 
 type TemplateGetTemplateByIDTypeText string
@@ -1589,16 +1688,48 @@ func (e *TemplateGetTemplateByIDTextAlign5) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type TemplateGetTemplateByIDVerticalAlign1 string
+
+const (
+	TemplateGetTemplateByIDVerticalAlign1Top    TemplateGetTemplateByIDVerticalAlign1 = "top"
+	TemplateGetTemplateByIDVerticalAlign1Middle TemplateGetTemplateByIDVerticalAlign1 = "middle"
+	TemplateGetTemplateByIDVerticalAlign1Bottom TemplateGetTemplateByIDVerticalAlign1 = "bottom"
+)
+
+func (e TemplateGetTemplateByIDVerticalAlign1) ToPointer() *TemplateGetTemplateByIDVerticalAlign1 {
+	return &e
+}
+func (e *TemplateGetTemplateByIDVerticalAlign1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = TemplateGetTemplateByIDVerticalAlign1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateGetTemplateByIDVerticalAlign1: %v", v)
+	}
+}
+
 type TemplateGetTemplateByIDFieldMetaText struct {
-	Label          *string                            `json:"label,omitempty"`
-	Placeholder    *string                            `json:"placeholder,omitempty"`
-	Required       *bool                              `json:"required,omitempty"`
-	ReadOnly       *bool                              `json:"readOnly,omitempty"`
-	Type           TemplateGetTemplateByIDTypeText    `json:"type"`
-	Text           *string                            `json:"text,omitempty"`
-	CharacterLimit *float64                           `json:"characterLimit,omitempty"`
-	FontSize       *float64                           `json:"fontSize,omitempty"`
-	TextAlign      *TemplateGetTemplateByIDTextAlign5 `json:"textAlign,omitempty"`
+	Label          *string                                `json:"label,omitempty"`
+	Placeholder    *string                                `json:"placeholder,omitempty"`
+	Required       *bool                                  `json:"required,omitempty"`
+	ReadOnly       *bool                                  `json:"readOnly,omitempty"`
+	FontSize       *float64                               `default:"12" json:"fontSize"`
+	Type           TemplateGetTemplateByIDTypeText        `json:"type"`
+	Text           *string                                `json:"text,omitempty"`
+	CharacterLimit *float64                               `json:"characterLimit,omitempty"`
+	TextAlign      *TemplateGetTemplateByIDTextAlign5     `json:"textAlign,omitempty"`
+	LineHeight     *float64                               `json:"lineHeight,omitempty"`
+	LetterSpacing  *float64                               `json:"letterSpacing,omitempty"`
+	VerticalAlign  *TemplateGetTemplateByIDVerticalAlign1 `json:"verticalAlign,omitempty"`
 }
 
 func (t TemplateGetTemplateByIDFieldMetaText) MarshalJSON() ([]byte, error) {
@@ -1640,6 +1771,13 @@ func (t *TemplateGetTemplateByIDFieldMetaText) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
+func (t *TemplateGetTemplateByIDFieldMetaText) GetFontSize() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.FontSize
+}
+
 func (t *TemplateGetTemplateByIDFieldMetaText) GetType() TemplateGetTemplateByIDTypeText {
 	if t == nil {
 		return TemplateGetTemplateByIDTypeText("")
@@ -1661,18 +1799,32 @@ func (t *TemplateGetTemplateByIDFieldMetaText) GetCharacterLimit() *float64 {
 	return t.CharacterLimit
 }
 
-func (t *TemplateGetTemplateByIDFieldMetaText) GetFontSize() *float64 {
-	if t == nil {
-		return nil
-	}
-	return t.FontSize
-}
-
 func (t *TemplateGetTemplateByIDFieldMetaText) GetTextAlign() *TemplateGetTemplateByIDTextAlign5 {
 	if t == nil {
 		return nil
 	}
 	return t.TextAlign
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaText) GetLineHeight() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.LineHeight
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaText) GetLetterSpacing() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.LetterSpacing
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaText) GetVerticalAlign() *TemplateGetTemplateByIDVerticalAlign1 {
+	if t == nil {
+		return nil
+	}
+	return t.VerticalAlign
 }
 
 type TemplateGetTemplateByIDTypeDate string
@@ -1732,8 +1884,8 @@ type TemplateGetTemplateByIDFieldMetaDate struct {
 	Placeholder *string                            `json:"placeholder,omitempty"`
 	Required    *bool                              `json:"required,omitempty"`
 	ReadOnly    *bool                              `json:"readOnly,omitempty"`
+	FontSize    *float64                           `default:"12" json:"fontSize"`
 	Type        TemplateGetTemplateByIDTypeDate    `json:"type"`
-	FontSize    *float64                           `json:"fontSize,omitempty"`
 	TextAlign   *TemplateGetTemplateByIDTextAlign4 `json:"textAlign,omitempty"`
 }
 
@@ -1776,18 +1928,18 @@ func (t *TemplateGetTemplateByIDFieldMetaDate) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
-func (t *TemplateGetTemplateByIDFieldMetaDate) GetType() TemplateGetTemplateByIDTypeDate {
-	if t == nil {
-		return TemplateGetTemplateByIDTypeDate("")
-	}
-	return t.Type
-}
-
 func (t *TemplateGetTemplateByIDFieldMetaDate) GetFontSize() *float64 {
 	if t == nil {
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaDate) GetType() TemplateGetTemplateByIDTypeDate {
+	if t == nil {
+		return TemplateGetTemplateByIDTypeDate("")
+	}
+	return t.Type
 }
 
 func (t *TemplateGetTemplateByIDFieldMetaDate) GetTextAlign() *TemplateGetTemplateByIDTextAlign4 {
@@ -1854,8 +2006,8 @@ type TemplateGetTemplateByIDFieldMetaEmail struct {
 	Placeholder *string                            `json:"placeholder,omitempty"`
 	Required    *bool                              `json:"required,omitempty"`
 	ReadOnly    *bool                              `json:"readOnly,omitempty"`
+	FontSize    *float64                           `default:"12" json:"fontSize"`
 	Type        TemplateGetTemplateByIDTypeEmail   `json:"type"`
-	FontSize    *float64                           `json:"fontSize,omitempty"`
 	TextAlign   *TemplateGetTemplateByIDTextAlign3 `json:"textAlign,omitempty"`
 }
 
@@ -1898,18 +2050,18 @@ func (t *TemplateGetTemplateByIDFieldMetaEmail) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
-func (t *TemplateGetTemplateByIDFieldMetaEmail) GetType() TemplateGetTemplateByIDTypeEmail {
-	if t == nil {
-		return TemplateGetTemplateByIDTypeEmail("")
-	}
-	return t.Type
-}
-
 func (t *TemplateGetTemplateByIDFieldMetaEmail) GetFontSize() *float64 {
 	if t == nil {
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaEmail) GetType() TemplateGetTemplateByIDTypeEmail {
+	if t == nil {
+		return TemplateGetTemplateByIDTypeEmail("")
+	}
+	return t.Type
 }
 
 func (t *TemplateGetTemplateByIDFieldMetaEmail) GetTextAlign() *TemplateGetTemplateByIDTextAlign3 {
@@ -1976,8 +2128,8 @@ type TemplateGetTemplateByIDFieldMetaName struct {
 	Placeholder *string                            `json:"placeholder,omitempty"`
 	Required    *bool                              `json:"required,omitempty"`
 	ReadOnly    *bool                              `json:"readOnly,omitempty"`
+	FontSize    *float64                           `default:"12" json:"fontSize"`
 	Type        TemplateGetTemplateByIDTypeName    `json:"type"`
-	FontSize    *float64                           `json:"fontSize,omitempty"`
 	TextAlign   *TemplateGetTemplateByIDTextAlign2 `json:"textAlign,omitempty"`
 }
 
@@ -2020,18 +2172,18 @@ func (t *TemplateGetTemplateByIDFieldMetaName) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
-func (t *TemplateGetTemplateByIDFieldMetaName) GetType() TemplateGetTemplateByIDTypeName {
-	if t == nil {
-		return TemplateGetTemplateByIDTypeName("")
-	}
-	return t.Type
-}
-
 func (t *TemplateGetTemplateByIDFieldMetaName) GetFontSize() *float64 {
 	if t == nil {
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaName) GetType() TemplateGetTemplateByIDTypeName {
+	if t == nil {
+		return TemplateGetTemplateByIDTypeName("")
+	}
+	return t.Type
 }
 
 func (t *TemplateGetTemplateByIDFieldMetaName) GetTextAlign() *TemplateGetTemplateByIDTextAlign2 {
@@ -2098,8 +2250,8 @@ type TemplateGetTemplateByIDFieldMetaInitials struct {
 	Placeholder *string                             `json:"placeholder,omitempty"`
 	Required    *bool                               `json:"required,omitempty"`
 	ReadOnly    *bool                               `json:"readOnly,omitempty"`
+	FontSize    *float64                            `default:"12" json:"fontSize"`
 	Type        TemplateGetTemplateByIDTypeInitials `json:"type"`
-	FontSize    *float64                            `json:"fontSize,omitempty"`
 	TextAlign   *TemplateGetTemplateByIDTextAlign1  `json:"textAlign,omitempty"`
 }
 
@@ -2142,18 +2294,18 @@ func (t *TemplateGetTemplateByIDFieldMetaInitials) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
-func (t *TemplateGetTemplateByIDFieldMetaInitials) GetType() TemplateGetTemplateByIDTypeInitials {
-	if t == nil {
-		return TemplateGetTemplateByIDTypeInitials("")
-	}
-	return t.Type
-}
-
 func (t *TemplateGetTemplateByIDFieldMetaInitials) GetFontSize() *float64 {
 	if t == nil {
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaInitials) GetType() TemplateGetTemplateByIDTypeInitials {
+	if t == nil {
+		return TemplateGetTemplateByIDTypeInitials("")
+	}
+	return t.Type
 }
 
 func (t *TemplateGetTemplateByIDFieldMetaInitials) GetTextAlign() *TemplateGetTemplateByIDTextAlign1 {
@@ -2163,32 +2315,128 @@ func (t *TemplateGetTemplateByIDFieldMetaInitials) GetTextAlign() *TemplateGetTe
 	return t.TextAlign
 }
 
+type TemplateGetTemplateByIDTypeSignature string
+
+const (
+	TemplateGetTemplateByIDTypeSignatureSignature TemplateGetTemplateByIDTypeSignature = "signature"
+)
+
+func (e TemplateGetTemplateByIDTypeSignature) ToPointer() *TemplateGetTemplateByIDTypeSignature {
+	return &e
+}
+func (e *TemplateGetTemplateByIDTypeSignature) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "signature":
+		*e = TemplateGetTemplateByIDTypeSignature(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateGetTemplateByIDTypeSignature: %v", v)
+	}
+}
+
+type TemplateGetTemplateByIDFieldMetaSignature struct {
+	Label       *string                              `json:"label,omitempty"`
+	Placeholder *string                              `json:"placeholder,omitempty"`
+	Required    *bool                                `json:"required,omitempty"`
+	ReadOnly    *bool                                `json:"readOnly,omitempty"`
+	FontSize    *float64                             `default:"12" json:"fontSize"`
+	Type        TemplateGetTemplateByIDTypeSignature `json:"type"`
+}
+
+func (t TemplateGetTemplateByIDFieldMetaSignature) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaSignature) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaSignature) GetLabel() *string {
+	if t == nil {
+		return nil
+	}
+	return t.Label
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaSignature) GetPlaceholder() *string {
+	if t == nil {
+		return nil
+	}
+	return t.Placeholder
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaSignature) GetRequired() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.Required
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaSignature) GetReadOnly() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.ReadOnly
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaSignature) GetFontSize() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.FontSize
+}
+
+func (t *TemplateGetTemplateByIDFieldMetaSignature) GetType() TemplateGetTemplateByIDTypeSignature {
+	if t == nil {
+		return TemplateGetTemplateByIDTypeSignature("")
+	}
+	return t.Type
+}
+
 type TemplateGetTemplateByIDFieldMetaUnionType string
 
 const (
-	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaInitials TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Initials"
-	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaName     TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Name"
-	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaEmail    TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Email"
-	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaDate     TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Date"
-	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaText     TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Text"
-	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaNumber   TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Number"
-	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaRadio    TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Radio"
-	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaCheckbox TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Checkbox"
-	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaDropdown TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Dropdown"
+	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaSignature TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Signature"
+	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaInitials  TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Initials"
+	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaName      TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Name"
+	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaEmail     TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Email"
+	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaDate      TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Date"
+	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaText      TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Text"
+	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaNumber    TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Number"
+	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaRadio     TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Radio"
+	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaCheckbox  TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Checkbox"
+	TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaDropdown  TemplateGetTemplateByIDFieldMetaUnionType = "template_getTemplateById_fieldMeta_Dropdown"
 )
 
 type TemplateGetTemplateByIDFieldMetaUnion struct {
-	TemplateGetTemplateByIDFieldMetaInitials *TemplateGetTemplateByIDFieldMetaInitials `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaName     *TemplateGetTemplateByIDFieldMetaName     `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaEmail    *TemplateGetTemplateByIDFieldMetaEmail    `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaDate     *TemplateGetTemplateByIDFieldMetaDate     `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaText     *TemplateGetTemplateByIDFieldMetaText     `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaNumber   *TemplateGetTemplateByIDFieldMetaNumber   `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaRadio    *TemplateGetTemplateByIDFieldMetaRadio    `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaCheckbox *TemplateGetTemplateByIDFieldMetaCheckbox `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaDropdown *TemplateGetTemplateByIDFieldMetaDropdown `queryParam:"inline,name=fieldMeta"`
+	TemplateGetTemplateByIDFieldMetaSignature *TemplateGetTemplateByIDFieldMetaSignature `queryParam:"inline,name=fieldMeta"`
+	TemplateGetTemplateByIDFieldMetaInitials  *TemplateGetTemplateByIDFieldMetaInitials  `queryParam:"inline,name=fieldMeta"`
+	TemplateGetTemplateByIDFieldMetaName      *TemplateGetTemplateByIDFieldMetaName      `queryParam:"inline,name=fieldMeta"`
+	TemplateGetTemplateByIDFieldMetaEmail     *TemplateGetTemplateByIDFieldMetaEmail     `queryParam:"inline,name=fieldMeta"`
+	TemplateGetTemplateByIDFieldMetaDate      *TemplateGetTemplateByIDFieldMetaDate      `queryParam:"inline,name=fieldMeta"`
+	TemplateGetTemplateByIDFieldMetaText      *TemplateGetTemplateByIDFieldMetaText      `queryParam:"inline,name=fieldMeta"`
+	TemplateGetTemplateByIDFieldMetaNumber    *TemplateGetTemplateByIDFieldMetaNumber    `queryParam:"inline,name=fieldMeta"`
+	TemplateGetTemplateByIDFieldMetaRadio     *TemplateGetTemplateByIDFieldMetaRadio     `queryParam:"inline,name=fieldMeta"`
+	TemplateGetTemplateByIDFieldMetaCheckbox  *TemplateGetTemplateByIDFieldMetaCheckbox  `queryParam:"inline,name=fieldMeta"`
+	TemplateGetTemplateByIDFieldMetaDropdown  *TemplateGetTemplateByIDFieldMetaDropdown  `queryParam:"inline,name=fieldMeta"`
 
 	Type TemplateGetTemplateByIDFieldMetaUnionType
+}
+
+func CreateTemplateGetTemplateByIDFieldMetaUnionTemplateGetTemplateByIDFieldMetaSignature(templateGetTemplateByIDFieldMetaSignature TemplateGetTemplateByIDFieldMetaSignature) TemplateGetTemplateByIDFieldMetaUnion {
+	typ := TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaSignature
+
+	return TemplateGetTemplateByIDFieldMetaUnion{
+		TemplateGetTemplateByIDFieldMetaSignature: &templateGetTemplateByIDFieldMetaSignature,
+		Type: typ,
+	}
 }
 
 func CreateTemplateGetTemplateByIDFieldMetaUnionTemplateGetTemplateByIDFieldMetaInitials(templateGetTemplateByIDFieldMetaInitials TemplateGetTemplateByIDFieldMetaInitials) TemplateGetTemplateByIDFieldMetaUnion {
@@ -2274,6 +2522,13 @@ func CreateTemplateGetTemplateByIDFieldMetaUnionTemplateGetTemplateByIDFieldMeta
 
 func (u *TemplateGetTemplateByIDFieldMetaUnion) UnmarshalJSON(data []byte) error {
 
+	var templateGetTemplateByIDFieldMetaSignature TemplateGetTemplateByIDFieldMetaSignature = TemplateGetTemplateByIDFieldMetaSignature{}
+	if err := utils.UnmarshalJSON(data, &templateGetTemplateByIDFieldMetaSignature, "", true, nil); err == nil {
+		u.TemplateGetTemplateByIDFieldMetaSignature = &templateGetTemplateByIDFieldMetaSignature
+		u.Type = TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaSignature
+		return nil
+	}
+
 	var templateGetTemplateByIDFieldMetaInitials TemplateGetTemplateByIDFieldMetaInitials = TemplateGetTemplateByIDFieldMetaInitials{}
 	if err := utils.UnmarshalJSON(data, &templateGetTemplateByIDFieldMetaInitials, "", true, nil); err == nil {
 		u.TemplateGetTemplateByIDFieldMetaInitials = &templateGetTemplateByIDFieldMetaInitials
@@ -2341,6 +2596,10 @@ func (u *TemplateGetTemplateByIDFieldMetaUnion) UnmarshalJSON(data []byte) error
 }
 
 func (u TemplateGetTemplateByIDFieldMetaUnion) MarshalJSON() ([]byte, error) {
+	if u.TemplateGetTemplateByIDFieldMetaSignature != nil {
+		return utils.MarshalJSON(u.TemplateGetTemplateByIDFieldMetaSignature, "", true)
+	}
+
 	if u.TemplateGetTemplateByIDFieldMetaInitials != nil {
 		return utils.MarshalJSON(u.TemplateGetTemplateByIDFieldMetaInitials, "", true)
 	}
@@ -2381,23 +2640,22 @@ func (u TemplateGetTemplateByIDFieldMetaUnion) MarshalJSON() ([]byte, error) {
 }
 
 type TemplateGetTemplateByIDField struct {
-	EnvelopeID     string                           `json:"envelopeId"`
-	EnvelopeItemID string                           `json:"envelopeItemId"`
-	Type           TemplateGetTemplateByIDFieldType `json:"type"`
-	ID             float64                          `json:"id"`
-	SecondaryID    string                           `json:"secondaryId"`
-	RecipientID    float64                          `json:"recipientId"`
-	// The page number of the field on the document. Starts from 1.
-	Page       float64                                `json:"page"`
-	PositionX  any                                    `json:"positionX,omitempty"`
-	PositionY  any                                    `json:"positionY,omitempty"`
-	Width      any                                    `json:"width,omitempty"`
-	Height     any                                    `json:"height,omitempty"`
-	CustomText string                                 `json:"customText"`
-	Inserted   bool                                   `json:"inserted"`
-	FieldMeta  *TemplateGetTemplateByIDFieldMetaUnion `json:"fieldMeta"`
-	DocumentID *float64                               `json:"documentId,omitempty"`
-	TemplateID *float64                               `json:"templateId,omitempty"`
+	EnvelopeID     string                                 `json:"envelopeId"`
+	EnvelopeItemID string                                 `json:"envelopeItemId"`
+	Type           TemplateGetTemplateByIDFieldType       `json:"type"`
+	ID             float64                                `json:"id"`
+	SecondaryID    string                                 `json:"secondaryId"`
+	RecipientID    float64                                `json:"recipientId"`
+	Page           float64                                `json:"page"`
+	PositionX      any                                    `json:"positionX"`
+	PositionY      any                                    `json:"positionY"`
+	Width          any                                    `json:"width"`
+	Height         any                                    `json:"height"`
+	CustomText     string                                 `json:"customText"`
+	Inserted       bool                                   `json:"inserted"`
+	FieldMeta      *TemplateGetTemplateByIDFieldMetaUnion `json:"fieldMeta"`
+	DocumentID     *float64                               `json:"documentId,omitempty"`
+	TemplateID     *float64                               `json:"templateId,omitempty"`
 }
 
 func (t *TemplateGetTemplateByIDField) GetEnvelopeID() string {
@@ -2650,6 +2908,25 @@ func (t *TemplateGetTemplateByIDFolder) GetUpdatedAt() string {
 	return t.UpdatedAt
 }
 
+type TemplateGetTemplateByIDEnvelopeItem struct {
+	ID         string `json:"id"`
+	EnvelopeID string `json:"envelopeId"`
+}
+
+func (t *TemplateGetTemplateByIDEnvelopeItem) GetID() string {
+	if t == nil {
+		return ""
+	}
+	return t.ID
+}
+
+func (t *TemplateGetTemplateByIDEnvelopeItem) GetEnvelopeID() string {
+	if t == nil {
+		return ""
+	}
+	return t.EnvelopeID
+}
+
 // TemplateGetTemplateByIDResponseBody - Successful response
 type TemplateGetTemplateByIDResponseBody struct {
 	Type                   TemplateGetTemplateByIDType                 `json:"type"`
@@ -2674,6 +2951,7 @@ type TemplateGetTemplateByIDResponseBody struct {
 	Recipients             []TemplateGetTemplateByIDRecipient          `json:"recipients"`
 	Fields                 []TemplateGetTemplateByIDField              `json:"fields"`
 	Folder                 *TemplateGetTemplateByIDFolder              `json:"folder"`
+	EnvelopeItems          []TemplateGetTemplateByIDEnvelopeItem       `json:"envelopeItems"`
 }
 
 func (t TemplateGetTemplateByIDResponseBody) MarshalJSON() ([]byte, error) {
@@ -2681,7 +2959,7 @@ func (t TemplateGetTemplateByIDResponseBody) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TemplateGetTemplateByIDResponseBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "visibility", "id", "title", "userId", "teamId", "createdAt", "updatedAt", "publicTitle", "publicDescription", "envelopeId", "templateDocumentData", "templateMeta", "user", "recipients", "fields"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "visibility", "id", "title", "userId", "teamId", "createdAt", "updatedAt", "publicTitle", "publicDescription", "envelopeId", "templateDocumentData", "templateMeta", "user", "recipients", "fields", "envelopeItems"}); err != nil {
 		return err
 	}
 	return nil
@@ -2839,6 +3117,13 @@ func (t *TemplateGetTemplateByIDResponseBody) GetFolder() *TemplateGetTemplateBy
 		return nil
 	}
 	return t.Folder
+}
+
+func (t *TemplateGetTemplateByIDResponseBody) GetEnvelopeItems() []TemplateGetTemplateByIDEnvelopeItem {
+	if t == nil {
+		return []TemplateGetTemplateByIDEnvelopeItem{}
+	}
+	return t.EnvelopeItems
 }
 
 type TemplateGetTemplateByIDResponse struct {

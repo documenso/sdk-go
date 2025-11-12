@@ -60,6 +60,8 @@ func main() {
 | Error Type                                                               | Status Code                                                              | Content Type                                                             |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | apierrors.EmbeddingPresignCreateEmbeddingPresignTokenBadRequestError     | 400                                                                      | application/json                                                         |
+| apierrors.EmbeddingPresignCreateEmbeddingPresignTokenUnauthorizedError   | 401                                                                      | application/json                                                         |
+| apierrors.EmbeddingPresignCreateEmbeddingPresignTokenForbiddenError      | 403                                                                      | application/json                                                         |
 | apierrors.EmbeddingPresignCreateEmbeddingPresignTokenInternalServerError | 500                                                                      | application/json                                                         |
 | apierrors.APIError                                                       | 4XX, 5XX                                                                 | \*/\*                                                                    |
 
@@ -117,5 +119,7 @@ func main() {
 | Error Type                                                               | Status Code                                                              | Content Type                                                             |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | apierrors.EmbeddingPresignVerifyEmbeddingPresignTokenBadRequestError     | 400                                                                      | application/json                                                         |
+| apierrors.EmbeddingPresignVerifyEmbeddingPresignTokenUnauthorizedError   | 401                                                                      | application/json                                                         |
+| apierrors.EmbeddingPresignVerifyEmbeddingPresignTokenForbiddenError      | 403                                                                      | application/json                                                         |
 | apierrors.EmbeddingPresignVerifyEmbeddingPresignTokenInternalServerError | 500                                                                      | application/json                                                         |
 | apierrors.APIError                                                       | 4XX, 5XX                                                                 | \*/\*                                                                    |

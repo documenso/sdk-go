@@ -61,5 +61,7 @@ func main() {
 | Error Type                                                   | Status Code                                                  | Content Type                                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | apierrors.TemplateCreateTemplateTemporaryBadRequestError     | 400                                                          | application/json                                             |
+| apierrors.TemplateCreateTemplateTemporaryUnauthorizedError   | 401                                                          | application/json                                             |
+| apierrors.TemplateCreateTemplateTemporaryForbiddenError      | 403                                                          | application/json                                             |
 | apierrors.TemplateCreateTemplateTemporaryInternalServerError | 500                                                          | application/json                                             |
 | apierrors.APIError                                           | 4XX, 5XX                                                     | \*/\*                                                        |

@@ -169,12 +169,21 @@ func main() {
 
 * [Get](docs/sdks/documents/README.md#get) - Get document
 * [Find](docs/sdks/documents/README.md#find) - Find documents
+* [Create](docs/sdks/documents/README.md#create) - Create document
 * [Update](docs/sdks/documents/README.md#update) - Update document
 * [Delete](docs/sdks/documents/README.md#delete) - Delete document
 * [Duplicate](docs/sdks/documents/README.md#duplicate) - Duplicate document
 * [Distribute](docs/sdks/documents/README.md#distribute) - Distribute document
 * [Redistribute](docs/sdks/documents/README.md#redistribute) - Redistribute document
+* [Download](docs/sdks/documents/README.md#download) - Download document
 * [CreateV0](docs/sdks/documents/README.md#createv0) - Create document
+
+#### [Documents.Attachments](docs/sdks/documentsattachments/README.md)
+
+* [Create](docs/sdks/documentsattachments/README.md#create) - Create attachment
+* [Update](docs/sdks/documentsattachments/README.md#update) - Update attachment
+* [Delete](docs/sdks/documentsattachments/README.md#delete) - Delete attachment
+* [Find](docs/sdks/documentsattachments/README.md#find) - Find attachments
 
 #### [Documents.Fields](docs/sdks/documentsfields/README.md)
 
@@ -199,6 +208,52 @@ func main() {
 * [EmbeddingPresignCreateEmbeddingPresignToken](docs/sdks/embedding/README.md#embeddingpresigncreateembeddingpresigntoken) - Create embedding presign token
 * [EmbeddingPresignVerifyEmbeddingPresignToken](docs/sdks/embedding/README.md#embeddingpresignverifyembeddingpresigntoken) - Verify embedding presign token
 
+### [Envelopes](docs/sdks/envelopes/README.md)
+
+* [Get](docs/sdks/envelopes/README.md#get) - Get envelope
+* [Create](docs/sdks/envelopes/README.md#create) - Create envelope
+* [Use](docs/sdks/envelopes/README.md#use) - Use envelope
+* [Update](docs/sdks/envelopes/README.md#update) - Update envelope
+* [Delete](docs/sdks/envelopes/README.md#delete) - Delete envelope
+* [Duplicate](docs/sdks/envelopes/README.md#duplicate) - Duplicate envelope
+* [Distribute](docs/sdks/envelopes/README.md#distribute) - Distribute envelope
+* [Redistribute](docs/sdks/envelopes/README.md#redistribute) - Redistribute envelope
+
+#### [Envelopes.Attachments](docs/sdks/envelopesattachments/README.md)
+
+* [Find](docs/sdks/envelopesattachments/README.md#find) - Find attachments
+* [Create](docs/sdks/envelopesattachments/README.md#create) - Create attachment
+* [Update](docs/sdks/envelopesattachments/README.md#update) - Update attachment
+* [Delete](docs/sdks/envelopesattachments/README.md#delete) - Delete attachment
+
+#### [Envelopes.Fields](docs/sdks/envelopesfields/README.md)
+
+* [Get](docs/sdks/envelopesfields/README.md#get) - Get envelope field
+* [CreateMany](docs/sdks/envelopesfields/README.md#createmany) - Create envelope fields
+* [UpdateMany](docs/sdks/envelopesfields/README.md#updatemany) - Update envelope fields
+* [Delete](docs/sdks/envelopesfields/README.md#delete) - Delete envelope field
+
+#### [Envelopes.Items](docs/sdks/items/README.md)
+
+* [CreateMany](docs/sdks/items/README.md#createmany) - Create envelope items
+* [UpdateMany](docs/sdks/items/README.md#updatemany) - Update envelope items
+* [Delete](docs/sdks/items/README.md#delete) - Delete envelope item
+* [Download](docs/sdks/items/README.md#download) - Download an envelope item
+
+#### [Envelopes.Recipients](docs/sdks/envelopesrecipients/README.md)
+
+* [Get](docs/sdks/envelopesrecipients/README.md#get) - Get envelope recipient
+* [CreateMany](docs/sdks/envelopesrecipients/README.md#createmany) - Create envelope recipients
+* [UpdateMany](docs/sdks/envelopesrecipients/README.md#updatemany) - Update envelope recipients
+* [Delete](docs/sdks/envelopesrecipients/README.md#delete) - Delete envelope recipient
+
+### [Folders](docs/sdks/folders/README.md)
+
+* [Find](docs/sdks/folders/README.md#find) - Find folders
+* [Create](docs/sdks/folders/README.md#create) - Create new folder
+* [Update](docs/sdks/folders/README.md#update) - Update folder
+* [Delete](docs/sdks/folders/README.md#delete) - Delete folder
+
 ### [Template](docs/sdks/template/README.md)
 
 * [TemplateCreateTemplateTemporary](docs/sdks/template/README.md#templatecreatetemplatetemporary) - Create template
@@ -207,6 +262,7 @@ func main() {
 
 * [Find](docs/sdks/templates/README.md#find) - Find templates
 * [Get](docs/sdks/templates/README.md#get) - Get template
+* [Create](docs/sdks/templates/README.md#create) - Create template
 * [Update](docs/sdks/templates/README.md#update) - Update template
 * [Duplicate](docs/sdks/templates/README.md#duplicate) - Duplicate template
 * [Delete](docs/sdks/templates/README.md#delete) - Delete template
@@ -264,7 +320,7 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Get(ctx, 6150.61, operations.WithRetries(
+	res, err := s.Envelopes.Get(ctx, "<id>", operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -315,7 +371,7 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Get(ctx, 6150.61)
+	res, err := s.Envelopes.Get(ctx, "<id>")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -338,9 +394,11 @@ For example, the `Get` function may return the following errors:
 
 | Error Type                               | Status Code | Content Type     |
 | ---------------------------------------- | ----------- | ---------------- |
-| apierrors.DocumentGetBadRequestError     | 400         | application/json |
-| apierrors.DocumentGetNotFoundError       | 404         | application/json |
-| apierrors.DocumentGetInternalServerError | 500         | application/json |
+| apierrors.EnvelopeGetBadRequestError     | 400         | application/json |
+| apierrors.EnvelopeGetUnauthorizedError   | 401         | application/json |
+| apierrors.EnvelopeGetForbiddenError      | 403         | application/json |
+| apierrors.EnvelopeGetNotFoundError       | 404         | application/json |
+| apierrors.EnvelopeGetInternalServerError | 500         | application/json |
 | apierrors.APIError                       | 4XX, 5XX    | \*/\*            |
 
 ### Example
@@ -364,22 +422,34 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Get(ctx, 6150.61)
+	res, err := s.Envelopes.Get(ctx, "<id>")
 	if err != nil {
 
-		var e *apierrors.DocumentGetBadRequestError
+		var e *apierrors.EnvelopeGetBadRequestError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
 		}
 
-		var e *apierrors.DocumentGetNotFoundError
+		var e *apierrors.EnvelopeGetUnauthorizedError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
 		}
 
-		var e *apierrors.DocumentGetInternalServerError
+		var e *apierrors.EnvelopeGetForbiddenError
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
+
+		var e *apierrors.EnvelopeGetNotFoundError
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
+
+		var e *apierrors.EnvelopeGetInternalServerError
 		if errors.As(err, &e) {
 			// handle error
 			log.Fatal(e.Error())
@@ -416,11 +486,11 @@ func main() {
 	ctx := context.Background()
 
 	s := sdkgo.New(
-		sdkgo.WithServerURL("https://app.documenso.com/api/v2-beta"),
+		sdkgo.WithServerURL("https://app.documenso.com/api/v2"),
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Get(ctx, 6150.61)
+	res, err := s.Envelopes.Get(ctx, "<id>")
 	if err != nil {
 		log.Fatal(err)
 	}

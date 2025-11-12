@@ -1,0 +1,10 @@
+# DocumentCreateAttachment
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `Label`                                                                                 | *string*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `Data`                                                                                  | *string*                                                                                | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `Type`                                                                                  | [*operations.DocumentCreateTypeLink](../../models/operations/documentcreatetypelink.md) | :heavy_minus_sign:                                                                      | N/A                                                                                     |

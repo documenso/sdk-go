@@ -33,6 +33,58 @@ func (e *RecipientCreateDocumentRecipientsInternalServerError) Error() string {
 	return string(data)
 }
 
+type RecipientCreateDocumentRecipientsForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (r *RecipientCreateDocumentRecipientsForbiddenIssue) GetMessage() string {
+	if r == nil {
+		return ""
+	}
+	return r.Message
+}
+
+// RecipientCreateDocumentRecipientsForbiddenError - Insufficient access
+type RecipientCreateDocumentRecipientsForbiddenError struct {
+	Message  string                                            `json:"message"`
+	Code     string                                            `json:"code"`
+	Issues   []RecipientCreateDocumentRecipientsForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                           `json:"-"`
+}
+
+var _ error = &RecipientCreateDocumentRecipientsForbiddenError{}
+
+func (e *RecipientCreateDocumentRecipientsForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type RecipientCreateDocumentRecipientsUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (r *RecipientCreateDocumentRecipientsUnauthorizedIssue) GetMessage() string {
+	if r == nil {
+		return ""
+	}
+	return r.Message
+}
+
+// RecipientCreateDocumentRecipientsUnauthorizedError - Authorization not provided
+type RecipientCreateDocumentRecipientsUnauthorizedError struct {
+	Message  string                                               `json:"message"`
+	Code     string                                               `json:"code"`
+	Issues   []RecipientCreateDocumentRecipientsUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                              `json:"-"`
+}
+
+var _ error = &RecipientCreateDocumentRecipientsUnauthorizedError{}
+
+func (e *RecipientCreateDocumentRecipientsUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type RecipientCreateDocumentRecipientsBadRequestIssue struct {
 	Message string `json:"message"`
 }

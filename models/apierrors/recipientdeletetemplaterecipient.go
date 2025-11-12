@@ -33,6 +33,58 @@ func (e *RecipientDeleteTemplateRecipientInternalServerError) Error() string {
 	return string(data)
 }
 
+type RecipientDeleteTemplateRecipientForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (r *RecipientDeleteTemplateRecipientForbiddenIssue) GetMessage() string {
+	if r == nil {
+		return ""
+	}
+	return r.Message
+}
+
+// RecipientDeleteTemplateRecipientForbiddenError - Insufficient access
+type RecipientDeleteTemplateRecipientForbiddenError struct {
+	Message  string                                           `json:"message"`
+	Code     string                                           `json:"code"`
+	Issues   []RecipientDeleteTemplateRecipientForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                          `json:"-"`
+}
+
+var _ error = &RecipientDeleteTemplateRecipientForbiddenError{}
+
+func (e *RecipientDeleteTemplateRecipientForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type RecipientDeleteTemplateRecipientUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (r *RecipientDeleteTemplateRecipientUnauthorizedIssue) GetMessage() string {
+	if r == nil {
+		return ""
+	}
+	return r.Message
+}
+
+// RecipientDeleteTemplateRecipientUnauthorizedError - Authorization not provided
+type RecipientDeleteTemplateRecipientUnauthorizedError struct {
+	Message  string                                              `json:"message"`
+	Code     string                                              `json:"code"`
+	Issues   []RecipientDeleteTemplateRecipientUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                             `json:"-"`
+}
+
+var _ error = &RecipientDeleteTemplateRecipientUnauthorizedError{}
+
+func (e *RecipientDeleteTemplateRecipientUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type RecipientDeleteTemplateRecipientBadRequestIssue struct {
 	Message string `json:"message"`
 }

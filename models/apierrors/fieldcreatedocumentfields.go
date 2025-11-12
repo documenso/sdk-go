@@ -33,6 +33,58 @@ func (e *FieldCreateDocumentFieldsInternalServerError) Error() string {
 	return string(data)
 }
 
+type FieldCreateDocumentFieldsForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (f *FieldCreateDocumentFieldsForbiddenIssue) GetMessage() string {
+	if f == nil {
+		return ""
+	}
+	return f.Message
+}
+
+// FieldCreateDocumentFieldsForbiddenError - Insufficient access
+type FieldCreateDocumentFieldsForbiddenError struct {
+	Message  string                                    `json:"message"`
+	Code     string                                    `json:"code"`
+	Issues   []FieldCreateDocumentFieldsForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                   `json:"-"`
+}
+
+var _ error = &FieldCreateDocumentFieldsForbiddenError{}
+
+func (e *FieldCreateDocumentFieldsForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type FieldCreateDocumentFieldsUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (f *FieldCreateDocumentFieldsUnauthorizedIssue) GetMessage() string {
+	if f == nil {
+		return ""
+	}
+	return f.Message
+}
+
+// FieldCreateDocumentFieldsUnauthorizedError - Authorization not provided
+type FieldCreateDocumentFieldsUnauthorizedError struct {
+	Message  string                                       `json:"message"`
+	Code     string                                       `json:"code"`
+	Issues   []FieldCreateDocumentFieldsUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                      `json:"-"`
+}
+
+var _ error = &FieldCreateDocumentFieldsUnauthorizedError{}
+
+func (e *FieldCreateDocumentFieldsUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type FieldCreateDocumentFieldsBadRequestIssue struct {
 	Message string `json:"message"`
 }

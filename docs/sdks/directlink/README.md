@@ -63,6 +63,8 @@ func main() {
 | Error Type                                                    | Status Code                                                   | Content Type                                                  |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | apierrors.TemplateCreateTemplateDirectLinkBadRequestError     | 400                                                           | application/json                                              |
+| apierrors.TemplateCreateTemplateDirectLinkUnauthorizedError   | 401                                                           | application/json                                              |
+| apierrors.TemplateCreateTemplateDirectLinkForbiddenError      | 403                                                           | application/json                                              |
 | apierrors.TemplateCreateTemplateDirectLinkInternalServerError | 500                                                           | application/json                                              |
 | apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |
 
@@ -120,6 +122,8 @@ func main() {
 | Error Type                                                    | Status Code                                                   | Content Type                                                  |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | apierrors.TemplateDeleteTemplateDirectLinkBadRequestError     | 400                                                           | application/json                                              |
+| apierrors.TemplateDeleteTemplateDirectLinkUnauthorizedError   | 401                                                           | application/json                                              |
+| apierrors.TemplateDeleteTemplateDirectLinkForbiddenError      | 403                                                           | application/json                                              |
 | apierrors.TemplateDeleteTemplateDirectLinkInternalServerError | 500                                                           | application/json                                              |
 | apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |
 
@@ -178,5 +182,7 @@ func main() {
 | Error Type                                                    | Status Code                                                   | Content Type                                                  |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | apierrors.TemplateToggleTemplateDirectLinkBadRequestError     | 400                                                           | application/json                                              |
+| apierrors.TemplateToggleTemplateDirectLinkUnauthorizedError   | 401                                                           | application/json                                              |
+| apierrors.TemplateToggleTemplateDirectLinkForbiddenError      | 403                                                           | application/json                                              |
 | apierrors.TemplateToggleTemplateDirectLinkInternalServerError | 500                                                           | application/json                                              |
 | apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |

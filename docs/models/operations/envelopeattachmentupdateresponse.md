@@ -1,0 +1,9 @@
+# EnvelopeAttachmentUpdateResponse
+
+
+## Fields
+
+| Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `HTTPMeta`                                                                                                          | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                                  | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
+| `Object`                                                                                                            | [*operations.EnvelopeAttachmentUpdateResponseBody](../../models/operations/envelopeattachmentupdateresponsebody.md) | :heavy_minus_sign:                                                                                                  | Successful response                                                                                                 |

@@ -7,7 +7,6 @@ import (
 )
 
 type EmbeddingPresignVerifyEmbeddingPresignTokenRequest struct {
-	// The presign token to verify
 	Token string `json:"token"`
 }
 

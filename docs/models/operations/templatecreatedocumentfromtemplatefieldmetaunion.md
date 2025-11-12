@@ -3,6 +3,12 @@
 
 ## Supported Types
 
+### TemplateCreateDocumentFromTemplateFieldMetaSignature
+
+```go
+templateCreateDocumentFromTemplateFieldMetaUnion := operations.CreateTemplateCreateDocumentFromTemplateFieldMetaUnionTemplateCreateDocumentFromTemplateFieldMetaSignature(operations.TemplateCreateDocumentFromTemplateFieldMetaSignature{/* values here */})
+```
+
 ### TemplateCreateDocumentFromTemplateFieldMetaInitials
 
 ```go

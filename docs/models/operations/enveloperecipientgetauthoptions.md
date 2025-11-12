@@ -1,0 +1,9 @@
+# EnvelopeRecipientGetAuthOptions
+
+
+## Fields
+
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `AccessAuth`                                                                                             | [][operations.EnvelopeRecipientGetAccessAuth](../../models/operations/enveloperecipientgetaccessauth.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `ActionAuth`                                                                                             | [][operations.EnvelopeRecipientGetActionAuth](../../models/operations/enveloperecipientgetactionauth.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |

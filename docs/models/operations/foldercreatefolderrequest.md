@@ -1,0 +1,10 @@
+# FolderCreateFolderRequest
+
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `Name`                                                                                                | *string*                                                                                              | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
+| `ParentID`                                                                                            | **string*                                                                                             | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |
+| `Type`                                                                                                | [*operations.FolderCreateFolderTypeRequest](../../models/operations/foldercreatefoldertyperequest.md) | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |

@@ -10,7 +10,6 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-// DocumentDistributeDateFormat - The date format to use for date fields and signing the document.
 type DocumentDistributeDateFormat string
 
 const (
@@ -97,7 +96,6 @@ func (e *DocumentDistributeDateFormat) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// DocumentDistributeDistributionMethod - The distribution method to use when sending the document to the recipients.
 type DocumentDistributeDistributionMethod string
 
 const (
@@ -124,7 +122,6 @@ func (e *DocumentDistributeDistributionMethod) UnmarshalJSON(data []byte) error 
 	}
 }
 
-// DocumentDistributeLanguage - The language to use for email communications with recipients.
 type DocumentDistributeLanguage string
 
 const (
@@ -164,20 +161,13 @@ func (e *DocumentDistributeLanguage) UnmarshalJSON(data []byte) error {
 }
 
 type DocumentDistributeEmailSettings struct {
-	// Whether to send an email to all recipients that the document is ready for them to sign.
 	RecipientSigningRequest *bool `default:"true" json:"recipientSigningRequest"`
-	// Whether to send an email to the recipient who was removed from a pending document.
-	RecipientRemoved *bool `default:"true" json:"recipientRemoved"`
-	// Whether to send an email to the document owner when a recipient has signed the document.
-	RecipientSigned *bool `default:"true" json:"recipientSigned"`
-	// Whether to send an email to the recipient who has just signed the document indicating that there are still other recipients who need to sign the document. This will only be sent if the document is still pending after the recipient has signed.
-	DocumentPending *bool `default:"true" json:"documentPending"`
-	// Whether to send an email to all recipients when the document is complete.
-	DocumentCompleted *bool `default:"true" json:"documentCompleted"`
-	// Whether to send an email to all recipients if a pending document has been deleted.
-	DocumentDeleted *bool `default:"true" json:"documentDeleted"`
-	// Whether to send an email to the document owner when the document is complete.
-	OwnerDocumentCompleted *bool `default:"true" json:"ownerDocumentCompleted"`
+	RecipientRemoved        *bool `default:"true" json:"recipientRemoved"`
+	RecipientSigned         *bool `default:"true" json:"recipientSigned"`
+	DocumentPending         *bool `default:"true" json:"documentPending"`
+	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
+	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
+	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
 }
 
 func (d DocumentDistributeEmailSettings) MarshalJSON() ([]byte, error) {
@@ -241,23 +231,16 @@ func (d *DocumentDistributeEmailSettings) GetOwnerDocumentCompleted() *bool {
 }
 
 type DocumentDistributeMeta struct {
-	// The subject of the email that will be sent to the recipients.
-	Subject *string `json:"subject,omitempty"`
-	// The message of the email that will be sent to the recipients.
-	Message *string `json:"message,omitempty"`
-	// The timezone to use for date fields and signing the document. Example Etc/UTC, Australia/Melbourne
-	Timezone *string `json:"timezone,omitempty"`
-	// The date format to use for date fields and signing the document.
-	DateFormat *DocumentDistributeDateFormat `json:"dateFormat,omitempty"`
-	// The distribution method to use when sending the document to the recipients.
+	Subject            *string                               `json:"subject,omitempty"`
+	Message            *string                               `json:"message,omitempty"`
+	Timezone           *string                               `json:"timezone,omitempty"`
+	DateFormat         *DocumentDistributeDateFormat         `json:"dateFormat,omitempty"`
 	DistributionMethod *DocumentDistributeDistributionMethod `json:"distributionMethod,omitempty"`
-	// The URL to which the recipient should be redirected after signing the document.
-	RedirectURL *string `json:"redirectUrl,omitempty"`
-	// The language to use for email communications with recipients.
-	Language      *DocumentDistributeLanguage      `json:"language,omitempty"`
-	EmailID       *string                          `json:"emailId,omitempty"`
-	EmailReplyTo  *string                          `json:"emailReplyTo,omitempty"`
-	EmailSettings *DocumentDistributeEmailSettings `json:"emailSettings,omitempty"`
+	RedirectURL        *string                               `json:"redirectUrl,omitempty"`
+	Language           *DocumentDistributeLanguage           `json:"language,omitempty"`
+	EmailID            *string                               `json:"emailId,omitempty"`
+	EmailReplyTo       *string                               `json:"emailReplyTo,omitempty"`
+	EmailSettings      *DocumentDistributeEmailSettings      `json:"emailSettings,omitempty"`
 }
 
 func (d *DocumentDistributeMeta) GetSubject() *string {
@@ -331,7 +314,6 @@ func (d *DocumentDistributeMeta) GetEmailSettings() *DocumentDistributeEmailSett
 }
 
 type DocumentDistributeRequest struct {
-	// The ID of the document to send.
 	DocumentID float64                 `json:"documentId"`
 	Meta       *DocumentDistributeMeta `json:"meta,omitempty"`
 }
@@ -440,7 +422,6 @@ func (e *DocumentDistributeSource) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// DocumentDistributeGlobalAccessAuth - The type of authentication required for the recipient to access the document.
 type DocumentDistributeGlobalAccessAuth string
 
 const (
@@ -467,7 +448,6 @@ func (e *DocumentDistributeGlobalAccessAuth) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// DocumentDistributeGlobalActionAuth - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
 type DocumentDistributeGlobalActionAuth string
 
 const (
@@ -606,13 +586,11 @@ func (u DocumentDistributeFormValues) MarshalJSON() ([]byte, error) {
 
 // DocumentDistributeResponseBody - Successful response
 type DocumentDistributeResponseBody struct {
-	Visibility DocumentDistributeVisibility `json:"visibility"`
-	Status     DocumentDistributeStatus     `json:"status"`
-	Source     DocumentDistributeSource     `json:"source"`
-	ID         float64                      `json:"id"`
-	// A custom external ID you can use to identify the document.
-	ExternalID *string `json:"externalId"`
-	// The ID of the user that created this document.
+	Visibility              DocumentDistributeVisibility            `json:"visibility"`
+	Status                  DocumentDistributeStatus                `json:"status"`
+	Source                  DocumentDistributeSource                `json:"source"`
+	ID                      float64                                 `json:"id"`
+	ExternalID              *string                                 `json:"externalId"`
 	UserID                  float64                                 `json:"userId"`
 	AuthOptions             *DocumentDistributeAuthOptions          `json:"authOptions"`
 	FormValues              map[string]DocumentDistributeFormValues `json:"formValues"`
@@ -625,9 +603,9 @@ type DocumentDistributeResponseBody struct {
 	FolderID                *string                                 `json:"folderId"`
 	UseLegacyFieldInsertion bool                                    `json:"useLegacyFieldInsertion"`
 	EnvelopeID              string                                  `json:"envelopeId"`
+	InternalVersion         float64                                 `json:"internalVersion"`
 	DocumentDataID          *string                                 `default:"" json:"documentDataId"`
-	// The ID of the template that the document was created from, if any.
-	TemplateID *float64 `json:"templateId,omitempty"`
+	TemplateID              *float64                                `json:"templateId,omitempty"`
 }
 
 func (d DocumentDistributeResponseBody) MarshalJSON() ([]byte, error) {
@@ -635,7 +613,7 @@ func (d DocumentDistributeResponseBody) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DocumentDistributeResponseBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"visibility", "status", "source", "id", "userId", "title", "createdAt", "updatedAt", "teamId", "useLegacyFieldInsertion", "envelopeId"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"visibility", "status", "source", "id", "userId", "title", "createdAt", "updatedAt", "teamId", "useLegacyFieldInsertion", "envelopeId", "internalVersion"}); err != nil {
 		return err
 	}
 	return nil
@@ -758,6 +736,13 @@ func (d *DocumentDistributeResponseBody) GetEnvelopeID() string {
 		return ""
 	}
 	return d.EnvelopeID
+}
+
+func (d *DocumentDistributeResponseBody) GetInternalVersion() float64 {
+	if d == nil {
+		return 0.0
+	}
+	return d.InternalVersion
 }
 
 func (d *DocumentDistributeResponseBody) GetDocumentDataID() *string {

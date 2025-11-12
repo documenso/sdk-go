@@ -59,6 +59,58 @@ func (e *FieldGetDocumentFieldNotFoundError) Error() string {
 	return string(data)
 }
 
+type FieldGetDocumentFieldForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (f *FieldGetDocumentFieldForbiddenIssue) GetMessage() string {
+	if f == nil {
+		return ""
+	}
+	return f.Message
+}
+
+// FieldGetDocumentFieldForbiddenError - Insufficient access
+type FieldGetDocumentFieldForbiddenError struct {
+	Message  string                                `json:"message"`
+	Code     string                                `json:"code"`
+	Issues   []FieldGetDocumentFieldForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata               `json:"-"`
+}
+
+var _ error = &FieldGetDocumentFieldForbiddenError{}
+
+func (e *FieldGetDocumentFieldForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type FieldGetDocumentFieldUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (f *FieldGetDocumentFieldUnauthorizedIssue) GetMessage() string {
+	if f == nil {
+		return ""
+	}
+	return f.Message
+}
+
+// FieldGetDocumentFieldUnauthorizedError - Authorization not provided
+type FieldGetDocumentFieldUnauthorizedError struct {
+	Message  string                                   `json:"message"`
+	Code     string                                   `json:"code"`
+	Issues   []FieldGetDocumentFieldUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                  `json:"-"`
+}
+
+var _ error = &FieldGetDocumentFieldUnauthorizedError{}
+
+func (e *FieldGetDocumentFieldUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type FieldGetDocumentFieldBadRequestIssue struct {
 	Message string `json:"message"`
 }

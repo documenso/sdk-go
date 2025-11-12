@@ -77,6 +77,8 @@ func main() {
 | Error Type                                            | Status Code                                           | Content Type                                          |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | apierrors.FieldCreateTemplateFieldBadRequestError     | 400                                                   | application/json                                      |
+| apierrors.FieldCreateTemplateFieldUnauthorizedError   | 401                                                   | application/json                                      |
+| apierrors.FieldCreateTemplateFieldForbiddenError      | 403                                                   | application/json                                      |
 | apierrors.FieldCreateTemplateFieldInternalServerError | 500                                                   | application/json                                      |
 | apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
 
@@ -131,6 +133,8 @@ func main() {
 | Error Type                                         | Status Code                                        | Content Type                                       |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
 | apierrors.FieldGetTemplateFieldBadRequestError     | 400                                                | application/json                                   |
+| apierrors.FieldGetTemplateFieldUnauthorizedError   | 401                                                | application/json                                   |
+| apierrors.FieldGetTemplateFieldForbiddenError      | 403                                                | application/json                                   |
 | apierrors.FieldGetTemplateFieldNotFoundError       | 404                                                | application/json                                   |
 | apierrors.FieldGetTemplateFieldInternalServerError | 500                                                | application/json                                   |
 | apierrors.APIError                                 | 4XX, 5XX                                           | \*/\*                                              |
@@ -165,7 +169,7 @@ func main() {
         Fields: []operations.FieldCreateTemplateFieldsFieldUnion{
             operations.CreateFieldCreateTemplateFieldsFieldUnionFieldCreateTemplateFieldsFieldSignature(
                 operations.FieldCreateTemplateFieldsFieldSignature{
-                    Type: operations.FieldCreateTemplateFieldsTypeSignatureSignature,
+                    Type: operations.FieldCreateTemplateFieldsTypeSignatureRequest1Signature,
                     RecipientID: 6990.12,
                     PageNumber: 3472.45,
                     PageX: 4747.87,
@@ -202,6 +206,8 @@ func main() {
 | Error Type                                             | Status Code                                            | Content Type                                           |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
 | apierrors.FieldCreateTemplateFieldsBadRequestError     | 400                                                    | application/json                                       |
+| apierrors.FieldCreateTemplateFieldsUnauthorizedError   | 401                                                    | application/json                                       |
+| apierrors.FieldCreateTemplateFieldsForbiddenError      | 403                                                    | application/json                                       |
 | apierrors.FieldCreateTemplateFieldsInternalServerError | 500                                                    | application/json                                       |
 | apierrors.APIError                                     | 4XX, 5XX                                               | \*/\*                                                  |
 
@@ -265,6 +271,8 @@ func main() {
 | Error Type                                            | Status Code                                           | Content Type                                          |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | apierrors.FieldUpdateTemplateFieldBadRequestError     | 400                                                   | application/json                                      |
+| apierrors.FieldUpdateTemplateFieldUnauthorizedError   | 401                                                   | application/json                                      |
+| apierrors.FieldUpdateTemplateFieldForbiddenError      | 403                                                   | application/json                                      |
 | apierrors.FieldUpdateTemplateFieldInternalServerError | 500                                                   | application/json                                      |
 | apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
 
@@ -330,6 +338,8 @@ func main() {
 | Error Type                                             | Status Code                                            | Content Type                                           |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
 | apierrors.FieldUpdateTemplateFieldsBadRequestError     | 400                                                    | application/json                                       |
+| apierrors.FieldUpdateTemplateFieldsUnauthorizedError   | 401                                                    | application/json                                       |
+| apierrors.FieldUpdateTemplateFieldsForbiddenError      | 403                                                    | application/json                                       |
 | apierrors.FieldUpdateTemplateFieldsInternalServerError | 500                                                    | application/json                                       |
 | apierrors.APIError                                     | 4XX, 5XX                                               | \*/\*                                                  |
 
@@ -387,5 +397,7 @@ func main() {
 | Error Type                                            | Status Code                                           | Content Type                                          |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | apierrors.FieldDeleteTemplateFieldBadRequestError     | 400                                                   | application/json                                      |
+| apierrors.FieldDeleteTemplateFieldUnauthorizedError   | 401                                                   | application/json                                      |
+| apierrors.FieldDeleteTemplateFieldForbiddenError      | 403                                                   | application/json                                      |
 | apierrors.FieldDeleteTemplateFieldInternalServerError | 500                                                   | application/json                                      |
 | apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |

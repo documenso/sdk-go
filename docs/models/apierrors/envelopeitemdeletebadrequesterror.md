@@ -1,0 +1,13 @@
+# EnvelopeItemDeleteBadRequestError
+
+Invalid input data
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `Message`                                                                                                    | *string*                                                                                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| `Code`                                                                                                       | *string*                                                                                                     | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| `Issues`                                                                                                     | [][apierrors.EnvelopeItemDeleteBadRequestIssue](../../models/apierrors/envelopeitemdeletebadrequestissue.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| `HTTPMeta`                                                                                                   | [components.HTTPMetadata](../../models/components/httpmetadata.md)                                           | :heavy_check_mark:                                                                                           | N/A                                                                                                          |

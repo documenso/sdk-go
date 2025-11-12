@@ -1,0 +1,9 @@
+# EnvelopeGetAuthOptions
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `GlobalAccessAuth`                                                                                 | [][operations.EnvelopeGetGlobalAccessAuth](../../models/operations/envelopegetglobalaccessauth.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `GlobalActionAuth`                                                                                 | [][operations.EnvelopeGetGlobalActionAuth](../../models/operations/envelopegetglobalactionauth.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |

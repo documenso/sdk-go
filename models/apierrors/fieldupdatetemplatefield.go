@@ -33,6 +33,58 @@ func (e *FieldUpdateTemplateFieldInternalServerError) Error() string {
 	return string(data)
 }
 
+type FieldUpdateTemplateFieldForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (f *FieldUpdateTemplateFieldForbiddenIssue) GetMessage() string {
+	if f == nil {
+		return ""
+	}
+	return f.Message
+}
+
+// FieldUpdateTemplateFieldForbiddenError - Insufficient access
+type FieldUpdateTemplateFieldForbiddenError struct {
+	Message  string                                   `json:"message"`
+	Code     string                                   `json:"code"`
+	Issues   []FieldUpdateTemplateFieldForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                  `json:"-"`
+}
+
+var _ error = &FieldUpdateTemplateFieldForbiddenError{}
+
+func (e *FieldUpdateTemplateFieldForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type FieldUpdateTemplateFieldUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (f *FieldUpdateTemplateFieldUnauthorizedIssue) GetMessage() string {
+	if f == nil {
+		return ""
+	}
+	return f.Message
+}
+
+// FieldUpdateTemplateFieldUnauthorizedError - Authorization not provided
+type FieldUpdateTemplateFieldUnauthorizedError struct {
+	Message  string                                      `json:"message"`
+	Code     string                                      `json:"code"`
+	Issues   []FieldUpdateTemplateFieldUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                     `json:"-"`
+}
+
+var _ error = &FieldUpdateTemplateFieldUnauthorizedError{}
+
+func (e *FieldUpdateTemplateFieldUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type FieldUpdateTemplateFieldBadRequestIssue struct {
 	Message string `json:"message"`
 }

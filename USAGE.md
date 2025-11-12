@@ -16,7 +16,7 @@ func main() {
 		sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
 	)
 
-	res, err := s.Documents.Get(ctx, 6150.61)
+	res, err := s.Envelopes.Get(ctx, "<id>")
 	if err != nil {
 		log.Fatal(err)
 	}

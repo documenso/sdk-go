@@ -33,6 +33,58 @@ func (e *RecipientCreateDocumentRecipientInternalServerError) Error() string {
 	return string(data)
 }
 
+type RecipientCreateDocumentRecipientForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (r *RecipientCreateDocumentRecipientForbiddenIssue) GetMessage() string {
+	if r == nil {
+		return ""
+	}
+	return r.Message
+}
+
+// RecipientCreateDocumentRecipientForbiddenError - Insufficient access
+type RecipientCreateDocumentRecipientForbiddenError struct {
+	Message  string                                           `json:"message"`
+	Code     string                                           `json:"code"`
+	Issues   []RecipientCreateDocumentRecipientForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                          `json:"-"`
+}
+
+var _ error = &RecipientCreateDocumentRecipientForbiddenError{}
+
+func (e *RecipientCreateDocumentRecipientForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type RecipientCreateDocumentRecipientUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (r *RecipientCreateDocumentRecipientUnauthorizedIssue) GetMessage() string {
+	if r == nil {
+		return ""
+	}
+	return r.Message
+}
+
+// RecipientCreateDocumentRecipientUnauthorizedError - Authorization not provided
+type RecipientCreateDocumentRecipientUnauthorizedError struct {
+	Message  string                                              `json:"message"`
+	Code     string                                              `json:"code"`
+	Issues   []RecipientCreateDocumentRecipientUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                             `json:"-"`
+}
+
+var _ error = &RecipientCreateDocumentRecipientUnauthorizedError{}
+
+func (e *RecipientCreateDocumentRecipientUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type RecipientCreateDocumentRecipientBadRequestIssue struct {
 	Message string `json:"message"`
 }

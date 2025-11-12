@@ -43,7 +43,6 @@ func (e *RecipientCreateTemplateRecipientsRoleRequest) UnmarshalJSON(data []byte
 	}
 }
 
-// RecipientCreateTemplateRecipientsAccessAuthRequest - The type of authentication required for the recipient to access the document.
 type RecipientCreateTemplateRecipientsAccessAuthRequest string
 
 const (
@@ -70,7 +69,6 @@ func (e *RecipientCreateTemplateRecipientsAccessAuthRequest) UnmarshalJSON(data 
 	}
 }
 
-// RecipientCreateTemplateRecipientsActionAuthRequest - The type of authentication required for the recipient to sign the document.
 type RecipientCreateTemplateRecipientsActionAuthRequest string
 
 const (
@@ -292,7 +290,6 @@ func (e *RecipientCreateTemplateRecipientsSendStatus) UnmarshalJSON(data []byte)
 	}
 }
 
-// RecipientCreateTemplateRecipientsAccessAuthResponse - The type of authentication required for the recipient to access the document.
 type RecipientCreateTemplateRecipientsAccessAuthResponse string
 
 const (
@@ -319,7 +316,6 @@ func (e *RecipientCreateTemplateRecipientsAccessAuthResponse) UnmarshalJSON(data
 	}
 }
 
-// RecipientCreateTemplateRecipientsActionAuthResponse - The type of authentication required for the recipient to sign the document.
 type RecipientCreateTemplateRecipientsActionAuthResponse string
 
 const (
@@ -388,11 +384,10 @@ type RecipientCreateTemplateRecipientsRecipientResponse struct {
 	Expired           *string                                        `json:"expired"`
 	SignedAt          *string                                        `json:"signedAt"`
 	AuthOptions       *RecipientCreateTemplateRecipientsAuthOptions  `json:"authOptions"`
-	// The order in which the recipient should sign the document. Only works if the document is set to sequential signing.
-	SigningOrder    *float64 `json:"signingOrder"`
-	RejectionReason *string  `json:"rejectionReason"`
-	DocumentID      *float64 `json:"documentId,omitempty"`
-	TemplateID      *float64 `json:"templateId,omitempty"`
+	SigningOrder      *float64                                       `json:"signingOrder"`
+	RejectionReason   *string                                        `json:"rejectionReason"`
+	DocumentID        *float64                                       `json:"documentId,omitempty"`
+	TemplateID        *float64                                       `json:"templateId,omitempty"`
 }
 
 func (r *RecipientCreateTemplateRecipientsRecipientResponse) GetEnvelopeID() string {

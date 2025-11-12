@@ -9,18 +9,18 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-// Version - The version of the document to download. "signed" returns the completed document with signatures, "original" returns the original uploaded document.
-type Version string
+// DocumentDownloadVersion - The version of the document to download. "signed" returns the completed document with signatures, "original" returns the original uploaded document.
+type DocumentDownloadVersion string
 
 const (
-	VersionOriginal Version = "original"
-	VersionSigned   Version = "signed"
+	DocumentDownloadVersionOriginal DocumentDownloadVersion = "original"
+	DocumentDownloadVersionSigned   DocumentDownloadVersion = "signed"
 )
 
-func (e Version) ToPointer() *Version {
+func (e DocumentDownloadVersion) ToPointer() *DocumentDownloadVersion {
 	return &e
 }
-func (e *Version) UnmarshalJSON(data []byte) error {
+func (e *DocumentDownloadVersion) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -29,10 +29,10 @@ func (e *Version) UnmarshalJSON(data []byte) error {
 	case "original":
 		fallthrough
 	case "signed":
-		*e = Version(v)
+		*e = DocumentDownloadVersion(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for Version: %v", v)
+		return fmt.Errorf("invalid value for DocumentDownloadVersion: %v", v)
 	}
 }
 
@@ -40,7 +40,7 @@ type DocumentDownloadRequest struct {
 	// The ID of the document to download.
 	DocumentID float64 `pathParam:"style=simple,explode=false,name=documentId"`
 	// The version of the document to download. "signed" returns the completed document with signatures, "original" returns the original uploaded document.
-	Version *Version `default:"signed" queryParam:"style=form,explode=true,name=version"`
+	Version *DocumentDownloadVersion `default:"signed" queryParam:"style=form,explode=true,name=version"`
 }
 
 func (d DocumentDownloadRequest) MarshalJSON() ([]byte, error) {
@@ -61,48 +61,18 @@ func (d *DocumentDownloadRequest) GetDocumentID() float64 {
 	return d.DocumentID
 }
 
-func (d *DocumentDownloadRequest) GetVersion() *Version {
+func (d *DocumentDownloadRequest) GetVersion() *DocumentDownloadVersion {
 	if d == nil {
 		return nil
 	}
 	return d.Version
 }
 
-// DocumentDownloadResponseBody - Successful response
-type DocumentDownloadResponseBody struct {
-	// Pre-signed URL for downloading the PDF file
-	DownloadURL string `json:"downloadUrl"`
-	// The filename of the PDF file
-	Filename string `json:"filename"`
-	// MIME type of the file
-	ContentType string `json:"contentType"`
-}
-
-func (d *DocumentDownloadResponseBody) GetDownloadURL() string {
-	if d == nil {
-		return ""
-	}
-	return d.DownloadURL
-}
-
-func (d *DocumentDownloadResponseBody) GetFilename() string {
-	if d == nil {
-		return ""
-	}
-	return d.Filename
-}
-
-func (d *DocumentDownloadResponseBody) GetContentType() string {
-	if d == nil {
-		return ""
-	}
-	return d.ContentType
-}
-
 type DocumentDownloadResponse struct {
 	HTTPMeta components.HTTPMetadata `json:"-"`
 	// Successful response
-	Object *DocumentDownloadResponseBody
+	Any     any
+	Headers map[string][]string
 }
 
 func (d *DocumentDownloadResponse) GetHTTPMeta() components.HTTPMetadata {
@@ -112,9 +82,16 @@ func (d *DocumentDownloadResponse) GetHTTPMeta() components.HTTPMetadata {
 	return d.HTTPMeta
 }
 
-func (d *DocumentDownloadResponse) GetObject() *DocumentDownloadResponseBody {
+func (d *DocumentDownloadResponse) GetAny() any {
 	if d == nil {
 		return nil
 	}
-	return d.Object
+	return d.Any
+}
+
+func (d *DocumentDownloadResponse) GetHeaders() map[string][]string {
+	if d == nil {
+		return map[string][]string{}
+	}
+	return d.Headers
 }

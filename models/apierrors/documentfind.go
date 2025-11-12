@@ -59,6 +59,58 @@ func (e *DocumentFindNotFoundError) Error() string {
 	return string(data)
 }
 
+type DocumentFindForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (d *DocumentFindForbiddenIssue) GetMessage() string {
+	if d == nil {
+		return ""
+	}
+	return d.Message
+}
+
+// DocumentFindForbiddenError - Insufficient access
+type DocumentFindForbiddenError struct {
+	Message  string                       `json:"message"`
+	Code     string                       `json:"code"`
+	Issues   []DocumentFindForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata      `json:"-"`
+}
+
+var _ error = &DocumentFindForbiddenError{}
+
+func (e *DocumentFindForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type DocumentFindUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (d *DocumentFindUnauthorizedIssue) GetMessage() string {
+	if d == nil {
+		return ""
+	}
+	return d.Message
+}
+
+// DocumentFindUnauthorizedError - Authorization not provided
+type DocumentFindUnauthorizedError struct {
+	Message  string                          `json:"message"`
+	Code     string                          `json:"code"`
+	Issues   []DocumentFindUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata         `json:"-"`
+}
+
+var _ error = &DocumentFindUnauthorizedError{}
+
+func (e *DocumentFindUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type DocumentFindBadRequestIssue struct {
 	Message string `json:"message"`
 }

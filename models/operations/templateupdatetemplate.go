@@ -9,18 +9,18 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateUpdateTemplateVisibilityRequest string
+type TemplateUpdateTemplateDataVisibility string
 
 const (
-	TemplateUpdateTemplateVisibilityRequestEveryone        TemplateUpdateTemplateVisibilityRequest = "EVERYONE"
-	TemplateUpdateTemplateVisibilityRequestManagerAndAbove TemplateUpdateTemplateVisibilityRequest = "MANAGER_AND_ABOVE"
-	TemplateUpdateTemplateVisibilityRequestAdmin           TemplateUpdateTemplateVisibilityRequest = "ADMIN"
+	TemplateUpdateTemplateDataVisibilityEveryone        TemplateUpdateTemplateDataVisibility = "EVERYONE"
+	TemplateUpdateTemplateDataVisibilityManagerAndAbove TemplateUpdateTemplateDataVisibility = "MANAGER_AND_ABOVE"
+	TemplateUpdateTemplateDataVisibilityAdmin           TemplateUpdateTemplateDataVisibility = "ADMIN"
 )
 
-func (e TemplateUpdateTemplateVisibilityRequest) ToPointer() *TemplateUpdateTemplateVisibilityRequest {
+func (e TemplateUpdateTemplateDataVisibility) ToPointer() *TemplateUpdateTemplateDataVisibility {
 	return &e
 }
-func (e *TemplateUpdateTemplateVisibilityRequest) UnmarshalJSON(data []byte) error {
+func (e *TemplateUpdateTemplateDataVisibility) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -31,25 +31,24 @@ func (e *TemplateUpdateTemplateVisibilityRequest) UnmarshalJSON(data []byte) err
 	case "MANAGER_AND_ABOVE":
 		fallthrough
 	case "ADMIN":
-		*e = TemplateUpdateTemplateVisibilityRequest(v)
+		*e = TemplateUpdateTemplateDataVisibility(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateUpdateTemplateVisibilityRequest: %v", v)
+		return fmt.Errorf("invalid value for TemplateUpdateTemplateDataVisibility: %v", v)
 	}
 }
 
-// TemplateUpdateTemplateGlobalAccessAuthRequest - The type of authentication required for the recipient to access the document.
-type TemplateUpdateTemplateGlobalAccessAuthRequest string
+type TemplateUpdateTemplateDataGlobalAccessAuth string
 
 const (
-	TemplateUpdateTemplateGlobalAccessAuthRequestAccount       TemplateUpdateTemplateGlobalAccessAuthRequest = "ACCOUNT"
-	TemplateUpdateTemplateGlobalAccessAuthRequestTwoFactorAuth TemplateUpdateTemplateGlobalAccessAuthRequest = "TWO_FACTOR_AUTH"
+	TemplateUpdateTemplateDataGlobalAccessAuthAccount       TemplateUpdateTemplateDataGlobalAccessAuth = "ACCOUNT"
+	TemplateUpdateTemplateDataGlobalAccessAuthTwoFactorAuth TemplateUpdateTemplateDataGlobalAccessAuth = "TWO_FACTOR_AUTH"
 )
 
-func (e TemplateUpdateTemplateGlobalAccessAuthRequest) ToPointer() *TemplateUpdateTemplateGlobalAccessAuthRequest {
+func (e TemplateUpdateTemplateDataGlobalAccessAuth) ToPointer() *TemplateUpdateTemplateDataGlobalAccessAuth {
 	return &e
 }
-func (e *TemplateUpdateTemplateGlobalAccessAuthRequest) UnmarshalJSON(data []byte) error {
+func (e *TemplateUpdateTemplateDataGlobalAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -58,27 +57,26 @@ func (e *TemplateUpdateTemplateGlobalAccessAuthRequest) UnmarshalJSON(data []byt
 	case "ACCOUNT":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
-		*e = TemplateUpdateTemplateGlobalAccessAuthRequest(v)
+		*e = TemplateUpdateTemplateDataGlobalAccessAuth(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateUpdateTemplateGlobalAccessAuthRequest: %v", v)
+		return fmt.Errorf("invalid value for TemplateUpdateTemplateDataGlobalAccessAuth: %v", v)
 	}
 }
 
-// TemplateUpdateTemplateGlobalActionAuthRequest - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
-type TemplateUpdateTemplateGlobalActionAuthRequest string
+type TemplateUpdateTemplateDataGlobalActionAuth string
 
 const (
-	TemplateUpdateTemplateGlobalActionAuthRequestAccount       TemplateUpdateTemplateGlobalActionAuthRequest = "ACCOUNT"
-	TemplateUpdateTemplateGlobalActionAuthRequestPasskey       TemplateUpdateTemplateGlobalActionAuthRequest = "PASSKEY"
-	TemplateUpdateTemplateGlobalActionAuthRequestTwoFactorAuth TemplateUpdateTemplateGlobalActionAuthRequest = "TWO_FACTOR_AUTH"
-	TemplateUpdateTemplateGlobalActionAuthRequestPassword      TemplateUpdateTemplateGlobalActionAuthRequest = "PASSWORD"
+	TemplateUpdateTemplateDataGlobalActionAuthAccount       TemplateUpdateTemplateDataGlobalActionAuth = "ACCOUNT"
+	TemplateUpdateTemplateDataGlobalActionAuthPasskey       TemplateUpdateTemplateDataGlobalActionAuth = "PASSKEY"
+	TemplateUpdateTemplateDataGlobalActionAuthTwoFactorAuth TemplateUpdateTemplateDataGlobalActionAuth = "TWO_FACTOR_AUTH"
+	TemplateUpdateTemplateDataGlobalActionAuthPassword      TemplateUpdateTemplateDataGlobalActionAuth = "PASSWORD"
 )
 
-func (e TemplateUpdateTemplateGlobalActionAuthRequest) ToPointer() *TemplateUpdateTemplateGlobalActionAuthRequest {
+func (e TemplateUpdateTemplateDataGlobalActionAuth) ToPointer() *TemplateUpdateTemplateDataGlobalActionAuth {
 	return &e
 }
-func (e *TemplateUpdateTemplateGlobalActionAuthRequest) UnmarshalJSON(data []byte) error {
+func (e *TemplateUpdateTemplateDataGlobalActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -91,10 +89,10 @@ func (e *TemplateUpdateTemplateGlobalActionAuthRequest) UnmarshalJSON(data []byt
 	case "TWO_FACTOR_AUTH":
 		fallthrough
 	case "PASSWORD":
-		*e = TemplateUpdateTemplateGlobalActionAuthRequest(v)
+		*e = TemplateUpdateTemplateDataGlobalActionAuth(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateUpdateTemplateGlobalActionAuthRequest: %v", v)
+		return fmt.Errorf("invalid value for TemplateUpdateTemplateDataGlobalActionAuth: %v", v)
 	}
 }
 
@@ -125,19 +123,16 @@ func (e *TemplateUpdateTemplateDataType) UnmarshalJSON(data []byte) error {
 }
 
 type TemplateUpdateTemplateData struct {
-	// The title of the document.
-	Title            *string                                         `json:"title,omitempty"`
-	ExternalID       *string                                         `json:"externalId,omitempty"`
-	Visibility       *TemplateUpdateTemplateVisibilityRequest        `json:"visibility,omitempty"`
-	GlobalAccessAuth []TemplateUpdateTemplateGlobalAccessAuthRequest `json:"globalAccessAuth,omitempty"`
-	GlobalActionAuth []TemplateUpdateTemplateGlobalActionAuthRequest `json:"globalActionAuth,omitempty"`
-	// The title of the template that will be displayed to the public. Only applicable for public templates.
-	PublicTitle *string `json:"publicTitle,omitempty"`
-	// The description of the template that will be displayed to the public. Only applicable for public templates.
-	PublicDescription       *string                         `json:"publicDescription,omitempty"`
-	Type                    *TemplateUpdateTemplateDataType `json:"type,omitempty"`
-	UseLegacyFieldInsertion *bool                           `json:"useLegacyFieldInsertion,omitempty"`
-	FolderID                *string                         `json:"folderId,omitempty"`
+	Title                   *string                                      `json:"title,omitempty"`
+	ExternalID              *string                                      `json:"externalId,omitempty"`
+	Visibility              *TemplateUpdateTemplateDataVisibility        `json:"visibility,omitempty"`
+	GlobalAccessAuth        []TemplateUpdateTemplateDataGlobalAccessAuth `json:"globalAccessAuth,omitempty"`
+	GlobalActionAuth        []TemplateUpdateTemplateDataGlobalActionAuth `json:"globalActionAuth,omitempty"`
+	PublicTitle             *string                                      `json:"publicTitle,omitempty"`
+	PublicDescription       *string                                      `json:"publicDescription,omitempty"`
+	Type                    *TemplateUpdateTemplateDataType              `json:"type,omitempty"`
+	UseLegacyFieldInsertion *bool                                        `json:"useLegacyFieldInsertion,omitempty"`
+	FolderID                *string                                      `json:"folderId,omitempty"`
 }
 
 func (t *TemplateUpdateTemplateData) GetTitle() *string {
@@ -154,21 +149,21 @@ func (t *TemplateUpdateTemplateData) GetExternalID() *string {
 	return t.ExternalID
 }
 
-func (t *TemplateUpdateTemplateData) GetVisibility() *TemplateUpdateTemplateVisibilityRequest {
+func (t *TemplateUpdateTemplateData) GetVisibility() *TemplateUpdateTemplateDataVisibility {
 	if t == nil {
 		return nil
 	}
 	return t.Visibility
 }
 
-func (t *TemplateUpdateTemplateData) GetGlobalAccessAuth() []TemplateUpdateTemplateGlobalAccessAuthRequest {
+func (t *TemplateUpdateTemplateData) GetGlobalAccessAuth() []TemplateUpdateTemplateDataGlobalAccessAuth {
 	if t == nil {
 		return nil
 	}
 	return t.GlobalAccessAuth
 }
 
-func (t *TemplateUpdateTemplateData) GetGlobalActionAuth() []TemplateUpdateTemplateGlobalActionAuthRequest {
+func (t *TemplateUpdateTemplateData) GetGlobalActionAuth() []TemplateUpdateTemplateDataGlobalActionAuth {
 	if t == nil {
 		return nil
 	}
@@ -210,7 +205,6 @@ func (t *TemplateUpdateTemplateData) GetFolderID() *string {
 	return t.FolderID
 }
 
-// TemplateUpdateTemplateDateFormat - The date format to use for date fields and signing the document.
 type TemplateUpdateTemplateDateFormat string
 
 const (
@@ -297,7 +291,6 @@ func (e *TemplateUpdateTemplateDateFormat) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// TemplateUpdateTemplateDistributionMethod - The distribution method to use when sending the document to the recipients.
 type TemplateUpdateTemplateDistributionMethod string
 
 const (
@@ -325,20 +318,13 @@ func (e *TemplateUpdateTemplateDistributionMethod) UnmarshalJSON(data []byte) er
 }
 
 type TemplateUpdateTemplateEmailSettings struct {
-	// Whether to send an email to all recipients that the document is ready for them to sign.
 	RecipientSigningRequest *bool `default:"true" json:"recipientSigningRequest"`
-	// Whether to send an email to the recipient who was removed from a pending document.
-	RecipientRemoved *bool `default:"true" json:"recipientRemoved"`
-	// Whether to send an email to the document owner when a recipient has signed the document.
-	RecipientSigned *bool `default:"true" json:"recipientSigned"`
-	// Whether to send an email to the recipient who has just signed the document indicating that there are still other recipients who need to sign the document. This will only be sent if the document is still pending after the recipient has signed.
-	DocumentPending *bool `default:"true" json:"documentPending"`
-	// Whether to send an email to all recipients when the document is complete.
-	DocumentCompleted *bool `default:"true" json:"documentCompleted"`
-	// Whether to send an email to all recipients if a pending document has been deleted.
-	DocumentDeleted *bool `default:"true" json:"documentDeleted"`
-	// Whether to send an email to the document owner when the document is complete.
-	OwnerDocumentCompleted *bool `default:"true" json:"ownerDocumentCompleted"`
+	RecipientRemoved        *bool `default:"true" json:"recipientRemoved"`
+	RecipientSigned         *bool `default:"true" json:"recipientSigned"`
+	DocumentPending         *bool `default:"true" json:"documentPending"`
+	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
+	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
+	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
 }
 
 func (t TemplateUpdateTemplateEmailSettings) MarshalJSON() ([]byte, error) {
@@ -401,7 +387,6 @@ func (t *TemplateUpdateTemplateEmailSettings) GetOwnerDocumentCompleted() *bool 
 	return t.OwnerDocumentCompleted
 }
 
-// TemplateUpdateTemplateLanguage - The language to use for email communications with recipients.
 type TemplateUpdateTemplateLanguage string
 
 const (
@@ -467,31 +452,21 @@ func (e *TemplateUpdateTemplateSigningOrder) UnmarshalJSON(data []byte) error {
 }
 
 type TemplateUpdateTemplateMeta struct {
-	// The subject of the email that will be sent to the recipients.
-	Subject *string `json:"subject,omitempty"`
-	// The message of the email that will be sent to the recipients.
-	Message *string `json:"message,omitempty"`
-	// The timezone to use for date fields and signing the document. Example Etc/UTC, Australia/Melbourne
-	Timezone *string `json:"timezone,omitempty"`
-	// The date format to use for date fields and signing the document.
-	DateFormat *TemplateUpdateTemplateDateFormat `json:"dateFormat,omitempty"`
-	// The distribution method to use when sending the document to the recipients.
-	DistributionMethod *TemplateUpdateTemplateDistributionMethod `json:"distributionMethod,omitempty"`
-	EmailID            *string                                   `json:"emailId,omitempty"`
-	EmailReplyTo       *string                                   `json:"emailReplyTo,omitempty"`
-	EmailSettings      *TemplateUpdateTemplateEmailSettings      `json:"emailSettings,omitempty"`
-	// The URL to which the recipient should be redirected after signing the document.
-	RedirectURL *string `json:"redirectUrl,omitempty"`
-	// The language to use for email communications with recipients.
-	Language *TemplateUpdateTemplateLanguage `json:"language,omitempty"`
-	// Whether to allow recipients to sign using a typed signature.
-	TypedSignatureEnabled *bool `json:"typedSignatureEnabled,omitempty"`
-	// Whether to allow recipients to sign using an uploaded signature.
-	UploadSignatureEnabled *bool `json:"uploadSignatureEnabled,omitempty"`
-	// Whether to allow recipients to sign using a draw signature.
-	DrawSignatureEnabled   *bool                               `json:"drawSignatureEnabled,omitempty"`
-	SigningOrder           *TemplateUpdateTemplateSigningOrder `json:"signingOrder,omitempty"`
-	AllowDictateNextSigner *bool                               `json:"allowDictateNextSigner,omitempty"`
+	Subject                *string                                   `json:"subject,omitempty"`
+	Message                *string                                   `json:"message,omitempty"`
+	Timezone               *string                                   `json:"timezone,omitempty"`
+	DateFormat             *TemplateUpdateTemplateDateFormat         `json:"dateFormat,omitempty"`
+	DistributionMethod     *TemplateUpdateTemplateDistributionMethod `json:"distributionMethod,omitempty"`
+	EmailID                *string                                   `json:"emailId,omitempty"`
+	EmailReplyTo           *string                                   `json:"emailReplyTo,omitempty"`
+	EmailSettings          *TemplateUpdateTemplateEmailSettings      `json:"emailSettings,omitempty"`
+	RedirectURL            *string                                   `json:"redirectUrl,omitempty"`
+	Language               *TemplateUpdateTemplateLanguage           `json:"language,omitempty"`
+	TypedSignatureEnabled  *bool                                     `json:"typedSignatureEnabled,omitempty"`
+	UploadSignatureEnabled *bool                                     `json:"uploadSignatureEnabled,omitempty"`
+	DrawSignatureEnabled   *bool                                     `json:"drawSignatureEnabled,omitempty"`
+	SigningOrder           *TemplateUpdateTemplateSigningOrder       `json:"signingOrder,omitempty"`
+	AllowDictateNextSigner *bool                                     `json:"allowDictateNextSigner,omitempty"`
 }
 
 func (t *TemplateUpdateTemplateMeta) GetSubject() *string {
@@ -681,7 +656,6 @@ func (e *TemplateUpdateTemplateVisibilityResponse) UnmarshalJSON(data []byte) er
 	}
 }
 
-// TemplateUpdateTemplateGlobalAccessAuthResponse - The type of authentication required for the recipient to access the document.
 type TemplateUpdateTemplateGlobalAccessAuthResponse string
 
 const (
@@ -708,7 +682,6 @@ func (e *TemplateUpdateTemplateGlobalAccessAuthResponse) UnmarshalJSON(data []by
 	}
 }
 
-// TemplateUpdateTemplateGlobalActionAuthResponse - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
 type TemplateUpdateTemplateGlobalActionAuthResponse string
 
 const (

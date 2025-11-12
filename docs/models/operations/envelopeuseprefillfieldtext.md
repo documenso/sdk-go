@@ -1,0 +1,12 @@
+# EnvelopeUsePrefillFieldText
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `Type`                                                                           | [operations.EnvelopeUseTypeText](../../models/operations/envelopeusetypetext.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `Label`                                                                          | **string*                                                                        | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `Placeholder`                                                                    | **string*                                                                        | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `Value`                                                                          | **string*                                                                        | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `ID`                                                                             | *float64*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |

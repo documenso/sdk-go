@@ -33,6 +33,58 @@ func (e *DocumentRedistributeInternalServerError) Error() string {
 	return string(data)
 }
 
+type DocumentRedistributeForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (d *DocumentRedistributeForbiddenIssue) GetMessage() string {
+	if d == nil {
+		return ""
+	}
+	return d.Message
+}
+
+// DocumentRedistributeForbiddenError - Insufficient access
+type DocumentRedistributeForbiddenError struct {
+	Message  string                               `json:"message"`
+	Code     string                               `json:"code"`
+	Issues   []DocumentRedistributeForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata              `json:"-"`
+}
+
+var _ error = &DocumentRedistributeForbiddenError{}
+
+func (e *DocumentRedistributeForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type DocumentRedistributeUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (d *DocumentRedistributeUnauthorizedIssue) GetMessage() string {
+	if d == nil {
+		return ""
+	}
+	return d.Message
+}
+
+// DocumentRedistributeUnauthorizedError - Authorization not provided
+type DocumentRedistributeUnauthorizedError struct {
+	Message  string                                  `json:"message"`
+	Code     string                                  `json:"code"`
+	Issues   []DocumentRedistributeUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                 `json:"-"`
+}
+
+var _ error = &DocumentRedistributeUnauthorizedError{}
+
+func (e *DocumentRedistributeUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type DocumentRedistributeBadRequestIssue struct {
 	Message string `json:"message"`
 }

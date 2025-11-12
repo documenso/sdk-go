@@ -8,7 +8,6 @@ import (
 )
 
 type EmbeddingPresignCreateEmbeddingPresignTokenRequest struct {
-	// Expiration time in minutes (default: 60, max: 10,080)
 	ExpiresIn *float64 `default:"60" json:"expiresIn"`
 }
 
@@ -32,9 +31,8 @@ func (e *EmbeddingPresignCreateEmbeddingPresignTokenRequest) GetExpiresIn() *flo
 
 // EmbeddingPresignCreateEmbeddingPresignTokenResponseBody - Successful response
 type EmbeddingPresignCreateEmbeddingPresignTokenResponseBody struct {
-	Token     string `json:"token"`
-	ExpiresAt string `json:"expiresAt"`
-	// Expiration time in seconds
+	Token     string  `json:"token"`
+	ExpiresAt string  `json:"expiresAt"`
 	ExpiresIn float64 `json:"expiresIn"`
 }
 

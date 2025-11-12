@@ -33,6 +33,58 @@ func (e *RecipientUpdateTemplateRecipientInternalServerError) Error() string {
 	return string(data)
 }
 
+type RecipientUpdateTemplateRecipientForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (r *RecipientUpdateTemplateRecipientForbiddenIssue) GetMessage() string {
+	if r == nil {
+		return ""
+	}
+	return r.Message
+}
+
+// RecipientUpdateTemplateRecipientForbiddenError - Insufficient access
+type RecipientUpdateTemplateRecipientForbiddenError struct {
+	Message  string                                           `json:"message"`
+	Code     string                                           `json:"code"`
+	Issues   []RecipientUpdateTemplateRecipientForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                          `json:"-"`
+}
+
+var _ error = &RecipientUpdateTemplateRecipientForbiddenError{}
+
+func (e *RecipientUpdateTemplateRecipientForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type RecipientUpdateTemplateRecipientUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (r *RecipientUpdateTemplateRecipientUnauthorizedIssue) GetMessage() string {
+	if r == nil {
+		return ""
+	}
+	return r.Message
+}
+
+// RecipientUpdateTemplateRecipientUnauthorizedError - Authorization not provided
+type RecipientUpdateTemplateRecipientUnauthorizedError struct {
+	Message  string                                              `json:"message"`
+	Code     string                                              `json:"code"`
+	Issues   []RecipientUpdateTemplateRecipientUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                             `json:"-"`
+}
+
+var _ error = &RecipientUpdateTemplateRecipientUnauthorizedError{}
+
+func (e *RecipientUpdateTemplateRecipientUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type RecipientUpdateTemplateRecipientBadRequestIssue struct {
 	Message string `json:"message"`
 }

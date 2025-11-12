@@ -33,6 +33,58 @@ func (e *TemplateDuplicateTemplateInternalServerError) Error() string {
 	return string(data)
 }
 
+type TemplateDuplicateTemplateForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (t *TemplateDuplicateTemplateForbiddenIssue) GetMessage() string {
+	if t == nil {
+		return ""
+	}
+	return t.Message
+}
+
+// TemplateDuplicateTemplateForbiddenError - Insufficient access
+type TemplateDuplicateTemplateForbiddenError struct {
+	Message  string                                    `json:"message"`
+	Code     string                                    `json:"code"`
+	Issues   []TemplateDuplicateTemplateForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                   `json:"-"`
+}
+
+var _ error = &TemplateDuplicateTemplateForbiddenError{}
+
+func (e *TemplateDuplicateTemplateForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type TemplateDuplicateTemplateUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (t *TemplateDuplicateTemplateUnauthorizedIssue) GetMessage() string {
+	if t == nil {
+		return ""
+	}
+	return t.Message
+}
+
+// TemplateDuplicateTemplateUnauthorizedError - Authorization not provided
+type TemplateDuplicateTemplateUnauthorizedError struct {
+	Message  string                                       `json:"message"`
+	Code     string                                       `json:"code"`
+	Issues   []TemplateDuplicateTemplateUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                      `json:"-"`
+}
+
+var _ error = &TemplateDuplicateTemplateUnauthorizedError{}
+
+func (e *TemplateDuplicateTemplateUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type TemplateDuplicateTemplateBadRequestIssue struct {
 	Message string `json:"message"`
 }

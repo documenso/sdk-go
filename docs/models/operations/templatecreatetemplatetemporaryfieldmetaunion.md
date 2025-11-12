@@ -3,6 +3,12 @@
 
 ## Supported Types
 
+### TemplateCreateTemplateTemporaryFieldMetaSignature
+
+```go
+templateCreateTemplateTemporaryFieldMetaUnion := operations.CreateTemplateCreateTemplateTemporaryFieldMetaUnionTemplateCreateTemplateTemporaryFieldMetaSignature(operations.TemplateCreateTemplateTemporaryFieldMetaSignature{/* values here */})
+```
+
 ### TemplateCreateTemplateTemporaryFieldMetaInitials
 
 ```go

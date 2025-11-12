@@ -19,9 +19,7 @@ func (d *DocumentDuplicateRequest) GetDocumentID() float64 {
 
 // DocumentDuplicateResponseBody - Successful response
 type DocumentDuplicateResponseBody struct {
-	// The envelope ID
-	ID string `json:"id"`
-	// The legacy document ID
+	ID         string  `json:"id"`
 	DocumentID float64 `json:"documentId"`
 }
 

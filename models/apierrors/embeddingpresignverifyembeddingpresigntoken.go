@@ -33,6 +33,58 @@ func (e *EmbeddingPresignVerifyEmbeddingPresignTokenInternalServerError) Error()
 	return string(data)
 }
 
+type EmbeddingPresignVerifyEmbeddingPresignTokenForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (e *EmbeddingPresignVerifyEmbeddingPresignTokenForbiddenIssue) GetMessage() string {
+	if e == nil {
+		return ""
+	}
+	return e.Message
+}
+
+// EmbeddingPresignVerifyEmbeddingPresignTokenForbiddenError - Insufficient access
+type EmbeddingPresignVerifyEmbeddingPresignTokenForbiddenError struct {
+	Message  string                                                      `json:"message"`
+	Code     string                                                      `json:"code"`
+	Issues   []EmbeddingPresignVerifyEmbeddingPresignTokenForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                                     `json:"-"`
+}
+
+var _ error = &EmbeddingPresignVerifyEmbeddingPresignTokenForbiddenError{}
+
+func (e *EmbeddingPresignVerifyEmbeddingPresignTokenForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type EmbeddingPresignVerifyEmbeddingPresignTokenUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (e *EmbeddingPresignVerifyEmbeddingPresignTokenUnauthorizedIssue) GetMessage() string {
+	if e == nil {
+		return ""
+	}
+	return e.Message
+}
+
+// EmbeddingPresignVerifyEmbeddingPresignTokenUnauthorizedError - Authorization not provided
+type EmbeddingPresignVerifyEmbeddingPresignTokenUnauthorizedError struct {
+	Message  string                                                         `json:"message"`
+	Code     string                                                         `json:"code"`
+	Issues   []EmbeddingPresignVerifyEmbeddingPresignTokenUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                                        `json:"-"`
+}
+
+var _ error = &EmbeddingPresignVerifyEmbeddingPresignTokenUnauthorizedError{}
+
+func (e *EmbeddingPresignVerifyEmbeddingPresignTokenUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type EmbeddingPresignVerifyEmbeddingPresignTokenBadRequestIssue struct {
 	Message string `json:"message"`
 }

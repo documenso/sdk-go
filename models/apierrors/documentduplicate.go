@@ -33,6 +33,58 @@ func (e *DocumentDuplicateInternalServerError) Error() string {
 	return string(data)
 }
 
+type DocumentDuplicateForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (d *DocumentDuplicateForbiddenIssue) GetMessage() string {
+	if d == nil {
+		return ""
+	}
+	return d.Message
+}
+
+// DocumentDuplicateForbiddenError - Insufficient access
+type DocumentDuplicateForbiddenError struct {
+	Message  string                            `json:"message"`
+	Code     string                            `json:"code"`
+	Issues   []DocumentDuplicateForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata           `json:"-"`
+}
+
+var _ error = &DocumentDuplicateForbiddenError{}
+
+func (e *DocumentDuplicateForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type DocumentDuplicateUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (d *DocumentDuplicateUnauthorizedIssue) GetMessage() string {
+	if d == nil {
+		return ""
+	}
+	return d.Message
+}
+
+// DocumentDuplicateUnauthorizedError - Authorization not provided
+type DocumentDuplicateUnauthorizedError struct {
+	Message  string                               `json:"message"`
+	Code     string                               `json:"code"`
+	Issues   []DocumentDuplicateUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata              `json:"-"`
+}
+
+var _ error = &DocumentDuplicateUnauthorizedError{}
+
+func (e *DocumentDuplicateUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type DocumentDuplicateBadRequestIssue struct {
 	Message string `json:"message"`
 }

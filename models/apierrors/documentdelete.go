@@ -33,6 +33,58 @@ func (e *DocumentDeleteInternalServerError) Error() string {
 	return string(data)
 }
 
+type DocumentDeleteForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (d *DocumentDeleteForbiddenIssue) GetMessage() string {
+	if d == nil {
+		return ""
+	}
+	return d.Message
+}
+
+// DocumentDeleteForbiddenError - Insufficient access
+type DocumentDeleteForbiddenError struct {
+	Message  string                         `json:"message"`
+	Code     string                         `json:"code"`
+	Issues   []DocumentDeleteForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata        `json:"-"`
+}
+
+var _ error = &DocumentDeleteForbiddenError{}
+
+func (e *DocumentDeleteForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type DocumentDeleteUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (d *DocumentDeleteUnauthorizedIssue) GetMessage() string {
+	if d == nil {
+		return ""
+	}
+	return d.Message
+}
+
+// DocumentDeleteUnauthorizedError - Authorization not provided
+type DocumentDeleteUnauthorizedError struct {
+	Message  string                            `json:"message"`
+	Code     string                            `json:"code"`
+	Issues   []DocumentDeleteUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata           `json:"-"`
+}
+
+var _ error = &DocumentDeleteUnauthorizedError{}
+
+func (e *DocumentDeleteUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type DocumentDeleteBadRequestIssue struct {
 	Message string `json:"message"`
 }

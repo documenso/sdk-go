@@ -63,6 +63,8 @@ func main() {
 | Error Type                                         | Status Code                                        | Content Type                                       |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
 | apierrors.FieldGetDocumentFieldBadRequestError     | 400                                                | application/json                                   |
+| apierrors.FieldGetDocumentFieldUnauthorizedError   | 401                                                | application/json                                   |
+| apierrors.FieldGetDocumentFieldForbiddenError      | 403                                                | application/json                                   |
 | apierrors.FieldGetDocumentFieldNotFoundError       | 404                                                | application/json                                   |
 | apierrors.FieldGetDocumentFieldInternalServerError | 500                                                | application/json                                   |
 | apierrors.APIError                                 | 4XX, 5XX                                           | \*/\*                                              |
@@ -132,6 +134,8 @@ func main() {
 | Error Type                                            | Status Code                                           | Content Type                                          |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | apierrors.FieldCreateDocumentFieldBadRequestError     | 400                                                   | application/json                                      |
+| apierrors.FieldCreateDocumentFieldUnauthorizedError   | 401                                                   | application/json                                      |
+| apierrors.FieldCreateDocumentFieldForbiddenError      | 403                                                   | application/json                                      |
 | apierrors.FieldCreateDocumentFieldInternalServerError | 500                                                   | application/json                                      |
 | apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
 
@@ -202,6 +206,8 @@ func main() {
 | Error Type                                             | Status Code                                            | Content Type                                           |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
 | apierrors.FieldCreateDocumentFieldsBadRequestError     | 400                                                    | application/json                                       |
+| apierrors.FieldCreateDocumentFieldsUnauthorizedError   | 401                                                    | application/json                                       |
+| apierrors.FieldCreateDocumentFieldsForbiddenError      | 403                                                    | application/json                                       |
 | apierrors.FieldCreateDocumentFieldsInternalServerError | 500                                                    | application/json                                       |
 | apierrors.APIError                                     | 4XX, 5XX                                               | \*/\*                                                  |
 
@@ -265,6 +271,8 @@ func main() {
 | Error Type                                            | Status Code                                           | Content Type                                          |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | apierrors.FieldUpdateDocumentFieldBadRequestError     | 400                                                   | application/json                                      |
+| apierrors.FieldUpdateDocumentFieldUnauthorizedError   | 401                                                   | application/json                                      |
+| apierrors.FieldUpdateDocumentFieldForbiddenError      | 403                                                   | application/json                                      |
 | apierrors.FieldUpdateDocumentFieldInternalServerError | 500                                                   | application/json                                      |
 | apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
 
@@ -323,6 +331,8 @@ func main() {
 | Error Type                                             | Status Code                                            | Content Type                                           |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
 | apierrors.FieldUpdateDocumentFieldsBadRequestError     | 400                                                    | application/json                                       |
+| apierrors.FieldUpdateDocumentFieldsUnauthorizedError   | 401                                                    | application/json                                       |
+| apierrors.FieldUpdateDocumentFieldsForbiddenError      | 403                                                    | application/json                                       |
 | apierrors.FieldUpdateDocumentFieldsInternalServerError | 500                                                    | application/json                                       |
 | apierrors.APIError                                     | 4XX, 5XX                                               | \*/\*                                                  |
 
@@ -380,5 +390,7 @@ func main() {
 | Error Type                                            | Status Code                                           | Content Type                                          |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | apierrors.FieldDeleteDocumentFieldBadRequestError     | 400                                                   | application/json                                      |
+| apierrors.FieldDeleteDocumentFieldUnauthorizedError   | 401                                                   | application/json                                      |
+| apierrors.FieldDeleteDocumentFieldForbiddenError      | 403                                                   | application/json                                      |
 | apierrors.FieldDeleteDocumentFieldInternalServerError | 500                                                   | application/json                                      |
 | apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
