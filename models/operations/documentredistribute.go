@@ -7,8 +7,7 @@ import (
 )
 
 type DocumentRedistributeRequest struct {
-	DocumentID float64 `json:"documentId"`
-	// The IDs of the recipients to redistribute the document to.
+	DocumentID float64   `json:"documentId"`
 	Recipients []float64 `json:"recipients"`
 }
 

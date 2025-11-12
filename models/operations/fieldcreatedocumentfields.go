@@ -83,6 +83,7 @@ type FieldCreateDocumentFieldsFieldMetaDropdownRequest struct {
 	Placeholder  *string                                       `json:"placeholder,omitempty"`
 	Required     *bool                                         `json:"required,omitempty"`
 	ReadOnly     *bool                                         `json:"readOnly,omitempty"`
+	FontSize     *float64                                      `default:"12" json:"fontSize"`
 	Type         FieldCreateDocumentFieldsTypeDropdownRequest2 `json:"type"`
 	Values       []FieldCreateDocumentFieldsValueDropdown      `json:"values,omitempty"`
 	DefaultValue *string                                       `json:"defaultValue,omitempty"`
@@ -127,6 +128,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaDropdownRequest) GetReadOnly() *bool 
 	return f.ReadOnly
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaDropdownRequest) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaDropdownRequest) GetType() FieldCreateDocumentFieldsTypeDropdownRequest2 {
 	if f == nil {
 		return FieldCreateDocumentFieldsTypeDropdownRequest2("")
@@ -149,20 +157,14 @@ func (f *FieldCreateDocumentFieldsFieldMetaDropdownRequest) GetDefaultValue() *s
 }
 
 type FieldCreateDocumentFieldsFieldDropdown struct {
-	Type      FieldCreateDocumentFieldsTypeDropdownRequest1      `json:"type"`
-	FieldMeta *FieldCreateDocumentFieldsFieldMetaDropdownRequest `json:"fieldMeta,omitempty"`
-	// The ID of the recipient to create the field for.
-	RecipientID float64 `json:"recipientId"`
-	// The page number the field will be on.
-	PageNumber float64 `json:"pageNumber"`
-	// The X coordinate of where the field will be placed.
-	PageX float64 `json:"pageX"`
-	// The Y coordinate of where the field will be placed.
-	PageY float64 `json:"pageY"`
-	// The width of the field.
-	Width float64 `json:"width"`
-	// The height of the field.
-	Height float64 `json:"height"`
+	Type        FieldCreateDocumentFieldsTypeDropdownRequest1      `json:"type"`
+	FieldMeta   *FieldCreateDocumentFieldsFieldMetaDropdownRequest `json:"fieldMeta,omitempty"`
+	RecipientID float64                                            `json:"recipientId"`
+	PageNumber  float64                                            `json:"pageNumber"`
+	PageX       float64                                            `json:"pageX"`
+	PageY       float64                                            `json:"pageY"`
+	Width       float64                                            `json:"width"`
+	Height      float64                                            `json:"height"`
 }
 
 func (f FieldCreateDocumentFieldsFieldDropdown) MarshalJSON() ([]byte, error) {
@@ -316,17 +318,17 @@ func (f *FieldCreateDocumentFieldsValueCheckbox) GetValue() string {
 	return f.Value
 }
 
-type FieldCreateDocumentFieldsDirectionRequest string
+type FieldCreateDocumentFieldsDirectionCheckbox string
 
 const (
-	FieldCreateDocumentFieldsDirectionRequestVertical   FieldCreateDocumentFieldsDirectionRequest = "vertical"
-	FieldCreateDocumentFieldsDirectionRequestHorizontal FieldCreateDocumentFieldsDirectionRequest = "horizontal"
+	FieldCreateDocumentFieldsDirectionCheckboxVertical   FieldCreateDocumentFieldsDirectionCheckbox = "vertical"
+	FieldCreateDocumentFieldsDirectionCheckboxHorizontal FieldCreateDocumentFieldsDirectionCheckbox = "horizontal"
 )
 
-func (e FieldCreateDocumentFieldsDirectionRequest) ToPointer() *FieldCreateDocumentFieldsDirectionRequest {
+func (e FieldCreateDocumentFieldsDirectionCheckbox) ToPointer() *FieldCreateDocumentFieldsDirectionCheckbox {
 	return &e
 }
-func (e *FieldCreateDocumentFieldsDirectionRequest) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateDocumentFieldsDirectionCheckbox) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -335,10 +337,10 @@ func (e *FieldCreateDocumentFieldsDirectionRequest) UnmarshalJSON(data []byte) e
 	case "vertical":
 		fallthrough
 	case "horizontal":
-		*e = FieldCreateDocumentFieldsDirectionRequest(v)
+		*e = FieldCreateDocumentFieldsDirectionCheckbox(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsDirectionRequest: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsDirectionCheckbox: %v", v)
 	}
 }
 
@@ -347,11 +349,12 @@ type FieldCreateDocumentFieldsFieldMetaCheckboxRequest struct {
 	Placeholder      *string                                       `json:"placeholder,omitempty"`
 	Required         *bool                                         `json:"required,omitempty"`
 	ReadOnly         *bool                                         `json:"readOnly,omitempty"`
+	FontSize         *float64                                      `default:"12" json:"fontSize"`
 	Type             FieldCreateDocumentFieldsTypeCheckboxRequest2 `json:"type"`
 	Values           []FieldCreateDocumentFieldsValueCheckbox      `json:"values,omitempty"`
 	ValidationRule   *string                                       `json:"validationRule,omitempty"`
 	ValidationLength *float64                                      `json:"validationLength,omitempty"`
-	Direction        *FieldCreateDocumentFieldsDirectionRequest    `default:"vertical" json:"direction"`
+	Direction        *FieldCreateDocumentFieldsDirectionCheckbox   `default:"vertical" json:"direction"`
 }
 
 func (f FieldCreateDocumentFieldsFieldMetaCheckboxRequest) MarshalJSON() ([]byte, error) {
@@ -393,6 +396,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaCheckboxRequest) GetReadOnly() *bool 
 	return f.ReadOnly
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaCheckboxRequest) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaCheckboxRequest) GetType() FieldCreateDocumentFieldsTypeCheckboxRequest2 {
 	if f == nil {
 		return FieldCreateDocumentFieldsTypeCheckboxRequest2("")
@@ -421,7 +431,7 @@ func (f *FieldCreateDocumentFieldsFieldMetaCheckboxRequest) GetValidationLength(
 	return f.ValidationLength
 }
 
-func (f *FieldCreateDocumentFieldsFieldMetaCheckboxRequest) GetDirection() *FieldCreateDocumentFieldsDirectionRequest {
+func (f *FieldCreateDocumentFieldsFieldMetaCheckboxRequest) GetDirection() *FieldCreateDocumentFieldsDirectionCheckbox {
 	if f == nil {
 		return nil
 	}
@@ -429,20 +439,14 @@ func (f *FieldCreateDocumentFieldsFieldMetaCheckboxRequest) GetDirection() *Fiel
 }
 
 type FieldCreateDocumentFieldsFieldCheckbox struct {
-	Type      FieldCreateDocumentFieldsTypeCheckboxRequest1      `json:"type"`
-	FieldMeta *FieldCreateDocumentFieldsFieldMetaCheckboxRequest `json:"fieldMeta,omitempty"`
-	// The ID of the recipient to create the field for.
-	RecipientID float64 `json:"recipientId"`
-	// The page number the field will be on.
-	PageNumber float64 `json:"pageNumber"`
-	// The X coordinate of where the field will be placed.
-	PageX float64 `json:"pageX"`
-	// The Y coordinate of where the field will be placed.
-	PageY float64 `json:"pageY"`
-	// The width of the field.
-	Width float64 `json:"width"`
-	// The height of the field.
-	Height float64 `json:"height"`
+	Type        FieldCreateDocumentFieldsTypeCheckboxRequest1      `json:"type"`
+	FieldMeta   *FieldCreateDocumentFieldsFieldMetaCheckboxRequest `json:"fieldMeta,omitempty"`
+	RecipientID float64                                            `json:"recipientId"`
+	PageNumber  float64                                            `json:"pageNumber"`
+	PageX       float64                                            `json:"pageX"`
+	PageY       float64                                            `json:"pageY"`
+	Width       float64                                            `json:"width"`
+	Height      float64                                            `json:"height"`
 }
 
 func (f FieldCreateDocumentFieldsFieldCheckbox) MarshalJSON() ([]byte, error) {
@@ -596,13 +600,41 @@ func (f *FieldCreateDocumentFieldsValueRadio) GetValue() string {
 	return f.Value
 }
 
+type FieldCreateDocumentFieldsDirectionRadio string
+
+const (
+	FieldCreateDocumentFieldsDirectionRadioVertical   FieldCreateDocumentFieldsDirectionRadio = "vertical"
+	FieldCreateDocumentFieldsDirectionRadioHorizontal FieldCreateDocumentFieldsDirectionRadio = "horizontal"
+)
+
+func (e FieldCreateDocumentFieldsDirectionRadio) ToPointer() *FieldCreateDocumentFieldsDirectionRadio {
+	return &e
+}
+func (e *FieldCreateDocumentFieldsDirectionRadio) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = FieldCreateDocumentFieldsDirectionRadio(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsDirectionRadio: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaRadioRequest struct {
 	Label       *string                                    `json:"label,omitempty"`
 	Placeholder *string                                    `json:"placeholder,omitempty"`
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
+	FontSize    *float64                                   `default:"12" json:"fontSize"`
 	Type        FieldCreateDocumentFieldsTypeRadioRequest2 `json:"type"`
 	Values      []FieldCreateDocumentFieldsValueRadio      `json:"values,omitempty"`
+	Direction   *FieldCreateDocumentFieldsDirectionRadio   `default:"vertical" json:"direction"`
 }
 
 func (f FieldCreateDocumentFieldsFieldMetaRadioRequest) MarshalJSON() ([]byte, error) {
@@ -644,6 +676,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaRadioRequest) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaRadioRequest) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaRadioRequest) GetType() FieldCreateDocumentFieldsTypeRadioRequest2 {
 	if f == nil {
 		return FieldCreateDocumentFieldsTypeRadioRequest2("")
@@ -658,21 +697,22 @@ func (f *FieldCreateDocumentFieldsFieldMetaRadioRequest) GetValues() []FieldCrea
 	return f.Values
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaRadioRequest) GetDirection() *FieldCreateDocumentFieldsDirectionRadio {
+	if f == nil {
+		return nil
+	}
+	return f.Direction
+}
+
 type FieldCreateDocumentFieldsFieldRadio struct {
-	Type      FieldCreateDocumentFieldsTypeRadioRequest1      `json:"type"`
-	FieldMeta *FieldCreateDocumentFieldsFieldMetaRadioRequest `json:"fieldMeta,omitempty"`
-	// The ID of the recipient to create the field for.
-	RecipientID float64 `json:"recipientId"`
-	// The page number the field will be on.
-	PageNumber float64 `json:"pageNumber"`
-	// The X coordinate of where the field will be placed.
-	PageX float64 `json:"pageX"`
-	// The Y coordinate of where the field will be placed.
-	PageY float64 `json:"pageY"`
-	// The width of the field.
-	Width float64 `json:"width"`
-	// The height of the field.
-	Height float64 `json:"height"`
+	Type        FieldCreateDocumentFieldsTypeRadioRequest1      `json:"type"`
+	FieldMeta   *FieldCreateDocumentFieldsFieldMetaRadioRequest `json:"fieldMeta,omitempty"`
+	RecipientID float64                                         `json:"recipientId"`
+	PageNumber  float64                                         `json:"pageNumber"`
+	PageX       float64                                         `json:"pageX"`
+	PageY       float64                                         `json:"pageY"`
+	Width       float64                                         `json:"width"`
+	Height      float64                                         `json:"height"`
 }
 
 func (f FieldCreateDocumentFieldsFieldRadio) MarshalJSON() ([]byte, error) {
@@ -817,18 +857,50 @@ func (e *FieldCreateDocumentFieldsTextAlignNumber) UnmarshalJSON(data []byte) er
 	}
 }
 
+type FieldCreateDocumentFieldsVerticalAlignNumber string
+
+const (
+	FieldCreateDocumentFieldsVerticalAlignNumberTop    FieldCreateDocumentFieldsVerticalAlignNumber = "top"
+	FieldCreateDocumentFieldsVerticalAlignNumberMiddle FieldCreateDocumentFieldsVerticalAlignNumber = "middle"
+	FieldCreateDocumentFieldsVerticalAlignNumberBottom FieldCreateDocumentFieldsVerticalAlignNumber = "bottom"
+)
+
+func (e FieldCreateDocumentFieldsVerticalAlignNumber) ToPointer() *FieldCreateDocumentFieldsVerticalAlignNumber {
+	return &e
+}
+func (e *FieldCreateDocumentFieldsVerticalAlignNumber) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = FieldCreateDocumentFieldsVerticalAlignNumber(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsVerticalAlignNumber: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaNumberRequest struct {
-	Label        *string                                     `json:"label,omitempty"`
-	Placeholder  *string                                     `json:"placeholder,omitempty"`
-	Required     *bool                                       `json:"required,omitempty"`
-	ReadOnly     *bool                                       `json:"readOnly,omitempty"`
-	Type         FieldCreateDocumentFieldsTypeNumberRequest2 `json:"type"`
-	NumberFormat *string                                     `json:"numberFormat,omitempty"`
-	Value        *string                                     `json:"value,omitempty"`
-	MinValue     *float64                                    `json:"minValue,omitempty"`
-	MaxValue     *float64                                    `json:"maxValue,omitempty"`
-	FontSize     *float64                                    `json:"fontSize,omitempty"`
-	TextAlign    *FieldCreateDocumentFieldsTextAlignNumber   `json:"textAlign,omitempty"`
+	Label         *string                                       `json:"label,omitempty"`
+	Placeholder   *string                                       `json:"placeholder,omitempty"`
+	Required      *bool                                         `json:"required,omitempty"`
+	ReadOnly      *bool                                         `json:"readOnly,omitempty"`
+	FontSize      *float64                                      `default:"12" json:"fontSize"`
+	Type          FieldCreateDocumentFieldsTypeNumberRequest2   `json:"type"`
+	NumberFormat  *string                                       `json:"numberFormat,omitempty"`
+	Value         *string                                       `json:"value,omitempty"`
+	MinValue      *float64                                      `json:"minValue,omitempty"`
+	MaxValue      *float64                                      `json:"maxValue,omitempty"`
+	TextAlign     *FieldCreateDocumentFieldsTextAlignNumber     `json:"textAlign,omitempty"`
+	LineHeight    *float64                                      `json:"lineHeight,omitempty"`
+	LetterSpacing *float64                                      `json:"letterSpacing,omitempty"`
+	VerticalAlign *FieldCreateDocumentFieldsVerticalAlignNumber `json:"verticalAlign,omitempty"`
 }
 
 func (f FieldCreateDocumentFieldsFieldMetaNumberRequest) MarshalJSON() ([]byte, error) {
@@ -870,6 +942,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaNumberRequest) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaNumberRequest) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaNumberRequest) GetType() FieldCreateDocumentFieldsTypeNumberRequest2 {
 	if f == nil {
 		return FieldCreateDocumentFieldsTypeNumberRequest2("")
@@ -905,13 +984,6 @@ func (f *FieldCreateDocumentFieldsFieldMetaNumberRequest) GetMaxValue() *float64
 	return f.MaxValue
 }
 
-func (f *FieldCreateDocumentFieldsFieldMetaNumberRequest) GetFontSize() *float64 {
-	if f == nil {
-		return nil
-	}
-	return f.FontSize
-}
-
 func (f *FieldCreateDocumentFieldsFieldMetaNumberRequest) GetTextAlign() *FieldCreateDocumentFieldsTextAlignNumber {
 	if f == nil {
 		return nil
@@ -919,21 +991,36 @@ func (f *FieldCreateDocumentFieldsFieldMetaNumberRequest) GetTextAlign() *FieldC
 	return f.TextAlign
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaNumberRequest) GetLineHeight() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LineHeight
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaNumberRequest) GetLetterSpacing() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LetterSpacing
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaNumberRequest) GetVerticalAlign() *FieldCreateDocumentFieldsVerticalAlignNumber {
+	if f == nil {
+		return nil
+	}
+	return f.VerticalAlign
+}
+
 type FieldCreateDocumentFieldsFieldNumber struct {
-	Type      FieldCreateDocumentFieldsTypeNumberRequest1      `json:"type"`
-	FieldMeta *FieldCreateDocumentFieldsFieldMetaNumberRequest `json:"fieldMeta,omitempty"`
-	// The ID of the recipient to create the field for.
-	RecipientID float64 `json:"recipientId"`
-	// The page number the field will be on.
-	PageNumber float64 `json:"pageNumber"`
-	// The X coordinate of where the field will be placed.
-	PageX float64 `json:"pageX"`
-	// The Y coordinate of where the field will be placed.
-	PageY float64 `json:"pageY"`
-	// The width of the field.
-	Width float64 `json:"width"`
-	// The height of the field.
-	Height float64 `json:"height"`
+	Type        FieldCreateDocumentFieldsTypeNumberRequest1      `json:"type"`
+	FieldMeta   *FieldCreateDocumentFieldsFieldMetaNumberRequest `json:"fieldMeta,omitempty"`
+	RecipientID float64                                          `json:"recipientId"`
+	PageNumber  float64                                          `json:"pageNumber"`
+	PageX       float64                                          `json:"pageX"`
+	PageY       float64                                          `json:"pageY"`
+	Width       float64                                          `json:"width"`
+	Height      float64                                          `json:"height"`
 }
 
 func (f FieldCreateDocumentFieldsFieldNumber) MarshalJSON() ([]byte, error) {
@@ -1078,16 +1165,48 @@ func (e *FieldCreateDocumentFieldsTextAlignText) UnmarshalJSON(data []byte) erro
 	}
 }
 
+type FieldCreateDocumentFieldsVerticalAlignText string
+
+const (
+	FieldCreateDocumentFieldsVerticalAlignTextTop    FieldCreateDocumentFieldsVerticalAlignText = "top"
+	FieldCreateDocumentFieldsVerticalAlignTextMiddle FieldCreateDocumentFieldsVerticalAlignText = "middle"
+	FieldCreateDocumentFieldsVerticalAlignTextBottom FieldCreateDocumentFieldsVerticalAlignText = "bottom"
+)
+
+func (e FieldCreateDocumentFieldsVerticalAlignText) ToPointer() *FieldCreateDocumentFieldsVerticalAlignText {
+	return &e
+}
+func (e *FieldCreateDocumentFieldsVerticalAlignText) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = FieldCreateDocumentFieldsVerticalAlignText(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsVerticalAlignText: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaTextRequest struct {
-	Label          *string                                   `json:"label,omitempty"`
-	Placeholder    *string                                   `json:"placeholder,omitempty"`
-	Required       *bool                                     `json:"required,omitempty"`
-	ReadOnly       *bool                                     `json:"readOnly,omitempty"`
-	Type           FieldCreateDocumentFieldsTypeTextRequest2 `json:"type"`
-	Text           *string                                   `json:"text,omitempty"`
-	CharacterLimit *float64                                  `json:"characterLimit,omitempty"`
-	FontSize       *float64                                  `json:"fontSize,omitempty"`
-	TextAlign      *FieldCreateDocumentFieldsTextAlignText   `json:"textAlign,omitempty"`
+	Label          *string                                     `json:"label,omitempty"`
+	Placeholder    *string                                     `json:"placeholder,omitempty"`
+	Required       *bool                                       `json:"required,omitempty"`
+	ReadOnly       *bool                                       `json:"readOnly,omitempty"`
+	FontSize       *float64                                    `default:"12" json:"fontSize"`
+	Type           FieldCreateDocumentFieldsTypeTextRequest2   `json:"type"`
+	Text           *string                                     `json:"text,omitempty"`
+	CharacterLimit *float64                                    `json:"characterLimit,omitempty"`
+	TextAlign      *FieldCreateDocumentFieldsTextAlignText     `json:"textAlign,omitempty"`
+	LineHeight     *float64                                    `json:"lineHeight,omitempty"`
+	LetterSpacing  *float64                                    `json:"letterSpacing,omitempty"`
+	VerticalAlign  *FieldCreateDocumentFieldsVerticalAlignText `json:"verticalAlign,omitempty"`
 }
 
 func (f FieldCreateDocumentFieldsFieldMetaTextRequest) MarshalJSON() ([]byte, error) {
@@ -1129,6 +1248,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaTextRequest) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaTextRequest) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaTextRequest) GetType() FieldCreateDocumentFieldsTypeTextRequest2 {
 	if f == nil {
 		return FieldCreateDocumentFieldsTypeTextRequest2("")
@@ -1150,13 +1276,6 @@ func (f *FieldCreateDocumentFieldsFieldMetaTextRequest) GetCharacterLimit() *flo
 	return f.CharacterLimit
 }
 
-func (f *FieldCreateDocumentFieldsFieldMetaTextRequest) GetFontSize() *float64 {
-	if f == nil {
-		return nil
-	}
-	return f.FontSize
-}
-
 func (f *FieldCreateDocumentFieldsFieldMetaTextRequest) GetTextAlign() *FieldCreateDocumentFieldsTextAlignText {
 	if f == nil {
 		return nil
@@ -1164,21 +1283,36 @@ func (f *FieldCreateDocumentFieldsFieldMetaTextRequest) GetTextAlign() *FieldCre
 	return f.TextAlign
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaTextRequest) GetLineHeight() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LineHeight
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaTextRequest) GetLetterSpacing() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LetterSpacing
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaTextRequest) GetVerticalAlign() *FieldCreateDocumentFieldsVerticalAlignText {
+	if f == nil {
+		return nil
+	}
+	return f.VerticalAlign
+}
+
 type FieldCreateDocumentFieldsFieldText struct {
-	Type      FieldCreateDocumentFieldsTypeTextRequest1      `json:"type"`
-	FieldMeta *FieldCreateDocumentFieldsFieldMetaTextRequest `json:"fieldMeta,omitempty"`
-	// The ID of the recipient to create the field for.
-	RecipientID float64 `json:"recipientId"`
-	// The page number the field will be on.
-	PageNumber float64 `json:"pageNumber"`
-	// The X coordinate of where the field will be placed.
-	PageX float64 `json:"pageX"`
-	// The Y coordinate of where the field will be placed.
-	PageY float64 `json:"pageY"`
-	// The width of the field.
-	Width float64 `json:"width"`
-	// The height of the field.
-	Height float64 `json:"height"`
+	Type        FieldCreateDocumentFieldsTypeTextRequest1      `json:"type"`
+	FieldMeta   *FieldCreateDocumentFieldsFieldMetaTextRequest `json:"fieldMeta,omitempty"`
+	RecipientID float64                                        `json:"recipientId"`
+	PageNumber  float64                                        `json:"pageNumber"`
+	PageX       float64                                        `json:"pageX"`
+	PageY       float64                                        `json:"pageY"`
+	Width       float64                                        `json:"width"`
+	Height      float64                                        `json:"height"`
 }
 
 func (f FieldCreateDocumentFieldsFieldText) MarshalJSON() ([]byte, error) {
@@ -1328,8 +1462,8 @@ type FieldCreateDocumentFieldsFieldMetaDateRequest struct {
 	Placeholder *string                                   `json:"placeholder,omitempty"`
 	Required    *bool                                     `json:"required,omitempty"`
 	ReadOnly    *bool                                     `json:"readOnly,omitempty"`
+	FontSize    *float64                                  `default:"12" json:"fontSize"`
 	Type        FieldCreateDocumentFieldsTypeDateRequest2 `json:"type"`
-	FontSize    *float64                                  `json:"fontSize,omitempty"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignDate   `json:"textAlign,omitempty"`
 }
 
@@ -1372,18 +1506,18 @@ func (f *FieldCreateDocumentFieldsFieldMetaDateRequest) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
-func (f *FieldCreateDocumentFieldsFieldMetaDateRequest) GetType() FieldCreateDocumentFieldsTypeDateRequest2 {
-	if f == nil {
-		return FieldCreateDocumentFieldsTypeDateRequest2("")
-	}
-	return f.Type
-}
-
 func (f *FieldCreateDocumentFieldsFieldMetaDateRequest) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaDateRequest) GetType() FieldCreateDocumentFieldsTypeDateRequest2 {
+	if f == nil {
+		return FieldCreateDocumentFieldsTypeDateRequest2("")
+	}
+	return f.Type
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaDateRequest) GetTextAlign() *FieldCreateDocumentFieldsTextAlignDate {
@@ -1394,20 +1528,14 @@ func (f *FieldCreateDocumentFieldsFieldMetaDateRequest) GetTextAlign() *FieldCre
 }
 
 type FieldCreateDocumentFieldsFieldDate struct {
-	Type      FieldCreateDocumentFieldsTypeDateRequest1      `json:"type"`
-	FieldMeta *FieldCreateDocumentFieldsFieldMetaDateRequest `json:"fieldMeta,omitempty"`
-	// The ID of the recipient to create the field for.
-	RecipientID float64 `json:"recipientId"`
-	// The page number the field will be on.
-	PageNumber float64 `json:"pageNumber"`
-	// The X coordinate of where the field will be placed.
-	PageX float64 `json:"pageX"`
-	// The Y coordinate of where the field will be placed.
-	PageY float64 `json:"pageY"`
-	// The width of the field.
-	Width float64 `json:"width"`
-	// The height of the field.
-	Height float64 `json:"height"`
+	Type        FieldCreateDocumentFieldsTypeDateRequest1      `json:"type"`
+	FieldMeta   *FieldCreateDocumentFieldsFieldMetaDateRequest `json:"fieldMeta,omitempty"`
+	RecipientID float64                                        `json:"recipientId"`
+	PageNumber  float64                                        `json:"pageNumber"`
+	PageX       float64                                        `json:"pageX"`
+	PageY       float64                                        `json:"pageY"`
+	Width       float64                                        `json:"width"`
+	Height      float64                                        `json:"height"`
 }
 
 func (f FieldCreateDocumentFieldsFieldDate) MarshalJSON() ([]byte, error) {
@@ -1557,8 +1685,8 @@ type FieldCreateDocumentFieldsFieldMetaEmailRequest struct {
 	Placeholder *string                                    `json:"placeholder,omitempty"`
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
+	FontSize    *float64                                   `default:"12" json:"fontSize"`
 	Type        FieldCreateDocumentFieldsTypeEmailRequest2 `json:"type"`
-	FontSize    *float64                                   `json:"fontSize,omitempty"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignEmail   `json:"textAlign,omitempty"`
 }
 
@@ -1601,18 +1729,18 @@ func (f *FieldCreateDocumentFieldsFieldMetaEmailRequest) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
-func (f *FieldCreateDocumentFieldsFieldMetaEmailRequest) GetType() FieldCreateDocumentFieldsTypeEmailRequest2 {
-	if f == nil {
-		return FieldCreateDocumentFieldsTypeEmailRequest2("")
-	}
-	return f.Type
-}
-
 func (f *FieldCreateDocumentFieldsFieldMetaEmailRequest) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaEmailRequest) GetType() FieldCreateDocumentFieldsTypeEmailRequest2 {
+	if f == nil {
+		return FieldCreateDocumentFieldsTypeEmailRequest2("")
+	}
+	return f.Type
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaEmailRequest) GetTextAlign() *FieldCreateDocumentFieldsTextAlignEmail {
@@ -1623,20 +1751,14 @@ func (f *FieldCreateDocumentFieldsFieldMetaEmailRequest) GetTextAlign() *FieldCr
 }
 
 type FieldCreateDocumentFieldsFieldEmail struct {
-	Type      FieldCreateDocumentFieldsTypeEmailRequest1      `json:"type"`
-	FieldMeta *FieldCreateDocumentFieldsFieldMetaEmailRequest `json:"fieldMeta,omitempty"`
-	// The ID of the recipient to create the field for.
-	RecipientID float64 `json:"recipientId"`
-	// The page number the field will be on.
-	PageNumber float64 `json:"pageNumber"`
-	// The X coordinate of where the field will be placed.
-	PageX float64 `json:"pageX"`
-	// The Y coordinate of where the field will be placed.
-	PageY float64 `json:"pageY"`
-	// The width of the field.
-	Width float64 `json:"width"`
-	// The height of the field.
-	Height float64 `json:"height"`
+	Type        FieldCreateDocumentFieldsTypeEmailRequest1      `json:"type"`
+	FieldMeta   *FieldCreateDocumentFieldsFieldMetaEmailRequest `json:"fieldMeta,omitempty"`
+	RecipientID float64                                         `json:"recipientId"`
+	PageNumber  float64                                         `json:"pageNumber"`
+	PageX       float64                                         `json:"pageX"`
+	PageY       float64                                         `json:"pageY"`
+	Width       float64                                         `json:"width"`
+	Height      float64                                         `json:"height"`
 }
 
 func (f FieldCreateDocumentFieldsFieldEmail) MarshalJSON() ([]byte, error) {
@@ -1786,8 +1908,8 @@ type FieldCreateDocumentFieldsFieldMetaNameRequest struct {
 	Placeholder *string                                   `json:"placeholder,omitempty"`
 	Required    *bool                                     `json:"required,omitempty"`
 	ReadOnly    *bool                                     `json:"readOnly,omitempty"`
+	FontSize    *float64                                  `default:"12" json:"fontSize"`
 	Type        FieldCreateDocumentFieldsTypeNameRequest2 `json:"type"`
-	FontSize    *float64                                  `json:"fontSize,omitempty"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignName   `json:"textAlign,omitempty"`
 }
 
@@ -1830,18 +1952,18 @@ func (f *FieldCreateDocumentFieldsFieldMetaNameRequest) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
-func (f *FieldCreateDocumentFieldsFieldMetaNameRequest) GetType() FieldCreateDocumentFieldsTypeNameRequest2 {
-	if f == nil {
-		return FieldCreateDocumentFieldsTypeNameRequest2("")
-	}
-	return f.Type
-}
-
 func (f *FieldCreateDocumentFieldsFieldMetaNameRequest) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaNameRequest) GetType() FieldCreateDocumentFieldsTypeNameRequest2 {
+	if f == nil {
+		return FieldCreateDocumentFieldsTypeNameRequest2("")
+	}
+	return f.Type
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaNameRequest) GetTextAlign() *FieldCreateDocumentFieldsTextAlignName {
@@ -1852,20 +1974,14 @@ func (f *FieldCreateDocumentFieldsFieldMetaNameRequest) GetTextAlign() *FieldCre
 }
 
 type FieldCreateDocumentFieldsFieldName struct {
-	Type      FieldCreateDocumentFieldsTypeNameRequest1      `json:"type"`
-	FieldMeta *FieldCreateDocumentFieldsFieldMetaNameRequest `json:"fieldMeta,omitempty"`
-	// The ID of the recipient to create the field for.
-	RecipientID float64 `json:"recipientId"`
-	// The page number the field will be on.
-	PageNumber float64 `json:"pageNumber"`
-	// The X coordinate of where the field will be placed.
-	PageX float64 `json:"pageX"`
-	// The Y coordinate of where the field will be placed.
-	PageY float64 `json:"pageY"`
-	// The width of the field.
-	Width float64 `json:"width"`
-	// The height of the field.
-	Height float64 `json:"height"`
+	Type        FieldCreateDocumentFieldsTypeNameRequest1      `json:"type"`
+	FieldMeta   *FieldCreateDocumentFieldsFieldMetaNameRequest `json:"fieldMeta,omitempty"`
+	RecipientID float64                                        `json:"recipientId"`
+	PageNumber  float64                                        `json:"pageNumber"`
+	PageX       float64                                        `json:"pageX"`
+	PageY       float64                                        `json:"pageY"`
+	Width       float64                                        `json:"width"`
+	Height      float64                                        `json:"height"`
 }
 
 func (f FieldCreateDocumentFieldsFieldName) MarshalJSON() ([]byte, error) {
@@ -2015,8 +2131,8 @@ type FieldCreateDocumentFieldsFieldMetaInitialsRequest struct {
 	Placeholder *string                                       `json:"placeholder,omitempty"`
 	Required    *bool                                         `json:"required,omitempty"`
 	ReadOnly    *bool                                         `json:"readOnly,omitempty"`
+	FontSize    *float64                                      `default:"12" json:"fontSize"`
 	Type        FieldCreateDocumentFieldsTypeInitialsRequest2 `json:"type"`
-	FontSize    *float64                                      `json:"fontSize,omitempty"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignInitials   `json:"textAlign,omitempty"`
 }
 
@@ -2059,18 +2175,18 @@ func (f *FieldCreateDocumentFieldsFieldMetaInitialsRequest) GetReadOnly() *bool 
 	return f.ReadOnly
 }
 
-func (f *FieldCreateDocumentFieldsFieldMetaInitialsRequest) GetType() FieldCreateDocumentFieldsTypeInitialsRequest2 {
-	if f == nil {
-		return FieldCreateDocumentFieldsTypeInitialsRequest2("")
-	}
-	return f.Type
-}
-
 func (f *FieldCreateDocumentFieldsFieldMetaInitialsRequest) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaInitialsRequest) GetType() FieldCreateDocumentFieldsTypeInitialsRequest2 {
+	if f == nil {
+		return FieldCreateDocumentFieldsTypeInitialsRequest2("")
+	}
+	return f.Type
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaInitialsRequest) GetTextAlign() *FieldCreateDocumentFieldsTextAlignInitials {
@@ -2081,20 +2197,14 @@ func (f *FieldCreateDocumentFieldsFieldMetaInitialsRequest) GetTextAlign() *Fiel
 }
 
 type FieldCreateDocumentFieldsFieldInitials struct {
-	Type      FieldCreateDocumentFieldsTypeInitialsRequest1      `json:"type"`
-	FieldMeta *FieldCreateDocumentFieldsFieldMetaInitialsRequest `json:"fieldMeta,omitempty"`
-	// The ID of the recipient to create the field for.
-	RecipientID float64 `json:"recipientId"`
-	// The page number the field will be on.
-	PageNumber float64 `json:"pageNumber"`
-	// The X coordinate of where the field will be placed.
-	PageX float64 `json:"pageX"`
-	// The Y coordinate of where the field will be placed.
-	PageY float64 `json:"pageY"`
-	// The width of the field.
-	Width float64 `json:"width"`
-	// The height of the field.
-	Height float64 `json:"height"`
+	Type        FieldCreateDocumentFieldsTypeInitialsRequest1      `json:"type"`
+	FieldMeta   *FieldCreateDocumentFieldsFieldMetaInitialsRequest `json:"fieldMeta,omitempty"`
+	RecipientID float64                                            `json:"recipientId"`
+	PageNumber  float64                                            `json:"pageNumber"`
+	PageX       float64                                            `json:"pageX"`
+	PageY       float64                                            `json:"pageY"`
+	Width       float64                                            `json:"width"`
+	Height      float64                                            `json:"height"`
 }
 
 func (f FieldCreateDocumentFieldsFieldInitials) MarshalJSON() ([]byte, error) {
@@ -2188,19 +2298,13 @@ func (e *FieldCreateDocumentFieldsTypeFreeSignature) UnmarshalJSON(data []byte) 
 }
 
 type FieldCreateDocumentFieldsFieldFreeSignature struct {
-	Type FieldCreateDocumentFieldsTypeFreeSignature `json:"type"`
-	// The ID of the recipient to create the field for.
-	RecipientID float64 `json:"recipientId"`
-	// The page number the field will be on.
-	PageNumber float64 `json:"pageNumber"`
-	// The X coordinate of where the field will be placed.
-	PageX float64 `json:"pageX"`
-	// The Y coordinate of where the field will be placed.
-	PageY float64 `json:"pageY"`
-	// The width of the field.
-	Width float64 `json:"width"`
-	// The height of the field.
-	Height float64 `json:"height"`
+	Type        FieldCreateDocumentFieldsTypeFreeSignature `json:"type"`
+	RecipientID float64                                    `json:"recipientId"`
+	PageNumber  float64                                    `json:"pageNumber"`
+	PageX       float64                                    `json:"pageX"`
+	PageY       float64                                    `json:"pageY"`
+	Width       float64                                    `json:"width"`
+	Height      float64                                    `json:"height"`
 }
 
 func (f FieldCreateDocumentFieldsFieldFreeSignature) MarshalJSON() ([]byte, error) {
@@ -2263,43 +2367,123 @@ func (f *FieldCreateDocumentFieldsFieldFreeSignature) GetHeight() float64 {
 	return f.Height
 }
 
-type FieldCreateDocumentFieldsTypeSignature string
+type FieldCreateDocumentFieldsTypeSignatureRequest1 string
 
 const (
-	FieldCreateDocumentFieldsTypeSignatureSignature FieldCreateDocumentFieldsTypeSignature = "SIGNATURE"
+	FieldCreateDocumentFieldsTypeSignatureRequest1Signature FieldCreateDocumentFieldsTypeSignatureRequest1 = "SIGNATURE"
 )
 
-func (e FieldCreateDocumentFieldsTypeSignature) ToPointer() *FieldCreateDocumentFieldsTypeSignature {
+func (e FieldCreateDocumentFieldsTypeSignatureRequest1) ToPointer() *FieldCreateDocumentFieldsTypeSignatureRequest1 {
 	return &e
 }
-func (e *FieldCreateDocumentFieldsTypeSignature) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateDocumentFieldsTypeSignatureRequest1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "SIGNATURE":
-		*e = FieldCreateDocumentFieldsTypeSignature(v)
+		*e = FieldCreateDocumentFieldsTypeSignatureRequest1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsTypeSignature: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsTypeSignatureRequest1: %v", v)
 	}
 }
 
+type FieldCreateDocumentFieldsTypeSignatureRequest2 string
+
+const (
+	FieldCreateDocumentFieldsTypeSignatureRequest2Signature FieldCreateDocumentFieldsTypeSignatureRequest2 = "signature"
+)
+
+func (e FieldCreateDocumentFieldsTypeSignatureRequest2) ToPointer() *FieldCreateDocumentFieldsTypeSignatureRequest2 {
+	return &e
+}
+func (e *FieldCreateDocumentFieldsTypeSignatureRequest2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "signature":
+		*e = FieldCreateDocumentFieldsTypeSignatureRequest2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsTypeSignatureRequest2: %v", v)
+	}
+}
+
+type FieldCreateDocumentFieldsFieldMetaSignatureRequest struct {
+	Label       *string                                        `json:"label,omitempty"`
+	Placeholder *string                                        `json:"placeholder,omitempty"`
+	Required    *bool                                          `json:"required,omitempty"`
+	ReadOnly    *bool                                          `json:"readOnly,omitempty"`
+	FontSize    *float64                                       `default:"12" json:"fontSize"`
+	Type        FieldCreateDocumentFieldsTypeSignatureRequest2 `json:"type"`
+}
+
+func (f FieldCreateDocumentFieldsFieldMetaSignatureRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureRequest) GetLabel() *string {
+	if f == nil {
+		return nil
+	}
+	return f.Label
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureRequest) GetPlaceholder() *string {
+	if f == nil {
+		return nil
+	}
+	return f.Placeholder
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureRequest) GetRequired() *bool {
+	if f == nil {
+		return nil
+	}
+	return f.Required
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureRequest) GetReadOnly() *bool {
+	if f == nil {
+		return nil
+	}
+	return f.ReadOnly
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureRequest) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureRequest) GetType() FieldCreateDocumentFieldsTypeSignatureRequest2 {
+	if f == nil {
+		return FieldCreateDocumentFieldsTypeSignatureRequest2("")
+	}
+	return f.Type
+}
+
 type FieldCreateDocumentFieldsFieldSignature struct {
-	Type FieldCreateDocumentFieldsTypeSignature `json:"type"`
-	// The ID of the recipient to create the field for.
-	RecipientID float64 `json:"recipientId"`
-	// The page number the field will be on.
-	PageNumber float64 `json:"pageNumber"`
-	// The X coordinate of where the field will be placed.
-	PageX float64 `json:"pageX"`
-	// The Y coordinate of where the field will be placed.
-	PageY float64 `json:"pageY"`
-	// The width of the field.
-	Width float64 `json:"width"`
-	// The height of the field.
-	Height float64 `json:"height"`
+	Type        FieldCreateDocumentFieldsTypeSignatureRequest1      `json:"type"`
+	FieldMeta   *FieldCreateDocumentFieldsFieldMetaSignatureRequest `json:"fieldMeta,omitempty"`
+	RecipientID float64                                             `json:"recipientId"`
+	PageNumber  float64                                             `json:"pageNumber"`
+	PageX       float64                                             `json:"pageX"`
+	PageY       float64                                             `json:"pageY"`
+	Width       float64                                             `json:"width"`
+	Height      float64                                             `json:"height"`
 }
 
 func (f FieldCreateDocumentFieldsFieldSignature) MarshalJSON() ([]byte, error) {
@@ -2313,11 +2497,18 @@ func (f *FieldCreateDocumentFieldsFieldSignature) UnmarshalJSON(data []byte) err
 	return nil
 }
 
-func (f *FieldCreateDocumentFieldsFieldSignature) GetType() FieldCreateDocumentFieldsTypeSignature {
+func (f *FieldCreateDocumentFieldsFieldSignature) GetType() FieldCreateDocumentFieldsTypeSignatureRequest1 {
 	if f == nil {
-		return FieldCreateDocumentFieldsTypeSignature("")
+		return FieldCreateDocumentFieldsTypeSignatureRequest1("")
 	}
 	return f.Type
+}
+
+func (f *FieldCreateDocumentFieldsFieldSignature) GetFieldMeta() *FieldCreateDocumentFieldsFieldMetaSignatureRequest {
+	if f == nil {
+		return nil
+	}
+	return f.FieldMeta
 }
 
 func (f *FieldCreateDocumentFieldsFieldSignature) GetRecipientID() float64 {
@@ -2745,6 +2936,7 @@ type FieldCreateDocumentFieldsFieldMetaDropdownResponse struct {
 	Placeholder  *string                                        `json:"placeholder,omitempty"`
 	Required     *bool                                          `json:"required,omitempty"`
 	ReadOnly     *bool                                          `json:"readOnly,omitempty"`
+	FontSize     *float64                                       `default:"12" json:"fontSize"`
 	Type         FieldCreateDocumentFieldsFieldMetaTypeDropdown `json:"type"`
 	Values       []FieldCreateDocumentFieldsValueResponse3      `json:"values,omitempty"`
 	DefaultValue *string                                        `json:"defaultValue,omitempty"`
@@ -2787,6 +2979,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaDropdownResponse) GetReadOnly() *bool
 		return nil
 	}
 	return f.ReadOnly
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaDropdownResponse) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaDropdownResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeDropdown {
@@ -2871,17 +3070,17 @@ func (f *FieldCreateDocumentFieldsValueResponse2) GetValue() string {
 	return f.Value
 }
 
-type FieldCreateDocumentFieldsDirectionResponse string
+type FieldCreateDocumentFieldsDirectionResponse2 string
 
 const (
-	FieldCreateDocumentFieldsDirectionResponseVertical   FieldCreateDocumentFieldsDirectionResponse = "vertical"
-	FieldCreateDocumentFieldsDirectionResponseHorizontal FieldCreateDocumentFieldsDirectionResponse = "horizontal"
+	FieldCreateDocumentFieldsDirectionResponse2Vertical   FieldCreateDocumentFieldsDirectionResponse2 = "vertical"
+	FieldCreateDocumentFieldsDirectionResponse2Horizontal FieldCreateDocumentFieldsDirectionResponse2 = "horizontal"
 )
 
-func (e FieldCreateDocumentFieldsDirectionResponse) ToPointer() *FieldCreateDocumentFieldsDirectionResponse {
+func (e FieldCreateDocumentFieldsDirectionResponse2) ToPointer() *FieldCreateDocumentFieldsDirectionResponse2 {
 	return &e
 }
-func (e *FieldCreateDocumentFieldsDirectionResponse) UnmarshalJSON(data []byte) error {
+func (e *FieldCreateDocumentFieldsDirectionResponse2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -2890,10 +3089,10 @@ func (e *FieldCreateDocumentFieldsDirectionResponse) UnmarshalJSON(data []byte) 
 	case "vertical":
 		fallthrough
 	case "horizontal":
-		*e = FieldCreateDocumentFieldsDirectionResponse(v)
+		*e = FieldCreateDocumentFieldsDirectionResponse2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsDirectionResponse: %v", v)
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsDirectionResponse2: %v", v)
 	}
 }
 
@@ -2902,11 +3101,12 @@ type FieldCreateDocumentFieldsFieldMetaCheckboxResponse struct {
 	Placeholder      *string                                        `json:"placeholder,omitempty"`
 	Required         *bool                                          `json:"required,omitempty"`
 	ReadOnly         *bool                                          `json:"readOnly,omitempty"`
+	FontSize         *float64                                       `default:"12" json:"fontSize"`
 	Type             FieldCreateDocumentFieldsFieldMetaTypeCheckbox `json:"type"`
 	Values           []FieldCreateDocumentFieldsValueResponse2      `json:"values,omitempty"`
 	ValidationRule   *string                                        `json:"validationRule,omitempty"`
 	ValidationLength *float64                                       `json:"validationLength,omitempty"`
-	Direction        *FieldCreateDocumentFieldsDirectionResponse    `default:"vertical" json:"direction"`
+	Direction        *FieldCreateDocumentFieldsDirectionResponse2   `default:"vertical" json:"direction"`
 }
 
 func (f FieldCreateDocumentFieldsFieldMetaCheckboxResponse) MarshalJSON() ([]byte, error) {
@@ -2948,6 +3148,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaCheckboxResponse) GetReadOnly() *bool
 	return f.ReadOnly
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaCheckboxResponse) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaCheckboxResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeCheckbox {
 	if f == nil {
 		return FieldCreateDocumentFieldsFieldMetaTypeCheckbox("")
@@ -2976,7 +3183,7 @@ func (f *FieldCreateDocumentFieldsFieldMetaCheckboxResponse) GetValidationLength
 	return f.ValidationLength
 }
 
-func (f *FieldCreateDocumentFieldsFieldMetaCheckboxResponse) GetDirection() *FieldCreateDocumentFieldsDirectionResponse {
+func (f *FieldCreateDocumentFieldsFieldMetaCheckboxResponse) GetDirection() *FieldCreateDocumentFieldsDirectionResponse2 {
 	if f == nil {
 		return nil
 	}
@@ -3044,13 +3251,41 @@ func (f *FieldCreateDocumentFieldsValueResponse1) GetValue() string {
 	return f.Value
 }
 
+type FieldCreateDocumentFieldsDirectionResponse1 string
+
+const (
+	FieldCreateDocumentFieldsDirectionResponse1Vertical   FieldCreateDocumentFieldsDirectionResponse1 = "vertical"
+	FieldCreateDocumentFieldsDirectionResponse1Horizontal FieldCreateDocumentFieldsDirectionResponse1 = "horizontal"
+)
+
+func (e FieldCreateDocumentFieldsDirectionResponse1) ToPointer() *FieldCreateDocumentFieldsDirectionResponse1 {
+	return &e
+}
+func (e *FieldCreateDocumentFieldsDirectionResponse1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = FieldCreateDocumentFieldsDirectionResponse1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsDirectionResponse1: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaRadioResponse struct {
-	Label       *string                                     `json:"label,omitempty"`
-	Placeholder *string                                     `json:"placeholder,omitempty"`
-	Required    *bool                                       `json:"required,omitempty"`
-	ReadOnly    *bool                                       `json:"readOnly,omitempty"`
-	Type        FieldCreateDocumentFieldsFieldMetaTypeRadio `json:"type"`
-	Values      []FieldCreateDocumentFieldsValueResponse1   `json:"values,omitempty"`
+	Label       *string                                      `json:"label,omitempty"`
+	Placeholder *string                                      `json:"placeholder,omitempty"`
+	Required    *bool                                        `json:"required,omitempty"`
+	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
+	FontSize    *float64                                     `default:"12" json:"fontSize"`
+	Type        FieldCreateDocumentFieldsFieldMetaTypeRadio  `json:"type"`
+	Values      []FieldCreateDocumentFieldsValueResponse1    `json:"values,omitempty"`
+	Direction   *FieldCreateDocumentFieldsDirectionResponse1 `default:"vertical" json:"direction"`
 }
 
 func (f FieldCreateDocumentFieldsFieldMetaRadioResponse) MarshalJSON() ([]byte, error) {
@@ -3092,6 +3327,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaRadioResponse) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaRadioResponse) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaRadioResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeRadio {
 	if f == nil {
 		return FieldCreateDocumentFieldsFieldMetaTypeRadio("")
@@ -3104,6 +3346,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaRadioResponse) GetValues() []FieldCre
 		return nil
 	}
 	return f.Values
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaRadioResponse) GetDirection() *FieldCreateDocumentFieldsDirectionResponse1 {
+	if f == nil {
+		return nil
+	}
+	return f.Direction
 }
 
 type FieldCreateDocumentFieldsFieldMetaTypeNumber string
@@ -3158,18 +3407,50 @@ func (e *FieldCreateDocumentFieldsTextAlignResponse6) UnmarshalJSON(data []byte)
 	}
 }
 
+type FieldCreateDocumentFieldsVerticalAlignResponse2 string
+
+const (
+	FieldCreateDocumentFieldsVerticalAlignResponse2Top    FieldCreateDocumentFieldsVerticalAlignResponse2 = "top"
+	FieldCreateDocumentFieldsVerticalAlignResponse2Middle FieldCreateDocumentFieldsVerticalAlignResponse2 = "middle"
+	FieldCreateDocumentFieldsVerticalAlignResponse2Bottom FieldCreateDocumentFieldsVerticalAlignResponse2 = "bottom"
+)
+
+func (e FieldCreateDocumentFieldsVerticalAlignResponse2) ToPointer() *FieldCreateDocumentFieldsVerticalAlignResponse2 {
+	return &e
+}
+func (e *FieldCreateDocumentFieldsVerticalAlignResponse2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = FieldCreateDocumentFieldsVerticalAlignResponse2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsVerticalAlignResponse2: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaNumberResponse struct {
-	Label        *string                                      `json:"label,omitempty"`
-	Placeholder  *string                                      `json:"placeholder,omitempty"`
-	Required     *bool                                        `json:"required,omitempty"`
-	ReadOnly     *bool                                        `json:"readOnly,omitempty"`
-	Type         FieldCreateDocumentFieldsFieldMetaTypeNumber `json:"type"`
-	NumberFormat *string                                      `json:"numberFormat,omitempty"`
-	Value        *string                                      `json:"value,omitempty"`
-	MinValue     *float64                                     `json:"minValue,omitempty"`
-	MaxValue     *float64                                     `json:"maxValue,omitempty"`
-	FontSize     *float64                                     `json:"fontSize,omitempty"`
-	TextAlign    *FieldCreateDocumentFieldsTextAlignResponse6 `json:"textAlign,omitempty"`
+	Label         *string                                          `json:"label,omitempty"`
+	Placeholder   *string                                          `json:"placeholder,omitempty"`
+	Required      *bool                                            `json:"required,omitempty"`
+	ReadOnly      *bool                                            `json:"readOnly,omitempty"`
+	FontSize      *float64                                         `default:"12" json:"fontSize"`
+	Type          FieldCreateDocumentFieldsFieldMetaTypeNumber     `json:"type"`
+	NumberFormat  *string                                          `json:"numberFormat,omitempty"`
+	Value         *string                                          `json:"value,omitempty"`
+	MinValue      *float64                                         `json:"minValue,omitempty"`
+	MaxValue      *float64                                         `json:"maxValue,omitempty"`
+	TextAlign     *FieldCreateDocumentFieldsTextAlignResponse6     `json:"textAlign,omitempty"`
+	LineHeight    *float64                                         `json:"lineHeight,omitempty"`
+	LetterSpacing *float64                                         `json:"letterSpacing,omitempty"`
+	VerticalAlign *FieldCreateDocumentFieldsVerticalAlignResponse2 `json:"verticalAlign,omitempty"`
 }
 
 func (f FieldCreateDocumentFieldsFieldMetaNumberResponse) MarshalJSON() ([]byte, error) {
@@ -3211,6 +3492,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaNumberResponse) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaNumberResponse) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaNumberResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeNumber {
 	if f == nil {
 		return FieldCreateDocumentFieldsFieldMetaTypeNumber("")
@@ -3246,18 +3534,32 @@ func (f *FieldCreateDocumentFieldsFieldMetaNumberResponse) GetMaxValue() *float6
 	return f.MaxValue
 }
 
-func (f *FieldCreateDocumentFieldsFieldMetaNumberResponse) GetFontSize() *float64 {
-	if f == nil {
-		return nil
-	}
-	return f.FontSize
-}
-
 func (f *FieldCreateDocumentFieldsFieldMetaNumberResponse) GetTextAlign() *FieldCreateDocumentFieldsTextAlignResponse6 {
 	if f == nil {
 		return nil
 	}
 	return f.TextAlign
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaNumberResponse) GetLineHeight() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LineHeight
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaNumberResponse) GetLetterSpacing() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LetterSpacing
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaNumberResponse) GetVerticalAlign() *FieldCreateDocumentFieldsVerticalAlignResponse2 {
+	if f == nil {
+		return nil
+	}
+	return f.VerticalAlign
 }
 
 type FieldCreateDocumentFieldsFieldMetaTypeText string
@@ -3312,16 +3614,48 @@ func (e *FieldCreateDocumentFieldsTextAlignResponse5) UnmarshalJSON(data []byte)
 	}
 }
 
+type FieldCreateDocumentFieldsVerticalAlignResponse1 string
+
+const (
+	FieldCreateDocumentFieldsVerticalAlignResponse1Top    FieldCreateDocumentFieldsVerticalAlignResponse1 = "top"
+	FieldCreateDocumentFieldsVerticalAlignResponse1Middle FieldCreateDocumentFieldsVerticalAlignResponse1 = "middle"
+	FieldCreateDocumentFieldsVerticalAlignResponse1Bottom FieldCreateDocumentFieldsVerticalAlignResponse1 = "bottom"
+)
+
+func (e FieldCreateDocumentFieldsVerticalAlignResponse1) ToPointer() *FieldCreateDocumentFieldsVerticalAlignResponse1 {
+	return &e
+}
+func (e *FieldCreateDocumentFieldsVerticalAlignResponse1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = FieldCreateDocumentFieldsVerticalAlignResponse1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsVerticalAlignResponse1: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaTextResponse struct {
-	Label          *string                                      `json:"label,omitempty"`
-	Placeholder    *string                                      `json:"placeholder,omitempty"`
-	Required       *bool                                        `json:"required,omitempty"`
-	ReadOnly       *bool                                        `json:"readOnly,omitempty"`
-	Type           FieldCreateDocumentFieldsFieldMetaTypeText   `json:"type"`
-	Text           *string                                      `json:"text,omitempty"`
-	CharacterLimit *float64                                     `json:"characterLimit,omitempty"`
-	FontSize       *float64                                     `json:"fontSize,omitempty"`
-	TextAlign      *FieldCreateDocumentFieldsTextAlignResponse5 `json:"textAlign,omitempty"`
+	Label          *string                                          `json:"label,omitempty"`
+	Placeholder    *string                                          `json:"placeholder,omitempty"`
+	Required       *bool                                            `json:"required,omitempty"`
+	ReadOnly       *bool                                            `json:"readOnly,omitempty"`
+	FontSize       *float64                                         `default:"12" json:"fontSize"`
+	Type           FieldCreateDocumentFieldsFieldMetaTypeText       `json:"type"`
+	Text           *string                                          `json:"text,omitempty"`
+	CharacterLimit *float64                                         `json:"characterLimit,omitempty"`
+	TextAlign      *FieldCreateDocumentFieldsTextAlignResponse5     `json:"textAlign,omitempty"`
+	LineHeight     *float64                                         `json:"lineHeight,omitempty"`
+	LetterSpacing  *float64                                         `json:"letterSpacing,omitempty"`
+	VerticalAlign  *FieldCreateDocumentFieldsVerticalAlignResponse1 `json:"verticalAlign,omitempty"`
 }
 
 func (f FieldCreateDocumentFieldsFieldMetaTextResponse) MarshalJSON() ([]byte, error) {
@@ -3363,6 +3697,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaTextResponse) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaTextResponse) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaTextResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeText {
 	if f == nil {
 		return FieldCreateDocumentFieldsFieldMetaTypeText("")
@@ -3384,18 +3725,32 @@ func (f *FieldCreateDocumentFieldsFieldMetaTextResponse) GetCharacterLimit() *fl
 	return f.CharacterLimit
 }
 
-func (f *FieldCreateDocumentFieldsFieldMetaTextResponse) GetFontSize() *float64 {
-	if f == nil {
-		return nil
-	}
-	return f.FontSize
-}
-
 func (f *FieldCreateDocumentFieldsFieldMetaTextResponse) GetTextAlign() *FieldCreateDocumentFieldsTextAlignResponse5 {
 	if f == nil {
 		return nil
 	}
 	return f.TextAlign
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaTextResponse) GetLineHeight() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LineHeight
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaTextResponse) GetLetterSpacing() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.LetterSpacing
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaTextResponse) GetVerticalAlign() *FieldCreateDocumentFieldsVerticalAlignResponse1 {
+	if f == nil {
+		return nil
+	}
+	return f.VerticalAlign
 }
 
 type FieldCreateDocumentFieldsFieldMetaTypeDate string
@@ -3455,8 +3810,8 @@ type FieldCreateDocumentFieldsFieldMetaDateResponse struct {
 	Placeholder *string                                      `json:"placeholder,omitempty"`
 	Required    *bool                                        `json:"required,omitempty"`
 	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
+	FontSize    *float64                                     `default:"12" json:"fontSize"`
 	Type        FieldCreateDocumentFieldsFieldMetaTypeDate   `json:"type"`
-	FontSize    *float64                                     `json:"fontSize,omitempty"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignResponse4 `json:"textAlign,omitempty"`
 }
 
@@ -3499,18 +3854,18 @@ func (f *FieldCreateDocumentFieldsFieldMetaDateResponse) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
-func (f *FieldCreateDocumentFieldsFieldMetaDateResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeDate {
-	if f == nil {
-		return FieldCreateDocumentFieldsFieldMetaTypeDate("")
-	}
-	return f.Type
-}
-
 func (f *FieldCreateDocumentFieldsFieldMetaDateResponse) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaDateResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeDate {
+	if f == nil {
+		return FieldCreateDocumentFieldsFieldMetaTypeDate("")
+	}
+	return f.Type
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaDateResponse) GetTextAlign() *FieldCreateDocumentFieldsTextAlignResponse4 {
@@ -3577,8 +3932,8 @@ type FieldCreateDocumentFieldsFieldMetaEmailResponse struct {
 	Placeholder *string                                      `json:"placeholder,omitempty"`
 	Required    *bool                                        `json:"required,omitempty"`
 	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
+	FontSize    *float64                                     `default:"12" json:"fontSize"`
 	Type        FieldCreateDocumentFieldsFieldMetaTypeEmail  `json:"type"`
-	FontSize    *float64                                     `json:"fontSize,omitempty"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignResponse3 `json:"textAlign,omitempty"`
 }
 
@@ -3621,18 +3976,18 @@ func (f *FieldCreateDocumentFieldsFieldMetaEmailResponse) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
-func (f *FieldCreateDocumentFieldsFieldMetaEmailResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeEmail {
-	if f == nil {
-		return FieldCreateDocumentFieldsFieldMetaTypeEmail("")
-	}
-	return f.Type
-}
-
 func (f *FieldCreateDocumentFieldsFieldMetaEmailResponse) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaEmailResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeEmail {
+	if f == nil {
+		return FieldCreateDocumentFieldsFieldMetaTypeEmail("")
+	}
+	return f.Type
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaEmailResponse) GetTextAlign() *FieldCreateDocumentFieldsTextAlignResponse3 {
@@ -3699,8 +4054,8 @@ type FieldCreateDocumentFieldsFieldMetaNameResponse struct {
 	Placeholder *string                                      `json:"placeholder,omitempty"`
 	Required    *bool                                        `json:"required,omitempty"`
 	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
+	FontSize    *float64                                     `default:"12" json:"fontSize"`
 	Type        FieldCreateDocumentFieldsFieldMetaTypeName   `json:"type"`
-	FontSize    *float64                                     `json:"fontSize,omitempty"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignResponse2 `json:"textAlign,omitempty"`
 }
 
@@ -3743,18 +4098,18 @@ func (f *FieldCreateDocumentFieldsFieldMetaNameResponse) GetReadOnly() *bool {
 	return f.ReadOnly
 }
 
-func (f *FieldCreateDocumentFieldsFieldMetaNameResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeName {
-	if f == nil {
-		return FieldCreateDocumentFieldsFieldMetaTypeName("")
-	}
-	return f.Type
-}
-
 func (f *FieldCreateDocumentFieldsFieldMetaNameResponse) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaNameResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeName {
+	if f == nil {
+		return FieldCreateDocumentFieldsFieldMetaTypeName("")
+	}
+	return f.Type
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaNameResponse) GetTextAlign() *FieldCreateDocumentFieldsTextAlignResponse2 {
@@ -3821,8 +4176,8 @@ type FieldCreateDocumentFieldsFieldMetaInitialsResponse struct {
 	Placeholder *string                                        `json:"placeholder,omitempty"`
 	Required    *bool                                          `json:"required,omitempty"`
 	ReadOnly    *bool                                          `json:"readOnly,omitempty"`
+	FontSize    *float64                                       `default:"12" json:"fontSize"`
 	Type        FieldCreateDocumentFieldsFieldMetaTypeInitials `json:"type"`
-	FontSize    *float64                                       `json:"fontSize,omitempty"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignResponse1   `json:"textAlign,omitempty"`
 }
 
@@ -3865,18 +4220,18 @@ func (f *FieldCreateDocumentFieldsFieldMetaInitialsResponse) GetReadOnly() *bool
 	return f.ReadOnly
 }
 
-func (f *FieldCreateDocumentFieldsFieldMetaInitialsResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeInitials {
-	if f == nil {
-		return FieldCreateDocumentFieldsFieldMetaTypeInitials("")
-	}
-	return f.Type
-}
-
 func (f *FieldCreateDocumentFieldsFieldMetaInitialsResponse) GetFontSize() *float64 {
 	if f == nil {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaInitialsResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeInitials {
+	if f == nil {
+		return FieldCreateDocumentFieldsFieldMetaTypeInitials("")
+	}
+	return f.Type
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaInitialsResponse) GetTextAlign() *FieldCreateDocumentFieldsTextAlignResponse1 {
@@ -3886,32 +4241,128 @@ func (f *FieldCreateDocumentFieldsFieldMetaInitialsResponse) GetTextAlign() *Fie
 	return f.TextAlign
 }
 
+type FieldCreateDocumentFieldsFieldMetaTypeSignature string
+
+const (
+	FieldCreateDocumentFieldsFieldMetaTypeSignatureSignature FieldCreateDocumentFieldsFieldMetaTypeSignature = "signature"
+)
+
+func (e FieldCreateDocumentFieldsFieldMetaTypeSignature) ToPointer() *FieldCreateDocumentFieldsFieldMetaTypeSignature {
+	return &e
+}
+func (e *FieldCreateDocumentFieldsFieldMetaTypeSignature) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "signature":
+		*e = FieldCreateDocumentFieldsFieldMetaTypeSignature(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsFieldMetaTypeSignature: %v", v)
+	}
+}
+
+type FieldCreateDocumentFieldsFieldMetaSignatureResponse struct {
+	Label       *string                                         `json:"label,omitempty"`
+	Placeholder *string                                         `json:"placeholder,omitempty"`
+	Required    *bool                                           `json:"required,omitempty"`
+	ReadOnly    *bool                                           `json:"readOnly,omitempty"`
+	FontSize    *float64                                        `default:"12" json:"fontSize"`
+	Type        FieldCreateDocumentFieldsFieldMetaTypeSignature `json:"type"`
+}
+
+func (f FieldCreateDocumentFieldsFieldMetaSignatureResponse) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(f, "", false)
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureResponse) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &f, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureResponse) GetLabel() *string {
+	if f == nil {
+		return nil
+	}
+	return f.Label
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureResponse) GetPlaceholder() *string {
+	if f == nil {
+		return nil
+	}
+	return f.Placeholder
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureResponse) GetRequired() *bool {
+	if f == nil {
+		return nil
+	}
+	return f.Required
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureResponse) GetReadOnly() *bool {
+	if f == nil {
+		return nil
+	}
+	return f.ReadOnly
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureResponse) GetFontSize() *float64 {
+	if f == nil {
+		return nil
+	}
+	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeSignature {
+	if f == nil {
+		return FieldCreateDocumentFieldsFieldMetaTypeSignature("")
+	}
+	return f.Type
+}
+
 type FieldCreateDocumentFieldsFieldMetaUnionType string
 
 const (
-	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaInitialsResponse FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Initials_response"
-	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaNameResponse     FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Name_response"
-	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaEmailResponse    FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Email_response"
-	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaDateResponse     FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Date_response"
-	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaTextResponse     FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Text_response"
-	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaNumberResponse   FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Number_response"
-	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaRadioResponse    FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Radio_response"
-	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaCheckboxResponse FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Checkbox_response"
-	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaDropdownResponse FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Dropdown_response"
+	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaSignatureResponse FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Signature_response"
+	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaInitialsResponse  FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Initials_response"
+	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaNameResponse      FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Name_response"
+	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaEmailResponse     FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Email_response"
+	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaDateResponse      FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Date_response"
+	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaTextResponse      FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Text_response"
+	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaNumberResponse    FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Number_response"
+	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaRadioResponse     FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Radio_response"
+	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaCheckboxResponse  FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Checkbox_response"
+	FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaDropdownResponse  FieldCreateDocumentFieldsFieldMetaUnionType = "field_createDocumentFields_fieldMeta_Dropdown_response"
 )
 
 type FieldCreateDocumentFieldsFieldMetaUnion struct {
-	FieldCreateDocumentFieldsFieldMetaInitialsResponse *FieldCreateDocumentFieldsFieldMetaInitialsResponse `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaNameResponse     *FieldCreateDocumentFieldsFieldMetaNameResponse     `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaEmailResponse    *FieldCreateDocumentFieldsFieldMetaEmailResponse    `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaDateResponse     *FieldCreateDocumentFieldsFieldMetaDateResponse     `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaTextResponse     *FieldCreateDocumentFieldsFieldMetaTextResponse     `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaNumberResponse   *FieldCreateDocumentFieldsFieldMetaNumberResponse   `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaRadioResponse    *FieldCreateDocumentFieldsFieldMetaRadioResponse    `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaCheckboxResponse *FieldCreateDocumentFieldsFieldMetaCheckboxResponse `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaDropdownResponse *FieldCreateDocumentFieldsFieldMetaDropdownResponse `queryParam:"inline,name=fieldMeta"`
+	FieldCreateDocumentFieldsFieldMetaSignatureResponse *FieldCreateDocumentFieldsFieldMetaSignatureResponse `queryParam:"inline,name=fieldMeta"`
+	FieldCreateDocumentFieldsFieldMetaInitialsResponse  *FieldCreateDocumentFieldsFieldMetaInitialsResponse  `queryParam:"inline,name=fieldMeta"`
+	FieldCreateDocumentFieldsFieldMetaNameResponse      *FieldCreateDocumentFieldsFieldMetaNameResponse      `queryParam:"inline,name=fieldMeta"`
+	FieldCreateDocumentFieldsFieldMetaEmailResponse     *FieldCreateDocumentFieldsFieldMetaEmailResponse     `queryParam:"inline,name=fieldMeta"`
+	FieldCreateDocumentFieldsFieldMetaDateResponse      *FieldCreateDocumentFieldsFieldMetaDateResponse      `queryParam:"inline,name=fieldMeta"`
+	FieldCreateDocumentFieldsFieldMetaTextResponse      *FieldCreateDocumentFieldsFieldMetaTextResponse      `queryParam:"inline,name=fieldMeta"`
+	FieldCreateDocumentFieldsFieldMetaNumberResponse    *FieldCreateDocumentFieldsFieldMetaNumberResponse    `queryParam:"inline,name=fieldMeta"`
+	FieldCreateDocumentFieldsFieldMetaRadioResponse     *FieldCreateDocumentFieldsFieldMetaRadioResponse     `queryParam:"inline,name=fieldMeta"`
+	FieldCreateDocumentFieldsFieldMetaCheckboxResponse  *FieldCreateDocumentFieldsFieldMetaCheckboxResponse  `queryParam:"inline,name=fieldMeta"`
+	FieldCreateDocumentFieldsFieldMetaDropdownResponse  *FieldCreateDocumentFieldsFieldMetaDropdownResponse  `queryParam:"inline,name=fieldMeta"`
 
 	Type FieldCreateDocumentFieldsFieldMetaUnionType
+}
+
+func CreateFieldCreateDocumentFieldsFieldMetaUnionFieldCreateDocumentFieldsFieldMetaSignatureResponse(fieldCreateDocumentFieldsFieldMetaSignatureResponse FieldCreateDocumentFieldsFieldMetaSignatureResponse) FieldCreateDocumentFieldsFieldMetaUnion {
+	typ := FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaSignatureResponse
+
+	return FieldCreateDocumentFieldsFieldMetaUnion{
+		FieldCreateDocumentFieldsFieldMetaSignatureResponse: &fieldCreateDocumentFieldsFieldMetaSignatureResponse,
+		Type: typ,
+	}
 }
 
 func CreateFieldCreateDocumentFieldsFieldMetaUnionFieldCreateDocumentFieldsFieldMetaInitialsResponse(fieldCreateDocumentFieldsFieldMetaInitialsResponse FieldCreateDocumentFieldsFieldMetaInitialsResponse) FieldCreateDocumentFieldsFieldMetaUnion {
@@ -3997,6 +4448,13 @@ func CreateFieldCreateDocumentFieldsFieldMetaUnionFieldCreateDocumentFieldsField
 
 func (u *FieldCreateDocumentFieldsFieldMetaUnion) UnmarshalJSON(data []byte) error {
 
+	var fieldCreateDocumentFieldsFieldMetaSignatureResponse FieldCreateDocumentFieldsFieldMetaSignatureResponse = FieldCreateDocumentFieldsFieldMetaSignatureResponse{}
+	if err := utils.UnmarshalJSON(data, &fieldCreateDocumentFieldsFieldMetaSignatureResponse, "", true, nil); err == nil {
+		u.FieldCreateDocumentFieldsFieldMetaSignatureResponse = &fieldCreateDocumentFieldsFieldMetaSignatureResponse
+		u.Type = FieldCreateDocumentFieldsFieldMetaUnionTypeFieldCreateDocumentFieldsFieldMetaSignatureResponse
+		return nil
+	}
+
 	var fieldCreateDocumentFieldsFieldMetaInitialsResponse FieldCreateDocumentFieldsFieldMetaInitialsResponse = FieldCreateDocumentFieldsFieldMetaInitialsResponse{}
 	if err := utils.UnmarshalJSON(data, &fieldCreateDocumentFieldsFieldMetaInitialsResponse, "", true, nil); err == nil {
 		u.FieldCreateDocumentFieldsFieldMetaInitialsResponse = &fieldCreateDocumentFieldsFieldMetaInitialsResponse
@@ -4064,6 +4522,10 @@ func (u *FieldCreateDocumentFieldsFieldMetaUnion) UnmarshalJSON(data []byte) err
 }
 
 func (u FieldCreateDocumentFieldsFieldMetaUnion) MarshalJSON() ([]byte, error) {
+	if u.FieldCreateDocumentFieldsFieldMetaSignatureResponse != nil {
+		return utils.MarshalJSON(u.FieldCreateDocumentFieldsFieldMetaSignatureResponse, "", true)
+	}
+
 	if u.FieldCreateDocumentFieldsFieldMetaInitialsResponse != nil {
 		return utils.MarshalJSON(u.FieldCreateDocumentFieldsFieldMetaInitialsResponse, "", true)
 	}
@@ -4104,23 +4566,22 @@ func (u FieldCreateDocumentFieldsFieldMetaUnion) MarshalJSON() ([]byte, error) {
 }
 
 type FieldCreateDocumentFieldsFieldResponse struct {
-	EnvelopeID     string                                `json:"envelopeId"`
-	EnvelopeItemID string                                `json:"envelopeItemId"`
-	Type           FieldCreateDocumentFieldsTypeResponse `json:"type"`
-	ID             float64                               `json:"id"`
-	SecondaryID    string                                `json:"secondaryId"`
-	RecipientID    float64                               `json:"recipientId"`
-	// The page number of the field on the document. Starts from 1.
-	Page       float64                                  `json:"page"`
-	PositionX  any                                      `json:"positionX,omitempty"`
-	PositionY  any                                      `json:"positionY,omitempty"`
-	Width      any                                      `json:"width,omitempty"`
-	Height     any                                      `json:"height,omitempty"`
-	CustomText string                                   `json:"customText"`
-	Inserted   bool                                     `json:"inserted"`
-	FieldMeta  *FieldCreateDocumentFieldsFieldMetaUnion `json:"fieldMeta"`
-	DocumentID *float64                                 `json:"documentId,omitempty"`
-	TemplateID *float64                                 `json:"templateId,omitempty"`
+	EnvelopeID     string                                   `json:"envelopeId"`
+	EnvelopeItemID string                                   `json:"envelopeItemId"`
+	Type           FieldCreateDocumentFieldsTypeResponse    `json:"type"`
+	ID             float64                                  `json:"id"`
+	SecondaryID    string                                   `json:"secondaryId"`
+	RecipientID    float64                                  `json:"recipientId"`
+	Page           float64                                  `json:"page"`
+	PositionX      any                                      `json:"positionX"`
+	PositionY      any                                      `json:"positionY"`
+	Width          any                                      `json:"width"`
+	Height         any                                      `json:"height"`
+	CustomText     string                                   `json:"customText"`
+	Inserted       bool                                     `json:"inserted"`
+	FieldMeta      *FieldCreateDocumentFieldsFieldMetaUnion `json:"fieldMeta"`
+	DocumentID     *float64                                 `json:"documentId,omitempty"`
+	TemplateID     *float64                                 `json:"templateId,omitempty"`
 }
 
 func (f *FieldCreateDocumentFieldsFieldResponse) GetEnvelopeID() string {

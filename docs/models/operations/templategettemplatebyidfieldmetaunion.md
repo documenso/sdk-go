@@ -3,6 +3,12 @@
 
 ## Supported Types
 
+### TemplateGetTemplateByIDFieldMetaSignature
+
+```go
+templateGetTemplateByIDFieldMetaUnion := operations.CreateTemplateGetTemplateByIDFieldMetaUnionTemplateGetTemplateByIDFieldMetaSignature(operations.TemplateGetTemplateByIDFieldMetaSignature{/* values here */})
+```
+
 ### TemplateGetTemplateByIDFieldMetaInitials
 
 ```go

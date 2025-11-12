@@ -7,8 +7,7 @@ import (
 )
 
 type TemplateCreateTemplateDirectLinkRequest struct {
-	TemplateID float64 `json:"templateId"`
-	// The of the recipient in the current template to transform into the primary recipient when the template is used.
+	TemplateID        float64  `json:"templateId"`
 	DirectRecipientID *float64 `json:"directRecipientId,omitempty"`
 }
 

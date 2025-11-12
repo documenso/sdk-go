@@ -33,6 +33,58 @@ func (e *DocumentUpdateInternalServerError) Error() string {
 	return string(data)
 }
 
+type DocumentUpdateForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (d *DocumentUpdateForbiddenIssue) GetMessage() string {
+	if d == nil {
+		return ""
+	}
+	return d.Message
+}
+
+// DocumentUpdateForbiddenError - Insufficient access
+type DocumentUpdateForbiddenError struct {
+	Message  string                         `json:"message"`
+	Code     string                         `json:"code"`
+	Issues   []DocumentUpdateForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata        `json:"-"`
+}
+
+var _ error = &DocumentUpdateForbiddenError{}
+
+func (e *DocumentUpdateForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type DocumentUpdateUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (d *DocumentUpdateUnauthorizedIssue) GetMessage() string {
+	if d == nil {
+		return ""
+	}
+	return d.Message
+}
+
+// DocumentUpdateUnauthorizedError - Authorization not provided
+type DocumentUpdateUnauthorizedError struct {
+	Message  string                            `json:"message"`
+	Code     string                            `json:"code"`
+	Issues   []DocumentUpdateUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata           `json:"-"`
+}
+
+var _ error = &DocumentUpdateUnauthorizedError{}
+
+func (e *DocumentUpdateUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type DocumentUpdateBadRequestIssue struct {
 	Message string `json:"message"`
 }

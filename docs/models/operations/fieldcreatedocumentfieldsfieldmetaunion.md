@@ -3,6 +3,12 @@
 
 ## Supported Types
 
+### FieldCreateDocumentFieldsFieldMetaSignatureResponse
+
+```go
+fieldCreateDocumentFieldsFieldMetaUnion := operations.CreateFieldCreateDocumentFieldsFieldMetaUnionFieldCreateDocumentFieldsFieldMetaSignatureResponse(operations.FieldCreateDocumentFieldsFieldMetaSignatureResponse{/* values here */})
+```
+
 ### FieldCreateDocumentFieldsFieldMetaInitialsResponse
 
 ```go

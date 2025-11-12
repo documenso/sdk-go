@@ -1,0 +1,9 @@
+# EnvelopeItemCreateManyRequest
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `Payload`                                                                                            | [operations.EnvelopeItemCreateManyPayload](../../models/operations/envelopeitemcreatemanypayload.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `Files`                                                                                              | [][operations.EnvelopeItemCreateManyFile](../../models/operations/envelopeitemcreatemanyfile.md)     | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |

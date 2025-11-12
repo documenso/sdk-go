@@ -3,6 +3,12 @@
 
 ## Supported Types
 
+### FieldMetaDocumentSignature
+
+```go
+documentFieldMetaUnion := operations.CreateDocumentFieldMetaUnionFieldMetaDocumentSignature(operations.FieldMetaDocumentSignature{/* values here */})
+```
+
 ### FieldMetaDocumentInitials
 
 ```go

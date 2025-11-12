@@ -305,7 +305,6 @@ func (e *DataSource) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// DocumentFindGlobalAccessAuth - The type of authentication required for the recipient to access the document.
 type DocumentFindGlobalAccessAuth string
 
 const (
@@ -332,7 +331,6 @@ func (e *DocumentFindGlobalAccessAuth) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// DocumentFindGlobalActionAuth - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
 type DocumentFindGlobalActionAuth string
 
 const (
@@ -612,7 +610,6 @@ func (e *DocumentFindSendStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// DocumentFindAccessAuth - The type of authentication required for the recipient to access the document.
 type DocumentFindAccessAuth string
 
 const (
@@ -639,7 +636,6 @@ func (e *DocumentFindAccessAuth) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// DocumentFindActionAuth - The type of authentication required for the recipient to sign the document.
 type DocumentFindActionAuth string
 
 const (
@@ -708,11 +704,10 @@ type DocumentFindRecipient struct {
 	Expired           *string                           `json:"expired"`
 	SignedAt          *string                           `json:"signedAt"`
 	AuthOptions       *DocumentFindRecipientAuthOptions `json:"authOptions"`
-	// The order in which the recipient should sign the document. Only works if the document is set to sequential signing.
-	SigningOrder    *float64 `json:"signingOrder"`
-	RejectionReason *string  `json:"rejectionReason"`
-	DocumentID      *float64 `json:"documentId,omitempty"`
-	TemplateID      *float64 `json:"templateId,omitempty"`
+	SigningOrder      *float64                          `json:"signingOrder"`
+	RejectionReason   *string                           `json:"rejectionReason"`
+	DocumentID        *float64                          `json:"documentId,omitempty"`
+	TemplateID        *float64                          `json:"templateId,omitempty"`
 }
 
 func (d *DocumentFindRecipient) GetEnvelopeID() string {
@@ -854,13 +849,11 @@ func (d *DocumentFindTeam) GetURL() string {
 }
 
 type DocumentFindData struct {
-	Visibility DocumentFindVisibility `json:"visibility"`
-	Status     DataStatus             `json:"status"`
-	Source     DataSource             `json:"source"`
-	ID         float64                `json:"id"`
-	// A custom external ID you can use to identify the document.
-	ExternalID *string `json:"externalId"`
-	// The ID of the user that created this document.
+	Visibility              DocumentFindVisibility            `json:"visibility"`
+	Status                  DataStatus                        `json:"status"`
+	Source                  DataSource                        `json:"source"`
+	ID                      float64                           `json:"id"`
+	ExternalID              *string                           `json:"externalId"`
 	UserID                  float64                           `json:"userId"`
 	AuthOptions             *DocumentFindAuthOptions          `json:"authOptions"`
 	FormValues              map[string]DocumentFindFormValues `json:"formValues"`
@@ -873,12 +866,12 @@ type DocumentFindData struct {
 	FolderID                *string                           `json:"folderId"`
 	UseLegacyFieldInsertion bool                              `json:"useLegacyFieldInsertion"`
 	EnvelopeID              string                            `json:"envelopeId"`
+	InternalVersion         float64                           `json:"internalVersion"`
 	DocumentDataID          *string                           `default:"" json:"documentDataId"`
-	// The ID of the template that the document was created from, if any.
-	TemplateID *float64                `json:"templateId,omitempty"`
-	User       DocumentFindUser        `json:"user"`
-	Recipients []DocumentFindRecipient `json:"recipients"`
-	Team       *DocumentFindTeam       `json:"team"`
+	TemplateID              *float64                          `json:"templateId,omitempty"`
+	User                    DocumentFindUser                  `json:"user"`
+	Recipients              []DocumentFindRecipient           `json:"recipients"`
+	Team                    *DocumentFindTeam                 `json:"team"`
 }
 
 func (d DocumentFindData) MarshalJSON() ([]byte, error) {
@@ -886,7 +879,7 @@ func (d DocumentFindData) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DocumentFindData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"visibility", "status", "source", "id", "userId", "title", "createdAt", "updatedAt", "teamId", "useLegacyFieldInsertion", "envelopeId", "user", "recipients"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"visibility", "status", "source", "id", "userId", "title", "createdAt", "updatedAt", "teamId", "useLegacyFieldInsertion", "envelopeId", "internalVersion", "user", "recipients"}); err != nil {
 		return err
 	}
 	return nil
@@ -1011,6 +1004,13 @@ func (d *DocumentFindData) GetEnvelopeID() string {
 	return d.EnvelopeID
 }
 
+func (d *DocumentFindData) GetInternalVersion() float64 {
+	if d == nil {
+		return 0.0
+	}
+	return d.InternalVersion
+}
+
 func (d *DocumentFindData) GetDocumentDataID() *string {
 	if d == nil {
 		return nil
@@ -1048,15 +1048,11 @@ func (d *DocumentFindData) GetTeam() *DocumentFindTeam {
 
 // DocumentFindResponseBody - Successful response
 type DocumentFindResponseBody struct {
-	Data []DocumentFindData `json:"data"`
-	// The total number of items.
-	Count float64 `json:"count"`
-	// The current page number, starts at 1.
-	CurrentPage float64 `json:"currentPage"`
-	// The number of items per page.
-	PerPage float64 `json:"perPage"`
-	// The total number of pages.
-	TotalPages float64 `json:"totalPages"`
+	Data        []DocumentFindData `json:"data"`
+	Count       float64            `json:"count"`
+	CurrentPage float64            `json:"currentPage"`
+	PerPage     float64            `json:"perPage"`
+	TotalPages  float64            `json:"totalPages"`
 }
 
 func (d *DocumentFindResponseBody) GetData() []DocumentFindData {

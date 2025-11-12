@@ -33,6 +33,58 @@ func (e *DocumentCreateDocumentTemporaryInternalServerError) Error() string {
 	return string(data)
 }
 
+type DocumentCreateDocumentTemporaryForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (d *DocumentCreateDocumentTemporaryForbiddenIssue) GetMessage() string {
+	if d == nil {
+		return ""
+	}
+	return d.Message
+}
+
+// DocumentCreateDocumentTemporaryForbiddenError - Insufficient access
+type DocumentCreateDocumentTemporaryForbiddenError struct {
+	Message  string                                          `json:"message"`
+	Code     string                                          `json:"code"`
+	Issues   []DocumentCreateDocumentTemporaryForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                         `json:"-"`
+}
+
+var _ error = &DocumentCreateDocumentTemporaryForbiddenError{}
+
+func (e *DocumentCreateDocumentTemporaryForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type DocumentCreateDocumentTemporaryUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (d *DocumentCreateDocumentTemporaryUnauthorizedIssue) GetMessage() string {
+	if d == nil {
+		return ""
+	}
+	return d.Message
+}
+
+// DocumentCreateDocumentTemporaryUnauthorizedError - Authorization not provided
+type DocumentCreateDocumentTemporaryUnauthorizedError struct {
+	Message  string                                             `json:"message"`
+	Code     string                                             `json:"code"`
+	Issues   []DocumentCreateDocumentTemporaryUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                            `json:"-"`
+}
+
+var _ error = &DocumentCreateDocumentTemporaryUnauthorizedError{}
+
+func (e *DocumentCreateDocumentTemporaryUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type DocumentCreateDocumentTemporaryBadRequestIssue struct {
 	Message string `json:"message"`
 }

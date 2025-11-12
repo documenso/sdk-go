@@ -3,6 +3,12 @@
 
 ## Supported Types
 
+### RecipientGetTemplateRecipientFieldMetaSignature
+
+```go
+recipientGetTemplateRecipientFieldMetaUnion := operations.CreateRecipientGetTemplateRecipientFieldMetaUnionRecipientGetTemplateRecipientFieldMetaSignature(operations.RecipientGetTemplateRecipientFieldMetaSignature{/* values here */})
+```
+
 ### RecipientGetTemplateRecipientFieldMetaInitials
 
 ```go

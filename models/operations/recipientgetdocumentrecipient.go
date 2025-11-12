@@ -137,7 +137,6 @@ func (e *RecipientGetDocumentRecipientSendStatus) UnmarshalJSON(data []byte) err
 	}
 }
 
-// RecipientGetDocumentRecipientAccessAuth - The type of authentication required for the recipient to access the document.
 type RecipientGetDocumentRecipientAccessAuth string
 
 const (
@@ -164,7 +163,6 @@ func (e *RecipientGetDocumentRecipientAccessAuth) UnmarshalJSON(data []byte) err
 	}
 }
 
-// RecipientGetDocumentRecipientActionAuth - The type of authentication required for the recipient to sign the document.
 type RecipientGetDocumentRecipientActionAuth string
 
 const (
@@ -322,6 +320,7 @@ type RecipientGetDocumentRecipientFieldMetaDropdown struct {
 	Placeholder  *string                                            `json:"placeholder,omitempty"`
 	Required     *bool                                              `json:"required,omitempty"`
 	ReadOnly     *bool                                              `json:"readOnly,omitempty"`
+	FontSize     *float64                                           `default:"12" json:"fontSize"`
 	Type         RecipientGetDocumentRecipientFieldMetaTypeDropdown `json:"type"`
 	Values       []RecipientGetDocumentRecipientValue3              `json:"values,omitempty"`
 	DefaultValue *string                                            `json:"defaultValue,omitempty"`
@@ -364,6 +363,13 @@ func (r *RecipientGetDocumentRecipientFieldMetaDropdown) GetReadOnly() *bool {
 		return nil
 	}
 	return r.ReadOnly
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaDropdown) GetFontSize() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.FontSize
 }
 
 func (r *RecipientGetDocumentRecipientFieldMetaDropdown) GetType() RecipientGetDocumentRecipientFieldMetaTypeDropdown {
@@ -448,17 +454,17 @@ func (r *RecipientGetDocumentRecipientValue2) GetValue() string {
 	return r.Value
 }
 
-type RecipientGetDocumentRecipientDirection string
+type RecipientGetDocumentRecipientDirection2 string
 
 const (
-	RecipientGetDocumentRecipientDirectionVertical   RecipientGetDocumentRecipientDirection = "vertical"
-	RecipientGetDocumentRecipientDirectionHorizontal RecipientGetDocumentRecipientDirection = "horizontal"
+	RecipientGetDocumentRecipientDirection2Vertical   RecipientGetDocumentRecipientDirection2 = "vertical"
+	RecipientGetDocumentRecipientDirection2Horizontal RecipientGetDocumentRecipientDirection2 = "horizontal"
 )
 
-func (e RecipientGetDocumentRecipientDirection) ToPointer() *RecipientGetDocumentRecipientDirection {
+func (e RecipientGetDocumentRecipientDirection2) ToPointer() *RecipientGetDocumentRecipientDirection2 {
 	return &e
 }
-func (e *RecipientGetDocumentRecipientDirection) UnmarshalJSON(data []byte) error {
+func (e *RecipientGetDocumentRecipientDirection2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -467,10 +473,10 @@ func (e *RecipientGetDocumentRecipientDirection) UnmarshalJSON(data []byte) erro
 	case "vertical":
 		fallthrough
 	case "horizontal":
-		*e = RecipientGetDocumentRecipientDirection(v)
+		*e = RecipientGetDocumentRecipientDirection2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientGetDocumentRecipientDirection: %v", v)
+		return fmt.Errorf("invalid value for RecipientGetDocumentRecipientDirection2: %v", v)
 	}
 }
 
@@ -479,11 +485,12 @@ type RecipientGetDocumentRecipientFieldMetaCheckbox struct {
 	Placeholder      *string                                            `json:"placeholder,omitempty"`
 	Required         *bool                                              `json:"required,omitempty"`
 	ReadOnly         *bool                                              `json:"readOnly,omitempty"`
+	FontSize         *float64                                           `default:"12" json:"fontSize"`
 	Type             RecipientGetDocumentRecipientFieldMetaTypeCheckbox `json:"type"`
 	Values           []RecipientGetDocumentRecipientValue2              `json:"values,omitempty"`
 	ValidationRule   *string                                            `json:"validationRule,omitempty"`
 	ValidationLength *float64                                           `json:"validationLength,omitempty"`
-	Direction        *RecipientGetDocumentRecipientDirection            `default:"vertical" json:"direction"`
+	Direction        *RecipientGetDocumentRecipientDirection2           `default:"vertical" json:"direction"`
 }
 
 func (r RecipientGetDocumentRecipientFieldMetaCheckbox) MarshalJSON() ([]byte, error) {
@@ -525,6 +532,13 @@ func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) GetReadOnly() *bool {
 	return r.ReadOnly
 }
 
+func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) GetFontSize() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.FontSize
+}
+
 func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) GetType() RecipientGetDocumentRecipientFieldMetaTypeCheckbox {
 	if r == nil {
 		return RecipientGetDocumentRecipientFieldMetaTypeCheckbox("")
@@ -553,7 +567,7 @@ func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) GetValidationLength() *
 	return r.ValidationLength
 }
 
-func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) GetDirection() *RecipientGetDocumentRecipientDirection {
+func (r *RecipientGetDocumentRecipientFieldMetaCheckbox) GetDirection() *RecipientGetDocumentRecipientDirection2 {
 	if r == nil {
 		return nil
 	}
@@ -621,13 +635,41 @@ func (r *RecipientGetDocumentRecipientValue1) GetValue() string {
 	return r.Value
 }
 
+type RecipientGetDocumentRecipientDirection1 string
+
+const (
+	RecipientGetDocumentRecipientDirection1Vertical   RecipientGetDocumentRecipientDirection1 = "vertical"
+	RecipientGetDocumentRecipientDirection1Horizontal RecipientGetDocumentRecipientDirection1 = "horizontal"
+)
+
+func (e RecipientGetDocumentRecipientDirection1) ToPointer() *RecipientGetDocumentRecipientDirection1 {
+	return &e
+}
+func (e *RecipientGetDocumentRecipientDirection1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = RecipientGetDocumentRecipientDirection1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientGetDocumentRecipientDirection1: %v", v)
+	}
+}
+
 type RecipientGetDocumentRecipientFieldMetaRadio struct {
 	Label       *string                                         `json:"label,omitempty"`
 	Placeholder *string                                         `json:"placeholder,omitempty"`
 	Required    *bool                                           `json:"required,omitempty"`
 	ReadOnly    *bool                                           `json:"readOnly,omitempty"`
+	FontSize    *float64                                        `default:"12" json:"fontSize"`
 	Type        RecipientGetDocumentRecipientFieldMetaTypeRadio `json:"type"`
 	Values      []RecipientGetDocumentRecipientValue1           `json:"values,omitempty"`
+	Direction   *RecipientGetDocumentRecipientDirection1        `default:"vertical" json:"direction"`
 }
 
 func (r RecipientGetDocumentRecipientFieldMetaRadio) MarshalJSON() ([]byte, error) {
@@ -669,6 +711,13 @@ func (r *RecipientGetDocumentRecipientFieldMetaRadio) GetReadOnly() *bool {
 	return r.ReadOnly
 }
 
+func (r *RecipientGetDocumentRecipientFieldMetaRadio) GetFontSize() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.FontSize
+}
+
 func (r *RecipientGetDocumentRecipientFieldMetaRadio) GetType() RecipientGetDocumentRecipientFieldMetaTypeRadio {
 	if r == nil {
 		return RecipientGetDocumentRecipientFieldMetaTypeRadio("")
@@ -681,6 +730,13 @@ func (r *RecipientGetDocumentRecipientFieldMetaRadio) GetValues() []RecipientGet
 		return nil
 	}
 	return r.Values
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaRadio) GetDirection() *RecipientGetDocumentRecipientDirection1 {
+	if r == nil {
+		return nil
+	}
+	return r.Direction
 }
 
 type RecipientGetDocumentRecipientFieldMetaTypeNumber string
@@ -735,18 +791,50 @@ func (e *RecipientGetDocumentRecipientTextAlign6) UnmarshalJSON(data []byte) err
 	}
 }
 
+type RecipientGetDocumentRecipientVerticalAlign2 string
+
+const (
+	RecipientGetDocumentRecipientVerticalAlign2Top    RecipientGetDocumentRecipientVerticalAlign2 = "top"
+	RecipientGetDocumentRecipientVerticalAlign2Middle RecipientGetDocumentRecipientVerticalAlign2 = "middle"
+	RecipientGetDocumentRecipientVerticalAlign2Bottom RecipientGetDocumentRecipientVerticalAlign2 = "bottom"
+)
+
+func (e RecipientGetDocumentRecipientVerticalAlign2) ToPointer() *RecipientGetDocumentRecipientVerticalAlign2 {
+	return &e
+}
+func (e *RecipientGetDocumentRecipientVerticalAlign2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = RecipientGetDocumentRecipientVerticalAlign2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientGetDocumentRecipientVerticalAlign2: %v", v)
+	}
+}
+
 type RecipientGetDocumentRecipientFieldMetaNumber struct {
-	Label        *string                                          `json:"label,omitempty"`
-	Placeholder  *string                                          `json:"placeholder,omitempty"`
-	Required     *bool                                            `json:"required,omitempty"`
-	ReadOnly     *bool                                            `json:"readOnly,omitempty"`
-	Type         RecipientGetDocumentRecipientFieldMetaTypeNumber `json:"type"`
-	NumberFormat *string                                          `json:"numberFormat,omitempty"`
-	Value        *string                                          `json:"value,omitempty"`
-	MinValue     *float64                                         `json:"minValue,omitempty"`
-	MaxValue     *float64                                         `json:"maxValue,omitempty"`
-	FontSize     *float64                                         `json:"fontSize,omitempty"`
-	TextAlign    *RecipientGetDocumentRecipientTextAlign6         `json:"textAlign,omitempty"`
+	Label         *string                                          `json:"label,omitempty"`
+	Placeholder   *string                                          `json:"placeholder,omitempty"`
+	Required      *bool                                            `json:"required,omitempty"`
+	ReadOnly      *bool                                            `json:"readOnly,omitempty"`
+	FontSize      *float64                                         `default:"12" json:"fontSize"`
+	Type          RecipientGetDocumentRecipientFieldMetaTypeNumber `json:"type"`
+	NumberFormat  *string                                          `json:"numberFormat,omitempty"`
+	Value         *string                                          `json:"value,omitempty"`
+	MinValue      *float64                                         `json:"minValue,omitempty"`
+	MaxValue      *float64                                         `json:"maxValue,omitempty"`
+	TextAlign     *RecipientGetDocumentRecipientTextAlign6         `json:"textAlign,omitempty"`
+	LineHeight    *float64                                         `json:"lineHeight,omitempty"`
+	LetterSpacing *float64                                         `json:"letterSpacing,omitempty"`
+	VerticalAlign *RecipientGetDocumentRecipientVerticalAlign2     `json:"verticalAlign,omitempty"`
 }
 
 func (r RecipientGetDocumentRecipientFieldMetaNumber) MarshalJSON() ([]byte, error) {
@@ -788,6 +876,13 @@ func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetReadOnly() *bool {
 	return r.ReadOnly
 }
 
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetFontSize() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.FontSize
+}
+
 func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetType() RecipientGetDocumentRecipientFieldMetaTypeNumber {
 	if r == nil {
 		return RecipientGetDocumentRecipientFieldMetaTypeNumber("")
@@ -823,18 +918,32 @@ func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetMaxValue() *float64 {
 	return r.MaxValue
 }
 
-func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetFontSize() *float64 {
-	if r == nil {
-		return nil
-	}
-	return r.FontSize
-}
-
 func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetTextAlign() *RecipientGetDocumentRecipientTextAlign6 {
 	if r == nil {
 		return nil
 	}
 	return r.TextAlign
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetLineHeight() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.LineHeight
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetLetterSpacing() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.LetterSpacing
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaNumber) GetVerticalAlign() *RecipientGetDocumentRecipientVerticalAlign2 {
+	if r == nil {
+		return nil
+	}
+	return r.VerticalAlign
 }
 
 type RecipientGetDocumentRecipientFieldMetaTypeText string
@@ -889,16 +998,48 @@ func (e *RecipientGetDocumentRecipientTextAlign5) UnmarshalJSON(data []byte) err
 	}
 }
 
+type RecipientGetDocumentRecipientVerticalAlign1 string
+
+const (
+	RecipientGetDocumentRecipientVerticalAlign1Top    RecipientGetDocumentRecipientVerticalAlign1 = "top"
+	RecipientGetDocumentRecipientVerticalAlign1Middle RecipientGetDocumentRecipientVerticalAlign1 = "middle"
+	RecipientGetDocumentRecipientVerticalAlign1Bottom RecipientGetDocumentRecipientVerticalAlign1 = "bottom"
+)
+
+func (e RecipientGetDocumentRecipientVerticalAlign1) ToPointer() *RecipientGetDocumentRecipientVerticalAlign1 {
+	return &e
+}
+func (e *RecipientGetDocumentRecipientVerticalAlign1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = RecipientGetDocumentRecipientVerticalAlign1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientGetDocumentRecipientVerticalAlign1: %v", v)
+	}
+}
+
 type RecipientGetDocumentRecipientFieldMetaText struct {
 	Label          *string                                        `json:"label,omitempty"`
 	Placeholder    *string                                        `json:"placeholder,omitempty"`
 	Required       *bool                                          `json:"required,omitempty"`
 	ReadOnly       *bool                                          `json:"readOnly,omitempty"`
+	FontSize       *float64                                       `default:"12" json:"fontSize"`
 	Type           RecipientGetDocumentRecipientFieldMetaTypeText `json:"type"`
 	Text           *string                                        `json:"text,omitempty"`
 	CharacterLimit *float64                                       `json:"characterLimit,omitempty"`
-	FontSize       *float64                                       `json:"fontSize,omitempty"`
 	TextAlign      *RecipientGetDocumentRecipientTextAlign5       `json:"textAlign,omitempty"`
+	LineHeight     *float64                                       `json:"lineHeight,omitempty"`
+	LetterSpacing  *float64                                       `json:"letterSpacing,omitempty"`
+	VerticalAlign  *RecipientGetDocumentRecipientVerticalAlign1   `json:"verticalAlign,omitempty"`
 }
 
 func (r RecipientGetDocumentRecipientFieldMetaText) MarshalJSON() ([]byte, error) {
@@ -940,6 +1081,13 @@ func (r *RecipientGetDocumentRecipientFieldMetaText) GetReadOnly() *bool {
 	return r.ReadOnly
 }
 
+func (r *RecipientGetDocumentRecipientFieldMetaText) GetFontSize() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.FontSize
+}
+
 func (r *RecipientGetDocumentRecipientFieldMetaText) GetType() RecipientGetDocumentRecipientFieldMetaTypeText {
 	if r == nil {
 		return RecipientGetDocumentRecipientFieldMetaTypeText("")
@@ -961,18 +1109,32 @@ func (r *RecipientGetDocumentRecipientFieldMetaText) GetCharacterLimit() *float6
 	return r.CharacterLimit
 }
 
-func (r *RecipientGetDocumentRecipientFieldMetaText) GetFontSize() *float64 {
-	if r == nil {
-		return nil
-	}
-	return r.FontSize
-}
-
 func (r *RecipientGetDocumentRecipientFieldMetaText) GetTextAlign() *RecipientGetDocumentRecipientTextAlign5 {
 	if r == nil {
 		return nil
 	}
 	return r.TextAlign
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaText) GetLineHeight() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.LineHeight
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaText) GetLetterSpacing() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.LetterSpacing
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaText) GetVerticalAlign() *RecipientGetDocumentRecipientVerticalAlign1 {
+	if r == nil {
+		return nil
+	}
+	return r.VerticalAlign
 }
 
 type RecipientGetDocumentRecipientFieldMetaTypeDate string
@@ -1032,8 +1194,8 @@ type RecipientGetDocumentRecipientFieldMetaDate struct {
 	Placeholder *string                                        `json:"placeholder,omitempty"`
 	Required    *bool                                          `json:"required,omitempty"`
 	ReadOnly    *bool                                          `json:"readOnly,omitempty"`
+	FontSize    *float64                                       `default:"12" json:"fontSize"`
 	Type        RecipientGetDocumentRecipientFieldMetaTypeDate `json:"type"`
-	FontSize    *float64                                       `json:"fontSize,omitempty"`
 	TextAlign   *RecipientGetDocumentRecipientTextAlign4       `json:"textAlign,omitempty"`
 }
 
@@ -1076,18 +1238,18 @@ func (r *RecipientGetDocumentRecipientFieldMetaDate) GetReadOnly() *bool {
 	return r.ReadOnly
 }
 
-func (r *RecipientGetDocumentRecipientFieldMetaDate) GetType() RecipientGetDocumentRecipientFieldMetaTypeDate {
-	if r == nil {
-		return RecipientGetDocumentRecipientFieldMetaTypeDate("")
-	}
-	return r.Type
-}
-
 func (r *RecipientGetDocumentRecipientFieldMetaDate) GetFontSize() *float64 {
 	if r == nil {
 		return nil
 	}
 	return r.FontSize
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaDate) GetType() RecipientGetDocumentRecipientFieldMetaTypeDate {
+	if r == nil {
+		return RecipientGetDocumentRecipientFieldMetaTypeDate("")
+	}
+	return r.Type
 }
 
 func (r *RecipientGetDocumentRecipientFieldMetaDate) GetTextAlign() *RecipientGetDocumentRecipientTextAlign4 {
@@ -1154,8 +1316,8 @@ type RecipientGetDocumentRecipientFieldMetaEmail struct {
 	Placeholder *string                                         `json:"placeholder,omitempty"`
 	Required    *bool                                           `json:"required,omitempty"`
 	ReadOnly    *bool                                           `json:"readOnly,omitempty"`
+	FontSize    *float64                                        `default:"12" json:"fontSize"`
 	Type        RecipientGetDocumentRecipientFieldMetaTypeEmail `json:"type"`
-	FontSize    *float64                                        `json:"fontSize,omitempty"`
 	TextAlign   *RecipientGetDocumentRecipientTextAlign3        `json:"textAlign,omitempty"`
 }
 
@@ -1198,18 +1360,18 @@ func (r *RecipientGetDocumentRecipientFieldMetaEmail) GetReadOnly() *bool {
 	return r.ReadOnly
 }
 
-func (r *RecipientGetDocumentRecipientFieldMetaEmail) GetType() RecipientGetDocumentRecipientFieldMetaTypeEmail {
-	if r == nil {
-		return RecipientGetDocumentRecipientFieldMetaTypeEmail("")
-	}
-	return r.Type
-}
-
 func (r *RecipientGetDocumentRecipientFieldMetaEmail) GetFontSize() *float64 {
 	if r == nil {
 		return nil
 	}
 	return r.FontSize
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaEmail) GetType() RecipientGetDocumentRecipientFieldMetaTypeEmail {
+	if r == nil {
+		return RecipientGetDocumentRecipientFieldMetaTypeEmail("")
+	}
+	return r.Type
 }
 
 func (r *RecipientGetDocumentRecipientFieldMetaEmail) GetTextAlign() *RecipientGetDocumentRecipientTextAlign3 {
@@ -1276,8 +1438,8 @@ type RecipientGetDocumentRecipientFieldMetaName struct {
 	Placeholder *string                                        `json:"placeholder,omitempty"`
 	Required    *bool                                          `json:"required,omitempty"`
 	ReadOnly    *bool                                          `json:"readOnly,omitempty"`
+	FontSize    *float64                                       `default:"12" json:"fontSize"`
 	Type        RecipientGetDocumentRecipientFieldMetaTypeName `json:"type"`
-	FontSize    *float64                                       `json:"fontSize,omitempty"`
 	TextAlign   *RecipientGetDocumentRecipientTextAlign2       `json:"textAlign,omitempty"`
 }
 
@@ -1320,18 +1482,18 @@ func (r *RecipientGetDocumentRecipientFieldMetaName) GetReadOnly() *bool {
 	return r.ReadOnly
 }
 
-func (r *RecipientGetDocumentRecipientFieldMetaName) GetType() RecipientGetDocumentRecipientFieldMetaTypeName {
-	if r == nil {
-		return RecipientGetDocumentRecipientFieldMetaTypeName("")
-	}
-	return r.Type
-}
-
 func (r *RecipientGetDocumentRecipientFieldMetaName) GetFontSize() *float64 {
 	if r == nil {
 		return nil
 	}
 	return r.FontSize
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaName) GetType() RecipientGetDocumentRecipientFieldMetaTypeName {
+	if r == nil {
+		return RecipientGetDocumentRecipientFieldMetaTypeName("")
+	}
+	return r.Type
 }
 
 func (r *RecipientGetDocumentRecipientFieldMetaName) GetTextAlign() *RecipientGetDocumentRecipientTextAlign2 {
@@ -1398,8 +1560,8 @@ type RecipientGetDocumentRecipientFieldMetaInitials struct {
 	Placeholder *string                                            `json:"placeholder,omitempty"`
 	Required    *bool                                              `json:"required,omitempty"`
 	ReadOnly    *bool                                              `json:"readOnly,omitempty"`
+	FontSize    *float64                                           `default:"12" json:"fontSize"`
 	Type        RecipientGetDocumentRecipientFieldMetaTypeInitials `json:"type"`
-	FontSize    *float64                                           `json:"fontSize,omitempty"`
 	TextAlign   *RecipientGetDocumentRecipientTextAlign1           `json:"textAlign,omitempty"`
 }
 
@@ -1442,18 +1604,18 @@ func (r *RecipientGetDocumentRecipientFieldMetaInitials) GetReadOnly() *bool {
 	return r.ReadOnly
 }
 
-func (r *RecipientGetDocumentRecipientFieldMetaInitials) GetType() RecipientGetDocumentRecipientFieldMetaTypeInitials {
-	if r == nil {
-		return RecipientGetDocumentRecipientFieldMetaTypeInitials("")
-	}
-	return r.Type
-}
-
 func (r *RecipientGetDocumentRecipientFieldMetaInitials) GetFontSize() *float64 {
 	if r == nil {
 		return nil
 	}
 	return r.FontSize
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaInitials) GetType() RecipientGetDocumentRecipientFieldMetaTypeInitials {
+	if r == nil {
+		return RecipientGetDocumentRecipientFieldMetaTypeInitials("")
+	}
+	return r.Type
 }
 
 func (r *RecipientGetDocumentRecipientFieldMetaInitials) GetTextAlign() *RecipientGetDocumentRecipientTextAlign1 {
@@ -1463,32 +1625,128 @@ func (r *RecipientGetDocumentRecipientFieldMetaInitials) GetTextAlign() *Recipie
 	return r.TextAlign
 }
 
+type RecipientGetDocumentRecipientFieldMetaTypeSignature string
+
+const (
+	RecipientGetDocumentRecipientFieldMetaTypeSignatureSignature RecipientGetDocumentRecipientFieldMetaTypeSignature = "signature"
+)
+
+func (e RecipientGetDocumentRecipientFieldMetaTypeSignature) ToPointer() *RecipientGetDocumentRecipientFieldMetaTypeSignature {
+	return &e
+}
+func (e *RecipientGetDocumentRecipientFieldMetaTypeSignature) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "signature":
+		*e = RecipientGetDocumentRecipientFieldMetaTypeSignature(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientGetDocumentRecipientFieldMetaTypeSignature: %v", v)
+	}
+}
+
+type RecipientGetDocumentRecipientFieldMetaSignature struct {
+	Label       *string                                             `json:"label,omitempty"`
+	Placeholder *string                                             `json:"placeholder,omitempty"`
+	Required    *bool                                               `json:"required,omitempty"`
+	ReadOnly    *bool                                               `json:"readOnly,omitempty"`
+	FontSize    *float64                                            `default:"12" json:"fontSize"`
+	Type        RecipientGetDocumentRecipientFieldMetaTypeSignature `json:"type"`
+}
+
+func (r RecipientGetDocumentRecipientFieldMetaSignature) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaSignature) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaSignature) GetLabel() *string {
+	if r == nil {
+		return nil
+	}
+	return r.Label
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaSignature) GetPlaceholder() *string {
+	if r == nil {
+		return nil
+	}
+	return r.Placeholder
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaSignature) GetRequired() *bool {
+	if r == nil {
+		return nil
+	}
+	return r.Required
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaSignature) GetReadOnly() *bool {
+	if r == nil {
+		return nil
+	}
+	return r.ReadOnly
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaSignature) GetFontSize() *float64 {
+	if r == nil {
+		return nil
+	}
+	return r.FontSize
+}
+
+func (r *RecipientGetDocumentRecipientFieldMetaSignature) GetType() RecipientGetDocumentRecipientFieldMetaTypeSignature {
+	if r == nil {
+		return RecipientGetDocumentRecipientFieldMetaTypeSignature("")
+	}
+	return r.Type
+}
+
 type RecipientGetDocumentRecipientFieldMetaUnionType string
 
 const (
-	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaInitials RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Initials"
-	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaName     RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Name"
-	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaEmail    RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Email"
-	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaDate     RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Date"
-	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaText     RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Text"
-	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaNumber   RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Number"
-	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaRadio    RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Radio"
-	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaCheckbox RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Checkbox"
-	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaDropdown RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Dropdown"
+	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaSignature RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Signature"
+	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaInitials  RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Initials"
+	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaName      RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Name"
+	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaEmail     RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Email"
+	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaDate      RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Date"
+	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaText      RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Text"
+	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaNumber    RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Number"
+	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaRadio     RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Radio"
+	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaCheckbox  RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Checkbox"
+	RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaDropdown  RecipientGetDocumentRecipientFieldMetaUnionType = "recipient_getDocumentRecipient_fieldMeta_Dropdown"
 )
 
 type RecipientGetDocumentRecipientFieldMetaUnion struct {
-	RecipientGetDocumentRecipientFieldMetaInitials *RecipientGetDocumentRecipientFieldMetaInitials `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaName     *RecipientGetDocumentRecipientFieldMetaName     `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaEmail    *RecipientGetDocumentRecipientFieldMetaEmail    `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaDate     *RecipientGetDocumentRecipientFieldMetaDate     `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaText     *RecipientGetDocumentRecipientFieldMetaText     `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaNumber   *RecipientGetDocumentRecipientFieldMetaNumber   `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaRadio    *RecipientGetDocumentRecipientFieldMetaRadio    `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaCheckbox *RecipientGetDocumentRecipientFieldMetaCheckbox `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaDropdown *RecipientGetDocumentRecipientFieldMetaDropdown `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaSignature *RecipientGetDocumentRecipientFieldMetaSignature `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaInitials  *RecipientGetDocumentRecipientFieldMetaInitials  `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaName      *RecipientGetDocumentRecipientFieldMetaName      `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaEmail     *RecipientGetDocumentRecipientFieldMetaEmail     `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaDate      *RecipientGetDocumentRecipientFieldMetaDate      `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaText      *RecipientGetDocumentRecipientFieldMetaText      `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaNumber    *RecipientGetDocumentRecipientFieldMetaNumber    `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaRadio     *RecipientGetDocumentRecipientFieldMetaRadio     `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaCheckbox  *RecipientGetDocumentRecipientFieldMetaCheckbox  `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaDropdown  *RecipientGetDocumentRecipientFieldMetaDropdown  `queryParam:"inline,name=fieldMeta"`
 
 	Type RecipientGetDocumentRecipientFieldMetaUnionType
+}
+
+func CreateRecipientGetDocumentRecipientFieldMetaUnionRecipientGetDocumentRecipientFieldMetaSignature(recipientGetDocumentRecipientFieldMetaSignature RecipientGetDocumentRecipientFieldMetaSignature) RecipientGetDocumentRecipientFieldMetaUnion {
+	typ := RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaSignature
+
+	return RecipientGetDocumentRecipientFieldMetaUnion{
+		RecipientGetDocumentRecipientFieldMetaSignature: &recipientGetDocumentRecipientFieldMetaSignature,
+		Type: typ,
+	}
 }
 
 func CreateRecipientGetDocumentRecipientFieldMetaUnionRecipientGetDocumentRecipientFieldMetaInitials(recipientGetDocumentRecipientFieldMetaInitials RecipientGetDocumentRecipientFieldMetaInitials) RecipientGetDocumentRecipientFieldMetaUnion {
@@ -1574,6 +1832,13 @@ func CreateRecipientGetDocumentRecipientFieldMetaUnionRecipientGetDocumentRecipi
 
 func (u *RecipientGetDocumentRecipientFieldMetaUnion) UnmarshalJSON(data []byte) error {
 
+	var recipientGetDocumentRecipientFieldMetaSignature RecipientGetDocumentRecipientFieldMetaSignature = RecipientGetDocumentRecipientFieldMetaSignature{}
+	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaSignature, "", true, nil); err == nil {
+		u.RecipientGetDocumentRecipientFieldMetaSignature = &recipientGetDocumentRecipientFieldMetaSignature
+		u.Type = RecipientGetDocumentRecipientFieldMetaUnionTypeRecipientGetDocumentRecipientFieldMetaSignature
+		return nil
+	}
+
 	var recipientGetDocumentRecipientFieldMetaInitials RecipientGetDocumentRecipientFieldMetaInitials = RecipientGetDocumentRecipientFieldMetaInitials{}
 	if err := utils.UnmarshalJSON(data, &recipientGetDocumentRecipientFieldMetaInitials, "", true, nil); err == nil {
 		u.RecipientGetDocumentRecipientFieldMetaInitials = &recipientGetDocumentRecipientFieldMetaInitials
@@ -1641,6 +1906,10 @@ func (u *RecipientGetDocumentRecipientFieldMetaUnion) UnmarshalJSON(data []byte)
 }
 
 func (u RecipientGetDocumentRecipientFieldMetaUnion) MarshalJSON() ([]byte, error) {
+	if u.RecipientGetDocumentRecipientFieldMetaSignature != nil {
+		return utils.MarshalJSON(u.RecipientGetDocumentRecipientFieldMetaSignature, "", true)
+	}
+
 	if u.RecipientGetDocumentRecipientFieldMetaInitials != nil {
 		return utils.MarshalJSON(u.RecipientGetDocumentRecipientFieldMetaInitials, "", true)
 	}
@@ -1681,23 +1950,22 @@ func (u RecipientGetDocumentRecipientFieldMetaUnion) MarshalJSON() ([]byte, erro
 }
 
 type RecipientGetDocumentRecipientField struct {
-	EnvelopeID     string                            `json:"envelopeId"`
-	EnvelopeItemID string                            `json:"envelopeItemId"`
-	Type           RecipientGetDocumentRecipientType `json:"type"`
-	ID             float64                           `json:"id"`
-	SecondaryID    string                            `json:"secondaryId"`
-	RecipientID    float64                           `json:"recipientId"`
-	// The page number of the field on the document. Starts from 1.
-	Page       float64                                      `json:"page"`
-	PositionX  any                                          `json:"positionX,omitempty"`
-	PositionY  any                                          `json:"positionY,omitempty"`
-	Width      any                                          `json:"width,omitempty"`
-	Height     any                                          `json:"height,omitempty"`
-	CustomText string                                       `json:"customText"`
-	Inserted   bool                                         `json:"inserted"`
-	FieldMeta  *RecipientGetDocumentRecipientFieldMetaUnion `json:"fieldMeta"`
-	DocumentID *float64                                     `json:"documentId,omitempty"`
-	TemplateID *float64                                     `json:"templateId,omitempty"`
+	EnvelopeID     string                                       `json:"envelopeId"`
+	EnvelopeItemID string                                       `json:"envelopeItemId"`
+	Type           RecipientGetDocumentRecipientType            `json:"type"`
+	ID             float64                                      `json:"id"`
+	SecondaryID    string                                       `json:"secondaryId"`
+	RecipientID    float64                                      `json:"recipientId"`
+	Page           float64                                      `json:"page"`
+	PositionX      any                                          `json:"positionX"`
+	PositionY      any                                          `json:"positionY"`
+	Width          any                                          `json:"width"`
+	Height         any                                          `json:"height"`
+	CustomText     string                                       `json:"customText"`
+	Inserted       bool                                         `json:"inserted"`
+	FieldMeta      *RecipientGetDocumentRecipientFieldMetaUnion `json:"fieldMeta"`
+	DocumentID     *float64                                     `json:"documentId,omitempty"`
+	TemplateID     *float64                                     `json:"templateId,omitempty"`
 }
 
 func (r *RecipientGetDocumentRecipientField) GetEnvelopeID() string {
@@ -1827,12 +2095,11 @@ type RecipientGetDocumentRecipientResponseBody struct {
 	Expired           *string                                    `json:"expired"`
 	SignedAt          *string                                    `json:"signedAt"`
 	AuthOptions       *RecipientGetDocumentRecipientAuthOptions  `json:"authOptions"`
-	// The order in which the recipient should sign the document. Only works if the document is set to sequential signing.
-	SigningOrder    *float64                             `json:"signingOrder"`
-	RejectionReason *string                              `json:"rejectionReason"`
-	Fields          []RecipientGetDocumentRecipientField `json:"fields"`
-	DocumentID      *float64                             `json:"documentId,omitempty"`
-	TemplateID      *float64                             `json:"templateId,omitempty"`
+	SigningOrder      *float64                                   `json:"signingOrder"`
+	RejectionReason   *string                                    `json:"rejectionReason"`
+	Fields            []RecipientGetDocumentRecipientField       `json:"fields"`
+	DocumentID        *float64                                   `json:"documentId,omitempty"`
+	TemplateID        *float64                                   `json:"templateId,omitempty"`
 }
 
 func (r *RecipientGetDocumentRecipientResponseBody) GetEnvelopeID() string {

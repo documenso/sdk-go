@@ -59,6 +59,58 @@ func (e *DocumentDownloadNotFoundError) Error() string {
 	return string(data)
 }
 
+type DocumentDownloadForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (d *DocumentDownloadForbiddenIssue) GetMessage() string {
+	if d == nil {
+		return ""
+	}
+	return d.Message
+}
+
+// DocumentDownloadForbiddenError - Insufficient access
+type DocumentDownloadForbiddenError struct {
+	Message  string                           `json:"message"`
+	Code     string                           `json:"code"`
+	Issues   []DocumentDownloadForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata          `json:"-"`
+}
+
+var _ error = &DocumentDownloadForbiddenError{}
+
+func (e *DocumentDownloadForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type DocumentDownloadUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (d *DocumentDownloadUnauthorizedIssue) GetMessage() string {
+	if d == nil {
+		return ""
+	}
+	return d.Message
+}
+
+// DocumentDownloadUnauthorizedError - Authorization not provided
+type DocumentDownloadUnauthorizedError struct {
+	Message  string                              `json:"message"`
+	Code     string                              `json:"code"`
+	Issues   []DocumentDownloadUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata             `json:"-"`
+}
+
+var _ error = &DocumentDownloadUnauthorizedError{}
+
+func (e *DocumentDownloadUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type DocumentDownloadBadRequestIssue struct {
 	Message string `json:"message"`
 }

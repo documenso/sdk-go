@@ -32,8 +32,8 @@ func newDocument(rootSDK *Documenso, sdkConfig config.SDKConfiguration, hooks *h
 
 // DocumentDownload - Download document (beta)
 // Get a pre-signed download URL for the original or signed version of a document
-func (s *Document) DocumentDownload(ctx context.Context, documentID float64, version *operations.Version, opts ...operations.Option) (*operations.DocumentDownloadResponse, error) {
-	request := operations.DocumentDownloadRequest{
+func (s *Document) DocumentDownload(ctx context.Context, documentID float64, version *operations.DocumentDownloadBetaVersion, opts ...operations.Option) (*operations.DocumentDownloadBetaResponse, error) {
+	request := operations.DocumentDownloadBetaRequest{
 		DocumentID: documentID,
 		Version:    version,
 	}
@@ -66,7 +66,7 @@ func (s *Document) DocumentDownload(ctx context.Context, documentID float64, ver
 		SDKConfiguration: s.sdkConfiguration,
 		BaseURL:          baseURL,
 		Context:          ctx,
-		OperationID:      "document-download",
+		OperationID:      "document-downloadBeta",
 		SecuritySource:   s.sdkConfiguration.Security,
 	}
 
@@ -176,7 +176,7 @@ func (s *Document) DocumentDownload(ctx context.Context, documentID float64, ver
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -191,7 +191,7 @@ func (s *Document) DocumentDownload(ctx context.Context, documentID float64, ver
 		}
 	}
 
-	res := &operations.DocumentDownloadResponse{
+	res := &operations.DocumentDownloadBetaResponse{
 		HTTPMeta: components.HTTPMetadata{
 			Request:  req,
 			Response: httpRes,
@@ -207,7 +207,7 @@ func (s *Document) DocumentDownload(ctx context.Context, documentID float64, ver
 				return nil, err
 			}
 
-			var out operations.DocumentDownloadResponseBody
+			var out operations.DocumentDownloadBetaResponseBody
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -228,7 +228,57 @@ func (s *Document) DocumentDownload(ctx context.Context, documentID float64, ver
 				return nil, err
 			}
 
-			var out apierrors.DocumentDownloadBadRequestError
+			var out apierrors.DocumentDownloadBetaBadRequestError
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
+			return nil, &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, apierrors.NewAPIError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode == 401:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out apierrors.DocumentDownloadBetaUnauthorizedError
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
+				return nil, err
+			}
+
+			out.HTTPMeta = components.HTTPMetadata{
+				Request:  req,
+				Response: httpRes,
+			}
+			return nil, &out
+		default:
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+			return nil, apierrors.NewAPIError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode == 403:
+		switch {
+		case utils.MatchContentType(httpRes.Header.Get("Content-Type"), `application/json`):
+			rawBody, err := utils.ConsumeRawBody(httpRes)
+			if err != nil {
+				return nil, err
+			}
+
+			var out apierrors.DocumentDownloadBetaForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -253,7 +303,7 @@ func (s *Document) DocumentDownload(ctx context.Context, documentID float64, ver
 				return nil, err
 			}
 
-			var out apierrors.DocumentDownloadNotFoundError
+			var out apierrors.DocumentDownloadBetaNotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}
@@ -278,7 +328,7 @@ func (s *Document) DocumentDownload(ctx context.Context, documentID float64, ver
 				return nil, err
 			}
 
-			var out apierrors.DocumentDownloadInternalServerError
+			var out apierrors.DocumentDownloadBetaInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
 				return nil, err
 			}

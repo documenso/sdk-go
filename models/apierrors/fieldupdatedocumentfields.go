@@ -33,6 +33,58 @@ func (e *FieldUpdateDocumentFieldsInternalServerError) Error() string {
 	return string(data)
 }
 
+type FieldUpdateDocumentFieldsForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (f *FieldUpdateDocumentFieldsForbiddenIssue) GetMessage() string {
+	if f == nil {
+		return ""
+	}
+	return f.Message
+}
+
+// FieldUpdateDocumentFieldsForbiddenError - Insufficient access
+type FieldUpdateDocumentFieldsForbiddenError struct {
+	Message  string                                    `json:"message"`
+	Code     string                                    `json:"code"`
+	Issues   []FieldUpdateDocumentFieldsForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                   `json:"-"`
+}
+
+var _ error = &FieldUpdateDocumentFieldsForbiddenError{}
+
+func (e *FieldUpdateDocumentFieldsForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type FieldUpdateDocumentFieldsUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (f *FieldUpdateDocumentFieldsUnauthorizedIssue) GetMessage() string {
+	if f == nil {
+		return ""
+	}
+	return f.Message
+}
+
+// FieldUpdateDocumentFieldsUnauthorizedError - Authorization not provided
+type FieldUpdateDocumentFieldsUnauthorizedError struct {
+	Message  string                                       `json:"message"`
+	Code     string                                       `json:"code"`
+	Issues   []FieldUpdateDocumentFieldsUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                      `json:"-"`
+}
+
+var _ error = &FieldUpdateDocumentFieldsUnauthorizedError{}
+
+func (e *FieldUpdateDocumentFieldsUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type FieldUpdateDocumentFieldsBadRequestIssue struct {
 	Message string `json:"message"`
 }

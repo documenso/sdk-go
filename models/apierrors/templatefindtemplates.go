@@ -59,6 +59,58 @@ func (e *TemplateFindTemplatesNotFoundError) Error() string {
 	return string(data)
 }
 
+type TemplateFindTemplatesForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (t *TemplateFindTemplatesForbiddenIssue) GetMessage() string {
+	if t == nil {
+		return ""
+	}
+	return t.Message
+}
+
+// TemplateFindTemplatesForbiddenError - Insufficient access
+type TemplateFindTemplatesForbiddenError struct {
+	Message  string                                `json:"message"`
+	Code     string                                `json:"code"`
+	Issues   []TemplateFindTemplatesForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata               `json:"-"`
+}
+
+var _ error = &TemplateFindTemplatesForbiddenError{}
+
+func (e *TemplateFindTemplatesForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type TemplateFindTemplatesUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (t *TemplateFindTemplatesUnauthorizedIssue) GetMessage() string {
+	if t == nil {
+		return ""
+	}
+	return t.Message
+}
+
+// TemplateFindTemplatesUnauthorizedError - Authorization not provided
+type TemplateFindTemplatesUnauthorizedError struct {
+	Message  string                                   `json:"message"`
+	Code     string                                   `json:"code"`
+	Issues   []TemplateFindTemplatesUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                  `json:"-"`
+}
+
+var _ error = &TemplateFindTemplatesUnauthorizedError{}
+
+func (e *TemplateFindTemplatesUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type TemplateFindTemplatesBadRequestIssue struct {
 	Message string `json:"message"`
 }

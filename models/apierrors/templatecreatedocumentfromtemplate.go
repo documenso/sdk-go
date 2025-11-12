@@ -33,6 +33,58 @@ func (e *TemplateCreateDocumentFromTemplateInternalServerError) Error() string {
 	return string(data)
 }
 
+type TemplateCreateDocumentFromTemplateForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (t *TemplateCreateDocumentFromTemplateForbiddenIssue) GetMessage() string {
+	if t == nil {
+		return ""
+	}
+	return t.Message
+}
+
+// TemplateCreateDocumentFromTemplateForbiddenError - Insufficient access
+type TemplateCreateDocumentFromTemplateForbiddenError struct {
+	Message  string                                             `json:"message"`
+	Code     string                                             `json:"code"`
+	Issues   []TemplateCreateDocumentFromTemplateForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                            `json:"-"`
+}
+
+var _ error = &TemplateCreateDocumentFromTemplateForbiddenError{}
+
+func (e *TemplateCreateDocumentFromTemplateForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type TemplateCreateDocumentFromTemplateUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (t *TemplateCreateDocumentFromTemplateUnauthorizedIssue) GetMessage() string {
+	if t == nil {
+		return ""
+	}
+	return t.Message
+}
+
+// TemplateCreateDocumentFromTemplateUnauthorizedError - Authorization not provided
+type TemplateCreateDocumentFromTemplateUnauthorizedError struct {
+	Message  string                                                `json:"message"`
+	Code     string                                                `json:"code"`
+	Issues   []TemplateCreateDocumentFromTemplateUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                               `json:"-"`
+}
+
+var _ error = &TemplateCreateDocumentFromTemplateUnauthorizedError{}
+
+func (e *TemplateCreateDocumentFromTemplateUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type TemplateCreateDocumentFromTemplateBadRequestIssue struct {
 	Message string `json:"message"`
 }

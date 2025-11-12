@@ -39,7 +39,6 @@ func (e *TemplateCreateTemplateTemporaryVisibilityRequest) UnmarshalJSON(data []
 	}
 }
 
-// TemplateCreateTemplateTemporaryGlobalAccessAuthRequest - The type of authentication required for the recipient to access the document.
 type TemplateCreateTemplateTemporaryGlobalAccessAuthRequest string
 
 const (
@@ -66,7 +65,6 @@ func (e *TemplateCreateTemplateTemporaryGlobalAccessAuthRequest) UnmarshalJSON(d
 	}
 }
 
-// TemplateCreateTemplateTemporaryGlobalActionAuthRequest - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
 type TemplateCreateTemplateTemporaryGlobalActionAuthRequest string
 
 const (
@@ -125,7 +123,6 @@ func (e *TemplateCreateTemplateTemporaryTypeRequest) UnmarshalJSON(data []byte) 
 	}
 }
 
-// TemplateCreateTemplateTemporaryDateFormat - The date format to use for date fields and signing the document.
 type TemplateCreateTemplateTemporaryDateFormat string
 
 const (
@@ -212,18 +209,17 @@ func (e *TemplateCreateTemplateTemporaryDateFormat) UnmarshalJSON(data []byte) e
 	}
 }
 
-// TemplateCreateTemplateTemporaryDistributionMethodRequest - The distribution method to use when sending the document to the recipients.
-type TemplateCreateTemplateTemporaryDistributionMethodRequest string
+type TemplateCreateTemplateTemporaryMetaDistributionMethod string
 
 const (
-	TemplateCreateTemplateTemporaryDistributionMethodRequestEmail TemplateCreateTemplateTemporaryDistributionMethodRequest = "EMAIL"
-	TemplateCreateTemplateTemporaryDistributionMethodRequestNone  TemplateCreateTemplateTemporaryDistributionMethodRequest = "NONE"
+	TemplateCreateTemplateTemporaryMetaDistributionMethodEmail TemplateCreateTemplateTemporaryMetaDistributionMethod = "EMAIL"
+	TemplateCreateTemplateTemporaryMetaDistributionMethodNone  TemplateCreateTemplateTemporaryMetaDistributionMethod = "NONE"
 )
 
-func (e TemplateCreateTemplateTemporaryDistributionMethodRequest) ToPointer() *TemplateCreateTemplateTemporaryDistributionMethodRequest {
+func (e TemplateCreateTemplateTemporaryMetaDistributionMethod) ToPointer() *TemplateCreateTemplateTemporaryMetaDistributionMethod {
 	return &e
 }
-func (e *TemplateCreateTemplateTemporaryDistributionMethodRequest) UnmarshalJSON(data []byte) error {
+func (e *TemplateCreateTemplateTemporaryMetaDistributionMethod) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -232,91 +228,83 @@ func (e *TemplateCreateTemplateTemporaryDistributionMethodRequest) UnmarshalJSON
 	case "EMAIL":
 		fallthrough
 	case "NONE":
-		*e = TemplateCreateTemplateTemporaryDistributionMethodRequest(v)
+		*e = TemplateCreateTemplateTemporaryMetaDistributionMethod(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryDistributionMethodRequest: %v", v)
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryMetaDistributionMethod: %v", v)
 	}
 }
 
-type TemplateCreateTemplateTemporaryEmailSettingsRequest struct {
-	// Whether to send an email to all recipients that the document is ready for them to sign.
+type TemplateCreateTemplateTemporaryMetaEmailSettings struct {
 	RecipientSigningRequest *bool `default:"true" json:"recipientSigningRequest"`
-	// Whether to send an email to the recipient who was removed from a pending document.
-	RecipientRemoved *bool `default:"true" json:"recipientRemoved"`
-	// Whether to send an email to the document owner when a recipient has signed the document.
-	RecipientSigned *bool `default:"true" json:"recipientSigned"`
-	// Whether to send an email to the recipient who has just signed the document indicating that there are still other recipients who need to sign the document. This will only be sent if the document is still pending after the recipient has signed.
-	DocumentPending *bool `default:"true" json:"documentPending"`
-	// Whether to send an email to all recipients when the document is complete.
-	DocumentCompleted *bool `default:"true" json:"documentCompleted"`
-	// Whether to send an email to all recipients if a pending document has been deleted.
-	DocumentDeleted *bool `default:"true" json:"documentDeleted"`
-	// Whether to send an email to the document owner when the document is complete.
-	OwnerDocumentCompleted *bool `default:"true" json:"ownerDocumentCompleted"`
+	RecipientRemoved        *bool `default:"true" json:"recipientRemoved"`
+	RecipientSigned         *bool `default:"true" json:"recipientSigned"`
+	DocumentPending         *bool `default:"true" json:"documentPending"`
+	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
+	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
+	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
 }
 
-func (t TemplateCreateTemplateTemporaryEmailSettingsRequest) MarshalJSON() ([]byte, error) {
+func (t TemplateCreateTemplateTemporaryMetaEmailSettings) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(t, "", false)
 }
 
-func (t *TemplateCreateTemplateTemporaryEmailSettingsRequest) UnmarshalJSON(data []byte) error {
+func (t *TemplateCreateTemplateTemporaryMetaEmailSettings) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (t *TemplateCreateTemplateTemporaryEmailSettingsRequest) GetRecipientSigningRequest() *bool {
+func (t *TemplateCreateTemplateTemporaryMetaEmailSettings) GetRecipientSigningRequest() *bool {
 	if t == nil {
 		return nil
 	}
 	return t.RecipientSigningRequest
 }
 
-func (t *TemplateCreateTemplateTemporaryEmailSettingsRequest) GetRecipientRemoved() *bool {
+func (t *TemplateCreateTemplateTemporaryMetaEmailSettings) GetRecipientRemoved() *bool {
 	if t == nil {
 		return nil
 	}
 	return t.RecipientRemoved
 }
 
-func (t *TemplateCreateTemplateTemporaryEmailSettingsRequest) GetRecipientSigned() *bool {
+func (t *TemplateCreateTemplateTemporaryMetaEmailSettings) GetRecipientSigned() *bool {
 	if t == nil {
 		return nil
 	}
 	return t.RecipientSigned
 }
 
-func (t *TemplateCreateTemplateTemporaryEmailSettingsRequest) GetDocumentPending() *bool {
+func (t *TemplateCreateTemplateTemporaryMetaEmailSettings) GetDocumentPending() *bool {
 	if t == nil {
 		return nil
 	}
 	return t.DocumentPending
 }
 
-func (t *TemplateCreateTemplateTemporaryEmailSettingsRequest) GetDocumentCompleted() *bool {
+func (t *TemplateCreateTemplateTemporaryMetaEmailSettings) GetDocumentCompleted() *bool {
 	if t == nil {
 		return nil
 	}
 	return t.DocumentCompleted
 }
 
-func (t *TemplateCreateTemplateTemporaryEmailSettingsRequest) GetDocumentDeleted() *bool {
+func (t *TemplateCreateTemplateTemporaryMetaEmailSettings) GetDocumentDeleted() *bool {
 	if t == nil {
 		return nil
 	}
 	return t.DocumentDeleted
 }
 
-func (t *TemplateCreateTemplateTemporaryEmailSettingsRequest) GetOwnerDocumentCompleted() *bool {
+func (t *TemplateCreateTemplateTemporaryMetaEmailSettings) GetOwnerDocumentCompleted() *bool {
 	if t == nil {
 		return nil
 	}
 	return t.OwnerDocumentCompleted
 }
 
-// TemplateCreateTemplateTemporaryLanguage - The language to use for email communications with recipients.
 type TemplateCreateTemplateTemporaryLanguage string
 
 const (
@@ -382,31 +370,21 @@ func (e *TemplateCreateTemplateTemporarySigningOrderRequest) UnmarshalJSON(data 
 }
 
 type TemplateCreateTemplateTemporaryMeta struct {
-	// The subject of the email that will be sent to the recipients.
-	Subject *string `json:"subject,omitempty"`
-	// The message of the email that will be sent to the recipients.
-	Message *string `json:"message,omitempty"`
-	// The timezone to use for date fields and signing the document. Example Etc/UTC, Australia/Melbourne
-	Timezone *string `json:"timezone,omitempty"`
-	// The date format to use for date fields and signing the document.
-	DateFormat *TemplateCreateTemplateTemporaryDateFormat `json:"dateFormat,omitempty"`
-	// The distribution method to use when sending the document to the recipients.
-	DistributionMethod *TemplateCreateTemplateTemporaryDistributionMethodRequest `json:"distributionMethod,omitempty"`
-	EmailID            *string                                                   `json:"emailId,omitempty"`
-	EmailReplyTo       *string                                                   `json:"emailReplyTo,omitempty"`
-	EmailSettings      *TemplateCreateTemplateTemporaryEmailSettingsRequest      `json:"emailSettings,omitempty"`
-	// The URL to which the recipient should be redirected after signing the document.
-	RedirectURL *string `json:"redirectUrl,omitempty"`
-	// The language to use for email communications with recipients.
-	Language *TemplateCreateTemplateTemporaryLanguage `json:"language,omitempty"`
-	// Whether to allow recipients to sign using a typed signature.
-	TypedSignatureEnabled *bool `json:"typedSignatureEnabled,omitempty"`
-	// Whether to allow recipients to sign using an uploaded signature.
-	UploadSignatureEnabled *bool `json:"uploadSignatureEnabled,omitempty"`
-	// Whether to allow recipients to sign using a draw signature.
-	DrawSignatureEnabled   *bool                                               `json:"drawSignatureEnabled,omitempty"`
-	SigningOrder           *TemplateCreateTemplateTemporarySigningOrderRequest `json:"signingOrder,omitempty"`
-	AllowDictateNextSigner *bool                                               `json:"allowDictateNextSigner,omitempty"`
+	Subject                *string                                                `json:"subject,omitempty"`
+	Message                *string                                                `json:"message,omitempty"`
+	Timezone               *string                                                `json:"timezone,omitempty"`
+	DateFormat             *TemplateCreateTemplateTemporaryDateFormat             `json:"dateFormat,omitempty"`
+	DistributionMethod     *TemplateCreateTemplateTemporaryMetaDistributionMethod `json:"distributionMethod,omitempty"`
+	EmailID                *string                                                `json:"emailId,omitempty"`
+	EmailReplyTo           *string                                                `json:"emailReplyTo,omitempty"`
+	EmailSettings          *TemplateCreateTemplateTemporaryMetaEmailSettings      `json:"emailSettings,omitempty"`
+	RedirectURL            *string                                                `json:"redirectUrl,omitempty"`
+	Language               *TemplateCreateTemplateTemporaryLanguage               `json:"language,omitempty"`
+	TypedSignatureEnabled  *bool                                                  `json:"typedSignatureEnabled,omitempty"`
+	UploadSignatureEnabled *bool                                                  `json:"uploadSignatureEnabled,omitempty"`
+	DrawSignatureEnabled   *bool                                                  `json:"drawSignatureEnabled,omitempty"`
+	SigningOrder           *TemplateCreateTemplateTemporarySigningOrderRequest    `json:"signingOrder,omitempty"`
+	AllowDictateNextSigner *bool                                                  `json:"allowDictateNextSigner,omitempty"`
 }
 
 func (t *TemplateCreateTemplateTemporaryMeta) GetSubject() *string {
@@ -437,7 +415,7 @@ func (t *TemplateCreateTemplateTemporaryMeta) GetDateFormat() *TemplateCreateTem
 	return t.DateFormat
 }
 
-func (t *TemplateCreateTemplateTemporaryMeta) GetDistributionMethod() *TemplateCreateTemplateTemporaryDistributionMethodRequest {
+func (t *TemplateCreateTemplateTemporaryMeta) GetDistributionMethod() *TemplateCreateTemplateTemporaryMetaDistributionMethod {
 	if t == nil {
 		return nil
 	}
@@ -458,7 +436,7 @@ func (t *TemplateCreateTemplateTemporaryMeta) GetEmailReplyTo() *string {
 	return t.EmailReplyTo
 }
 
-func (t *TemplateCreateTemplateTemporaryMeta) GetEmailSettings() *TemplateCreateTemplateTemporaryEmailSettingsRequest {
+func (t *TemplateCreateTemplateTemporaryMeta) GetEmailSettings() *TemplateCreateTemplateTemporaryMetaEmailSettings {
 	if t == nil {
 		return nil
 	}
@@ -514,20 +492,79 @@ func (t *TemplateCreateTemplateTemporaryMeta) GetAllowDictateNextSigner() *bool 
 	return t.AllowDictateNextSigner
 }
 
+type TemplateCreateTemplateTemporaryTypeLink string
+
+const (
+	TemplateCreateTemplateTemporaryTypeLinkLink TemplateCreateTemplateTemporaryTypeLink = "link"
+)
+
+func (e TemplateCreateTemplateTemporaryTypeLink) ToPointer() *TemplateCreateTemplateTemporaryTypeLink {
+	return &e
+}
+func (e *TemplateCreateTemplateTemporaryTypeLink) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "link":
+		*e = TemplateCreateTemplateTemporaryTypeLink(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryTypeLink: %v", v)
+	}
+}
+
+type TemplateCreateTemplateTemporaryAttachment struct {
+	Label string                                   `json:"label"`
+	Data  string                                   `json:"data"`
+	Type  *TemplateCreateTemplateTemporaryTypeLink `default:"link" json:"type"`
+}
+
+func (t TemplateCreateTemplateTemporaryAttachment) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateCreateTemplateTemporaryAttachment) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"label", "data"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TemplateCreateTemplateTemporaryAttachment) GetLabel() string {
+	if t == nil {
+		return ""
+	}
+	return t.Label
+}
+
+func (t *TemplateCreateTemplateTemporaryAttachment) GetData() string {
+	if t == nil {
+		return ""
+	}
+	return t.Data
+}
+
+func (t *TemplateCreateTemplateTemporaryAttachment) GetType() *TemplateCreateTemplateTemporaryTypeLink {
+	if t == nil {
+		return nil
+	}
+	return t.Type
+}
+
 type TemplateCreateTemplateTemporaryRequest struct {
-	// The title of the document.
-	Title            string                                                   `json:"title"`
-	FolderID         *string                                                  `json:"folderId,omitempty"`
-	ExternalID       *string                                                  `json:"externalId,omitempty"`
-	Visibility       *TemplateCreateTemplateTemporaryVisibilityRequest        `json:"visibility,omitempty"`
-	GlobalAccessAuth []TemplateCreateTemplateTemporaryGlobalAccessAuthRequest `json:"globalAccessAuth,omitempty"`
-	GlobalActionAuth []TemplateCreateTemplateTemporaryGlobalActionAuthRequest `json:"globalActionAuth,omitempty"`
-	// The title of the template that will be displayed to the public. Only applicable for public templates.
-	PublicTitle *string `json:"publicTitle,omitempty"`
-	// The description of the template that will be displayed to the public. Only applicable for public templates.
-	PublicDescription *string                                     `json:"publicDescription,omitempty"`
-	Type              *TemplateCreateTemplateTemporaryTypeRequest `json:"type,omitempty"`
-	Meta              *TemplateCreateTemplateTemporaryMeta        `json:"meta,omitempty"`
+	Title             string                                                   `json:"title"`
+	FolderID          *string                                                  `json:"folderId,omitempty"`
+	ExternalID        *string                                                  `json:"externalId,omitempty"`
+	Visibility        *TemplateCreateTemplateTemporaryVisibilityRequest        `json:"visibility,omitempty"`
+	GlobalAccessAuth  []TemplateCreateTemplateTemporaryGlobalAccessAuthRequest `json:"globalAccessAuth,omitempty"`
+	GlobalActionAuth  []TemplateCreateTemplateTemporaryGlobalActionAuthRequest `json:"globalActionAuth,omitempty"`
+	PublicTitle       *string                                                  `json:"publicTitle,omitempty"`
+	PublicDescription *string                                                  `json:"publicDescription,omitempty"`
+	Type              *TemplateCreateTemplateTemporaryTypeRequest              `json:"type,omitempty"`
+	Meta              *TemplateCreateTemplateTemporaryMeta                     `json:"meta,omitempty"`
+	Attachments       []TemplateCreateTemplateTemporaryAttachment              `json:"attachments,omitempty"`
 }
 
 func (t *TemplateCreateTemplateTemporaryRequest) GetTitle() string {
@@ -600,6 +637,13 @@ func (t *TemplateCreateTemplateTemporaryRequest) GetMeta() *TemplateCreateTempla
 	return t.Meta
 }
 
+func (t *TemplateCreateTemplateTemporaryRequest) GetAttachments() []TemplateCreateTemplateTemporaryAttachment {
+	if t == nil {
+		return nil
+	}
+	return t.Attachments
+}
+
 type TemplateCreateTemplateTemporaryTypeResponse string
 
 const (
@@ -655,7 +699,6 @@ func (e *TemplateCreateTemplateTemporaryVisibilityResponse) UnmarshalJSON(data [
 	}
 }
 
-// TemplateCreateTemplateTemporaryGlobalAccessAuthResponse - The type of authentication required for the recipient to access the document.
 type TemplateCreateTemplateTemporaryGlobalAccessAuthResponse string
 
 const (
@@ -682,7 +725,6 @@ func (e *TemplateCreateTemplateTemporaryGlobalAccessAuthResponse) UnmarshalJSON(
 	}
 }
 
-// TemplateCreateTemplateTemporaryGlobalActionAuthResponse - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
 type TemplateCreateTemplateTemporaryGlobalActionAuthResponse string
 
 const (
@@ -859,20 +901,13 @@ func (e *TemplateCreateTemplateTemporaryTemplateMetaDistributionMethod) Unmarsha
 }
 
 type TemplateCreateTemplateTemporaryTemplateMetaEmailSettings struct {
-	// Whether to send an email to all recipients that the document is ready for them to sign.
 	RecipientSigningRequest *bool `default:"true" json:"recipientSigningRequest"`
-	// Whether to send an email to the recipient who was removed from a pending document.
-	RecipientRemoved *bool `default:"true" json:"recipientRemoved"`
-	// Whether to send an email to the document owner when a recipient has signed the document.
-	RecipientSigned *bool `default:"true" json:"recipientSigned"`
-	// Whether to send an email to the recipient who has just signed the document indicating that there are still other recipients who need to sign the document. This will only be sent if the document is still pending after the recipient has signed.
-	DocumentPending *bool `default:"true" json:"documentPending"`
-	// Whether to send an email to all recipients when the document is complete.
-	DocumentCompleted *bool `default:"true" json:"documentCompleted"`
-	// Whether to send an email to all recipients if a pending document has been deleted.
-	DocumentDeleted *bool `default:"true" json:"documentDeleted"`
-	// Whether to send an email to the document owner when the document is complete.
-	OwnerDocumentCompleted *bool `default:"true" json:"ownerDocumentCompleted"`
+	RecipientRemoved        *bool `default:"true" json:"recipientRemoved"`
+	RecipientSigned         *bool `default:"true" json:"recipientSigned"`
+	DocumentPending         *bool `default:"true" json:"documentPending"`
+	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
+	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
+	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
 }
 
 func (t TemplateCreateTemplateTemporaryTemplateMetaEmailSettings) MarshalJSON() ([]byte, error) {
@@ -1276,7 +1311,6 @@ func (e *TemplateCreateTemplateTemporarySendStatus) UnmarshalJSON(data []byte) e
 	}
 }
 
-// TemplateCreateTemplateTemporaryAccessAuth - The type of authentication required for the recipient to access the document.
 type TemplateCreateTemplateTemporaryAccessAuth string
 
 const (
@@ -1303,7 +1337,6 @@ func (e *TemplateCreateTemplateTemporaryAccessAuth) UnmarshalJSON(data []byte) e
 	}
 }
 
-// TemplateCreateTemplateTemporaryActionAuth - The type of authentication required for the recipient to sign the document.
 type TemplateCreateTemplateTemporaryActionAuth string
 
 const (
@@ -1372,11 +1405,10 @@ type TemplateCreateTemplateTemporaryRecipient struct {
 	Expired           *string                                              `json:"expired"`
 	SignedAt          *string                                              `json:"signedAt"`
 	AuthOptions       *TemplateCreateTemplateTemporaryRecipientAuthOptions `json:"authOptions"`
-	// The order in which the recipient should sign the document. Only works if the document is set to sequential signing.
-	SigningOrder    *float64 `json:"signingOrder"`
-	RejectionReason *string  `json:"rejectionReason"`
-	DocumentID      *float64 `json:"documentId,omitempty"`
-	TemplateID      *float64 `json:"templateId,omitempty"`
+	SigningOrder      *float64                                             `json:"signingOrder"`
+	RejectionReason   *string                                              `json:"rejectionReason"`
+	DocumentID        *float64                                             `json:"documentId,omitempty"`
+	TemplateID        *float64                                             `json:"templateId,omitempty"`
 }
 
 func (t *TemplateCreateTemplateTemporaryRecipient) GetEnvelopeID() string {
@@ -1601,6 +1633,7 @@ type TemplateCreateTemplateTemporaryFieldMetaDropdown struct {
 	Placeholder  *string                                     `json:"placeholder,omitempty"`
 	Required     *bool                                       `json:"required,omitempty"`
 	ReadOnly     *bool                                       `json:"readOnly,omitempty"`
+	FontSize     *float64                                    `default:"12" json:"fontSize"`
 	Type         TemplateCreateTemplateTemporaryTypeDropdown `json:"type"`
 	Values       []TemplateCreateTemplateTemporaryValue3     `json:"values,omitempty"`
 	DefaultValue *string                                     `json:"defaultValue,omitempty"`
@@ -1643,6 +1676,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaDropdown) GetReadOnly() *bool {
 		return nil
 	}
 	return t.ReadOnly
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaDropdown) GetFontSize() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.FontSize
 }
 
 func (t *TemplateCreateTemplateTemporaryFieldMetaDropdown) GetType() TemplateCreateTemplateTemporaryTypeDropdown {
@@ -1727,17 +1767,17 @@ func (t *TemplateCreateTemplateTemporaryValue2) GetValue() string {
 	return t.Value
 }
 
-type TemplateCreateTemplateTemporaryDirection string
+type TemplateCreateTemplateTemporaryDirection2 string
 
 const (
-	TemplateCreateTemplateTemporaryDirectionVertical   TemplateCreateTemplateTemporaryDirection = "vertical"
-	TemplateCreateTemplateTemporaryDirectionHorizontal TemplateCreateTemplateTemporaryDirection = "horizontal"
+	TemplateCreateTemplateTemporaryDirection2Vertical   TemplateCreateTemplateTemporaryDirection2 = "vertical"
+	TemplateCreateTemplateTemporaryDirection2Horizontal TemplateCreateTemplateTemporaryDirection2 = "horizontal"
 )
 
-func (e TemplateCreateTemplateTemporaryDirection) ToPointer() *TemplateCreateTemplateTemporaryDirection {
+func (e TemplateCreateTemplateTemporaryDirection2) ToPointer() *TemplateCreateTemplateTemporaryDirection2 {
 	return &e
 }
-func (e *TemplateCreateTemplateTemporaryDirection) UnmarshalJSON(data []byte) error {
+func (e *TemplateCreateTemplateTemporaryDirection2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1746,10 +1786,10 @@ func (e *TemplateCreateTemplateTemporaryDirection) UnmarshalJSON(data []byte) er
 	case "vertical":
 		fallthrough
 	case "horizontal":
-		*e = TemplateCreateTemplateTemporaryDirection(v)
+		*e = TemplateCreateTemplateTemporaryDirection2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryDirection: %v", v)
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryDirection2: %v", v)
 	}
 }
 
@@ -1758,11 +1798,12 @@ type TemplateCreateTemplateTemporaryFieldMetaCheckbox struct {
 	Placeholder      *string                                     `json:"placeholder,omitempty"`
 	Required         *bool                                       `json:"required,omitempty"`
 	ReadOnly         *bool                                       `json:"readOnly,omitempty"`
+	FontSize         *float64                                    `default:"12" json:"fontSize"`
 	Type             TemplateCreateTemplateTemporaryTypeCheckbox `json:"type"`
 	Values           []TemplateCreateTemplateTemporaryValue2     `json:"values,omitempty"`
 	ValidationRule   *string                                     `json:"validationRule,omitempty"`
 	ValidationLength *float64                                    `json:"validationLength,omitempty"`
-	Direction        *TemplateCreateTemplateTemporaryDirection   `default:"vertical" json:"direction"`
+	Direction        *TemplateCreateTemplateTemporaryDirection2  `default:"vertical" json:"direction"`
 }
 
 func (t TemplateCreateTemplateTemporaryFieldMetaCheckbox) MarshalJSON() ([]byte, error) {
@@ -1804,6 +1845,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaCheckbox) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
+func (t *TemplateCreateTemplateTemporaryFieldMetaCheckbox) GetFontSize() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.FontSize
+}
+
 func (t *TemplateCreateTemplateTemporaryFieldMetaCheckbox) GetType() TemplateCreateTemplateTemporaryTypeCheckbox {
 	if t == nil {
 		return TemplateCreateTemplateTemporaryTypeCheckbox("")
@@ -1832,7 +1880,7 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaCheckbox) GetValidationLength()
 	return t.ValidationLength
 }
 
-func (t *TemplateCreateTemplateTemporaryFieldMetaCheckbox) GetDirection() *TemplateCreateTemplateTemporaryDirection {
+func (t *TemplateCreateTemplateTemporaryFieldMetaCheckbox) GetDirection() *TemplateCreateTemplateTemporaryDirection2 {
 	if t == nil {
 		return nil
 	}
@@ -1900,13 +1948,41 @@ func (t *TemplateCreateTemplateTemporaryValue1) GetValue() string {
 	return t.Value
 }
 
+type TemplateCreateTemplateTemporaryDirection1 string
+
+const (
+	TemplateCreateTemplateTemporaryDirection1Vertical   TemplateCreateTemplateTemporaryDirection1 = "vertical"
+	TemplateCreateTemplateTemporaryDirection1Horizontal TemplateCreateTemplateTemporaryDirection1 = "horizontal"
+)
+
+func (e TemplateCreateTemplateTemporaryDirection1) ToPointer() *TemplateCreateTemplateTemporaryDirection1 {
+	return &e
+}
+func (e *TemplateCreateTemplateTemporaryDirection1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = TemplateCreateTemplateTemporaryDirection1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryDirection1: %v", v)
+	}
+}
+
 type TemplateCreateTemplateTemporaryFieldMetaRadio struct {
-	Label       *string                                  `json:"label,omitempty"`
-	Placeholder *string                                  `json:"placeholder,omitempty"`
-	Required    *bool                                    `json:"required,omitempty"`
-	ReadOnly    *bool                                    `json:"readOnly,omitempty"`
-	Type        TemplateCreateTemplateTemporaryTypeRadio `json:"type"`
-	Values      []TemplateCreateTemplateTemporaryValue1  `json:"values,omitempty"`
+	Label       *string                                    `json:"label,omitempty"`
+	Placeholder *string                                    `json:"placeholder,omitempty"`
+	Required    *bool                                      `json:"required,omitempty"`
+	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
+	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Type        TemplateCreateTemplateTemporaryTypeRadio   `json:"type"`
+	Values      []TemplateCreateTemplateTemporaryValue1    `json:"values,omitempty"`
+	Direction   *TemplateCreateTemplateTemporaryDirection1 `default:"vertical" json:"direction"`
 }
 
 func (t TemplateCreateTemplateTemporaryFieldMetaRadio) MarshalJSON() ([]byte, error) {
@@ -1948,6 +2024,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaRadio) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
+func (t *TemplateCreateTemplateTemporaryFieldMetaRadio) GetFontSize() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.FontSize
+}
+
 func (t *TemplateCreateTemplateTemporaryFieldMetaRadio) GetType() TemplateCreateTemplateTemporaryTypeRadio {
 	if t == nil {
 		return TemplateCreateTemplateTemporaryTypeRadio("")
@@ -1960,6 +2043,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaRadio) GetValues() []TemplateCr
 		return nil
 	}
 	return t.Values
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaRadio) GetDirection() *TemplateCreateTemplateTemporaryDirection1 {
+	if t == nil {
+		return nil
+	}
+	return t.Direction
 }
 
 type TemplateCreateTemplateTemporaryTypeNumber string
@@ -2014,18 +2104,50 @@ func (e *TemplateCreateTemplateTemporaryTextAlign6) UnmarshalJSON(data []byte) e
 	}
 }
 
+type TemplateCreateTemplateTemporaryVerticalAlign2 string
+
+const (
+	TemplateCreateTemplateTemporaryVerticalAlign2Top    TemplateCreateTemplateTemporaryVerticalAlign2 = "top"
+	TemplateCreateTemplateTemporaryVerticalAlign2Middle TemplateCreateTemplateTemporaryVerticalAlign2 = "middle"
+	TemplateCreateTemplateTemporaryVerticalAlign2Bottom TemplateCreateTemplateTemporaryVerticalAlign2 = "bottom"
+)
+
+func (e TemplateCreateTemplateTemporaryVerticalAlign2) ToPointer() *TemplateCreateTemplateTemporaryVerticalAlign2 {
+	return &e
+}
+func (e *TemplateCreateTemplateTemporaryVerticalAlign2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = TemplateCreateTemplateTemporaryVerticalAlign2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryVerticalAlign2: %v", v)
+	}
+}
+
 type TemplateCreateTemplateTemporaryFieldMetaNumber struct {
-	Label        *string                                    `json:"label,omitempty"`
-	Placeholder  *string                                    `json:"placeholder,omitempty"`
-	Required     *bool                                      `json:"required,omitempty"`
-	ReadOnly     *bool                                      `json:"readOnly,omitempty"`
-	Type         TemplateCreateTemplateTemporaryTypeNumber  `json:"type"`
-	NumberFormat *string                                    `json:"numberFormat,omitempty"`
-	Value        *string                                    `json:"value,omitempty"`
-	MinValue     *float64                                   `json:"minValue,omitempty"`
-	MaxValue     *float64                                   `json:"maxValue,omitempty"`
-	FontSize     *float64                                   `json:"fontSize,omitempty"`
-	TextAlign    *TemplateCreateTemplateTemporaryTextAlign6 `json:"textAlign,omitempty"`
+	Label         *string                                        `json:"label,omitempty"`
+	Placeholder   *string                                        `json:"placeholder,omitempty"`
+	Required      *bool                                          `json:"required,omitempty"`
+	ReadOnly      *bool                                          `json:"readOnly,omitempty"`
+	FontSize      *float64                                       `default:"12" json:"fontSize"`
+	Type          TemplateCreateTemplateTemporaryTypeNumber      `json:"type"`
+	NumberFormat  *string                                        `json:"numberFormat,omitempty"`
+	Value         *string                                        `json:"value,omitempty"`
+	MinValue      *float64                                       `json:"minValue,omitempty"`
+	MaxValue      *float64                                       `json:"maxValue,omitempty"`
+	TextAlign     *TemplateCreateTemplateTemporaryTextAlign6     `json:"textAlign,omitempty"`
+	LineHeight    *float64                                       `json:"lineHeight,omitempty"`
+	LetterSpacing *float64                                       `json:"letterSpacing,omitempty"`
+	VerticalAlign *TemplateCreateTemplateTemporaryVerticalAlign2 `json:"verticalAlign,omitempty"`
 }
 
 func (t TemplateCreateTemplateTemporaryFieldMetaNumber) MarshalJSON() ([]byte, error) {
@@ -2067,6 +2189,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaNumber) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
+func (t *TemplateCreateTemplateTemporaryFieldMetaNumber) GetFontSize() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.FontSize
+}
+
 func (t *TemplateCreateTemplateTemporaryFieldMetaNumber) GetType() TemplateCreateTemplateTemporaryTypeNumber {
 	if t == nil {
 		return TemplateCreateTemplateTemporaryTypeNumber("")
@@ -2102,18 +2231,32 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaNumber) GetMaxValue() *float64 
 	return t.MaxValue
 }
 
-func (t *TemplateCreateTemplateTemporaryFieldMetaNumber) GetFontSize() *float64 {
-	if t == nil {
-		return nil
-	}
-	return t.FontSize
-}
-
 func (t *TemplateCreateTemplateTemporaryFieldMetaNumber) GetTextAlign() *TemplateCreateTemplateTemporaryTextAlign6 {
 	if t == nil {
 		return nil
 	}
 	return t.TextAlign
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaNumber) GetLineHeight() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.LineHeight
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaNumber) GetLetterSpacing() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.LetterSpacing
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaNumber) GetVerticalAlign() *TemplateCreateTemplateTemporaryVerticalAlign2 {
+	if t == nil {
+		return nil
+	}
+	return t.VerticalAlign
 }
 
 type TemplateCreateTemplateTemporaryTypeText string
@@ -2168,16 +2311,48 @@ func (e *TemplateCreateTemplateTemporaryTextAlign5) UnmarshalJSON(data []byte) e
 	}
 }
 
+type TemplateCreateTemplateTemporaryVerticalAlign1 string
+
+const (
+	TemplateCreateTemplateTemporaryVerticalAlign1Top    TemplateCreateTemplateTemporaryVerticalAlign1 = "top"
+	TemplateCreateTemplateTemporaryVerticalAlign1Middle TemplateCreateTemplateTemporaryVerticalAlign1 = "middle"
+	TemplateCreateTemplateTemporaryVerticalAlign1Bottom TemplateCreateTemplateTemporaryVerticalAlign1 = "bottom"
+)
+
+func (e TemplateCreateTemplateTemporaryVerticalAlign1) ToPointer() *TemplateCreateTemplateTemporaryVerticalAlign1 {
+	return &e
+}
+func (e *TemplateCreateTemplateTemporaryVerticalAlign1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = TemplateCreateTemplateTemporaryVerticalAlign1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryVerticalAlign1: %v", v)
+	}
+}
+
 type TemplateCreateTemplateTemporaryFieldMetaText struct {
-	Label          *string                                    `json:"label,omitempty"`
-	Placeholder    *string                                    `json:"placeholder,omitempty"`
-	Required       *bool                                      `json:"required,omitempty"`
-	ReadOnly       *bool                                      `json:"readOnly,omitempty"`
-	Type           TemplateCreateTemplateTemporaryTypeText    `json:"type"`
-	Text           *string                                    `json:"text,omitempty"`
-	CharacterLimit *float64                                   `json:"characterLimit,omitempty"`
-	FontSize       *float64                                   `json:"fontSize,omitempty"`
-	TextAlign      *TemplateCreateTemplateTemporaryTextAlign5 `json:"textAlign,omitempty"`
+	Label          *string                                        `json:"label,omitempty"`
+	Placeholder    *string                                        `json:"placeholder,omitempty"`
+	Required       *bool                                          `json:"required,omitempty"`
+	ReadOnly       *bool                                          `json:"readOnly,omitempty"`
+	FontSize       *float64                                       `default:"12" json:"fontSize"`
+	Type           TemplateCreateTemplateTemporaryTypeText        `json:"type"`
+	Text           *string                                        `json:"text,omitempty"`
+	CharacterLimit *float64                                       `json:"characterLimit,omitempty"`
+	TextAlign      *TemplateCreateTemplateTemporaryTextAlign5     `json:"textAlign,omitempty"`
+	LineHeight     *float64                                       `json:"lineHeight,omitempty"`
+	LetterSpacing  *float64                                       `json:"letterSpacing,omitempty"`
+	VerticalAlign  *TemplateCreateTemplateTemporaryVerticalAlign1 `json:"verticalAlign,omitempty"`
 }
 
 func (t TemplateCreateTemplateTemporaryFieldMetaText) MarshalJSON() ([]byte, error) {
@@ -2219,6 +2394,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaText) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
+func (t *TemplateCreateTemplateTemporaryFieldMetaText) GetFontSize() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.FontSize
+}
+
 func (t *TemplateCreateTemplateTemporaryFieldMetaText) GetType() TemplateCreateTemplateTemporaryTypeText {
 	if t == nil {
 		return TemplateCreateTemplateTemporaryTypeText("")
@@ -2240,18 +2422,32 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaText) GetCharacterLimit() *floa
 	return t.CharacterLimit
 }
 
-func (t *TemplateCreateTemplateTemporaryFieldMetaText) GetFontSize() *float64 {
-	if t == nil {
-		return nil
-	}
-	return t.FontSize
-}
-
 func (t *TemplateCreateTemplateTemporaryFieldMetaText) GetTextAlign() *TemplateCreateTemplateTemporaryTextAlign5 {
 	if t == nil {
 		return nil
 	}
 	return t.TextAlign
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaText) GetLineHeight() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.LineHeight
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaText) GetLetterSpacing() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.LetterSpacing
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaText) GetVerticalAlign() *TemplateCreateTemplateTemporaryVerticalAlign1 {
+	if t == nil {
+		return nil
+	}
+	return t.VerticalAlign
 }
 
 type TemplateCreateTemplateTemporaryTypeDate string
@@ -2311,8 +2507,8 @@ type TemplateCreateTemplateTemporaryFieldMetaDate struct {
 	Placeholder *string                                    `json:"placeholder,omitempty"`
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
+	FontSize    *float64                                   `default:"12" json:"fontSize"`
 	Type        TemplateCreateTemplateTemporaryTypeDate    `json:"type"`
-	FontSize    *float64                                   `json:"fontSize,omitempty"`
 	TextAlign   *TemplateCreateTemplateTemporaryTextAlign4 `json:"textAlign,omitempty"`
 }
 
@@ -2355,18 +2551,18 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaDate) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
-func (t *TemplateCreateTemplateTemporaryFieldMetaDate) GetType() TemplateCreateTemplateTemporaryTypeDate {
-	if t == nil {
-		return TemplateCreateTemplateTemporaryTypeDate("")
-	}
-	return t.Type
-}
-
 func (t *TemplateCreateTemplateTemporaryFieldMetaDate) GetFontSize() *float64 {
 	if t == nil {
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaDate) GetType() TemplateCreateTemplateTemporaryTypeDate {
+	if t == nil {
+		return TemplateCreateTemplateTemporaryTypeDate("")
+	}
+	return t.Type
 }
 
 func (t *TemplateCreateTemplateTemporaryFieldMetaDate) GetTextAlign() *TemplateCreateTemplateTemporaryTextAlign4 {
@@ -2433,8 +2629,8 @@ type TemplateCreateTemplateTemporaryFieldMetaEmail struct {
 	Placeholder *string                                    `json:"placeholder,omitempty"`
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
+	FontSize    *float64                                   `default:"12" json:"fontSize"`
 	Type        TemplateCreateTemplateTemporaryTypeEmail   `json:"type"`
-	FontSize    *float64                                   `json:"fontSize,omitempty"`
 	TextAlign   *TemplateCreateTemplateTemporaryTextAlign3 `json:"textAlign,omitempty"`
 }
 
@@ -2477,18 +2673,18 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaEmail) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
-func (t *TemplateCreateTemplateTemporaryFieldMetaEmail) GetType() TemplateCreateTemplateTemporaryTypeEmail {
-	if t == nil {
-		return TemplateCreateTemplateTemporaryTypeEmail("")
-	}
-	return t.Type
-}
-
 func (t *TemplateCreateTemplateTemporaryFieldMetaEmail) GetFontSize() *float64 {
 	if t == nil {
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaEmail) GetType() TemplateCreateTemplateTemporaryTypeEmail {
+	if t == nil {
+		return TemplateCreateTemplateTemporaryTypeEmail("")
+	}
+	return t.Type
 }
 
 func (t *TemplateCreateTemplateTemporaryFieldMetaEmail) GetTextAlign() *TemplateCreateTemplateTemporaryTextAlign3 {
@@ -2555,8 +2751,8 @@ type TemplateCreateTemplateTemporaryFieldMetaName struct {
 	Placeholder *string                                    `json:"placeholder,omitempty"`
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
+	FontSize    *float64                                   `default:"12" json:"fontSize"`
 	Type        TemplateCreateTemplateTemporaryTypeName    `json:"type"`
-	FontSize    *float64                                   `json:"fontSize,omitempty"`
 	TextAlign   *TemplateCreateTemplateTemporaryTextAlign2 `json:"textAlign,omitempty"`
 }
 
@@ -2599,18 +2795,18 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaName) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
-func (t *TemplateCreateTemplateTemporaryFieldMetaName) GetType() TemplateCreateTemplateTemporaryTypeName {
-	if t == nil {
-		return TemplateCreateTemplateTemporaryTypeName("")
-	}
-	return t.Type
-}
-
 func (t *TemplateCreateTemplateTemporaryFieldMetaName) GetFontSize() *float64 {
 	if t == nil {
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaName) GetType() TemplateCreateTemplateTemporaryTypeName {
+	if t == nil {
+		return TemplateCreateTemplateTemporaryTypeName("")
+	}
+	return t.Type
 }
 
 func (t *TemplateCreateTemplateTemporaryFieldMetaName) GetTextAlign() *TemplateCreateTemplateTemporaryTextAlign2 {
@@ -2677,8 +2873,8 @@ type TemplateCreateTemplateTemporaryFieldMetaInitials struct {
 	Placeholder *string                                     `json:"placeholder,omitempty"`
 	Required    *bool                                       `json:"required,omitempty"`
 	ReadOnly    *bool                                       `json:"readOnly,omitempty"`
+	FontSize    *float64                                    `default:"12" json:"fontSize"`
 	Type        TemplateCreateTemplateTemporaryTypeInitials `json:"type"`
-	FontSize    *float64                                    `json:"fontSize,omitempty"`
 	TextAlign   *TemplateCreateTemplateTemporaryTextAlign1  `json:"textAlign,omitempty"`
 }
 
@@ -2721,18 +2917,18 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaInitials) GetReadOnly() *bool {
 	return t.ReadOnly
 }
 
-func (t *TemplateCreateTemplateTemporaryFieldMetaInitials) GetType() TemplateCreateTemplateTemporaryTypeInitials {
-	if t == nil {
-		return TemplateCreateTemplateTemporaryTypeInitials("")
-	}
-	return t.Type
-}
-
 func (t *TemplateCreateTemplateTemporaryFieldMetaInitials) GetFontSize() *float64 {
 	if t == nil {
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaInitials) GetType() TemplateCreateTemplateTemporaryTypeInitials {
+	if t == nil {
+		return TemplateCreateTemplateTemporaryTypeInitials("")
+	}
+	return t.Type
 }
 
 func (t *TemplateCreateTemplateTemporaryFieldMetaInitials) GetTextAlign() *TemplateCreateTemplateTemporaryTextAlign1 {
@@ -2742,32 +2938,128 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaInitials) GetTextAlign() *Templ
 	return t.TextAlign
 }
 
+type TemplateCreateTemplateTemporaryTypeSignature string
+
+const (
+	TemplateCreateTemplateTemporaryTypeSignatureSignature TemplateCreateTemplateTemporaryTypeSignature = "signature"
+)
+
+func (e TemplateCreateTemplateTemporaryTypeSignature) ToPointer() *TemplateCreateTemplateTemporaryTypeSignature {
+	return &e
+}
+func (e *TemplateCreateTemplateTemporaryTypeSignature) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "signature":
+		*e = TemplateCreateTemplateTemporaryTypeSignature(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryTypeSignature: %v", v)
+	}
+}
+
+type TemplateCreateTemplateTemporaryFieldMetaSignature struct {
+	Label       *string                                      `json:"label,omitempty"`
+	Placeholder *string                                      `json:"placeholder,omitempty"`
+	Required    *bool                                        `json:"required,omitempty"`
+	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
+	FontSize    *float64                                     `default:"12" json:"fontSize"`
+	Type        TemplateCreateTemplateTemporaryTypeSignature `json:"type"`
+}
+
+func (t TemplateCreateTemplateTemporaryFieldMetaSignature) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaSignature) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaSignature) GetLabel() *string {
+	if t == nil {
+		return nil
+	}
+	return t.Label
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaSignature) GetPlaceholder() *string {
+	if t == nil {
+		return nil
+	}
+	return t.Placeholder
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaSignature) GetRequired() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.Required
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaSignature) GetReadOnly() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.ReadOnly
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaSignature) GetFontSize() *float64 {
+	if t == nil {
+		return nil
+	}
+	return t.FontSize
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaSignature) GetType() TemplateCreateTemplateTemporaryTypeSignature {
+	if t == nil {
+		return TemplateCreateTemplateTemporaryTypeSignature("")
+	}
+	return t.Type
+}
+
 type TemplateCreateTemplateTemporaryFieldMetaUnionType string
 
 const (
-	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaInitials TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Initials"
-	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaName     TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Name"
-	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaEmail    TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Email"
-	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaDate     TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Date"
-	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaText     TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Text"
-	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaNumber   TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Number"
-	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaRadio    TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Radio"
-	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaCheckbox TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Checkbox"
-	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaDropdown TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Dropdown"
+	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaSignature TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Signature"
+	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaInitials  TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Initials"
+	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaName      TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Name"
+	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaEmail     TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Email"
+	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaDate      TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Date"
+	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaText      TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Text"
+	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaNumber    TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Number"
+	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaRadio     TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Radio"
+	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaCheckbox  TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Checkbox"
+	TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaDropdown  TemplateCreateTemplateTemporaryFieldMetaUnionType = "template_createTemplateTemporary_fieldMeta_Dropdown"
 )
 
 type TemplateCreateTemplateTemporaryFieldMetaUnion struct {
-	TemplateCreateTemplateTemporaryFieldMetaInitials *TemplateCreateTemplateTemporaryFieldMetaInitials `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaName     *TemplateCreateTemplateTemporaryFieldMetaName     `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaEmail    *TemplateCreateTemplateTemporaryFieldMetaEmail    `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaDate     *TemplateCreateTemplateTemporaryFieldMetaDate     `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaText     *TemplateCreateTemplateTemporaryFieldMetaText     `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaNumber   *TemplateCreateTemplateTemporaryFieldMetaNumber   `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaRadio    *TemplateCreateTemplateTemporaryFieldMetaRadio    `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaCheckbox *TemplateCreateTemplateTemporaryFieldMetaCheckbox `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaDropdown *TemplateCreateTemplateTemporaryFieldMetaDropdown `queryParam:"inline,name=fieldMeta"`
+	TemplateCreateTemplateTemporaryFieldMetaSignature *TemplateCreateTemplateTemporaryFieldMetaSignature `queryParam:"inline,name=fieldMeta"`
+	TemplateCreateTemplateTemporaryFieldMetaInitials  *TemplateCreateTemplateTemporaryFieldMetaInitials  `queryParam:"inline,name=fieldMeta"`
+	TemplateCreateTemplateTemporaryFieldMetaName      *TemplateCreateTemplateTemporaryFieldMetaName      `queryParam:"inline,name=fieldMeta"`
+	TemplateCreateTemplateTemporaryFieldMetaEmail     *TemplateCreateTemplateTemporaryFieldMetaEmail     `queryParam:"inline,name=fieldMeta"`
+	TemplateCreateTemplateTemporaryFieldMetaDate      *TemplateCreateTemplateTemporaryFieldMetaDate      `queryParam:"inline,name=fieldMeta"`
+	TemplateCreateTemplateTemporaryFieldMetaText      *TemplateCreateTemplateTemporaryFieldMetaText      `queryParam:"inline,name=fieldMeta"`
+	TemplateCreateTemplateTemporaryFieldMetaNumber    *TemplateCreateTemplateTemporaryFieldMetaNumber    `queryParam:"inline,name=fieldMeta"`
+	TemplateCreateTemplateTemporaryFieldMetaRadio     *TemplateCreateTemplateTemporaryFieldMetaRadio     `queryParam:"inline,name=fieldMeta"`
+	TemplateCreateTemplateTemporaryFieldMetaCheckbox  *TemplateCreateTemplateTemporaryFieldMetaCheckbox  `queryParam:"inline,name=fieldMeta"`
+	TemplateCreateTemplateTemporaryFieldMetaDropdown  *TemplateCreateTemplateTemporaryFieldMetaDropdown  `queryParam:"inline,name=fieldMeta"`
 
 	Type TemplateCreateTemplateTemporaryFieldMetaUnionType
+}
+
+func CreateTemplateCreateTemplateTemporaryFieldMetaUnionTemplateCreateTemplateTemporaryFieldMetaSignature(templateCreateTemplateTemporaryFieldMetaSignature TemplateCreateTemplateTemporaryFieldMetaSignature) TemplateCreateTemplateTemporaryFieldMetaUnion {
+	typ := TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaSignature
+
+	return TemplateCreateTemplateTemporaryFieldMetaUnion{
+		TemplateCreateTemplateTemporaryFieldMetaSignature: &templateCreateTemplateTemporaryFieldMetaSignature,
+		Type: typ,
+	}
 }
 
 func CreateTemplateCreateTemplateTemporaryFieldMetaUnionTemplateCreateTemplateTemporaryFieldMetaInitials(templateCreateTemplateTemporaryFieldMetaInitials TemplateCreateTemplateTemporaryFieldMetaInitials) TemplateCreateTemplateTemporaryFieldMetaUnion {
@@ -2853,6 +3145,13 @@ func CreateTemplateCreateTemplateTemporaryFieldMetaUnionTemplateCreateTemplateTe
 
 func (u *TemplateCreateTemplateTemporaryFieldMetaUnion) UnmarshalJSON(data []byte) error {
 
+	var templateCreateTemplateTemporaryFieldMetaSignature TemplateCreateTemplateTemporaryFieldMetaSignature = TemplateCreateTemplateTemporaryFieldMetaSignature{}
+	if err := utils.UnmarshalJSON(data, &templateCreateTemplateTemporaryFieldMetaSignature, "", true, nil); err == nil {
+		u.TemplateCreateTemplateTemporaryFieldMetaSignature = &templateCreateTemplateTemporaryFieldMetaSignature
+		u.Type = TemplateCreateTemplateTemporaryFieldMetaUnionTypeTemplateCreateTemplateTemporaryFieldMetaSignature
+		return nil
+	}
+
 	var templateCreateTemplateTemporaryFieldMetaInitials TemplateCreateTemplateTemporaryFieldMetaInitials = TemplateCreateTemplateTemporaryFieldMetaInitials{}
 	if err := utils.UnmarshalJSON(data, &templateCreateTemplateTemporaryFieldMetaInitials, "", true, nil); err == nil {
 		u.TemplateCreateTemplateTemporaryFieldMetaInitials = &templateCreateTemplateTemporaryFieldMetaInitials
@@ -2920,6 +3219,10 @@ func (u *TemplateCreateTemplateTemporaryFieldMetaUnion) UnmarshalJSON(data []byt
 }
 
 func (u TemplateCreateTemplateTemporaryFieldMetaUnion) MarshalJSON() ([]byte, error) {
+	if u.TemplateCreateTemplateTemporaryFieldMetaSignature != nil {
+		return utils.MarshalJSON(u.TemplateCreateTemplateTemporaryFieldMetaSignature, "", true)
+	}
+
 	if u.TemplateCreateTemplateTemporaryFieldMetaInitials != nil {
 		return utils.MarshalJSON(u.TemplateCreateTemplateTemporaryFieldMetaInitials, "", true)
 	}
@@ -2960,23 +3263,22 @@ func (u TemplateCreateTemplateTemporaryFieldMetaUnion) MarshalJSON() ([]byte, er
 }
 
 type TemplateCreateTemplateTemporaryField struct {
-	EnvelopeID     string                                   `json:"envelopeId"`
-	EnvelopeItemID string                                   `json:"envelopeItemId"`
-	Type           TemplateCreateTemplateTemporaryFieldType `json:"type"`
-	ID             float64                                  `json:"id"`
-	SecondaryID    string                                   `json:"secondaryId"`
-	RecipientID    float64                                  `json:"recipientId"`
-	// The page number of the field on the document. Starts from 1.
-	Page       float64                                        `json:"page"`
-	PositionX  any                                            `json:"positionX,omitempty"`
-	PositionY  any                                            `json:"positionY,omitempty"`
-	Width      any                                            `json:"width,omitempty"`
-	Height     any                                            `json:"height,omitempty"`
-	CustomText string                                         `json:"customText"`
-	Inserted   bool                                           `json:"inserted"`
-	FieldMeta  *TemplateCreateTemplateTemporaryFieldMetaUnion `json:"fieldMeta"`
-	DocumentID *float64                                       `json:"documentId,omitempty"`
-	TemplateID *float64                                       `json:"templateId,omitempty"`
+	EnvelopeID     string                                         `json:"envelopeId"`
+	EnvelopeItemID string                                         `json:"envelopeItemId"`
+	Type           TemplateCreateTemplateTemporaryFieldType       `json:"type"`
+	ID             float64                                        `json:"id"`
+	SecondaryID    string                                         `json:"secondaryId"`
+	RecipientID    float64                                        `json:"recipientId"`
+	Page           float64                                        `json:"page"`
+	PositionX      any                                            `json:"positionX"`
+	PositionY      any                                            `json:"positionY"`
+	Width          any                                            `json:"width"`
+	Height         any                                            `json:"height"`
+	CustomText     string                                         `json:"customText"`
+	Inserted       bool                                           `json:"inserted"`
+	FieldMeta      *TemplateCreateTemplateTemporaryFieldMetaUnion `json:"fieldMeta"`
+	DocumentID     *float64                                       `json:"documentId,omitempty"`
+	TemplateID     *float64                                       `json:"templateId,omitempty"`
 }
 
 func (t *TemplateCreateTemplateTemporaryField) GetEnvelopeID() string {
@@ -3229,6 +3531,25 @@ func (t *TemplateCreateTemplateTemporaryFolder) GetUpdatedAt() string {
 	return t.UpdatedAt
 }
 
+type TemplateCreateTemplateTemporaryEnvelopeItem struct {
+	ID         string `json:"id"`
+	EnvelopeID string `json:"envelopeId"`
+}
+
+func (t *TemplateCreateTemplateTemporaryEnvelopeItem) GetID() string {
+	if t == nil {
+		return ""
+	}
+	return t.ID
+}
+
+func (t *TemplateCreateTemplateTemporaryEnvelopeItem) GetEnvelopeID() string {
+	if t == nil {
+		return ""
+	}
+	return t.EnvelopeID
+}
+
 type Template struct {
 	Type                   TemplateCreateTemplateTemporaryTypeResponse         `json:"type"`
 	Visibility             TemplateCreateTemplateTemporaryVisibilityResponse   `json:"visibility"`
@@ -3252,6 +3573,7 @@ type Template struct {
 	Recipients             []TemplateCreateTemplateTemporaryRecipient          `json:"recipients"`
 	Fields                 []TemplateCreateTemplateTemporaryField              `json:"fields"`
 	Folder                 *TemplateCreateTemplateTemporaryFolder              `json:"folder"`
+	EnvelopeItems          []TemplateCreateTemplateTemporaryEnvelopeItem       `json:"envelopeItems"`
 }
 
 func (t Template) MarshalJSON() ([]byte, error) {
@@ -3259,7 +3581,7 @@ func (t Template) MarshalJSON() ([]byte, error) {
 }
 
 func (t *Template) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "visibility", "id", "title", "userId", "teamId", "createdAt", "updatedAt", "publicTitle", "publicDescription", "envelopeId", "templateDocumentData", "templateMeta", "user", "recipients", "fields"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "visibility", "id", "title", "userId", "teamId", "createdAt", "updatedAt", "publicTitle", "publicDescription", "envelopeId", "templateDocumentData", "templateMeta", "user", "recipients", "fields", "envelopeItems"}); err != nil {
 		return err
 	}
 	return nil
@@ -3417,6 +3739,13 @@ func (t *Template) GetFolder() *TemplateCreateTemplateTemporaryFolder {
 		return nil
 	}
 	return t.Folder
+}
+
+func (t *Template) GetEnvelopeItems() []TemplateCreateTemplateTemporaryEnvelopeItem {
+	if t == nil {
+		return []TemplateCreateTemplateTemporaryEnvelopeItem{}
+	}
+	return t.EnvelopeItems
 }
 
 // TemplateCreateTemplateTemporaryResponseBody - Successful response

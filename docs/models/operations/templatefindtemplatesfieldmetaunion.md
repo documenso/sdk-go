@@ -3,6 +3,12 @@
 
 ## Supported Types
 
+### TemplateFindTemplatesFieldMetaSignature
+
+```go
+templateFindTemplatesFieldMetaUnion := operations.CreateTemplateFindTemplatesFieldMetaUnionTemplateFindTemplatesFieldMetaSignature(operations.TemplateFindTemplatesFieldMetaSignature{/* values here */})
+```
+
 ### TemplateFindTemplatesFieldMetaInitials
 
 ```go

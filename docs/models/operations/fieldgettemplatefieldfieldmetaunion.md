@@ -3,6 +3,12 @@
 
 ## Supported Types
 
+### FieldGetTemplateFieldFieldMetaSignature
+
+```go
+fieldGetTemplateFieldFieldMetaUnion := operations.CreateFieldGetTemplateFieldFieldMetaUnionFieldGetTemplateFieldFieldMetaSignature(operations.FieldGetTemplateFieldFieldMetaSignature{/* values here */})
+```
+
 ### FieldGetTemplateFieldFieldMetaInitials
 
 ```go

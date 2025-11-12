@@ -3,6 +3,12 @@
 
 ## Supported Types
 
+### FieldUpdateTemplateFieldsFieldMetaSignatureResponse
+
+```go
+fieldUpdateTemplateFieldsFieldMetaUnion := operations.CreateFieldUpdateTemplateFieldsFieldMetaUnionFieldUpdateTemplateFieldsFieldMetaSignatureResponse(operations.FieldUpdateTemplateFieldsFieldMetaSignatureResponse{/* values here */})
+```
+
 ### FieldUpdateTemplateFieldsFieldMetaInitialsResponse
 
 ```go

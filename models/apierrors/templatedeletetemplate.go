@@ -33,6 +33,58 @@ func (e *TemplateDeleteTemplateInternalServerError) Error() string {
 	return string(data)
 }
 
+type TemplateDeleteTemplateForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (t *TemplateDeleteTemplateForbiddenIssue) GetMessage() string {
+	if t == nil {
+		return ""
+	}
+	return t.Message
+}
+
+// TemplateDeleteTemplateForbiddenError - Insufficient access
+type TemplateDeleteTemplateForbiddenError struct {
+	Message  string                                 `json:"message"`
+	Code     string                                 `json:"code"`
+	Issues   []TemplateDeleteTemplateForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                `json:"-"`
+}
+
+var _ error = &TemplateDeleteTemplateForbiddenError{}
+
+func (e *TemplateDeleteTemplateForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type TemplateDeleteTemplateUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (t *TemplateDeleteTemplateUnauthorizedIssue) GetMessage() string {
+	if t == nil {
+		return ""
+	}
+	return t.Message
+}
+
+// TemplateDeleteTemplateUnauthorizedError - Authorization not provided
+type TemplateDeleteTemplateUnauthorizedError struct {
+	Message  string                                    `json:"message"`
+	Code     string                                    `json:"code"`
+	Issues   []TemplateDeleteTemplateUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                   `json:"-"`
+}
+
+var _ error = &TemplateDeleteTemplateUnauthorizedError{}
+
+func (e *TemplateDeleteTemplateUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type TemplateDeleteTemplateBadRequestIssue struct {
 	Message string `json:"message"`
 }

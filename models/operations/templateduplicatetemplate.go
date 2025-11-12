@@ -75,7 +75,6 @@ func (e *TemplateDuplicateTemplateVisibility) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// TemplateDuplicateTemplateGlobalAccessAuth - The type of authentication required for the recipient to access the document.
 type TemplateDuplicateTemplateGlobalAccessAuth string
 
 const (
@@ -102,7 +101,6 @@ func (e *TemplateDuplicateTemplateGlobalAccessAuth) UnmarshalJSON(data []byte) e
 	}
 }
 
-// TemplateDuplicateTemplateGlobalActionAuth - The type of authentication required for the recipient to sign the document. This field is restricted to Enterprise plan users only.
 type TemplateDuplicateTemplateGlobalActionAuth string
 
 const (

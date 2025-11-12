@@ -3,6 +3,12 @@
 
 ## Supported Types
 
+### DocumentGetFieldMetaSignature
+
+```go
+documentGetFieldMetaUnion := operations.CreateDocumentGetFieldMetaUnionDocumentGetFieldMetaSignature(operations.DocumentGetFieldMetaSignature{/* values here */})
+```
+
 ### DocumentGetFieldMetaInitials
 
 ```go

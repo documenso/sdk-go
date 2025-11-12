@@ -1,0 +1,9 @@
+# EnvelopeAttachmentCreateRequest
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `EnvelopeID`                                                                                       | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `Data`                                                                                             | [operations.EnvelopeAttachmentCreateData](../../models/operations/envelopeattachmentcreatedata.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |

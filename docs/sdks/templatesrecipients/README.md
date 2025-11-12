@@ -63,6 +63,8 @@ func main() {
 | Error Type                                                 | Status Code                                                | Content Type                                               |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
 | apierrors.RecipientGetTemplateRecipientBadRequestError     | 400                                                        | application/json                                           |
+| apierrors.RecipientGetTemplateRecipientUnauthorizedError   | 401                                                        | application/json                                           |
+| apierrors.RecipientGetTemplateRecipientForbiddenError      | 403                                                        | application/json                                           |
 | apierrors.RecipientGetTemplateRecipientNotFoundError       | 404                                                        | application/json                                           |
 | apierrors.RecipientGetTemplateRecipientInternalServerError | 500                                                        | application/json                                           |
 | apierrors.APIError                                         | 4XX, 5XX                                                   | \*/\*                                                      |
@@ -126,6 +128,8 @@ func main() {
 | Error Type                                                    | Status Code                                                   | Content Type                                                  |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | apierrors.RecipientCreateTemplateRecipientBadRequestError     | 400                                                           | application/json                                              |
+| apierrors.RecipientCreateTemplateRecipientUnauthorizedError   | 401                                                           | application/json                                              |
+| apierrors.RecipientCreateTemplateRecipientForbiddenError      | 403                                                           | application/json                                              |
 | apierrors.RecipientCreateTemplateRecipientInternalServerError | 500                                                           | application/json                                              |
 | apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |
 
@@ -184,6 +188,8 @@ func main() {
 | Error Type                                                     | Status Code                                                    | Content Type                                                   |
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
 | apierrors.RecipientCreateTemplateRecipientsBadRequestError     | 400                                                            | application/json                                               |
+| apierrors.RecipientCreateTemplateRecipientsUnauthorizedError   | 401                                                            | application/json                                               |
+| apierrors.RecipientCreateTemplateRecipientsForbiddenError      | 403                                                            | application/json                                               |
 | apierrors.RecipientCreateTemplateRecipientsInternalServerError | 500                                                            | application/json                                               |
 | apierrors.APIError                                             | 4XX, 5XX                                                       | \*/\*                                                          |
 
@@ -244,6 +250,8 @@ func main() {
 | Error Type                                                    | Status Code                                                   | Content Type                                                  |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | apierrors.RecipientUpdateTemplateRecipientBadRequestError     | 400                                                           | application/json                                              |
+| apierrors.RecipientUpdateTemplateRecipientUnauthorizedError   | 401                                                           | application/json                                              |
+| apierrors.RecipientUpdateTemplateRecipientForbiddenError      | 403                                                           | application/json                                              |
 | apierrors.RecipientUpdateTemplateRecipientInternalServerError | 500                                                           | application/json                                              |
 | apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |
 
@@ -306,6 +314,8 @@ func main() {
 | Error Type                                                     | Status Code                                                    | Content Type                                                   |
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
 | apierrors.RecipientUpdateTemplateRecipientsBadRequestError     | 400                                                            | application/json                                               |
+| apierrors.RecipientUpdateTemplateRecipientsUnauthorizedError   | 401                                                            | application/json                                               |
+| apierrors.RecipientUpdateTemplateRecipientsForbiddenError      | 403                                                            | application/json                                               |
 | apierrors.RecipientUpdateTemplateRecipientsInternalServerError | 500                                                            | application/json                                               |
 | apierrors.APIError                                             | 4XX, 5XX                                                       | \*/\*                                                          |
 
@@ -363,5 +373,7 @@ func main() {
 | Error Type                                                    | Status Code                                                   | Content Type                                                  |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | apierrors.RecipientDeleteTemplateRecipientBadRequestError     | 400                                                           | application/json                                              |
+| apierrors.RecipientDeleteTemplateRecipientUnauthorizedError   | 401                                                           | application/json                                              |
+| apierrors.RecipientDeleteTemplateRecipientForbiddenError      | 403                                                           | application/json                                              |
 | apierrors.RecipientDeleteTemplateRecipientInternalServerError | 500                                                           | application/json                                              |
 | apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |

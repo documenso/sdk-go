@@ -33,6 +33,58 @@ func (e *TemplateDeleteTemplateDirectLinkInternalServerError) Error() string {
 	return string(data)
 }
 
+type TemplateDeleteTemplateDirectLinkForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (t *TemplateDeleteTemplateDirectLinkForbiddenIssue) GetMessage() string {
+	if t == nil {
+		return ""
+	}
+	return t.Message
+}
+
+// TemplateDeleteTemplateDirectLinkForbiddenError - Insufficient access
+type TemplateDeleteTemplateDirectLinkForbiddenError struct {
+	Message  string                                           `json:"message"`
+	Code     string                                           `json:"code"`
+	Issues   []TemplateDeleteTemplateDirectLinkForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                          `json:"-"`
+}
+
+var _ error = &TemplateDeleteTemplateDirectLinkForbiddenError{}
+
+func (e *TemplateDeleteTemplateDirectLinkForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type TemplateDeleteTemplateDirectLinkUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (t *TemplateDeleteTemplateDirectLinkUnauthorizedIssue) GetMessage() string {
+	if t == nil {
+		return ""
+	}
+	return t.Message
+}
+
+// TemplateDeleteTemplateDirectLinkUnauthorizedError - Authorization not provided
+type TemplateDeleteTemplateDirectLinkUnauthorizedError struct {
+	Message  string                                              `json:"message"`
+	Code     string                                              `json:"code"`
+	Issues   []TemplateDeleteTemplateDirectLinkUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                             `json:"-"`
+}
+
+var _ error = &TemplateDeleteTemplateDirectLinkUnauthorizedError{}
+
+func (e *TemplateDeleteTemplateDirectLinkUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type TemplateDeleteTemplateDirectLinkBadRequestIssue struct {
 	Message string `json:"message"`
 }

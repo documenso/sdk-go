@@ -1,0 +1,9 @@
+# TemplateCreateTemplateRequest
+
+
+## Fields
+
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `Payload`                                                                                            | [operations.TemplateCreateTemplatePayload](../../models/operations/templatecreatetemplatepayload.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `File`                                                                                               | [operations.TemplateCreateTemplateFile](../../models/operations/templatecreatetemplatefile.md)       | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

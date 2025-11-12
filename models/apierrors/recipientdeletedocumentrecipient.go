@@ -33,6 +33,58 @@ func (e *RecipientDeleteDocumentRecipientInternalServerError) Error() string {
 	return string(data)
 }
 
+type RecipientDeleteDocumentRecipientForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (r *RecipientDeleteDocumentRecipientForbiddenIssue) GetMessage() string {
+	if r == nil {
+		return ""
+	}
+	return r.Message
+}
+
+// RecipientDeleteDocumentRecipientForbiddenError - Insufficient access
+type RecipientDeleteDocumentRecipientForbiddenError struct {
+	Message  string                                           `json:"message"`
+	Code     string                                           `json:"code"`
+	Issues   []RecipientDeleteDocumentRecipientForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                          `json:"-"`
+}
+
+var _ error = &RecipientDeleteDocumentRecipientForbiddenError{}
+
+func (e *RecipientDeleteDocumentRecipientForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type RecipientDeleteDocumentRecipientUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (r *RecipientDeleteDocumentRecipientUnauthorizedIssue) GetMessage() string {
+	if r == nil {
+		return ""
+	}
+	return r.Message
+}
+
+// RecipientDeleteDocumentRecipientUnauthorizedError - Authorization not provided
+type RecipientDeleteDocumentRecipientUnauthorizedError struct {
+	Message  string                                              `json:"message"`
+	Code     string                                              `json:"code"`
+	Issues   []RecipientDeleteDocumentRecipientUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                             `json:"-"`
+}
+
+var _ error = &RecipientDeleteDocumentRecipientUnauthorizedError{}
+
+func (e *RecipientDeleteDocumentRecipientUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type RecipientDeleteDocumentRecipientBadRequestIssue struct {
 	Message string `json:"message"`
 }

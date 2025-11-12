@@ -33,6 +33,58 @@ func (e *TemplateCreateTemplateTemporaryInternalServerError) Error() string {
 	return string(data)
 }
 
+type TemplateCreateTemplateTemporaryForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (t *TemplateCreateTemplateTemporaryForbiddenIssue) GetMessage() string {
+	if t == nil {
+		return ""
+	}
+	return t.Message
+}
+
+// TemplateCreateTemplateTemporaryForbiddenError - Insufficient access
+type TemplateCreateTemplateTemporaryForbiddenError struct {
+	Message  string                                          `json:"message"`
+	Code     string                                          `json:"code"`
+	Issues   []TemplateCreateTemplateTemporaryForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                         `json:"-"`
+}
+
+var _ error = &TemplateCreateTemplateTemporaryForbiddenError{}
+
+func (e *TemplateCreateTemplateTemporaryForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type TemplateCreateTemplateTemporaryUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (t *TemplateCreateTemplateTemporaryUnauthorizedIssue) GetMessage() string {
+	if t == nil {
+		return ""
+	}
+	return t.Message
+}
+
+// TemplateCreateTemplateTemporaryUnauthorizedError - Authorization not provided
+type TemplateCreateTemplateTemporaryUnauthorizedError struct {
+	Message  string                                             `json:"message"`
+	Code     string                                             `json:"code"`
+	Issues   []TemplateCreateTemplateTemporaryUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                            `json:"-"`
+}
+
+var _ error = &TemplateCreateTemplateTemporaryUnauthorizedError{}
+
+func (e *TemplateCreateTemplateTemporaryUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type TemplateCreateTemplateTemporaryBadRequestIssue struct {
 	Message string `json:"message"`
 }

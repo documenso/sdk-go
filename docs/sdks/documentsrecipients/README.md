@@ -63,6 +63,8 @@ func main() {
 | Error Type                                                 | Status Code                                                | Content Type                                               |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
 | apierrors.RecipientGetDocumentRecipientBadRequestError     | 400                                                        | application/json                                           |
+| apierrors.RecipientGetDocumentRecipientUnauthorizedError   | 401                                                        | application/json                                           |
+| apierrors.RecipientGetDocumentRecipientForbiddenError      | 403                                                        | application/json                                           |
 | apierrors.RecipientGetDocumentRecipientNotFoundError       | 404                                                        | application/json                                           |
 | apierrors.RecipientGetDocumentRecipientInternalServerError | 500                                                        | application/json                                           |
 | apierrors.APIError                                         | 4XX, 5XX                                                   | \*/\*                                                      |
@@ -126,6 +128,8 @@ func main() {
 | Error Type                                                    | Status Code                                                   | Content Type                                                  |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | apierrors.RecipientCreateDocumentRecipientBadRequestError     | 400                                                           | application/json                                              |
+| apierrors.RecipientCreateDocumentRecipientUnauthorizedError   | 401                                                           | application/json                                              |
+| apierrors.RecipientCreateDocumentRecipientForbiddenError      | 403                                                           | application/json                                              |
 | apierrors.RecipientCreateDocumentRecipientInternalServerError | 500                                                           | application/json                                              |
 | apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |
 
@@ -190,6 +194,8 @@ func main() {
 | Error Type                                                     | Status Code                                                    | Content Type                                                   |
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
 | apierrors.RecipientCreateDocumentRecipientsBadRequestError     | 400                                                            | application/json                                               |
+| apierrors.RecipientCreateDocumentRecipientsUnauthorizedError   | 401                                                            | application/json                                               |
+| apierrors.RecipientCreateDocumentRecipientsForbiddenError      | 403                                                            | application/json                                               |
 | apierrors.RecipientCreateDocumentRecipientsInternalServerError | 500                                                            | application/json                                               |
 | apierrors.APIError                                             | 4XX, 5XX                                                       | \*/\*                                                          |
 
@@ -250,6 +256,8 @@ func main() {
 | Error Type                                                    | Status Code                                                   | Content Type                                                  |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | apierrors.RecipientUpdateDocumentRecipientBadRequestError     | 400                                                           | application/json                                              |
+| apierrors.RecipientUpdateDocumentRecipientUnauthorizedError   | 401                                                           | application/json                                              |
+| apierrors.RecipientUpdateDocumentRecipientForbiddenError      | 403                                                           | application/json                                              |
 | apierrors.RecipientUpdateDocumentRecipientInternalServerError | 500                                                           | application/json                                              |
 | apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |
 
@@ -308,6 +316,8 @@ func main() {
 | Error Type                                                     | Status Code                                                    | Content Type                                                   |
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
 | apierrors.RecipientUpdateDocumentRecipientsBadRequestError     | 400                                                            | application/json                                               |
+| apierrors.RecipientUpdateDocumentRecipientsUnauthorizedError   | 401                                                            | application/json                                               |
+| apierrors.RecipientUpdateDocumentRecipientsForbiddenError      | 403                                                            | application/json                                               |
 | apierrors.RecipientUpdateDocumentRecipientsInternalServerError | 500                                                            | application/json                                               |
 | apierrors.APIError                                             | 4XX, 5XX                                                       | \*/\*                                                          |
 
@@ -365,5 +375,7 @@ func main() {
 | Error Type                                                    | Status Code                                                   | Content Type                                                  |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | apierrors.RecipientDeleteDocumentRecipientBadRequestError     | 400                                                           | application/json                                              |
+| apierrors.RecipientDeleteDocumentRecipientUnauthorizedError   | 401                                                           | application/json                                              |
+| apierrors.RecipientDeleteDocumentRecipientForbiddenError      | 403                                                           | application/json                                              |
 | apierrors.RecipientDeleteDocumentRecipientInternalServerError | 500                                                           | application/json                                              |
 | apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |

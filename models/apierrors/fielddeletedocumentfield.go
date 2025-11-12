@@ -33,6 +33,58 @@ func (e *FieldDeleteDocumentFieldInternalServerError) Error() string {
 	return string(data)
 }
 
+type FieldDeleteDocumentFieldForbiddenIssue struct {
+	Message string `json:"message"`
+}
+
+func (f *FieldDeleteDocumentFieldForbiddenIssue) GetMessage() string {
+	if f == nil {
+		return ""
+	}
+	return f.Message
+}
+
+// FieldDeleteDocumentFieldForbiddenError - Insufficient access
+type FieldDeleteDocumentFieldForbiddenError struct {
+	Message  string                                   `json:"message"`
+	Code     string                                   `json:"code"`
+	Issues   []FieldDeleteDocumentFieldForbiddenIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                  `json:"-"`
+}
+
+var _ error = &FieldDeleteDocumentFieldForbiddenError{}
+
+func (e *FieldDeleteDocumentFieldForbiddenError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
+type FieldDeleteDocumentFieldUnauthorizedIssue struct {
+	Message string `json:"message"`
+}
+
+func (f *FieldDeleteDocumentFieldUnauthorizedIssue) GetMessage() string {
+	if f == nil {
+		return ""
+	}
+	return f.Message
+}
+
+// FieldDeleteDocumentFieldUnauthorizedError - Authorization not provided
+type FieldDeleteDocumentFieldUnauthorizedError struct {
+	Message  string                                      `json:"message"`
+	Code     string                                      `json:"code"`
+	Issues   []FieldDeleteDocumentFieldUnauthorizedIssue `json:"issues,omitempty"`
+	HTTPMeta components.HTTPMetadata                     `json:"-"`
+}
+
+var _ error = &FieldDeleteDocumentFieldUnauthorizedError{}
+
+func (e *FieldDeleteDocumentFieldUnauthorizedError) Error() string {
+	data, _ := json.Marshal(e)
+	return string(data)
+}
+
 type FieldDeleteDocumentFieldBadRequestIssue struct {
 	Message string `json:"message"`
 }
