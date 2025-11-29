@@ -297,12 +297,16 @@ func (e *DocumentUpdateSigningOrder) UnmarshalJSON(data []byte) error {
 type DocumentUpdateLanguage string
 
 const (
-	DocumentUpdateLanguageDe DocumentUpdateLanguage = "de"
-	DocumentUpdateLanguageEn DocumentUpdateLanguage = "en"
-	DocumentUpdateLanguageFr DocumentUpdateLanguage = "fr"
-	DocumentUpdateLanguageEs DocumentUpdateLanguage = "es"
-	DocumentUpdateLanguageIt DocumentUpdateLanguage = "it"
-	DocumentUpdateLanguagePl DocumentUpdateLanguage = "pl"
+	DocumentUpdateLanguageDe   DocumentUpdateLanguage = "de"
+	DocumentUpdateLanguageEn   DocumentUpdateLanguage = "en"
+	DocumentUpdateLanguageFr   DocumentUpdateLanguage = "fr"
+	DocumentUpdateLanguageEs   DocumentUpdateLanguage = "es"
+	DocumentUpdateLanguageIt   DocumentUpdateLanguage = "it"
+	DocumentUpdateLanguagePl   DocumentUpdateLanguage = "pl"
+	DocumentUpdateLanguagePtBr DocumentUpdateLanguage = "pt-BR"
+	DocumentUpdateLanguageJa   DocumentUpdateLanguage = "ja"
+	DocumentUpdateLanguageKo   DocumentUpdateLanguage = "ko"
+	DocumentUpdateLanguageZh   DocumentUpdateLanguage = "zh"
 )
 
 func (e DocumentUpdateLanguage) ToPointer() *DocumentUpdateLanguage {
@@ -325,6 +329,14 @@ func (e *DocumentUpdateLanguage) UnmarshalJSON(data []byte) error {
 	case "it":
 		fallthrough
 	case "pl":
+		fallthrough
+	case "pt-BR":
+		fallthrough
+	case "ja":
+		fallthrough
+	case "ko":
+		fallthrough
+	case "zh":
 		*e = DocumentUpdateLanguage(v)
 		return nil
 	default:

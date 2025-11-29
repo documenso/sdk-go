@@ -4001,12 +4001,16 @@ func (e *EnvelopeCreateSigningOrder) UnmarshalJSON(data []byte) error {
 type EnvelopeCreateLanguage string
 
 const (
-	EnvelopeCreateLanguageDe EnvelopeCreateLanguage = "de"
-	EnvelopeCreateLanguageEn EnvelopeCreateLanguage = "en"
-	EnvelopeCreateLanguageFr EnvelopeCreateLanguage = "fr"
-	EnvelopeCreateLanguageEs EnvelopeCreateLanguage = "es"
-	EnvelopeCreateLanguageIt EnvelopeCreateLanguage = "it"
-	EnvelopeCreateLanguagePl EnvelopeCreateLanguage = "pl"
+	EnvelopeCreateLanguageDe   EnvelopeCreateLanguage = "de"
+	EnvelopeCreateLanguageEn   EnvelopeCreateLanguage = "en"
+	EnvelopeCreateLanguageFr   EnvelopeCreateLanguage = "fr"
+	EnvelopeCreateLanguageEs   EnvelopeCreateLanguage = "es"
+	EnvelopeCreateLanguageIt   EnvelopeCreateLanguage = "it"
+	EnvelopeCreateLanguagePl   EnvelopeCreateLanguage = "pl"
+	EnvelopeCreateLanguagePtBr EnvelopeCreateLanguage = "pt-BR"
+	EnvelopeCreateLanguageJa   EnvelopeCreateLanguage = "ja"
+	EnvelopeCreateLanguageKo   EnvelopeCreateLanguage = "ko"
+	EnvelopeCreateLanguageZh   EnvelopeCreateLanguage = "zh"
 )
 
 func (e EnvelopeCreateLanguage) ToPointer() *EnvelopeCreateLanguage {
@@ -4029,6 +4033,14 @@ func (e *EnvelopeCreateLanguage) UnmarshalJSON(data []byte) error {
 	case "it":
 		fallthrough
 	case "pl":
+		fallthrough
+	case "pt-BR":
+		fallthrough
+	case "ja":
+		fallthrough
+	case "ko":
+		fallthrough
+	case "zh":
 		*e = EnvelopeCreateLanguage(v)
 		return nil
 	default:

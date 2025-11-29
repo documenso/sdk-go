@@ -125,12 +125,16 @@ func (e *DocumentDistributeDistributionMethod) UnmarshalJSON(data []byte) error 
 type DocumentDistributeLanguage string
 
 const (
-	DocumentDistributeLanguageDe DocumentDistributeLanguage = "de"
-	DocumentDistributeLanguageEn DocumentDistributeLanguage = "en"
-	DocumentDistributeLanguageFr DocumentDistributeLanguage = "fr"
-	DocumentDistributeLanguageEs DocumentDistributeLanguage = "es"
-	DocumentDistributeLanguageIt DocumentDistributeLanguage = "it"
-	DocumentDistributeLanguagePl DocumentDistributeLanguage = "pl"
+	DocumentDistributeLanguageDe   DocumentDistributeLanguage = "de"
+	DocumentDistributeLanguageEn   DocumentDistributeLanguage = "en"
+	DocumentDistributeLanguageFr   DocumentDistributeLanguage = "fr"
+	DocumentDistributeLanguageEs   DocumentDistributeLanguage = "es"
+	DocumentDistributeLanguageIt   DocumentDistributeLanguage = "it"
+	DocumentDistributeLanguagePl   DocumentDistributeLanguage = "pl"
+	DocumentDistributeLanguagePtBr DocumentDistributeLanguage = "pt-BR"
+	DocumentDistributeLanguageJa   DocumentDistributeLanguage = "ja"
+	DocumentDistributeLanguageKo   DocumentDistributeLanguage = "ko"
+	DocumentDistributeLanguageZh   DocumentDistributeLanguage = "zh"
 )
 
 func (e DocumentDistributeLanguage) ToPointer() *DocumentDistributeLanguage {
@@ -153,6 +157,14 @@ func (e *DocumentDistributeLanguage) UnmarshalJSON(data []byte) error {
 	case "it":
 		fallthrough
 	case "pl":
+		fallthrough
+	case "pt-BR":
+		fallthrough
+	case "ja":
+		fallthrough
+	case "ko":
+		fallthrough
+	case "zh":
 		*e = DocumentDistributeLanguage(v)
 		return nil
 	default:

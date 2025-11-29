@@ -3255,12 +3255,16 @@ func (e *DocumentCreateSigningOrder) UnmarshalJSON(data []byte) error {
 type DocumentCreateLanguage string
 
 const (
-	DocumentCreateLanguageDe DocumentCreateLanguage = "de"
-	DocumentCreateLanguageEn DocumentCreateLanguage = "en"
-	DocumentCreateLanguageFr DocumentCreateLanguage = "fr"
-	DocumentCreateLanguageEs DocumentCreateLanguage = "es"
-	DocumentCreateLanguageIt DocumentCreateLanguage = "it"
-	DocumentCreateLanguagePl DocumentCreateLanguage = "pl"
+	DocumentCreateLanguageDe   DocumentCreateLanguage = "de"
+	DocumentCreateLanguageEn   DocumentCreateLanguage = "en"
+	DocumentCreateLanguageFr   DocumentCreateLanguage = "fr"
+	DocumentCreateLanguageEs   DocumentCreateLanguage = "es"
+	DocumentCreateLanguageIt   DocumentCreateLanguage = "it"
+	DocumentCreateLanguagePl   DocumentCreateLanguage = "pl"
+	DocumentCreateLanguagePtBr DocumentCreateLanguage = "pt-BR"
+	DocumentCreateLanguageJa   DocumentCreateLanguage = "ja"
+	DocumentCreateLanguageKo   DocumentCreateLanguage = "ko"
+	DocumentCreateLanguageZh   DocumentCreateLanguage = "zh"
 )
 
 func (e DocumentCreateLanguage) ToPointer() *DocumentCreateLanguage {
@@ -3283,6 +3287,14 @@ func (e *DocumentCreateLanguage) UnmarshalJSON(data []byte) error {
 	case "it":
 		fallthrough
 	case "pl":
+		fallthrough
+	case "pt-BR":
+		fallthrough
+	case "ja":
+		fallthrough
+	case "ko":
+		fallthrough
+	case "zh":
 		*e = DocumentCreateLanguage(v)
 		return nil
 	default:

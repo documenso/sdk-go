@@ -10,35 +10,35 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type EnvelopeUseRecipient struct {
+type EnvelopeUsePayloadRecipient struct {
 	ID           float64  `json:"id"`
 	Email        string   `json:"email"`
 	Name         *string  `json:"name,omitempty"`
 	SigningOrder *float64 `json:"signingOrder,omitempty"`
 }
 
-func (e *EnvelopeUseRecipient) GetID() float64 {
+func (e *EnvelopeUsePayloadRecipient) GetID() float64 {
 	if e == nil {
 		return 0.0
 	}
 	return e.ID
 }
 
-func (e *EnvelopeUseRecipient) GetEmail() string {
+func (e *EnvelopeUsePayloadRecipient) GetEmail() string {
 	if e == nil {
 		return ""
 	}
 	return e.Email
 }
 
-func (e *EnvelopeUseRecipient) GetName() *string {
+func (e *EnvelopeUsePayloadRecipient) GetName() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Name
 }
 
-func (e *EnvelopeUseRecipient) GetSigningOrder() *float64 {
+func (e *EnvelopeUsePayloadRecipient) GetSigningOrder() *float64 {
 	if e == nil {
 		return nil
 	}
@@ -885,12 +885,16 @@ func (e *EnvelopeUseEmailSettings) GetOwnerDocumentCompleted() *bool {
 type EnvelopeUseLanguage string
 
 const (
-	EnvelopeUseLanguageDe EnvelopeUseLanguage = "de"
-	EnvelopeUseLanguageEn EnvelopeUseLanguage = "en"
-	EnvelopeUseLanguageFr EnvelopeUseLanguage = "fr"
-	EnvelopeUseLanguageEs EnvelopeUseLanguage = "es"
-	EnvelopeUseLanguageIt EnvelopeUseLanguage = "it"
-	EnvelopeUseLanguagePl EnvelopeUseLanguage = "pl"
+	EnvelopeUseLanguageDe   EnvelopeUseLanguage = "de"
+	EnvelopeUseLanguageEn   EnvelopeUseLanguage = "en"
+	EnvelopeUseLanguageFr   EnvelopeUseLanguage = "fr"
+	EnvelopeUseLanguageEs   EnvelopeUseLanguage = "es"
+	EnvelopeUseLanguageIt   EnvelopeUseLanguage = "it"
+	EnvelopeUseLanguagePl   EnvelopeUseLanguage = "pl"
+	EnvelopeUseLanguagePtBr EnvelopeUseLanguage = "pt-BR"
+	EnvelopeUseLanguageJa   EnvelopeUseLanguage = "ja"
+	EnvelopeUseLanguageKo   EnvelopeUseLanguage = "ko"
+	EnvelopeUseLanguageZh   EnvelopeUseLanguage = "zh"
 )
 
 func (e EnvelopeUseLanguage) ToPointer() *EnvelopeUseLanguage {
@@ -913,6 +917,14 @@ func (e *EnvelopeUseLanguage) UnmarshalJSON(data []byte) error {
 	case "it":
 		fallthrough
 	case "pl":
+		fallthrough
+	case "pt-BR":
+		fallthrough
+	case "ja":
+		fallthrough
+	case "ko":
+		fallthrough
+	case "zh":
 		*e = EnvelopeUseLanguage(v)
 		return nil
 	default:
@@ -920,7 +932,7 @@ func (e *EnvelopeUseLanguage) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type Override struct {
+type EnvelopeUseOverride struct {
 	Title                  *string                        `json:"title,omitempty"`
 	Subject                *string                        `json:"subject,omitempty"`
 	Message                *string                        `json:"message,omitempty"`
@@ -936,95 +948,95 @@ type Override struct {
 	AllowDictateNextSigner *bool                          `json:"allowDictateNextSigner,omitempty"`
 }
 
-func (o *Override) GetTitle() *string {
-	if o == nil {
+func (e *EnvelopeUseOverride) GetTitle() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Title
+	return e.Title
 }
 
-func (o *Override) GetSubject() *string {
-	if o == nil {
+func (e *EnvelopeUseOverride) GetSubject() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Subject
+	return e.Subject
 }
 
-func (o *Override) GetMessage() *string {
-	if o == nil {
+func (e *EnvelopeUseOverride) GetMessage() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Message
+	return e.Message
 }
 
-func (o *Override) GetTimezone() *string {
-	if o == nil {
+func (e *EnvelopeUseOverride) GetTimezone() *string {
+	if e == nil {
 		return nil
 	}
-	return o.Timezone
+	return e.Timezone
 }
 
-func (o *Override) GetDateFormat() *EnvelopeUseDateFormat {
-	if o == nil {
+func (e *EnvelopeUseOverride) GetDateFormat() *EnvelopeUseDateFormat {
+	if e == nil {
 		return nil
 	}
-	return o.DateFormat
+	return e.DateFormat
 }
 
-func (o *Override) GetRedirectURL() *string {
-	if o == nil {
+func (e *EnvelopeUseOverride) GetRedirectURL() *string {
+	if e == nil {
 		return nil
 	}
-	return o.RedirectURL
+	return e.RedirectURL
 }
 
-func (o *Override) GetDistributionMethod() *EnvelopeUseDistributionMethod {
-	if o == nil {
+func (e *EnvelopeUseOverride) GetDistributionMethod() *EnvelopeUseDistributionMethod {
+	if e == nil {
 		return nil
 	}
-	return o.DistributionMethod
+	return e.DistributionMethod
 }
 
-func (o *Override) GetEmailSettings() *EnvelopeUseEmailSettings {
-	if o == nil {
+func (e *EnvelopeUseOverride) GetEmailSettings() *EnvelopeUseEmailSettings {
+	if e == nil {
 		return nil
 	}
-	return o.EmailSettings
+	return e.EmailSettings
 }
 
-func (o *Override) GetLanguage() *EnvelopeUseLanguage {
-	if o == nil {
+func (e *EnvelopeUseOverride) GetLanguage() *EnvelopeUseLanguage {
+	if e == nil {
 		return nil
 	}
-	return o.Language
+	return e.Language
 }
 
-func (o *Override) GetTypedSignatureEnabled() *bool {
-	if o == nil {
+func (e *EnvelopeUseOverride) GetTypedSignatureEnabled() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.TypedSignatureEnabled
+	return e.TypedSignatureEnabled
 }
 
-func (o *Override) GetUploadSignatureEnabled() *bool {
-	if o == nil {
+func (e *EnvelopeUseOverride) GetUploadSignatureEnabled() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.UploadSignatureEnabled
+	return e.UploadSignatureEnabled
 }
 
-func (o *Override) GetDrawSignatureEnabled() *bool {
-	if o == nil {
+func (e *EnvelopeUseOverride) GetDrawSignatureEnabled() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.DrawSignatureEnabled
+	return e.DrawSignatureEnabled
 }
 
-func (o *Override) GetAllowDictateNextSigner() *bool {
-	if o == nil {
+func (e *EnvelopeUseOverride) GetAllowDictateNextSigner() *bool {
+	if e == nil {
 		return nil
 	}
-	return o.AllowDictateNextSigner
+	return e.AllowDictateNextSigner
 }
 
 type EnvelopeUseTypeLink string
@@ -1091,12 +1103,12 @@ func (e *EnvelopeUseAttachment) GetType() *EnvelopeUseTypeLink {
 type EnvelopeUsePayload struct {
 	EnvelopeID         string                           `json:"envelopeId"`
 	ExternalID         *string                          `json:"externalId,omitempty"`
-	Recipients         []EnvelopeUseRecipient           `json:"recipients"`
+	Recipients         []EnvelopeUsePayloadRecipient    `json:"recipients,omitempty"`
 	DistributeDocument *bool                            `json:"distributeDocument,omitempty"`
 	CustomDocumentData []EnvelopeUseCustomDocumentDatum `json:"customDocumentData,omitempty"`
 	FolderID           *string                          `json:"folderId,omitempty"`
 	PrefillFields      []EnvelopeUsePrefillFieldUnion   `json:"prefillFields,omitempty"`
-	Override           *Override                        `json:"override,omitempty"`
+	Override           *EnvelopeUseOverride             `json:"override,omitempty"`
 	Attachments        []EnvelopeUseAttachment          `json:"attachments,omitempty"`
 }
 
@@ -1114,9 +1126,9 @@ func (e *EnvelopeUsePayload) GetExternalID() *string {
 	return e.ExternalID
 }
 
-func (e *EnvelopeUsePayload) GetRecipients() []EnvelopeUseRecipient {
+func (e *EnvelopeUsePayload) GetRecipients() []EnvelopeUsePayloadRecipient {
 	if e == nil {
-		return []EnvelopeUseRecipient{}
+		return nil
 	}
 	return e.Recipients
 }
@@ -1149,7 +1161,7 @@ func (e *EnvelopeUsePayload) GetPrefillFields() []EnvelopeUsePrefillFieldUnion {
 	return e.PrefillFields
 }
 
-func (e *EnvelopeUsePayload) GetOverride() *Override {
+func (e *EnvelopeUsePayload) GetOverride() *EnvelopeUseOverride {
 	if e == nil {
 		return nil
 	}
@@ -1202,9 +1214,104 @@ func (e *EnvelopeUseRequest) GetFiles() []EnvelopeUseFile {
 	return e.Files
 }
 
+type EnvelopeUseRole string
+
+const (
+	EnvelopeUseRoleCc        EnvelopeUseRole = "CC"
+	EnvelopeUseRoleSigner    EnvelopeUseRole = "SIGNER"
+	EnvelopeUseRoleViewer    EnvelopeUseRole = "VIEWER"
+	EnvelopeUseRoleApprover  EnvelopeUseRole = "APPROVER"
+	EnvelopeUseRoleAssistant EnvelopeUseRole = "ASSISTANT"
+)
+
+func (e EnvelopeUseRole) ToPointer() *EnvelopeUseRole {
+	return &e
+}
+func (e *EnvelopeUseRole) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "CC":
+		fallthrough
+	case "SIGNER":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "APPROVER":
+		fallthrough
+	case "ASSISTANT":
+		*e = EnvelopeUseRole(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeUseRole: %v", v)
+	}
+}
+
+type EnvelopeUseRecipientResponse struct {
+	ID           float64         `json:"id"`
+	Name         string          `json:"name"`
+	Email        string          `json:"email"`
+	Token        string          `json:"token"`
+	Role         EnvelopeUseRole `json:"role"`
+	SigningOrder *float64        `json:"signingOrder"`
+	SigningURL   string          `json:"signingUrl"`
+}
+
+func (e *EnvelopeUseRecipientResponse) GetID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.ID
+}
+
+func (e *EnvelopeUseRecipientResponse) GetName() string {
+	if e == nil {
+		return ""
+	}
+	return e.Name
+}
+
+func (e *EnvelopeUseRecipientResponse) GetEmail() string {
+	if e == nil {
+		return ""
+	}
+	return e.Email
+}
+
+func (e *EnvelopeUseRecipientResponse) GetToken() string {
+	if e == nil {
+		return ""
+	}
+	return e.Token
+}
+
+func (e *EnvelopeUseRecipientResponse) GetRole() EnvelopeUseRole {
+	if e == nil {
+		return EnvelopeUseRole("")
+	}
+	return e.Role
+}
+
+func (e *EnvelopeUseRecipientResponse) GetSigningOrder() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.SigningOrder
+}
+
+func (e *EnvelopeUseRecipientResponse) GetSigningURL() string {
+	if e == nil {
+		return ""
+	}
+	return e.SigningURL
+}
+
 // EnvelopeUseResponseBody - Successful response
 type EnvelopeUseResponseBody struct {
-	ID string `json:"id"`
+	ID         string                         `json:"id"`
+	Recipients []EnvelopeUseRecipientResponse `json:"recipients"`
 }
 
 func (e *EnvelopeUseResponseBody) GetID() string {
@@ -1212,6 +1319,13 @@ func (e *EnvelopeUseResponseBody) GetID() string {
 		return ""
 	}
 	return e.ID
+}
+
+func (e *EnvelopeUseResponseBody) GetRecipients() []EnvelopeUseRecipientResponse {
+	if e == nil {
+		return []EnvelopeUseRecipientResponse{}
+	}
+	return e.Recipients
 }
 
 type EnvelopeUseResponse struct {

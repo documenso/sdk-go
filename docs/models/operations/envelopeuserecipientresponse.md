@@ -1,0 +1,14 @@
+# EnvelopeUseRecipientResponse
+
+
+## Fields
+
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `ID`                                                                     | *float64*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
+| `Name`                                                                   | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `Email`                                                                  | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `Token`                                                                  | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `Role`                                                                   | [operations.EnvelopeUseRole](../../models/operations/envelopeuserole.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `SigningOrder`                                                           | *float64*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
+| `SigningURL`                                                             | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |

@@ -3255,12 +3255,16 @@ func (e *DocumentCreateDocumentTemporarySigningOrderRequest) UnmarshalJSON(data 
 type DocumentCreateDocumentTemporaryLanguage string
 
 const (
-	DocumentCreateDocumentTemporaryLanguageDe DocumentCreateDocumentTemporaryLanguage = "de"
-	DocumentCreateDocumentTemporaryLanguageEn DocumentCreateDocumentTemporaryLanguage = "en"
-	DocumentCreateDocumentTemporaryLanguageFr DocumentCreateDocumentTemporaryLanguage = "fr"
-	DocumentCreateDocumentTemporaryLanguageEs DocumentCreateDocumentTemporaryLanguage = "es"
-	DocumentCreateDocumentTemporaryLanguageIt DocumentCreateDocumentTemporaryLanguage = "it"
-	DocumentCreateDocumentTemporaryLanguagePl DocumentCreateDocumentTemporaryLanguage = "pl"
+	DocumentCreateDocumentTemporaryLanguageDe   DocumentCreateDocumentTemporaryLanguage = "de"
+	DocumentCreateDocumentTemporaryLanguageEn   DocumentCreateDocumentTemporaryLanguage = "en"
+	DocumentCreateDocumentTemporaryLanguageFr   DocumentCreateDocumentTemporaryLanguage = "fr"
+	DocumentCreateDocumentTemporaryLanguageEs   DocumentCreateDocumentTemporaryLanguage = "es"
+	DocumentCreateDocumentTemporaryLanguageIt   DocumentCreateDocumentTemporaryLanguage = "it"
+	DocumentCreateDocumentTemporaryLanguagePl   DocumentCreateDocumentTemporaryLanguage = "pl"
+	DocumentCreateDocumentTemporaryLanguagePtBr DocumentCreateDocumentTemporaryLanguage = "pt-BR"
+	DocumentCreateDocumentTemporaryLanguageJa   DocumentCreateDocumentTemporaryLanguage = "ja"
+	DocumentCreateDocumentTemporaryLanguageKo   DocumentCreateDocumentTemporaryLanguage = "ko"
+	DocumentCreateDocumentTemporaryLanguageZh   DocumentCreateDocumentTemporaryLanguage = "zh"
 )
 
 func (e DocumentCreateDocumentTemporaryLanguage) ToPointer() *DocumentCreateDocumentTemporaryLanguage {
@@ -3283,6 +3287,14 @@ func (e *DocumentCreateDocumentTemporaryLanguage) UnmarshalJSON(data []byte) err
 	case "it":
 		fallthrough
 	case "pl":
+		fallthrough
+	case "pt-BR":
+		fallthrough
+	case "ja":
+		fallthrough
+	case "ko":
+		fallthrough
+	case "zh":
 		*e = DocumentCreateDocumentTemporaryLanguage(v)
 		return nil
 	default:

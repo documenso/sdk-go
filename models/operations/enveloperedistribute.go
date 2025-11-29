@@ -3,6 +3,8 @@
 package operations
 
 import (
+	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -25,9 +27,105 @@ func (e *EnvelopeRedistributeRequest) GetRecipients() []float64 {
 	return e.Recipients
 }
 
+type EnvelopeRedistributeRole string
+
+const (
+	EnvelopeRedistributeRoleCc        EnvelopeRedistributeRole = "CC"
+	EnvelopeRedistributeRoleSigner    EnvelopeRedistributeRole = "SIGNER"
+	EnvelopeRedistributeRoleViewer    EnvelopeRedistributeRole = "VIEWER"
+	EnvelopeRedistributeRoleApprover  EnvelopeRedistributeRole = "APPROVER"
+	EnvelopeRedistributeRoleAssistant EnvelopeRedistributeRole = "ASSISTANT"
+)
+
+func (e EnvelopeRedistributeRole) ToPointer() *EnvelopeRedistributeRole {
+	return &e
+}
+func (e *EnvelopeRedistributeRole) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "CC":
+		fallthrough
+	case "SIGNER":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "APPROVER":
+		fallthrough
+	case "ASSISTANT":
+		*e = EnvelopeRedistributeRole(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeRedistributeRole: %v", v)
+	}
+}
+
+type EnvelopeRedistributeRecipient struct {
+	ID           float64                  `json:"id"`
+	Name         string                   `json:"name"`
+	Email        string                   `json:"email"`
+	Token        string                   `json:"token"`
+	Role         EnvelopeRedistributeRole `json:"role"`
+	SigningOrder *float64                 `json:"signingOrder"`
+	SigningURL   string                   `json:"signingUrl"`
+}
+
+func (e *EnvelopeRedistributeRecipient) GetID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.ID
+}
+
+func (e *EnvelopeRedistributeRecipient) GetName() string {
+	if e == nil {
+		return ""
+	}
+	return e.Name
+}
+
+func (e *EnvelopeRedistributeRecipient) GetEmail() string {
+	if e == nil {
+		return ""
+	}
+	return e.Email
+}
+
+func (e *EnvelopeRedistributeRecipient) GetToken() string {
+	if e == nil {
+		return ""
+	}
+	return e.Token
+}
+
+func (e *EnvelopeRedistributeRecipient) GetRole() EnvelopeRedistributeRole {
+	if e == nil {
+		return EnvelopeRedistributeRole("")
+	}
+	return e.Role
+}
+
+func (e *EnvelopeRedistributeRecipient) GetSigningOrder() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.SigningOrder
+}
+
+func (e *EnvelopeRedistributeRecipient) GetSigningURL() string {
+	if e == nil {
+		return ""
+	}
+	return e.SigningURL
+}
+
 // EnvelopeRedistributeResponseBody - Successful response
 type EnvelopeRedistributeResponseBody struct {
-	Success bool `json:"success"`
+	Success    bool                            `json:"success"`
+	ID         string                          `json:"id"`
+	Recipients []EnvelopeRedistributeRecipient `json:"recipients"`
 }
 
 func (e *EnvelopeRedistributeResponseBody) GetSuccess() bool {
@@ -35,6 +133,20 @@ func (e *EnvelopeRedistributeResponseBody) GetSuccess() bool {
 		return false
 	}
 	return e.Success
+}
+
+func (e *EnvelopeRedistributeResponseBody) GetID() string {
+	if e == nil {
+		return ""
+	}
+	return e.ID
+}
+
+func (e *EnvelopeRedistributeResponseBody) GetRecipients() []EnvelopeRedistributeRecipient {
+	if e == nil {
+		return []EnvelopeRedistributeRecipient{}
+	}
+	return e.Recipients
 }
 
 type EnvelopeRedistributeResponse struct {

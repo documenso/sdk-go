@@ -629,6 +629,406 @@ func (u TemplateCreateDocumentFromTemplatePrefillFieldUnion) MarshalJSON() ([]by
 	return nil, errors.New("could not marshal union type TemplateCreateDocumentFromTemplatePrefillFieldUnion: all fields are null")
 }
 
+type TemplateCreateDocumentFromTemplateDateFormat string
+
+const (
+	TemplateCreateDocumentFromTemplateDateFormatYyyyMMddHhMmA            TemplateCreateDocumentFromTemplateDateFormat = "yyyy-MM-dd hh:mm a"
+	TemplateCreateDocumentFromTemplateDateFormatYyyyMMdd                 TemplateCreateDocumentFromTemplateDateFormat = "yyyy-MM-dd"
+	TemplateCreateDocumentFromTemplateDateFormatDdMmSlashYyyy            TemplateCreateDocumentFromTemplateDateFormat = "dd/MM/yyyy"
+	TemplateCreateDocumentFromTemplateDateFormatMmDdSlashYyyy            TemplateCreateDocumentFromTemplateDateFormat = "MM/dd/yyyy"
+	TemplateCreateDocumentFromTemplateDateFormatYyMMdd                   TemplateCreateDocumentFromTemplateDateFormat = "yy-MM-dd"
+	TemplateCreateDocumentFromTemplateDateFormatMmmmDdCommaYyyy          TemplateCreateDocumentFromTemplateDateFormat = "MMMM dd, yyyy"
+	TemplateCreateDocumentFromTemplateDateFormatEeeeMmmmDdCommaYyyy      TemplateCreateDocumentFromTemplateDateFormat = "EEEE, MMMM dd, yyyy"
+	TemplateCreateDocumentFromTemplateDateFormatDdMmSlashYyyyHhMmA       TemplateCreateDocumentFromTemplateDateFormat = "dd/MM/yyyy hh:mm a"
+	TemplateCreateDocumentFromTemplateDateFormatDdMmSlashYyyyHHmm        TemplateCreateDocumentFromTemplateDateFormat = "dd/MM/yyyy HH:mm"
+	TemplateCreateDocumentFromTemplateDateFormatMmDdSlashYyyyHhMmA       TemplateCreateDocumentFromTemplateDateFormat = "MM/dd/yyyy hh:mm a"
+	TemplateCreateDocumentFromTemplateDateFormatMmDdSlashYyyyHHmm        TemplateCreateDocumentFromTemplateDateFormat = "MM/dd/yyyy HH:mm"
+	TemplateCreateDocumentFromTemplateDateFormatDdDotMmDotYyyy           TemplateCreateDocumentFromTemplateDateFormat = "dd.MM.yyyy"
+	TemplateCreateDocumentFromTemplateDateFormatDdDotMmDotYyyyHHmm       TemplateCreateDocumentFromTemplateDateFormat = "dd.MM.yyyy HH:mm"
+	TemplateCreateDocumentFromTemplateDateFormatYyyyMMddHHmm             TemplateCreateDocumentFromTemplateDateFormat = "yyyy-MM-dd HH:mm"
+	TemplateCreateDocumentFromTemplateDateFormatYyMMddHhMmA              TemplateCreateDocumentFromTemplateDateFormat = "yy-MM-dd hh:mm a"
+	TemplateCreateDocumentFromTemplateDateFormatYyMMddHHmm               TemplateCreateDocumentFromTemplateDateFormat = "yy-MM-dd HH:mm"
+	TemplateCreateDocumentFromTemplateDateFormatYyyyMMddHHmmss           TemplateCreateDocumentFromTemplateDateFormat = "yyyy-MM-dd HH:mm:ss"
+	TemplateCreateDocumentFromTemplateDateFormatMmmmDdCommaYyyyHhMmA     TemplateCreateDocumentFromTemplateDateFormat = "MMMM dd, yyyy hh:mm a"
+	TemplateCreateDocumentFromTemplateDateFormatMmmmDdCommaYyyyHHmm      TemplateCreateDocumentFromTemplateDateFormat = "MMMM dd, yyyy HH:mm"
+	TemplateCreateDocumentFromTemplateDateFormatEeeeMmmmDdCommaYyyyHhMmA TemplateCreateDocumentFromTemplateDateFormat = "EEEE, MMMM dd, yyyy hh:mm a"
+	TemplateCreateDocumentFromTemplateDateFormatEeeeMmmmDdCommaYyyyHHmm  TemplateCreateDocumentFromTemplateDateFormat = "EEEE, MMMM dd, yyyy HH:mm"
+	TemplateCreateDocumentFromTemplateDateFormatIso8601Full              TemplateCreateDocumentFromTemplateDateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+)
+
+func (e TemplateCreateDocumentFromTemplateDateFormat) ToPointer() *TemplateCreateDocumentFromTemplateDateFormat {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateDateFormat) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "yyyy-MM-dd hh:mm a":
+		fallthrough
+	case "yyyy-MM-dd":
+		fallthrough
+	case "dd/MM/yyyy":
+		fallthrough
+	case "MM/dd/yyyy":
+		fallthrough
+	case "yy-MM-dd":
+		fallthrough
+	case "MMMM dd, yyyy":
+		fallthrough
+	case "EEEE, MMMM dd, yyyy":
+		fallthrough
+	case "dd/MM/yyyy hh:mm a":
+		fallthrough
+	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "MM/dd/yyyy hh:mm a":
+		fallthrough
+	case "MM/dd/yyyy HH:mm":
+		fallthrough
+	case "dd.MM.yyyy":
+		fallthrough
+	case "dd.MM.yyyy HH:mm":
+		fallthrough
+	case "yyyy-MM-dd HH:mm":
+		fallthrough
+	case "yy-MM-dd hh:mm a":
+		fallthrough
+	case "yy-MM-dd HH:mm":
+		fallthrough
+	case "yyyy-MM-dd HH:mm:ss":
+		fallthrough
+	case "MMMM dd, yyyy hh:mm a":
+		fallthrough
+	case "MMMM dd, yyyy HH:mm":
+		fallthrough
+	case "EEEE, MMMM dd, yyyy hh:mm a":
+		fallthrough
+	case "EEEE, MMMM dd, yyyy HH:mm":
+		fallthrough
+	case "yyyy-MM-dd'T'HH:mm:ss.SSSXXX":
+		*e = TemplateCreateDocumentFromTemplateDateFormat(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateDateFormat: %v", v)
+	}
+}
+
+type TemplateCreateDocumentFromTemplateOverrideDistributionMethod string
+
+const (
+	TemplateCreateDocumentFromTemplateOverrideDistributionMethodEmail TemplateCreateDocumentFromTemplateOverrideDistributionMethod = "EMAIL"
+	TemplateCreateDocumentFromTemplateOverrideDistributionMethodNone  TemplateCreateDocumentFromTemplateOverrideDistributionMethod = "NONE"
+)
+
+func (e TemplateCreateDocumentFromTemplateOverrideDistributionMethod) ToPointer() *TemplateCreateDocumentFromTemplateOverrideDistributionMethod {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateOverrideDistributionMethod) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "EMAIL":
+		fallthrough
+	case "NONE":
+		*e = TemplateCreateDocumentFromTemplateOverrideDistributionMethod(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateOverrideDistributionMethod: %v", v)
+	}
+}
+
+type TemplateCreateDocumentFromTemplateOverrideEmailSettings struct {
+	RecipientSigningRequest *bool `default:"true" json:"recipientSigningRequest"`
+	RecipientRemoved        *bool `default:"true" json:"recipientRemoved"`
+	RecipientSigned         *bool `default:"true" json:"recipientSigned"`
+	DocumentPending         *bool `default:"true" json:"documentPending"`
+	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
+	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
+	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+}
+
+func (t TemplateCreateDocumentFromTemplateOverrideEmailSettings) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverrideEmailSettings) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverrideEmailSettings) GetRecipientSigningRequest() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.RecipientSigningRequest
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverrideEmailSettings) GetRecipientRemoved() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.RecipientRemoved
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverrideEmailSettings) GetRecipientSigned() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.RecipientSigned
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverrideEmailSettings) GetDocumentPending() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.DocumentPending
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverrideEmailSettings) GetDocumentCompleted() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.DocumentCompleted
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverrideEmailSettings) GetDocumentDeleted() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.DocumentDeleted
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverrideEmailSettings) GetOwnerDocumentCompleted() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerDocumentCompleted
+}
+
+type TemplateCreateDocumentFromTemplateLanguage string
+
+const (
+	TemplateCreateDocumentFromTemplateLanguageDe   TemplateCreateDocumentFromTemplateLanguage = "de"
+	TemplateCreateDocumentFromTemplateLanguageEn   TemplateCreateDocumentFromTemplateLanguage = "en"
+	TemplateCreateDocumentFromTemplateLanguageFr   TemplateCreateDocumentFromTemplateLanguage = "fr"
+	TemplateCreateDocumentFromTemplateLanguageEs   TemplateCreateDocumentFromTemplateLanguage = "es"
+	TemplateCreateDocumentFromTemplateLanguageIt   TemplateCreateDocumentFromTemplateLanguage = "it"
+	TemplateCreateDocumentFromTemplateLanguagePl   TemplateCreateDocumentFromTemplateLanguage = "pl"
+	TemplateCreateDocumentFromTemplateLanguagePtBr TemplateCreateDocumentFromTemplateLanguage = "pt-BR"
+	TemplateCreateDocumentFromTemplateLanguageJa   TemplateCreateDocumentFromTemplateLanguage = "ja"
+	TemplateCreateDocumentFromTemplateLanguageKo   TemplateCreateDocumentFromTemplateLanguage = "ko"
+	TemplateCreateDocumentFromTemplateLanguageZh   TemplateCreateDocumentFromTemplateLanguage = "zh"
+)
+
+func (e TemplateCreateDocumentFromTemplateLanguage) ToPointer() *TemplateCreateDocumentFromTemplateLanguage {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateLanguage) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "de":
+		fallthrough
+	case "en":
+		fallthrough
+	case "fr":
+		fallthrough
+	case "es":
+		fallthrough
+	case "it":
+		fallthrough
+	case "pl":
+		fallthrough
+	case "pt-BR":
+		fallthrough
+	case "ja":
+		fallthrough
+	case "ko":
+		fallthrough
+	case "zh":
+		*e = TemplateCreateDocumentFromTemplateLanguage(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateLanguage: %v", v)
+	}
+}
+
+type TemplateCreateDocumentFromTemplateOverride struct {
+	Title                  *string                                                       `json:"title,omitempty"`
+	Subject                *string                                                       `json:"subject,omitempty"`
+	Message                *string                                                       `json:"message,omitempty"`
+	Timezone               *string                                                       `json:"timezone,omitempty"`
+	DateFormat             *TemplateCreateDocumentFromTemplateDateFormat                 `json:"dateFormat,omitempty"`
+	RedirectURL            *string                                                       `json:"redirectUrl,omitempty"`
+	DistributionMethod     *TemplateCreateDocumentFromTemplateOverrideDistributionMethod `json:"distributionMethod,omitempty"`
+	EmailSettings          *TemplateCreateDocumentFromTemplateOverrideEmailSettings      `json:"emailSettings,omitempty"`
+	Language               *TemplateCreateDocumentFromTemplateLanguage                   `json:"language,omitempty"`
+	TypedSignatureEnabled  *bool                                                         `json:"typedSignatureEnabled,omitempty"`
+	UploadSignatureEnabled *bool                                                         `json:"uploadSignatureEnabled,omitempty"`
+	DrawSignatureEnabled   *bool                                                         `json:"drawSignatureEnabled,omitempty"`
+	AllowDictateNextSigner *bool                                                         `json:"allowDictateNextSigner,omitempty"`
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverride) GetTitle() *string {
+	if t == nil {
+		return nil
+	}
+	return t.Title
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverride) GetSubject() *string {
+	if t == nil {
+		return nil
+	}
+	return t.Subject
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverride) GetMessage() *string {
+	if t == nil {
+		return nil
+	}
+	return t.Message
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverride) GetTimezone() *string {
+	if t == nil {
+		return nil
+	}
+	return t.Timezone
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverride) GetDateFormat() *TemplateCreateDocumentFromTemplateDateFormat {
+	if t == nil {
+		return nil
+	}
+	return t.DateFormat
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverride) GetRedirectURL() *string {
+	if t == nil {
+		return nil
+	}
+	return t.RedirectURL
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverride) GetDistributionMethod() *TemplateCreateDocumentFromTemplateOverrideDistributionMethod {
+	if t == nil {
+		return nil
+	}
+	return t.DistributionMethod
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverride) GetEmailSettings() *TemplateCreateDocumentFromTemplateOverrideEmailSettings {
+	if t == nil {
+		return nil
+	}
+	return t.EmailSettings
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverride) GetLanguage() *TemplateCreateDocumentFromTemplateLanguage {
+	if t == nil {
+		return nil
+	}
+	return t.Language
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverride) GetTypedSignatureEnabled() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.TypedSignatureEnabled
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverride) GetUploadSignatureEnabled() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.UploadSignatureEnabled
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverride) GetDrawSignatureEnabled() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.DrawSignatureEnabled
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverride) GetAllowDictateNextSigner() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.AllowDictateNextSigner
+}
+
+type TemplateCreateDocumentFromTemplateTypeLink string
+
+const (
+	TemplateCreateDocumentFromTemplateTypeLinkLink TemplateCreateDocumentFromTemplateTypeLink = "link"
+)
+
+func (e TemplateCreateDocumentFromTemplateTypeLink) ToPointer() *TemplateCreateDocumentFromTemplateTypeLink {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateTypeLink) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "link":
+		*e = TemplateCreateDocumentFromTemplateTypeLink(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateTypeLink: %v", v)
+	}
+}
+
+type TemplateCreateDocumentFromTemplateAttachment struct {
+	Label string                                      `json:"label"`
+	Data  string                                      `json:"data"`
+	Type  *TemplateCreateDocumentFromTemplateTypeLink `default:"link" json:"type"`
+}
+
+func (t TemplateCreateDocumentFromTemplateAttachment) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateCreateDocumentFromTemplateAttachment) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"label", "data"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TemplateCreateDocumentFromTemplateAttachment) GetLabel() string {
+	if t == nil {
+		return ""
+	}
+	return t.Label
+}
+
+func (t *TemplateCreateDocumentFromTemplateAttachment) GetData() string {
+	if t == nil {
+		return ""
+	}
+	return t.Data
+}
+
+func (t *TemplateCreateDocumentFromTemplateAttachment) GetType() *TemplateCreateDocumentFromTemplateTypeLink {
+	if t == nil {
+		return nil
+	}
+	return t.Type
+}
+
 type TemplateCreateDocumentFromTemplateRequest struct {
 	TemplateID           float64                                                 `json:"templateId"`
 	Recipients           []TemplateCreateDocumentFromTemplateRecipientRequest    `json:"recipients"`
@@ -637,6 +1037,8 @@ type TemplateCreateDocumentFromTemplateRequest struct {
 	CustomDocumentData   []TemplateCreateDocumentFromTemplateCustomDocumentDatum `json:"customDocumentData,omitempty"`
 	FolderID             *string                                                 `json:"folderId,omitempty"`
 	PrefillFields        []TemplateCreateDocumentFromTemplatePrefillFieldUnion   `json:"prefillFields,omitempty"`
+	Override             *TemplateCreateDocumentFromTemplateOverride             `json:"override,omitempty"`
+	Attachments          []TemplateCreateDocumentFromTemplateAttachment          `json:"attachments,omitempty"`
 }
 
 func (t *TemplateCreateDocumentFromTemplateRequest) GetTemplateID() float64 {
@@ -686,6 +1088,20 @@ func (t *TemplateCreateDocumentFromTemplateRequest) GetPrefillFields() []Templat
 		return nil
 	}
 	return t.PrefillFields
+}
+
+func (t *TemplateCreateDocumentFromTemplateRequest) GetOverride() *TemplateCreateDocumentFromTemplateOverride {
+	if t == nil {
+		return nil
+	}
+	return t.Override
+}
+
+func (t *TemplateCreateDocumentFromTemplateRequest) GetAttachments() []TemplateCreateDocumentFromTemplateAttachment {
+	if t == nil {
+		return nil
+	}
+	return t.Attachments
 }
 
 type TemplateCreateDocumentFromTemplateVisibility string
@@ -1038,17 +1454,17 @@ func (e *TemplateCreateDocumentFromTemplateSigningOrder) UnmarshalJSON(data []by
 	}
 }
 
-type TemplateCreateDocumentFromTemplateDistributionMethod string
+type TemplateCreateDocumentFromTemplateDocumentMetaDistributionMethod string
 
 const (
-	TemplateCreateDocumentFromTemplateDistributionMethodEmail TemplateCreateDocumentFromTemplateDistributionMethod = "EMAIL"
-	TemplateCreateDocumentFromTemplateDistributionMethodNone  TemplateCreateDocumentFromTemplateDistributionMethod = "NONE"
+	TemplateCreateDocumentFromTemplateDocumentMetaDistributionMethodEmail TemplateCreateDocumentFromTemplateDocumentMetaDistributionMethod = "EMAIL"
+	TemplateCreateDocumentFromTemplateDocumentMetaDistributionMethodNone  TemplateCreateDocumentFromTemplateDocumentMetaDistributionMethod = "NONE"
 )
 
-func (e TemplateCreateDocumentFromTemplateDistributionMethod) ToPointer() *TemplateCreateDocumentFromTemplateDistributionMethod {
+func (e TemplateCreateDocumentFromTemplateDocumentMetaDistributionMethod) ToPointer() *TemplateCreateDocumentFromTemplateDocumentMetaDistributionMethod {
 	return &e
 }
-func (e *TemplateCreateDocumentFromTemplateDistributionMethod) UnmarshalJSON(data []byte) error {
+func (e *TemplateCreateDocumentFromTemplateDocumentMetaDistributionMethod) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1057,14 +1473,14 @@ func (e *TemplateCreateDocumentFromTemplateDistributionMethod) UnmarshalJSON(dat
 	case "EMAIL":
 		fallthrough
 	case "NONE":
-		*e = TemplateCreateDocumentFromTemplateDistributionMethod(v)
+		*e = TemplateCreateDocumentFromTemplateDocumentMetaDistributionMethod(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateDistributionMethod: %v", v)
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateDocumentMetaDistributionMethod: %v", v)
 	}
 }
 
-type TemplateCreateDocumentFromTemplateEmailSettings struct {
+type TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings struct {
 	RecipientSigningRequest *bool `default:"true" json:"recipientSigningRequest"`
 	RecipientRemoved        *bool `default:"true" json:"recipientRemoved"`
 	RecipientSigned         *bool `default:"true" json:"recipientSigned"`
@@ -1074,60 +1490,60 @@ type TemplateCreateDocumentFromTemplateEmailSettings struct {
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
 }
 
-func (t TemplateCreateDocumentFromTemplateEmailSettings) MarshalJSON() ([]byte, error) {
+func (t TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(t, "", false)
 }
 
-func (t *TemplateCreateDocumentFromTemplateEmailSettings) UnmarshalJSON(data []byte) error {
+func (t *TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (t *TemplateCreateDocumentFromTemplateEmailSettings) GetRecipientSigningRequest() *bool {
+func (t *TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings) GetRecipientSigningRequest() *bool {
 	if t == nil {
 		return nil
 	}
 	return t.RecipientSigningRequest
 }
 
-func (t *TemplateCreateDocumentFromTemplateEmailSettings) GetRecipientRemoved() *bool {
+func (t *TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings) GetRecipientRemoved() *bool {
 	if t == nil {
 		return nil
 	}
 	return t.RecipientRemoved
 }
 
-func (t *TemplateCreateDocumentFromTemplateEmailSettings) GetRecipientSigned() *bool {
+func (t *TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings) GetRecipientSigned() *bool {
 	if t == nil {
 		return nil
 	}
 	return t.RecipientSigned
 }
 
-func (t *TemplateCreateDocumentFromTemplateEmailSettings) GetDocumentPending() *bool {
+func (t *TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings) GetDocumentPending() *bool {
 	if t == nil {
 		return nil
 	}
 	return t.DocumentPending
 }
 
-func (t *TemplateCreateDocumentFromTemplateEmailSettings) GetDocumentCompleted() *bool {
+func (t *TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings) GetDocumentCompleted() *bool {
 	if t == nil {
 		return nil
 	}
 	return t.DocumentCompleted
 }
 
-func (t *TemplateCreateDocumentFromTemplateEmailSettings) GetDocumentDeleted() *bool {
+func (t *TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings) GetDocumentDeleted() *bool {
 	if t == nil {
 		return nil
 	}
 	return t.DocumentDeleted
 }
 
-func (t *TemplateCreateDocumentFromTemplateEmailSettings) GetOwnerDocumentCompleted() *bool {
+func (t *TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings) GetOwnerDocumentCompleted() *bool {
 	if t == nil {
 		return nil
 	}
@@ -1135,24 +1551,24 @@ func (t *TemplateCreateDocumentFromTemplateEmailSettings) GetOwnerDocumentComple
 }
 
 type TemplateCreateDocumentFromTemplateDocumentMeta struct {
-	SigningOrder           TemplateCreateDocumentFromTemplateSigningOrder       `json:"signingOrder"`
-	DistributionMethod     TemplateCreateDocumentFromTemplateDistributionMethod `json:"distributionMethod"`
-	ID                     string                                               `json:"id"`
-	Subject                *string                                              `json:"subject"`
-	Message                *string                                              `json:"message"`
-	Timezone               *string                                              `json:"timezone"`
-	DateFormat             *string                                              `json:"dateFormat"`
-	RedirectURL            *string                                              `json:"redirectUrl"`
-	TypedSignatureEnabled  bool                                                 `json:"typedSignatureEnabled"`
-	UploadSignatureEnabled bool                                                 `json:"uploadSignatureEnabled"`
-	DrawSignatureEnabled   bool                                                 `json:"drawSignatureEnabled"`
-	AllowDictateNextSigner bool                                                 `json:"allowDictateNextSigner"`
-	Language               string                                               `json:"language"`
-	EmailSettings          *TemplateCreateDocumentFromTemplateEmailSettings     `json:"emailSettings"`
-	EmailID                *string                                              `json:"emailId"`
-	EmailReplyTo           *string                                              `json:"emailReplyTo"`
-	Password               *string                                              `default:"null" json:"password"`
-	DocumentID             *float64                                             `default:"-1" json:"documentId"`
+	SigningOrder           TemplateCreateDocumentFromTemplateSigningOrder                   `json:"signingOrder"`
+	DistributionMethod     TemplateCreateDocumentFromTemplateDocumentMetaDistributionMethod `json:"distributionMethod"`
+	ID                     string                                                           `json:"id"`
+	Subject                *string                                                          `json:"subject"`
+	Message                *string                                                          `json:"message"`
+	Timezone               *string                                                          `json:"timezone"`
+	DateFormat             *string                                                          `json:"dateFormat"`
+	RedirectURL            *string                                                          `json:"redirectUrl"`
+	TypedSignatureEnabled  bool                                                             `json:"typedSignatureEnabled"`
+	UploadSignatureEnabled bool                                                             `json:"uploadSignatureEnabled"`
+	DrawSignatureEnabled   bool                                                             `json:"drawSignatureEnabled"`
+	AllowDictateNextSigner bool                                                             `json:"allowDictateNextSigner"`
+	Language               string                                                           `json:"language"`
+	EmailSettings          *TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings     `json:"emailSettings"`
+	EmailID                *string                                                          `json:"emailId"`
+	EmailReplyTo           *string                                                          `json:"emailReplyTo"`
+	Password               *string                                                          `default:"null" json:"password"`
+	DocumentID             *float64                                                         `default:"-1" json:"documentId"`
 }
 
 func (t TemplateCreateDocumentFromTemplateDocumentMeta) MarshalJSON() ([]byte, error) {
@@ -1173,9 +1589,9 @@ func (t *TemplateCreateDocumentFromTemplateDocumentMeta) GetSigningOrder() Templ
 	return t.SigningOrder
 }
 
-func (t *TemplateCreateDocumentFromTemplateDocumentMeta) GetDistributionMethod() TemplateCreateDocumentFromTemplateDistributionMethod {
+func (t *TemplateCreateDocumentFromTemplateDocumentMeta) GetDistributionMethod() TemplateCreateDocumentFromTemplateDocumentMetaDistributionMethod {
 	if t == nil {
-		return TemplateCreateDocumentFromTemplateDistributionMethod("")
+		return TemplateCreateDocumentFromTemplateDocumentMetaDistributionMethod("")
 	}
 	return t.DistributionMethod
 }
@@ -1257,7 +1673,7 @@ func (t *TemplateCreateDocumentFromTemplateDocumentMeta) GetLanguage() string {
 	return t.Language
 }
 
-func (t *TemplateCreateDocumentFromTemplateDocumentMeta) GetEmailSettings() *TemplateCreateDocumentFromTemplateEmailSettings {
+func (t *TemplateCreateDocumentFromTemplateDocumentMeta) GetEmailSettings() *TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings {
 	if t == nil {
 		return nil
 	}

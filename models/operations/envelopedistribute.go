@@ -124,12 +124,16 @@ func (e *EnvelopeDistributeDistributionMethod) UnmarshalJSON(data []byte) error 
 type EnvelopeDistributeLanguage string
 
 const (
-	EnvelopeDistributeLanguageDe EnvelopeDistributeLanguage = "de"
-	EnvelopeDistributeLanguageEn EnvelopeDistributeLanguage = "en"
-	EnvelopeDistributeLanguageFr EnvelopeDistributeLanguage = "fr"
-	EnvelopeDistributeLanguageEs EnvelopeDistributeLanguage = "es"
-	EnvelopeDistributeLanguageIt EnvelopeDistributeLanguage = "it"
-	EnvelopeDistributeLanguagePl EnvelopeDistributeLanguage = "pl"
+	EnvelopeDistributeLanguageDe   EnvelopeDistributeLanguage = "de"
+	EnvelopeDistributeLanguageEn   EnvelopeDistributeLanguage = "en"
+	EnvelopeDistributeLanguageFr   EnvelopeDistributeLanguage = "fr"
+	EnvelopeDistributeLanguageEs   EnvelopeDistributeLanguage = "es"
+	EnvelopeDistributeLanguageIt   EnvelopeDistributeLanguage = "it"
+	EnvelopeDistributeLanguagePl   EnvelopeDistributeLanguage = "pl"
+	EnvelopeDistributeLanguagePtBr EnvelopeDistributeLanguage = "pt-BR"
+	EnvelopeDistributeLanguageJa   EnvelopeDistributeLanguage = "ja"
+	EnvelopeDistributeLanguageKo   EnvelopeDistributeLanguage = "ko"
+	EnvelopeDistributeLanguageZh   EnvelopeDistributeLanguage = "zh"
 )
 
 func (e EnvelopeDistributeLanguage) ToPointer() *EnvelopeDistributeLanguage {
@@ -152,6 +156,14 @@ func (e *EnvelopeDistributeLanguage) UnmarshalJSON(data []byte) error {
 	case "it":
 		fallthrough
 	case "pl":
+		fallthrough
+	case "pt-BR":
+		fallthrough
+	case "ja":
+		fallthrough
+	case "ko":
+		fallthrough
+	case "zh":
 		*e = EnvelopeDistributeLanguage(v)
 		return nil
 	default:
@@ -331,9 +343,105 @@ func (e *EnvelopeDistributeRequest) GetMeta() *EnvelopeDistributeMeta {
 	return e.Meta
 }
 
+type EnvelopeDistributeRole string
+
+const (
+	EnvelopeDistributeRoleCc        EnvelopeDistributeRole = "CC"
+	EnvelopeDistributeRoleSigner    EnvelopeDistributeRole = "SIGNER"
+	EnvelopeDistributeRoleViewer    EnvelopeDistributeRole = "VIEWER"
+	EnvelopeDistributeRoleApprover  EnvelopeDistributeRole = "APPROVER"
+	EnvelopeDistributeRoleAssistant EnvelopeDistributeRole = "ASSISTANT"
+)
+
+func (e EnvelopeDistributeRole) ToPointer() *EnvelopeDistributeRole {
+	return &e
+}
+func (e *EnvelopeDistributeRole) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "CC":
+		fallthrough
+	case "SIGNER":
+		fallthrough
+	case "VIEWER":
+		fallthrough
+	case "APPROVER":
+		fallthrough
+	case "ASSISTANT":
+		*e = EnvelopeDistributeRole(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeDistributeRole: %v", v)
+	}
+}
+
+type EnvelopeDistributeRecipient struct {
+	ID           float64                `json:"id"`
+	Name         string                 `json:"name"`
+	Email        string                 `json:"email"`
+	Token        string                 `json:"token"`
+	Role         EnvelopeDistributeRole `json:"role"`
+	SigningOrder *float64               `json:"signingOrder"`
+	SigningURL   string                 `json:"signingUrl"`
+}
+
+func (e *EnvelopeDistributeRecipient) GetID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.ID
+}
+
+func (e *EnvelopeDistributeRecipient) GetName() string {
+	if e == nil {
+		return ""
+	}
+	return e.Name
+}
+
+func (e *EnvelopeDistributeRecipient) GetEmail() string {
+	if e == nil {
+		return ""
+	}
+	return e.Email
+}
+
+func (e *EnvelopeDistributeRecipient) GetToken() string {
+	if e == nil {
+		return ""
+	}
+	return e.Token
+}
+
+func (e *EnvelopeDistributeRecipient) GetRole() EnvelopeDistributeRole {
+	if e == nil {
+		return EnvelopeDistributeRole("")
+	}
+	return e.Role
+}
+
+func (e *EnvelopeDistributeRecipient) GetSigningOrder() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.SigningOrder
+}
+
+func (e *EnvelopeDistributeRecipient) GetSigningURL() string {
+	if e == nil {
+		return ""
+	}
+	return e.SigningURL
+}
+
 // EnvelopeDistributeResponseBody - Successful response
 type EnvelopeDistributeResponseBody struct {
-	Success bool `json:"success"`
+	Success    bool                          `json:"success"`
+	ID         string                        `json:"id"`
+	Recipients []EnvelopeDistributeRecipient `json:"recipients"`
 }
 
 func (e *EnvelopeDistributeResponseBody) GetSuccess() bool {
@@ -341,6 +449,20 @@ func (e *EnvelopeDistributeResponseBody) GetSuccess() bool {
 		return false
 	}
 	return e.Success
+}
+
+func (e *EnvelopeDistributeResponseBody) GetID() string {
+	if e == nil {
+		return ""
+	}
+	return e.ID
+}
+
+func (e *EnvelopeDistributeResponseBody) GetRecipients() []EnvelopeDistributeRecipient {
+	if e == nil {
+		return []EnvelopeDistributeRecipient{}
+	}
+	return e.Recipients
 }
 
 type EnvelopeDistributeResponse struct {
