@@ -308,12 +308,16 @@ func (t *TemplateCreateTemplateTemporaryMetaEmailSettings) GetOwnerDocumentCompl
 type TemplateCreateTemplateTemporaryLanguage string
 
 const (
-	TemplateCreateTemplateTemporaryLanguageDe TemplateCreateTemplateTemporaryLanguage = "de"
-	TemplateCreateTemplateTemporaryLanguageEn TemplateCreateTemplateTemporaryLanguage = "en"
-	TemplateCreateTemplateTemporaryLanguageFr TemplateCreateTemplateTemporaryLanguage = "fr"
-	TemplateCreateTemplateTemporaryLanguageEs TemplateCreateTemplateTemporaryLanguage = "es"
-	TemplateCreateTemplateTemporaryLanguageIt TemplateCreateTemplateTemporaryLanguage = "it"
-	TemplateCreateTemplateTemporaryLanguagePl TemplateCreateTemplateTemporaryLanguage = "pl"
+	TemplateCreateTemplateTemporaryLanguageDe   TemplateCreateTemplateTemporaryLanguage = "de"
+	TemplateCreateTemplateTemporaryLanguageEn   TemplateCreateTemplateTemporaryLanguage = "en"
+	TemplateCreateTemplateTemporaryLanguageFr   TemplateCreateTemplateTemporaryLanguage = "fr"
+	TemplateCreateTemplateTemporaryLanguageEs   TemplateCreateTemplateTemporaryLanguage = "es"
+	TemplateCreateTemplateTemporaryLanguageIt   TemplateCreateTemplateTemporaryLanguage = "it"
+	TemplateCreateTemplateTemporaryLanguagePl   TemplateCreateTemplateTemporaryLanguage = "pl"
+	TemplateCreateTemplateTemporaryLanguagePtBr TemplateCreateTemplateTemporaryLanguage = "pt-BR"
+	TemplateCreateTemplateTemporaryLanguageJa   TemplateCreateTemplateTemporaryLanguage = "ja"
+	TemplateCreateTemplateTemporaryLanguageKo   TemplateCreateTemplateTemporaryLanguage = "ko"
+	TemplateCreateTemplateTemporaryLanguageZh   TemplateCreateTemplateTemporaryLanguage = "zh"
 )
 
 func (e TemplateCreateTemplateTemporaryLanguage) ToPointer() *TemplateCreateTemplateTemporaryLanguage {
@@ -336,6 +340,14 @@ func (e *TemplateCreateTemplateTemporaryLanguage) UnmarshalJSON(data []byte) err
 	case "it":
 		fallthrough
 	case "pl":
+		fallthrough
+	case "pt-BR":
+		fallthrough
+	case "ja":
+		fallthrough
+	case "ko":
+		fallthrough
+	case "zh":
 		*e = TemplateCreateTemplateTemporaryLanguage(v)
 		return nil
 	default:

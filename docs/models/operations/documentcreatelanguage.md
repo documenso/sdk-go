@@ -3,11 +3,15 @@
 
 ## Values
 
-| Name                       | Value                      |
-| -------------------------- | -------------------------- |
-| `DocumentCreateLanguageDe` | de                         |
-| `DocumentCreateLanguageEn` | en                         |
-| `DocumentCreateLanguageFr` | fr                         |
-| `DocumentCreateLanguageEs` | es                         |
-| `DocumentCreateLanguageIt` | it                         |
-| `DocumentCreateLanguagePl` | pl                         |
+| Name                         | Value                        |
+| ---------------------------- | ---------------------------- |
+| `DocumentCreateLanguageDe`   | de                           |
+| `DocumentCreateLanguageEn`   | en                           |
+| `DocumentCreateLanguageFr`   | fr                           |
+| `DocumentCreateLanguageEs`   | es                           |
+| `DocumentCreateLanguageIt`   | it                           |
+| `DocumentCreateLanguagePl`   | pl                           |
+| `DocumentCreateLanguagePtBr` | pt-BR                        |
+| `DocumentCreateLanguageJa`   | ja                           |
+| `DocumentCreateLanguageKo`   | ko                           |
+| `DocumentCreateLanguageZh`   | zh                           |

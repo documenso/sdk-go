@@ -161,7 +161,6 @@ func main() {
     res, err := s.Envelopes.Use(ctx, operations.EnvelopeUseRequest{
         Payload: operations.EnvelopeUsePayload{
             EnvelopeID: "<id>",
-            Recipients: []operations.EnvelopeUseRecipient{},
         },
     })
     if err != nil {

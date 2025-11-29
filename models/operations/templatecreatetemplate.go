@@ -307,12 +307,16 @@ func (t *TemplateCreateTemplateEmailSettings) GetOwnerDocumentCompleted() *bool 
 type TemplateCreateTemplateLanguage string
 
 const (
-	TemplateCreateTemplateLanguageDe TemplateCreateTemplateLanguage = "de"
-	TemplateCreateTemplateLanguageEn TemplateCreateTemplateLanguage = "en"
-	TemplateCreateTemplateLanguageFr TemplateCreateTemplateLanguage = "fr"
-	TemplateCreateTemplateLanguageEs TemplateCreateTemplateLanguage = "es"
-	TemplateCreateTemplateLanguageIt TemplateCreateTemplateLanguage = "it"
-	TemplateCreateTemplateLanguagePl TemplateCreateTemplateLanguage = "pl"
+	TemplateCreateTemplateLanguageDe   TemplateCreateTemplateLanguage = "de"
+	TemplateCreateTemplateLanguageEn   TemplateCreateTemplateLanguage = "en"
+	TemplateCreateTemplateLanguageFr   TemplateCreateTemplateLanguage = "fr"
+	TemplateCreateTemplateLanguageEs   TemplateCreateTemplateLanguage = "es"
+	TemplateCreateTemplateLanguageIt   TemplateCreateTemplateLanguage = "it"
+	TemplateCreateTemplateLanguagePl   TemplateCreateTemplateLanguage = "pl"
+	TemplateCreateTemplateLanguagePtBr TemplateCreateTemplateLanguage = "pt-BR"
+	TemplateCreateTemplateLanguageJa   TemplateCreateTemplateLanguage = "ja"
+	TemplateCreateTemplateLanguageKo   TemplateCreateTemplateLanguage = "ko"
+	TemplateCreateTemplateLanguageZh   TemplateCreateTemplateLanguage = "zh"
 )
 
 func (e TemplateCreateTemplateLanguage) ToPointer() *TemplateCreateTemplateLanguage {
@@ -335,6 +339,14 @@ func (e *TemplateCreateTemplateLanguage) UnmarshalJSON(data []byte) error {
 	case "it":
 		fallthrough
 	case "pl":
+		fallthrough
+	case "pt-BR":
+		fallthrough
+	case "ja":
+		fallthrough
+	case "ko":
+		fallthrough
+	case "zh":
 		*e = TemplateCreateTemplateLanguage(v)
 		return nil
 	default:

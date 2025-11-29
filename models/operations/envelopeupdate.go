@@ -289,12 +289,16 @@ func (e *EnvelopeUpdateSigningOrder) UnmarshalJSON(data []byte) error {
 type EnvelopeUpdateLanguage string
 
 const (
-	EnvelopeUpdateLanguageDe EnvelopeUpdateLanguage = "de"
-	EnvelopeUpdateLanguageEn EnvelopeUpdateLanguage = "en"
-	EnvelopeUpdateLanguageFr EnvelopeUpdateLanguage = "fr"
-	EnvelopeUpdateLanguageEs EnvelopeUpdateLanguage = "es"
-	EnvelopeUpdateLanguageIt EnvelopeUpdateLanguage = "it"
-	EnvelopeUpdateLanguagePl EnvelopeUpdateLanguage = "pl"
+	EnvelopeUpdateLanguageDe   EnvelopeUpdateLanguage = "de"
+	EnvelopeUpdateLanguageEn   EnvelopeUpdateLanguage = "en"
+	EnvelopeUpdateLanguageFr   EnvelopeUpdateLanguage = "fr"
+	EnvelopeUpdateLanguageEs   EnvelopeUpdateLanguage = "es"
+	EnvelopeUpdateLanguageIt   EnvelopeUpdateLanguage = "it"
+	EnvelopeUpdateLanguagePl   EnvelopeUpdateLanguage = "pl"
+	EnvelopeUpdateLanguagePtBr EnvelopeUpdateLanguage = "pt-BR"
+	EnvelopeUpdateLanguageJa   EnvelopeUpdateLanguage = "ja"
+	EnvelopeUpdateLanguageKo   EnvelopeUpdateLanguage = "ko"
+	EnvelopeUpdateLanguageZh   EnvelopeUpdateLanguage = "zh"
 )
 
 func (e EnvelopeUpdateLanguage) ToPointer() *EnvelopeUpdateLanguage {
@@ -317,6 +321,14 @@ func (e *EnvelopeUpdateLanguage) UnmarshalJSON(data []byte) error {
 	case "it":
 		fallthrough
 	case "pl":
+		fallthrough
+	case "pt-BR":
+		fallthrough
+	case "ja":
+		fallthrough
+	case "ko":
+		fallthrough
+	case "zh":
 		*e = EnvelopeUpdateLanguage(v)
 		return nil
 	default:

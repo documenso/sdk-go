@@ -390,12 +390,16 @@ func (t *TemplateUpdateTemplateEmailSettings) GetOwnerDocumentCompleted() *bool 
 type TemplateUpdateTemplateLanguage string
 
 const (
-	TemplateUpdateTemplateLanguageDe TemplateUpdateTemplateLanguage = "de"
-	TemplateUpdateTemplateLanguageEn TemplateUpdateTemplateLanguage = "en"
-	TemplateUpdateTemplateLanguageFr TemplateUpdateTemplateLanguage = "fr"
-	TemplateUpdateTemplateLanguageEs TemplateUpdateTemplateLanguage = "es"
-	TemplateUpdateTemplateLanguageIt TemplateUpdateTemplateLanguage = "it"
-	TemplateUpdateTemplateLanguagePl TemplateUpdateTemplateLanguage = "pl"
+	TemplateUpdateTemplateLanguageDe   TemplateUpdateTemplateLanguage = "de"
+	TemplateUpdateTemplateLanguageEn   TemplateUpdateTemplateLanguage = "en"
+	TemplateUpdateTemplateLanguageFr   TemplateUpdateTemplateLanguage = "fr"
+	TemplateUpdateTemplateLanguageEs   TemplateUpdateTemplateLanguage = "es"
+	TemplateUpdateTemplateLanguageIt   TemplateUpdateTemplateLanguage = "it"
+	TemplateUpdateTemplateLanguagePl   TemplateUpdateTemplateLanguage = "pl"
+	TemplateUpdateTemplateLanguagePtBr TemplateUpdateTemplateLanguage = "pt-BR"
+	TemplateUpdateTemplateLanguageJa   TemplateUpdateTemplateLanguage = "ja"
+	TemplateUpdateTemplateLanguageKo   TemplateUpdateTemplateLanguage = "ko"
+	TemplateUpdateTemplateLanguageZh   TemplateUpdateTemplateLanguage = "zh"
 )
 
 func (e TemplateUpdateTemplateLanguage) ToPointer() *TemplateUpdateTemplateLanguage {
@@ -418,6 +422,14 @@ func (e *TemplateUpdateTemplateLanguage) UnmarshalJSON(data []byte) error {
 	case "it":
 		fallthrough
 	case "pl":
+		fallthrough
+	case "pt-BR":
+		fallthrough
+	case "ja":
+		fallthrough
+	case "ko":
+		fallthrough
+	case "zh":
 		*e = TemplateUpdateTemplateLanguage(v)
 		return nil
 	default:
