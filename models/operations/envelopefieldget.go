@@ -1530,16 +1530,16 @@ const (
 )
 
 type EnvelopeFieldGetFieldMetaUnion struct {
-	EnvelopeFieldGetFieldMetaSignature *EnvelopeFieldGetFieldMetaSignature `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldGetFieldMetaInitials  *EnvelopeFieldGetFieldMetaInitials  `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldGetFieldMetaName      *EnvelopeFieldGetFieldMetaName      `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldGetFieldMetaEmail     *EnvelopeFieldGetFieldMetaEmail     `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldGetFieldMetaDate      *EnvelopeFieldGetFieldMetaDate      `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldGetFieldMetaText      *EnvelopeFieldGetFieldMetaText      `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldGetFieldMetaNumber    *EnvelopeFieldGetFieldMetaNumber    `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldGetFieldMetaRadio     *EnvelopeFieldGetFieldMetaRadio     `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldGetFieldMetaCheckbox  *EnvelopeFieldGetFieldMetaCheckbox  `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldGetFieldMetaDropdown  *EnvelopeFieldGetFieldMetaDropdown  `queryParam:"inline,name=fieldMeta"`
+	EnvelopeFieldGetFieldMetaSignature *EnvelopeFieldGetFieldMetaSignature `queryParam:"inline" union:"member"`
+	EnvelopeFieldGetFieldMetaInitials  *EnvelopeFieldGetFieldMetaInitials  `queryParam:"inline" union:"member"`
+	EnvelopeFieldGetFieldMetaName      *EnvelopeFieldGetFieldMetaName      `queryParam:"inline" union:"member"`
+	EnvelopeFieldGetFieldMetaEmail     *EnvelopeFieldGetFieldMetaEmail     `queryParam:"inline" union:"member"`
+	EnvelopeFieldGetFieldMetaDate      *EnvelopeFieldGetFieldMetaDate      `queryParam:"inline" union:"member"`
+	EnvelopeFieldGetFieldMetaText      *EnvelopeFieldGetFieldMetaText      `queryParam:"inline" union:"member"`
+	EnvelopeFieldGetFieldMetaNumber    *EnvelopeFieldGetFieldMetaNumber    `queryParam:"inline" union:"member"`
+	EnvelopeFieldGetFieldMetaRadio     *EnvelopeFieldGetFieldMetaRadio     `queryParam:"inline" union:"member"`
+	EnvelopeFieldGetFieldMetaCheckbox  *EnvelopeFieldGetFieldMetaCheckbox  `queryParam:"inline" union:"member"`
+	EnvelopeFieldGetFieldMetaDropdown  *EnvelopeFieldGetFieldMetaDropdown  `queryParam:"inline" union:"member"`
 
 	Type EnvelopeFieldGetFieldMetaUnionType
 }

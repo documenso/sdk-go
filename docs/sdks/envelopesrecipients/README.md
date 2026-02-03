@@ -1,5 +1,4 @@
-# EnvelopesRecipients
-(*Envelopes.Recipients*)
+# Envelopes.Recipients
 
 ## Overview
 
@@ -96,7 +95,9 @@ func main() {
         EnvelopeID: "<id>",
         Data: []operations.EnvelopeRecipientCreateManyDataRequest{
             operations.EnvelopeRecipientCreateManyDataRequest{
-                Email: "Ed16@yahoo.com",
+                Email: operations.CreateEnvelopeRecipientCreateManyEmailUnionStr(
+                    "Ed16@yahoo.com",
+                ),
                 Name: "<value>",
                 Role: operations.EnvelopeRecipientCreateManyRoleRequestSigner,
             },

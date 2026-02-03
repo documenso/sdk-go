@@ -1,5 +1,4 @@
-# DocumentsRecipients
-(*Documents.Recipients*)
+# Documents.Recipients
 
 ## Overview
 

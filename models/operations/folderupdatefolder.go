@@ -8,18 +8,18 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type FolderUpdateFolderDataVisibility string
+type FolderUpdateFolderVisibilityRequest string
 
 const (
-	FolderUpdateFolderDataVisibilityEveryone        FolderUpdateFolderDataVisibility = "EVERYONE"
-	FolderUpdateFolderDataVisibilityManagerAndAbove FolderUpdateFolderDataVisibility = "MANAGER_AND_ABOVE"
-	FolderUpdateFolderDataVisibilityAdmin           FolderUpdateFolderDataVisibility = "ADMIN"
+	FolderUpdateFolderVisibilityRequestEveryone        FolderUpdateFolderVisibilityRequest = "EVERYONE"
+	FolderUpdateFolderVisibilityRequestManagerAndAbove FolderUpdateFolderVisibilityRequest = "MANAGER_AND_ABOVE"
+	FolderUpdateFolderVisibilityRequestAdmin           FolderUpdateFolderVisibilityRequest = "ADMIN"
 )
 
-func (e FolderUpdateFolderDataVisibility) ToPointer() *FolderUpdateFolderDataVisibility {
+func (e FolderUpdateFolderVisibilityRequest) ToPointer() *FolderUpdateFolderVisibilityRequest {
 	return &e
 }
-func (e *FolderUpdateFolderDataVisibility) UnmarshalJSON(data []byte) error {
+func (e *FolderUpdateFolderVisibilityRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -30,18 +30,18 @@ func (e *FolderUpdateFolderDataVisibility) UnmarshalJSON(data []byte) error {
 	case "MANAGER_AND_ABOVE":
 		fallthrough
 	case "ADMIN":
-		*e = FolderUpdateFolderDataVisibility(v)
+		*e = FolderUpdateFolderVisibilityRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FolderUpdateFolderDataVisibility: %v", v)
+		return fmt.Errorf("invalid value for FolderUpdateFolderVisibilityRequest: %v", v)
 	}
 }
 
 type FolderUpdateFolderData struct {
-	Name       *string                           `json:"name,omitempty"`
-	ParentID   *string                           `json:"parentId,omitempty"`
-	Visibility *FolderUpdateFolderDataVisibility `json:"visibility,omitempty"`
-	Pinned     *bool                             `json:"pinned,omitempty"`
+	Name       *string                              `json:"name,omitempty"`
+	ParentID   *string                              `json:"parentId,omitempty"`
+	Visibility *FolderUpdateFolderVisibilityRequest `json:"visibility,omitempty"`
+	Pinned     *bool                                `json:"pinned,omitempty"`
 }
 
 func (f *FolderUpdateFolderData) GetName() *string {
@@ -58,7 +58,7 @@ func (f *FolderUpdateFolderData) GetParentID() *string {
 	return f.ParentID
 }
 
-func (f *FolderUpdateFolderData) GetVisibility() *FolderUpdateFolderDataVisibility {
+func (f *FolderUpdateFolderData) GetVisibility() *FolderUpdateFolderVisibilityRequest {
 	if f == nil {
 		return nil
 	}

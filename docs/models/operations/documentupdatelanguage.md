@@ -10,6 +10,7 @@
 | `DocumentUpdateLanguageFr`   | fr                           |
 | `DocumentUpdateLanguageEs`   | es                           |
 | `DocumentUpdateLanguageIt`   | it                           |
+| `DocumentUpdateLanguageNl`   | nl                           |
 | `DocumentUpdateLanguagePl`   | pl                           |
 | `DocumentUpdateLanguagePtBr` | pt-BR                        |
 | `DocumentUpdateLanguageJa`   | ja                           |

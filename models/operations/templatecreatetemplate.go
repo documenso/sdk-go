@@ -312,6 +312,7 @@ const (
 	TemplateCreateTemplateLanguageFr   TemplateCreateTemplateLanguage = "fr"
 	TemplateCreateTemplateLanguageEs   TemplateCreateTemplateLanguage = "es"
 	TemplateCreateTemplateLanguageIt   TemplateCreateTemplateLanguage = "it"
+	TemplateCreateTemplateLanguageNl   TemplateCreateTemplateLanguage = "nl"
 	TemplateCreateTemplateLanguagePl   TemplateCreateTemplateLanguage = "pl"
 	TemplateCreateTemplateLanguagePtBr TemplateCreateTemplateLanguage = "pt-BR"
 	TemplateCreateTemplateLanguageJa   TemplateCreateTemplateLanguage = "ja"
@@ -337,6 +338,8 @@ func (e *TemplateCreateTemplateLanguage) UnmarshalJSON(data []byte) error {
 	case "es":
 		fallthrough
 	case "it":
+		fallthrough
+	case "nl":
 		fallthrough
 	case "pl":
 		fallthrough
@@ -537,7 +540,7 @@ func (t TemplateCreateTemplateAttachment) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TemplateCreateTemplateAttachment) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"label", "data"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil

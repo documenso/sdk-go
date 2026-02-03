@@ -10,6 +10,7 @@
 | `TemplateUpdateTemplateLanguageFr`   | fr                                   |
 | `TemplateUpdateTemplateLanguageEs`   | es                                   |
 | `TemplateUpdateTemplateLanguageIt`   | it                                   |
+| `TemplateUpdateTemplateLanguageNl`   | nl                                   |
 | `TemplateUpdateTemplateLanguagePl`   | pl                                   |
 | `TemplateUpdateTemplateLanguagePtBr` | pt-BR                                |
 | `TemplateUpdateTemplateLanguageJa`   | ja                                   |

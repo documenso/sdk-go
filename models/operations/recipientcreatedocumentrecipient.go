@@ -290,17 +290,17 @@ func (e *RecipientCreateDocumentRecipientSendStatus) UnmarshalJSON(data []byte) 
 	}
 }
 
-type RecipientCreateDocumentRecipientAccessAuthResponse string
+type RecipientCreateDocumentRecipientAuthOptionsAccessAuth string
 
 const (
-	RecipientCreateDocumentRecipientAccessAuthResponseAccount       RecipientCreateDocumentRecipientAccessAuthResponse = "ACCOUNT"
-	RecipientCreateDocumentRecipientAccessAuthResponseTwoFactorAuth RecipientCreateDocumentRecipientAccessAuthResponse = "TWO_FACTOR_AUTH"
+	RecipientCreateDocumentRecipientAuthOptionsAccessAuthAccount       RecipientCreateDocumentRecipientAuthOptionsAccessAuth = "ACCOUNT"
+	RecipientCreateDocumentRecipientAuthOptionsAccessAuthTwoFactorAuth RecipientCreateDocumentRecipientAuthOptionsAccessAuth = "TWO_FACTOR_AUTH"
 )
 
-func (e RecipientCreateDocumentRecipientAccessAuthResponse) ToPointer() *RecipientCreateDocumentRecipientAccessAuthResponse {
+func (e RecipientCreateDocumentRecipientAuthOptionsAccessAuth) ToPointer() *RecipientCreateDocumentRecipientAuthOptionsAccessAuth {
 	return &e
 }
-func (e *RecipientCreateDocumentRecipientAccessAuthResponse) UnmarshalJSON(data []byte) error {
+func (e *RecipientCreateDocumentRecipientAuthOptionsAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -309,27 +309,27 @@ func (e *RecipientCreateDocumentRecipientAccessAuthResponse) UnmarshalJSON(data 
 	case "ACCOUNT":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
-		*e = RecipientCreateDocumentRecipientAccessAuthResponse(v)
+		*e = RecipientCreateDocumentRecipientAuthOptionsAccessAuth(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientCreateDocumentRecipientAccessAuthResponse: %v", v)
+		return fmt.Errorf("invalid value for RecipientCreateDocumentRecipientAuthOptionsAccessAuth: %v", v)
 	}
 }
 
-type RecipientCreateDocumentRecipientActionAuthResponse string
+type RecipientCreateDocumentRecipientAuthOptionsActionAuth string
 
 const (
-	RecipientCreateDocumentRecipientActionAuthResponseAccount       RecipientCreateDocumentRecipientActionAuthResponse = "ACCOUNT"
-	RecipientCreateDocumentRecipientActionAuthResponsePasskey       RecipientCreateDocumentRecipientActionAuthResponse = "PASSKEY"
-	RecipientCreateDocumentRecipientActionAuthResponseTwoFactorAuth RecipientCreateDocumentRecipientActionAuthResponse = "TWO_FACTOR_AUTH"
-	RecipientCreateDocumentRecipientActionAuthResponsePassword      RecipientCreateDocumentRecipientActionAuthResponse = "PASSWORD"
-	RecipientCreateDocumentRecipientActionAuthResponseExplicitNone  RecipientCreateDocumentRecipientActionAuthResponse = "EXPLICIT_NONE"
+	RecipientCreateDocumentRecipientAuthOptionsActionAuthAccount       RecipientCreateDocumentRecipientAuthOptionsActionAuth = "ACCOUNT"
+	RecipientCreateDocumentRecipientAuthOptionsActionAuthPasskey       RecipientCreateDocumentRecipientAuthOptionsActionAuth = "PASSKEY"
+	RecipientCreateDocumentRecipientAuthOptionsActionAuthTwoFactorAuth RecipientCreateDocumentRecipientAuthOptionsActionAuth = "TWO_FACTOR_AUTH"
+	RecipientCreateDocumentRecipientAuthOptionsActionAuthPassword      RecipientCreateDocumentRecipientAuthOptionsActionAuth = "PASSWORD"
+	RecipientCreateDocumentRecipientAuthOptionsActionAuthExplicitNone  RecipientCreateDocumentRecipientAuthOptionsActionAuth = "EXPLICIT_NONE"
 )
 
-func (e RecipientCreateDocumentRecipientActionAuthResponse) ToPointer() *RecipientCreateDocumentRecipientActionAuthResponse {
+func (e RecipientCreateDocumentRecipientAuthOptionsActionAuth) ToPointer() *RecipientCreateDocumentRecipientAuthOptionsActionAuth {
 	return &e
 }
-func (e *RecipientCreateDocumentRecipientActionAuthResponse) UnmarshalJSON(data []byte) error {
+func (e *RecipientCreateDocumentRecipientAuthOptionsActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -344,28 +344,28 @@ func (e *RecipientCreateDocumentRecipientActionAuthResponse) UnmarshalJSON(data 
 	case "PASSWORD":
 		fallthrough
 	case "EXPLICIT_NONE":
-		*e = RecipientCreateDocumentRecipientActionAuthResponse(v)
+		*e = RecipientCreateDocumentRecipientAuthOptionsActionAuth(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientCreateDocumentRecipientActionAuthResponse: %v", v)
+		return fmt.Errorf("invalid value for RecipientCreateDocumentRecipientAuthOptionsActionAuth: %v", v)
 	}
 }
 
 type RecipientCreateDocumentRecipientAuthOptions struct {
-	AccessAuth []RecipientCreateDocumentRecipientAccessAuthResponse `json:"accessAuth"`
-	ActionAuth []RecipientCreateDocumentRecipientActionAuthResponse `json:"actionAuth"`
+	AccessAuth []RecipientCreateDocumentRecipientAuthOptionsAccessAuth `json:"accessAuth"`
+	ActionAuth []RecipientCreateDocumentRecipientAuthOptionsActionAuth `json:"actionAuth"`
 }
 
-func (r *RecipientCreateDocumentRecipientAuthOptions) GetAccessAuth() []RecipientCreateDocumentRecipientAccessAuthResponse {
+func (r *RecipientCreateDocumentRecipientAuthOptions) GetAccessAuth() []RecipientCreateDocumentRecipientAuthOptionsAccessAuth {
 	if r == nil {
-		return []RecipientCreateDocumentRecipientAccessAuthResponse{}
+		return []RecipientCreateDocumentRecipientAuthOptionsAccessAuth{}
 	}
 	return r.AccessAuth
 }
 
-func (r *RecipientCreateDocumentRecipientAuthOptions) GetActionAuth() []RecipientCreateDocumentRecipientActionAuthResponse {
+func (r *RecipientCreateDocumentRecipientAuthOptions) GetActionAuth() []RecipientCreateDocumentRecipientAuthOptionsActionAuth {
 	if r == nil {
-		return []RecipientCreateDocumentRecipientActionAuthResponse{}
+		return []RecipientCreateDocumentRecipientAuthOptionsActionAuth{}
 	}
 	return r.ActionAuth
 }

@@ -106,9 +106,9 @@ const (
 )
 
 type DocumentCreateFormValues struct {
-	Str     *string  `queryParam:"inline,name=formValues"`
-	Boolean *bool    `queryParam:"inline,name=formValues"`
-	Number  *float64 `queryParam:"inline,name=formValues"`
+	Str     *string  `queryParam:"inline" union:"member"`
+	Boolean *bool    `queryParam:"inline" union:"member"`
+	Number  *float64 `queryParam:"inline" union:"member"`
 
 	Type DocumentCreateFormValuesType
 }
@@ -2750,17 +2750,17 @@ const (
 )
 
 type DocumentCreateFieldUnion struct {
-	DocumentCreateFieldSignature     *DocumentCreateFieldSignature     `queryParam:"inline,name=field"`
-	DocumentCreateFieldFreeSignature *DocumentCreateFieldFreeSignature `queryParam:"inline,name=field"`
-	DocumentCreateFieldInitials      *DocumentCreateFieldInitials      `queryParam:"inline,name=field"`
-	DocumentCreateFieldName          *DocumentCreateFieldName          `queryParam:"inline,name=field"`
-	DocumentCreateFieldEmail         *DocumentCreateFieldEmail         `queryParam:"inline,name=field"`
-	DocumentCreateFieldDate          *DocumentCreateFieldDate          `queryParam:"inline,name=field"`
-	DocumentCreateFieldText          *DocumentCreateFieldText          `queryParam:"inline,name=field"`
-	DocumentCreateFieldNumber        *DocumentCreateFieldNumber        `queryParam:"inline,name=field"`
-	DocumentCreateFieldRadio         *DocumentCreateFieldRadio         `queryParam:"inline,name=field"`
-	DocumentCreateFieldCheckbox      *DocumentCreateFieldCheckbox      `queryParam:"inline,name=field"`
-	DocumentCreateFieldDropdown      *DocumentCreateFieldDropdown      `queryParam:"inline,name=field"`
+	DocumentCreateFieldSignature     *DocumentCreateFieldSignature     `queryParam:"inline" union:"member"`
+	DocumentCreateFieldFreeSignature *DocumentCreateFieldFreeSignature `queryParam:"inline" union:"member"`
+	DocumentCreateFieldInitials      *DocumentCreateFieldInitials      `queryParam:"inline" union:"member"`
+	DocumentCreateFieldName          *DocumentCreateFieldName          `queryParam:"inline" union:"member"`
+	DocumentCreateFieldEmail         *DocumentCreateFieldEmail         `queryParam:"inline" union:"member"`
+	DocumentCreateFieldDate          *DocumentCreateFieldDate          `queryParam:"inline" union:"member"`
+	DocumentCreateFieldText          *DocumentCreateFieldText          `queryParam:"inline" union:"member"`
+	DocumentCreateFieldNumber        *DocumentCreateFieldNumber        `queryParam:"inline" union:"member"`
+	DocumentCreateFieldRadio         *DocumentCreateFieldRadio         `queryParam:"inline" union:"member"`
+	DocumentCreateFieldCheckbox      *DocumentCreateFieldCheckbox      `queryParam:"inline" union:"member"`
+	DocumentCreateFieldDropdown      *DocumentCreateFieldDropdown      `queryParam:"inline" union:"member"`
 
 	Type DocumentCreateFieldUnionType
 }
@@ -3087,7 +3087,7 @@ func (d DocumentCreateAttachment) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DocumentCreateAttachment) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"label", "data"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -3260,6 +3260,7 @@ const (
 	DocumentCreateLanguageFr   DocumentCreateLanguage = "fr"
 	DocumentCreateLanguageEs   DocumentCreateLanguage = "es"
 	DocumentCreateLanguageIt   DocumentCreateLanguage = "it"
+	DocumentCreateLanguageNl   DocumentCreateLanguage = "nl"
 	DocumentCreateLanguagePl   DocumentCreateLanguage = "pl"
 	DocumentCreateLanguagePtBr DocumentCreateLanguage = "pt-BR"
 	DocumentCreateLanguageJa   DocumentCreateLanguage = "ja"
@@ -3285,6 +3286,8 @@ func (e *DocumentCreateLanguage) UnmarshalJSON(data []byte) error {
 	case "es":
 		fallthrough
 	case "it":
+		fallthrough
+	case "nl":
 		fallthrough
 	case "pl":
 		fallthrough

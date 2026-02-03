@@ -2658,17 +2658,17 @@ const (
 )
 
 type EnvelopeFieldCreateManyDataUnion struct {
-	EnvelopeFieldCreateManyDataSignature     *EnvelopeFieldCreateManyDataSignature     `queryParam:"inline,name=data"`
-	EnvelopeFieldCreateManyDataFreeSignature *EnvelopeFieldCreateManyDataFreeSignature `queryParam:"inline,name=data"`
-	EnvelopeFieldCreateManyDataInitials      *EnvelopeFieldCreateManyDataInitials      `queryParam:"inline,name=data"`
-	EnvelopeFieldCreateManyDataName          *EnvelopeFieldCreateManyDataName          `queryParam:"inline,name=data"`
-	EnvelopeFieldCreateManyDataEmail         *EnvelopeFieldCreateManyDataEmail         `queryParam:"inline,name=data"`
-	EnvelopeFieldCreateManyDataDate          *EnvelopeFieldCreateManyDataDate          `queryParam:"inline,name=data"`
-	EnvelopeFieldCreateManyDataText          *EnvelopeFieldCreateManyDataText          `queryParam:"inline,name=data"`
-	EnvelopeFieldCreateManyDataNumber        *EnvelopeFieldCreateManyDataNumber        `queryParam:"inline,name=data"`
-	EnvelopeFieldCreateManyDataRadio         *EnvelopeFieldCreateManyDataRadio         `queryParam:"inline,name=data"`
-	EnvelopeFieldCreateManyDataCheckbox      *EnvelopeFieldCreateManyDataCheckbox      `queryParam:"inline,name=data"`
-	EnvelopeFieldCreateManyDataDropdown      *EnvelopeFieldCreateManyDataDropdown      `queryParam:"inline,name=data"`
+	EnvelopeFieldCreateManyDataSignature     *EnvelopeFieldCreateManyDataSignature     `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataFreeSignature *EnvelopeFieldCreateManyDataFreeSignature `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataInitials      *EnvelopeFieldCreateManyDataInitials      `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataName          *EnvelopeFieldCreateManyDataName          `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataEmail         *EnvelopeFieldCreateManyDataEmail         `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataDate          *EnvelopeFieldCreateManyDataDate          `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataText          *EnvelopeFieldCreateManyDataText          `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataNumber        *EnvelopeFieldCreateManyDataNumber        `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataRadio         *EnvelopeFieldCreateManyDataRadio         `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataCheckbox      *EnvelopeFieldCreateManyDataCheckbox      `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataDropdown      *EnvelopeFieldCreateManyDataDropdown      `queryParam:"inline" union:"member"`
 
 	Type EnvelopeFieldCreateManyDataUnionType
 }
@@ -4430,16 +4430,16 @@ const (
 )
 
 type EnvelopeFieldCreateManyFieldMetaUnion struct {
-	EnvelopeFieldCreateManyFieldMetaSignatureResponse *EnvelopeFieldCreateManyFieldMetaSignatureResponse `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldCreateManyFieldMetaInitialsResponse  *EnvelopeFieldCreateManyFieldMetaInitialsResponse  `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldCreateManyFieldMetaNameResponse      *EnvelopeFieldCreateManyFieldMetaNameResponse      `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldCreateManyFieldMetaEmailResponse     *EnvelopeFieldCreateManyFieldMetaEmailResponse     `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldCreateManyFieldMetaDateResponse      *EnvelopeFieldCreateManyFieldMetaDateResponse      `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldCreateManyFieldMetaTextResponse      *EnvelopeFieldCreateManyFieldMetaTextResponse      `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldCreateManyFieldMetaNumberResponse    *EnvelopeFieldCreateManyFieldMetaNumberResponse    `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldCreateManyFieldMetaRadioResponse     *EnvelopeFieldCreateManyFieldMetaRadioResponse     `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldCreateManyFieldMetaCheckboxResponse  *EnvelopeFieldCreateManyFieldMetaCheckboxResponse  `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldCreateManyFieldMetaDropdownResponse  *EnvelopeFieldCreateManyFieldMetaDropdownResponse  `queryParam:"inline,name=fieldMeta"`
+	EnvelopeFieldCreateManyFieldMetaSignatureResponse *EnvelopeFieldCreateManyFieldMetaSignatureResponse `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaInitialsResponse  *EnvelopeFieldCreateManyFieldMetaInitialsResponse  `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaNameResponse      *EnvelopeFieldCreateManyFieldMetaNameResponse      `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaEmailResponse     *EnvelopeFieldCreateManyFieldMetaEmailResponse     `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaDateResponse      *EnvelopeFieldCreateManyFieldMetaDateResponse      `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaTextResponse      *EnvelopeFieldCreateManyFieldMetaTextResponse      `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaNumberResponse    *EnvelopeFieldCreateManyFieldMetaNumberResponse    `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaRadioResponse     *EnvelopeFieldCreateManyFieldMetaRadioResponse     `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaCheckboxResponse  *EnvelopeFieldCreateManyFieldMetaCheckboxResponse  `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaDropdownResponse  *EnvelopeFieldCreateManyFieldMetaDropdownResponse  `queryParam:"inline" union:"member"`
 
 	Type EnvelopeFieldCreateManyFieldMetaUnionType
 }

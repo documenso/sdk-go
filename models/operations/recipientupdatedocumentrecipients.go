@@ -300,17 +300,17 @@ func (e *RecipientUpdateDocumentRecipientsSendStatus) UnmarshalJSON(data []byte)
 	}
 }
 
-type RecipientUpdateDocumentRecipientsAccessAuthResponse string
+type RecipientUpdateDocumentRecipientsAuthOptionsAccessAuth string
 
 const (
-	RecipientUpdateDocumentRecipientsAccessAuthResponseAccount       RecipientUpdateDocumentRecipientsAccessAuthResponse = "ACCOUNT"
-	RecipientUpdateDocumentRecipientsAccessAuthResponseTwoFactorAuth RecipientUpdateDocumentRecipientsAccessAuthResponse = "TWO_FACTOR_AUTH"
+	RecipientUpdateDocumentRecipientsAuthOptionsAccessAuthAccount       RecipientUpdateDocumentRecipientsAuthOptionsAccessAuth = "ACCOUNT"
+	RecipientUpdateDocumentRecipientsAuthOptionsAccessAuthTwoFactorAuth RecipientUpdateDocumentRecipientsAuthOptionsAccessAuth = "TWO_FACTOR_AUTH"
 )
 
-func (e RecipientUpdateDocumentRecipientsAccessAuthResponse) ToPointer() *RecipientUpdateDocumentRecipientsAccessAuthResponse {
+func (e RecipientUpdateDocumentRecipientsAuthOptionsAccessAuth) ToPointer() *RecipientUpdateDocumentRecipientsAuthOptionsAccessAuth {
 	return &e
 }
-func (e *RecipientUpdateDocumentRecipientsAccessAuthResponse) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateDocumentRecipientsAuthOptionsAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -319,27 +319,27 @@ func (e *RecipientUpdateDocumentRecipientsAccessAuthResponse) UnmarshalJSON(data
 	case "ACCOUNT":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
-		*e = RecipientUpdateDocumentRecipientsAccessAuthResponse(v)
+		*e = RecipientUpdateDocumentRecipientsAuthOptionsAccessAuth(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsAccessAuthResponse: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsAuthOptionsAccessAuth: %v", v)
 	}
 }
 
-type RecipientUpdateDocumentRecipientsActionAuthResponse string
+type RecipientUpdateDocumentRecipientsAuthOptionsActionAuth string
 
 const (
-	RecipientUpdateDocumentRecipientsActionAuthResponseAccount       RecipientUpdateDocumentRecipientsActionAuthResponse = "ACCOUNT"
-	RecipientUpdateDocumentRecipientsActionAuthResponsePasskey       RecipientUpdateDocumentRecipientsActionAuthResponse = "PASSKEY"
-	RecipientUpdateDocumentRecipientsActionAuthResponseTwoFactorAuth RecipientUpdateDocumentRecipientsActionAuthResponse = "TWO_FACTOR_AUTH"
-	RecipientUpdateDocumentRecipientsActionAuthResponsePassword      RecipientUpdateDocumentRecipientsActionAuthResponse = "PASSWORD"
-	RecipientUpdateDocumentRecipientsActionAuthResponseExplicitNone  RecipientUpdateDocumentRecipientsActionAuthResponse = "EXPLICIT_NONE"
+	RecipientUpdateDocumentRecipientsAuthOptionsActionAuthAccount       RecipientUpdateDocumentRecipientsAuthOptionsActionAuth = "ACCOUNT"
+	RecipientUpdateDocumentRecipientsAuthOptionsActionAuthPasskey       RecipientUpdateDocumentRecipientsAuthOptionsActionAuth = "PASSKEY"
+	RecipientUpdateDocumentRecipientsAuthOptionsActionAuthTwoFactorAuth RecipientUpdateDocumentRecipientsAuthOptionsActionAuth = "TWO_FACTOR_AUTH"
+	RecipientUpdateDocumentRecipientsAuthOptionsActionAuthPassword      RecipientUpdateDocumentRecipientsAuthOptionsActionAuth = "PASSWORD"
+	RecipientUpdateDocumentRecipientsAuthOptionsActionAuthExplicitNone  RecipientUpdateDocumentRecipientsAuthOptionsActionAuth = "EXPLICIT_NONE"
 )
 
-func (e RecipientUpdateDocumentRecipientsActionAuthResponse) ToPointer() *RecipientUpdateDocumentRecipientsActionAuthResponse {
+func (e RecipientUpdateDocumentRecipientsAuthOptionsActionAuth) ToPointer() *RecipientUpdateDocumentRecipientsAuthOptionsActionAuth {
 	return &e
 }
-func (e *RecipientUpdateDocumentRecipientsActionAuthResponse) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateDocumentRecipientsAuthOptionsActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -354,28 +354,28 @@ func (e *RecipientUpdateDocumentRecipientsActionAuthResponse) UnmarshalJSON(data
 	case "PASSWORD":
 		fallthrough
 	case "EXPLICIT_NONE":
-		*e = RecipientUpdateDocumentRecipientsActionAuthResponse(v)
+		*e = RecipientUpdateDocumentRecipientsAuthOptionsActionAuth(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsActionAuthResponse: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsAuthOptionsActionAuth: %v", v)
 	}
 }
 
 type RecipientUpdateDocumentRecipientsAuthOptions struct {
-	AccessAuth []RecipientUpdateDocumentRecipientsAccessAuthResponse `json:"accessAuth"`
-	ActionAuth []RecipientUpdateDocumentRecipientsActionAuthResponse `json:"actionAuth"`
+	AccessAuth []RecipientUpdateDocumentRecipientsAuthOptionsAccessAuth `json:"accessAuth"`
+	ActionAuth []RecipientUpdateDocumentRecipientsAuthOptionsActionAuth `json:"actionAuth"`
 }
 
-func (r *RecipientUpdateDocumentRecipientsAuthOptions) GetAccessAuth() []RecipientUpdateDocumentRecipientsAccessAuthResponse {
+func (r *RecipientUpdateDocumentRecipientsAuthOptions) GetAccessAuth() []RecipientUpdateDocumentRecipientsAuthOptionsAccessAuth {
 	if r == nil {
-		return []RecipientUpdateDocumentRecipientsAccessAuthResponse{}
+		return []RecipientUpdateDocumentRecipientsAuthOptionsAccessAuth{}
 	}
 	return r.AccessAuth
 }
 
-func (r *RecipientUpdateDocumentRecipientsAuthOptions) GetActionAuth() []RecipientUpdateDocumentRecipientsActionAuthResponse {
+func (r *RecipientUpdateDocumentRecipientsAuthOptions) GetActionAuth() []RecipientUpdateDocumentRecipientsAuthOptionsActionAuth {
 	if r == nil {
-		return []RecipientUpdateDocumentRecipientsActionAuthResponse{}
+		return []RecipientUpdateDocumentRecipientsAuthOptionsActionAuth{}
 	}
 	return r.ActionAuth
 }
@@ -1889,16 +1889,16 @@ const (
 )
 
 type RecipientUpdateDocumentRecipientsFieldMetaUnion struct {
-	RecipientUpdateDocumentRecipientsFieldMetaSignature *RecipientUpdateDocumentRecipientsFieldMetaSignature `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateDocumentRecipientsFieldMetaInitials  *RecipientUpdateDocumentRecipientsFieldMetaInitials  `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateDocumentRecipientsFieldMetaName      *RecipientUpdateDocumentRecipientsFieldMetaName      `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateDocumentRecipientsFieldMetaEmail     *RecipientUpdateDocumentRecipientsFieldMetaEmail     `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateDocumentRecipientsFieldMetaDate      *RecipientUpdateDocumentRecipientsFieldMetaDate      `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateDocumentRecipientsFieldMetaText      *RecipientUpdateDocumentRecipientsFieldMetaText      `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateDocumentRecipientsFieldMetaNumber    *RecipientUpdateDocumentRecipientsFieldMetaNumber    `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateDocumentRecipientsFieldMetaRadio     *RecipientUpdateDocumentRecipientsFieldMetaRadio     `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateDocumentRecipientsFieldMetaCheckbox  *RecipientUpdateDocumentRecipientsFieldMetaCheckbox  `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateDocumentRecipientsFieldMetaDropdown  *RecipientUpdateDocumentRecipientsFieldMetaDropdown  `queryParam:"inline,name=fieldMeta"`
+	RecipientUpdateDocumentRecipientsFieldMetaSignature *RecipientUpdateDocumentRecipientsFieldMetaSignature `queryParam:"inline" union:"member"`
+	RecipientUpdateDocumentRecipientsFieldMetaInitials  *RecipientUpdateDocumentRecipientsFieldMetaInitials  `queryParam:"inline" union:"member"`
+	RecipientUpdateDocumentRecipientsFieldMetaName      *RecipientUpdateDocumentRecipientsFieldMetaName      `queryParam:"inline" union:"member"`
+	RecipientUpdateDocumentRecipientsFieldMetaEmail     *RecipientUpdateDocumentRecipientsFieldMetaEmail     `queryParam:"inline" union:"member"`
+	RecipientUpdateDocumentRecipientsFieldMetaDate      *RecipientUpdateDocumentRecipientsFieldMetaDate      `queryParam:"inline" union:"member"`
+	RecipientUpdateDocumentRecipientsFieldMetaText      *RecipientUpdateDocumentRecipientsFieldMetaText      `queryParam:"inline" union:"member"`
+	RecipientUpdateDocumentRecipientsFieldMetaNumber    *RecipientUpdateDocumentRecipientsFieldMetaNumber    `queryParam:"inline" union:"member"`
+	RecipientUpdateDocumentRecipientsFieldMetaRadio     *RecipientUpdateDocumentRecipientsFieldMetaRadio     `queryParam:"inline" union:"member"`
+	RecipientUpdateDocumentRecipientsFieldMetaCheckbox  *RecipientUpdateDocumentRecipientsFieldMetaCheckbox  `queryParam:"inline" union:"member"`
+	RecipientUpdateDocumentRecipientsFieldMetaDropdown  *RecipientUpdateDocumentRecipientsFieldMetaDropdown  `queryParam:"inline" union:"member"`
 
 	Type RecipientUpdateDocumentRecipientsFieldMetaUnionType
 }

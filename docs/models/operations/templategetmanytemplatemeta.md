@@ -1,0 +1,9 @@
+# TemplateGetManyTemplateMeta
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `SigningOrder`                                                                                               | [operations.TemplateGetManySigningOrder](../../models/operations/templategetmanysigningorder.md)             | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| `DistributionMethod`                                                                                         | [operations.TemplateGetManyDistributionMethod](../../models/operations/templategetmanydistributionmethod.md) | :heavy_check_mark:                                                                                           | N/A                                                                                                          |

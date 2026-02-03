@@ -1,0 +1,9 @@
+# EnvelopeGetManyRecipientAuthOptions
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `AccessAuth`                                                                                   | [][operations.EnvelopeGetManyAccessAuth](../../models/operations/envelopegetmanyaccessauth.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `ActionAuth`                                                                                   | [][operations.EnvelopeGetManyActionAuth](../../models/operations/envelopegetmanyactionauth.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |

@@ -1530,16 +1530,16 @@ const (
 )
 
 type FieldGetDocumentFieldFieldMetaUnion struct {
-	FieldGetDocumentFieldFieldMetaSignature *FieldGetDocumentFieldFieldMetaSignature `queryParam:"inline,name=fieldMeta"`
-	FieldGetDocumentFieldFieldMetaInitials  *FieldGetDocumentFieldFieldMetaInitials  `queryParam:"inline,name=fieldMeta"`
-	FieldGetDocumentFieldFieldMetaName      *FieldGetDocumentFieldFieldMetaName      `queryParam:"inline,name=fieldMeta"`
-	FieldGetDocumentFieldFieldMetaEmail     *FieldGetDocumentFieldFieldMetaEmail     `queryParam:"inline,name=fieldMeta"`
-	FieldGetDocumentFieldFieldMetaDate      *FieldGetDocumentFieldFieldMetaDate      `queryParam:"inline,name=fieldMeta"`
-	FieldGetDocumentFieldFieldMetaText      *FieldGetDocumentFieldFieldMetaText      `queryParam:"inline,name=fieldMeta"`
-	FieldGetDocumentFieldFieldMetaNumber    *FieldGetDocumentFieldFieldMetaNumber    `queryParam:"inline,name=fieldMeta"`
-	FieldGetDocumentFieldFieldMetaRadio     *FieldGetDocumentFieldFieldMetaRadio     `queryParam:"inline,name=fieldMeta"`
-	FieldGetDocumentFieldFieldMetaCheckbox  *FieldGetDocumentFieldFieldMetaCheckbox  `queryParam:"inline,name=fieldMeta"`
-	FieldGetDocumentFieldFieldMetaDropdown  *FieldGetDocumentFieldFieldMetaDropdown  `queryParam:"inline,name=fieldMeta"`
+	FieldGetDocumentFieldFieldMetaSignature *FieldGetDocumentFieldFieldMetaSignature `queryParam:"inline" union:"member"`
+	FieldGetDocumentFieldFieldMetaInitials  *FieldGetDocumentFieldFieldMetaInitials  `queryParam:"inline" union:"member"`
+	FieldGetDocumentFieldFieldMetaName      *FieldGetDocumentFieldFieldMetaName      `queryParam:"inline" union:"member"`
+	FieldGetDocumentFieldFieldMetaEmail     *FieldGetDocumentFieldFieldMetaEmail     `queryParam:"inline" union:"member"`
+	FieldGetDocumentFieldFieldMetaDate      *FieldGetDocumentFieldFieldMetaDate      `queryParam:"inline" union:"member"`
+	FieldGetDocumentFieldFieldMetaText      *FieldGetDocumentFieldFieldMetaText      `queryParam:"inline" union:"member"`
+	FieldGetDocumentFieldFieldMetaNumber    *FieldGetDocumentFieldFieldMetaNumber    `queryParam:"inline" union:"member"`
+	FieldGetDocumentFieldFieldMetaRadio     *FieldGetDocumentFieldFieldMetaRadio     `queryParam:"inline" union:"member"`
+	FieldGetDocumentFieldFieldMetaCheckbox  *FieldGetDocumentFieldFieldMetaCheckbox  `queryParam:"inline" union:"member"`
+	FieldGetDocumentFieldFieldMetaDropdown  *FieldGetDocumentFieldFieldMetaDropdown  `queryParam:"inline" union:"member"`
 
 	Type FieldGetDocumentFieldFieldMetaUnionType
 }

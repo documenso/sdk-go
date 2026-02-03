@@ -313,6 +313,7 @@ const (
 	TemplateCreateTemplateTemporaryLanguageFr   TemplateCreateTemplateTemporaryLanguage = "fr"
 	TemplateCreateTemplateTemporaryLanguageEs   TemplateCreateTemplateTemporaryLanguage = "es"
 	TemplateCreateTemplateTemporaryLanguageIt   TemplateCreateTemplateTemporaryLanguage = "it"
+	TemplateCreateTemplateTemporaryLanguageNl   TemplateCreateTemplateTemporaryLanguage = "nl"
 	TemplateCreateTemplateTemporaryLanguagePl   TemplateCreateTemplateTemporaryLanguage = "pl"
 	TemplateCreateTemplateTemporaryLanguagePtBr TemplateCreateTemplateTemporaryLanguage = "pt-BR"
 	TemplateCreateTemplateTemporaryLanguageJa   TemplateCreateTemplateTemporaryLanguage = "ja"
@@ -338,6 +339,8 @@ func (e *TemplateCreateTemplateTemporaryLanguage) UnmarshalJSON(data []byte) err
 	case "es":
 		fallthrough
 	case "it":
+		fallthrough
+	case "nl":
 		fallthrough
 	case "pl":
 		fallthrough
@@ -538,7 +541,7 @@ func (t TemplateCreateTemplateTemporaryAttachment) MarshalJSON() ([]byte, error)
 }
 
 func (t *TemplateCreateTemplateTemporaryAttachment) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"label", "data"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -3051,16 +3054,16 @@ const (
 )
 
 type TemplateCreateTemplateTemporaryFieldMetaUnion struct {
-	TemplateCreateTemplateTemporaryFieldMetaSignature *TemplateCreateTemplateTemporaryFieldMetaSignature `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaInitials  *TemplateCreateTemplateTemporaryFieldMetaInitials  `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaName      *TemplateCreateTemplateTemporaryFieldMetaName      `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaEmail     *TemplateCreateTemplateTemporaryFieldMetaEmail     `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaDate      *TemplateCreateTemplateTemporaryFieldMetaDate      `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaText      *TemplateCreateTemplateTemporaryFieldMetaText      `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaNumber    *TemplateCreateTemplateTemporaryFieldMetaNumber    `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaRadio     *TemplateCreateTemplateTemporaryFieldMetaRadio     `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaCheckbox  *TemplateCreateTemplateTemporaryFieldMetaCheckbox  `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateTemplateTemporaryFieldMetaDropdown  *TemplateCreateTemplateTemporaryFieldMetaDropdown  `queryParam:"inline,name=fieldMeta"`
+	TemplateCreateTemplateTemporaryFieldMetaSignature *TemplateCreateTemplateTemporaryFieldMetaSignature `queryParam:"inline" union:"member"`
+	TemplateCreateTemplateTemporaryFieldMetaInitials  *TemplateCreateTemplateTemporaryFieldMetaInitials  `queryParam:"inline" union:"member"`
+	TemplateCreateTemplateTemporaryFieldMetaName      *TemplateCreateTemplateTemporaryFieldMetaName      `queryParam:"inline" union:"member"`
+	TemplateCreateTemplateTemporaryFieldMetaEmail     *TemplateCreateTemplateTemporaryFieldMetaEmail     `queryParam:"inline" union:"member"`
+	TemplateCreateTemplateTemporaryFieldMetaDate      *TemplateCreateTemplateTemporaryFieldMetaDate      `queryParam:"inline" union:"member"`
+	TemplateCreateTemplateTemporaryFieldMetaText      *TemplateCreateTemplateTemporaryFieldMetaText      `queryParam:"inline" union:"member"`
+	TemplateCreateTemplateTemporaryFieldMetaNumber    *TemplateCreateTemplateTemporaryFieldMetaNumber    `queryParam:"inline" union:"member"`
+	TemplateCreateTemplateTemporaryFieldMetaRadio     *TemplateCreateTemplateTemporaryFieldMetaRadio     `queryParam:"inline" union:"member"`
+	TemplateCreateTemplateTemporaryFieldMetaCheckbox  *TemplateCreateTemplateTemporaryFieldMetaCheckbox  `queryParam:"inline" union:"member"`
+	TemplateCreateTemplateTemporaryFieldMetaDropdown  *TemplateCreateTemplateTemporaryFieldMetaDropdown  `queryParam:"inline" union:"member"`
 
 	Type TemplateCreateTemplateTemporaryFieldMetaUnionType
 }
@@ -3593,7 +3596,7 @@ func (t Template) MarshalJSON() ([]byte, error) {
 }
 
 func (t *Template) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "visibility", "id", "title", "userId", "teamId", "createdAt", "updatedAt", "publicTitle", "publicDescription", "envelopeId", "templateDocumentData", "templateMeta", "user", "recipients", "fields", "envelopeItems"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil

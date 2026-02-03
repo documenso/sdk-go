@@ -10,6 +10,7 @@
 | `DocumentDistributeLanguageFr`   | fr                               |
 | `DocumentDistributeLanguageEs`   | es                               |
 | `DocumentDistributeLanguageIt`   | it                               |
+| `DocumentDistributeLanguageNl`   | nl                               |
 | `DocumentDistributeLanguagePl`   | pl                               |
 | `DocumentDistributeLanguagePtBr` | pt-BR                            |
 | `DocumentDistributeLanguageJa`   | ja                               |

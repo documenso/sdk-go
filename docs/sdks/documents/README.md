@@ -1,5 +1,4 @@
 # Documents
-(*Documents*)
 
 ## Overview
 

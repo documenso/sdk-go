@@ -48,7 +48,7 @@ func (e EnvelopeItemDownloadRequest) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EnvelopeItemDownloadRequest) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"envelopeItemId"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
 		return err
 	}
 	return nil

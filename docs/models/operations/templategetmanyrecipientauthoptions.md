@@ -1,0 +1,9 @@
+# TemplateGetManyRecipientAuthOptions
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `AccessAuth`                                                                                   | [][operations.TemplateGetManyAccessAuth](../../models/operations/templategetmanyaccessauth.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `ActionAuth`                                                                                   | [][operations.TemplateGetManyActionAuth](../../models/operations/templategetmanyactionauth.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |

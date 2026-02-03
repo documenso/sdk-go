@@ -10,6 +10,7 @@
 | `DocumentCreateDocumentTemporaryLanguageFr`   | fr                                            |
 | `DocumentCreateDocumentTemporaryLanguageEs`   | es                                            |
 | `DocumentCreateDocumentTemporaryLanguageIt`   | it                                            |
+| `DocumentCreateDocumentTemporaryLanguageNl`   | nl                                            |
 | `DocumentCreateDocumentTemporaryLanguagePl`   | pl                                            |
 | `DocumentCreateDocumentTemporaryLanguagePtBr` | pt-BR                                         |
 | `DocumentCreateDocumentTemporaryLanguageJa`   | ja                                            |

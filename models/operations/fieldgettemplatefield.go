@@ -1530,16 +1530,16 @@ const (
 )
 
 type FieldGetTemplateFieldFieldMetaUnion struct {
-	FieldGetTemplateFieldFieldMetaSignature *FieldGetTemplateFieldFieldMetaSignature `queryParam:"inline,name=fieldMeta"`
-	FieldGetTemplateFieldFieldMetaInitials  *FieldGetTemplateFieldFieldMetaInitials  `queryParam:"inline,name=fieldMeta"`
-	FieldGetTemplateFieldFieldMetaName      *FieldGetTemplateFieldFieldMetaName      `queryParam:"inline,name=fieldMeta"`
-	FieldGetTemplateFieldFieldMetaEmail     *FieldGetTemplateFieldFieldMetaEmail     `queryParam:"inline,name=fieldMeta"`
-	FieldGetTemplateFieldFieldMetaDate      *FieldGetTemplateFieldFieldMetaDate      `queryParam:"inline,name=fieldMeta"`
-	FieldGetTemplateFieldFieldMetaText      *FieldGetTemplateFieldFieldMetaText      `queryParam:"inline,name=fieldMeta"`
-	FieldGetTemplateFieldFieldMetaNumber    *FieldGetTemplateFieldFieldMetaNumber    `queryParam:"inline,name=fieldMeta"`
-	FieldGetTemplateFieldFieldMetaRadio     *FieldGetTemplateFieldFieldMetaRadio     `queryParam:"inline,name=fieldMeta"`
-	FieldGetTemplateFieldFieldMetaCheckbox  *FieldGetTemplateFieldFieldMetaCheckbox  `queryParam:"inline,name=fieldMeta"`
-	FieldGetTemplateFieldFieldMetaDropdown  *FieldGetTemplateFieldFieldMetaDropdown  `queryParam:"inline,name=fieldMeta"`
+	FieldGetTemplateFieldFieldMetaSignature *FieldGetTemplateFieldFieldMetaSignature `queryParam:"inline" union:"member"`
+	FieldGetTemplateFieldFieldMetaInitials  *FieldGetTemplateFieldFieldMetaInitials  `queryParam:"inline" union:"member"`
+	FieldGetTemplateFieldFieldMetaName      *FieldGetTemplateFieldFieldMetaName      `queryParam:"inline" union:"member"`
+	FieldGetTemplateFieldFieldMetaEmail     *FieldGetTemplateFieldFieldMetaEmail     `queryParam:"inline" union:"member"`
+	FieldGetTemplateFieldFieldMetaDate      *FieldGetTemplateFieldFieldMetaDate      `queryParam:"inline" union:"member"`
+	FieldGetTemplateFieldFieldMetaText      *FieldGetTemplateFieldFieldMetaText      `queryParam:"inline" union:"member"`
+	FieldGetTemplateFieldFieldMetaNumber    *FieldGetTemplateFieldFieldMetaNumber    `queryParam:"inline" union:"member"`
+	FieldGetTemplateFieldFieldMetaRadio     *FieldGetTemplateFieldFieldMetaRadio     `queryParam:"inline" union:"member"`
+	FieldGetTemplateFieldFieldMetaCheckbox  *FieldGetTemplateFieldFieldMetaCheckbox  `queryParam:"inline" union:"member"`
+	FieldGetTemplateFieldFieldMetaDropdown  *FieldGetTemplateFieldFieldMetaDropdown  `queryParam:"inline" union:"member"`
 
 	Type FieldGetTemplateFieldFieldMetaUnionType
 }

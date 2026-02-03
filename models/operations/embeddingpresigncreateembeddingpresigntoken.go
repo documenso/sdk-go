@@ -9,6 +9,7 @@ import (
 
 type EmbeddingPresignCreateEmbeddingPresignTokenRequest struct {
 	ExpiresIn *float64 `default:"60" json:"expiresIn"`
+	Scope     *string  `json:"scope,omitempty"`
 }
 
 func (e EmbeddingPresignCreateEmbeddingPresignTokenRequest) MarshalJSON() ([]byte, error) {
@@ -27,6 +28,13 @@ func (e *EmbeddingPresignCreateEmbeddingPresignTokenRequest) GetExpiresIn() *flo
 		return nil
 	}
 	return e.ExpiresIn
+}
+
+func (e *EmbeddingPresignCreateEmbeddingPresignTokenRequest) GetScope() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Scope
 }
 
 // EmbeddingPresignCreateEmbeddingPresignTokenResponseBody - Successful response

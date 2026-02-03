@@ -7,7 +7,8 @@ import (
 )
 
 type EmbeddingPresignVerifyEmbeddingPresignTokenRequest struct {
-	Token string `json:"token"`
+	Token string  `json:"token"`
+	Scope *string `json:"scope,omitempty"`
 }
 
 func (e *EmbeddingPresignVerifyEmbeddingPresignTokenRequest) GetToken() string {
@@ -15,6 +16,13 @@ func (e *EmbeddingPresignVerifyEmbeddingPresignTokenRequest) GetToken() string {
 		return ""
 	}
 	return e.Token
+}
+
+func (e *EmbeddingPresignVerifyEmbeddingPresignTokenRequest) GetScope() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Scope
 }
 
 // EmbeddingPresignVerifyEmbeddingPresignTokenResponseBody - Successful response

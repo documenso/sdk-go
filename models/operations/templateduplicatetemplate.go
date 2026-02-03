@@ -177,7 +177,7 @@ func (t TemplateDuplicateTemplateResponseBody) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TemplateDuplicateTemplateResponseBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "visibility", "id", "title", "userId", "teamId", "createdAt", "updatedAt", "publicTitle", "publicDescription", "useLegacyFieldInsertion", "envelopeId"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil
