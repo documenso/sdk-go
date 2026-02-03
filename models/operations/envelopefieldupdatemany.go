@@ -2658,17 +2658,17 @@ const (
 )
 
 type EnvelopeFieldUpdateManyDataUnion struct {
-	EnvelopeFieldUpdateManyDataSignature     *EnvelopeFieldUpdateManyDataSignature     `queryParam:"inline,name=data"`
-	EnvelopeFieldUpdateManyDataFreeSignature *EnvelopeFieldUpdateManyDataFreeSignature `queryParam:"inline,name=data"`
-	EnvelopeFieldUpdateManyDataInitials      *EnvelopeFieldUpdateManyDataInitials      `queryParam:"inline,name=data"`
-	EnvelopeFieldUpdateManyDataName          *EnvelopeFieldUpdateManyDataName          `queryParam:"inline,name=data"`
-	EnvelopeFieldUpdateManyDataEmail         *EnvelopeFieldUpdateManyDataEmail         `queryParam:"inline,name=data"`
-	EnvelopeFieldUpdateManyDataDate          *EnvelopeFieldUpdateManyDataDate          `queryParam:"inline,name=data"`
-	EnvelopeFieldUpdateManyDataText          *EnvelopeFieldUpdateManyDataText          `queryParam:"inline,name=data"`
-	EnvelopeFieldUpdateManyDataNumber        *EnvelopeFieldUpdateManyDataNumber        `queryParam:"inline,name=data"`
-	EnvelopeFieldUpdateManyDataRadio         *EnvelopeFieldUpdateManyDataRadio         `queryParam:"inline,name=data"`
-	EnvelopeFieldUpdateManyDataCheckbox      *EnvelopeFieldUpdateManyDataCheckbox      `queryParam:"inline,name=data"`
-	EnvelopeFieldUpdateManyDataDropdown      *EnvelopeFieldUpdateManyDataDropdown      `queryParam:"inline,name=data"`
+	EnvelopeFieldUpdateManyDataSignature     *EnvelopeFieldUpdateManyDataSignature     `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyDataFreeSignature *EnvelopeFieldUpdateManyDataFreeSignature `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyDataInitials      *EnvelopeFieldUpdateManyDataInitials      `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyDataName          *EnvelopeFieldUpdateManyDataName          `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyDataEmail         *EnvelopeFieldUpdateManyDataEmail         `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyDataDate          *EnvelopeFieldUpdateManyDataDate          `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyDataText          *EnvelopeFieldUpdateManyDataText          `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyDataNumber        *EnvelopeFieldUpdateManyDataNumber        `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyDataRadio         *EnvelopeFieldUpdateManyDataRadio         `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyDataCheckbox      *EnvelopeFieldUpdateManyDataCheckbox      `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyDataDropdown      *EnvelopeFieldUpdateManyDataDropdown      `queryParam:"inline" union:"member"`
 
 	Type EnvelopeFieldUpdateManyDataUnionType
 }
@@ -4430,16 +4430,16 @@ const (
 )
 
 type EnvelopeFieldUpdateManyFieldMetaUnion struct {
-	EnvelopeFieldUpdateManyFieldMetaSignatureResponse *EnvelopeFieldUpdateManyFieldMetaSignatureResponse `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldUpdateManyFieldMetaInitialsResponse  *EnvelopeFieldUpdateManyFieldMetaInitialsResponse  `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldUpdateManyFieldMetaNameResponse      *EnvelopeFieldUpdateManyFieldMetaNameResponse      `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldUpdateManyFieldMetaEmailResponse     *EnvelopeFieldUpdateManyFieldMetaEmailResponse     `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldUpdateManyFieldMetaDateResponse      *EnvelopeFieldUpdateManyFieldMetaDateResponse      `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldUpdateManyFieldMetaTextResponse      *EnvelopeFieldUpdateManyFieldMetaTextResponse      `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldUpdateManyFieldMetaNumberResponse    *EnvelopeFieldUpdateManyFieldMetaNumberResponse    `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldUpdateManyFieldMetaRadioResponse     *EnvelopeFieldUpdateManyFieldMetaRadioResponse     `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldUpdateManyFieldMetaCheckboxResponse  *EnvelopeFieldUpdateManyFieldMetaCheckboxResponse  `queryParam:"inline,name=fieldMeta"`
-	EnvelopeFieldUpdateManyFieldMetaDropdownResponse  *EnvelopeFieldUpdateManyFieldMetaDropdownResponse  `queryParam:"inline,name=fieldMeta"`
+	EnvelopeFieldUpdateManyFieldMetaSignatureResponse *EnvelopeFieldUpdateManyFieldMetaSignatureResponse `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyFieldMetaInitialsResponse  *EnvelopeFieldUpdateManyFieldMetaInitialsResponse  `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyFieldMetaNameResponse      *EnvelopeFieldUpdateManyFieldMetaNameResponse      `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyFieldMetaEmailResponse     *EnvelopeFieldUpdateManyFieldMetaEmailResponse     `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyFieldMetaDateResponse      *EnvelopeFieldUpdateManyFieldMetaDateResponse      `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyFieldMetaTextResponse      *EnvelopeFieldUpdateManyFieldMetaTextResponse      `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyFieldMetaNumberResponse    *EnvelopeFieldUpdateManyFieldMetaNumberResponse    `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyFieldMetaRadioResponse     *EnvelopeFieldUpdateManyFieldMetaRadioResponse     `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyFieldMetaCheckboxResponse  *EnvelopeFieldUpdateManyFieldMetaCheckboxResponse  `queryParam:"inline" union:"member"`
+	EnvelopeFieldUpdateManyFieldMetaDropdownResponse  *EnvelopeFieldUpdateManyFieldMetaDropdownResponse  `queryParam:"inline" union:"member"`
 
 	Type EnvelopeFieldUpdateManyFieldMetaUnionType
 }

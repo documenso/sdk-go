@@ -1,11 +1,70 @@
 # Document
-(*Document*)
 
 ## Overview
 
 ### Available Operations
 
+* [DocumentGetMany](#documentgetmany) - Get multiple documents
 * [DocumentDownload](#documentdownload) - Download document (beta)
+
+## DocumentGetMany
+
+Retrieve multiple documents by their IDs
+
+### Example Usage
+
+<!-- UsageSnippet language="go" operationID="document-getMany" method="post" path="/document/get-many" -->
+```go
+package main
+
+import(
+	"context"
+	"os"
+	sdkgo "github.com/documenso/sdk-go"
+	"github.com/documenso/sdk-go/models/operations"
+	"log"
+)
+
+func main() {
+    ctx := context.Background()
+
+    s := sdkgo.New(
+        sdkgo.WithSecurity(os.Getenv("DOCUMENSO_API_KEY")),
+    )
+
+    res, err := s.Document.DocumentGetMany(ctx, operations.DocumentGetManyRequest{
+        DocumentIds: []float64{},
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+    if res.Object != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
+| `request`                                                                              | [operations.DocumentGetManyRequest](../../models/operations/documentgetmanyrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `opts`                                                                                 | [][operations.Option](../../models/operations/option.md)                               | :heavy_minus_sign:                                                                     | The options for this request.                                                          |
+
+### Response
+
+**[*operations.DocumentGetManyResponse](../../models/operations/documentgetmanyresponse.md), error**
+
+### Errors
+
+| Error Type                                   | Status Code                                  | Content Type                                 |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| apierrors.DocumentGetManyBadRequestError     | 400                                          | application/json                             |
+| apierrors.DocumentGetManyUnauthorizedError   | 401                                          | application/json                             |
+| apierrors.DocumentGetManyForbiddenError      | 403                                          | application/json                             |
+| apierrors.DocumentGetManyInternalServerError | 500                                          | application/json                             |
+| apierrors.APIError                           | 4XX, 5XX                                     | \*/\*                                        |
 
 ## DocumentDownload
 

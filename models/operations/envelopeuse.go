@@ -10,11 +10,97 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
+type EnvelopeUseEmailEnum string
+
+const (
+	EnvelopeUseEmailEnumUnknown EnvelopeUseEmailEnum = ""
+)
+
+func (e EnvelopeUseEmailEnum) ToPointer() *EnvelopeUseEmailEnum {
+	return &e
+}
+func (e *EnvelopeUseEmailEnum) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "":
+		*e = EnvelopeUseEmailEnum(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeUseEmailEnum: %v", v)
+	}
+}
+
+type EnvelopeUseEmailUnionType string
+
+const (
+	EnvelopeUseEmailUnionTypeEnvelopeUseEmailEnum EnvelopeUseEmailUnionType = "envelope_use_email_enum"
+	EnvelopeUseEmailUnionTypeStr                  EnvelopeUseEmailUnionType = "str"
+)
+
+type EnvelopeUseEmailUnion struct {
+	EnvelopeUseEmailEnum *EnvelopeUseEmailEnum `queryParam:"inline" union:"member"`
+	Str                  *string               `queryParam:"inline" union:"member"`
+
+	Type EnvelopeUseEmailUnionType
+}
+
+func CreateEnvelopeUseEmailUnionEnvelopeUseEmailEnum(envelopeUseEmailEnum EnvelopeUseEmailEnum) EnvelopeUseEmailUnion {
+	typ := EnvelopeUseEmailUnionTypeEnvelopeUseEmailEnum
+
+	return EnvelopeUseEmailUnion{
+		EnvelopeUseEmailEnum: &envelopeUseEmailEnum,
+		Type:                 typ,
+	}
+}
+
+func CreateEnvelopeUseEmailUnionStr(str string) EnvelopeUseEmailUnion {
+	typ := EnvelopeUseEmailUnionTypeStr
+
+	return EnvelopeUseEmailUnion{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *EnvelopeUseEmailUnion) UnmarshalJSON(data []byte) error {
+
+	var envelopeUseEmailEnum EnvelopeUseEmailEnum = EnvelopeUseEmailEnum("")
+	if err := utils.UnmarshalJSON(data, &envelopeUseEmailEnum, "", true, nil); err == nil {
+		u.EnvelopeUseEmailEnum = &envelopeUseEmailEnum
+		u.Type = EnvelopeUseEmailUnionTypeEnvelopeUseEmailEnum
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = EnvelopeUseEmailUnionTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvelopeUseEmailUnion", string(data))
+}
+
+func (u EnvelopeUseEmailUnion) MarshalJSON() ([]byte, error) {
+	if u.EnvelopeUseEmailEnum != nil {
+		return utils.MarshalJSON(u.EnvelopeUseEmailEnum, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvelopeUseEmailUnion: all fields are null")
+}
+
 type EnvelopeUsePayloadRecipient struct {
-	ID           float64  `json:"id"`
-	Email        string   `json:"email"`
-	Name         *string  `json:"name,omitempty"`
-	SigningOrder *float64 `json:"signingOrder,omitempty"`
+	ID           float64               `json:"id"`
+	Email        EnvelopeUseEmailUnion `json:"email"`
+	Name         *string               `json:"name,omitempty"`
+	SigningOrder *float64              `json:"signingOrder,omitempty"`
 }
 
 func (e *EnvelopeUsePayloadRecipient) GetID() float64 {
@@ -24,9 +110,9 @@ func (e *EnvelopeUsePayloadRecipient) GetID() float64 {
 	return e.ID
 }
 
-func (e *EnvelopeUsePayloadRecipient) GetEmail() string {
+func (e *EnvelopeUsePayloadRecipient) GetEmail() EnvelopeUseEmailUnion {
 	if e == nil {
-		return ""
+		return EnvelopeUseEmailUnion{}
 	}
 	return e.Email
 }
@@ -53,8 +139,8 @@ const (
 )
 
 type EnvelopeUseIdentifier struct {
-	Str    *string  `queryParam:"inline,name=identifier"`
-	Number *float64 `queryParam:"inline,name=identifier"`
+	Str    *string  `queryParam:"inline" union:"member"`
+	Number *float64 `queryParam:"inline" union:"member"`
 
 	Type EnvelopeUseIdentifierType
 }
@@ -561,12 +647,12 @@ const (
 )
 
 type EnvelopeUsePrefillFieldUnion struct {
-	EnvelopeUsePrefillFieldText     *EnvelopeUsePrefillFieldText     `queryParam:"inline,name=prefillField"`
-	EnvelopeUsePrefillFieldNumber   *EnvelopeUsePrefillFieldNumber   `queryParam:"inline,name=prefillField"`
-	EnvelopeUsePrefillFieldRadio    *EnvelopeUsePrefillFieldRadio    `queryParam:"inline,name=prefillField"`
-	EnvelopeUsePrefillFieldCheckbox *EnvelopeUsePrefillFieldCheckbox `queryParam:"inline,name=prefillField"`
-	EnvelopeUsePrefillFieldDropdown *EnvelopeUsePrefillFieldDropdown `queryParam:"inline,name=prefillField"`
-	EnvelopeUsePrefillFieldDate     *EnvelopeUsePrefillFieldDate     `queryParam:"inline,name=prefillField"`
+	EnvelopeUsePrefillFieldText     *EnvelopeUsePrefillFieldText     `queryParam:"inline" union:"member"`
+	EnvelopeUsePrefillFieldNumber   *EnvelopeUsePrefillFieldNumber   `queryParam:"inline" union:"member"`
+	EnvelopeUsePrefillFieldRadio    *EnvelopeUsePrefillFieldRadio    `queryParam:"inline" union:"member"`
+	EnvelopeUsePrefillFieldCheckbox *EnvelopeUsePrefillFieldCheckbox `queryParam:"inline" union:"member"`
+	EnvelopeUsePrefillFieldDropdown *EnvelopeUsePrefillFieldDropdown `queryParam:"inline" union:"member"`
+	EnvelopeUsePrefillFieldDate     *EnvelopeUsePrefillFieldDate     `queryParam:"inline" union:"member"`
 
 	Type EnvelopeUsePrefillFieldUnionType
 }
@@ -890,6 +976,7 @@ const (
 	EnvelopeUseLanguageFr   EnvelopeUseLanguage = "fr"
 	EnvelopeUseLanguageEs   EnvelopeUseLanguage = "es"
 	EnvelopeUseLanguageIt   EnvelopeUseLanguage = "it"
+	EnvelopeUseLanguageNl   EnvelopeUseLanguage = "nl"
 	EnvelopeUseLanguagePl   EnvelopeUseLanguage = "pl"
 	EnvelopeUseLanguagePtBr EnvelopeUseLanguage = "pt-BR"
 	EnvelopeUseLanguageJa   EnvelopeUseLanguage = "ja"
@@ -915,6 +1002,8 @@ func (e *EnvelopeUseLanguage) UnmarshalJSON(data []byte) error {
 	case "es":
 		fallthrough
 	case "it":
+		fallthrough
+	case "nl":
 		fallthrough
 	case "pl":
 		fallthrough
@@ -1073,7 +1162,7 @@ func (e EnvelopeUseAttachment) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EnvelopeUseAttachment) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"label", "data"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -1100,6 +1189,91 @@ func (e *EnvelopeUseAttachment) GetType() *EnvelopeUseTypeLink {
 	return e.Type
 }
 
+type EnvelopeUseFormValuesType string
+
+const (
+	EnvelopeUseFormValuesTypeStr     EnvelopeUseFormValuesType = "str"
+	EnvelopeUseFormValuesTypeBoolean EnvelopeUseFormValuesType = "boolean"
+	EnvelopeUseFormValuesTypeNumber  EnvelopeUseFormValuesType = "number"
+)
+
+type EnvelopeUseFormValues struct {
+	Str     *string  `queryParam:"inline" union:"member"`
+	Boolean *bool    `queryParam:"inline" union:"member"`
+	Number  *float64 `queryParam:"inline" union:"member"`
+
+	Type EnvelopeUseFormValuesType
+}
+
+func CreateEnvelopeUseFormValuesStr(str string) EnvelopeUseFormValues {
+	typ := EnvelopeUseFormValuesTypeStr
+
+	return EnvelopeUseFormValues{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateEnvelopeUseFormValuesBoolean(boolean bool) EnvelopeUseFormValues {
+	typ := EnvelopeUseFormValuesTypeBoolean
+
+	return EnvelopeUseFormValues{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func CreateEnvelopeUseFormValuesNumber(number float64) EnvelopeUseFormValues {
+	typ := EnvelopeUseFormValuesTypeNumber
+
+	return EnvelopeUseFormValues{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *EnvelopeUseFormValues) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = EnvelopeUseFormValuesTypeStr
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = EnvelopeUseFormValuesTypeBoolean
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = EnvelopeUseFormValuesTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvelopeUseFormValues", string(data))
+}
+
+func (u EnvelopeUseFormValues) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvelopeUseFormValues: all fields are null")
+}
+
 type EnvelopeUsePayload struct {
 	EnvelopeID         string                           `json:"envelopeId"`
 	ExternalID         *string                          `json:"externalId,omitempty"`
@@ -1110,6 +1284,7 @@ type EnvelopeUsePayload struct {
 	PrefillFields      []EnvelopeUsePrefillFieldUnion   `json:"prefillFields,omitempty"`
 	Override           *EnvelopeUseOverride             `json:"override,omitempty"`
 	Attachments        []EnvelopeUseAttachment          `json:"attachments,omitempty"`
+	FormValues         map[string]EnvelopeUseFormValues `json:"formValues,omitempty"`
 }
 
 func (e *EnvelopeUsePayload) GetEnvelopeID() string {
@@ -1173,6 +1348,13 @@ func (e *EnvelopeUsePayload) GetAttachments() []EnvelopeUseAttachment {
 		return nil
 	}
 	return e.Attachments
+}
+
+func (e *EnvelopeUsePayload) GetFormValues() map[string]EnvelopeUseFormValues {
+	if e == nil {
+		return nil
+	}
+	return e.FormValues
 }
 
 type EnvelopeUseFile struct {

@@ -10,18 +10,18 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type DocumentUpdateDataVisibility string
+type DocumentUpdateVisibilityRequest string
 
 const (
-	DocumentUpdateDataVisibilityEveryone        DocumentUpdateDataVisibility = "EVERYONE"
-	DocumentUpdateDataVisibilityManagerAndAbove DocumentUpdateDataVisibility = "MANAGER_AND_ABOVE"
-	DocumentUpdateDataVisibilityAdmin           DocumentUpdateDataVisibility = "ADMIN"
+	DocumentUpdateVisibilityRequestEveryone        DocumentUpdateVisibilityRequest = "EVERYONE"
+	DocumentUpdateVisibilityRequestManagerAndAbove DocumentUpdateVisibilityRequest = "MANAGER_AND_ABOVE"
+	DocumentUpdateVisibilityRequestAdmin           DocumentUpdateVisibilityRequest = "ADMIN"
 )
 
-func (e DocumentUpdateDataVisibility) ToPointer() *DocumentUpdateDataVisibility {
+func (e DocumentUpdateVisibilityRequest) ToPointer() *DocumentUpdateVisibilityRequest {
 	return &e
 }
-func (e *DocumentUpdateDataVisibility) UnmarshalJSON(data []byte) error {
+func (e *DocumentUpdateVisibilityRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -32,24 +32,24 @@ func (e *DocumentUpdateDataVisibility) UnmarshalJSON(data []byte) error {
 	case "MANAGER_AND_ABOVE":
 		fallthrough
 	case "ADMIN":
-		*e = DocumentUpdateDataVisibility(v)
+		*e = DocumentUpdateVisibilityRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DocumentUpdateDataVisibility: %v", v)
+		return fmt.Errorf("invalid value for DocumentUpdateVisibilityRequest: %v", v)
 	}
 }
 
-type DocumentUpdateDataGlobalAccessAuth string
+type DocumentUpdateGlobalAccessAuthRequest string
 
 const (
-	DocumentUpdateDataGlobalAccessAuthAccount       DocumentUpdateDataGlobalAccessAuth = "ACCOUNT"
-	DocumentUpdateDataGlobalAccessAuthTwoFactorAuth DocumentUpdateDataGlobalAccessAuth = "TWO_FACTOR_AUTH"
+	DocumentUpdateGlobalAccessAuthRequestAccount       DocumentUpdateGlobalAccessAuthRequest = "ACCOUNT"
+	DocumentUpdateGlobalAccessAuthRequestTwoFactorAuth DocumentUpdateGlobalAccessAuthRequest = "TWO_FACTOR_AUTH"
 )
 
-func (e DocumentUpdateDataGlobalAccessAuth) ToPointer() *DocumentUpdateDataGlobalAccessAuth {
+func (e DocumentUpdateGlobalAccessAuthRequest) ToPointer() *DocumentUpdateGlobalAccessAuthRequest {
 	return &e
 }
-func (e *DocumentUpdateDataGlobalAccessAuth) UnmarshalJSON(data []byte) error {
+func (e *DocumentUpdateGlobalAccessAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -58,26 +58,26 @@ func (e *DocumentUpdateDataGlobalAccessAuth) UnmarshalJSON(data []byte) error {
 	case "ACCOUNT":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
-		*e = DocumentUpdateDataGlobalAccessAuth(v)
+		*e = DocumentUpdateGlobalAccessAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DocumentUpdateDataGlobalAccessAuth: %v", v)
+		return fmt.Errorf("invalid value for DocumentUpdateGlobalAccessAuthRequest: %v", v)
 	}
 }
 
-type DocumentUpdateDataGlobalActionAuth string
+type DocumentUpdateGlobalActionAuthRequest string
 
 const (
-	DocumentUpdateDataGlobalActionAuthAccount       DocumentUpdateDataGlobalActionAuth = "ACCOUNT"
-	DocumentUpdateDataGlobalActionAuthPasskey       DocumentUpdateDataGlobalActionAuth = "PASSKEY"
-	DocumentUpdateDataGlobalActionAuthTwoFactorAuth DocumentUpdateDataGlobalActionAuth = "TWO_FACTOR_AUTH"
-	DocumentUpdateDataGlobalActionAuthPassword      DocumentUpdateDataGlobalActionAuth = "PASSWORD"
+	DocumentUpdateGlobalActionAuthRequestAccount       DocumentUpdateGlobalActionAuthRequest = "ACCOUNT"
+	DocumentUpdateGlobalActionAuthRequestPasskey       DocumentUpdateGlobalActionAuthRequest = "PASSKEY"
+	DocumentUpdateGlobalActionAuthRequestTwoFactorAuth DocumentUpdateGlobalActionAuthRequest = "TWO_FACTOR_AUTH"
+	DocumentUpdateGlobalActionAuthRequestPassword      DocumentUpdateGlobalActionAuthRequest = "PASSWORD"
 )
 
-func (e DocumentUpdateDataGlobalActionAuth) ToPointer() *DocumentUpdateDataGlobalActionAuth {
+func (e DocumentUpdateGlobalActionAuthRequest) ToPointer() *DocumentUpdateGlobalActionAuthRequest {
 	return &e
 }
-func (e *DocumentUpdateDataGlobalActionAuth) UnmarshalJSON(data []byte) error {
+func (e *DocumentUpdateGlobalActionAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -90,21 +90,21 @@ func (e *DocumentUpdateDataGlobalActionAuth) UnmarshalJSON(data []byte) error {
 	case "TWO_FACTOR_AUTH":
 		fallthrough
 	case "PASSWORD":
-		*e = DocumentUpdateDataGlobalActionAuth(v)
+		*e = DocumentUpdateGlobalActionAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DocumentUpdateDataGlobalActionAuth: %v", v)
+		return fmt.Errorf("invalid value for DocumentUpdateGlobalActionAuthRequest: %v", v)
 	}
 }
 
 type DocumentUpdateData struct {
-	Title                   *string                              `json:"title,omitempty"`
-	ExternalID              *string                              `json:"externalId,omitempty"`
-	Visibility              *DocumentUpdateDataVisibility        `json:"visibility,omitempty"`
-	GlobalAccessAuth        []DocumentUpdateDataGlobalAccessAuth `json:"globalAccessAuth,omitempty"`
-	GlobalActionAuth        []DocumentUpdateDataGlobalActionAuth `json:"globalActionAuth,omitempty"`
-	UseLegacyFieldInsertion *bool                                `json:"useLegacyFieldInsertion,omitempty"`
-	FolderID                *string                              `json:"folderId,omitempty"`
+	Title                   *string                                 `json:"title,omitempty"`
+	ExternalID              *string                                 `json:"externalId,omitempty"`
+	Visibility              *DocumentUpdateVisibilityRequest        `json:"visibility,omitempty"`
+	GlobalAccessAuth        []DocumentUpdateGlobalAccessAuthRequest `json:"globalAccessAuth,omitempty"`
+	GlobalActionAuth        []DocumentUpdateGlobalActionAuthRequest `json:"globalActionAuth,omitempty"`
+	UseLegacyFieldInsertion *bool                                   `json:"useLegacyFieldInsertion,omitempty"`
+	FolderID                *string                                 `json:"folderId,omitempty"`
 }
 
 func (d *DocumentUpdateData) GetTitle() *string {
@@ -121,21 +121,21 @@ func (d *DocumentUpdateData) GetExternalID() *string {
 	return d.ExternalID
 }
 
-func (d *DocumentUpdateData) GetVisibility() *DocumentUpdateDataVisibility {
+func (d *DocumentUpdateData) GetVisibility() *DocumentUpdateVisibilityRequest {
 	if d == nil {
 		return nil
 	}
 	return d.Visibility
 }
 
-func (d *DocumentUpdateData) GetGlobalAccessAuth() []DocumentUpdateDataGlobalAccessAuth {
+func (d *DocumentUpdateData) GetGlobalAccessAuth() []DocumentUpdateGlobalAccessAuthRequest {
 	if d == nil {
 		return nil
 	}
 	return d.GlobalAccessAuth
 }
 
-func (d *DocumentUpdateData) GetGlobalActionAuth() []DocumentUpdateDataGlobalActionAuth {
+func (d *DocumentUpdateData) GetGlobalActionAuth() []DocumentUpdateGlobalActionAuthRequest {
 	if d == nil {
 		return nil
 	}
@@ -302,6 +302,7 @@ const (
 	DocumentUpdateLanguageFr   DocumentUpdateLanguage = "fr"
 	DocumentUpdateLanguageEs   DocumentUpdateLanguage = "es"
 	DocumentUpdateLanguageIt   DocumentUpdateLanguage = "it"
+	DocumentUpdateLanguageNl   DocumentUpdateLanguage = "nl"
 	DocumentUpdateLanguagePl   DocumentUpdateLanguage = "pl"
 	DocumentUpdateLanguagePtBr DocumentUpdateLanguage = "pt-BR"
 	DocumentUpdateLanguageJa   DocumentUpdateLanguage = "ja"
@@ -327,6 +328,8 @@ func (e *DocumentUpdateLanguage) UnmarshalJSON(data []byte) error {
 	case "es":
 		fallthrough
 	case "it":
+		fallthrough
+	case "nl":
 		fallthrough
 	case "pl":
 		fallthrough
@@ -740,9 +743,9 @@ const (
 )
 
 type DocumentUpdateFormValues struct {
-	Str     *string  `queryParam:"inline,name=formValues"`
-	Boolean *bool    `queryParam:"inline,name=formValues"`
-	Number  *float64 `queryParam:"inline,name=formValues"`
+	Str     *string  `queryParam:"inline" union:"member"`
+	Boolean *bool    `queryParam:"inline" union:"member"`
+	Number  *float64 `queryParam:"inline" union:"member"`
 
 	Type DocumentUpdateFormValuesType
 }
@@ -845,7 +848,7 @@ func (d DocumentUpdateResponseBody) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DocumentUpdateResponseBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"visibility", "status", "source", "id", "userId", "title", "createdAt", "updatedAt", "teamId", "useLegacyFieldInsertion", "envelopeId", "internalVersion"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil

@@ -1,0 +1,9 @@
+# TemplateGetManyAuthOptions
+
+
+## Fields
+
+| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `GlobalAccessAuth`                                                                                         | [][operations.TemplateGetManyGlobalAccessAuth](../../models/operations/templategetmanyglobalaccessauth.md) | :heavy_check_mark:                                                                                         | N/A                                                                                                        |
+| `GlobalActionAuth`                                                                                         | [][operations.TemplateGetManyGlobalActionAuth](../../models/operations/templategetmanyglobalactionauth.md) | :heavy_check_mark:                                                                                         | N/A                                                                                                        |

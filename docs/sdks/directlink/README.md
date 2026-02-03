@@ -1,5 +1,4 @@
-# DirectLink
-(*Templates.DirectLink*)
+# Templates.DirectLink
 
 ## Overview
 

@@ -2570,17 +2570,17 @@ const (
 )
 
 type FieldUpdateTemplateFieldFieldUnion struct {
-	FieldUpdateTemplateFieldFieldSignature     *FieldUpdateTemplateFieldFieldSignature     `queryParam:"inline,name=field"`
-	FieldUpdateTemplateFieldFieldFreeSignature *FieldUpdateTemplateFieldFieldFreeSignature `queryParam:"inline,name=field"`
-	FieldUpdateTemplateFieldFieldInitials      *FieldUpdateTemplateFieldFieldInitials      `queryParam:"inline,name=field"`
-	FieldUpdateTemplateFieldFieldName          *FieldUpdateTemplateFieldFieldName          `queryParam:"inline,name=field"`
-	FieldUpdateTemplateFieldFieldEmail         *FieldUpdateTemplateFieldFieldEmail         `queryParam:"inline,name=field"`
-	FieldUpdateTemplateFieldFieldDate          *FieldUpdateTemplateFieldFieldDate          `queryParam:"inline,name=field"`
-	FieldUpdateTemplateFieldFieldText          *FieldUpdateTemplateFieldFieldText          `queryParam:"inline,name=field"`
-	FieldUpdateTemplateFieldFieldNumber        *FieldUpdateTemplateFieldFieldNumber        `queryParam:"inline,name=field"`
-	FieldUpdateTemplateFieldFieldRadio         *FieldUpdateTemplateFieldFieldRadio         `queryParam:"inline,name=field"`
-	FieldUpdateTemplateFieldFieldCheckbox      *FieldUpdateTemplateFieldFieldCheckbox      `queryParam:"inline,name=field"`
-	FieldUpdateTemplateFieldFieldDropdown      *FieldUpdateTemplateFieldFieldDropdown      `queryParam:"inline,name=field"`
+	FieldUpdateTemplateFieldFieldSignature     *FieldUpdateTemplateFieldFieldSignature     `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldFreeSignature *FieldUpdateTemplateFieldFieldFreeSignature `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldInitials      *FieldUpdateTemplateFieldFieldInitials      `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldName          *FieldUpdateTemplateFieldFieldName          `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldEmail         *FieldUpdateTemplateFieldFieldEmail         `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldDate          *FieldUpdateTemplateFieldFieldDate          `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldText          *FieldUpdateTemplateFieldFieldText          `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldNumber        *FieldUpdateTemplateFieldFieldNumber        `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldRadio         *FieldUpdateTemplateFieldFieldRadio         `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldCheckbox      *FieldUpdateTemplateFieldFieldCheckbox      `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldDropdown      *FieldUpdateTemplateFieldFieldDropdown      `queryParam:"inline" union:"member"`
 
 	Type FieldUpdateTemplateFieldFieldUnionType
 }
@@ -4342,16 +4342,16 @@ const (
 )
 
 type FieldUpdateTemplateFieldFieldMetaUnion struct {
-	FieldUpdateTemplateFieldFieldMetaSignatureResponse *FieldUpdateTemplateFieldFieldMetaSignatureResponse `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaInitialsResponse  *FieldUpdateTemplateFieldFieldMetaInitialsResponse  `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaNameResponse      *FieldUpdateTemplateFieldFieldMetaNameResponse      `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaEmailResponse     *FieldUpdateTemplateFieldFieldMetaEmailResponse     `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaDateResponse      *FieldUpdateTemplateFieldFieldMetaDateResponse      `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaTextResponse      *FieldUpdateTemplateFieldFieldMetaTextResponse      `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaNumberResponse    *FieldUpdateTemplateFieldFieldMetaNumberResponse    `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaRadioResponse     *FieldUpdateTemplateFieldFieldMetaRadioResponse     `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaCheckboxResponse  *FieldUpdateTemplateFieldFieldMetaCheckboxResponse  `queryParam:"inline,name=fieldMeta"`
-	FieldUpdateTemplateFieldFieldMetaDropdownResponse  *FieldUpdateTemplateFieldFieldMetaDropdownResponse  `queryParam:"inline,name=fieldMeta"`
+	FieldUpdateTemplateFieldFieldMetaSignatureResponse *FieldUpdateTemplateFieldFieldMetaSignatureResponse `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldMetaInitialsResponse  *FieldUpdateTemplateFieldFieldMetaInitialsResponse  `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldMetaNameResponse      *FieldUpdateTemplateFieldFieldMetaNameResponse      `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldMetaEmailResponse     *FieldUpdateTemplateFieldFieldMetaEmailResponse     `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldMetaDateResponse      *FieldUpdateTemplateFieldFieldMetaDateResponse      `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldMetaTextResponse      *FieldUpdateTemplateFieldFieldMetaTextResponse      `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldMetaNumberResponse    *FieldUpdateTemplateFieldFieldMetaNumberResponse    `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldMetaRadioResponse     *FieldUpdateTemplateFieldFieldMetaRadioResponse     `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldMetaCheckboxResponse  *FieldUpdateTemplateFieldFieldMetaCheckboxResponse  `queryParam:"inline" union:"member"`
+	FieldUpdateTemplateFieldFieldMetaDropdownResponse  *FieldUpdateTemplateFieldFieldMetaDropdownResponse  `queryParam:"inline" union:"member"`
 
 	Type FieldUpdateTemplateFieldFieldMetaUnionType
 }

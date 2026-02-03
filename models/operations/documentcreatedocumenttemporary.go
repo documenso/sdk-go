@@ -106,9 +106,9 @@ const (
 )
 
 type DocumentCreateDocumentTemporaryFormValuesRequest struct {
-	Str     *string  `queryParam:"inline,name=formValues"`
-	Boolean *bool    `queryParam:"inline,name=formValues"`
-	Number  *float64 `queryParam:"inline,name=formValues"`
+	Str     *string  `queryParam:"inline" union:"member"`
+	Boolean *bool    `queryParam:"inline" union:"member"`
+	Number  *float64 `queryParam:"inline" union:"member"`
 
 	Type DocumentCreateDocumentTemporaryFormValuesRequestType
 }
@@ -2750,17 +2750,17 @@ const (
 )
 
 type DocumentCreateDocumentTemporaryFieldUnion struct {
-	DocumentCreateDocumentTemporaryFieldSignature     *DocumentCreateDocumentTemporaryFieldSignature     `queryParam:"inline,name=field"`
-	DocumentCreateDocumentTemporaryFieldFreeSignature *DocumentCreateDocumentTemporaryFieldFreeSignature `queryParam:"inline,name=field"`
-	DocumentCreateDocumentTemporaryFieldInitials      *DocumentCreateDocumentTemporaryFieldInitials      `queryParam:"inline,name=field"`
-	DocumentCreateDocumentTemporaryFieldName          *DocumentCreateDocumentTemporaryFieldName          `queryParam:"inline,name=field"`
-	DocumentCreateDocumentTemporaryFieldEmail         *DocumentCreateDocumentTemporaryFieldEmail         `queryParam:"inline,name=field"`
-	DocumentCreateDocumentTemporaryFieldDate          *DocumentCreateDocumentTemporaryFieldDate          `queryParam:"inline,name=field"`
-	DocumentCreateDocumentTemporaryFieldText          *DocumentCreateDocumentTemporaryFieldText          `queryParam:"inline,name=field"`
-	DocumentCreateDocumentTemporaryFieldNumber        *DocumentCreateDocumentTemporaryFieldNumber        `queryParam:"inline,name=field"`
-	DocumentCreateDocumentTemporaryFieldRadio         *DocumentCreateDocumentTemporaryFieldRadio         `queryParam:"inline,name=field"`
-	DocumentCreateDocumentTemporaryFieldCheckbox      *DocumentCreateDocumentTemporaryFieldCheckbox      `queryParam:"inline,name=field"`
-	DocumentCreateDocumentTemporaryFieldDropdown      *DocumentCreateDocumentTemporaryFieldDropdown      `queryParam:"inline,name=field"`
+	DocumentCreateDocumentTemporaryFieldSignature     *DocumentCreateDocumentTemporaryFieldSignature     `queryParam:"inline" union:"member"`
+	DocumentCreateDocumentTemporaryFieldFreeSignature *DocumentCreateDocumentTemporaryFieldFreeSignature `queryParam:"inline" union:"member"`
+	DocumentCreateDocumentTemporaryFieldInitials      *DocumentCreateDocumentTemporaryFieldInitials      `queryParam:"inline" union:"member"`
+	DocumentCreateDocumentTemporaryFieldName          *DocumentCreateDocumentTemporaryFieldName          `queryParam:"inline" union:"member"`
+	DocumentCreateDocumentTemporaryFieldEmail         *DocumentCreateDocumentTemporaryFieldEmail         `queryParam:"inline" union:"member"`
+	DocumentCreateDocumentTemporaryFieldDate          *DocumentCreateDocumentTemporaryFieldDate          `queryParam:"inline" union:"member"`
+	DocumentCreateDocumentTemporaryFieldText          *DocumentCreateDocumentTemporaryFieldText          `queryParam:"inline" union:"member"`
+	DocumentCreateDocumentTemporaryFieldNumber        *DocumentCreateDocumentTemporaryFieldNumber        `queryParam:"inline" union:"member"`
+	DocumentCreateDocumentTemporaryFieldRadio         *DocumentCreateDocumentTemporaryFieldRadio         `queryParam:"inline" union:"member"`
+	DocumentCreateDocumentTemporaryFieldCheckbox      *DocumentCreateDocumentTemporaryFieldCheckbox      `queryParam:"inline" union:"member"`
+	DocumentCreateDocumentTemporaryFieldDropdown      *DocumentCreateDocumentTemporaryFieldDropdown      `queryParam:"inline" union:"member"`
 
 	Type DocumentCreateDocumentTemporaryFieldUnionType
 }
@@ -3087,7 +3087,7 @@ func (d DocumentCreateDocumentTemporaryAttachment) MarshalJSON() ([]byte, error)
 }
 
 func (d *DocumentCreateDocumentTemporaryAttachment) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"label", "data"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -3260,6 +3260,7 @@ const (
 	DocumentCreateDocumentTemporaryLanguageFr   DocumentCreateDocumentTemporaryLanguage = "fr"
 	DocumentCreateDocumentTemporaryLanguageEs   DocumentCreateDocumentTemporaryLanguage = "es"
 	DocumentCreateDocumentTemporaryLanguageIt   DocumentCreateDocumentTemporaryLanguage = "it"
+	DocumentCreateDocumentTemporaryLanguageNl   DocumentCreateDocumentTemporaryLanguage = "nl"
 	DocumentCreateDocumentTemporaryLanguagePl   DocumentCreateDocumentTemporaryLanguage = "pl"
 	DocumentCreateDocumentTemporaryLanguagePtBr DocumentCreateDocumentTemporaryLanguage = "pt-BR"
 	DocumentCreateDocumentTemporaryLanguageJa   DocumentCreateDocumentTemporaryLanguage = "ja"
@@ -3285,6 +3286,8 @@ func (e *DocumentCreateDocumentTemporaryLanguage) UnmarshalJSON(data []byte) err
 	case "es":
 		fallthrough
 	case "it":
+		fallthrough
+	case "nl":
 		fallthrough
 	case "pl":
 		fallthrough
@@ -3754,9 +3757,9 @@ const (
 )
 
 type DocumentFormValues struct {
-	Str     *string  `queryParam:"inline,name=formValues"`
-	Boolean *bool    `queryParam:"inline,name=formValues"`
-	Number  *float64 `queryParam:"inline,name=formValues"`
+	Str     *string  `queryParam:"inline" union:"member"`
+	Boolean *bool    `queryParam:"inline" union:"member"`
+	Number  *float64 `queryParam:"inline" union:"member"`
 
 	Type DocumentFormValuesType
 }
@@ -4050,7 +4053,7 @@ func (d DocumentCreateDocumentTemporaryDocumentMeta) MarshalJSON() ([]byte, erro
 }
 
 func (d *DocumentCreateDocumentTemporaryDocumentMeta) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"signingOrder", "distributionMethod", "id", "typedSignatureEnabled", "uploadSignatureEnabled", "drawSignatureEnabled", "allowDictateNextSigner", "language"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -6183,16 +6186,16 @@ const (
 )
 
 type DocumentFieldMetaUnion struct {
-	FieldMetaDocumentSignature *FieldMetaDocumentSignature `queryParam:"inline,name=fieldMeta"`
-	FieldMetaDocumentInitials  *FieldMetaDocumentInitials  `queryParam:"inline,name=fieldMeta"`
-	FieldMetaDocumentName      *FieldMetaDocumentName      `queryParam:"inline,name=fieldMeta"`
-	FieldMetaDocumentEmail     *FieldMetaDocumentEmail     `queryParam:"inline,name=fieldMeta"`
-	FieldMetaDocumentDate      *FieldMetaDocumentDate      `queryParam:"inline,name=fieldMeta"`
-	FieldMetaDocumentText      *FieldMetaDocumentText      `queryParam:"inline,name=fieldMeta"`
-	FieldMetaDocumentNumber    *FieldMetaDocumentNumber    `queryParam:"inline,name=fieldMeta"`
-	FieldMetaDocumentRadio     *FieldMetaDocumentRadio     `queryParam:"inline,name=fieldMeta"`
-	FieldMetaDocumentCheckbox  *FieldMetaDocumentCheckbox  `queryParam:"inline,name=fieldMeta"`
-	FieldMetaDocumentDropdown  *FieldMetaDocumentDropdown  `queryParam:"inline,name=fieldMeta"`
+	FieldMetaDocumentSignature *FieldMetaDocumentSignature `queryParam:"inline" union:"member"`
+	FieldMetaDocumentInitials  *FieldMetaDocumentInitials  `queryParam:"inline" union:"member"`
+	FieldMetaDocumentName      *FieldMetaDocumentName      `queryParam:"inline" union:"member"`
+	FieldMetaDocumentEmail     *FieldMetaDocumentEmail     `queryParam:"inline" union:"member"`
+	FieldMetaDocumentDate      *FieldMetaDocumentDate      `queryParam:"inline" union:"member"`
+	FieldMetaDocumentText      *FieldMetaDocumentText      `queryParam:"inline" union:"member"`
+	FieldMetaDocumentNumber    *FieldMetaDocumentNumber    `queryParam:"inline" union:"member"`
+	FieldMetaDocumentRadio     *FieldMetaDocumentRadio     `queryParam:"inline" union:"member"`
+	FieldMetaDocumentCheckbox  *FieldMetaDocumentCheckbox  `queryParam:"inline" union:"member"`
+	FieldMetaDocumentDropdown  *FieldMetaDocumentDropdown  `queryParam:"inline" union:"member"`
 
 	Type DocumentFieldMetaUnionType
 }
@@ -6570,7 +6573,7 @@ func (d Document) MarshalJSON() ([]byte, error) {
 }
 
 func (d *Document) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"visibility", "status", "source", "id", "userId", "title", "createdAt", "updatedAt", "teamId", "envelopeId", "internalVersion", "documentData", "documentMeta", "envelopeItems", "recipients", "fields"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil

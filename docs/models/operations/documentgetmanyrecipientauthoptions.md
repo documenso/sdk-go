@@ -1,0 +1,9 @@
+# DocumentGetManyRecipientAuthOptions
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `AccessAuth`                                                                                   | [][operations.DocumentGetManyAccessAuth](../../models/operations/documentgetmanyaccessauth.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `ActionAuth`                                                                                   | [][operations.DocumentGetManyActionAuth](../../models/operations/documentgetmanyactionauth.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |

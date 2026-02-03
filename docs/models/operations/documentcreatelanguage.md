@@ -10,6 +10,7 @@
 | `DocumentCreateLanguageFr`   | fr                           |
 | `DocumentCreateLanguageEs`   | es                           |
 | `DocumentCreateLanguageIt`   | it                           |
+| `DocumentCreateLanguageNl`   | nl                           |
 | `DocumentCreateLanguagePl`   | pl                           |
 | `DocumentCreateLanguagePtBr` | pt-BR                        |
 | `DocumentCreateLanguageJa`   | ja                           |

@@ -1,0 +1,10 @@
+# SourceTemplateDirectLink
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `Type`                                                                                 | [operations.TypeTemplateDirectLink](../../models/operations/typetemplatedirectlink.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `TemplateID`                                                                           | *float64*                                                                              | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `DirectRecipientEmail`                                                                 | *string*                                                                               | :heavy_check_mark:                                                                     | N/A                                                                                    |

@@ -9,18 +9,18 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type TemplateUpdateTemplateDataVisibility string
+type TemplateUpdateTemplateVisibilityRequest string
 
 const (
-	TemplateUpdateTemplateDataVisibilityEveryone        TemplateUpdateTemplateDataVisibility = "EVERYONE"
-	TemplateUpdateTemplateDataVisibilityManagerAndAbove TemplateUpdateTemplateDataVisibility = "MANAGER_AND_ABOVE"
-	TemplateUpdateTemplateDataVisibilityAdmin           TemplateUpdateTemplateDataVisibility = "ADMIN"
+	TemplateUpdateTemplateVisibilityRequestEveryone        TemplateUpdateTemplateVisibilityRequest = "EVERYONE"
+	TemplateUpdateTemplateVisibilityRequestManagerAndAbove TemplateUpdateTemplateVisibilityRequest = "MANAGER_AND_ABOVE"
+	TemplateUpdateTemplateVisibilityRequestAdmin           TemplateUpdateTemplateVisibilityRequest = "ADMIN"
 )
 
-func (e TemplateUpdateTemplateDataVisibility) ToPointer() *TemplateUpdateTemplateDataVisibility {
+func (e TemplateUpdateTemplateVisibilityRequest) ToPointer() *TemplateUpdateTemplateVisibilityRequest {
 	return &e
 }
-func (e *TemplateUpdateTemplateDataVisibility) UnmarshalJSON(data []byte) error {
+func (e *TemplateUpdateTemplateVisibilityRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -31,24 +31,24 @@ func (e *TemplateUpdateTemplateDataVisibility) UnmarshalJSON(data []byte) error 
 	case "MANAGER_AND_ABOVE":
 		fallthrough
 	case "ADMIN":
-		*e = TemplateUpdateTemplateDataVisibility(v)
+		*e = TemplateUpdateTemplateVisibilityRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateUpdateTemplateDataVisibility: %v", v)
+		return fmt.Errorf("invalid value for TemplateUpdateTemplateVisibilityRequest: %v", v)
 	}
 }
 
-type TemplateUpdateTemplateDataGlobalAccessAuth string
+type TemplateUpdateTemplateGlobalAccessAuthRequest string
 
 const (
-	TemplateUpdateTemplateDataGlobalAccessAuthAccount       TemplateUpdateTemplateDataGlobalAccessAuth = "ACCOUNT"
-	TemplateUpdateTemplateDataGlobalAccessAuthTwoFactorAuth TemplateUpdateTemplateDataGlobalAccessAuth = "TWO_FACTOR_AUTH"
+	TemplateUpdateTemplateGlobalAccessAuthRequestAccount       TemplateUpdateTemplateGlobalAccessAuthRequest = "ACCOUNT"
+	TemplateUpdateTemplateGlobalAccessAuthRequestTwoFactorAuth TemplateUpdateTemplateGlobalAccessAuthRequest = "TWO_FACTOR_AUTH"
 )
 
-func (e TemplateUpdateTemplateDataGlobalAccessAuth) ToPointer() *TemplateUpdateTemplateDataGlobalAccessAuth {
+func (e TemplateUpdateTemplateGlobalAccessAuthRequest) ToPointer() *TemplateUpdateTemplateGlobalAccessAuthRequest {
 	return &e
 }
-func (e *TemplateUpdateTemplateDataGlobalAccessAuth) UnmarshalJSON(data []byte) error {
+func (e *TemplateUpdateTemplateGlobalAccessAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -57,26 +57,26 @@ func (e *TemplateUpdateTemplateDataGlobalAccessAuth) UnmarshalJSON(data []byte) 
 	case "ACCOUNT":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
-		*e = TemplateUpdateTemplateDataGlobalAccessAuth(v)
+		*e = TemplateUpdateTemplateGlobalAccessAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateUpdateTemplateDataGlobalAccessAuth: %v", v)
+		return fmt.Errorf("invalid value for TemplateUpdateTemplateGlobalAccessAuthRequest: %v", v)
 	}
 }
 
-type TemplateUpdateTemplateDataGlobalActionAuth string
+type TemplateUpdateTemplateGlobalActionAuthRequest string
 
 const (
-	TemplateUpdateTemplateDataGlobalActionAuthAccount       TemplateUpdateTemplateDataGlobalActionAuth = "ACCOUNT"
-	TemplateUpdateTemplateDataGlobalActionAuthPasskey       TemplateUpdateTemplateDataGlobalActionAuth = "PASSKEY"
-	TemplateUpdateTemplateDataGlobalActionAuthTwoFactorAuth TemplateUpdateTemplateDataGlobalActionAuth = "TWO_FACTOR_AUTH"
-	TemplateUpdateTemplateDataGlobalActionAuthPassword      TemplateUpdateTemplateDataGlobalActionAuth = "PASSWORD"
+	TemplateUpdateTemplateGlobalActionAuthRequestAccount       TemplateUpdateTemplateGlobalActionAuthRequest = "ACCOUNT"
+	TemplateUpdateTemplateGlobalActionAuthRequestPasskey       TemplateUpdateTemplateGlobalActionAuthRequest = "PASSKEY"
+	TemplateUpdateTemplateGlobalActionAuthRequestTwoFactorAuth TemplateUpdateTemplateGlobalActionAuthRequest = "TWO_FACTOR_AUTH"
+	TemplateUpdateTemplateGlobalActionAuthRequestPassword      TemplateUpdateTemplateGlobalActionAuthRequest = "PASSWORD"
 )
 
-func (e TemplateUpdateTemplateDataGlobalActionAuth) ToPointer() *TemplateUpdateTemplateDataGlobalActionAuth {
+func (e TemplateUpdateTemplateGlobalActionAuthRequest) ToPointer() *TemplateUpdateTemplateGlobalActionAuthRequest {
 	return &e
 }
-func (e *TemplateUpdateTemplateDataGlobalActionAuth) UnmarshalJSON(data []byte) error {
+func (e *TemplateUpdateTemplateGlobalActionAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -89,10 +89,10 @@ func (e *TemplateUpdateTemplateDataGlobalActionAuth) UnmarshalJSON(data []byte) 
 	case "TWO_FACTOR_AUTH":
 		fallthrough
 	case "PASSWORD":
-		*e = TemplateUpdateTemplateDataGlobalActionAuth(v)
+		*e = TemplateUpdateTemplateGlobalActionAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TemplateUpdateTemplateDataGlobalActionAuth: %v", v)
+		return fmt.Errorf("invalid value for TemplateUpdateTemplateGlobalActionAuthRequest: %v", v)
 	}
 }
 
@@ -123,16 +123,16 @@ func (e *TemplateUpdateTemplateDataType) UnmarshalJSON(data []byte) error {
 }
 
 type TemplateUpdateTemplateData struct {
-	Title                   *string                                      `json:"title,omitempty"`
-	ExternalID              *string                                      `json:"externalId,omitempty"`
-	Visibility              *TemplateUpdateTemplateDataVisibility        `json:"visibility,omitempty"`
-	GlobalAccessAuth        []TemplateUpdateTemplateDataGlobalAccessAuth `json:"globalAccessAuth,omitempty"`
-	GlobalActionAuth        []TemplateUpdateTemplateDataGlobalActionAuth `json:"globalActionAuth,omitempty"`
-	PublicTitle             *string                                      `json:"publicTitle,omitempty"`
-	PublicDescription       *string                                      `json:"publicDescription,omitempty"`
-	Type                    *TemplateUpdateTemplateDataType              `json:"type,omitempty"`
-	UseLegacyFieldInsertion *bool                                        `json:"useLegacyFieldInsertion,omitempty"`
-	FolderID                *string                                      `json:"folderId,omitempty"`
+	Title                   *string                                         `json:"title,omitempty"`
+	ExternalID              *string                                         `json:"externalId,omitempty"`
+	Visibility              *TemplateUpdateTemplateVisibilityRequest        `json:"visibility,omitempty"`
+	GlobalAccessAuth        []TemplateUpdateTemplateGlobalAccessAuthRequest `json:"globalAccessAuth,omitempty"`
+	GlobalActionAuth        []TemplateUpdateTemplateGlobalActionAuthRequest `json:"globalActionAuth,omitempty"`
+	PublicTitle             *string                                         `json:"publicTitle,omitempty"`
+	PublicDescription       *string                                         `json:"publicDescription,omitempty"`
+	Type                    *TemplateUpdateTemplateDataType                 `json:"type,omitempty"`
+	UseLegacyFieldInsertion *bool                                           `json:"useLegacyFieldInsertion,omitempty"`
+	FolderID                *string                                         `json:"folderId,omitempty"`
 }
 
 func (t *TemplateUpdateTemplateData) GetTitle() *string {
@@ -149,21 +149,21 @@ func (t *TemplateUpdateTemplateData) GetExternalID() *string {
 	return t.ExternalID
 }
 
-func (t *TemplateUpdateTemplateData) GetVisibility() *TemplateUpdateTemplateDataVisibility {
+func (t *TemplateUpdateTemplateData) GetVisibility() *TemplateUpdateTemplateVisibilityRequest {
 	if t == nil {
 		return nil
 	}
 	return t.Visibility
 }
 
-func (t *TemplateUpdateTemplateData) GetGlobalAccessAuth() []TemplateUpdateTemplateDataGlobalAccessAuth {
+func (t *TemplateUpdateTemplateData) GetGlobalAccessAuth() []TemplateUpdateTemplateGlobalAccessAuthRequest {
 	if t == nil {
 		return nil
 	}
 	return t.GlobalAccessAuth
 }
 
-func (t *TemplateUpdateTemplateData) GetGlobalActionAuth() []TemplateUpdateTemplateDataGlobalActionAuth {
+func (t *TemplateUpdateTemplateData) GetGlobalActionAuth() []TemplateUpdateTemplateGlobalActionAuthRequest {
 	if t == nil {
 		return nil
 	}
@@ -395,6 +395,7 @@ const (
 	TemplateUpdateTemplateLanguageFr   TemplateUpdateTemplateLanguage = "fr"
 	TemplateUpdateTemplateLanguageEs   TemplateUpdateTemplateLanguage = "es"
 	TemplateUpdateTemplateLanguageIt   TemplateUpdateTemplateLanguage = "it"
+	TemplateUpdateTemplateLanguageNl   TemplateUpdateTemplateLanguage = "nl"
 	TemplateUpdateTemplateLanguagePl   TemplateUpdateTemplateLanguage = "pl"
 	TemplateUpdateTemplateLanguagePtBr TemplateUpdateTemplateLanguage = "pt-BR"
 	TemplateUpdateTemplateLanguageJa   TemplateUpdateTemplateLanguage = "ja"
@@ -420,6 +421,8 @@ func (e *TemplateUpdateTemplateLanguage) UnmarshalJSON(data []byte) error {
 	case "es":
 		fallthrough
 	case "it":
+		fallthrough
+	case "nl":
 		fallthrough
 	case "pl":
 		fallthrough
@@ -770,7 +773,7 @@ func (t TemplateUpdateTemplateResponseBody) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TemplateUpdateTemplateResponseBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "visibility", "id", "title", "userId", "teamId", "createdAt", "updatedAt", "publicTitle", "publicDescription", "useLegacyFieldInsertion", "envelopeId"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil

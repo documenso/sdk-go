@@ -1726,16 +1726,16 @@ const (
 )
 
 type RecipientGetDocumentRecipientFieldMetaUnion struct {
-	RecipientGetDocumentRecipientFieldMetaSignature *RecipientGetDocumentRecipientFieldMetaSignature `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaInitials  *RecipientGetDocumentRecipientFieldMetaInitials  `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaName      *RecipientGetDocumentRecipientFieldMetaName      `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaEmail     *RecipientGetDocumentRecipientFieldMetaEmail     `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaDate      *RecipientGetDocumentRecipientFieldMetaDate      `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaText      *RecipientGetDocumentRecipientFieldMetaText      `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaNumber    *RecipientGetDocumentRecipientFieldMetaNumber    `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaRadio     *RecipientGetDocumentRecipientFieldMetaRadio     `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaCheckbox  *RecipientGetDocumentRecipientFieldMetaCheckbox  `queryParam:"inline,name=fieldMeta"`
-	RecipientGetDocumentRecipientFieldMetaDropdown  *RecipientGetDocumentRecipientFieldMetaDropdown  `queryParam:"inline,name=fieldMeta"`
+	RecipientGetDocumentRecipientFieldMetaSignature *RecipientGetDocumentRecipientFieldMetaSignature `queryParam:"inline" union:"member"`
+	RecipientGetDocumentRecipientFieldMetaInitials  *RecipientGetDocumentRecipientFieldMetaInitials  `queryParam:"inline" union:"member"`
+	RecipientGetDocumentRecipientFieldMetaName      *RecipientGetDocumentRecipientFieldMetaName      `queryParam:"inline" union:"member"`
+	RecipientGetDocumentRecipientFieldMetaEmail     *RecipientGetDocumentRecipientFieldMetaEmail     `queryParam:"inline" union:"member"`
+	RecipientGetDocumentRecipientFieldMetaDate      *RecipientGetDocumentRecipientFieldMetaDate      `queryParam:"inline" union:"member"`
+	RecipientGetDocumentRecipientFieldMetaText      *RecipientGetDocumentRecipientFieldMetaText      `queryParam:"inline" union:"member"`
+	RecipientGetDocumentRecipientFieldMetaNumber    *RecipientGetDocumentRecipientFieldMetaNumber    `queryParam:"inline" union:"member"`
+	RecipientGetDocumentRecipientFieldMetaRadio     *RecipientGetDocumentRecipientFieldMetaRadio     `queryParam:"inline" union:"member"`
+	RecipientGetDocumentRecipientFieldMetaCheckbox  *RecipientGetDocumentRecipientFieldMetaCheckbox  `queryParam:"inline" union:"member"`
+	RecipientGetDocumentRecipientFieldMetaDropdown  *RecipientGetDocumentRecipientFieldMetaDropdown  `queryParam:"inline" union:"member"`
 
 	Type RecipientGetDocumentRecipientFieldMetaUnionType
 }

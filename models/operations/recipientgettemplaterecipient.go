@@ -1726,16 +1726,16 @@ const (
 )
 
 type RecipientGetTemplateRecipientFieldMetaUnion struct {
-	RecipientGetTemplateRecipientFieldMetaSignature *RecipientGetTemplateRecipientFieldMetaSignature `queryParam:"inline,name=fieldMeta"`
-	RecipientGetTemplateRecipientFieldMetaInitials  *RecipientGetTemplateRecipientFieldMetaInitials  `queryParam:"inline,name=fieldMeta"`
-	RecipientGetTemplateRecipientFieldMetaName      *RecipientGetTemplateRecipientFieldMetaName      `queryParam:"inline,name=fieldMeta"`
-	RecipientGetTemplateRecipientFieldMetaEmail     *RecipientGetTemplateRecipientFieldMetaEmail     `queryParam:"inline,name=fieldMeta"`
-	RecipientGetTemplateRecipientFieldMetaDate      *RecipientGetTemplateRecipientFieldMetaDate      `queryParam:"inline,name=fieldMeta"`
-	RecipientGetTemplateRecipientFieldMetaText      *RecipientGetTemplateRecipientFieldMetaText      `queryParam:"inline,name=fieldMeta"`
-	RecipientGetTemplateRecipientFieldMetaNumber    *RecipientGetTemplateRecipientFieldMetaNumber    `queryParam:"inline,name=fieldMeta"`
-	RecipientGetTemplateRecipientFieldMetaRadio     *RecipientGetTemplateRecipientFieldMetaRadio     `queryParam:"inline,name=fieldMeta"`
-	RecipientGetTemplateRecipientFieldMetaCheckbox  *RecipientGetTemplateRecipientFieldMetaCheckbox  `queryParam:"inline,name=fieldMeta"`
-	RecipientGetTemplateRecipientFieldMetaDropdown  *RecipientGetTemplateRecipientFieldMetaDropdown  `queryParam:"inline,name=fieldMeta"`
+	RecipientGetTemplateRecipientFieldMetaSignature *RecipientGetTemplateRecipientFieldMetaSignature `queryParam:"inline" union:"member"`
+	RecipientGetTemplateRecipientFieldMetaInitials  *RecipientGetTemplateRecipientFieldMetaInitials  `queryParam:"inline" union:"member"`
+	RecipientGetTemplateRecipientFieldMetaName      *RecipientGetTemplateRecipientFieldMetaName      `queryParam:"inline" union:"member"`
+	RecipientGetTemplateRecipientFieldMetaEmail     *RecipientGetTemplateRecipientFieldMetaEmail     `queryParam:"inline" union:"member"`
+	RecipientGetTemplateRecipientFieldMetaDate      *RecipientGetTemplateRecipientFieldMetaDate      `queryParam:"inline" union:"member"`
+	RecipientGetTemplateRecipientFieldMetaText      *RecipientGetTemplateRecipientFieldMetaText      `queryParam:"inline" union:"member"`
+	RecipientGetTemplateRecipientFieldMetaNumber    *RecipientGetTemplateRecipientFieldMetaNumber    `queryParam:"inline" union:"member"`
+	RecipientGetTemplateRecipientFieldMetaRadio     *RecipientGetTemplateRecipientFieldMetaRadio     `queryParam:"inline" union:"member"`
+	RecipientGetTemplateRecipientFieldMetaCheckbox  *RecipientGetTemplateRecipientFieldMetaCheckbox  `queryParam:"inline" union:"member"`
+	RecipientGetTemplateRecipientFieldMetaDropdown  *RecipientGetTemplateRecipientFieldMetaDropdown  `queryParam:"inline" union:"member"`
 
 	Type RecipientGetTemplateRecipientFieldMetaUnionType
 }

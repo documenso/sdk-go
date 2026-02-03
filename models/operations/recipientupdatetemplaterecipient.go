@@ -300,17 +300,17 @@ func (e *RecipientUpdateTemplateRecipientSendStatus) UnmarshalJSON(data []byte) 
 	}
 }
 
-type RecipientUpdateTemplateRecipientAccessAuthResponse string
+type RecipientUpdateTemplateRecipientAuthOptionsAccessAuth string
 
 const (
-	RecipientUpdateTemplateRecipientAccessAuthResponseAccount       RecipientUpdateTemplateRecipientAccessAuthResponse = "ACCOUNT"
-	RecipientUpdateTemplateRecipientAccessAuthResponseTwoFactorAuth RecipientUpdateTemplateRecipientAccessAuthResponse = "TWO_FACTOR_AUTH"
+	RecipientUpdateTemplateRecipientAuthOptionsAccessAuthAccount       RecipientUpdateTemplateRecipientAuthOptionsAccessAuth = "ACCOUNT"
+	RecipientUpdateTemplateRecipientAuthOptionsAccessAuthTwoFactorAuth RecipientUpdateTemplateRecipientAuthOptionsAccessAuth = "TWO_FACTOR_AUTH"
 )
 
-func (e RecipientUpdateTemplateRecipientAccessAuthResponse) ToPointer() *RecipientUpdateTemplateRecipientAccessAuthResponse {
+func (e RecipientUpdateTemplateRecipientAuthOptionsAccessAuth) ToPointer() *RecipientUpdateTemplateRecipientAuthOptionsAccessAuth {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientAccessAuthResponse) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientAuthOptionsAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -319,27 +319,27 @@ func (e *RecipientUpdateTemplateRecipientAccessAuthResponse) UnmarshalJSON(data 
 	case "ACCOUNT":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
-		*e = RecipientUpdateTemplateRecipientAccessAuthResponse(v)
+		*e = RecipientUpdateTemplateRecipientAuthOptionsAccessAuth(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientAccessAuthResponse: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientAuthOptionsAccessAuth: %v", v)
 	}
 }
 
-type RecipientUpdateTemplateRecipientActionAuthResponse string
+type RecipientUpdateTemplateRecipientAuthOptionsActionAuth string
 
 const (
-	RecipientUpdateTemplateRecipientActionAuthResponseAccount       RecipientUpdateTemplateRecipientActionAuthResponse = "ACCOUNT"
-	RecipientUpdateTemplateRecipientActionAuthResponsePasskey       RecipientUpdateTemplateRecipientActionAuthResponse = "PASSKEY"
-	RecipientUpdateTemplateRecipientActionAuthResponseTwoFactorAuth RecipientUpdateTemplateRecipientActionAuthResponse = "TWO_FACTOR_AUTH"
-	RecipientUpdateTemplateRecipientActionAuthResponsePassword      RecipientUpdateTemplateRecipientActionAuthResponse = "PASSWORD"
-	RecipientUpdateTemplateRecipientActionAuthResponseExplicitNone  RecipientUpdateTemplateRecipientActionAuthResponse = "EXPLICIT_NONE"
+	RecipientUpdateTemplateRecipientAuthOptionsActionAuthAccount       RecipientUpdateTemplateRecipientAuthOptionsActionAuth = "ACCOUNT"
+	RecipientUpdateTemplateRecipientAuthOptionsActionAuthPasskey       RecipientUpdateTemplateRecipientAuthOptionsActionAuth = "PASSKEY"
+	RecipientUpdateTemplateRecipientAuthOptionsActionAuthTwoFactorAuth RecipientUpdateTemplateRecipientAuthOptionsActionAuth = "TWO_FACTOR_AUTH"
+	RecipientUpdateTemplateRecipientAuthOptionsActionAuthPassword      RecipientUpdateTemplateRecipientAuthOptionsActionAuth = "PASSWORD"
+	RecipientUpdateTemplateRecipientAuthOptionsActionAuthExplicitNone  RecipientUpdateTemplateRecipientAuthOptionsActionAuth = "EXPLICIT_NONE"
 )
 
-func (e RecipientUpdateTemplateRecipientActionAuthResponse) ToPointer() *RecipientUpdateTemplateRecipientActionAuthResponse {
+func (e RecipientUpdateTemplateRecipientAuthOptionsActionAuth) ToPointer() *RecipientUpdateTemplateRecipientAuthOptionsActionAuth {
 	return &e
 }
-func (e *RecipientUpdateTemplateRecipientActionAuthResponse) UnmarshalJSON(data []byte) error {
+func (e *RecipientUpdateTemplateRecipientAuthOptionsActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -354,28 +354,28 @@ func (e *RecipientUpdateTemplateRecipientActionAuthResponse) UnmarshalJSON(data 
 	case "PASSWORD":
 		fallthrough
 	case "EXPLICIT_NONE":
-		*e = RecipientUpdateTemplateRecipientActionAuthResponse(v)
+		*e = RecipientUpdateTemplateRecipientAuthOptionsActionAuth(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientActionAuthResponse: %v", v)
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientAuthOptionsActionAuth: %v", v)
 	}
 }
 
 type RecipientUpdateTemplateRecipientAuthOptions struct {
-	AccessAuth []RecipientUpdateTemplateRecipientAccessAuthResponse `json:"accessAuth"`
-	ActionAuth []RecipientUpdateTemplateRecipientActionAuthResponse `json:"actionAuth"`
+	AccessAuth []RecipientUpdateTemplateRecipientAuthOptionsAccessAuth `json:"accessAuth"`
+	ActionAuth []RecipientUpdateTemplateRecipientAuthOptionsActionAuth `json:"actionAuth"`
 }
 
-func (r *RecipientUpdateTemplateRecipientAuthOptions) GetAccessAuth() []RecipientUpdateTemplateRecipientAccessAuthResponse {
+func (r *RecipientUpdateTemplateRecipientAuthOptions) GetAccessAuth() []RecipientUpdateTemplateRecipientAuthOptionsAccessAuth {
 	if r == nil {
-		return []RecipientUpdateTemplateRecipientAccessAuthResponse{}
+		return []RecipientUpdateTemplateRecipientAuthOptionsAccessAuth{}
 	}
 	return r.AccessAuth
 }
 
-func (r *RecipientUpdateTemplateRecipientAuthOptions) GetActionAuth() []RecipientUpdateTemplateRecipientActionAuthResponse {
+func (r *RecipientUpdateTemplateRecipientAuthOptions) GetActionAuth() []RecipientUpdateTemplateRecipientAuthOptionsActionAuth {
 	if r == nil {
-		return []RecipientUpdateTemplateRecipientActionAuthResponse{}
+		return []RecipientUpdateTemplateRecipientAuthOptionsActionAuth{}
 	}
 	return r.ActionAuth
 }
@@ -1889,16 +1889,16 @@ const (
 )
 
 type RecipientUpdateTemplateRecipientFieldMetaUnion struct {
-	RecipientUpdateTemplateRecipientFieldMetaSignature *RecipientUpdateTemplateRecipientFieldMetaSignature `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateTemplateRecipientFieldMetaInitials  *RecipientUpdateTemplateRecipientFieldMetaInitials  `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateTemplateRecipientFieldMetaName      *RecipientUpdateTemplateRecipientFieldMetaName      `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateTemplateRecipientFieldMetaEmail     *RecipientUpdateTemplateRecipientFieldMetaEmail     `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateTemplateRecipientFieldMetaDate      *RecipientUpdateTemplateRecipientFieldMetaDate      `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateTemplateRecipientFieldMetaText      *RecipientUpdateTemplateRecipientFieldMetaText      `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateTemplateRecipientFieldMetaNumber    *RecipientUpdateTemplateRecipientFieldMetaNumber    `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateTemplateRecipientFieldMetaRadio     *RecipientUpdateTemplateRecipientFieldMetaRadio     `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateTemplateRecipientFieldMetaCheckbox  *RecipientUpdateTemplateRecipientFieldMetaCheckbox  `queryParam:"inline,name=fieldMeta"`
-	RecipientUpdateTemplateRecipientFieldMetaDropdown  *RecipientUpdateTemplateRecipientFieldMetaDropdown  `queryParam:"inline,name=fieldMeta"`
+	RecipientUpdateTemplateRecipientFieldMetaSignature *RecipientUpdateTemplateRecipientFieldMetaSignature `queryParam:"inline" union:"member"`
+	RecipientUpdateTemplateRecipientFieldMetaInitials  *RecipientUpdateTemplateRecipientFieldMetaInitials  `queryParam:"inline" union:"member"`
+	RecipientUpdateTemplateRecipientFieldMetaName      *RecipientUpdateTemplateRecipientFieldMetaName      `queryParam:"inline" union:"member"`
+	RecipientUpdateTemplateRecipientFieldMetaEmail     *RecipientUpdateTemplateRecipientFieldMetaEmail     `queryParam:"inline" union:"member"`
+	RecipientUpdateTemplateRecipientFieldMetaDate      *RecipientUpdateTemplateRecipientFieldMetaDate      `queryParam:"inline" union:"member"`
+	RecipientUpdateTemplateRecipientFieldMetaText      *RecipientUpdateTemplateRecipientFieldMetaText      `queryParam:"inline" union:"member"`
+	RecipientUpdateTemplateRecipientFieldMetaNumber    *RecipientUpdateTemplateRecipientFieldMetaNumber    `queryParam:"inline" union:"member"`
+	RecipientUpdateTemplateRecipientFieldMetaRadio     *RecipientUpdateTemplateRecipientFieldMetaRadio     `queryParam:"inline" union:"member"`
+	RecipientUpdateTemplateRecipientFieldMetaCheckbox  *RecipientUpdateTemplateRecipientFieldMetaCheckbox  `queryParam:"inline" union:"member"`
+	RecipientUpdateTemplateRecipientFieldMetaDropdown  *RecipientUpdateTemplateRecipientFieldMetaDropdown  `queryParam:"inline" union:"member"`
 
 	Type RecipientUpdateTemplateRecipientFieldMetaUnionType
 }

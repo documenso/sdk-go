@@ -132,9 +132,9 @@ const (
 )
 
 type EnvelopeCreateFormValues struct {
-	Str     *string  `queryParam:"inline,name=formValues"`
-	Boolean *bool    `queryParam:"inline,name=formValues"`
-	Number  *float64 `queryParam:"inline,name=formValues"`
+	Str     *string  `queryParam:"inline" union:"member"`
+	Boolean *bool    `queryParam:"inline" union:"member"`
+	Number  *float64 `queryParam:"inline" union:"member"`
 
 	Type EnvelopeCreateFormValuesType
 }
@@ -206,6 +206,92 @@ func (u EnvelopeCreateFormValues) MarshalJSON() ([]byte, error) {
 	}
 
 	return nil, errors.New("could not marshal union type EnvelopeCreateFormValues: all fields are null")
+}
+
+type EnvelopeCreateEmailEnum string
+
+const (
+	EnvelopeCreateEmailEnumUnknown EnvelopeCreateEmailEnum = ""
+)
+
+func (e EnvelopeCreateEmailEnum) ToPointer() *EnvelopeCreateEmailEnum {
+	return &e
+}
+func (e *EnvelopeCreateEmailEnum) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "":
+		*e = EnvelopeCreateEmailEnum(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeCreateEmailEnum: %v", v)
+	}
+}
+
+type EnvelopeCreateEmailUnionType string
+
+const (
+	EnvelopeCreateEmailUnionTypeEnvelopeCreateEmailEnum EnvelopeCreateEmailUnionType = "envelope_create_email_enum"
+	EnvelopeCreateEmailUnionTypeStr                     EnvelopeCreateEmailUnionType = "str"
+)
+
+type EnvelopeCreateEmailUnion struct {
+	EnvelopeCreateEmailEnum *EnvelopeCreateEmailEnum `queryParam:"inline" union:"member"`
+	Str                     *string                  `queryParam:"inline" union:"member"`
+
+	Type EnvelopeCreateEmailUnionType
+}
+
+func CreateEnvelopeCreateEmailUnionEnvelopeCreateEmailEnum(envelopeCreateEmailEnum EnvelopeCreateEmailEnum) EnvelopeCreateEmailUnion {
+	typ := EnvelopeCreateEmailUnionTypeEnvelopeCreateEmailEnum
+
+	return EnvelopeCreateEmailUnion{
+		EnvelopeCreateEmailEnum: &envelopeCreateEmailEnum,
+		Type:                    typ,
+	}
+}
+
+func CreateEnvelopeCreateEmailUnionStr(str string) EnvelopeCreateEmailUnion {
+	typ := EnvelopeCreateEmailUnionTypeStr
+
+	return EnvelopeCreateEmailUnion{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *EnvelopeCreateEmailUnion) UnmarshalJSON(data []byte) error {
+
+	var envelopeCreateEmailEnum EnvelopeCreateEmailEnum = EnvelopeCreateEmailEnum("")
+	if err := utils.UnmarshalJSON(data, &envelopeCreateEmailEnum, "", true, nil); err == nil {
+		u.EnvelopeCreateEmailEnum = &envelopeCreateEmailEnum
+		u.Type = EnvelopeCreateEmailUnionTypeEnvelopeCreateEmailEnum
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = EnvelopeCreateEmailUnionTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvelopeCreateEmailUnion", string(data))
+}
+
+func (u EnvelopeCreateEmailUnion) MarshalJSON() ([]byte, error) {
+	if u.EnvelopeCreateEmailEnum != nil {
+		return utils.MarshalJSON(u.EnvelopeCreateEmailEnum, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvelopeCreateEmailUnion: all fields are null")
 }
 
 type EnvelopeCreateRole string
@@ -458,8 +544,8 @@ const (
 )
 
 type EnvelopeCreateIdentifier11 struct {
-	Str    *string  `queryParam:"inline,name=identifier"`
-	Number *float64 `queryParam:"inline,name=identifier"`
+	Str    *string  `queryParam:"inline" union:"member"`
+	Number *float64 `queryParam:"inline" union:"member"`
 
 	Type EnvelopeCreateIdentifier11Type
 }
@@ -803,8 +889,8 @@ const (
 )
 
 type EnvelopeCreateIdentifier10 struct {
-	Str    *string  `queryParam:"inline,name=identifier"`
-	Number *float64 `queryParam:"inline,name=identifier"`
+	Str    *string  `queryParam:"inline" union:"member"`
+	Number *float64 `queryParam:"inline" union:"member"`
 
 	Type EnvelopeCreateIdentifier10Type
 }
@@ -1132,8 +1218,8 @@ const (
 )
 
 type EnvelopeCreateIdentifier9 struct {
-	Str    *string  `queryParam:"inline,name=identifier"`
-	Number *float64 `queryParam:"inline,name=identifier"`
+	Str    *string  `queryParam:"inline" union:"member"`
+	Number *float64 `queryParam:"inline" union:"member"`
 
 	Type EnvelopeCreateIdentifier9Type
 }
@@ -1503,8 +1589,8 @@ const (
 )
 
 type EnvelopeCreateIdentifier8 struct {
-	Str    *string  `queryParam:"inline,name=identifier"`
-	Number *float64 `queryParam:"inline,name=identifier"`
+	Str    *string  `queryParam:"inline" union:"member"`
+	Number *float64 `queryParam:"inline" union:"member"`
 
 	Type EnvelopeCreateIdentifier8Type
 }
@@ -1858,8 +1944,8 @@ const (
 )
 
 type EnvelopeCreateIdentifier7 struct {
-	Str    *string  `queryParam:"inline,name=identifier"`
-	Number *float64 `queryParam:"inline,name=identifier"`
+	Str    *string  `queryParam:"inline" union:"member"`
+	Number *float64 `queryParam:"inline" union:"member"`
 
 	Type EnvelopeCreateIdentifier7Type
 }
@@ -2144,8 +2230,8 @@ const (
 )
 
 type EnvelopeCreateIdentifier6 struct {
-	Str    *string  `queryParam:"inline,name=identifier"`
-	Number *float64 `queryParam:"inline,name=identifier"`
+	Str    *string  `queryParam:"inline" union:"member"`
+	Number *float64 `queryParam:"inline" union:"member"`
 
 	Type EnvelopeCreateIdentifier6Type
 }
@@ -2430,8 +2516,8 @@ const (
 )
 
 type EnvelopeCreateIdentifier5 struct {
-	Str    *string  `queryParam:"inline,name=identifier"`
-	Number *float64 `queryParam:"inline,name=identifier"`
+	Str    *string  `queryParam:"inline" union:"member"`
+	Number *float64 `queryParam:"inline" union:"member"`
 
 	Type EnvelopeCreateIdentifier5Type
 }
@@ -2716,8 +2802,8 @@ const (
 )
 
 type EnvelopeCreateIdentifier4 struct {
-	Str    *string  `queryParam:"inline,name=identifier"`
-	Number *float64 `queryParam:"inline,name=identifier"`
+	Str    *string  `queryParam:"inline" union:"member"`
+	Number *float64 `queryParam:"inline" union:"member"`
 
 	Type EnvelopeCreateIdentifier4Type
 }
@@ -3002,8 +3088,8 @@ const (
 )
 
 type EnvelopeCreateIdentifier3 struct {
-	Str    *string  `queryParam:"inline,name=identifier"`
-	Number *float64 `queryParam:"inline,name=identifier"`
+	Str    *string  `queryParam:"inline" union:"member"`
+	Number *float64 `queryParam:"inline" union:"member"`
 
 	Type EnvelopeCreateIdentifier3Type
 }
@@ -3166,8 +3252,8 @@ const (
 )
 
 type EnvelopeCreateIdentifier2 struct {
-	Str    *string  `queryParam:"inline,name=identifier"`
-	Number *float64 `queryParam:"inline,name=identifier"`
+	Str    *string  `queryParam:"inline" union:"member"`
+	Number *float64 `queryParam:"inline" union:"member"`
 
 	Type EnvelopeCreateIdentifier2Type
 }
@@ -3407,8 +3493,8 @@ const (
 )
 
 type EnvelopeCreateIdentifier1 struct {
-	Str    *string  `queryParam:"inline,name=identifier"`
-	Number *float64 `queryParam:"inline,name=identifier"`
+	Str    *string  `queryParam:"inline" union:"member"`
+	Number *float64 `queryParam:"inline" union:"member"`
 
 	Type EnvelopeCreateIdentifier1Type
 }
@@ -3557,17 +3643,17 @@ const (
 )
 
 type EnvelopeCreateFieldUnion struct {
-	EnvelopeCreateFieldSignature     *EnvelopeCreateFieldSignature     `queryParam:"inline,name=field"`
-	EnvelopeCreateFieldFreeSignature *EnvelopeCreateFieldFreeSignature `queryParam:"inline,name=field"`
-	EnvelopeCreateFieldInitials      *EnvelopeCreateFieldInitials      `queryParam:"inline,name=field"`
-	EnvelopeCreateFieldName          *EnvelopeCreateFieldName          `queryParam:"inline,name=field"`
-	EnvelopeCreateFieldEmail         *EnvelopeCreateFieldEmail         `queryParam:"inline,name=field"`
-	EnvelopeCreateFieldDate          *EnvelopeCreateFieldDate          `queryParam:"inline,name=field"`
-	EnvelopeCreateFieldText          *EnvelopeCreateFieldText          `queryParam:"inline,name=field"`
-	EnvelopeCreateFieldNumber        *EnvelopeCreateFieldNumber        `queryParam:"inline,name=field"`
-	EnvelopeCreateFieldRadio         *EnvelopeCreateFieldRadio         `queryParam:"inline,name=field"`
-	EnvelopeCreateFieldCheckbox      *EnvelopeCreateFieldCheckbox      `queryParam:"inline,name=field"`
-	EnvelopeCreateFieldDropdown      *EnvelopeCreateFieldDropdown      `queryParam:"inline,name=field"`
+	EnvelopeCreateFieldSignature     *EnvelopeCreateFieldSignature     `queryParam:"inline" union:"member"`
+	EnvelopeCreateFieldFreeSignature *EnvelopeCreateFieldFreeSignature `queryParam:"inline" union:"member"`
+	EnvelopeCreateFieldInitials      *EnvelopeCreateFieldInitials      `queryParam:"inline" union:"member"`
+	EnvelopeCreateFieldName          *EnvelopeCreateFieldName          `queryParam:"inline" union:"member"`
+	EnvelopeCreateFieldEmail         *EnvelopeCreateFieldEmail         `queryParam:"inline" union:"member"`
+	EnvelopeCreateFieldDate          *EnvelopeCreateFieldDate          `queryParam:"inline" union:"member"`
+	EnvelopeCreateFieldText          *EnvelopeCreateFieldText          `queryParam:"inline" union:"member"`
+	EnvelopeCreateFieldNumber        *EnvelopeCreateFieldNumber        `queryParam:"inline" union:"member"`
+	EnvelopeCreateFieldRadio         *EnvelopeCreateFieldRadio         `queryParam:"inline" union:"member"`
+	EnvelopeCreateFieldCheckbox      *EnvelopeCreateFieldCheckbox      `queryParam:"inline" union:"member"`
+	EnvelopeCreateFieldDropdown      *EnvelopeCreateFieldDropdown      `queryParam:"inline" union:"member"`
 
 	Type EnvelopeCreateFieldUnionType
 }
@@ -3802,7 +3888,7 @@ func (u EnvelopeCreateFieldUnion) MarshalJSON() ([]byte, error) {
 }
 
 type EnvelopeCreateRecipient struct {
-	Email        string                     `json:"email"`
+	Email        EnvelopeCreateEmailUnion   `json:"email"`
 	Name         string                     `json:"name"`
 	Role         EnvelopeCreateRole         `json:"role"`
 	SigningOrder *float64                   `json:"signingOrder,omitempty"`
@@ -3811,9 +3897,9 @@ type EnvelopeCreateRecipient struct {
 	Fields       []EnvelopeCreateFieldUnion `json:"fields,omitempty"`
 }
 
-func (e *EnvelopeCreateRecipient) GetEmail() string {
+func (e *EnvelopeCreateRecipient) GetEmail() EnvelopeCreateEmailUnion {
 	if e == nil {
-		return ""
+		return EnvelopeCreateEmailUnion{}
 	}
 	return e.Email
 }
@@ -4006,6 +4092,7 @@ const (
 	EnvelopeCreateLanguageFr   EnvelopeCreateLanguage = "fr"
 	EnvelopeCreateLanguageEs   EnvelopeCreateLanguage = "es"
 	EnvelopeCreateLanguageIt   EnvelopeCreateLanguage = "it"
+	EnvelopeCreateLanguageNl   EnvelopeCreateLanguage = "nl"
 	EnvelopeCreateLanguagePl   EnvelopeCreateLanguage = "pl"
 	EnvelopeCreateLanguagePtBr EnvelopeCreateLanguage = "pt-BR"
 	EnvelopeCreateLanguageJa   EnvelopeCreateLanguage = "ja"
@@ -4031,6 +4118,8 @@ func (e *EnvelopeCreateLanguage) UnmarshalJSON(data []byte) error {
 	case "es":
 		fallthrough
 	case "it":
+		fallthrough
+	case "nl":
 		fallthrough
 	case "pl":
 		fallthrough
@@ -4275,7 +4364,7 @@ func (e EnvelopeCreateAttachment) MarshalJSON() ([]byte, error) {
 }
 
 func (e *EnvelopeCreateAttachment) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"label", "data"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -4303,17 +4392,18 @@ func (e *EnvelopeCreateAttachment) GetType() *EnvelopeCreateTypeLink {
 }
 
 type EnvelopeCreatePayload struct {
-	Title            string                              `json:"title"`
-	Type             EnvelopeCreateType                  `json:"type"`
-	ExternalID       *string                             `json:"externalId,omitempty"`
-	Visibility       *EnvelopeCreateVisibility           `json:"visibility,omitempty"`
-	GlobalAccessAuth []EnvelopeCreateGlobalAccessAuth    `json:"globalAccessAuth,omitempty"`
-	GlobalActionAuth []EnvelopeCreateGlobalActionAuth    `json:"globalActionAuth,omitempty"`
-	FormValues       map[string]EnvelopeCreateFormValues `json:"formValues,omitempty"`
-	FolderID         *string                             `json:"folderId,omitempty"`
-	Recipients       []EnvelopeCreateRecipient           `json:"recipients,omitempty"`
-	Meta             *EnvelopeCreateMeta                 `json:"meta,omitempty"`
-	Attachments      []EnvelopeCreateAttachment          `json:"attachments,omitempty"`
+	Title                  string                              `json:"title"`
+	Type                   EnvelopeCreateType                  `json:"type"`
+	DelegatedDocumentOwner *string                             `json:"delegatedDocumentOwner,omitempty"`
+	ExternalID             *string                             `json:"externalId,omitempty"`
+	Visibility             *EnvelopeCreateVisibility           `json:"visibility,omitempty"`
+	GlobalAccessAuth       []EnvelopeCreateGlobalAccessAuth    `json:"globalAccessAuth,omitempty"`
+	GlobalActionAuth       []EnvelopeCreateGlobalActionAuth    `json:"globalActionAuth,omitempty"`
+	FormValues             map[string]EnvelopeCreateFormValues `json:"formValues,omitempty"`
+	FolderID               *string                             `json:"folderId,omitempty"`
+	Recipients             []EnvelopeCreateRecipient           `json:"recipients,omitempty"`
+	Meta                   *EnvelopeCreateMeta                 `json:"meta,omitempty"`
+	Attachments            []EnvelopeCreateAttachment          `json:"attachments,omitempty"`
 }
 
 func (e *EnvelopeCreatePayload) GetTitle() string {
@@ -4328,6 +4418,13 @@ func (e *EnvelopeCreatePayload) GetType() EnvelopeCreateType {
 		return EnvelopeCreateType("")
 	}
 	return e.Type
+}
+
+func (e *EnvelopeCreatePayload) GetDelegatedDocumentOwner() *string {
+	if e == nil {
+		return nil
+	}
+	return e.DelegatedDocumentOwner
 }
 
 func (e *EnvelopeCreatePayload) GetExternalID() *string {

@@ -10,18 +10,18 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type EnvelopeUpdateDataVisibility string
+type EnvelopeUpdateVisibilityRequest string
 
 const (
-	EnvelopeUpdateDataVisibilityEveryone        EnvelopeUpdateDataVisibility = "EVERYONE"
-	EnvelopeUpdateDataVisibilityManagerAndAbove EnvelopeUpdateDataVisibility = "MANAGER_AND_ABOVE"
-	EnvelopeUpdateDataVisibilityAdmin           EnvelopeUpdateDataVisibility = "ADMIN"
+	EnvelopeUpdateVisibilityRequestEveryone        EnvelopeUpdateVisibilityRequest = "EVERYONE"
+	EnvelopeUpdateVisibilityRequestManagerAndAbove EnvelopeUpdateVisibilityRequest = "MANAGER_AND_ABOVE"
+	EnvelopeUpdateVisibilityRequestAdmin           EnvelopeUpdateVisibilityRequest = "ADMIN"
 )
 
-func (e EnvelopeUpdateDataVisibility) ToPointer() *EnvelopeUpdateDataVisibility {
+func (e EnvelopeUpdateVisibilityRequest) ToPointer() *EnvelopeUpdateVisibilityRequest {
 	return &e
 }
-func (e *EnvelopeUpdateDataVisibility) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeUpdateVisibilityRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -32,24 +32,24 @@ func (e *EnvelopeUpdateDataVisibility) UnmarshalJSON(data []byte) error {
 	case "MANAGER_AND_ABOVE":
 		fallthrough
 	case "ADMIN":
-		*e = EnvelopeUpdateDataVisibility(v)
+		*e = EnvelopeUpdateVisibilityRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeUpdateDataVisibility: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeUpdateVisibilityRequest: %v", v)
 	}
 }
 
-type EnvelopeUpdateDataGlobalAccessAuth string
+type EnvelopeUpdateGlobalAccessAuthRequest string
 
 const (
-	EnvelopeUpdateDataGlobalAccessAuthAccount       EnvelopeUpdateDataGlobalAccessAuth = "ACCOUNT"
-	EnvelopeUpdateDataGlobalAccessAuthTwoFactorAuth EnvelopeUpdateDataGlobalAccessAuth = "TWO_FACTOR_AUTH"
+	EnvelopeUpdateGlobalAccessAuthRequestAccount       EnvelopeUpdateGlobalAccessAuthRequest = "ACCOUNT"
+	EnvelopeUpdateGlobalAccessAuthRequestTwoFactorAuth EnvelopeUpdateGlobalAccessAuthRequest = "TWO_FACTOR_AUTH"
 )
 
-func (e EnvelopeUpdateDataGlobalAccessAuth) ToPointer() *EnvelopeUpdateDataGlobalAccessAuth {
+func (e EnvelopeUpdateGlobalAccessAuthRequest) ToPointer() *EnvelopeUpdateGlobalAccessAuthRequest {
 	return &e
 }
-func (e *EnvelopeUpdateDataGlobalAccessAuth) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeUpdateGlobalAccessAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -58,26 +58,26 @@ func (e *EnvelopeUpdateDataGlobalAccessAuth) UnmarshalJSON(data []byte) error {
 	case "ACCOUNT":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
-		*e = EnvelopeUpdateDataGlobalAccessAuth(v)
+		*e = EnvelopeUpdateGlobalAccessAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeUpdateDataGlobalAccessAuth: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeUpdateGlobalAccessAuthRequest: %v", v)
 	}
 }
 
-type EnvelopeUpdateDataGlobalActionAuth string
+type EnvelopeUpdateGlobalActionAuthRequest string
 
 const (
-	EnvelopeUpdateDataGlobalActionAuthAccount       EnvelopeUpdateDataGlobalActionAuth = "ACCOUNT"
-	EnvelopeUpdateDataGlobalActionAuthPasskey       EnvelopeUpdateDataGlobalActionAuth = "PASSKEY"
-	EnvelopeUpdateDataGlobalActionAuthTwoFactorAuth EnvelopeUpdateDataGlobalActionAuth = "TWO_FACTOR_AUTH"
-	EnvelopeUpdateDataGlobalActionAuthPassword      EnvelopeUpdateDataGlobalActionAuth = "PASSWORD"
+	EnvelopeUpdateGlobalActionAuthRequestAccount       EnvelopeUpdateGlobalActionAuthRequest = "ACCOUNT"
+	EnvelopeUpdateGlobalActionAuthRequestPasskey       EnvelopeUpdateGlobalActionAuthRequest = "PASSKEY"
+	EnvelopeUpdateGlobalActionAuthRequestTwoFactorAuth EnvelopeUpdateGlobalActionAuthRequest = "TWO_FACTOR_AUTH"
+	EnvelopeUpdateGlobalActionAuthRequestPassword      EnvelopeUpdateGlobalActionAuthRequest = "PASSWORD"
 )
 
-func (e EnvelopeUpdateDataGlobalActionAuth) ToPointer() *EnvelopeUpdateDataGlobalActionAuth {
+func (e EnvelopeUpdateGlobalActionAuthRequest) ToPointer() *EnvelopeUpdateGlobalActionAuthRequest {
 	return &e
 }
-func (e *EnvelopeUpdateDataGlobalActionAuth) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeUpdateGlobalActionAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -90,20 +90,20 @@ func (e *EnvelopeUpdateDataGlobalActionAuth) UnmarshalJSON(data []byte) error {
 	case "TWO_FACTOR_AUTH":
 		fallthrough
 	case "PASSWORD":
-		*e = EnvelopeUpdateDataGlobalActionAuth(v)
+		*e = EnvelopeUpdateGlobalActionAuthRequest(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeUpdateDataGlobalActionAuth: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeUpdateGlobalActionAuthRequest: %v", v)
 	}
 }
 
 type EnvelopeUpdateData struct {
-	Title            *string                              `json:"title,omitempty"`
-	ExternalID       *string                              `json:"externalId,omitempty"`
-	Visibility       *EnvelopeUpdateDataVisibility        `json:"visibility,omitempty"`
-	GlobalAccessAuth []EnvelopeUpdateDataGlobalAccessAuth `json:"globalAccessAuth,omitempty"`
-	GlobalActionAuth []EnvelopeUpdateDataGlobalActionAuth `json:"globalActionAuth,omitempty"`
-	FolderID         *string                              `json:"folderId,omitempty"`
+	Title            *string                                 `json:"title,omitempty"`
+	ExternalID       *string                                 `json:"externalId,omitempty"`
+	Visibility       *EnvelopeUpdateVisibilityRequest        `json:"visibility,omitempty"`
+	GlobalAccessAuth []EnvelopeUpdateGlobalAccessAuthRequest `json:"globalAccessAuth,omitempty"`
+	GlobalActionAuth []EnvelopeUpdateGlobalActionAuthRequest `json:"globalActionAuth,omitempty"`
+	FolderID         *string                                 `json:"folderId,omitempty"`
 }
 
 func (e *EnvelopeUpdateData) GetTitle() *string {
@@ -120,21 +120,21 @@ func (e *EnvelopeUpdateData) GetExternalID() *string {
 	return e.ExternalID
 }
 
-func (e *EnvelopeUpdateData) GetVisibility() *EnvelopeUpdateDataVisibility {
+func (e *EnvelopeUpdateData) GetVisibility() *EnvelopeUpdateVisibilityRequest {
 	if e == nil {
 		return nil
 	}
 	return e.Visibility
 }
 
-func (e *EnvelopeUpdateData) GetGlobalAccessAuth() []EnvelopeUpdateDataGlobalAccessAuth {
+func (e *EnvelopeUpdateData) GetGlobalAccessAuth() []EnvelopeUpdateGlobalAccessAuthRequest {
 	if e == nil {
 		return nil
 	}
 	return e.GlobalAccessAuth
 }
 
-func (e *EnvelopeUpdateData) GetGlobalActionAuth() []EnvelopeUpdateDataGlobalActionAuth {
+func (e *EnvelopeUpdateData) GetGlobalActionAuth() []EnvelopeUpdateGlobalActionAuthRequest {
 	if e == nil {
 		return nil
 	}
@@ -294,6 +294,7 @@ const (
 	EnvelopeUpdateLanguageFr   EnvelopeUpdateLanguage = "fr"
 	EnvelopeUpdateLanguageEs   EnvelopeUpdateLanguage = "es"
 	EnvelopeUpdateLanguageIt   EnvelopeUpdateLanguage = "it"
+	EnvelopeUpdateLanguageNl   EnvelopeUpdateLanguage = "nl"
 	EnvelopeUpdateLanguagePl   EnvelopeUpdateLanguage = "pl"
 	EnvelopeUpdateLanguagePtBr EnvelopeUpdateLanguage = "pt-BR"
 	EnvelopeUpdateLanguageJa   EnvelopeUpdateLanguage = "ja"
@@ -319,6 +320,8 @@ func (e *EnvelopeUpdateLanguage) UnmarshalJSON(data []byte) error {
 	case "es":
 		fallthrough
 	case "it":
+		fallthrough
+	case "nl":
 		fallthrough
 	case "pl":
 		fallthrough
@@ -784,9 +787,9 @@ const (
 )
 
 type EnvelopeUpdateFormValues struct {
-	Str     *string  `queryParam:"inline,name=formValues"`
-	Boolean *bool    `queryParam:"inline,name=formValues"`
-	Number  *float64 `queryParam:"inline,name=formValues"`
+	Str     *string  `queryParam:"inline" union:"member"`
+	Boolean *bool    `queryParam:"inline" union:"member"`
+	Number  *float64 `queryParam:"inline" union:"member"`
 
 	Type EnvelopeUpdateFormValuesType
 }

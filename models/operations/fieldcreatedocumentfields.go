@@ -2570,17 +2570,17 @@ const (
 )
 
 type FieldCreateDocumentFieldsFieldUnion struct {
-	FieldCreateDocumentFieldsFieldSignature     *FieldCreateDocumentFieldsFieldSignature     `queryParam:"inline,name=field"`
-	FieldCreateDocumentFieldsFieldFreeSignature *FieldCreateDocumentFieldsFieldFreeSignature `queryParam:"inline,name=field"`
-	FieldCreateDocumentFieldsFieldInitials      *FieldCreateDocumentFieldsFieldInitials      `queryParam:"inline,name=field"`
-	FieldCreateDocumentFieldsFieldName          *FieldCreateDocumentFieldsFieldName          `queryParam:"inline,name=field"`
-	FieldCreateDocumentFieldsFieldEmail         *FieldCreateDocumentFieldsFieldEmail         `queryParam:"inline,name=field"`
-	FieldCreateDocumentFieldsFieldDate          *FieldCreateDocumentFieldsFieldDate          `queryParam:"inline,name=field"`
-	FieldCreateDocumentFieldsFieldText          *FieldCreateDocumentFieldsFieldText          `queryParam:"inline,name=field"`
-	FieldCreateDocumentFieldsFieldNumber        *FieldCreateDocumentFieldsFieldNumber        `queryParam:"inline,name=field"`
-	FieldCreateDocumentFieldsFieldRadio         *FieldCreateDocumentFieldsFieldRadio         `queryParam:"inline,name=field"`
-	FieldCreateDocumentFieldsFieldCheckbox      *FieldCreateDocumentFieldsFieldCheckbox      `queryParam:"inline,name=field"`
-	FieldCreateDocumentFieldsFieldDropdown      *FieldCreateDocumentFieldsFieldDropdown      `queryParam:"inline,name=field"`
+	FieldCreateDocumentFieldsFieldSignature     *FieldCreateDocumentFieldsFieldSignature     `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldFreeSignature *FieldCreateDocumentFieldsFieldFreeSignature `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldInitials      *FieldCreateDocumentFieldsFieldInitials      `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldName          *FieldCreateDocumentFieldsFieldName          `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldEmail         *FieldCreateDocumentFieldsFieldEmail         `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldDate          *FieldCreateDocumentFieldsFieldDate          `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldText          *FieldCreateDocumentFieldsFieldText          `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldNumber        *FieldCreateDocumentFieldsFieldNumber        `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldRadio         *FieldCreateDocumentFieldsFieldRadio         `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldCheckbox      *FieldCreateDocumentFieldsFieldCheckbox      `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldDropdown      *FieldCreateDocumentFieldsFieldDropdown      `queryParam:"inline" union:"member"`
 
 	Type FieldCreateDocumentFieldsFieldUnionType
 }
@@ -4342,16 +4342,16 @@ const (
 )
 
 type FieldCreateDocumentFieldsFieldMetaUnion struct {
-	FieldCreateDocumentFieldsFieldMetaSignatureResponse *FieldCreateDocumentFieldsFieldMetaSignatureResponse `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaInitialsResponse  *FieldCreateDocumentFieldsFieldMetaInitialsResponse  `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaNameResponse      *FieldCreateDocumentFieldsFieldMetaNameResponse      `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaEmailResponse     *FieldCreateDocumentFieldsFieldMetaEmailResponse     `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaDateResponse      *FieldCreateDocumentFieldsFieldMetaDateResponse      `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaTextResponse      *FieldCreateDocumentFieldsFieldMetaTextResponse      `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaNumberResponse    *FieldCreateDocumentFieldsFieldMetaNumberResponse    `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaRadioResponse     *FieldCreateDocumentFieldsFieldMetaRadioResponse     `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaCheckboxResponse  *FieldCreateDocumentFieldsFieldMetaCheckboxResponse  `queryParam:"inline,name=fieldMeta"`
-	FieldCreateDocumentFieldsFieldMetaDropdownResponse  *FieldCreateDocumentFieldsFieldMetaDropdownResponse  `queryParam:"inline,name=fieldMeta"`
+	FieldCreateDocumentFieldsFieldMetaSignatureResponse *FieldCreateDocumentFieldsFieldMetaSignatureResponse `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldMetaInitialsResponse  *FieldCreateDocumentFieldsFieldMetaInitialsResponse  `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldMetaNameResponse      *FieldCreateDocumentFieldsFieldMetaNameResponse      `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldMetaEmailResponse     *FieldCreateDocumentFieldsFieldMetaEmailResponse     `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldMetaDateResponse      *FieldCreateDocumentFieldsFieldMetaDateResponse      `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldMetaTextResponse      *FieldCreateDocumentFieldsFieldMetaTextResponse      `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldMetaNumberResponse    *FieldCreateDocumentFieldsFieldMetaNumberResponse    `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldMetaRadioResponse     *FieldCreateDocumentFieldsFieldMetaRadioResponse     `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldMetaCheckboxResponse  *FieldCreateDocumentFieldsFieldMetaCheckboxResponse  `queryParam:"inline" union:"member"`
+	FieldCreateDocumentFieldsFieldMetaDropdownResponse  *FieldCreateDocumentFieldsFieldMetaDropdownResponse  `queryParam:"inline" union:"member"`
 
 	Type FieldCreateDocumentFieldsFieldMetaUnionType
 }

@@ -1726,16 +1726,16 @@ const (
 )
 
 type EnvelopeRecipientGetFieldMetaUnion struct {
-	EnvelopeRecipientGetFieldMetaSignature *EnvelopeRecipientGetFieldMetaSignature `queryParam:"inline,name=fieldMeta"`
-	EnvelopeRecipientGetFieldMetaInitials  *EnvelopeRecipientGetFieldMetaInitials  `queryParam:"inline,name=fieldMeta"`
-	EnvelopeRecipientGetFieldMetaName      *EnvelopeRecipientGetFieldMetaName      `queryParam:"inline,name=fieldMeta"`
-	EnvelopeRecipientGetFieldMetaEmail     *EnvelopeRecipientGetFieldMetaEmail     `queryParam:"inline,name=fieldMeta"`
-	EnvelopeRecipientGetFieldMetaDate      *EnvelopeRecipientGetFieldMetaDate      `queryParam:"inline,name=fieldMeta"`
-	EnvelopeRecipientGetFieldMetaText      *EnvelopeRecipientGetFieldMetaText      `queryParam:"inline,name=fieldMeta"`
-	EnvelopeRecipientGetFieldMetaNumber    *EnvelopeRecipientGetFieldMetaNumber    `queryParam:"inline,name=fieldMeta"`
-	EnvelopeRecipientGetFieldMetaRadio     *EnvelopeRecipientGetFieldMetaRadio     `queryParam:"inline,name=fieldMeta"`
-	EnvelopeRecipientGetFieldMetaCheckbox  *EnvelopeRecipientGetFieldMetaCheckbox  `queryParam:"inline,name=fieldMeta"`
-	EnvelopeRecipientGetFieldMetaDropdown  *EnvelopeRecipientGetFieldMetaDropdown  `queryParam:"inline,name=fieldMeta"`
+	EnvelopeRecipientGetFieldMetaSignature *EnvelopeRecipientGetFieldMetaSignature `queryParam:"inline" union:"member"`
+	EnvelopeRecipientGetFieldMetaInitials  *EnvelopeRecipientGetFieldMetaInitials  `queryParam:"inline" union:"member"`
+	EnvelopeRecipientGetFieldMetaName      *EnvelopeRecipientGetFieldMetaName      `queryParam:"inline" union:"member"`
+	EnvelopeRecipientGetFieldMetaEmail     *EnvelopeRecipientGetFieldMetaEmail     `queryParam:"inline" union:"member"`
+	EnvelopeRecipientGetFieldMetaDate      *EnvelopeRecipientGetFieldMetaDate      `queryParam:"inline" union:"member"`
+	EnvelopeRecipientGetFieldMetaText      *EnvelopeRecipientGetFieldMetaText      `queryParam:"inline" union:"member"`
+	EnvelopeRecipientGetFieldMetaNumber    *EnvelopeRecipientGetFieldMetaNumber    `queryParam:"inline" union:"member"`
+	EnvelopeRecipientGetFieldMetaRadio     *EnvelopeRecipientGetFieldMetaRadio     `queryParam:"inline" union:"member"`
+	EnvelopeRecipientGetFieldMetaCheckbox  *EnvelopeRecipientGetFieldMetaCheckbox  `queryParam:"inline" union:"member"`
+	EnvelopeRecipientGetFieldMetaDropdown  *EnvelopeRecipientGetFieldMetaDropdown  `queryParam:"inline" union:"member"`
 
 	Type EnvelopeRecipientGetFieldMetaUnionType
 }

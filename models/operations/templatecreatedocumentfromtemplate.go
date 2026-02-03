@@ -10,10 +10,96 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
+type TemplateCreateDocumentFromTemplateEmailEnum string
+
+const (
+	TemplateCreateDocumentFromTemplateEmailEnumUnknown TemplateCreateDocumentFromTemplateEmailEnum = ""
+)
+
+func (e TemplateCreateDocumentFromTemplateEmailEnum) ToPointer() *TemplateCreateDocumentFromTemplateEmailEnum {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateEmailEnum) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "":
+		*e = TemplateCreateDocumentFromTemplateEmailEnum(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateEmailEnum: %v", v)
+	}
+}
+
+type TemplateCreateDocumentFromTemplateEmailUnionType string
+
+const (
+	TemplateCreateDocumentFromTemplateEmailUnionTypeTemplateCreateDocumentFromTemplateEmailEnum TemplateCreateDocumentFromTemplateEmailUnionType = "template_createDocumentFromTemplate_email_enum"
+	TemplateCreateDocumentFromTemplateEmailUnionTypeStr                                         TemplateCreateDocumentFromTemplateEmailUnionType = "str"
+)
+
+type TemplateCreateDocumentFromTemplateEmailUnion struct {
+	TemplateCreateDocumentFromTemplateEmailEnum *TemplateCreateDocumentFromTemplateEmailEnum `queryParam:"inline" union:"member"`
+	Str                                         *string                                      `queryParam:"inline" union:"member"`
+
+	Type TemplateCreateDocumentFromTemplateEmailUnionType
+}
+
+func CreateTemplateCreateDocumentFromTemplateEmailUnionTemplateCreateDocumentFromTemplateEmailEnum(templateCreateDocumentFromTemplateEmailEnum TemplateCreateDocumentFromTemplateEmailEnum) TemplateCreateDocumentFromTemplateEmailUnion {
+	typ := TemplateCreateDocumentFromTemplateEmailUnionTypeTemplateCreateDocumentFromTemplateEmailEnum
+
+	return TemplateCreateDocumentFromTemplateEmailUnion{
+		TemplateCreateDocumentFromTemplateEmailEnum: &templateCreateDocumentFromTemplateEmailEnum,
+		Type: typ,
+	}
+}
+
+func CreateTemplateCreateDocumentFromTemplateEmailUnionStr(str string) TemplateCreateDocumentFromTemplateEmailUnion {
+	typ := TemplateCreateDocumentFromTemplateEmailUnionTypeStr
+
+	return TemplateCreateDocumentFromTemplateEmailUnion{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *TemplateCreateDocumentFromTemplateEmailUnion) UnmarshalJSON(data []byte) error {
+
+	var templateCreateDocumentFromTemplateEmailEnum TemplateCreateDocumentFromTemplateEmailEnum = TemplateCreateDocumentFromTemplateEmailEnum("")
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateEmailEnum, "", true, nil); err == nil {
+		u.TemplateCreateDocumentFromTemplateEmailEnum = &templateCreateDocumentFromTemplateEmailEnum
+		u.Type = TemplateCreateDocumentFromTemplateEmailUnionTypeTemplateCreateDocumentFromTemplateEmailEnum
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = TemplateCreateDocumentFromTemplateEmailUnionTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TemplateCreateDocumentFromTemplateEmailUnion", string(data))
+}
+
+func (u TemplateCreateDocumentFromTemplateEmailUnion) MarshalJSON() ([]byte, error) {
+	if u.TemplateCreateDocumentFromTemplateEmailEnum != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateEmailEnum, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type TemplateCreateDocumentFromTemplateEmailUnion: all fields are null")
+}
+
 type TemplateCreateDocumentFromTemplateRecipientRequest struct {
-	ID    float64 `json:"id"`
-	Email string  `json:"email"`
-	Name  *string `json:"name,omitempty"`
+	ID    float64                                      `json:"id"`
+	Email TemplateCreateDocumentFromTemplateEmailUnion `json:"email"`
+	Name  *string                                      `json:"name,omitempty"`
 }
 
 func (t *TemplateCreateDocumentFromTemplateRecipientRequest) GetID() float64 {
@@ -23,9 +109,9 @@ func (t *TemplateCreateDocumentFromTemplateRecipientRequest) GetID() float64 {
 	return t.ID
 }
 
-func (t *TemplateCreateDocumentFromTemplateRecipientRequest) GetEmail() string {
+func (t *TemplateCreateDocumentFromTemplateRecipientRequest) GetEmail() TemplateCreateDocumentFromTemplateEmailUnion {
 	if t == nil {
-		return ""
+		return TemplateCreateDocumentFromTemplateEmailUnion{}
 	}
 	return t.Email
 }
@@ -490,12 +576,12 @@ const (
 )
 
 type TemplateCreateDocumentFromTemplatePrefillFieldUnion struct {
-	TemplateCreateDocumentFromTemplatePrefillFieldText     *TemplateCreateDocumentFromTemplatePrefillFieldText     `queryParam:"inline,name=prefillField"`
-	TemplateCreateDocumentFromTemplatePrefillFieldNumber   *TemplateCreateDocumentFromTemplatePrefillFieldNumber   `queryParam:"inline,name=prefillField"`
-	TemplateCreateDocumentFromTemplatePrefillFieldRadio    *TemplateCreateDocumentFromTemplatePrefillFieldRadio    `queryParam:"inline,name=prefillField"`
-	TemplateCreateDocumentFromTemplatePrefillFieldCheckbox *TemplateCreateDocumentFromTemplatePrefillFieldCheckbox `queryParam:"inline,name=prefillField"`
-	TemplateCreateDocumentFromTemplatePrefillFieldDropdown *TemplateCreateDocumentFromTemplatePrefillFieldDropdown `queryParam:"inline,name=prefillField"`
-	TemplateCreateDocumentFromTemplatePrefillFieldDate     *TemplateCreateDocumentFromTemplatePrefillFieldDate     `queryParam:"inline,name=prefillField"`
+	TemplateCreateDocumentFromTemplatePrefillFieldText     *TemplateCreateDocumentFromTemplatePrefillFieldText     `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplatePrefillFieldNumber   *TemplateCreateDocumentFromTemplatePrefillFieldNumber   `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplatePrefillFieldRadio    *TemplateCreateDocumentFromTemplatePrefillFieldRadio    `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplatePrefillFieldCheckbox *TemplateCreateDocumentFromTemplatePrefillFieldCheckbox `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplatePrefillFieldDropdown *TemplateCreateDocumentFromTemplatePrefillFieldDropdown `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplatePrefillFieldDate     *TemplateCreateDocumentFromTemplatePrefillFieldDate     `queryParam:"inline" union:"member"`
 
 	Type TemplateCreateDocumentFromTemplatePrefillFieldUnionType
 }
@@ -819,6 +905,7 @@ const (
 	TemplateCreateDocumentFromTemplateLanguageFr   TemplateCreateDocumentFromTemplateLanguage = "fr"
 	TemplateCreateDocumentFromTemplateLanguageEs   TemplateCreateDocumentFromTemplateLanguage = "es"
 	TemplateCreateDocumentFromTemplateLanguageIt   TemplateCreateDocumentFromTemplateLanguage = "it"
+	TemplateCreateDocumentFromTemplateLanguageNl   TemplateCreateDocumentFromTemplateLanguage = "nl"
 	TemplateCreateDocumentFromTemplateLanguagePl   TemplateCreateDocumentFromTemplateLanguage = "pl"
 	TemplateCreateDocumentFromTemplateLanguagePtBr TemplateCreateDocumentFromTemplateLanguage = "pt-BR"
 	TemplateCreateDocumentFromTemplateLanguageJa   TemplateCreateDocumentFromTemplateLanguage = "ja"
@@ -844,6 +931,8 @@ func (e *TemplateCreateDocumentFromTemplateLanguage) UnmarshalJSON(data []byte) 
 	case "es":
 		fallthrough
 	case "it":
+		fallthrough
+	case "nl":
 		fallthrough
 	case "pl":
 		fallthrough
@@ -1002,7 +1091,7 @@ func (t TemplateCreateDocumentFromTemplateAttachment) MarshalJSON() ([]byte, err
 }
 
 func (t *TemplateCreateDocumentFromTemplateAttachment) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"label", "data"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -1029,16 +1118,103 @@ func (t *TemplateCreateDocumentFromTemplateAttachment) GetType() *TemplateCreate
 	return t.Type
 }
 
+type TemplateCreateDocumentFromTemplateFormValuesRequestType string
+
+const (
+	TemplateCreateDocumentFromTemplateFormValuesRequestTypeStr     TemplateCreateDocumentFromTemplateFormValuesRequestType = "str"
+	TemplateCreateDocumentFromTemplateFormValuesRequestTypeBoolean TemplateCreateDocumentFromTemplateFormValuesRequestType = "boolean"
+	TemplateCreateDocumentFromTemplateFormValuesRequestTypeNumber  TemplateCreateDocumentFromTemplateFormValuesRequestType = "number"
+)
+
+type TemplateCreateDocumentFromTemplateFormValuesRequest struct {
+	Str     *string  `queryParam:"inline" union:"member"`
+	Boolean *bool    `queryParam:"inline" union:"member"`
+	Number  *float64 `queryParam:"inline" union:"member"`
+
+	Type TemplateCreateDocumentFromTemplateFormValuesRequestType
+}
+
+func CreateTemplateCreateDocumentFromTemplateFormValuesRequestStr(str string) TemplateCreateDocumentFromTemplateFormValuesRequest {
+	typ := TemplateCreateDocumentFromTemplateFormValuesRequestTypeStr
+
+	return TemplateCreateDocumentFromTemplateFormValuesRequest{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateTemplateCreateDocumentFromTemplateFormValuesRequestBoolean(boolean bool) TemplateCreateDocumentFromTemplateFormValuesRequest {
+	typ := TemplateCreateDocumentFromTemplateFormValuesRequestTypeBoolean
+
+	return TemplateCreateDocumentFromTemplateFormValuesRequest{
+		Boolean: &boolean,
+		Type:    typ,
+	}
+}
+
+func CreateTemplateCreateDocumentFromTemplateFormValuesRequestNumber(number float64) TemplateCreateDocumentFromTemplateFormValuesRequest {
+	typ := TemplateCreateDocumentFromTemplateFormValuesRequestTypeNumber
+
+	return TemplateCreateDocumentFromTemplateFormValuesRequest{
+		Number: &number,
+		Type:   typ,
+	}
+}
+
+func (u *TemplateCreateDocumentFromTemplateFormValuesRequest) UnmarshalJSON(data []byte) error {
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = TemplateCreateDocumentFromTemplateFormValuesRequestTypeStr
+		return nil
+	}
+
+	var boolean bool = false
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
+		u.Boolean = &boolean
+		u.Type = TemplateCreateDocumentFromTemplateFormValuesRequestTypeBoolean
+		return nil
+	}
+
+	var number float64 = float64(0)
+	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
+		u.Number = &number
+		u.Type = TemplateCreateDocumentFromTemplateFormValuesRequestTypeNumber
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TemplateCreateDocumentFromTemplateFormValuesRequest", string(data))
+}
+
+func (u TemplateCreateDocumentFromTemplateFormValuesRequest) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.Boolean != nil {
+		return utils.MarshalJSON(u.Boolean, "", true)
+	}
+
+	if u.Number != nil {
+		return utils.MarshalJSON(u.Number, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type TemplateCreateDocumentFromTemplateFormValuesRequest: all fields are null")
+}
+
 type TemplateCreateDocumentFromTemplateRequest struct {
-	TemplateID           float64                                                 `json:"templateId"`
-	Recipients           []TemplateCreateDocumentFromTemplateRecipientRequest    `json:"recipients"`
-	DistributeDocument   *bool                                                   `json:"distributeDocument,omitempty"`
-	CustomDocumentDataID *string                                                 `json:"customDocumentDataId,omitempty"`
-	CustomDocumentData   []TemplateCreateDocumentFromTemplateCustomDocumentDatum `json:"customDocumentData,omitempty"`
-	FolderID             *string                                                 `json:"folderId,omitempty"`
-	PrefillFields        []TemplateCreateDocumentFromTemplatePrefillFieldUnion   `json:"prefillFields,omitempty"`
-	Override             *TemplateCreateDocumentFromTemplateOverride             `json:"override,omitempty"`
-	Attachments          []TemplateCreateDocumentFromTemplateAttachment          `json:"attachments,omitempty"`
+	TemplateID           float64                                                        `json:"templateId"`
+	ExternalID           *string                                                        `json:"externalId,omitempty"`
+	Recipients           []TemplateCreateDocumentFromTemplateRecipientRequest           `json:"recipients"`
+	DistributeDocument   *bool                                                          `json:"distributeDocument,omitempty"`
+	CustomDocumentDataID *string                                                        `json:"customDocumentDataId,omitempty"`
+	CustomDocumentData   []TemplateCreateDocumentFromTemplateCustomDocumentDatum        `json:"customDocumentData,omitempty"`
+	FolderID             *string                                                        `json:"folderId,omitempty"`
+	PrefillFields        []TemplateCreateDocumentFromTemplatePrefillFieldUnion          `json:"prefillFields,omitempty"`
+	Override             *TemplateCreateDocumentFromTemplateOverride                    `json:"override,omitempty"`
+	Attachments          []TemplateCreateDocumentFromTemplateAttachment                 `json:"attachments,omitempty"`
+	FormValues           map[string]TemplateCreateDocumentFromTemplateFormValuesRequest `json:"formValues,omitempty"`
 }
 
 func (t *TemplateCreateDocumentFromTemplateRequest) GetTemplateID() float64 {
@@ -1046,6 +1222,13 @@ func (t *TemplateCreateDocumentFromTemplateRequest) GetTemplateID() float64 {
 		return 0.0
 	}
 	return t.TemplateID
+}
+
+func (t *TemplateCreateDocumentFromTemplateRequest) GetExternalID() *string {
+	if t == nil {
+		return nil
+	}
+	return t.ExternalID
 }
 
 func (t *TemplateCreateDocumentFromTemplateRequest) GetRecipients() []TemplateCreateDocumentFromTemplateRecipientRequest {
@@ -1102,6 +1285,13 @@ func (t *TemplateCreateDocumentFromTemplateRequest) GetAttachments() []TemplateC
 		return nil
 	}
 	return t.Attachments
+}
+
+func (t *TemplateCreateDocumentFromTemplateRequest) GetFormValues() map[string]TemplateCreateDocumentFromTemplateFormValuesRequest {
+	if t == nil {
+		return nil
+	}
+	return t.FormValues
 }
 
 type TemplateCreateDocumentFromTemplateVisibility string
@@ -1271,76 +1461,76 @@ func (t *TemplateCreateDocumentFromTemplateAuthOptions) GetGlobalActionAuth() []
 	return t.GlobalActionAuth
 }
 
-type TemplateCreateDocumentFromTemplateFormValuesType string
+type TemplateCreateDocumentFromTemplateFormValuesResponseType string
 
 const (
-	TemplateCreateDocumentFromTemplateFormValuesTypeStr     TemplateCreateDocumentFromTemplateFormValuesType = "str"
-	TemplateCreateDocumentFromTemplateFormValuesTypeBoolean TemplateCreateDocumentFromTemplateFormValuesType = "boolean"
-	TemplateCreateDocumentFromTemplateFormValuesTypeNumber  TemplateCreateDocumentFromTemplateFormValuesType = "number"
+	TemplateCreateDocumentFromTemplateFormValuesResponseTypeStr     TemplateCreateDocumentFromTemplateFormValuesResponseType = "str"
+	TemplateCreateDocumentFromTemplateFormValuesResponseTypeBoolean TemplateCreateDocumentFromTemplateFormValuesResponseType = "boolean"
+	TemplateCreateDocumentFromTemplateFormValuesResponseTypeNumber  TemplateCreateDocumentFromTemplateFormValuesResponseType = "number"
 )
 
-type TemplateCreateDocumentFromTemplateFormValues struct {
-	Str     *string  `queryParam:"inline,name=formValues"`
-	Boolean *bool    `queryParam:"inline,name=formValues"`
-	Number  *float64 `queryParam:"inline,name=formValues"`
+type TemplateCreateDocumentFromTemplateFormValuesResponse struct {
+	Str     *string  `queryParam:"inline" union:"member"`
+	Boolean *bool    `queryParam:"inline" union:"member"`
+	Number  *float64 `queryParam:"inline" union:"member"`
 
-	Type TemplateCreateDocumentFromTemplateFormValuesType
+	Type TemplateCreateDocumentFromTemplateFormValuesResponseType
 }
 
-func CreateTemplateCreateDocumentFromTemplateFormValuesStr(str string) TemplateCreateDocumentFromTemplateFormValues {
-	typ := TemplateCreateDocumentFromTemplateFormValuesTypeStr
+func CreateTemplateCreateDocumentFromTemplateFormValuesResponseStr(str string) TemplateCreateDocumentFromTemplateFormValuesResponse {
+	typ := TemplateCreateDocumentFromTemplateFormValuesResponseTypeStr
 
-	return TemplateCreateDocumentFromTemplateFormValues{
+	return TemplateCreateDocumentFromTemplateFormValuesResponse{
 		Str:  &str,
 		Type: typ,
 	}
 }
 
-func CreateTemplateCreateDocumentFromTemplateFormValuesBoolean(boolean bool) TemplateCreateDocumentFromTemplateFormValues {
-	typ := TemplateCreateDocumentFromTemplateFormValuesTypeBoolean
+func CreateTemplateCreateDocumentFromTemplateFormValuesResponseBoolean(boolean bool) TemplateCreateDocumentFromTemplateFormValuesResponse {
+	typ := TemplateCreateDocumentFromTemplateFormValuesResponseTypeBoolean
 
-	return TemplateCreateDocumentFromTemplateFormValues{
+	return TemplateCreateDocumentFromTemplateFormValuesResponse{
 		Boolean: &boolean,
 		Type:    typ,
 	}
 }
 
-func CreateTemplateCreateDocumentFromTemplateFormValuesNumber(number float64) TemplateCreateDocumentFromTemplateFormValues {
-	typ := TemplateCreateDocumentFromTemplateFormValuesTypeNumber
+func CreateTemplateCreateDocumentFromTemplateFormValuesResponseNumber(number float64) TemplateCreateDocumentFromTemplateFormValuesResponse {
+	typ := TemplateCreateDocumentFromTemplateFormValuesResponseTypeNumber
 
-	return TemplateCreateDocumentFromTemplateFormValues{
+	return TemplateCreateDocumentFromTemplateFormValuesResponse{
 		Number: &number,
 		Type:   typ,
 	}
 }
 
-func (u *TemplateCreateDocumentFromTemplateFormValues) UnmarshalJSON(data []byte) error {
+func (u *TemplateCreateDocumentFromTemplateFormValuesResponse) UnmarshalJSON(data []byte) error {
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
 		u.Str = &str
-		u.Type = TemplateCreateDocumentFromTemplateFormValuesTypeStr
+		u.Type = TemplateCreateDocumentFromTemplateFormValuesResponseTypeStr
 		return nil
 	}
 
 	var boolean bool = false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, nil); err == nil {
 		u.Boolean = &boolean
-		u.Type = TemplateCreateDocumentFromTemplateFormValuesTypeBoolean
+		u.Type = TemplateCreateDocumentFromTemplateFormValuesResponseTypeBoolean
 		return nil
 	}
 
 	var number float64 = float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, nil); err == nil {
 		u.Number = &number
-		u.Type = TemplateCreateDocumentFromTemplateFormValuesTypeNumber
+		u.Type = TemplateCreateDocumentFromTemplateFormValuesResponseTypeNumber
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TemplateCreateDocumentFromTemplateFormValues", string(data))
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TemplateCreateDocumentFromTemplateFormValuesResponse", string(data))
 }
 
-func (u TemplateCreateDocumentFromTemplateFormValues) MarshalJSON() ([]byte, error) {
+func (u TemplateCreateDocumentFromTemplateFormValuesResponse) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
@@ -1353,7 +1543,7 @@ func (u TemplateCreateDocumentFromTemplateFormValues) MarshalJSON() ([]byte, err
 		return utils.MarshalJSON(u.Number, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type TemplateCreateDocumentFromTemplateFormValues: all fields are null")
+	return nil, errors.New("could not marshal union type TemplateCreateDocumentFromTemplateFormValuesResponse: all fields are null")
 }
 
 type TemplateCreateDocumentFromTemplateDocumentDataType string
@@ -1576,7 +1766,7 @@ func (t TemplateCreateDocumentFromTemplateDocumentMeta) MarshalJSON() ([]byte, e
 }
 
 func (t *TemplateCreateDocumentFromTemplateDocumentMeta) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"signingOrder", "distributionMethod", "id", "typedSignatureEnabled", "uploadSignatureEnabled", "drawSignatureEnabled", "allowDictateNextSigner", "language"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -3709,16 +3899,16 @@ const (
 )
 
 type TemplateCreateDocumentFromTemplateFieldMetaUnion struct {
-	TemplateCreateDocumentFromTemplateFieldMetaSignature *TemplateCreateDocumentFromTemplateFieldMetaSignature `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateDocumentFromTemplateFieldMetaInitials  *TemplateCreateDocumentFromTemplateFieldMetaInitials  `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateDocumentFromTemplateFieldMetaName      *TemplateCreateDocumentFromTemplateFieldMetaName      `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateDocumentFromTemplateFieldMetaEmail     *TemplateCreateDocumentFromTemplateFieldMetaEmail     `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateDocumentFromTemplateFieldMetaDate      *TemplateCreateDocumentFromTemplateFieldMetaDate      `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateDocumentFromTemplateFieldMetaText      *TemplateCreateDocumentFromTemplateFieldMetaText      `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateDocumentFromTemplateFieldMetaNumber    *TemplateCreateDocumentFromTemplateFieldMetaNumber    `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateDocumentFromTemplateFieldMetaRadio     *TemplateCreateDocumentFromTemplateFieldMetaRadio     `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateDocumentFromTemplateFieldMetaCheckbox  *TemplateCreateDocumentFromTemplateFieldMetaCheckbox  `queryParam:"inline,name=fieldMeta"`
-	TemplateCreateDocumentFromTemplateFieldMetaDropdown  *TemplateCreateDocumentFromTemplateFieldMetaDropdown  `queryParam:"inline,name=fieldMeta"`
+	TemplateCreateDocumentFromTemplateFieldMetaSignature *TemplateCreateDocumentFromTemplateFieldMetaSignature `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplateFieldMetaInitials  *TemplateCreateDocumentFromTemplateFieldMetaInitials  `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplateFieldMetaName      *TemplateCreateDocumentFromTemplateFieldMetaName      `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplateFieldMetaEmail     *TemplateCreateDocumentFromTemplateFieldMetaEmail     `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplateFieldMetaDate      *TemplateCreateDocumentFromTemplateFieldMetaDate      `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplateFieldMetaText      *TemplateCreateDocumentFromTemplateFieldMetaText      `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplateFieldMetaNumber    *TemplateCreateDocumentFromTemplateFieldMetaNumber    `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplateFieldMetaRadio     *TemplateCreateDocumentFromTemplateFieldMetaRadio     `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplateFieldMetaCheckbox  *TemplateCreateDocumentFromTemplateFieldMetaCheckbox  `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplateFieldMetaDropdown  *TemplateCreateDocumentFromTemplateFieldMetaDropdown  `queryParam:"inline" union:"member"`
 
 	Type TemplateCreateDocumentFromTemplateFieldMetaUnionType
 }
@@ -4065,31 +4255,31 @@ func (t *TemplateCreateDocumentFromTemplateField) GetTemplateID() *float64 {
 
 // TemplateCreateDocumentFromTemplateResponseBody - Successful response
 type TemplateCreateDocumentFromTemplateResponseBody struct {
-	Visibility      TemplateCreateDocumentFromTemplateVisibility            `json:"visibility"`
-	Status          TemplateCreateDocumentFromTemplateStatus                `json:"status"`
-	Source          TemplateCreateDocumentFromTemplateSource                `json:"source"`
-	ID              float64                                                 `json:"id"`
-	ExternalID      *string                                                 `json:"externalId"`
-	UserID          float64                                                 `json:"userId"`
-	AuthOptions     *TemplateCreateDocumentFromTemplateAuthOptions          `json:"authOptions"`
-	FormValues      map[string]TemplateCreateDocumentFromTemplateFormValues `json:"formValues"`
-	Title           string                                                  `json:"title"`
-	CreatedAt       string                                                  `json:"createdAt"`
-	UpdatedAt       string                                                  `json:"updatedAt"`
-	CompletedAt     *string                                                 `json:"completedAt"`
-	DeletedAt       *string                                                 `json:"deletedAt"`
-	TeamID          float64                                                 `json:"teamId"`
-	FolderID        *string                                                 `json:"folderId"`
-	EnvelopeID      string                                                  `json:"envelopeId"`
-	InternalVersion float64                                                 `json:"internalVersion"`
-	TemplateID      *float64                                                `json:"templateId,omitempty"`
-	DocumentDataID  *string                                                 `default:"" json:"documentDataId"`
-	DocumentData    TemplateCreateDocumentFromTemplateDocumentData          `json:"documentData"`
-	DocumentMeta    TemplateCreateDocumentFromTemplateDocumentMeta          `json:"documentMeta"`
-	EnvelopeItems   []TemplateCreateDocumentFromTemplateEnvelopeItem        `json:"envelopeItems"`
-	Folder          *TemplateCreateDocumentFromTemplateFolder               `json:"folder"`
-	Recipients      []TemplateCreateDocumentFromTemplateRecipientResponse   `json:"recipients"`
-	Fields          []TemplateCreateDocumentFromTemplateField               `json:"fields"`
+	Visibility      TemplateCreateDocumentFromTemplateVisibility                    `json:"visibility"`
+	Status          TemplateCreateDocumentFromTemplateStatus                        `json:"status"`
+	Source          TemplateCreateDocumentFromTemplateSource                        `json:"source"`
+	ID              float64                                                         `json:"id"`
+	ExternalID      *string                                                         `json:"externalId"`
+	UserID          float64                                                         `json:"userId"`
+	AuthOptions     *TemplateCreateDocumentFromTemplateAuthOptions                  `json:"authOptions"`
+	FormValues      map[string]TemplateCreateDocumentFromTemplateFormValuesResponse `json:"formValues"`
+	Title           string                                                          `json:"title"`
+	CreatedAt       string                                                          `json:"createdAt"`
+	UpdatedAt       string                                                          `json:"updatedAt"`
+	CompletedAt     *string                                                         `json:"completedAt"`
+	DeletedAt       *string                                                         `json:"deletedAt"`
+	TeamID          float64                                                         `json:"teamId"`
+	FolderID        *string                                                         `json:"folderId"`
+	EnvelopeID      string                                                          `json:"envelopeId"`
+	InternalVersion float64                                                         `json:"internalVersion"`
+	TemplateID      *float64                                                        `json:"templateId,omitempty"`
+	DocumentDataID  *string                                                         `default:"" json:"documentDataId"`
+	DocumentData    TemplateCreateDocumentFromTemplateDocumentData                  `json:"documentData"`
+	DocumentMeta    TemplateCreateDocumentFromTemplateDocumentMeta                  `json:"documentMeta"`
+	EnvelopeItems   []TemplateCreateDocumentFromTemplateEnvelopeItem                `json:"envelopeItems"`
+	Folder          *TemplateCreateDocumentFromTemplateFolder                       `json:"folder"`
+	Recipients      []TemplateCreateDocumentFromTemplateRecipientResponse           `json:"recipients"`
+	Fields          []TemplateCreateDocumentFromTemplateField                       `json:"fields"`
 }
 
 func (t TemplateCreateDocumentFromTemplateResponseBody) MarshalJSON() ([]byte, error) {
@@ -4097,7 +4287,7 @@ func (t TemplateCreateDocumentFromTemplateResponseBody) MarshalJSON() ([]byte, e
 }
 
 func (t *TemplateCreateDocumentFromTemplateResponseBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"visibility", "status", "source", "id", "userId", "title", "createdAt", "updatedAt", "teamId", "envelopeId", "internalVersion", "documentData", "documentMeta", "envelopeItems", "recipients", "fields"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -4152,7 +4342,7 @@ func (t *TemplateCreateDocumentFromTemplateResponseBody) GetAuthOptions() *Templ
 	return t.AuthOptions
 }
 
-func (t *TemplateCreateDocumentFromTemplateResponseBody) GetFormValues() map[string]TemplateCreateDocumentFromTemplateFormValues {
+func (t *TemplateCreateDocumentFromTemplateResponseBody) GetFormValues() map[string]TemplateCreateDocumentFromTemplateFormValuesResponse {
 	if t == nil {
 		return nil
 	}

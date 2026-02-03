@@ -2416,16 +2416,16 @@ const (
 )
 
 type TemplateGetTemplateByIDFieldMetaUnion struct {
-	TemplateGetTemplateByIDFieldMetaSignature *TemplateGetTemplateByIDFieldMetaSignature `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaInitials  *TemplateGetTemplateByIDFieldMetaInitials  `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaName      *TemplateGetTemplateByIDFieldMetaName      `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaEmail     *TemplateGetTemplateByIDFieldMetaEmail     `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaDate      *TemplateGetTemplateByIDFieldMetaDate      `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaText      *TemplateGetTemplateByIDFieldMetaText      `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaNumber    *TemplateGetTemplateByIDFieldMetaNumber    `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaRadio     *TemplateGetTemplateByIDFieldMetaRadio     `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaCheckbox  *TemplateGetTemplateByIDFieldMetaCheckbox  `queryParam:"inline,name=fieldMeta"`
-	TemplateGetTemplateByIDFieldMetaDropdown  *TemplateGetTemplateByIDFieldMetaDropdown  `queryParam:"inline,name=fieldMeta"`
+	TemplateGetTemplateByIDFieldMetaSignature *TemplateGetTemplateByIDFieldMetaSignature `queryParam:"inline" union:"member"`
+	TemplateGetTemplateByIDFieldMetaInitials  *TemplateGetTemplateByIDFieldMetaInitials  `queryParam:"inline" union:"member"`
+	TemplateGetTemplateByIDFieldMetaName      *TemplateGetTemplateByIDFieldMetaName      `queryParam:"inline" union:"member"`
+	TemplateGetTemplateByIDFieldMetaEmail     *TemplateGetTemplateByIDFieldMetaEmail     `queryParam:"inline" union:"member"`
+	TemplateGetTemplateByIDFieldMetaDate      *TemplateGetTemplateByIDFieldMetaDate      `queryParam:"inline" union:"member"`
+	TemplateGetTemplateByIDFieldMetaText      *TemplateGetTemplateByIDFieldMetaText      `queryParam:"inline" union:"member"`
+	TemplateGetTemplateByIDFieldMetaNumber    *TemplateGetTemplateByIDFieldMetaNumber    `queryParam:"inline" union:"member"`
+	TemplateGetTemplateByIDFieldMetaRadio     *TemplateGetTemplateByIDFieldMetaRadio     `queryParam:"inline" union:"member"`
+	TemplateGetTemplateByIDFieldMetaCheckbox  *TemplateGetTemplateByIDFieldMetaCheckbox  `queryParam:"inline" union:"member"`
+	TemplateGetTemplateByIDFieldMetaDropdown  *TemplateGetTemplateByIDFieldMetaDropdown  `queryParam:"inline" union:"member"`
 
 	Type TemplateGetTemplateByIDFieldMetaUnionType
 }
@@ -2959,7 +2959,7 @@ func (t TemplateGetTemplateByIDResponseBody) MarshalJSON() ([]byte, error) {
 }
 
 func (t *TemplateGetTemplateByIDResponseBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"type", "visibility", "id", "title", "userId", "teamId", "createdAt", "updatedAt", "publicTitle", "publicDescription", "envelopeId", "templateDocumentData", "templateMeta", "user", "recipients", "fields", "envelopeItems"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &t, "", false, nil); err != nil {
 		return err
 	}
 	return nil

@@ -10,19 +10,19 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-// QueryParamSource - Filter documents by how it was created.
-type QueryParamSource string
+// DocumentFindQueryParamSource - Filter documents by how it was created.
+type DocumentFindQueryParamSource string
 
 const (
-	QueryParamSourceDocument           QueryParamSource = "DOCUMENT"
-	QueryParamSourceTemplate           QueryParamSource = "TEMPLATE"
-	QueryParamSourceTemplateDirectLink QueryParamSource = "TEMPLATE_DIRECT_LINK"
+	DocumentFindQueryParamSourceDocument           DocumentFindQueryParamSource = "DOCUMENT"
+	DocumentFindQueryParamSourceTemplate           DocumentFindQueryParamSource = "TEMPLATE"
+	DocumentFindQueryParamSourceTemplateDirectLink DocumentFindQueryParamSource = "TEMPLATE_DIRECT_LINK"
 )
 
-func (e QueryParamSource) ToPointer() *QueryParamSource {
+func (e DocumentFindQueryParamSource) ToPointer() *DocumentFindQueryParamSource {
 	return &e
 }
-func (e *QueryParamSource) UnmarshalJSON(data []byte) error {
+func (e *DocumentFindQueryParamSource) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -33,27 +33,27 @@ func (e *QueryParamSource) UnmarshalJSON(data []byte) error {
 	case "TEMPLATE":
 		fallthrough
 	case "TEMPLATE_DIRECT_LINK":
-		*e = QueryParamSource(v)
+		*e = DocumentFindQueryParamSource(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for QueryParamSource: %v", v)
+		return fmt.Errorf("invalid value for DocumentFindQueryParamSource: %v", v)
 	}
 }
 
-// QueryParamStatus - Filter documents by the current status
-type QueryParamStatus string
+// DocumentFindQueryParamStatus - Filter documents by the current status
+type DocumentFindQueryParamStatus string
 
 const (
-	QueryParamStatusDraft     QueryParamStatus = "DRAFT"
-	QueryParamStatusPending   QueryParamStatus = "PENDING"
-	QueryParamStatusCompleted QueryParamStatus = "COMPLETED"
-	QueryParamStatusRejected  QueryParamStatus = "REJECTED"
+	DocumentFindQueryParamStatusDraft     DocumentFindQueryParamStatus = "DRAFT"
+	DocumentFindQueryParamStatusPending   DocumentFindQueryParamStatus = "PENDING"
+	DocumentFindQueryParamStatusCompleted DocumentFindQueryParamStatus = "COMPLETED"
+	DocumentFindQueryParamStatusRejected  DocumentFindQueryParamStatus = "REJECTED"
 )
 
-func (e QueryParamStatus) ToPointer() *QueryParamStatus {
+func (e DocumentFindQueryParamStatus) ToPointer() *DocumentFindQueryParamStatus {
 	return &e
 }
-func (e *QueryParamStatus) UnmarshalJSON(data []byte) error {
+func (e *DocumentFindQueryParamStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -66,47 +66,47 @@ func (e *QueryParamStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
-		*e = QueryParamStatus(v)
+		*e = DocumentFindQueryParamStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for QueryParamStatus: %v", v)
+		return fmt.Errorf("invalid value for DocumentFindQueryParamStatus: %v", v)
 	}
 }
 
-type OrderByColumn string
+type DocumentFindOrderByColumn string
 
 const (
-	OrderByColumnCreatedAt OrderByColumn = "createdAt"
+	DocumentFindOrderByColumnCreatedAt DocumentFindOrderByColumn = "createdAt"
 )
 
-func (e OrderByColumn) ToPointer() *OrderByColumn {
+func (e DocumentFindOrderByColumn) ToPointer() *DocumentFindOrderByColumn {
 	return &e
 }
-func (e *OrderByColumn) UnmarshalJSON(data []byte) error {
+func (e *DocumentFindOrderByColumn) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "createdAt":
-		*e = OrderByColumn(v)
+		*e = DocumentFindOrderByColumn(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for OrderByColumn: %v", v)
+		return fmt.Errorf("invalid value for DocumentFindOrderByColumn: %v", v)
 	}
 }
 
-type OrderByDirection string
+type DocumentFindOrderByDirection string
 
 const (
-	OrderByDirectionAsc  OrderByDirection = "asc"
-	OrderByDirectionDesc OrderByDirection = "desc"
+	DocumentFindOrderByDirectionAsc  DocumentFindOrderByDirection = "asc"
+	DocumentFindOrderByDirectionDesc DocumentFindOrderByDirection = "desc"
 )
 
-func (e OrderByDirection) ToPointer() *OrderByDirection {
+func (e DocumentFindOrderByDirection) ToPointer() *DocumentFindOrderByDirection {
 	return &e
 }
-func (e *OrderByDirection) UnmarshalJSON(data []byte) error {
+func (e *DocumentFindOrderByDirection) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -115,10 +115,10 @@ func (e *OrderByDirection) UnmarshalJSON(data []byte) error {
 	case "asc":
 		fallthrough
 	case "desc":
-		*e = OrderByDirection(v)
+		*e = DocumentFindOrderByDirection(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for OrderByDirection: %v", v)
+		return fmt.Errorf("invalid value for DocumentFindOrderByDirection: %v", v)
 	}
 }
 
@@ -132,13 +132,13 @@ type DocumentFindRequest struct {
 	// Filter documents by the template ID used to create it.
 	TemplateID *float64 `queryParam:"style=form,explode=true,name=templateId"`
 	// Filter documents by how it was created.
-	Source *QueryParamSource `queryParam:"style=form,explode=true,name=source"`
+	Source *DocumentFindQueryParamSource `queryParam:"style=form,explode=true,name=source"`
 	// Filter documents by the current status
-	Status *QueryParamStatus `queryParam:"style=form,explode=true,name=status"`
+	Status *DocumentFindQueryParamStatus `queryParam:"style=form,explode=true,name=status"`
 	// Filter documents by folder ID
-	FolderID         *string           `queryParam:"style=form,explode=true,name=folderId"`
-	OrderByColumn    *OrderByColumn    `queryParam:"style=form,explode=true,name=orderByColumn"`
-	OrderByDirection *OrderByDirection `default:"desc" queryParam:"style=form,explode=true,name=orderByDirection"`
+	FolderID         *string                       `queryParam:"style=form,explode=true,name=folderId"`
+	OrderByColumn    *DocumentFindOrderByColumn    `queryParam:"style=form,explode=true,name=orderByColumn"`
+	OrderByDirection *DocumentFindOrderByDirection `default:"desc" queryParam:"style=form,explode=true,name=orderByDirection"`
 }
 
 func (d DocumentFindRequest) MarshalJSON() ([]byte, error) {
@@ -180,14 +180,14 @@ func (d *DocumentFindRequest) GetTemplateID() *float64 {
 	return d.TemplateID
 }
 
-func (d *DocumentFindRequest) GetSource() *QueryParamSource {
+func (d *DocumentFindRequest) GetSource() *DocumentFindQueryParamSource {
 	if d == nil {
 		return nil
 	}
 	return d.Source
 }
 
-func (d *DocumentFindRequest) GetStatus() *QueryParamStatus {
+func (d *DocumentFindRequest) GetStatus() *DocumentFindQueryParamStatus {
 	if d == nil {
 		return nil
 	}
@@ -201,14 +201,14 @@ func (d *DocumentFindRequest) GetFolderID() *string {
 	return d.FolderID
 }
 
-func (d *DocumentFindRequest) GetOrderByColumn() *OrderByColumn {
+func (d *DocumentFindRequest) GetOrderByColumn() *DocumentFindOrderByColumn {
 	if d == nil {
 		return nil
 	}
 	return d.OrderByColumn
 }
 
-func (d *DocumentFindRequest) GetOrderByDirection() *OrderByDirection {
+func (d *DocumentFindRequest) GetOrderByDirection() *DocumentFindOrderByDirection {
 	if d == nil {
 		return nil
 	}
@@ -244,19 +244,19 @@ func (e *DocumentFindVisibility) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type DataStatus string
+type DocumentFindDataStatus string
 
 const (
-	DataStatusDraft     DataStatus = "DRAFT"
-	DataStatusPending   DataStatus = "PENDING"
-	DataStatusCompleted DataStatus = "COMPLETED"
-	DataStatusRejected  DataStatus = "REJECTED"
+	DocumentFindDataStatusDraft     DocumentFindDataStatus = "DRAFT"
+	DocumentFindDataStatusPending   DocumentFindDataStatus = "PENDING"
+	DocumentFindDataStatusCompleted DocumentFindDataStatus = "COMPLETED"
+	DocumentFindDataStatusRejected  DocumentFindDataStatus = "REJECTED"
 )
 
-func (e DataStatus) ToPointer() *DataStatus {
+func (e DocumentFindDataStatus) ToPointer() *DocumentFindDataStatus {
 	return &e
 }
-func (e *DataStatus) UnmarshalJSON(data []byte) error {
+func (e *DocumentFindDataStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -269,25 +269,25 @@ func (e *DataStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
-		*e = DataStatus(v)
+		*e = DocumentFindDataStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DataStatus: %v", v)
+		return fmt.Errorf("invalid value for DocumentFindDataStatus: %v", v)
 	}
 }
 
-type DataSource string
+type DocumentFindDataSource string
 
 const (
-	DataSourceDocument           DataSource = "DOCUMENT"
-	DataSourceTemplate           DataSource = "TEMPLATE"
-	DataSourceTemplateDirectLink DataSource = "TEMPLATE_DIRECT_LINK"
+	DocumentFindDataSourceDocument           DocumentFindDataSource = "DOCUMENT"
+	DocumentFindDataSourceTemplate           DocumentFindDataSource = "TEMPLATE"
+	DocumentFindDataSourceTemplateDirectLink DocumentFindDataSource = "TEMPLATE_DIRECT_LINK"
 )
 
-func (e DataSource) ToPointer() *DataSource {
+func (e DocumentFindDataSource) ToPointer() *DocumentFindDataSource {
 	return &e
 }
-func (e *DataSource) UnmarshalJSON(data []byte) error {
+func (e *DocumentFindDataSource) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -298,10 +298,10 @@ func (e *DataSource) UnmarshalJSON(data []byte) error {
 	case "TEMPLATE":
 		fallthrough
 	case "TEMPLATE_DIRECT_LINK":
-		*e = DataSource(v)
+		*e = DocumentFindDataSource(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for DataSource: %v", v)
+		return fmt.Errorf("invalid value for DocumentFindDataSource: %v", v)
 	}
 }
 
@@ -391,9 +391,9 @@ const (
 )
 
 type DocumentFindFormValues struct {
-	Str     *string  `queryParam:"inline,name=formValues"`
-	Boolean *bool    `queryParam:"inline,name=formValues"`
-	Number  *float64 `queryParam:"inline,name=formValues"`
+	Str     *string  `queryParam:"inline" union:"member"`
+	Boolean *bool    `queryParam:"inline" union:"member"`
+	Number  *float64 `queryParam:"inline" union:"member"`
 
 	Type DocumentFindFormValuesType
 }
@@ -850,8 +850,8 @@ func (d *DocumentFindTeam) GetURL() string {
 
 type DocumentFindData struct {
 	Visibility              DocumentFindVisibility            `json:"visibility"`
-	Status                  DataStatus                        `json:"status"`
-	Source                  DataSource                        `json:"source"`
+	Status                  DocumentFindDataStatus            `json:"status"`
+	Source                  DocumentFindDataSource            `json:"source"`
 	ID                      float64                           `json:"id"`
 	ExternalID              *string                           `json:"externalId"`
 	UserID                  float64                           `json:"userId"`
@@ -879,7 +879,7 @@ func (d DocumentFindData) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DocumentFindData) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"visibility", "status", "source", "id", "userId", "title", "createdAt", "updatedAt", "teamId", "useLegacyFieldInsertion", "envelopeId", "internalVersion", "user", "recipients"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -892,16 +892,16 @@ func (d *DocumentFindData) GetVisibility() DocumentFindVisibility {
 	return d.Visibility
 }
 
-func (d *DocumentFindData) GetStatus() DataStatus {
+func (d *DocumentFindData) GetStatus() DocumentFindDataStatus {
 	if d == nil {
-		return DataStatus("")
+		return DocumentFindDataStatus("")
 	}
 	return d.Status
 }
 
-func (d *DocumentFindData) GetSource() DataSource {
+func (d *DocumentFindData) GetSource() DocumentFindDataSource {
 	if d == nil {
-		return DataSource("")
+		return DocumentFindDataSource("")
 	}
 	return d.Source
 }

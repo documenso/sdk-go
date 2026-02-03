@@ -130,6 +130,7 @@ const (
 	DocumentDistributeLanguageFr   DocumentDistributeLanguage = "fr"
 	DocumentDistributeLanguageEs   DocumentDistributeLanguage = "es"
 	DocumentDistributeLanguageIt   DocumentDistributeLanguage = "it"
+	DocumentDistributeLanguageNl   DocumentDistributeLanguage = "nl"
 	DocumentDistributeLanguagePl   DocumentDistributeLanguage = "pl"
 	DocumentDistributeLanguagePtBr DocumentDistributeLanguage = "pt-BR"
 	DocumentDistributeLanguageJa   DocumentDistributeLanguage = "ja"
@@ -155,6 +156,8 @@ func (e *DocumentDistributeLanguage) UnmarshalJSON(data []byte) error {
 	case "es":
 		fallthrough
 	case "it":
+		fallthrough
+	case "nl":
 		fallthrough
 	case "pl":
 		fallthrough
@@ -520,9 +523,9 @@ const (
 )
 
 type DocumentDistributeFormValues struct {
-	Str     *string  `queryParam:"inline,name=formValues"`
-	Boolean *bool    `queryParam:"inline,name=formValues"`
-	Number  *float64 `queryParam:"inline,name=formValues"`
+	Str     *string  `queryParam:"inline" union:"member"`
+	Boolean *bool    `queryParam:"inline" union:"member"`
+	Number  *float64 `queryParam:"inline" union:"member"`
 
 	Type DocumentDistributeFormValuesType
 }
@@ -625,7 +628,7 @@ func (d DocumentDistributeResponseBody) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DocumentDistributeResponseBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"visibility", "status", "source", "id", "userId", "title", "createdAt", "updatedAt", "teamId", "useLegacyFieldInsertion", "envelopeId", "internalVersion"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil

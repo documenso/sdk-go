@@ -129,6 +129,7 @@ const (
 	EnvelopeDistributeLanguageFr   EnvelopeDistributeLanguage = "fr"
 	EnvelopeDistributeLanguageEs   EnvelopeDistributeLanguage = "es"
 	EnvelopeDistributeLanguageIt   EnvelopeDistributeLanguage = "it"
+	EnvelopeDistributeLanguageNl   EnvelopeDistributeLanguage = "nl"
 	EnvelopeDistributeLanguagePl   EnvelopeDistributeLanguage = "pl"
 	EnvelopeDistributeLanguagePtBr EnvelopeDistributeLanguage = "pt-BR"
 	EnvelopeDistributeLanguageJa   EnvelopeDistributeLanguage = "ja"
@@ -154,6 +155,8 @@ func (e *EnvelopeDistributeLanguage) UnmarshalJSON(data []byte) error {
 	case "es":
 		fallthrough
 	case "it":
+		fallthrough
+	case "nl":
 		fallthrough
 	case "pl":
 		fallthrough

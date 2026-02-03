@@ -163,6 +163,7 @@ func main() {
 
 ### [Document](docs/sdks/document/README.md)
 
+* [DocumentGetMany](docs/sdks/document/README.md#documentgetmany) - Get multiple documents
 * [DocumentDownload](docs/sdks/document/README.md#documentdownload) - Download document (beta)
 
 ### [Documents](docs/sdks/documents/README.md)
@@ -207,6 +208,12 @@ func main() {
 
 * [EmbeddingPresignCreateEmbeddingPresignToken](docs/sdks/embedding/README.md#embeddingpresigncreateembeddingpresigntoken) - Create embedding presign token
 * [EmbeddingPresignVerifyEmbeddingPresignToken](docs/sdks/embedding/README.md#embeddingpresignverifyembeddingpresigntoken) - Verify embedding presign token
+
+### [Envelope](docs/sdks/envelope/README.md)
+
+* [EnvelopeFind](docs/sdks/envelope/README.md#envelopefind) - Find envelopes
+* [EnvelopeAuditLogFind](docs/sdks/envelope/README.md#envelopeauditlogfind) - Get envelope audit logs
+* [EnvelopeGetMany](docs/sdks/envelope/README.md#envelopegetmany) - Get multiple envelopes
 
 ### [Envelopes](docs/sdks/envelopes/README.md)
 
@@ -256,6 +263,7 @@ func main() {
 
 ### [Template](docs/sdks/template/README.md)
 
+* [TemplateGetMany](docs/sdks/template/README.md#templategetmany) - Get multiple templates
 * [TemplateCreateTemplateTemporary](docs/sdks/template/README.md#templatecreatetemplatetemporary) - Create template
 
 ### [Templates](docs/sdks/templates/README.md)

@@ -4,9 +4,97 @@ package operations
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
+	"github.com/documenso/sdk-go/internal/utils"
 	"github.com/documenso/sdk-go/models/components"
 )
+
+type EnvelopeRecipientCreateManyEmailEnum string
+
+const (
+	EnvelopeRecipientCreateManyEmailEnumUnknown EnvelopeRecipientCreateManyEmailEnum = ""
+)
+
+func (e EnvelopeRecipientCreateManyEmailEnum) ToPointer() *EnvelopeRecipientCreateManyEmailEnum {
+	return &e
+}
+func (e *EnvelopeRecipientCreateManyEmailEnum) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "":
+		*e = EnvelopeRecipientCreateManyEmailEnum(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeRecipientCreateManyEmailEnum: %v", v)
+	}
+}
+
+type EnvelopeRecipientCreateManyEmailUnionType string
+
+const (
+	EnvelopeRecipientCreateManyEmailUnionTypeEnvelopeRecipientCreateManyEmailEnum EnvelopeRecipientCreateManyEmailUnionType = "envelope_recipient_createMany_email_enum"
+	EnvelopeRecipientCreateManyEmailUnionTypeStr                                  EnvelopeRecipientCreateManyEmailUnionType = "str"
+)
+
+type EnvelopeRecipientCreateManyEmailUnion struct {
+	EnvelopeRecipientCreateManyEmailEnum *EnvelopeRecipientCreateManyEmailEnum `queryParam:"inline" union:"member"`
+	Str                                  *string                               `queryParam:"inline" union:"member"`
+
+	Type EnvelopeRecipientCreateManyEmailUnionType
+}
+
+func CreateEnvelopeRecipientCreateManyEmailUnionEnvelopeRecipientCreateManyEmailEnum(envelopeRecipientCreateManyEmailEnum EnvelopeRecipientCreateManyEmailEnum) EnvelopeRecipientCreateManyEmailUnion {
+	typ := EnvelopeRecipientCreateManyEmailUnionTypeEnvelopeRecipientCreateManyEmailEnum
+
+	return EnvelopeRecipientCreateManyEmailUnion{
+		EnvelopeRecipientCreateManyEmailEnum: &envelopeRecipientCreateManyEmailEnum,
+		Type:                                 typ,
+	}
+}
+
+func CreateEnvelopeRecipientCreateManyEmailUnionStr(str string) EnvelopeRecipientCreateManyEmailUnion {
+	typ := EnvelopeRecipientCreateManyEmailUnionTypeStr
+
+	return EnvelopeRecipientCreateManyEmailUnion{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *EnvelopeRecipientCreateManyEmailUnion) UnmarshalJSON(data []byte) error {
+
+	var envelopeRecipientCreateManyEmailEnum EnvelopeRecipientCreateManyEmailEnum = EnvelopeRecipientCreateManyEmailEnum("")
+	if err := utils.UnmarshalJSON(data, &envelopeRecipientCreateManyEmailEnum, "", true, nil); err == nil {
+		u.EnvelopeRecipientCreateManyEmailEnum = &envelopeRecipientCreateManyEmailEnum
+		u.Type = EnvelopeRecipientCreateManyEmailUnionTypeEnvelopeRecipientCreateManyEmailEnum
+		return nil
+	}
+
+	var str string = ""
+	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
+		u.Str = &str
+		u.Type = EnvelopeRecipientCreateManyEmailUnionTypeStr
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvelopeRecipientCreateManyEmailUnion", string(data))
+}
+
+func (u EnvelopeRecipientCreateManyEmailUnion) MarshalJSON() ([]byte, error) {
+	if u.EnvelopeRecipientCreateManyEmailEnum != nil {
+		return utils.MarshalJSON(u.EnvelopeRecipientCreateManyEmailEnum, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvelopeRecipientCreateManyEmailUnion: all fields are null")
+}
 
 type EnvelopeRecipientCreateManyRoleRequest string
 
@@ -105,7 +193,7 @@ func (e *EnvelopeRecipientCreateManyActionAuthRequest) UnmarshalJSON(data []byte
 }
 
 type EnvelopeRecipientCreateManyDataRequest struct {
-	Email        string                                         `json:"email"`
+	Email        EnvelopeRecipientCreateManyEmailUnion          `json:"email"`
 	Name         string                                         `json:"name"`
 	Role         EnvelopeRecipientCreateManyRoleRequest         `json:"role"`
 	SigningOrder *float64                                       `json:"signingOrder,omitempty"`
@@ -113,9 +201,9 @@ type EnvelopeRecipientCreateManyDataRequest struct {
 	ActionAuth   []EnvelopeRecipientCreateManyActionAuthRequest `json:"actionAuth,omitempty"`
 }
 
-func (e *EnvelopeRecipientCreateManyDataRequest) GetEmail() string {
+func (e *EnvelopeRecipientCreateManyDataRequest) GetEmail() EnvelopeRecipientCreateManyEmailUnion {
 	if e == nil {
-		return ""
+		return EnvelopeRecipientCreateManyEmailUnion{}
 	}
 	return e.Email
 }
@@ -290,17 +378,17 @@ func (e *EnvelopeRecipientCreateManySendStatus) UnmarshalJSON(data []byte) error
 	}
 }
 
-type EnvelopeRecipientCreateManyAccessAuthResponse string
+type EnvelopeRecipientCreateManyAuthOptionsAccessAuth string
 
 const (
-	EnvelopeRecipientCreateManyAccessAuthResponseAccount       EnvelopeRecipientCreateManyAccessAuthResponse = "ACCOUNT"
-	EnvelopeRecipientCreateManyAccessAuthResponseTwoFactorAuth EnvelopeRecipientCreateManyAccessAuthResponse = "TWO_FACTOR_AUTH"
+	EnvelopeRecipientCreateManyAuthOptionsAccessAuthAccount       EnvelopeRecipientCreateManyAuthOptionsAccessAuth = "ACCOUNT"
+	EnvelopeRecipientCreateManyAuthOptionsAccessAuthTwoFactorAuth EnvelopeRecipientCreateManyAuthOptionsAccessAuth = "TWO_FACTOR_AUTH"
 )
 
-func (e EnvelopeRecipientCreateManyAccessAuthResponse) ToPointer() *EnvelopeRecipientCreateManyAccessAuthResponse {
+func (e EnvelopeRecipientCreateManyAuthOptionsAccessAuth) ToPointer() *EnvelopeRecipientCreateManyAuthOptionsAccessAuth {
 	return &e
 }
-func (e *EnvelopeRecipientCreateManyAccessAuthResponse) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeRecipientCreateManyAuthOptionsAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -309,27 +397,27 @@ func (e *EnvelopeRecipientCreateManyAccessAuthResponse) UnmarshalJSON(data []byt
 	case "ACCOUNT":
 		fallthrough
 	case "TWO_FACTOR_AUTH":
-		*e = EnvelopeRecipientCreateManyAccessAuthResponse(v)
+		*e = EnvelopeRecipientCreateManyAuthOptionsAccessAuth(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeRecipientCreateManyAccessAuthResponse: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeRecipientCreateManyAuthOptionsAccessAuth: %v", v)
 	}
 }
 
-type EnvelopeRecipientCreateManyActionAuthResponse string
+type EnvelopeRecipientCreateManyAuthOptionsActionAuth string
 
 const (
-	EnvelopeRecipientCreateManyActionAuthResponseAccount       EnvelopeRecipientCreateManyActionAuthResponse = "ACCOUNT"
-	EnvelopeRecipientCreateManyActionAuthResponsePasskey       EnvelopeRecipientCreateManyActionAuthResponse = "PASSKEY"
-	EnvelopeRecipientCreateManyActionAuthResponseTwoFactorAuth EnvelopeRecipientCreateManyActionAuthResponse = "TWO_FACTOR_AUTH"
-	EnvelopeRecipientCreateManyActionAuthResponsePassword      EnvelopeRecipientCreateManyActionAuthResponse = "PASSWORD"
-	EnvelopeRecipientCreateManyActionAuthResponseExplicitNone  EnvelopeRecipientCreateManyActionAuthResponse = "EXPLICIT_NONE"
+	EnvelopeRecipientCreateManyAuthOptionsActionAuthAccount       EnvelopeRecipientCreateManyAuthOptionsActionAuth = "ACCOUNT"
+	EnvelopeRecipientCreateManyAuthOptionsActionAuthPasskey       EnvelopeRecipientCreateManyAuthOptionsActionAuth = "PASSKEY"
+	EnvelopeRecipientCreateManyAuthOptionsActionAuthTwoFactorAuth EnvelopeRecipientCreateManyAuthOptionsActionAuth = "TWO_FACTOR_AUTH"
+	EnvelopeRecipientCreateManyAuthOptionsActionAuthPassword      EnvelopeRecipientCreateManyAuthOptionsActionAuth = "PASSWORD"
+	EnvelopeRecipientCreateManyAuthOptionsActionAuthExplicitNone  EnvelopeRecipientCreateManyAuthOptionsActionAuth = "EXPLICIT_NONE"
 )
 
-func (e EnvelopeRecipientCreateManyActionAuthResponse) ToPointer() *EnvelopeRecipientCreateManyActionAuthResponse {
+func (e EnvelopeRecipientCreateManyAuthOptionsActionAuth) ToPointer() *EnvelopeRecipientCreateManyAuthOptionsActionAuth {
 	return &e
 }
-func (e *EnvelopeRecipientCreateManyActionAuthResponse) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeRecipientCreateManyAuthOptionsActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -344,28 +432,28 @@ func (e *EnvelopeRecipientCreateManyActionAuthResponse) UnmarshalJSON(data []byt
 	case "PASSWORD":
 		fallthrough
 	case "EXPLICIT_NONE":
-		*e = EnvelopeRecipientCreateManyActionAuthResponse(v)
+		*e = EnvelopeRecipientCreateManyAuthOptionsActionAuth(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeRecipientCreateManyActionAuthResponse: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeRecipientCreateManyAuthOptionsActionAuth: %v", v)
 	}
 }
 
 type EnvelopeRecipientCreateManyAuthOptions struct {
-	AccessAuth []EnvelopeRecipientCreateManyAccessAuthResponse `json:"accessAuth"`
-	ActionAuth []EnvelopeRecipientCreateManyActionAuthResponse `json:"actionAuth"`
+	AccessAuth []EnvelopeRecipientCreateManyAuthOptionsAccessAuth `json:"accessAuth"`
+	ActionAuth []EnvelopeRecipientCreateManyAuthOptionsActionAuth `json:"actionAuth"`
 }
 
-func (e *EnvelopeRecipientCreateManyAuthOptions) GetAccessAuth() []EnvelopeRecipientCreateManyAccessAuthResponse {
+func (e *EnvelopeRecipientCreateManyAuthOptions) GetAccessAuth() []EnvelopeRecipientCreateManyAuthOptionsAccessAuth {
 	if e == nil {
-		return []EnvelopeRecipientCreateManyAccessAuthResponse{}
+		return []EnvelopeRecipientCreateManyAuthOptionsAccessAuth{}
 	}
 	return e.AccessAuth
 }
 
-func (e *EnvelopeRecipientCreateManyAuthOptions) GetActionAuth() []EnvelopeRecipientCreateManyActionAuthResponse {
+func (e *EnvelopeRecipientCreateManyAuthOptions) GetActionAuth() []EnvelopeRecipientCreateManyAuthOptionsActionAuth {
 	if e == nil {
-		return []EnvelopeRecipientCreateManyActionAuthResponse{}
+		return []EnvelopeRecipientCreateManyAuthOptionsActionAuth{}
 	}
 	return e.ActionAuth
 }

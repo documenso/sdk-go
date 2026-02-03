@@ -197,9 +197,9 @@ const (
 )
 
 type DocumentGetFormValues struct {
-	Str     *string  `queryParam:"inline,name=formValues"`
-	Boolean *bool    `queryParam:"inline,name=formValues"`
-	Number  *float64 `queryParam:"inline,name=formValues"`
+	Str     *string  `queryParam:"inline" union:"member"`
+	Boolean *bool    `queryParam:"inline" union:"member"`
+	Number  *float64 `queryParam:"inline" union:"member"`
 
 	Type DocumentGetFormValuesType
 }
@@ -493,7 +493,7 @@ func (d DocumentGetDocumentMeta) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DocumentGetDocumentMeta) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"signingOrder", "distributionMethod", "id", "typedSignatureEnabled", "uploadSignatureEnabled", "drawSignatureEnabled", "allowDictateNextSigner", "language"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
@@ -2626,16 +2626,16 @@ const (
 )
 
 type DocumentGetFieldMetaUnion struct {
-	DocumentGetFieldMetaSignature *DocumentGetFieldMetaSignature `queryParam:"inline,name=fieldMeta"`
-	DocumentGetFieldMetaInitials  *DocumentGetFieldMetaInitials  `queryParam:"inline,name=fieldMeta"`
-	DocumentGetFieldMetaName      *DocumentGetFieldMetaName      `queryParam:"inline,name=fieldMeta"`
-	DocumentGetFieldMetaEmail     *DocumentGetFieldMetaEmail     `queryParam:"inline,name=fieldMeta"`
-	DocumentGetFieldMetaDate      *DocumentGetFieldMetaDate      `queryParam:"inline,name=fieldMeta"`
-	DocumentGetFieldMetaText      *DocumentGetFieldMetaText      `queryParam:"inline,name=fieldMeta"`
-	DocumentGetFieldMetaNumber    *DocumentGetFieldMetaNumber    `queryParam:"inline,name=fieldMeta"`
-	DocumentGetFieldMetaRadio     *DocumentGetFieldMetaRadio     `queryParam:"inline,name=fieldMeta"`
-	DocumentGetFieldMetaCheckbox  *DocumentGetFieldMetaCheckbox  `queryParam:"inline,name=fieldMeta"`
-	DocumentGetFieldMetaDropdown  *DocumentGetFieldMetaDropdown  `queryParam:"inline,name=fieldMeta"`
+	DocumentGetFieldMetaSignature *DocumentGetFieldMetaSignature `queryParam:"inline" union:"member"`
+	DocumentGetFieldMetaInitials  *DocumentGetFieldMetaInitials  `queryParam:"inline" union:"member"`
+	DocumentGetFieldMetaName      *DocumentGetFieldMetaName      `queryParam:"inline" union:"member"`
+	DocumentGetFieldMetaEmail     *DocumentGetFieldMetaEmail     `queryParam:"inline" union:"member"`
+	DocumentGetFieldMetaDate      *DocumentGetFieldMetaDate      `queryParam:"inline" union:"member"`
+	DocumentGetFieldMetaText      *DocumentGetFieldMetaText      `queryParam:"inline" union:"member"`
+	DocumentGetFieldMetaNumber    *DocumentGetFieldMetaNumber    `queryParam:"inline" union:"member"`
+	DocumentGetFieldMetaRadio     *DocumentGetFieldMetaRadio     `queryParam:"inline" union:"member"`
+	DocumentGetFieldMetaCheckbox  *DocumentGetFieldMetaCheckbox  `queryParam:"inline" union:"member"`
+	DocumentGetFieldMetaDropdown  *DocumentGetFieldMetaDropdown  `queryParam:"inline" union:"member"`
 
 	Type DocumentGetFieldMetaUnionType
 }
@@ -3014,7 +3014,7 @@ func (d DocumentGetResponseBody) MarshalJSON() ([]byte, error) {
 }
 
 func (d *DocumentGetResponseBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"visibility", "status", "source", "id", "userId", "title", "createdAt", "updatedAt", "teamId", "envelopeId", "internalVersion", "documentData", "documentMeta", "envelopeItems", "recipients", "fields"}); err != nil {
+	if err := utils.UnmarshalJSON(data, &d, "", false, nil); err != nil {
 		return err
 	}
 	return nil
