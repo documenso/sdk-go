@@ -177,7 +177,7 @@ func main() {
 * [Distribute](docs/sdks/documents/README.md#distribute) - Distribute document
 * [Redistribute](docs/sdks/documents/README.md#redistribute) - Redistribute document
 * [Download](docs/sdks/documents/README.md#download) - Download document
-* [CreateV0](docs/sdks/documents/README.md#createv0) - Create document
+* [~~CreateV0~~](docs/sdks/documents/README.md#createv0) - Create document :warning: **Deprecated**
 
 #### [Documents.Attachments](docs/sdks/documentsattachments/README.md)
 

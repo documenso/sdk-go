@@ -3,69 +3,69 @@
 
 ## Supported Types
 
-### EnvelopeFieldUpdateManyDataSignature
+### DataSignature
 
 ```go
-envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataSignature(operations.EnvelopeFieldUpdateManyDataSignature{/* values here */})
+envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionDataSignature(operations.DataSignature{/* values here */})
 ```
 
-### EnvelopeFieldUpdateManyDataFreeSignature
+### DataFreeSignature
 
 ```go
-envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataFreeSignature(operations.EnvelopeFieldUpdateManyDataFreeSignature{/* values here */})
+envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionDataFreeSignature(operations.DataFreeSignature{/* values here */})
 ```
 
-### EnvelopeFieldUpdateManyDataInitials
+### DataInitials
 
 ```go
-envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataInitials(operations.EnvelopeFieldUpdateManyDataInitials{/* values here */})
+envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionDataInitials(operations.DataInitials{/* values here */})
 ```
 
-### EnvelopeFieldUpdateManyDataName
+### DataName
 
 ```go
-envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataName(operations.EnvelopeFieldUpdateManyDataName{/* values here */})
+envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionDataName(operations.DataName{/* values here */})
 ```
 
-### EnvelopeFieldUpdateManyDataEmail
+### DataEmail
 
 ```go
-envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataEmail(operations.EnvelopeFieldUpdateManyDataEmail{/* values here */})
+envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionDataEmail(operations.DataEmail{/* values here */})
 ```
 
-### EnvelopeFieldUpdateManyDataDate
+### DataDate
 
 ```go
-envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataDate(operations.EnvelopeFieldUpdateManyDataDate{/* values here */})
+envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionDataDate(operations.DataDate{/* values here */})
 ```
 
-### EnvelopeFieldUpdateManyDataText
+### DataText
 
 ```go
-envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataText(operations.EnvelopeFieldUpdateManyDataText{/* values here */})
+envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionDataText(operations.DataText{/* values here */})
 ```
 
-### EnvelopeFieldUpdateManyDataNumber
+### DataNumber
 
 ```go
-envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataNumber(operations.EnvelopeFieldUpdateManyDataNumber{/* values here */})
+envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionDataNumber(operations.DataNumber{/* values here */})
 ```
 
-### EnvelopeFieldUpdateManyDataRadio
+### DataRadio
 
 ```go
-envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataRadio(operations.EnvelopeFieldUpdateManyDataRadio{/* values here */})
+envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionDataRadio(operations.DataRadio{/* values here */})
 ```
 
-### EnvelopeFieldUpdateManyDataCheckbox
+### DataCheckbox
 
 ```go
-envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataCheckbox(operations.EnvelopeFieldUpdateManyDataCheckbox{/* values here */})
+envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionDataCheckbox(operations.DataCheckbox{/* values here */})
 ```
 
-### EnvelopeFieldUpdateManyDataDropdown
+### DataDropdown
 
 ```go
-envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataDropdown(operations.EnvelopeFieldUpdateManyDataDropdown{/* values here */})
+envelopeFieldUpdateManyDataUnion := operations.CreateEnvelopeFieldUpdateManyDataUnionDataDropdown(operations.DataDropdown{/* values here */})
 ```
 

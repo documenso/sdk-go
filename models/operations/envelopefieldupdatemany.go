@@ -156,7 +156,7 @@ func (e *EnvelopeFieldUpdateManyFieldMetaDropdownRequest) GetDefaultValue() *str
 	return e.DefaultValue
 }
 
-type EnvelopeFieldUpdateManyDataDropdown struct {
+type DataDropdown struct {
 	Type           EnvelopeFieldUpdateManyTypeDropdownRequest1      `json:"type"`
 	FieldMeta      *EnvelopeFieldUpdateManyFieldMetaDropdownRequest `json:"fieldMeta,omitempty"`
 	ID             float64                                          `json:"id"`
@@ -168,78 +168,78 @@ type EnvelopeFieldUpdateManyDataDropdown struct {
 	Height         *float64                                         `json:"height,omitempty"`
 }
 
-func (e EnvelopeFieldUpdateManyDataDropdown) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
+func (d DataDropdown) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
 }
 
-func (e *EnvelopeFieldUpdateManyDataDropdown) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "id"}); err != nil {
+func (d *DataDropdown) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldUpdateManyDataDropdown) GetType() EnvelopeFieldUpdateManyTypeDropdownRequest1 {
-	if e == nil {
+func (d *DataDropdown) GetType() EnvelopeFieldUpdateManyTypeDropdownRequest1 {
+	if d == nil {
 		return EnvelopeFieldUpdateManyTypeDropdownRequest1("")
 	}
-	return e.Type
+	return d.Type
 }
 
-func (e *EnvelopeFieldUpdateManyDataDropdown) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaDropdownRequest {
-	if e == nil {
+func (d *DataDropdown) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaDropdownRequest {
+	if d == nil {
 		return nil
 	}
-	return e.FieldMeta
+	return d.FieldMeta
 }
 
-func (e *EnvelopeFieldUpdateManyDataDropdown) GetID() float64 {
-	if e == nil {
+func (d *DataDropdown) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return e.ID
+	return d.ID
 }
 
-func (e *EnvelopeFieldUpdateManyDataDropdown) GetEnvelopeItemID() *string {
-	if e == nil {
+func (d *DataDropdown) GetEnvelopeItemID() *string {
+	if d == nil {
 		return nil
 	}
-	return e.EnvelopeItemID
+	return d.EnvelopeItemID
 }
 
-func (e *EnvelopeFieldUpdateManyDataDropdown) GetPage() *float64 {
-	if e == nil {
+func (d *DataDropdown) GetPage() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Page
+	return d.Page
 }
 
-func (e *EnvelopeFieldUpdateManyDataDropdown) GetPositionX() *float64 {
-	if e == nil {
+func (d *DataDropdown) GetPositionX() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionX
+	return d.PositionX
 }
 
-func (e *EnvelopeFieldUpdateManyDataDropdown) GetPositionY() *float64 {
-	if e == nil {
+func (d *DataDropdown) GetPositionY() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionY
+	return d.PositionY
 }
 
-func (e *EnvelopeFieldUpdateManyDataDropdown) GetWidth() *float64 {
-	if e == nil {
+func (d *DataDropdown) GetWidth() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Width
+	return d.Width
 }
 
-func (e *EnvelopeFieldUpdateManyDataDropdown) GetHeight() *float64 {
-	if e == nil {
+func (d *DataDropdown) GetHeight() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Height
+	return d.Height
 }
 
 type EnvelopeFieldUpdateManyTypeCheckboxRequest1 string
@@ -446,7 +446,7 @@ func (e *EnvelopeFieldUpdateManyFieldMetaCheckboxRequest) GetDirection() *Envelo
 	return e.Direction
 }
 
-type EnvelopeFieldUpdateManyDataCheckbox struct {
+type DataCheckbox struct {
 	Type           EnvelopeFieldUpdateManyTypeCheckboxRequest1      `json:"type"`
 	FieldMeta      *EnvelopeFieldUpdateManyFieldMetaCheckboxRequest `json:"fieldMeta,omitempty"`
 	ID             float64                                          `json:"id"`
@@ -458,78 +458,78 @@ type EnvelopeFieldUpdateManyDataCheckbox struct {
 	Height         *float64                                         `json:"height,omitempty"`
 }
 
-func (e EnvelopeFieldUpdateManyDataCheckbox) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
+func (d DataCheckbox) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
 }
 
-func (e *EnvelopeFieldUpdateManyDataCheckbox) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "id"}); err != nil {
+func (d *DataCheckbox) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldUpdateManyDataCheckbox) GetType() EnvelopeFieldUpdateManyTypeCheckboxRequest1 {
-	if e == nil {
+func (d *DataCheckbox) GetType() EnvelopeFieldUpdateManyTypeCheckboxRequest1 {
+	if d == nil {
 		return EnvelopeFieldUpdateManyTypeCheckboxRequest1("")
 	}
-	return e.Type
+	return d.Type
 }
 
-func (e *EnvelopeFieldUpdateManyDataCheckbox) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaCheckboxRequest {
-	if e == nil {
+func (d *DataCheckbox) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaCheckboxRequest {
+	if d == nil {
 		return nil
 	}
-	return e.FieldMeta
+	return d.FieldMeta
 }
 
-func (e *EnvelopeFieldUpdateManyDataCheckbox) GetID() float64 {
-	if e == nil {
+func (d *DataCheckbox) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return e.ID
+	return d.ID
 }
 
-func (e *EnvelopeFieldUpdateManyDataCheckbox) GetEnvelopeItemID() *string {
-	if e == nil {
+func (d *DataCheckbox) GetEnvelopeItemID() *string {
+	if d == nil {
 		return nil
 	}
-	return e.EnvelopeItemID
+	return d.EnvelopeItemID
 }
 
-func (e *EnvelopeFieldUpdateManyDataCheckbox) GetPage() *float64 {
-	if e == nil {
+func (d *DataCheckbox) GetPage() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Page
+	return d.Page
 }
 
-func (e *EnvelopeFieldUpdateManyDataCheckbox) GetPositionX() *float64 {
-	if e == nil {
+func (d *DataCheckbox) GetPositionX() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionX
+	return d.PositionX
 }
 
-func (e *EnvelopeFieldUpdateManyDataCheckbox) GetPositionY() *float64 {
-	if e == nil {
+func (d *DataCheckbox) GetPositionY() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionY
+	return d.PositionY
 }
 
-func (e *EnvelopeFieldUpdateManyDataCheckbox) GetWidth() *float64 {
-	if e == nil {
+func (d *DataCheckbox) GetWidth() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Width
+	return d.Width
 }
 
-func (e *EnvelopeFieldUpdateManyDataCheckbox) GetHeight() *float64 {
-	if e == nil {
+func (d *DataCheckbox) GetHeight() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Height
+	return d.Height
 }
 
 type EnvelopeFieldUpdateManyTypeRadioRequest1 string
@@ -720,7 +720,7 @@ func (e *EnvelopeFieldUpdateManyFieldMetaRadioRequest) GetDirection() *EnvelopeF
 	return e.Direction
 }
 
-type EnvelopeFieldUpdateManyDataRadio struct {
+type DataRadio struct {
 	Type           EnvelopeFieldUpdateManyTypeRadioRequest1      `json:"type"`
 	FieldMeta      *EnvelopeFieldUpdateManyFieldMetaRadioRequest `json:"fieldMeta,omitempty"`
 	ID             float64                                       `json:"id"`
@@ -732,78 +732,78 @@ type EnvelopeFieldUpdateManyDataRadio struct {
 	Height         *float64                                      `json:"height,omitempty"`
 }
 
-func (e EnvelopeFieldUpdateManyDataRadio) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
+func (d DataRadio) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
 }
 
-func (e *EnvelopeFieldUpdateManyDataRadio) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "id"}); err != nil {
+func (d *DataRadio) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldUpdateManyDataRadio) GetType() EnvelopeFieldUpdateManyTypeRadioRequest1 {
-	if e == nil {
+func (d *DataRadio) GetType() EnvelopeFieldUpdateManyTypeRadioRequest1 {
+	if d == nil {
 		return EnvelopeFieldUpdateManyTypeRadioRequest1("")
 	}
-	return e.Type
+	return d.Type
 }
 
-func (e *EnvelopeFieldUpdateManyDataRadio) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaRadioRequest {
-	if e == nil {
+func (d *DataRadio) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaRadioRequest {
+	if d == nil {
 		return nil
 	}
-	return e.FieldMeta
+	return d.FieldMeta
 }
 
-func (e *EnvelopeFieldUpdateManyDataRadio) GetID() float64 {
-	if e == nil {
+func (d *DataRadio) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return e.ID
+	return d.ID
 }
 
-func (e *EnvelopeFieldUpdateManyDataRadio) GetEnvelopeItemID() *string {
-	if e == nil {
+func (d *DataRadio) GetEnvelopeItemID() *string {
+	if d == nil {
 		return nil
 	}
-	return e.EnvelopeItemID
+	return d.EnvelopeItemID
 }
 
-func (e *EnvelopeFieldUpdateManyDataRadio) GetPage() *float64 {
-	if e == nil {
+func (d *DataRadio) GetPage() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Page
+	return d.Page
 }
 
-func (e *EnvelopeFieldUpdateManyDataRadio) GetPositionX() *float64 {
-	if e == nil {
+func (d *DataRadio) GetPositionX() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionX
+	return d.PositionX
 }
 
-func (e *EnvelopeFieldUpdateManyDataRadio) GetPositionY() *float64 {
-	if e == nil {
+func (d *DataRadio) GetPositionY() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionY
+	return d.PositionY
 }
 
-func (e *EnvelopeFieldUpdateManyDataRadio) GetWidth() *float64 {
-	if e == nil {
+func (d *DataRadio) GetWidth() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Width
+	return d.Width
 }
 
-func (e *EnvelopeFieldUpdateManyDataRadio) GetHeight() *float64 {
-	if e == nil {
+func (d *DataRadio) GetHeight() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Height
+	return d.Height
 }
 
 type EnvelopeFieldUpdateManyTypeNumberRequest1 string
@@ -1036,7 +1036,7 @@ func (e *EnvelopeFieldUpdateManyFieldMetaNumberRequest) GetVerticalAlign() *Enve
 	return e.VerticalAlign
 }
 
-type EnvelopeFieldUpdateManyDataNumber struct {
+type DataNumber struct {
 	Type           EnvelopeFieldUpdateManyTypeNumberRequest1      `json:"type"`
 	FieldMeta      *EnvelopeFieldUpdateManyFieldMetaNumberRequest `json:"fieldMeta,omitempty"`
 	ID             float64                                        `json:"id"`
@@ -1048,78 +1048,78 @@ type EnvelopeFieldUpdateManyDataNumber struct {
 	Height         *float64                                       `json:"height,omitempty"`
 }
 
-func (e EnvelopeFieldUpdateManyDataNumber) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
+func (d DataNumber) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
 }
 
-func (e *EnvelopeFieldUpdateManyDataNumber) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "id"}); err != nil {
+func (d *DataNumber) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldUpdateManyDataNumber) GetType() EnvelopeFieldUpdateManyTypeNumberRequest1 {
-	if e == nil {
+func (d *DataNumber) GetType() EnvelopeFieldUpdateManyTypeNumberRequest1 {
+	if d == nil {
 		return EnvelopeFieldUpdateManyTypeNumberRequest1("")
 	}
-	return e.Type
+	return d.Type
 }
 
-func (e *EnvelopeFieldUpdateManyDataNumber) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaNumberRequest {
-	if e == nil {
+func (d *DataNumber) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaNumberRequest {
+	if d == nil {
 		return nil
 	}
-	return e.FieldMeta
+	return d.FieldMeta
 }
 
-func (e *EnvelopeFieldUpdateManyDataNumber) GetID() float64 {
-	if e == nil {
+func (d *DataNumber) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return e.ID
+	return d.ID
 }
 
-func (e *EnvelopeFieldUpdateManyDataNumber) GetEnvelopeItemID() *string {
-	if e == nil {
+func (d *DataNumber) GetEnvelopeItemID() *string {
+	if d == nil {
 		return nil
 	}
-	return e.EnvelopeItemID
+	return d.EnvelopeItemID
 }
 
-func (e *EnvelopeFieldUpdateManyDataNumber) GetPage() *float64 {
-	if e == nil {
+func (d *DataNumber) GetPage() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Page
+	return d.Page
 }
 
-func (e *EnvelopeFieldUpdateManyDataNumber) GetPositionX() *float64 {
-	if e == nil {
+func (d *DataNumber) GetPositionX() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionX
+	return d.PositionX
 }
 
-func (e *EnvelopeFieldUpdateManyDataNumber) GetPositionY() *float64 {
-	if e == nil {
+func (d *DataNumber) GetPositionY() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionY
+	return d.PositionY
 }
 
-func (e *EnvelopeFieldUpdateManyDataNumber) GetWidth() *float64 {
-	if e == nil {
+func (d *DataNumber) GetWidth() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Width
+	return d.Width
 }
 
-func (e *EnvelopeFieldUpdateManyDataNumber) GetHeight() *float64 {
-	if e == nil {
+func (d *DataNumber) GetHeight() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Height
+	return d.Height
 }
 
 type EnvelopeFieldUpdateManyTypeTextRequest1 string
@@ -1336,7 +1336,7 @@ func (e *EnvelopeFieldUpdateManyFieldMetaTextRequest) GetVerticalAlign() *Envelo
 	return e.VerticalAlign
 }
 
-type EnvelopeFieldUpdateManyDataText struct {
+type DataText struct {
 	Type           EnvelopeFieldUpdateManyTypeTextRequest1      `json:"type"`
 	FieldMeta      *EnvelopeFieldUpdateManyFieldMetaTextRequest `json:"fieldMeta,omitempty"`
 	ID             float64                                      `json:"id"`
@@ -1348,78 +1348,78 @@ type EnvelopeFieldUpdateManyDataText struct {
 	Height         *float64                                     `json:"height,omitempty"`
 }
 
-func (e EnvelopeFieldUpdateManyDataText) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
+func (d DataText) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
 }
 
-func (e *EnvelopeFieldUpdateManyDataText) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "id"}); err != nil {
+func (d *DataText) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldUpdateManyDataText) GetType() EnvelopeFieldUpdateManyTypeTextRequest1 {
-	if e == nil {
+func (d *DataText) GetType() EnvelopeFieldUpdateManyTypeTextRequest1 {
+	if d == nil {
 		return EnvelopeFieldUpdateManyTypeTextRequest1("")
 	}
-	return e.Type
+	return d.Type
 }
 
-func (e *EnvelopeFieldUpdateManyDataText) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaTextRequest {
-	if e == nil {
+func (d *DataText) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaTextRequest {
+	if d == nil {
 		return nil
 	}
-	return e.FieldMeta
+	return d.FieldMeta
 }
 
-func (e *EnvelopeFieldUpdateManyDataText) GetID() float64 {
-	if e == nil {
+func (d *DataText) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return e.ID
+	return d.ID
 }
 
-func (e *EnvelopeFieldUpdateManyDataText) GetEnvelopeItemID() *string {
-	if e == nil {
+func (d *DataText) GetEnvelopeItemID() *string {
+	if d == nil {
 		return nil
 	}
-	return e.EnvelopeItemID
+	return d.EnvelopeItemID
 }
 
-func (e *EnvelopeFieldUpdateManyDataText) GetPage() *float64 {
-	if e == nil {
+func (d *DataText) GetPage() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Page
+	return d.Page
 }
 
-func (e *EnvelopeFieldUpdateManyDataText) GetPositionX() *float64 {
-	if e == nil {
+func (d *DataText) GetPositionX() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionX
+	return d.PositionX
 }
 
-func (e *EnvelopeFieldUpdateManyDataText) GetPositionY() *float64 {
-	if e == nil {
+func (d *DataText) GetPositionY() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionY
+	return d.PositionY
 }
 
-func (e *EnvelopeFieldUpdateManyDataText) GetWidth() *float64 {
-	if e == nil {
+func (d *DataText) GetWidth() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Width
+	return d.Width
 }
 
-func (e *EnvelopeFieldUpdateManyDataText) GetHeight() *float64 {
-	if e == nil {
+func (d *DataText) GetHeight() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Height
+	return d.Height
 }
 
 type EnvelopeFieldUpdateManyTypeDateRequest1 string
@@ -1567,7 +1567,7 @@ func (e *EnvelopeFieldUpdateManyFieldMetaDateRequest) GetTextAlign() *EnvelopeFi
 	return e.TextAlign
 }
 
-type EnvelopeFieldUpdateManyDataDate struct {
+type DataDate struct {
 	Type           EnvelopeFieldUpdateManyTypeDateRequest1      `json:"type"`
 	FieldMeta      *EnvelopeFieldUpdateManyFieldMetaDateRequest `json:"fieldMeta,omitempty"`
 	ID             float64                                      `json:"id"`
@@ -1579,78 +1579,78 @@ type EnvelopeFieldUpdateManyDataDate struct {
 	Height         *float64                                     `json:"height,omitempty"`
 }
 
-func (e EnvelopeFieldUpdateManyDataDate) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
+func (d DataDate) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
 }
 
-func (e *EnvelopeFieldUpdateManyDataDate) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "id"}); err != nil {
+func (d *DataDate) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldUpdateManyDataDate) GetType() EnvelopeFieldUpdateManyTypeDateRequest1 {
-	if e == nil {
+func (d *DataDate) GetType() EnvelopeFieldUpdateManyTypeDateRequest1 {
+	if d == nil {
 		return EnvelopeFieldUpdateManyTypeDateRequest1("")
 	}
-	return e.Type
+	return d.Type
 }
 
-func (e *EnvelopeFieldUpdateManyDataDate) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaDateRequest {
-	if e == nil {
+func (d *DataDate) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaDateRequest {
+	if d == nil {
 		return nil
 	}
-	return e.FieldMeta
+	return d.FieldMeta
 }
 
-func (e *EnvelopeFieldUpdateManyDataDate) GetID() float64 {
-	if e == nil {
+func (d *DataDate) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return e.ID
+	return d.ID
 }
 
-func (e *EnvelopeFieldUpdateManyDataDate) GetEnvelopeItemID() *string {
-	if e == nil {
+func (d *DataDate) GetEnvelopeItemID() *string {
+	if d == nil {
 		return nil
 	}
-	return e.EnvelopeItemID
+	return d.EnvelopeItemID
 }
 
-func (e *EnvelopeFieldUpdateManyDataDate) GetPage() *float64 {
-	if e == nil {
+func (d *DataDate) GetPage() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Page
+	return d.Page
 }
 
-func (e *EnvelopeFieldUpdateManyDataDate) GetPositionX() *float64 {
-	if e == nil {
+func (d *DataDate) GetPositionX() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionX
+	return d.PositionX
 }
 
-func (e *EnvelopeFieldUpdateManyDataDate) GetPositionY() *float64 {
-	if e == nil {
+func (d *DataDate) GetPositionY() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionY
+	return d.PositionY
 }
 
-func (e *EnvelopeFieldUpdateManyDataDate) GetWidth() *float64 {
-	if e == nil {
+func (d *DataDate) GetWidth() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Width
+	return d.Width
 }
 
-func (e *EnvelopeFieldUpdateManyDataDate) GetHeight() *float64 {
-	if e == nil {
+func (d *DataDate) GetHeight() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Height
+	return d.Height
 }
 
 type EnvelopeFieldUpdateManyTypeEmailRequest1 string
@@ -1798,7 +1798,7 @@ func (e *EnvelopeFieldUpdateManyFieldMetaEmailRequest) GetTextAlign() *EnvelopeF
 	return e.TextAlign
 }
 
-type EnvelopeFieldUpdateManyDataEmail struct {
+type DataEmail struct {
 	Type           EnvelopeFieldUpdateManyTypeEmailRequest1      `json:"type"`
 	FieldMeta      *EnvelopeFieldUpdateManyFieldMetaEmailRequest `json:"fieldMeta,omitempty"`
 	ID             float64                                       `json:"id"`
@@ -1810,78 +1810,78 @@ type EnvelopeFieldUpdateManyDataEmail struct {
 	Height         *float64                                      `json:"height,omitempty"`
 }
 
-func (e EnvelopeFieldUpdateManyDataEmail) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
+func (d DataEmail) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
 }
 
-func (e *EnvelopeFieldUpdateManyDataEmail) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "id"}); err != nil {
+func (d *DataEmail) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldUpdateManyDataEmail) GetType() EnvelopeFieldUpdateManyTypeEmailRequest1 {
-	if e == nil {
+func (d *DataEmail) GetType() EnvelopeFieldUpdateManyTypeEmailRequest1 {
+	if d == nil {
 		return EnvelopeFieldUpdateManyTypeEmailRequest1("")
 	}
-	return e.Type
+	return d.Type
 }
 
-func (e *EnvelopeFieldUpdateManyDataEmail) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaEmailRequest {
-	if e == nil {
+func (d *DataEmail) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaEmailRequest {
+	if d == nil {
 		return nil
 	}
-	return e.FieldMeta
+	return d.FieldMeta
 }
 
-func (e *EnvelopeFieldUpdateManyDataEmail) GetID() float64 {
-	if e == nil {
+func (d *DataEmail) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return e.ID
+	return d.ID
 }
 
-func (e *EnvelopeFieldUpdateManyDataEmail) GetEnvelopeItemID() *string {
-	if e == nil {
+func (d *DataEmail) GetEnvelopeItemID() *string {
+	if d == nil {
 		return nil
 	}
-	return e.EnvelopeItemID
+	return d.EnvelopeItemID
 }
 
-func (e *EnvelopeFieldUpdateManyDataEmail) GetPage() *float64 {
-	if e == nil {
+func (d *DataEmail) GetPage() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Page
+	return d.Page
 }
 
-func (e *EnvelopeFieldUpdateManyDataEmail) GetPositionX() *float64 {
-	if e == nil {
+func (d *DataEmail) GetPositionX() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionX
+	return d.PositionX
 }
 
-func (e *EnvelopeFieldUpdateManyDataEmail) GetPositionY() *float64 {
-	if e == nil {
+func (d *DataEmail) GetPositionY() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionY
+	return d.PositionY
 }
 
-func (e *EnvelopeFieldUpdateManyDataEmail) GetWidth() *float64 {
-	if e == nil {
+func (d *DataEmail) GetWidth() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Width
+	return d.Width
 }
 
-func (e *EnvelopeFieldUpdateManyDataEmail) GetHeight() *float64 {
-	if e == nil {
+func (d *DataEmail) GetHeight() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Height
+	return d.Height
 }
 
 type EnvelopeFieldUpdateManyTypeNameRequest1 string
@@ -2029,7 +2029,7 @@ func (e *EnvelopeFieldUpdateManyFieldMetaNameRequest) GetTextAlign() *EnvelopeFi
 	return e.TextAlign
 }
 
-type EnvelopeFieldUpdateManyDataName struct {
+type DataName struct {
 	Type           EnvelopeFieldUpdateManyTypeNameRequest1      `json:"type"`
 	FieldMeta      *EnvelopeFieldUpdateManyFieldMetaNameRequest `json:"fieldMeta,omitempty"`
 	ID             float64                                      `json:"id"`
@@ -2041,78 +2041,78 @@ type EnvelopeFieldUpdateManyDataName struct {
 	Height         *float64                                     `json:"height,omitempty"`
 }
 
-func (e EnvelopeFieldUpdateManyDataName) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
+func (d DataName) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
 }
 
-func (e *EnvelopeFieldUpdateManyDataName) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "id"}); err != nil {
+func (d *DataName) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldUpdateManyDataName) GetType() EnvelopeFieldUpdateManyTypeNameRequest1 {
-	if e == nil {
+func (d *DataName) GetType() EnvelopeFieldUpdateManyTypeNameRequest1 {
+	if d == nil {
 		return EnvelopeFieldUpdateManyTypeNameRequest1("")
 	}
-	return e.Type
+	return d.Type
 }
 
-func (e *EnvelopeFieldUpdateManyDataName) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaNameRequest {
-	if e == nil {
+func (d *DataName) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaNameRequest {
+	if d == nil {
 		return nil
 	}
-	return e.FieldMeta
+	return d.FieldMeta
 }
 
-func (e *EnvelopeFieldUpdateManyDataName) GetID() float64 {
-	if e == nil {
+func (d *DataName) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return e.ID
+	return d.ID
 }
 
-func (e *EnvelopeFieldUpdateManyDataName) GetEnvelopeItemID() *string {
-	if e == nil {
+func (d *DataName) GetEnvelopeItemID() *string {
+	if d == nil {
 		return nil
 	}
-	return e.EnvelopeItemID
+	return d.EnvelopeItemID
 }
 
-func (e *EnvelopeFieldUpdateManyDataName) GetPage() *float64 {
-	if e == nil {
+func (d *DataName) GetPage() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Page
+	return d.Page
 }
 
-func (e *EnvelopeFieldUpdateManyDataName) GetPositionX() *float64 {
-	if e == nil {
+func (d *DataName) GetPositionX() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionX
+	return d.PositionX
 }
 
-func (e *EnvelopeFieldUpdateManyDataName) GetPositionY() *float64 {
-	if e == nil {
+func (d *DataName) GetPositionY() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionY
+	return d.PositionY
 }
 
-func (e *EnvelopeFieldUpdateManyDataName) GetWidth() *float64 {
-	if e == nil {
+func (d *DataName) GetWidth() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Width
+	return d.Width
 }
 
-func (e *EnvelopeFieldUpdateManyDataName) GetHeight() *float64 {
-	if e == nil {
+func (d *DataName) GetHeight() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Height
+	return d.Height
 }
 
 type EnvelopeFieldUpdateManyTypeInitialsRequest1 string
@@ -2260,7 +2260,7 @@ func (e *EnvelopeFieldUpdateManyFieldMetaInitialsRequest) GetTextAlign() *Envelo
 	return e.TextAlign
 }
 
-type EnvelopeFieldUpdateManyDataInitials struct {
+type DataInitials struct {
 	Type           EnvelopeFieldUpdateManyTypeInitialsRequest1      `json:"type"`
 	FieldMeta      *EnvelopeFieldUpdateManyFieldMetaInitialsRequest `json:"fieldMeta,omitempty"`
 	ID             float64                                          `json:"id"`
@@ -2272,78 +2272,78 @@ type EnvelopeFieldUpdateManyDataInitials struct {
 	Height         *float64                                         `json:"height,omitempty"`
 }
 
-func (e EnvelopeFieldUpdateManyDataInitials) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
+func (d DataInitials) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
 }
 
-func (e *EnvelopeFieldUpdateManyDataInitials) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "id"}); err != nil {
+func (d *DataInitials) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldUpdateManyDataInitials) GetType() EnvelopeFieldUpdateManyTypeInitialsRequest1 {
-	if e == nil {
+func (d *DataInitials) GetType() EnvelopeFieldUpdateManyTypeInitialsRequest1 {
+	if d == nil {
 		return EnvelopeFieldUpdateManyTypeInitialsRequest1("")
 	}
-	return e.Type
+	return d.Type
 }
 
-func (e *EnvelopeFieldUpdateManyDataInitials) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaInitialsRequest {
-	if e == nil {
+func (d *DataInitials) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaInitialsRequest {
+	if d == nil {
 		return nil
 	}
-	return e.FieldMeta
+	return d.FieldMeta
 }
 
-func (e *EnvelopeFieldUpdateManyDataInitials) GetID() float64 {
-	if e == nil {
+func (d *DataInitials) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return e.ID
+	return d.ID
 }
 
-func (e *EnvelopeFieldUpdateManyDataInitials) GetEnvelopeItemID() *string {
-	if e == nil {
+func (d *DataInitials) GetEnvelopeItemID() *string {
+	if d == nil {
 		return nil
 	}
-	return e.EnvelopeItemID
+	return d.EnvelopeItemID
 }
 
-func (e *EnvelopeFieldUpdateManyDataInitials) GetPage() *float64 {
-	if e == nil {
+func (d *DataInitials) GetPage() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Page
+	return d.Page
 }
 
-func (e *EnvelopeFieldUpdateManyDataInitials) GetPositionX() *float64 {
-	if e == nil {
+func (d *DataInitials) GetPositionX() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionX
+	return d.PositionX
 }
 
-func (e *EnvelopeFieldUpdateManyDataInitials) GetPositionY() *float64 {
-	if e == nil {
+func (d *DataInitials) GetPositionY() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionY
+	return d.PositionY
 }
 
-func (e *EnvelopeFieldUpdateManyDataInitials) GetWidth() *float64 {
-	if e == nil {
+func (d *DataInitials) GetWidth() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Width
+	return d.Width
 }
 
-func (e *EnvelopeFieldUpdateManyDataInitials) GetHeight() *float64 {
-	if e == nil {
+func (d *DataInitials) GetHeight() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Height
+	return d.Height
 }
 
 type EnvelopeFieldUpdateManyTypeFreeSignature string
@@ -2369,7 +2369,7 @@ func (e *EnvelopeFieldUpdateManyTypeFreeSignature) UnmarshalJSON(data []byte) er
 	}
 }
 
-type EnvelopeFieldUpdateManyDataFreeSignature struct {
+type DataFreeSignature struct {
 	Type           EnvelopeFieldUpdateManyTypeFreeSignature `json:"type"`
 	ID             float64                                  `json:"id"`
 	EnvelopeItemID *string                                  `json:"envelopeItemId,omitempty"`
@@ -2380,71 +2380,71 @@ type EnvelopeFieldUpdateManyDataFreeSignature struct {
 	Height         *float64                                 `json:"height,omitempty"`
 }
 
-func (e EnvelopeFieldUpdateManyDataFreeSignature) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
+func (d DataFreeSignature) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
 }
 
-func (e *EnvelopeFieldUpdateManyDataFreeSignature) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "id"}); err != nil {
+func (d *DataFreeSignature) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldUpdateManyDataFreeSignature) GetType() EnvelopeFieldUpdateManyTypeFreeSignature {
-	if e == nil {
+func (d *DataFreeSignature) GetType() EnvelopeFieldUpdateManyTypeFreeSignature {
+	if d == nil {
 		return EnvelopeFieldUpdateManyTypeFreeSignature("")
 	}
-	return e.Type
+	return d.Type
 }
 
-func (e *EnvelopeFieldUpdateManyDataFreeSignature) GetID() float64 {
-	if e == nil {
+func (d *DataFreeSignature) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return e.ID
+	return d.ID
 }
 
-func (e *EnvelopeFieldUpdateManyDataFreeSignature) GetEnvelopeItemID() *string {
-	if e == nil {
+func (d *DataFreeSignature) GetEnvelopeItemID() *string {
+	if d == nil {
 		return nil
 	}
-	return e.EnvelopeItemID
+	return d.EnvelopeItemID
 }
 
-func (e *EnvelopeFieldUpdateManyDataFreeSignature) GetPage() *float64 {
-	if e == nil {
+func (d *DataFreeSignature) GetPage() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Page
+	return d.Page
 }
 
-func (e *EnvelopeFieldUpdateManyDataFreeSignature) GetPositionX() *float64 {
-	if e == nil {
+func (d *DataFreeSignature) GetPositionX() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionX
+	return d.PositionX
 }
 
-func (e *EnvelopeFieldUpdateManyDataFreeSignature) GetPositionY() *float64 {
-	if e == nil {
+func (d *DataFreeSignature) GetPositionY() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionY
+	return d.PositionY
 }
 
-func (e *EnvelopeFieldUpdateManyDataFreeSignature) GetWidth() *float64 {
-	if e == nil {
+func (d *DataFreeSignature) GetWidth() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Width
+	return d.Width
 }
 
-func (e *EnvelopeFieldUpdateManyDataFreeSignature) GetHeight() *float64 {
-	if e == nil {
+func (d *DataFreeSignature) GetHeight() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Height
+	return d.Height
 }
 
 type EnvelopeFieldUpdateManyTypeSignatureRequest1 string
@@ -2555,7 +2555,7 @@ func (e *EnvelopeFieldUpdateManyFieldMetaSignatureRequest) GetType() EnvelopeFie
 	return e.Type
 }
 
-type EnvelopeFieldUpdateManyDataSignature struct {
+type DataSignature struct {
 	Type           EnvelopeFieldUpdateManyTypeSignatureRequest1      `json:"type"`
 	FieldMeta      *EnvelopeFieldUpdateManyFieldMetaSignatureRequest `json:"fieldMeta,omitempty"`
 	ID             float64                                           `json:"id"`
@@ -2567,287 +2567,287 @@ type EnvelopeFieldUpdateManyDataSignature struct {
 	Height         *float64                                          `json:"height,omitempty"`
 }
 
-func (e EnvelopeFieldUpdateManyDataSignature) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(e, "", false)
+func (d DataSignature) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
 }
 
-func (e *EnvelopeFieldUpdateManyDataSignature) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "id"}); err != nil {
+func (d *DataSignature) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"type", "id"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldUpdateManyDataSignature) GetType() EnvelopeFieldUpdateManyTypeSignatureRequest1 {
-	if e == nil {
+func (d *DataSignature) GetType() EnvelopeFieldUpdateManyTypeSignatureRequest1 {
+	if d == nil {
 		return EnvelopeFieldUpdateManyTypeSignatureRequest1("")
 	}
-	return e.Type
+	return d.Type
 }
 
-func (e *EnvelopeFieldUpdateManyDataSignature) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaSignatureRequest {
-	if e == nil {
+func (d *DataSignature) GetFieldMeta() *EnvelopeFieldUpdateManyFieldMetaSignatureRequest {
+	if d == nil {
 		return nil
 	}
-	return e.FieldMeta
+	return d.FieldMeta
 }
 
-func (e *EnvelopeFieldUpdateManyDataSignature) GetID() float64 {
-	if e == nil {
+func (d *DataSignature) GetID() float64 {
+	if d == nil {
 		return 0.0
 	}
-	return e.ID
+	return d.ID
 }
 
-func (e *EnvelopeFieldUpdateManyDataSignature) GetEnvelopeItemID() *string {
-	if e == nil {
+func (d *DataSignature) GetEnvelopeItemID() *string {
+	if d == nil {
 		return nil
 	}
-	return e.EnvelopeItemID
+	return d.EnvelopeItemID
 }
 
-func (e *EnvelopeFieldUpdateManyDataSignature) GetPage() *float64 {
-	if e == nil {
+func (d *DataSignature) GetPage() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Page
+	return d.Page
 }
 
-func (e *EnvelopeFieldUpdateManyDataSignature) GetPositionX() *float64 {
-	if e == nil {
+func (d *DataSignature) GetPositionX() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionX
+	return d.PositionX
 }
 
-func (e *EnvelopeFieldUpdateManyDataSignature) GetPositionY() *float64 {
-	if e == nil {
+func (d *DataSignature) GetPositionY() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.PositionY
+	return d.PositionY
 }
 
-func (e *EnvelopeFieldUpdateManyDataSignature) GetWidth() *float64 {
-	if e == nil {
+func (d *DataSignature) GetWidth() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Width
+	return d.Width
 }
 
-func (e *EnvelopeFieldUpdateManyDataSignature) GetHeight() *float64 {
-	if e == nil {
+func (d *DataSignature) GetHeight() *float64 {
+	if d == nil {
 		return nil
 	}
-	return e.Height
+	return d.Height
 }
 
 type EnvelopeFieldUpdateManyDataUnionType string
 
 const (
-	EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataSignature     EnvelopeFieldUpdateManyDataUnionType = "envelope_field_updateMany_data_Signature"
-	EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataFreeSignature EnvelopeFieldUpdateManyDataUnionType = "envelope_field_updateMany_data_FreeSignature"
-	EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataInitials      EnvelopeFieldUpdateManyDataUnionType = "envelope_field_updateMany_data_Initials"
-	EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataName          EnvelopeFieldUpdateManyDataUnionType = "envelope_field_updateMany_data_Name"
-	EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataEmail         EnvelopeFieldUpdateManyDataUnionType = "envelope_field_updateMany_data_Email"
-	EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataDate          EnvelopeFieldUpdateManyDataUnionType = "envelope_field_updateMany_data_Date"
-	EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataText          EnvelopeFieldUpdateManyDataUnionType = "envelope_field_updateMany_data_Text"
-	EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataNumber        EnvelopeFieldUpdateManyDataUnionType = "envelope_field_updateMany_data_Number"
-	EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataRadio         EnvelopeFieldUpdateManyDataUnionType = "envelope_field_updateMany_data_Radio"
-	EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataCheckbox      EnvelopeFieldUpdateManyDataUnionType = "envelope_field_updateMany_data_Checkbox"
-	EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataDropdown      EnvelopeFieldUpdateManyDataUnionType = "envelope_field_updateMany_data_Dropdown"
+	EnvelopeFieldUpdateManyDataUnionTypeDataSignature     EnvelopeFieldUpdateManyDataUnionType = "data_Signature"
+	EnvelopeFieldUpdateManyDataUnionTypeDataFreeSignature EnvelopeFieldUpdateManyDataUnionType = "data_FreeSignature"
+	EnvelopeFieldUpdateManyDataUnionTypeDataInitials      EnvelopeFieldUpdateManyDataUnionType = "data_Initials"
+	EnvelopeFieldUpdateManyDataUnionTypeDataName          EnvelopeFieldUpdateManyDataUnionType = "data_Name"
+	EnvelopeFieldUpdateManyDataUnionTypeDataEmail         EnvelopeFieldUpdateManyDataUnionType = "data_Email"
+	EnvelopeFieldUpdateManyDataUnionTypeDataDate          EnvelopeFieldUpdateManyDataUnionType = "data_Date"
+	EnvelopeFieldUpdateManyDataUnionTypeDataText          EnvelopeFieldUpdateManyDataUnionType = "data_Text"
+	EnvelopeFieldUpdateManyDataUnionTypeDataNumber        EnvelopeFieldUpdateManyDataUnionType = "data_Number"
+	EnvelopeFieldUpdateManyDataUnionTypeDataRadio         EnvelopeFieldUpdateManyDataUnionType = "data_Radio"
+	EnvelopeFieldUpdateManyDataUnionTypeDataCheckbox      EnvelopeFieldUpdateManyDataUnionType = "data_Checkbox"
+	EnvelopeFieldUpdateManyDataUnionTypeDataDropdown      EnvelopeFieldUpdateManyDataUnionType = "data_Dropdown"
 )
 
 type EnvelopeFieldUpdateManyDataUnion struct {
-	EnvelopeFieldUpdateManyDataSignature     *EnvelopeFieldUpdateManyDataSignature     `queryParam:"inline" union:"member"`
-	EnvelopeFieldUpdateManyDataFreeSignature *EnvelopeFieldUpdateManyDataFreeSignature `queryParam:"inline" union:"member"`
-	EnvelopeFieldUpdateManyDataInitials      *EnvelopeFieldUpdateManyDataInitials      `queryParam:"inline" union:"member"`
-	EnvelopeFieldUpdateManyDataName          *EnvelopeFieldUpdateManyDataName          `queryParam:"inline" union:"member"`
-	EnvelopeFieldUpdateManyDataEmail         *EnvelopeFieldUpdateManyDataEmail         `queryParam:"inline" union:"member"`
-	EnvelopeFieldUpdateManyDataDate          *EnvelopeFieldUpdateManyDataDate          `queryParam:"inline" union:"member"`
-	EnvelopeFieldUpdateManyDataText          *EnvelopeFieldUpdateManyDataText          `queryParam:"inline" union:"member"`
-	EnvelopeFieldUpdateManyDataNumber        *EnvelopeFieldUpdateManyDataNumber        `queryParam:"inline" union:"member"`
-	EnvelopeFieldUpdateManyDataRadio         *EnvelopeFieldUpdateManyDataRadio         `queryParam:"inline" union:"member"`
-	EnvelopeFieldUpdateManyDataCheckbox      *EnvelopeFieldUpdateManyDataCheckbox      `queryParam:"inline" union:"member"`
-	EnvelopeFieldUpdateManyDataDropdown      *EnvelopeFieldUpdateManyDataDropdown      `queryParam:"inline" union:"member"`
+	DataSignature     *DataSignature     `queryParam:"inline" union:"member"`
+	DataFreeSignature *DataFreeSignature `queryParam:"inline" union:"member"`
+	DataInitials      *DataInitials      `queryParam:"inline" union:"member"`
+	DataName          *DataName          `queryParam:"inline" union:"member"`
+	DataEmail         *DataEmail         `queryParam:"inline" union:"member"`
+	DataDate          *DataDate          `queryParam:"inline" union:"member"`
+	DataText          *DataText          `queryParam:"inline" union:"member"`
+	DataNumber        *DataNumber        `queryParam:"inline" union:"member"`
+	DataRadio         *DataRadio         `queryParam:"inline" union:"member"`
+	DataCheckbox      *DataCheckbox      `queryParam:"inline" union:"member"`
+	DataDropdown      *DataDropdown      `queryParam:"inline" union:"member"`
 
 	Type EnvelopeFieldUpdateManyDataUnionType
 }
 
-func CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataSignature(envelopeFieldUpdateManyDataSignature EnvelopeFieldUpdateManyDataSignature) EnvelopeFieldUpdateManyDataUnion {
-	typ := EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataSignature
+func CreateEnvelopeFieldUpdateManyDataUnionDataSignature(dataSignature DataSignature) EnvelopeFieldUpdateManyDataUnion {
+	typ := EnvelopeFieldUpdateManyDataUnionTypeDataSignature
 
 	return EnvelopeFieldUpdateManyDataUnion{
-		EnvelopeFieldUpdateManyDataSignature: &envelopeFieldUpdateManyDataSignature,
-		Type:                                 typ,
+		DataSignature: &dataSignature,
+		Type:          typ,
 	}
 }
 
-func CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataFreeSignature(envelopeFieldUpdateManyDataFreeSignature EnvelopeFieldUpdateManyDataFreeSignature) EnvelopeFieldUpdateManyDataUnion {
-	typ := EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataFreeSignature
+func CreateEnvelopeFieldUpdateManyDataUnionDataFreeSignature(dataFreeSignature DataFreeSignature) EnvelopeFieldUpdateManyDataUnion {
+	typ := EnvelopeFieldUpdateManyDataUnionTypeDataFreeSignature
 
 	return EnvelopeFieldUpdateManyDataUnion{
-		EnvelopeFieldUpdateManyDataFreeSignature: &envelopeFieldUpdateManyDataFreeSignature,
-		Type:                                     typ,
+		DataFreeSignature: &dataFreeSignature,
+		Type:              typ,
 	}
 }
 
-func CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataInitials(envelopeFieldUpdateManyDataInitials EnvelopeFieldUpdateManyDataInitials) EnvelopeFieldUpdateManyDataUnion {
-	typ := EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataInitials
+func CreateEnvelopeFieldUpdateManyDataUnionDataInitials(dataInitials DataInitials) EnvelopeFieldUpdateManyDataUnion {
+	typ := EnvelopeFieldUpdateManyDataUnionTypeDataInitials
 
 	return EnvelopeFieldUpdateManyDataUnion{
-		EnvelopeFieldUpdateManyDataInitials: &envelopeFieldUpdateManyDataInitials,
-		Type:                                typ,
+		DataInitials: &dataInitials,
+		Type:         typ,
 	}
 }
 
-func CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataName(envelopeFieldUpdateManyDataName EnvelopeFieldUpdateManyDataName) EnvelopeFieldUpdateManyDataUnion {
-	typ := EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataName
+func CreateEnvelopeFieldUpdateManyDataUnionDataName(dataName DataName) EnvelopeFieldUpdateManyDataUnion {
+	typ := EnvelopeFieldUpdateManyDataUnionTypeDataName
 
 	return EnvelopeFieldUpdateManyDataUnion{
-		EnvelopeFieldUpdateManyDataName: &envelopeFieldUpdateManyDataName,
-		Type:                            typ,
+		DataName: &dataName,
+		Type:     typ,
 	}
 }
 
-func CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataEmail(envelopeFieldUpdateManyDataEmail EnvelopeFieldUpdateManyDataEmail) EnvelopeFieldUpdateManyDataUnion {
-	typ := EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataEmail
+func CreateEnvelopeFieldUpdateManyDataUnionDataEmail(dataEmail DataEmail) EnvelopeFieldUpdateManyDataUnion {
+	typ := EnvelopeFieldUpdateManyDataUnionTypeDataEmail
 
 	return EnvelopeFieldUpdateManyDataUnion{
-		EnvelopeFieldUpdateManyDataEmail: &envelopeFieldUpdateManyDataEmail,
-		Type:                             typ,
+		DataEmail: &dataEmail,
+		Type:      typ,
 	}
 }
 
-func CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataDate(envelopeFieldUpdateManyDataDate EnvelopeFieldUpdateManyDataDate) EnvelopeFieldUpdateManyDataUnion {
-	typ := EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataDate
+func CreateEnvelopeFieldUpdateManyDataUnionDataDate(dataDate DataDate) EnvelopeFieldUpdateManyDataUnion {
+	typ := EnvelopeFieldUpdateManyDataUnionTypeDataDate
 
 	return EnvelopeFieldUpdateManyDataUnion{
-		EnvelopeFieldUpdateManyDataDate: &envelopeFieldUpdateManyDataDate,
-		Type:                            typ,
+		DataDate: &dataDate,
+		Type:     typ,
 	}
 }
 
-func CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataText(envelopeFieldUpdateManyDataText EnvelopeFieldUpdateManyDataText) EnvelopeFieldUpdateManyDataUnion {
-	typ := EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataText
+func CreateEnvelopeFieldUpdateManyDataUnionDataText(dataText DataText) EnvelopeFieldUpdateManyDataUnion {
+	typ := EnvelopeFieldUpdateManyDataUnionTypeDataText
 
 	return EnvelopeFieldUpdateManyDataUnion{
-		EnvelopeFieldUpdateManyDataText: &envelopeFieldUpdateManyDataText,
-		Type:                            typ,
+		DataText: &dataText,
+		Type:     typ,
 	}
 }
 
-func CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataNumber(envelopeFieldUpdateManyDataNumber EnvelopeFieldUpdateManyDataNumber) EnvelopeFieldUpdateManyDataUnion {
-	typ := EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataNumber
+func CreateEnvelopeFieldUpdateManyDataUnionDataNumber(dataNumber DataNumber) EnvelopeFieldUpdateManyDataUnion {
+	typ := EnvelopeFieldUpdateManyDataUnionTypeDataNumber
 
 	return EnvelopeFieldUpdateManyDataUnion{
-		EnvelopeFieldUpdateManyDataNumber: &envelopeFieldUpdateManyDataNumber,
-		Type:                              typ,
+		DataNumber: &dataNumber,
+		Type:       typ,
 	}
 }
 
-func CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataRadio(envelopeFieldUpdateManyDataRadio EnvelopeFieldUpdateManyDataRadio) EnvelopeFieldUpdateManyDataUnion {
-	typ := EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataRadio
+func CreateEnvelopeFieldUpdateManyDataUnionDataRadio(dataRadio DataRadio) EnvelopeFieldUpdateManyDataUnion {
+	typ := EnvelopeFieldUpdateManyDataUnionTypeDataRadio
 
 	return EnvelopeFieldUpdateManyDataUnion{
-		EnvelopeFieldUpdateManyDataRadio: &envelopeFieldUpdateManyDataRadio,
-		Type:                             typ,
+		DataRadio: &dataRadio,
+		Type:      typ,
 	}
 }
 
-func CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataCheckbox(envelopeFieldUpdateManyDataCheckbox EnvelopeFieldUpdateManyDataCheckbox) EnvelopeFieldUpdateManyDataUnion {
-	typ := EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataCheckbox
+func CreateEnvelopeFieldUpdateManyDataUnionDataCheckbox(dataCheckbox DataCheckbox) EnvelopeFieldUpdateManyDataUnion {
+	typ := EnvelopeFieldUpdateManyDataUnionTypeDataCheckbox
 
 	return EnvelopeFieldUpdateManyDataUnion{
-		EnvelopeFieldUpdateManyDataCheckbox: &envelopeFieldUpdateManyDataCheckbox,
-		Type:                                typ,
+		DataCheckbox: &dataCheckbox,
+		Type:         typ,
 	}
 }
 
-func CreateEnvelopeFieldUpdateManyDataUnionEnvelopeFieldUpdateManyDataDropdown(envelopeFieldUpdateManyDataDropdown EnvelopeFieldUpdateManyDataDropdown) EnvelopeFieldUpdateManyDataUnion {
-	typ := EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataDropdown
+func CreateEnvelopeFieldUpdateManyDataUnionDataDropdown(dataDropdown DataDropdown) EnvelopeFieldUpdateManyDataUnion {
+	typ := EnvelopeFieldUpdateManyDataUnionTypeDataDropdown
 
 	return EnvelopeFieldUpdateManyDataUnion{
-		EnvelopeFieldUpdateManyDataDropdown: &envelopeFieldUpdateManyDataDropdown,
-		Type:                                typ,
+		DataDropdown: &dataDropdown,
+		Type:         typ,
 	}
 }
 
 func (u *EnvelopeFieldUpdateManyDataUnion) UnmarshalJSON(data []byte) error {
 
-	var envelopeFieldUpdateManyDataSignature EnvelopeFieldUpdateManyDataSignature = EnvelopeFieldUpdateManyDataSignature{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldUpdateManyDataSignature, "", true, nil); err == nil {
-		u.EnvelopeFieldUpdateManyDataSignature = &envelopeFieldUpdateManyDataSignature
-		u.Type = EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataSignature
+	var dataSignature DataSignature = DataSignature{}
+	if err := utils.UnmarshalJSON(data, &dataSignature, "", true, nil); err == nil {
+		u.DataSignature = &dataSignature
+		u.Type = EnvelopeFieldUpdateManyDataUnionTypeDataSignature
 		return nil
 	}
 
-	var envelopeFieldUpdateManyDataFreeSignature EnvelopeFieldUpdateManyDataFreeSignature = EnvelopeFieldUpdateManyDataFreeSignature{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldUpdateManyDataFreeSignature, "", true, nil); err == nil {
-		u.EnvelopeFieldUpdateManyDataFreeSignature = &envelopeFieldUpdateManyDataFreeSignature
-		u.Type = EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataFreeSignature
+	var dataFreeSignature DataFreeSignature = DataFreeSignature{}
+	if err := utils.UnmarshalJSON(data, &dataFreeSignature, "", true, nil); err == nil {
+		u.DataFreeSignature = &dataFreeSignature
+		u.Type = EnvelopeFieldUpdateManyDataUnionTypeDataFreeSignature
 		return nil
 	}
 
-	var envelopeFieldUpdateManyDataInitials EnvelopeFieldUpdateManyDataInitials = EnvelopeFieldUpdateManyDataInitials{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldUpdateManyDataInitials, "", true, nil); err == nil {
-		u.EnvelopeFieldUpdateManyDataInitials = &envelopeFieldUpdateManyDataInitials
-		u.Type = EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataInitials
+	var dataInitials DataInitials = DataInitials{}
+	if err := utils.UnmarshalJSON(data, &dataInitials, "", true, nil); err == nil {
+		u.DataInitials = &dataInitials
+		u.Type = EnvelopeFieldUpdateManyDataUnionTypeDataInitials
 		return nil
 	}
 
-	var envelopeFieldUpdateManyDataName EnvelopeFieldUpdateManyDataName = EnvelopeFieldUpdateManyDataName{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldUpdateManyDataName, "", true, nil); err == nil {
-		u.EnvelopeFieldUpdateManyDataName = &envelopeFieldUpdateManyDataName
-		u.Type = EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataName
+	var dataName DataName = DataName{}
+	if err := utils.UnmarshalJSON(data, &dataName, "", true, nil); err == nil {
+		u.DataName = &dataName
+		u.Type = EnvelopeFieldUpdateManyDataUnionTypeDataName
 		return nil
 	}
 
-	var envelopeFieldUpdateManyDataEmail EnvelopeFieldUpdateManyDataEmail = EnvelopeFieldUpdateManyDataEmail{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldUpdateManyDataEmail, "", true, nil); err == nil {
-		u.EnvelopeFieldUpdateManyDataEmail = &envelopeFieldUpdateManyDataEmail
-		u.Type = EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataEmail
+	var dataEmail DataEmail = DataEmail{}
+	if err := utils.UnmarshalJSON(data, &dataEmail, "", true, nil); err == nil {
+		u.DataEmail = &dataEmail
+		u.Type = EnvelopeFieldUpdateManyDataUnionTypeDataEmail
 		return nil
 	}
 
-	var envelopeFieldUpdateManyDataDate EnvelopeFieldUpdateManyDataDate = EnvelopeFieldUpdateManyDataDate{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldUpdateManyDataDate, "", true, nil); err == nil {
-		u.EnvelopeFieldUpdateManyDataDate = &envelopeFieldUpdateManyDataDate
-		u.Type = EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataDate
+	var dataDate DataDate = DataDate{}
+	if err := utils.UnmarshalJSON(data, &dataDate, "", true, nil); err == nil {
+		u.DataDate = &dataDate
+		u.Type = EnvelopeFieldUpdateManyDataUnionTypeDataDate
 		return nil
 	}
 
-	var envelopeFieldUpdateManyDataText EnvelopeFieldUpdateManyDataText = EnvelopeFieldUpdateManyDataText{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldUpdateManyDataText, "", true, nil); err == nil {
-		u.EnvelopeFieldUpdateManyDataText = &envelopeFieldUpdateManyDataText
-		u.Type = EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataText
+	var dataText DataText = DataText{}
+	if err := utils.UnmarshalJSON(data, &dataText, "", true, nil); err == nil {
+		u.DataText = &dataText
+		u.Type = EnvelopeFieldUpdateManyDataUnionTypeDataText
 		return nil
 	}
 
-	var envelopeFieldUpdateManyDataNumber EnvelopeFieldUpdateManyDataNumber = EnvelopeFieldUpdateManyDataNumber{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldUpdateManyDataNumber, "", true, nil); err == nil {
-		u.EnvelopeFieldUpdateManyDataNumber = &envelopeFieldUpdateManyDataNumber
-		u.Type = EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataNumber
+	var dataNumber DataNumber = DataNumber{}
+	if err := utils.UnmarshalJSON(data, &dataNumber, "", true, nil); err == nil {
+		u.DataNumber = &dataNumber
+		u.Type = EnvelopeFieldUpdateManyDataUnionTypeDataNumber
 		return nil
 	}
 
-	var envelopeFieldUpdateManyDataRadio EnvelopeFieldUpdateManyDataRadio = EnvelopeFieldUpdateManyDataRadio{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldUpdateManyDataRadio, "", true, nil); err == nil {
-		u.EnvelopeFieldUpdateManyDataRadio = &envelopeFieldUpdateManyDataRadio
-		u.Type = EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataRadio
+	var dataRadio DataRadio = DataRadio{}
+	if err := utils.UnmarshalJSON(data, &dataRadio, "", true, nil); err == nil {
+		u.DataRadio = &dataRadio
+		u.Type = EnvelopeFieldUpdateManyDataUnionTypeDataRadio
 		return nil
 	}
 
-	var envelopeFieldUpdateManyDataCheckbox EnvelopeFieldUpdateManyDataCheckbox = EnvelopeFieldUpdateManyDataCheckbox{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldUpdateManyDataCheckbox, "", true, nil); err == nil {
-		u.EnvelopeFieldUpdateManyDataCheckbox = &envelopeFieldUpdateManyDataCheckbox
-		u.Type = EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataCheckbox
+	var dataCheckbox DataCheckbox = DataCheckbox{}
+	if err := utils.UnmarshalJSON(data, &dataCheckbox, "", true, nil); err == nil {
+		u.DataCheckbox = &dataCheckbox
+		u.Type = EnvelopeFieldUpdateManyDataUnionTypeDataCheckbox
 		return nil
 	}
 
-	var envelopeFieldUpdateManyDataDropdown EnvelopeFieldUpdateManyDataDropdown = EnvelopeFieldUpdateManyDataDropdown{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldUpdateManyDataDropdown, "", true, nil); err == nil {
-		u.EnvelopeFieldUpdateManyDataDropdown = &envelopeFieldUpdateManyDataDropdown
-		u.Type = EnvelopeFieldUpdateManyDataUnionTypeEnvelopeFieldUpdateManyDataDropdown
+	var dataDropdown DataDropdown = DataDropdown{}
+	if err := utils.UnmarshalJSON(data, &dataDropdown, "", true, nil); err == nil {
+		u.DataDropdown = &dataDropdown
+		u.Type = EnvelopeFieldUpdateManyDataUnionTypeDataDropdown
 		return nil
 	}
 
@@ -2855,48 +2855,48 @@ func (u *EnvelopeFieldUpdateManyDataUnion) UnmarshalJSON(data []byte) error {
 }
 
 func (u EnvelopeFieldUpdateManyDataUnion) MarshalJSON() ([]byte, error) {
-	if u.EnvelopeFieldUpdateManyDataSignature != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldUpdateManyDataSignature, "", true)
+	if u.DataSignature != nil {
+		return utils.MarshalJSON(u.DataSignature, "", true)
 	}
 
-	if u.EnvelopeFieldUpdateManyDataFreeSignature != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldUpdateManyDataFreeSignature, "", true)
+	if u.DataFreeSignature != nil {
+		return utils.MarshalJSON(u.DataFreeSignature, "", true)
 	}
 
-	if u.EnvelopeFieldUpdateManyDataInitials != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldUpdateManyDataInitials, "", true)
+	if u.DataInitials != nil {
+		return utils.MarshalJSON(u.DataInitials, "", true)
 	}
 
-	if u.EnvelopeFieldUpdateManyDataName != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldUpdateManyDataName, "", true)
+	if u.DataName != nil {
+		return utils.MarshalJSON(u.DataName, "", true)
 	}
 
-	if u.EnvelopeFieldUpdateManyDataEmail != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldUpdateManyDataEmail, "", true)
+	if u.DataEmail != nil {
+		return utils.MarshalJSON(u.DataEmail, "", true)
 	}
 
-	if u.EnvelopeFieldUpdateManyDataDate != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldUpdateManyDataDate, "", true)
+	if u.DataDate != nil {
+		return utils.MarshalJSON(u.DataDate, "", true)
 	}
 
-	if u.EnvelopeFieldUpdateManyDataText != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldUpdateManyDataText, "", true)
+	if u.DataText != nil {
+		return utils.MarshalJSON(u.DataText, "", true)
 	}
 
-	if u.EnvelopeFieldUpdateManyDataNumber != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldUpdateManyDataNumber, "", true)
+	if u.DataNumber != nil {
+		return utils.MarshalJSON(u.DataNumber, "", true)
 	}
 
-	if u.EnvelopeFieldUpdateManyDataRadio != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldUpdateManyDataRadio, "", true)
+	if u.DataRadio != nil {
+		return utils.MarshalJSON(u.DataRadio, "", true)
 	}
 
-	if u.EnvelopeFieldUpdateManyDataCheckbox != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldUpdateManyDataCheckbox, "", true)
+	if u.DataCheckbox != nil {
+		return utils.MarshalJSON(u.DataCheckbox, "", true)
 	}
 
-	if u.EnvelopeFieldUpdateManyDataDropdown != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldUpdateManyDataDropdown, "", true)
+	if u.DataDropdown != nil {
+		return utils.MarshalJSON(u.DataDropdown, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type EnvelopeFieldUpdateManyDataUnion: all fields are null")

@@ -2917,6 +2917,8 @@ func (s *Documents) Download(ctx context.Context, documentID float64, version *o
 
 // CreateV0 - Create document
 // You will need to upload the PDF to the provided URL returned. Note: Once V2 API is released, this will be removed since we will allow direct uploads, instead of using an upload URL.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Documents) CreateV0(ctx context.Context, request operations.DocumentCreateDocumentTemporaryRequest, opts ...operations.Option) (*operations.DocumentCreateDocumentTemporaryResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{

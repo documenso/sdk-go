@@ -3,63 +3,63 @@
 
 ## Supported Types
 
-### EnvelopeFieldCreateManyFieldMetaSignatureResponse
+### EnvelopeFieldCreateManyFieldMetaSignature
 
 ```go
-envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaSignatureResponse(operations.EnvelopeFieldCreateManyFieldMetaSignatureResponse{/* values here */})
+envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaSignature(operations.EnvelopeFieldCreateManyFieldMetaSignature{/* values here */})
 ```
 
-### EnvelopeFieldCreateManyFieldMetaInitialsResponse
+### EnvelopeFieldCreateManyFieldMetaInitials
 
 ```go
-envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaInitialsResponse(operations.EnvelopeFieldCreateManyFieldMetaInitialsResponse{/* values here */})
+envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaInitials(operations.EnvelopeFieldCreateManyFieldMetaInitials{/* values here */})
 ```
 
-### EnvelopeFieldCreateManyFieldMetaNameResponse
+### EnvelopeFieldCreateManyFieldMetaName
 
 ```go
-envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaNameResponse(operations.EnvelopeFieldCreateManyFieldMetaNameResponse{/* values here */})
+envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaName(operations.EnvelopeFieldCreateManyFieldMetaName{/* values here */})
 ```
 
-### EnvelopeFieldCreateManyFieldMetaEmailResponse
+### EnvelopeFieldCreateManyFieldMetaEmail
 
 ```go
-envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaEmailResponse(operations.EnvelopeFieldCreateManyFieldMetaEmailResponse{/* values here */})
+envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaEmail(operations.EnvelopeFieldCreateManyFieldMetaEmail{/* values here */})
 ```
 
-### EnvelopeFieldCreateManyFieldMetaDateResponse
+### EnvelopeFieldCreateManyFieldMetaDate
 
 ```go
-envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaDateResponse(operations.EnvelopeFieldCreateManyFieldMetaDateResponse{/* values here */})
+envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaDate(operations.EnvelopeFieldCreateManyFieldMetaDate{/* values here */})
 ```
 
-### EnvelopeFieldCreateManyFieldMetaTextResponse
+### EnvelopeFieldCreateManyFieldMetaText
 
 ```go
-envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaTextResponse(operations.EnvelopeFieldCreateManyFieldMetaTextResponse{/* values here */})
+envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaText(operations.EnvelopeFieldCreateManyFieldMetaText{/* values here */})
 ```
 
-### EnvelopeFieldCreateManyFieldMetaNumberResponse
+### EnvelopeFieldCreateManyFieldMetaNumber
 
 ```go
-envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaNumberResponse(operations.EnvelopeFieldCreateManyFieldMetaNumberResponse{/* values here */})
+envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaNumber(operations.EnvelopeFieldCreateManyFieldMetaNumber{/* values here */})
 ```
 
-### EnvelopeFieldCreateManyFieldMetaRadioResponse
+### EnvelopeFieldCreateManyFieldMetaRadio
 
 ```go
-envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaRadioResponse(operations.EnvelopeFieldCreateManyFieldMetaRadioResponse{/* values here */})
+envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaRadio(operations.EnvelopeFieldCreateManyFieldMetaRadio{/* values here */})
 ```
 
-### EnvelopeFieldCreateManyFieldMetaCheckboxResponse
+### EnvelopeFieldCreateManyFieldMetaCheckbox
 
 ```go
-envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaCheckboxResponse(operations.EnvelopeFieldCreateManyFieldMetaCheckboxResponse{/* values here */})
+envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaCheckbox(operations.EnvelopeFieldCreateManyFieldMetaCheckbox{/* values here */})
 ```
 
-### EnvelopeFieldCreateManyFieldMetaDropdownResponse
+### EnvelopeFieldCreateManyFieldMetaDropdown
 
 ```go
-envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaDropdownResponse(operations.EnvelopeFieldCreateManyFieldMetaDropdownResponse{/* values here */})
+envelopeFieldCreateManyFieldMetaUnion := operations.CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaDropdown(operations.EnvelopeFieldCreateManyFieldMetaDropdown{/* values here */})
 ```
 

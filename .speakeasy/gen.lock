@@ -1,29 +1,30 @@
 lockVersion: 2.0.0
 id: bae11706-ab18-405c-b9f4-26138a36bedc
 management:
-  docChecksum: 58c14a3dd77b0327f2271aaf29fa1b43
+  docChecksum: afdd15b5d039d08b976aab5ca5a6edbc
   docVersion: 1.0.0
-  speakeasyVersion: 1.700.2
-  generationVersion: 2.801.2
-  releaseVersion: 0.5.1
-  configChecksum: 6d173e9d85a2efda5fab1f3d5b0b470d
+  speakeasyVersion: 1.708.2
+  generationVersion: 2.811.4
+  releaseVersion: 0.6.0
+  configChecksum: 39dd108d589b125e64e208b65a27860b
   repoURL: https://github.com/documenso/sdk-go.git
   installationURL: https://github.com/documenso/sdk-go
 persistentEdits:
-  generation_id: 2596df88-5b2a-41d5-b02b-1a49eae977a9
-  pristine_commit_hash: c3814c7b5c6736342258381eadb9ce2e09c80251
-  pristine_tree_hash: 9795bb1ab36432aecc5c7f593ad4bd408a5bb53d
+  generation_id: 4b94b8dc-2c6e-4f6d-b225-72e673dde157
+  pristine_commit_hash: 0cb09260fd991d2d89e63a8cf0495dd7d294498f
+  pristine_tree_hash: b8f9912b5d6fc4bce945d56a86f03ff9c81275d0
 features:
   go:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.12
-    core: 3.13.10
+    constsAndDefaults: 0.1.13
+    core: 3.13.12
     defaultEnabledRetries: 0.2.0
+    deprecations: 2.81.3
     devContainers: 2.90.0
     enums: 2.82.1
     envVarSecurityUsage: 0.3.2
     flattening: 2.81.1
-    globalSecurity: 2.82.12
+    globalSecurity: 2.82.13
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.83.0
@@ -34,7 +35,7 @@ features:
     responseFormat: 0.1.2
     retries: 2.84.2
     sdkHooks: 0.3.0
-    unions: 2.87.2
+    unions: 2.87.3
     uploadStreams: 0.1.0
 trackedFiles:
   .devcontainer/README.md:
@@ -3057,6 +3058,14 @@ trackedFiles:
     id: 4c918dd7b750
     last_write_checksum: sha1:f6e82db087886b3861bec529262d6455db6514a1
     pristine_git_object: 10d15342b53437fe7e4bd75b93d932294232eb69
+  docs/models/operations/datacheckbox.md:
+    id: bd11c5730c7f
+    last_write_checksum: sha1:78e3efc65525e977c5a47a42c93d76c6089b506a
+    pristine_git_object: 4cff8384d5035051cfa682682bc23e2f18fe5003
+  docs/models/operations/datadate.md:
+    id: df8d1e90e41a
+    last_write_checksum: sha1:d5d3c4f316a1f26d39bcc71590576cb1882b7b68
+    pristine_git_object: 13475346cb3c3d0717afa849e99323fb7336dcf2
   docs/models/operations/datadocumentaccessauth2fafailed.md:
     id: f905d4bd7150
     last_write_checksum: sha1:5fe5eb4b7e423c5534a31702aef12ae88d075b20
@@ -3149,6 +3158,14 @@ trackedFiles:
     id: f31884a75b80
     last_write_checksum: sha1:0a5250e5f932ac16a06dc781a03cee6c91a50eb5
     pristine_git_object: 9106064a10ff6ebb9c987359b2c6b8a832f9559a
+  docs/models/operations/datadropdown.md:
+    id: 6bfeaa97519f
+    last_write_checksum: sha1:50329cc4c8e8dffbfc1769b701ca9660f1380cb6
+    pristine_git_object: 52712e29a8cde144da3908ce1b81ff9c72cceccd
+  docs/models/operations/dataemail.md:
+    id: a1b7c0e08933
+    last_write_checksum: sha1:9d0dabb5e498bc2a2ea557fd1421afb7da057093
+    pristine_git_object: 7d21dcfc78e8ca0aa13402d98eabc7782d69687b
   docs/models/operations/dataemailsent.md:
     id: 370c687db0a5
     last_write_checksum: sha1:ca63f0fb7f6cab444f2664924c10d73cf35ae3af
@@ -3173,6 +3190,26 @@ trackedFiles:
     id: 8b5e709aa36e
     last_write_checksum: sha1:908cec43f2dd30f4dae5e04766b22e88b0593935
     pristine_git_object: 7e2e0f6be2f3cb4ed6450ec7496513470e5b0f36
+  docs/models/operations/datafreesignature.md:
+    id: ed35e79f1555
+    last_write_checksum: sha1:19c8c752538adfd3e9df2f0fc1e04eb45e302148
+    pristine_git_object: 5721e8235d5c5dc0aebbaa9355fbefc7f0e59e29
+  docs/models/operations/datainitials.md:
+    id: 3c990b40f6bf
+    last_write_checksum: sha1:5366e8e47f6e88c61003b7d3fc581fad0e778f99
+    pristine_git_object: e352603c903fbf25b8dced917562528862c84465
+  docs/models/operations/dataname.md:
+    id: 67c2f02e8fe6
+    last_write_checksum: sha1:df4a73ba7ce13e5ec03a0b4ff985ad598f65beda
+    pristine_git_object: 54d691ec8304518dc787f73d02c8dc9c510c0ffc
+  docs/models/operations/datanumber.md:
+    id: 320dabf14ef1
+    last_write_checksum: sha1:87a4796e1fbbb84bf3a336c3e4bf4cfb22cda251
+    pristine_git_object: 5ea937ece2ba3d6e2b8a5f75e01028984d8b1088
+  docs/models/operations/dataradio.md:
+    id: 6a3889ce0ec8
+    last_write_checksum: sha1:523650550ef8929869ae48e12deac5bb2792b8a4
+    pristine_git_object: 9b850115350b1b0ccb1248aa07ddcd40336994fc
   docs/models/operations/datarecipientcreated.md:
     id: d79a413fdcdd
     last_write_checksum: sha1:65434604cb5dfa81df7e58a7586f532070ca8649
@@ -3185,6 +3222,14 @@ trackedFiles:
     id: 365931ab248a
     last_write_checksum: sha1:a03af0a21184cb54d759815fa7d23f17ae217e57
     pristine_git_object: 9484495dbf96122fe91563018152e526806d9c78
+  docs/models/operations/datasignature.md:
+    id: a9710d2a40aa
+    last_write_checksum: sha1:a8f08c0f39338af47cf454d17f6de2e68b71f1e7
+    pristine_git_object: 536af2142c67f23e463ceb29f8a0e58f181f45ae
+  docs/models/operations/datatext.md:
+    id: ec0c0d906211
+    last_write_checksum: sha1:c3f9742b8f5ee62a7acd91444fba1afe7b77e703
+    pristine_git_object: 2e6568277be69c73ab23ebe6f1a5f33b9002ed90
   docs/models/operations/document.md:
     id: 20633c7fa04e
     last_write_checksum: sha1:ae311f7f1036cb292d78d942da4c169459cd1f7e
@@ -5589,154 +5634,70 @@ trackedFiles:
     id: 95ae94b340a4
     last_write_checksum: sha1:571f4cfb28c3c9165db6122a8e275f5e81703379
     pristine_git_object: bb96576cb36257f0d11955d622d74a220f80ce28
-  docs/models/operations/envelopefieldcreatemanydatacheckbox.md:
-    id: ab7783a433a3
-    last_write_checksum: sha1:ebfecbe7fc24256e6724b809052e64f3e84f9312
-    pristine_git_object: f8d66aa7bff61f3ba7883dbde64381f07d8d0389
-  docs/models/operations/envelopefieldcreatemanydatadate.md:
-    id: 8f5b1bcbf2fb
-    last_write_checksum: sha1:815679a976b2590f28712dd151a8afa545604946
-    pristine_git_object: 815530c6bbb034bff0cbe72a1eb77b1a21c21bb0
-  docs/models/operations/envelopefieldcreatemanydatadropdown.md:
-    id: e6743c9062f4
-    last_write_checksum: sha1:1f407bda6aa52b99fbbeb02815fa448797a943ce
-    pristine_git_object: 621462dae4e782bef7edba65ebb12266e2b2e56f
-  docs/models/operations/envelopefieldcreatemanydataemail.md:
-    id: 2eeed11cfdb6
-    last_write_checksum: sha1:f6f7b201e4eb829b90781683f92f0568b4af7839
-    pristine_git_object: 675a7f6fbbb2713d314f23ba6b52021a6f65cc44
-  docs/models/operations/envelopefieldcreatemanydatafreesignature.md:
-    id: 128fec79881d
-    last_write_checksum: sha1:af7de09085cc0655570a9a37a7a7f3a9853a998c
-    pristine_git_object: c747b75ed140c12ea8983b3a412e2888b7358a01
-  docs/models/operations/envelopefieldcreatemanydatainitials.md:
-    id: 66eb1b5bd42e
-    last_write_checksum: sha1:59dcf86bf034fa88eb0cfd7281848a5c14a0d2e7
-    pristine_git_object: 6e7fa66e21b5afe145679abeab6c92c8a579a67d
-  docs/models/operations/envelopefieldcreatemanydataname.md:
-    id: b091c045bc98
-    last_write_checksum: sha1:11739c3d44654e27f1b207c0dbad59c2b242f119
-    pristine_git_object: 344f5908d47d56058e78811760e20c06a62474ab
-  docs/models/operations/envelopefieldcreatemanydatanumber.md:
-    id: 16c643190ed4
-    last_write_checksum: sha1:4bd29b853924bef005528c763b569f86c8d595fb
-    pristine_git_object: 82b6a85736303229ed2e139e97101941a293951a
-  docs/models/operations/envelopefieldcreatemanydataradio.md:
-    id: dc89d4367d5b
-    last_write_checksum: sha1:025b0c4dfe006e59610ff8e618f1a14eb51448ca
-    pristine_git_object: 77b3ceee13162475d8e67c4f86b9b0af0a907b0e
+  docs/models/operations/envelopefieldcreatemanydatarequest1.md:
+    id: 6d25e4584f63
+    last_write_checksum: sha1:61cd5ca9c335a31697b13d10a937f0d616b326ce
+    pristine_git_object: abf71eabd72aa8b31bb6576a9a806baff2ff3eee
+  docs/models/operations/envelopefieldcreatemanydatarequest2.md:
+    id: 064f18a17708
+    last_write_checksum: sha1:9123635497ddbe0901d3a7c1dc7bdcf0f1e587aa
+    pristine_git_object: bce1036ac177c59b5fc6b7a071a7ea5083e16f3c
   docs/models/operations/envelopefieldcreatemanydataresponse.md:
     id: 3a586ad9916a
-    last_write_checksum: sha1:70fc17e3cefb1f8dbaabbff489d6186125bc5f42
-    pristine_git_object: fe665d41c6efd159568e1510cd338fde120d5e86
-  docs/models/operations/envelopefieldcreatemanydatasignature.md:
-    id: e08f926140f9
-    last_write_checksum: sha1:18c6557f58ded5a8bffc4543f086c6f7946404cb
-    pristine_git_object: 88247f355b7581cd9cbf68e9a39576c645d7ca29
-  docs/models/operations/envelopefieldcreatemanydatatext.md:
-    id: e25f1abbdca8
-    last_write_checksum: sha1:b8fad662fdc8acddd9a8afa90f6684448cd42e9a
-    pristine_git_object: c58fb35e5dc9f510bd34ef1d36dc2da697cebf3b
+    last_write_checksum: sha1:b409fa1ec8f60b4372756ee6af770798baee4a2c
+    pristine_git_object: bd6fba1079dfa527b666e81c69ce58a1ef710f66
   docs/models/operations/envelopefieldcreatemanydataunion.md:
     id: e9a2b4e34eb9
-    last_write_checksum: sha1:3b11f80cfb0e5f74a134c960fcb5d65d4d82a4d3
-    pristine_git_object: 53d6c49689b0ba55737e477fda5210a511c34855
-  docs/models/operations/envelopefieldcreatemanydirectioncheckbox.md:
-    id: 7efd48354dd2
-    last_write_checksum: sha1:125a848189a99c302df183a3ce4d151becd08516
-    pristine_git_object: f793e5601ae55319db919dfad4a96cc8784138b8
-  docs/models/operations/envelopefieldcreatemanydirectionradio.md:
-    id: 8980f5aa8d94
-    last_write_checksum: sha1:6c2ed74679fb3ed62841da4c865bc19c9e26c5d0
-    pristine_git_object: b45979446111c2e1588c361f405b701f73843b96
-  docs/models/operations/envelopefieldcreatemanydirectionresponse1.md:
-    id: 3ebed79a95c3
-    last_write_checksum: sha1:ffeddc1cede88453dde448a992baf0797f134d1e
-    pristine_git_object: 922b6937837382eea31dd5f825818c0a43b06254
-  docs/models/operations/envelopefieldcreatemanydirectionresponse2.md:
-    id: 75e639a18038
-    last_write_checksum: sha1:14adbc76eda3acfaaa6af6d9a1126965aa017b37
-    pristine_git_object: b49785863d94295347b30b43808aade090b509b5
-  docs/models/operations/envelopefieldcreatemanyfieldmetacheckboxrequest.md:
-    id: 0c84d370dd53
-    last_write_checksum: sha1:7c81f8b8f3b53b399add35529373def8e75bc3a3
-    pristine_git_object: 83a0c73d5ca10ceac58d19b71a76676351ae87a8
-  docs/models/operations/envelopefieldcreatemanyfieldmetacheckboxresponse.md:
-    id: 616bca2d0110
-    last_write_checksum: sha1:c2ef308deea13bbaa267afb89715df562d34ce97
-    pristine_git_object: 5aafc44d4b0917849583a128570f0efe98cbeca2
-  docs/models/operations/envelopefieldcreatemanyfieldmetadaterequest.md:
-    id: 5dab428d426d
-    last_write_checksum: sha1:10567d531e68e2b5b3e2356d460a036080a997a6
-    pristine_git_object: 3e07892f87acf6f667151367e689e1d7ed705c59
-  docs/models/operations/envelopefieldcreatemanyfieldmetadateresponse.md:
-    id: 157eaf1de0dc
-    last_write_checksum: sha1:850123a8b1740c60740b03800184b6b5cdd1aa09
-    pristine_git_object: 914f3103320c9c097bf01ce123f103fe30a9137f
-  docs/models/operations/envelopefieldcreatemanyfieldmetadropdownrequest.md:
-    id: 0a481839f889
-    last_write_checksum: sha1:8c67fded321ce87dd07156f2c01359194d23f59d
-    pristine_git_object: d5eb3628687743847be2696335c841b37bf75957
-  docs/models/operations/envelopefieldcreatemanyfieldmetadropdownresponse.md:
-    id: 471356027a56
-    last_write_checksum: sha1:9dc8220e13fcf52a7616ee37678e348a535b7bf2
-    pristine_git_object: 845e6023578c91200c3ded61b9597d1bc4a7fb40
-  docs/models/operations/envelopefieldcreatemanyfieldmetaemailrequest.md:
-    id: b9ff064c7a76
-    last_write_checksum: sha1:ebc1cbbd44674f12a57b0a47ccc80323fdfcc0ae
-    pristine_git_object: f024a689fc97f77639a653014fd9d87810f9fce3
-  docs/models/operations/envelopefieldcreatemanyfieldmetaemailresponse.md:
-    id: d0bac804e9d9
-    last_write_checksum: sha1:73a3152325b0fd18b588fa6a5b65fa1a774e2385
-    pristine_git_object: 27ebb8908b1200ade16b25d0f60ecac6d1d896b4
-  docs/models/operations/envelopefieldcreatemanyfieldmetainitialsrequest.md:
-    id: c027f1dd6eca
-    last_write_checksum: sha1:96f6c9ea0f621640ad935aa20b879eb14687f93d
-    pristine_git_object: 3b2882c0dfcc3cd7f909fa47fe4aa527db5bd649
-  docs/models/operations/envelopefieldcreatemanyfieldmetainitialsresponse.md:
-    id: 60000833a2b4
-    last_write_checksum: sha1:bd938387d4f571012510f509dc1854b4cb75170d
-    pristine_git_object: a8e8f1cabbba8f2d72ce64e0d4addd57373f3920
-  docs/models/operations/envelopefieldcreatemanyfieldmetanamerequest.md:
-    id: 4c85b33b956e
-    last_write_checksum: sha1:c5864d2801096989cd4e679f2880ea2902b5c2c7
-    pristine_git_object: b74d57bbaa1fc0008a2064f0ac1a54ac77c7b5d4
-  docs/models/operations/envelopefieldcreatemanyfieldmetanameresponse.md:
-    id: 169995bf148c
-    last_write_checksum: sha1:5e0ec133e9bfb4e355669670395e47c2720bee24
-    pristine_git_object: 6f1aeadccf7ecd0862f18bfccd7e487880e69fb7
-  docs/models/operations/envelopefieldcreatemanyfieldmetanumberrequest.md:
-    id: 68862e643fad
-    last_write_checksum: sha1:b02fd2df290bc4acc3ae68d0eae3aa1a3941b997
-    pristine_git_object: 0709ef4c316d981b7425eef2527ffc4dc4f88e81
-  docs/models/operations/envelopefieldcreatemanyfieldmetanumberresponse.md:
-    id: af013a2df239
-    last_write_checksum: sha1:73c8546028cac30704894d62e2b7361515b18b8c
-    pristine_git_object: e0d0b82b0048da132421c50bf256ff1a6f14c543
-  docs/models/operations/envelopefieldcreatemanyfieldmetaradiorequest.md:
-    id: ee532e1010a6
-    last_write_checksum: sha1:d6238b570d37bde1c15af9f3130da0b25cd4cdf9
-    pristine_git_object: cd160b6324cf5572a6f9497b86c049be7c04cf27
-  docs/models/operations/envelopefieldcreatemanyfieldmetaradioresponse.md:
-    id: 5b0b6d6ba99e
-    last_write_checksum: sha1:8c5d391bcb5ccfb68d5c96ac424c158e225b0fd9
-    pristine_git_object: 5cb8e1e2996add964f46d39a4aaff55d04d2ed1a
-  docs/models/operations/envelopefieldcreatemanyfieldmetasignaturerequest.md:
-    id: 510b880f65bc
-    last_write_checksum: sha1:f79611d7fa7440b105959ab46b5c2418d8571b8b
-    pristine_git_object: 20d7df19338eab7521de5fa7c7abb08de5a41ed0
-  docs/models/operations/envelopefieldcreatemanyfieldmetasignatureresponse.md:
-    id: 215b08bfe46e
-    last_write_checksum: sha1:15acbbc10f169b8a4e01ba149405a219729055b2
-    pristine_git_object: dbbafdde1c51b9c7202e074ae36aef70a7fd37d3
-  docs/models/operations/envelopefieldcreatemanyfieldmetatextrequest.md:
-    id: 7d46c402ec5d
-    last_write_checksum: sha1:4a58a25d73e09ffff282ca21723cfe9917f7a262
-    pristine_git_object: 05efa30bb3b8ed72dfdd496ef818f4b2096681b6
-  docs/models/operations/envelopefieldcreatemanyfieldmetatextresponse.md:
-    id: 67bca3a60428
-    last_write_checksum: sha1:5adb03c83fe8933b5ba839e62a96a13b96dae47f
-    pristine_git_object: 81ed347256e14f33f87db9485a66cc3875c0422e
+    last_write_checksum: sha1:be0dcadcff54f4a3d8eca6cfa2240645b5f2ee5e
+    pristine_git_object: 4ef567b8716ad30d63ceb722b71a4b0da80e0e06
+  docs/models/operations/envelopefieldcreatemanydirection1.md:
+    id: dd07f218b60d
+    last_write_checksum: sha1:5b5c78b60b32fcc6cf380e7bb251e801af28374e
+    pristine_git_object: 234df3125d6d056b4e624d95edbfd21b1db312e3
+  docs/models/operations/envelopefieldcreatemanydirection2.md:
+    id: 5f7211431d00
+    last_write_checksum: sha1:501ec29713551bbe3b0ee7d61d196a620549271b
+    pristine_git_object: b5b6aca4edbdcf5499fb13eeab4c18bb2f8d609f
+  docs/models/operations/envelopefieldcreatemanyfieldmetacheckbox.md:
+    id: b60564d57d1c
+    last_write_checksum: sha1:8b2a06ef166153075f2fdf299657d051eef3ea83
+    pristine_git_object: 722941c12f98bbb29736743a5effec4c4b7c2f1c
+  docs/models/operations/envelopefieldcreatemanyfieldmetadate.md:
+    id: 9edea055322b
+    last_write_checksum: sha1:564231aab40a8b1d122faaac6c47c7ef83d13afb
+    pristine_git_object: ca071057df514846bcf49fecde50489c15643bd3
+  docs/models/operations/envelopefieldcreatemanyfieldmetadropdown.md:
+    id: 9d7542aae42f
+    last_write_checksum: sha1:379860951da74075c12593f21f0365d85c8c15fa
+    pristine_git_object: 947ca375c9821fb3ef83353d7e4788088fbcd4f5
+  docs/models/operations/envelopefieldcreatemanyfieldmetaemail.md:
+    id: 4d14a648e028
+    last_write_checksum: sha1:527124762906f3e1bb4e645c2240f2ffefdab901
+    pristine_git_object: ea8eae71f2ebb7fbcb7cd5a977f0fb925efcc37c
+  docs/models/operations/envelopefieldcreatemanyfieldmetainitials.md:
+    id: a05a09f2f40a
+    last_write_checksum: sha1:7af668b039dd7be85fd545b0e1eb9acd3bf12cd9
+    pristine_git_object: f6a6bcee56586db5c8d604f587801bded69892b0
+  docs/models/operations/envelopefieldcreatemanyfieldmetaname.md:
+    id: 101e5c3a78fb
+    last_write_checksum: sha1:7cf9376e9c6a701edb3bf93597f48caf0ffbafc2
+    pristine_git_object: e13e1f4ca30ead0141cd8456b688afcfc09c9e26
+  docs/models/operations/envelopefieldcreatemanyfieldmetanumber.md:
+    id: 9d44f57a0ab4
+    last_write_checksum: sha1:ac0f212cb99380f8236f358291febe978fd97368
+    pristine_git_object: c385cc74f9418d9894c8f51017fb6039b798bda6
+  docs/models/operations/envelopefieldcreatemanyfieldmetaradio.md:
+    id: a0000e660f96
+    last_write_checksum: sha1:907c91a2143b06c0be7d725e8f3f6bfd1782a630
+    pristine_git_object: 2e41486ee23ba706789f6d9ebba2daf78702b42d
+  docs/models/operations/envelopefieldcreatemanyfieldmetasignature.md:
+    id: 95a2c13e65fc
+    last_write_checksum: sha1:c8c8d36288f1c0e12501de5485981146b043bf9a
+    pristine_git_object: d4d4e4005e9f469bc2af0d5ee872ed94e4a918d9
+  docs/models/operations/envelopefieldcreatemanyfieldmetatext.md:
+    id: a3700e9840d2
+    last_write_checksum: sha1:ea701ad062d6978dd89518ec4ae715a53b1f9580
+    pristine_git_object: dd0931ed00e6b033cb902e0ad7dcb15681b1cfa2
   docs/models/operations/envelopefieldcreatemanyfieldmetatypecheckbox.md:
     id: c6eb5e2eebd5
     last_write_checksum: sha1:6c6e9fd21f5896c5550ed7b77a1c198b4c9566d5
@@ -5779,8 +5740,8 @@ trackedFiles:
     pristine_git_object: ee85767ddf8b346467c7f81ab2623f63cdd616a5
   docs/models/operations/envelopefieldcreatemanyfieldmetaunion.md:
     id: 13cbefc329a3
-    last_write_checksum: sha1:36a6afe99131f77cd057843f52ae15a789f69647
-    pristine_git_object: 755f8e4c86528ed7411fdda4b99a35712ba04337
+    last_write_checksum: sha1:97f178c28f12aead6c336087757559e4aafdeb1f
+    pristine_git_object: 5420d941473d690aaed985bb3100a11c71eb1ccc
   docs/models/operations/envelopefieldcreatemanyrequest.md:
     id: efd1ff58a4cf
     last_write_checksum: sha1:108a9c8d058578f2a570d0b819a3b11dd4739a58
@@ -5793,182 +5754,54 @@ trackedFiles:
     id: 127a2650b89c
     last_write_checksum: sha1:2f34eb2f141209582094818a957845edb0fe29b9
     pristine_git_object: 5d9b7d0ce9a4a62da788ecd5642c2820cb6266c5
-  docs/models/operations/envelopefieldcreatemanytextaligndate.md:
-    id: b0405ee7e2d4
-    last_write_checksum: sha1:1d06945d13bdba808164cc4a10afffe7b0baa8df
-    pristine_git_object: 2a7421c0c9776fd4ef9a4503663b63057a570525
-  docs/models/operations/envelopefieldcreatemanytextalignemail.md:
-    id: f2e115d5d83e
-    last_write_checksum: sha1:0fc96167e26a32e14c8559f84952ba9769c68876
-    pristine_git_object: 0141524afabc4340ab0cadc1d8894f6b59d7de11
-  docs/models/operations/envelopefieldcreatemanytextaligninitials.md:
-    id: becc1cb4fac9
-    last_write_checksum: sha1:ef093807bb5eb733d7040733a8a564cdc8b44b42
-    pristine_git_object: c7f94a7b6161e794112d5614c0ecfd391916d925
-  docs/models/operations/envelopefieldcreatemanytextalignname.md:
-    id: 42cc2c5e3051
-    last_write_checksum: sha1:12dea7856753b387a923f5224cd2b5e1ac684220
-    pristine_git_object: 21c7820ab1eab721e32715aa7c011f581f758ea9
-  docs/models/operations/envelopefieldcreatemanytextalignnumber.md:
-    id: a58d76fd2c33
-    last_write_checksum: sha1:e02fb08817178b7fe03fa4ef365c453c615488aa
-    pristine_git_object: 11aa5026267f7f7c3ac9ef79d8571920819e3bd1
-  docs/models/operations/envelopefieldcreatemanytextalignresponse1.md:
-    id: 0809b9bb9207
-    last_write_checksum: sha1:c08c323435090195034029613a0d3deb1477baf1
-    pristine_git_object: 732427d5ada52d7f86d4cac3833d8d607dd6239c
-  docs/models/operations/envelopefieldcreatemanytextalignresponse2.md:
-    id: 5c7be9e6a3e8
-    last_write_checksum: sha1:f6cf363131065fec052b5abd01f51b10b105a8cc
-    pristine_git_object: 6d65ec6134ed74bb1ca00099560d25a05cc87fe8
-  docs/models/operations/envelopefieldcreatemanytextalignresponse3.md:
-    id: 3a835cda1ace
-    last_write_checksum: sha1:7bb2b27d8d13e9d73ef907d04a622b34d9183cdc
-    pristine_git_object: 3b07832b4a66bd8e424162fcf419e691dca1f92e
-  docs/models/operations/envelopefieldcreatemanytextalignresponse4.md:
-    id: 3c6972a91f99
-    last_write_checksum: sha1:bea4ff94fa772fdfa392af90c6c7453ee662001f
-    pristine_git_object: 7324b3c446a05fa2d28ed7e08dc034a230748f18
-  docs/models/operations/envelopefieldcreatemanytextalignresponse5.md:
-    id: faedd27feb13
-    last_write_checksum: sha1:9cdc7a9cabdccdc06fc64eb04c07f260dec0e487
-    pristine_git_object: 86d935d418784788a8a207630f424156ef56c674
-  docs/models/operations/envelopefieldcreatemanytextalignresponse6.md:
-    id: 75cf8dab6118
-    last_write_checksum: sha1:1c2fdb7768d92786f832a9e56a8ac2fe9f0ee55f
-    pristine_git_object: f5c152e8efb1c5f9a2a1043122644f0731c17288
-  docs/models/operations/envelopefieldcreatemanytextaligntext.md:
-    id: 018e2e24a936
-    last_write_checksum: sha1:d0bdc70d8ce7adcffc854e5448a03414e20710aa
-    pristine_git_object: 65c928318f0573ba78c062d21ba6a2a8e9ee8e2d
-  docs/models/operations/envelopefieldcreatemanytypecheckboxrequest1.md:
-    id: e9650b3ffa0c
-    last_write_checksum: sha1:59f29d3c724d160f43143643a2ecdf28563a9e3c
-    pristine_git_object: 4ba03be1874327c545603b16241c728c8a5fbef0
-  docs/models/operations/envelopefieldcreatemanytypecheckboxrequest2.md:
-    id: 7bfd5124b19c
-    last_write_checksum: sha1:7576367a1ad9c40723851edd406cf0896e4264c5
-    pristine_git_object: 34df8a15db387a6b47773e9ebab160aa50986dbd
-  docs/models/operations/envelopefieldcreatemanytypedaterequest1.md:
-    id: 3e5dfe6ed173
-    last_write_checksum: sha1:d7409d0fe1b2aa2c0a8a060b0356d85fdee1a2c1
-    pristine_git_object: bca81623ba84312310fb54a23446131f2454de04
-  docs/models/operations/envelopefieldcreatemanytypedaterequest2.md:
-    id: 1866c5923044
-    last_write_checksum: sha1:289d72ee024385b2869dc26249fa72d0b68a583e
-    pristine_git_object: 6d81a2b0b097451695a626e9372cfcd17a536d17
-  docs/models/operations/envelopefieldcreatemanytypedropdownrequest1.md:
-    id: 00fe0bdeae9e
-    last_write_checksum: sha1:644c4de6dfe664324357697c56c09dfd69cd7e79
-    pristine_git_object: 1d9d4380948011e7c360e92ac505ff2dd58d43e4
-  docs/models/operations/envelopefieldcreatemanytypedropdownrequest2.md:
-    id: 764f40cbf4b2
-    last_write_checksum: sha1:e05bd6ee21b9e116adf527615bf9e016dd6bdc88
-    pristine_git_object: 865c4066f3ea928e6bf75fc872d3f832ef1504f8
-  docs/models/operations/envelopefieldcreatemanytypeemailrequest1.md:
-    id: eaa155e2bb11
-    last_write_checksum: sha1:d4f990386ee797628eeb3b78d53b3a5448165e90
-    pristine_git_object: be9575ce308cfac05876324d24514bc7460482d2
-  docs/models/operations/envelopefieldcreatemanytypeemailrequest2.md:
-    id: 1026079d9a31
-    last_write_checksum: sha1:91bd06692600a5a061e6cd2ea0cc205fccbdb369
-    pristine_git_object: ee7247d9c59d05032e869c19ebd8ba3dffc00f93
-  docs/models/operations/envelopefieldcreatemanytypefreesignature.md:
-    id: bb79fea0f846
-    last_write_checksum: sha1:de2a6c7c76cf8d2cb5b3648d6e9bd0bfe48187ce
-    pristine_git_object: 6e87fd8c44c7286538c798b918e2ac4b4382b0cf
-  docs/models/operations/envelopefieldcreatemanytypeinitialsrequest1.md:
-    id: 28db2022b412
-    last_write_checksum: sha1:3588a8ecdc3d8e931f6ddbffafa1cfd831b56649
-    pristine_git_object: 7008af7f34abbfbb0e10115bbff9223aaa7b55aa
-  docs/models/operations/envelopefieldcreatemanytypeinitialsrequest2.md:
-    id: c6758ee1b519
-    last_write_checksum: sha1:1f0b797a205cc08b9f115017303d2c0a2089c291
-    pristine_git_object: a92bdfd805547a84616957188b6da0f76c0095fa
-  docs/models/operations/envelopefieldcreatemanytypenamerequest1.md:
-    id: 03f9c28c7a42
-    last_write_checksum: sha1:3bd207cf4b5ff2302dc4b656974734d14ab5304f
-    pristine_git_object: 5bef918350872180a8a35420cf7d1bc4866f1b3a
-  docs/models/operations/envelopefieldcreatemanytypenamerequest2.md:
-    id: d3cbaa20136b
-    last_write_checksum: sha1:dcc45100f5feffda3c9ff2bdeee6c4e424cb80ba
-    pristine_git_object: 6badccef76a13cd7b55ab9f17c5d248316d27815
-  docs/models/operations/envelopefieldcreatemanytypenumberrequest1.md:
-    id: 0fb760fd2cc0
-    last_write_checksum: sha1:2693b2a4074c213b44f930f705cf6c36f96b5d66
-    pristine_git_object: 1c5c3e3369bc9c22d4a12b7e8c0047144ad691dd
-  docs/models/operations/envelopefieldcreatemanytypenumberrequest2.md:
-    id: 3b42c0600748
-    last_write_checksum: sha1:c1e34effa57796403fe99c82f462d49ef2d1340f
-    pristine_git_object: 64288117fafcba7b294ee95e5682fa563a9dca1d
-  docs/models/operations/envelopefieldcreatemanytyperadiorequest1.md:
-    id: f1ea989409ff
-    last_write_checksum: sha1:2bed93e36243bd197c64e533f5ad9439f7b3d182
-    pristine_git_object: 28e95472f94a577bfbbf27b4306b38b3d426eee4
-  docs/models/operations/envelopefieldcreatemanytyperadiorequest2.md:
-    id: 6dcd167ac38a
-    last_write_checksum: sha1:5d2376ef5e5eab7566320321fe02cb4dd0056ba8
-    pristine_git_object: ec1403039a24b0d55da0234d4163b649d2147174
-  docs/models/operations/envelopefieldcreatemanytyperesponse.md:
-    id: 144e828eae0c
-    last_write_checksum: sha1:acc1d7619ec1bea8923cc34c1515edae79998db2
-    pristine_git_object: 69873cb409cddd64030dd7d4e6c06d63a71861b4
-  docs/models/operations/envelopefieldcreatemanytypesignaturerequest1.md:
-    id: cc1fb71557fe
-    last_write_checksum: sha1:d4603d717d72f3a3a941cf03be0336aa91de7282
-    pristine_git_object: ccbd5c86ea208f3d38a72a0032e35194c2ca2ca2
-  docs/models/operations/envelopefieldcreatemanytypesignaturerequest2.md:
-    id: a5257ee43c93
-    last_write_checksum: sha1:3927f18f69686aa0f88702a408eb971b4e7d26ed
-    pristine_git_object: ce855f571dede233998194e7d40edc4050f7641e
-  docs/models/operations/envelopefieldcreatemanytypetextrequest1.md:
-    id: 7920c9cc9bd2
-    last_write_checksum: sha1:4f5d7a674461607896b643b2f8002207915cea6d
-    pristine_git_object: 7c2cf5f80fa4df601d787ec42f4553088af1ee02
-  docs/models/operations/envelopefieldcreatemanytypetextrequest2.md:
-    id: b7a7b020b82b
-    last_write_checksum: sha1:869e8a22b5e93dee3e13d344e66f0cf629962cbb
-    pristine_git_object: 075a7b1c4c8fa2aa7d4e50fd6e3f5ba8c24e3ca2
-  docs/models/operations/envelopefieldcreatemanyvaluecheckbox.md:
-    id: 24af9e205ed4
-    last_write_checksum: sha1:d38ba6a889a275c1d551c3a3d4a4743c5b09b71a
-    pristine_git_object: a79795d7c94bf617b1065bb2af42ec3796c23ece
-  docs/models/operations/envelopefieldcreatemanyvaluedropdown.md:
-    id: f3e9c2523b3e
-    last_write_checksum: sha1:b46ac2c18e6e8b9a7b960cf7ac1938f160054dea
-    pristine_git_object: f0ff6704561684ef96909b1dbd49537d7b5cb712
-  docs/models/operations/envelopefieldcreatemanyvalueradio.md:
-    id: 2d32dbdc8dba
-    last_write_checksum: sha1:146062c3220af335c88f2594104079b1cd8d37c0
-    pristine_git_object: 8e33b57cef2a917af75d90d8931a210a723572c2
-  docs/models/operations/envelopefieldcreatemanyvalueresponse1.md:
-    id: 044a2a2d6950
-    last_write_checksum: sha1:ede30d8ed60d0bcc2121694c80c5908e1da059a3
-    pristine_git_object: 7dd08eaa1bb2b9f3d672da1cc4d030c3b9bc2cef
-  docs/models/operations/envelopefieldcreatemanyvalueresponse2.md:
-    id: 7d99aa34f6b4
-    last_write_checksum: sha1:cc66cbb733c377323ed72a8c7ea8a2fdb751a112
-    pristine_git_object: 80de1934655ca896c0c8144d1c3fe883c06e61cf
-  docs/models/operations/envelopefieldcreatemanyvalueresponse3.md:
-    id: ac5dc334b48b
-    last_write_checksum: sha1:cc82a121c87a80e3c096f626922155343a82ecc6
-    pristine_git_object: 44de0a15e617982867b59919747962b1c0f6b112
-  docs/models/operations/envelopefieldcreatemanyverticalalignnumber.md:
-    id: a6abe613cf54
-    last_write_checksum: sha1:1635fb846e2d2b00d3e185025c3b0ab6312b203b
-    pristine_git_object: 13fdc3a52b685bb26d9acd9124b6e992b1ece144
-  docs/models/operations/envelopefieldcreatemanyverticalalignresponse1.md:
-    id: 1702b90b163b
-    last_write_checksum: sha1:9ad96951098dbe8ccfe5e46fb8c16bf13334a123
-    pristine_git_object: c51eb0a19bf079bc6c39ff77ff84acfc947ed177
-  docs/models/operations/envelopefieldcreatemanyverticalalignresponse2.md:
-    id: da19ef481762
-    last_write_checksum: sha1:2db9321af09decd257dc62e682484b492a8980d4
-    pristine_git_object: ae3d595e9b4396d598dc7b2908363215d074b094
-  docs/models/operations/envelopefieldcreatemanyverticalaligntext.md:
-    id: 6bd55c3461f9
-    last_write_checksum: sha1:46646cc9321600fe46cabe5dec0817c6ce777ac5
-    pristine_git_object: 0c95202527c92371a338a828bc185fc6f644a2b4
+  docs/models/operations/envelopefieldcreatemanytextalign1.md:
+    id: 6c8079520738
+    last_write_checksum: sha1:8879308ee3ecd2ed97edb5a0d208c86ed7c1dca3
+    pristine_git_object: c43eb47dc81d3a5d6cedc625d11b333cecf8e043
+  docs/models/operations/envelopefieldcreatemanytextalign2.md:
+    id: e8654a71d396
+    last_write_checksum: sha1:bf0c434e7280842895e58e05f8c38ff2f20b04fe
+    pristine_git_object: e205a317b597fffba40a33910d94a13746d0b86e
+  docs/models/operations/envelopefieldcreatemanytextalign3.md:
+    id: 6058f09930aa
+    last_write_checksum: sha1:07ac124772e9c82d030fd19b89bb7c866887ae16
+    pristine_git_object: e36989094f50e8d1d42ba747b5dcaf54f1b96e89
+  docs/models/operations/envelopefieldcreatemanytextalign4.md:
+    id: 38c330adf2df
+    last_write_checksum: sha1:37291ba642edccffebf1c6db03bd6d8c8780d6e5
+    pristine_git_object: bd10a29856a8bc5c3f242a93452b79b295f3809f
+  docs/models/operations/envelopefieldcreatemanytextalign5.md:
+    id: c0ba80eaa713
+    last_write_checksum: sha1:5d4269105590da731a4601e1df7ebeddf469510b
+    pristine_git_object: 46e2817dccdcd296f2c5b8fae36c520d1ed8138b
+  docs/models/operations/envelopefieldcreatemanytextalign6.md:
+    id: 4c892570eda3
+    last_write_checksum: sha1:1d14d3cb1e6e8d08c97368cd0f47fb8511c80c9f
+    pristine_git_object: 5b047ef242e12b4da36c9cb7a2952617b2ea2d41
+  docs/models/operations/envelopefieldcreatemanytype.md:
+    id: 8617118b9883
+    last_write_checksum: sha1:1a70ef11997c6005c732d86808546c4de8a08c1e
+    pristine_git_object: 2eb65ef8fa0fd6e105d8277f98f67f3d8449a65f
+  docs/models/operations/envelopefieldcreatemanyvalue1.md:
+    id: eebbd69d25c1
+    last_write_checksum: sha1:d24efa789cc30d6b26c60b4e57d79522458de25e
+    pristine_git_object: 70d6a1ce3a1a33d225efea62af86f4ba51451906
+  docs/models/operations/envelopefieldcreatemanyvalue2.md:
+    id: 423c6b9d3035
+    last_write_checksum: sha1:991e4d14f4ec4a80dfb7b8e76c1d55a01ffd4693
+    pristine_git_object: 1880bc0e78fda25ece503c95d4838a6d90985001
+  docs/models/operations/envelopefieldcreatemanyvalue3.md:
+    id: fe8e523649fa
+    last_write_checksum: sha1:1df70c2afeb58413112b053fd890403d28e9a145
+    pristine_git_object: b21a5d4edf8a84b831407ef89ca7944f74e4466d
+  docs/models/operations/envelopefieldcreatemanyverticalalign1.md:
+    id: 30c1417b116c
+    last_write_checksum: sha1:0cb9c7017ee814ba14ac08a75942df78445b574c
+    pristine_git_object: bf164a54bc1ab8fa1077ce756d043ca287bd399b
+  docs/models/operations/envelopefieldcreatemanyverticalalign2.md:
+    id: cb452b9199e0
+    last_write_checksum: sha1:fee38119f8f72d368187cbc0c88b676421a6ed02
+    pristine_git_object: d14c410d490168161f22041023536972f83b96b4
   docs/models/operations/envelopefielddeleterequest.md:
     id: f66064a1a489
     last_write_checksum: sha1:7a7005f2b86634029ec2ad7d4658c95f1b9e283b
@@ -6133,58 +5966,14 @@ trackedFiles:
     id: 56dadade7cb4
     last_write_checksum: sha1:453a29ebba6a42ab36c2917616e82cfcd2901d14
     pristine_git_object: 1bb6bd1c38d20c410749851ea3eca264a4a8c186
-  docs/models/operations/envelopefieldupdatemanydatacheckbox.md:
-    id: 387982456b6c
-    last_write_checksum: sha1:10050d0ba46f5caed66675c0c415d5f64557984c
-    pristine_git_object: f6204dc91c56b1b14618fbdf52ea9c97b1e9d446
-  docs/models/operations/envelopefieldupdatemanydatadate.md:
-    id: e65ead399f53
-    last_write_checksum: sha1:5b488a71ec0fd7bbe88535e03308923db3538e28
-    pristine_git_object: 83651a9726354fcafcc6f8909dedb5e53cfd72d7
-  docs/models/operations/envelopefieldupdatemanydatadropdown.md:
-    id: fea9bc7ee544
-    last_write_checksum: sha1:4049dbc9ae61f0e2ec7df2d9c8e8ca10a3a2dff0
-    pristine_git_object: b07d34541d84373786c21979a48c9d8926431012
-  docs/models/operations/envelopefieldupdatemanydataemail.md:
-    id: 2efbfbbde230
-    last_write_checksum: sha1:c6a23ef4c29fa7a80d6c75cd0d5074e115d59b39
-    pristine_git_object: 8f48b6486b73641c88a3211db7f8c2f19731fcca
-  docs/models/operations/envelopefieldupdatemanydatafreesignature.md:
-    id: ddbbe20c2f58
-    last_write_checksum: sha1:16e6be287f38823047af61a79509ad42fa5343dd
-    pristine_git_object: b1e66fc56e40b0f0579641f31a6d5a42baff094e
-  docs/models/operations/envelopefieldupdatemanydatainitials.md:
-    id: 550f954a9b69
-    last_write_checksum: sha1:bcf582c9cfbc039f7099cd8965de0385d9ea448a
-    pristine_git_object: 1f9db1402d91559d37f952a0bef319aa3f55dab8
-  docs/models/operations/envelopefieldupdatemanydataname.md:
-    id: 3d41fb432b36
-    last_write_checksum: sha1:889fab273de1e6cf6698b650f45de794dc76e7c8
-    pristine_git_object: 4f0b6e4a47c6b4660da6f96826509ed48e55326e
-  docs/models/operations/envelopefieldupdatemanydatanumber.md:
-    id: 17469ffc71a4
-    last_write_checksum: sha1:926ab3dd333a0b6e3709797d47a2c59859b04b3e
-    pristine_git_object: cbd78cc54a465bddf3ad9608a9eb42e91fed1756
-  docs/models/operations/envelopefieldupdatemanydataradio.md:
-    id: f58680862860
-    last_write_checksum: sha1:670b8a6c7581563af85049a5e2d19c1426444f5b
-    pristine_git_object: 404c3480d9bb96ce3523fdc69321512176b8023e
   docs/models/operations/envelopefieldupdatemanydataresponse.md:
     id: 7ddec0f2629e
     last_write_checksum: sha1:eeec5a2dd619d6e4990c1eeffb90606aff3fc0f0
     pristine_git_object: d35cb1120690333a9374ae2d187fc0b5a83c45b9
-  docs/models/operations/envelopefieldupdatemanydatasignature.md:
-    id: 059ed78a9525
-    last_write_checksum: sha1:69808f308768a325af04560b9f302e28e4b7a9ed
-    pristine_git_object: 1b112ac9236d9099dc6fa3296b80dace23e60214
-  docs/models/operations/envelopefieldupdatemanydatatext.md:
-    id: e50d5f3a2da6
-    last_write_checksum: sha1:05b64bf1458796879835bd0a0916707d31b8436f
-    pristine_git_object: 22ce4849237e48d1b0b3aa6c71720d1596b1c5fd
   docs/models/operations/envelopefieldupdatemanydataunion.md:
     id: 7c926eede343
-    last_write_checksum: sha1:09afccffc1b482b4543a674cbd25bab14f3d6b23
-    pristine_git_object: 50a1bbca5f4138791fd5d279577e400141d6e88b
+    last_write_checksum: sha1:ced11f742ac97c2e2aaa9ee341e2f3f4505fd8de
+    pristine_git_object: 59088d2690dcbd617a2b6f40ca3ad45290dbeafb
   docs/models/operations/envelopefieldupdatemanydirectioncheckbox.md:
     id: ca10baba6b88
     last_write_checksum: sha1:7611d1b030458ce953861758b188c7b0112af67c
@@ -14615,8 +14404,8 @@ trackedFiles:
     pristine_git_object: 6c940cc7e79973d8b90664ff01e87fb020949ddc
   docs/sdks/documents/README.md:
     id: 9758e88a0a9d
-    last_write_checksum: sha1:94d4ab4e6110a36bb8ebed675437c75b435ba3f2
-    pristine_git_object: cc3d4be55d360cc95ec5b8dbc905525270b64212
+    last_write_checksum: sha1:552d9e0d3d7ae941601f7d1c4f9b18370d3333a6
+    pristine_git_object: cfeb8755130792872610850c8978b8490e1434d4
   docs/sdks/documentsattachments/README.md:
     id: c7ed581d2928
     last_write_checksum: sha1:9f09aeb35623d968516c9e312fd6b7918cc5b864
@@ -14679,16 +14468,16 @@ trackedFiles:
     pristine_git_object: f962e1df553b776b5b74e4ae87224653dd032256
   documenso.go:
     id: 38196a3f7f7c
-    last_write_checksum: sha1:aac2e32fa42a52d4301fa896337ccdd01995a48c
-    pristine_git_object: ece49c3328e0f19169847f0b5611232318930cb1
+    last_write_checksum: sha1:8f3ab357bd8576fc735b4331c0d88e5c9b9361c3
+    pristine_git_object: 41c07e08791530ac1d0325d9fee3a50b892c8862
   document.go:
     id: 60cded0089de
     last_write_checksum: sha1:b411e71f94bae9a1b3b16259b5ee4d5e96239ec5
     pristine_git_object: 1fb8b88ee90a9743c32d009de1dd3751e9be5333
   documents.go:
     id: b96625ba1248
-    last_write_checksum: sha1:264f8a6cf5211dd23b2d9d77ed3689530631f4eb
-    pristine_git_object: 86120156a748340575c6e34410505f9999847439
+    last_write_checksum: sha1:9747109ea891815f3aa99c1cb30f4fd35342740c
+    pristine_git_object: e3f0fb0256ed35ab58c71934d9476cd1a0e19be0
   documentsattachments.go:
     id: 9ec8368effe0
     last_write_checksum: sha1:e05232c92c72568531c7d95bd09e4c306d69301e
@@ -14779,8 +14568,8 @@ trackedFiles:
     pristine_git_object: 9b2dad8d0c1f9a808a1e82999b43be35664d94f4
   internal/utils/security.go:
     id: eeb54c55241b
-    last_write_checksum: sha1:451524017dfed1da96bdd9bc1749546f8d2aa110
-    pristine_git_object: 99e1f672792b3230f0fee185681847bac3aca6c2
+    last_write_checksum: sha1:52cefded5223c60fcac5bd56574370e27a4bc3d5
+    pristine_git_object: ce2e1c0cffe3bbd3f111eace502f895175daad22
   internal/utils/union.go:
     id: db86c85746b6
     last_write_checksum: sha1:9dd429bb41cfbc3d7f9362880ee8c8d0e6ae57c1
@@ -15259,8 +15048,8 @@ trackedFiles:
     pristine_git_object: 5762bba46a61c206dd61ece62eda1b8326826431
   models/operations/envelopefieldcreatemany.go:
     id: d170b282a15a
-    last_write_checksum: sha1:1f6a2674a0ae8bf5619c82ad4f4b6ece634fce49
-    pristine_git_object: 22f84cda460698667337c01e977ac4df353a76ce
+    last_write_checksum: sha1:846cbf016f024082357bb89264d44338163b301a
+    pristine_git_object: 0033b3f1f216bb9117bc16ad9e520d82a22004da
   models/operations/envelopefielddelete.go:
     id: 8f19a959b51e
     last_write_checksum: sha1:e5b799a949657a45d88f6bead0d452acad67d191
@@ -15271,8 +15060,8 @@ trackedFiles:
     pristine_git_object: d432bb815973ae08e2bb3fbaa1495897c4caee89
   models/operations/envelopefieldupdatemany.go:
     id: 1233f4002088
-    last_write_checksum: sha1:6acad559c17e692892eb6fcba5158db78755ec5d
-    pristine_git_object: 2e7db35156b3e7d468aec2ff4a33dc8271f92e01
+    last_write_checksum: sha1:cd60d4f3d34873db1a0e9b38c3e001300bf93f5d
+    pristine_git_object: e717bc8b9987d63d46e5f47de5cd2562c02ae9f4
   models/operations/envelopefind.go:
     id: e28b1db9db78
     last_write_checksum: sha1:225d3fc329c815ac63ec111e5c4a09c3476a8284
@@ -16977,7 +16766,7 @@ examples:
           application/json: {"message": "<value>", "code": "<value>"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Go SDK Changes:\n* `Documenso.Envelopes.Create()`: \n  *  `request.Request.Payload` **Changed** **Breaking** ⚠️\n* `Documenso.Templates.Use()`:  `request.Request` **Changed** **Breaking** ⚠️\n* `Documenso.Envelopes.Recipients.UpdateMany()`: \n  *  `request.Request.Data[].Email` **Changed** **Breaking** ⚠️\n* `Documenso.Envelopes.Recipients.CreateMany()`: \n  *  `request.Request.Data[].Email` **Changed** **Breaking** ⚠️\n* `Documenso.Envelopes.Use()`: \n  *  `request.Request.Payload` **Changed** **Breaking** ⚠️\n* `Documenso.Envelopes.Distribute()`: \n  *  `request.Request.Meta.Language.Enum(nl)` **Added**\n* `Documenso.Documents.Update()`: \n  *  `request.Request.Meta.Language.Enum(nl)` **Added**\n* `Documenso.Template.TemplateGetMany()`: **Added**\n* `Documenso.Document.DocumentDownload()`: **Added**\n* `Documenso.Envelopes.Update()`: \n  *  `request.Request.Meta.Language.Enum(nl)` **Added**\n* `Documenso.Envelope.EnvelopeFind()`: **Added**\n* `Documenso.Document.DocumentGetMany()`: **Added**\n* `Documenso.Envelope.EnvelopeGetMany()`: **Added**\n* `Documenso.Documents.Create()`: \n  *  `request.Request.Payload` **Changed**\n* `Documenso.Document.DocumentDownload()`: **Removed** **Breaking** ⚠️\n* `Documenso.Documents.Distribute()`: \n  *  `request.Request.Meta.Language.Enum(nl)` **Added**\n* `Documenso.Documents.CreateV0()`: \n  *  `request.Request.Meta.Language.Enum(nl)` **Added**\n* `Documenso.Templates.Create()`: \n  *  `request.Request.Payload` **Changed**\n* `Documenso.Templates.Update()`: \n  *  `request.Request.Meta.Language.Enum(nl)` **Added**\n* `Documenso.Envelope.EnvelopeAuditLogFind()`: **Added**\n* `Documenso.Template.TemplateCreateTemplateTemporary()`: \n  *  `request.Request.Meta.Language.Enum(nl)` **Added**\n* `Documenso.Embedding.EmbeddingPresignCreateEmbeddingPresignToken()`: \n  *  `request.Request.Scope` **Added**\n* `Documenso.Embedding.EmbeddingPresignVerifyEmbeddingPresignToken()`: \n  *  `request.Request.Scope` **Added**\n"
+releaseNotes: "## Go SDK Changes:\n* `Documenso.Envelopes.Fields.CreateMany()`: \n  *  `request.Request.Data[]` **Changed** (Breaking ⚠️)\n* `Documenso.Documents.CreateV0()`: **Deprecated**\n"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
