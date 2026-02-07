@@ -13,7 +13,7 @@
 * [Distribute](#distribute) - Distribute document
 * [Redistribute](#redistribute) - Redistribute document
 * [Download](#download) - Download document
-* [CreateV0](#createv0) - Create document
+* [~~CreateV0~~](#createv0) - Create document :warning: **Deprecated**
 
 ## Get
 
@@ -559,9 +559,11 @@ func main() {
 | apierrors.DocumentDownloadInternalServerError | 500                                           | application/json                              |
 | apierrors.APIError                            | 4XX, 5XX                                      | \*/\*                                         |
 
-## CreateV0
+## ~~CreateV0~~
 
 You will need to upload the PDF to the provided URL returned. Note: Once V2 API is released, this will be removed since we will allow direct uploads, instead of using an upload URL.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

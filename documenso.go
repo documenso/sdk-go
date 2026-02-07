@@ -2,7 +2,7 @@
 
 package sdkgo
 
-// Generated from OpenAPI doc version 1.0.0 and generator version 2.801.2
+// Generated from OpenAPI doc version 1.0.0 and generator version 2.811.4
 
 import (
 	"context"
@@ -136,9 +136,9 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Documenso {
 	sdk := &Documenso{
-		SDKVersion: "0.5.1",
+		SDKVersion: "0.6.0",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.5.1 2.801.2 1.0.0 github.com/documenso/sdk-go",
+			UserAgent:  "speakeasy-sdk/go 0.6.0 2.811.4 1.0.0 github.com/documenso/sdk-go",
 			ServerList: ServerList,
 		},
 		hooks: hooks.New(),
