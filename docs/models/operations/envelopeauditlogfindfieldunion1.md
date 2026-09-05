@@ -63,3 +63,31 @@ envelopeAuditLogFindFieldUnion1 := operations.CreateEnvelopeAuditLogFindFieldUni
 envelopeAuditLogFindFieldUnion1 := operations.CreateEnvelopeAuditLogFindFieldUnion1EnvelopeAuditLogFindFieldNumber1(operations.EnvelopeAuditLogFindFieldNumber1{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch envelopeAuditLogFindFieldUnion1.Type {
+	case operations.EnvelopeAuditLogFindFieldUnion1TypeEnvelopeAuditLogFindFieldInitials1:
+		// envelopeAuditLogFindFieldUnion1.EnvelopeAuditLogFindFieldInitials1 is populated
+	case operations.EnvelopeAuditLogFindFieldUnion1TypeEnvelopeAuditLogFindFieldEmail1:
+		// envelopeAuditLogFindFieldUnion1.EnvelopeAuditLogFindFieldEmail1 is populated
+	case operations.EnvelopeAuditLogFindFieldUnion1TypeEnvelopeAuditLogFindFieldDate1:
+		// envelopeAuditLogFindFieldUnion1.EnvelopeAuditLogFindFieldDate1 is populated
+	case operations.EnvelopeAuditLogFindFieldUnion1TypeEnvelopeAuditLogFindFieldName1:
+		// envelopeAuditLogFindFieldUnion1.EnvelopeAuditLogFindFieldName1 is populated
+	case operations.EnvelopeAuditLogFindFieldUnion1TypeEnvelopeAuditLogFindFieldText1:
+		// envelopeAuditLogFindFieldUnion1.EnvelopeAuditLogFindFieldText1 is populated
+	case operations.EnvelopeAuditLogFindFieldUnion1TypeEnvelopeAuditLogFindField2:
+		// envelopeAuditLogFindFieldUnion1.EnvelopeAuditLogFindField2 is populated
+	case operations.EnvelopeAuditLogFindFieldUnion1TypeEnvelopeAuditLogFindFieldRadio1:
+		// envelopeAuditLogFindFieldUnion1.EnvelopeAuditLogFindFieldRadio1 is populated
+	case operations.EnvelopeAuditLogFindFieldUnion1TypeEnvelopeAuditLogFindFieldCheckbox1:
+		// envelopeAuditLogFindFieldUnion1.EnvelopeAuditLogFindFieldCheckbox1 is populated
+	case operations.EnvelopeAuditLogFindFieldUnion1TypeEnvelopeAuditLogFindFieldDropdown1:
+		// envelopeAuditLogFindFieldUnion1.EnvelopeAuditLogFindFieldDropdown1 is populated
+	case operations.EnvelopeAuditLogFindFieldUnion1TypeEnvelopeAuditLogFindFieldNumber1:
+		// envelopeAuditLogFindFieldUnion1.EnvelopeAuditLogFindFieldNumber1 is populated
+}
+```

@@ -21,3 +21,17 @@ ids := operations.CreateIdsIdsDocumentID(operations.IdsDocumentID{/* values here
 ids := operations.CreateIdsIdsTemplateID(operations.IdsTemplateID{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch ids.Type {
+	case operations.IdsTypeIdsEnvelopeID:
+		// ids.IdsEnvelopeID is populated
+	case operations.IdsTypeIdsDocumentID:
+		// ids.IdsDocumentID is populated
+	case operations.IdsTypeIdsTemplateID:
+		// ids.IdsTemplateID is populated
+}
+```

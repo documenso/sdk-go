@@ -39,7 +39,9 @@ func newDocuments(rootSDK *Documenso, sdkConfig config.SDKConfiguration, hooks *
 }
 
 // Get document
-// Returns a document given an ID
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Returns a document given an ID
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Documents) Get(ctx context.Context, documentID float64, opts ...operations.Option) (*operations.DocumentGetResponse, error) {
 	request := operations.DocumentGetRequest{
 		DocumentID: documentID,
@@ -179,7 +181,7 @@ func (s *Documents) Get(ctx context.Context, documentID float64, opts ...operati
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -373,7 +375,9 @@ func (s *Documents) Get(ctx context.Context, documentID float64, opts ...operati
 }
 
 // Find documents
-// Find documents based on a search criteria
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Find documents based on a search criteria
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Documents) Find(ctx context.Context, request operations.DocumentFindRequest, opts ...operations.Option) (*operations.DocumentFindResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -513,7 +517,7 @@ func (s *Documents) Find(ctx context.Context, request operations.DocumentFindReq
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -707,7 +711,9 @@ func (s *Documents) Find(ctx context.Context, request operations.DocumentFindReq
 }
 
 // Create document
-// Create a document using form data.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Documents) Create(ctx context.Context, request operations.DocumentCreateRequest, opts ...operations.Option) (*operations.DocumentCreateResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -850,7 +856,7 @@ func (s *Documents) Create(ctx context.Context, request operations.DocumentCreat
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1019,6 +1025,9 @@ func (s *Documents) Create(ctx context.Context, request operations.DocumentCreat
 }
 
 // Update document
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Documents) Update(ctx context.Context, request operations.DocumentUpdateRequest, opts ...operations.Option) (*operations.DocumentUpdateResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1161,7 +1170,7 @@ func (s *Documents) Update(ctx context.Context, request operations.DocumentUpdat
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1330,6 +1339,9 @@ func (s *Documents) Update(ctx context.Context, request operations.DocumentUpdat
 }
 
 // Delete document
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Documents) Delete(ctx context.Context, request operations.DocumentDeleteRequest, opts ...operations.Option) (*operations.DocumentDeleteResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1472,7 +1484,7 @@ func (s *Documents) Delete(ctx context.Context, request operations.DocumentDelet
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1641,6 +1653,9 @@ func (s *Documents) Delete(ctx context.Context, request operations.DocumentDelet
 }
 
 // Duplicate document
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Documents) Duplicate(ctx context.Context, request operations.DocumentDuplicateRequest, opts ...operations.Option) (*operations.DocumentDuplicateResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1783,7 +1798,7 @@ func (s *Documents) Duplicate(ctx context.Context, request operations.DocumentDu
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1952,7 +1967,9 @@ func (s *Documents) Duplicate(ctx context.Context, request operations.DocumentDu
 }
 
 // Distribute document
-// Send the document out to recipients based on your distribution method
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Send the document out to recipients based on your distribution method
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Documents) Distribute(ctx context.Context, request operations.DocumentDistributeRequest, opts ...operations.Option) (*operations.DocumentDistributeResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -2095,7 +2112,7 @@ func (s *Documents) Distribute(ctx context.Context, request operations.DocumentD
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -2264,7 +2281,9 @@ func (s *Documents) Distribute(ctx context.Context, request operations.DocumentD
 }
 
 // Redistribute document
-// Redistribute the document to the provided recipients who have not actioned the document. Will use the distribution method set in the document
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Redistribute the document to the provided recipients who have not actioned the document. Will use the distribution method set in the document. This also refreshes the signing-link expiration for the targeted unsigned recipients, renewing any expired links.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Documents) Redistribute(ctx context.Context, request operations.DocumentRedistributeRequest, opts ...operations.Option) (*operations.DocumentRedistributeResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -2407,7 +2426,7 @@ func (s *Documents) Redistribute(ctx context.Context, request operations.Documen
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -2576,6 +2595,9 @@ func (s *Documents) Redistribute(ctx context.Context, request operations.Documen
 }
 
 // Download document
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Documents) Download(ctx context.Context, documentID float64, version *operations.DocumentDownloadVersion, opts ...operations.Option) (*operations.DocumentDownloadResponse, error) {
 	request := operations.DocumentDownloadRequest{
 		DocumentID: documentID,
@@ -2720,7 +2742,7 @@ func (s *Documents) Download(ctx context.Context, documentID float64, version *o
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -2916,7 +2938,7 @@ func (s *Documents) Download(ctx context.Context, documentID float64, version *o
 }
 
 // CreateV0 - Create document
-// You will need to upload the PDF to the provided URL returned. Note: Once V2 API is released, this will be removed since we will allow direct uploads, instead of using an upload URL.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. You will need to upload the PDF to the provided URL returned. This endpoint will be removed since we will allow direct uploads, instead of using an upload URL.
 //
 // Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Documents) CreateV0(ctx context.Context, request operations.DocumentCreateDocumentTemporaryRequest, opts ...operations.Option) (*operations.DocumentCreateDocumentTemporaryResponse, error) {
@@ -3061,7 +3083,7 @@ func (s *Documents) CreateV0(ctx context.Context, request operations.DocumentCre
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err

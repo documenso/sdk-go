@@ -1,19 +1,24 @@
-# Documents.Fields
+# ~~Documents.Fields~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
 ### Available Operations
 
-* [Get](#get) - Get document field
-* [Create](#create) - Create document field
-* [CreateMany](#createmany) - Create document fields
-* [Update](#update) - Update document field
-* [UpdateMany](#updatemany) - Update document fields
-* [Delete](#delete) - Delete document field
+* [~~Get~~](#get) - Get document field :warning: **Deprecated**
+* [~~Create~~](#create) - Create document field :warning: **Deprecated**
+* [~~CreateMany~~](#createmany) - Create document fields :warning: **Deprecated**
+* [~~Update~~](#update) - Update document field :warning: **Deprecated**
+* [~~UpdateMany~~](#updatemany) - Update document fields :warning: **Deprecated**
+* [~~Delete~~](#delete) - Delete document field :warning: **Deprecated**
 
-## Get
+## ~~Get~~
 
-Returns a single field. If you want to retrieve all the fields for a document, use the "Get Document" endpoint.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Returns a single field. If you want to retrieve all the fields for a document, use the "Get Document" endpoint.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -26,6 +31,7 @@ import(
 	"os"
 	sdkgo "github.com/documenso/sdk-go"
 	"log"
+	"github.com/documenso/sdk-go/models/operations"
 )
 
 func main() {
@@ -40,7 +46,29 @@ func main() {
         log.Fatal(err)
     }
     if res.Object != nil {
-        // handle response
+        switch res.Object.FieldMeta.Type {
+            case operations.FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaSignature:
+                // res.Object.FieldMeta.FieldGetDocumentFieldFieldMetaSignature is populated
+            case operations.FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaInitials:
+                // res.Object.FieldMeta.FieldGetDocumentFieldFieldMetaInitials is populated
+            case operations.FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaName:
+                // res.Object.FieldMeta.FieldGetDocumentFieldFieldMetaName is populated
+            case operations.FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaEmail:
+                // res.Object.FieldMeta.FieldGetDocumentFieldFieldMetaEmail is populated
+            case operations.FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaDate:
+                // res.Object.FieldMeta.FieldGetDocumentFieldFieldMetaDate is populated
+            case operations.FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaText:
+                // res.Object.FieldMeta.FieldGetDocumentFieldFieldMetaText is populated
+            case operations.FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaNumber:
+                // res.Object.FieldMeta.FieldGetDocumentFieldFieldMetaNumber is populated
+            case operations.FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaRadio:
+                // res.Object.FieldMeta.FieldGetDocumentFieldFieldMetaRadio is populated
+            case operations.FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaCheckbox:
+                // res.Object.FieldMeta.FieldGetDocumentFieldFieldMetaCheckbox is populated
+            case operations.FieldGetDocumentFieldFieldMetaUnionTypeFieldGetDocumentFieldFieldMetaDropdown:
+                // res.Object.FieldMeta.FieldGetDocumentFieldFieldMetaDropdown is populated
+        }
+
     }
 }
 ```
@@ -50,7 +78,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `fieldID`                                                | *float64*                                                | :heavy_check_mark:                                       | N/A                                                      |
+| `fieldID`                                                | `float64`                                                | :heavy_check_mark:                                       | N/A                                                      |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -68,9 +96,11 @@ func main() {
 | apierrors.FieldGetDocumentFieldInternalServerError | 500                                                | application/json                                   |
 | apierrors.APIError                                 | 4XX, 5XX                                           | \*/\*                                              |
 
-## Create
+## ~~Create~~
 
-Create a single field for a document.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create a single field for a document.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -111,7 +141,29 @@ func main() {
         log.Fatal(err)
     }
     if res.Object != nil {
-        // handle response
+        switch res.Object.FieldMeta.Type {
+            case operations.FieldCreateDocumentFieldFieldMetaUnionTypeFieldCreateDocumentFieldFieldMetaSignatureResponse:
+                // res.Object.FieldMeta.FieldCreateDocumentFieldFieldMetaSignatureResponse is populated
+            case operations.FieldCreateDocumentFieldFieldMetaUnionTypeFieldCreateDocumentFieldFieldMetaInitialsResponse:
+                // res.Object.FieldMeta.FieldCreateDocumentFieldFieldMetaInitialsResponse is populated
+            case operations.FieldCreateDocumentFieldFieldMetaUnionTypeFieldCreateDocumentFieldFieldMetaNameResponse:
+                // res.Object.FieldMeta.FieldCreateDocumentFieldFieldMetaNameResponse is populated
+            case operations.FieldCreateDocumentFieldFieldMetaUnionTypeFieldCreateDocumentFieldFieldMetaEmailResponse:
+                // res.Object.FieldMeta.FieldCreateDocumentFieldFieldMetaEmailResponse is populated
+            case operations.FieldCreateDocumentFieldFieldMetaUnionTypeFieldCreateDocumentFieldFieldMetaDateResponse:
+                // res.Object.FieldMeta.FieldCreateDocumentFieldFieldMetaDateResponse is populated
+            case operations.FieldCreateDocumentFieldFieldMetaUnionTypeFieldCreateDocumentFieldFieldMetaTextResponse:
+                // res.Object.FieldMeta.FieldCreateDocumentFieldFieldMetaTextResponse is populated
+            case operations.FieldCreateDocumentFieldFieldMetaUnionTypeFieldCreateDocumentFieldFieldMetaNumberResponse:
+                // res.Object.FieldMeta.FieldCreateDocumentFieldFieldMetaNumberResponse is populated
+            case operations.FieldCreateDocumentFieldFieldMetaUnionTypeFieldCreateDocumentFieldFieldMetaRadioResponse:
+                // res.Object.FieldMeta.FieldCreateDocumentFieldFieldMetaRadioResponse is populated
+            case operations.FieldCreateDocumentFieldFieldMetaUnionTypeFieldCreateDocumentFieldFieldMetaCheckboxResponse:
+                // res.Object.FieldMeta.FieldCreateDocumentFieldFieldMetaCheckboxResponse is populated
+            case operations.FieldCreateDocumentFieldFieldMetaUnionTypeFieldCreateDocumentFieldFieldMetaDropdownResponse:
+                // res.Object.FieldMeta.FieldCreateDocumentFieldFieldMetaDropdownResponse is populated
+        }
+
     }
 }
 ```
@@ -138,9 +190,11 @@ func main() {
 | apierrors.FieldCreateDocumentFieldInternalServerError | 500                                                   | application/json                                      |
 | apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
 
-## CreateMany
+## ~~CreateMany~~
 
-Create multiple fields for a document.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create multiple fields for a document.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -210,9 +264,11 @@ func main() {
 | apierrors.FieldCreateDocumentFieldsInternalServerError | 500                                                    | application/json                                       |
 | apierrors.APIError                                     | 4XX, 5XX                                               | \*/\*                                                  |
 
-## Update
+## ~~Update~~
 
-Update a single field for a document.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update a single field for a document.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -248,7 +304,29 @@ func main() {
         log.Fatal(err)
     }
     if res.Object != nil {
-        // handle response
+        switch res.Object.FieldMeta.Type {
+            case operations.FieldUpdateDocumentFieldFieldMetaUnionTypeFieldUpdateDocumentFieldFieldMetaSignatureResponse:
+                // res.Object.FieldMeta.FieldUpdateDocumentFieldFieldMetaSignatureResponse is populated
+            case operations.FieldUpdateDocumentFieldFieldMetaUnionTypeFieldUpdateDocumentFieldFieldMetaInitialsResponse:
+                // res.Object.FieldMeta.FieldUpdateDocumentFieldFieldMetaInitialsResponse is populated
+            case operations.FieldUpdateDocumentFieldFieldMetaUnionTypeFieldUpdateDocumentFieldFieldMetaNameResponse:
+                // res.Object.FieldMeta.FieldUpdateDocumentFieldFieldMetaNameResponse is populated
+            case operations.FieldUpdateDocumentFieldFieldMetaUnionTypeFieldUpdateDocumentFieldFieldMetaEmailResponse:
+                // res.Object.FieldMeta.FieldUpdateDocumentFieldFieldMetaEmailResponse is populated
+            case operations.FieldUpdateDocumentFieldFieldMetaUnionTypeFieldUpdateDocumentFieldFieldMetaDateResponse:
+                // res.Object.FieldMeta.FieldUpdateDocumentFieldFieldMetaDateResponse is populated
+            case operations.FieldUpdateDocumentFieldFieldMetaUnionTypeFieldUpdateDocumentFieldFieldMetaTextResponse:
+                // res.Object.FieldMeta.FieldUpdateDocumentFieldFieldMetaTextResponse is populated
+            case operations.FieldUpdateDocumentFieldFieldMetaUnionTypeFieldUpdateDocumentFieldFieldMetaNumberResponse:
+                // res.Object.FieldMeta.FieldUpdateDocumentFieldFieldMetaNumberResponse is populated
+            case operations.FieldUpdateDocumentFieldFieldMetaUnionTypeFieldUpdateDocumentFieldFieldMetaRadioResponse:
+                // res.Object.FieldMeta.FieldUpdateDocumentFieldFieldMetaRadioResponse is populated
+            case operations.FieldUpdateDocumentFieldFieldMetaUnionTypeFieldUpdateDocumentFieldFieldMetaCheckboxResponse:
+                // res.Object.FieldMeta.FieldUpdateDocumentFieldFieldMetaCheckboxResponse is populated
+            case operations.FieldUpdateDocumentFieldFieldMetaUnionTypeFieldUpdateDocumentFieldFieldMetaDropdownResponse:
+                // res.Object.FieldMeta.FieldUpdateDocumentFieldFieldMetaDropdownResponse is populated
+        }
+
     }
 }
 ```
@@ -275,9 +353,11 @@ func main() {
 | apierrors.FieldUpdateDocumentFieldInternalServerError | 500                                                   | application/json                                      |
 | apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
 
-## UpdateMany
+## ~~UpdateMany~~
 
-Update multiple fields for a document.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update multiple fields for a document.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -335,9 +415,11 @@ func main() {
 | apierrors.FieldUpdateDocumentFieldsInternalServerError | 500                                                    | application/json                                       |
 | apierrors.APIError                                     | 4XX, 5XX                                               | \*/\*                                                  |
 
-## Delete
+## ~~Delete~~
 
-Delete document field
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

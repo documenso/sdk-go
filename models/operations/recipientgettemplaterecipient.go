@@ -270,6 +270,38 @@ func (e *RecipientGetTemplateRecipientType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type RecipientGetTemplateRecipientOverflow10 string
+
+const (
+	RecipientGetTemplateRecipientOverflow10Auto       RecipientGetTemplateRecipientOverflow10 = "auto"
+	RecipientGetTemplateRecipientOverflow10Horizontal RecipientGetTemplateRecipientOverflow10 = "horizontal"
+	RecipientGetTemplateRecipientOverflow10Vertical   RecipientGetTemplateRecipientOverflow10 = "vertical"
+	RecipientGetTemplateRecipientOverflow10Crop       RecipientGetTemplateRecipientOverflow10 = "crop"
+)
+
+func (e RecipientGetTemplateRecipientOverflow10) ToPointer() *RecipientGetTemplateRecipientOverflow10 {
+	return &e
+}
+func (e *RecipientGetTemplateRecipientOverflow10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientGetTemplateRecipientOverflow10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientGetTemplateRecipientOverflow10: %v", v)
+	}
+}
+
 type RecipientGetTemplateRecipientFieldMetaTypeDropdown string
 
 const (
@@ -315,12 +347,16 @@ func (r *RecipientGetTemplateRecipientValue3) GetValue() string {
 	return r.Value
 }
 
+// #region class-body-recipientgettemplaterecipientvalue3
+// #endregion class-body-recipientgettemplaterecipientvalue3
+
 type RecipientGetTemplateRecipientFieldMetaDropdown struct {
 	Label        *string                                            `json:"label,omitempty"`
 	Placeholder  *string                                            `json:"placeholder,omitempty"`
 	Required     *bool                                              `json:"required,omitempty"`
 	ReadOnly     *bool                                              `json:"readOnly,omitempty"`
 	FontSize     *float64                                           `default:"12" json:"fontSize"`
+	Overflow     *RecipientGetTemplateRecipientOverflow10           `json:"overflow,omitempty"`
 	Type         RecipientGetTemplateRecipientFieldMetaTypeDropdown `json:"type"`
 	Values       []RecipientGetTemplateRecipientValue3              `json:"values,omitempty"`
 	DefaultValue *string                                            `json:"defaultValue,omitempty"`
@@ -372,6 +408,13 @@ func (r *RecipientGetTemplateRecipientFieldMetaDropdown) GetFontSize() *float64 
 	return r.FontSize
 }
 
+func (r *RecipientGetTemplateRecipientFieldMetaDropdown) GetOverflow() *RecipientGetTemplateRecipientOverflow10 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientGetTemplateRecipientFieldMetaDropdown) GetType() RecipientGetTemplateRecipientFieldMetaTypeDropdown {
 	if r == nil {
 		return RecipientGetTemplateRecipientFieldMetaTypeDropdown("")
@@ -391,6 +434,38 @@ func (r *RecipientGetTemplateRecipientFieldMetaDropdown) GetDefaultValue() *stri
 		return nil
 	}
 	return r.DefaultValue
+}
+
+type RecipientGetTemplateRecipientOverflow9 string
+
+const (
+	RecipientGetTemplateRecipientOverflow9Auto       RecipientGetTemplateRecipientOverflow9 = "auto"
+	RecipientGetTemplateRecipientOverflow9Horizontal RecipientGetTemplateRecipientOverflow9 = "horizontal"
+	RecipientGetTemplateRecipientOverflow9Vertical   RecipientGetTemplateRecipientOverflow9 = "vertical"
+	RecipientGetTemplateRecipientOverflow9Crop       RecipientGetTemplateRecipientOverflow9 = "crop"
+)
+
+func (e RecipientGetTemplateRecipientOverflow9) ToPointer() *RecipientGetTemplateRecipientOverflow9 {
+	return &e
+}
+func (e *RecipientGetTemplateRecipientOverflow9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientGetTemplateRecipientOverflow9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientGetTemplateRecipientOverflow9: %v", v)
+	}
 }
 
 type RecipientGetTemplateRecipientFieldMetaTypeCheckbox string
@@ -454,6 +529,9 @@ func (r *RecipientGetTemplateRecipientValue2) GetValue() string {
 	return r.Value
 }
 
+// #region class-body-recipientgettemplaterecipientvalue2
+// #endregion class-body-recipientgettemplaterecipientvalue2
+
 type RecipientGetTemplateRecipientDirection2 string
 
 const (
@@ -486,6 +564,7 @@ type RecipientGetTemplateRecipientFieldMetaCheckbox struct {
 	Required         *bool                                              `json:"required,omitempty"`
 	ReadOnly         *bool                                              `json:"readOnly,omitempty"`
 	FontSize         *float64                                           `default:"12" json:"fontSize"`
+	Overflow         *RecipientGetTemplateRecipientOverflow9            `json:"overflow,omitempty"`
 	Type             RecipientGetTemplateRecipientFieldMetaTypeCheckbox `json:"type"`
 	Values           []RecipientGetTemplateRecipientValue2              `json:"values,omitempty"`
 	ValidationRule   *string                                            `json:"validationRule,omitempty"`
@@ -539,6 +618,13 @@ func (r *RecipientGetTemplateRecipientFieldMetaCheckbox) GetFontSize() *float64 
 	return r.FontSize
 }
 
+func (r *RecipientGetTemplateRecipientFieldMetaCheckbox) GetOverflow() *RecipientGetTemplateRecipientOverflow9 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientGetTemplateRecipientFieldMetaCheckbox) GetType() RecipientGetTemplateRecipientFieldMetaTypeCheckbox {
 	if r == nil {
 		return RecipientGetTemplateRecipientFieldMetaTypeCheckbox("")
@@ -572,6 +658,38 @@ func (r *RecipientGetTemplateRecipientFieldMetaCheckbox) GetDirection() *Recipie
 		return nil
 	}
 	return r.Direction
+}
+
+type RecipientGetTemplateRecipientOverflow8 string
+
+const (
+	RecipientGetTemplateRecipientOverflow8Auto       RecipientGetTemplateRecipientOverflow8 = "auto"
+	RecipientGetTemplateRecipientOverflow8Horizontal RecipientGetTemplateRecipientOverflow8 = "horizontal"
+	RecipientGetTemplateRecipientOverflow8Vertical   RecipientGetTemplateRecipientOverflow8 = "vertical"
+	RecipientGetTemplateRecipientOverflow8Crop       RecipientGetTemplateRecipientOverflow8 = "crop"
+)
+
+func (e RecipientGetTemplateRecipientOverflow8) ToPointer() *RecipientGetTemplateRecipientOverflow8 {
+	return &e
+}
+func (e *RecipientGetTemplateRecipientOverflow8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientGetTemplateRecipientOverflow8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientGetTemplateRecipientOverflow8: %v", v)
+	}
 }
 
 type RecipientGetTemplateRecipientFieldMetaTypeRadio string
@@ -635,6 +753,9 @@ func (r *RecipientGetTemplateRecipientValue1) GetValue() string {
 	return r.Value
 }
 
+// #region class-body-recipientgettemplaterecipientvalue1
+// #endregion class-body-recipientgettemplaterecipientvalue1
+
 type RecipientGetTemplateRecipientDirection1 string
 
 const (
@@ -667,6 +788,7 @@ type RecipientGetTemplateRecipientFieldMetaRadio struct {
 	Required    *bool                                           `json:"required,omitempty"`
 	ReadOnly    *bool                                           `json:"readOnly,omitempty"`
 	FontSize    *float64                                        `default:"12" json:"fontSize"`
+	Overflow    *RecipientGetTemplateRecipientOverflow8         `json:"overflow,omitempty"`
 	Type        RecipientGetTemplateRecipientFieldMetaTypeRadio `json:"type"`
 	Values      []RecipientGetTemplateRecipientValue1           `json:"values,omitempty"`
 	Direction   *RecipientGetTemplateRecipientDirection1        `default:"vertical" json:"direction"`
@@ -718,6 +840,13 @@ func (r *RecipientGetTemplateRecipientFieldMetaRadio) GetFontSize() *float64 {
 	return r.FontSize
 }
 
+func (r *RecipientGetTemplateRecipientFieldMetaRadio) GetOverflow() *RecipientGetTemplateRecipientOverflow8 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientGetTemplateRecipientFieldMetaRadio) GetType() RecipientGetTemplateRecipientFieldMetaTypeRadio {
 	if r == nil {
 		return RecipientGetTemplateRecipientFieldMetaTypeRadio("")
@@ -737,6 +866,38 @@ func (r *RecipientGetTemplateRecipientFieldMetaRadio) GetDirection() *RecipientG
 		return nil
 	}
 	return r.Direction
+}
+
+type RecipientGetTemplateRecipientOverflow7 string
+
+const (
+	RecipientGetTemplateRecipientOverflow7Auto       RecipientGetTemplateRecipientOverflow7 = "auto"
+	RecipientGetTemplateRecipientOverflow7Horizontal RecipientGetTemplateRecipientOverflow7 = "horizontal"
+	RecipientGetTemplateRecipientOverflow7Vertical   RecipientGetTemplateRecipientOverflow7 = "vertical"
+	RecipientGetTemplateRecipientOverflow7Crop       RecipientGetTemplateRecipientOverflow7 = "crop"
+)
+
+func (e RecipientGetTemplateRecipientOverflow7) ToPointer() *RecipientGetTemplateRecipientOverflow7 {
+	return &e
+}
+func (e *RecipientGetTemplateRecipientOverflow7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientGetTemplateRecipientOverflow7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientGetTemplateRecipientOverflow7: %v", v)
+	}
 }
 
 type RecipientGetTemplateRecipientFieldMetaTypeNumber string
@@ -826,6 +987,7 @@ type RecipientGetTemplateRecipientFieldMetaNumber struct {
 	Required      *bool                                            `json:"required,omitempty"`
 	ReadOnly      *bool                                            `json:"readOnly,omitempty"`
 	FontSize      *float64                                         `default:"12" json:"fontSize"`
+	Overflow      *RecipientGetTemplateRecipientOverflow7          `json:"overflow,omitempty"`
 	Type          RecipientGetTemplateRecipientFieldMetaTypeNumber `json:"type"`
 	NumberFormat  *string                                          `json:"numberFormat,omitempty"`
 	Value         *string                                          `json:"value,omitempty"`
@@ -881,6 +1043,13 @@ func (r *RecipientGetTemplateRecipientFieldMetaNumber) GetFontSize() *float64 {
 		return nil
 	}
 	return r.FontSize
+}
+
+func (r *RecipientGetTemplateRecipientFieldMetaNumber) GetOverflow() *RecipientGetTemplateRecipientOverflow7 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
 }
 
 func (r *RecipientGetTemplateRecipientFieldMetaNumber) GetType() RecipientGetTemplateRecipientFieldMetaTypeNumber {
@@ -944,6 +1113,38 @@ func (r *RecipientGetTemplateRecipientFieldMetaNumber) GetVerticalAlign() *Recip
 		return nil
 	}
 	return r.VerticalAlign
+}
+
+type RecipientGetTemplateRecipientOverflow6 string
+
+const (
+	RecipientGetTemplateRecipientOverflow6Auto       RecipientGetTemplateRecipientOverflow6 = "auto"
+	RecipientGetTemplateRecipientOverflow6Horizontal RecipientGetTemplateRecipientOverflow6 = "horizontal"
+	RecipientGetTemplateRecipientOverflow6Vertical   RecipientGetTemplateRecipientOverflow6 = "vertical"
+	RecipientGetTemplateRecipientOverflow6Crop       RecipientGetTemplateRecipientOverflow6 = "crop"
+)
+
+func (e RecipientGetTemplateRecipientOverflow6) ToPointer() *RecipientGetTemplateRecipientOverflow6 {
+	return &e
+}
+func (e *RecipientGetTemplateRecipientOverflow6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientGetTemplateRecipientOverflow6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientGetTemplateRecipientOverflow6: %v", v)
+	}
 }
 
 type RecipientGetTemplateRecipientFieldMetaTypeText string
@@ -1033,6 +1234,7 @@ type RecipientGetTemplateRecipientFieldMetaText struct {
 	Required       *bool                                          `json:"required,omitempty"`
 	ReadOnly       *bool                                          `json:"readOnly,omitempty"`
 	FontSize       *float64                                       `default:"12" json:"fontSize"`
+	Overflow       *RecipientGetTemplateRecipientOverflow6        `json:"overflow,omitempty"`
 	Type           RecipientGetTemplateRecipientFieldMetaTypeText `json:"type"`
 	Text           *string                                        `json:"text,omitempty"`
 	CharacterLimit *float64                                       `json:"characterLimit,omitempty"`
@@ -1088,6 +1290,13 @@ func (r *RecipientGetTemplateRecipientFieldMetaText) GetFontSize() *float64 {
 	return r.FontSize
 }
 
+func (r *RecipientGetTemplateRecipientFieldMetaText) GetOverflow() *RecipientGetTemplateRecipientOverflow6 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientGetTemplateRecipientFieldMetaText) GetType() RecipientGetTemplateRecipientFieldMetaTypeText {
 	if r == nil {
 		return RecipientGetTemplateRecipientFieldMetaTypeText("")
@@ -1135,6 +1344,38 @@ func (r *RecipientGetTemplateRecipientFieldMetaText) GetVerticalAlign() *Recipie
 		return nil
 	}
 	return r.VerticalAlign
+}
+
+type RecipientGetTemplateRecipientOverflow5 string
+
+const (
+	RecipientGetTemplateRecipientOverflow5Auto       RecipientGetTemplateRecipientOverflow5 = "auto"
+	RecipientGetTemplateRecipientOverflow5Horizontal RecipientGetTemplateRecipientOverflow5 = "horizontal"
+	RecipientGetTemplateRecipientOverflow5Vertical   RecipientGetTemplateRecipientOverflow5 = "vertical"
+	RecipientGetTemplateRecipientOverflow5Crop       RecipientGetTemplateRecipientOverflow5 = "crop"
+)
+
+func (e RecipientGetTemplateRecipientOverflow5) ToPointer() *RecipientGetTemplateRecipientOverflow5 {
+	return &e
+}
+func (e *RecipientGetTemplateRecipientOverflow5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientGetTemplateRecipientOverflow5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientGetTemplateRecipientOverflow5: %v", v)
+	}
 }
 
 type RecipientGetTemplateRecipientFieldMetaTypeDate string
@@ -1195,6 +1436,7 @@ type RecipientGetTemplateRecipientFieldMetaDate struct {
 	Required    *bool                                          `json:"required,omitempty"`
 	ReadOnly    *bool                                          `json:"readOnly,omitempty"`
 	FontSize    *float64                                       `default:"12" json:"fontSize"`
+	Overflow    *RecipientGetTemplateRecipientOverflow5        `default:"auto" json:"overflow"`
 	Type        RecipientGetTemplateRecipientFieldMetaTypeDate `json:"type"`
 	TextAlign   *RecipientGetTemplateRecipientTextAlign4       `json:"textAlign,omitempty"`
 }
@@ -1245,6 +1487,13 @@ func (r *RecipientGetTemplateRecipientFieldMetaDate) GetFontSize() *float64 {
 	return r.FontSize
 }
 
+func (r *RecipientGetTemplateRecipientFieldMetaDate) GetOverflow() *RecipientGetTemplateRecipientOverflow5 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientGetTemplateRecipientFieldMetaDate) GetType() RecipientGetTemplateRecipientFieldMetaTypeDate {
 	if r == nil {
 		return RecipientGetTemplateRecipientFieldMetaTypeDate("")
@@ -1257,6 +1506,38 @@ func (r *RecipientGetTemplateRecipientFieldMetaDate) GetTextAlign() *RecipientGe
 		return nil
 	}
 	return r.TextAlign
+}
+
+type RecipientGetTemplateRecipientOverflow4 string
+
+const (
+	RecipientGetTemplateRecipientOverflow4Auto       RecipientGetTemplateRecipientOverflow4 = "auto"
+	RecipientGetTemplateRecipientOverflow4Horizontal RecipientGetTemplateRecipientOverflow4 = "horizontal"
+	RecipientGetTemplateRecipientOverflow4Vertical   RecipientGetTemplateRecipientOverflow4 = "vertical"
+	RecipientGetTemplateRecipientOverflow4Crop       RecipientGetTemplateRecipientOverflow4 = "crop"
+)
+
+func (e RecipientGetTemplateRecipientOverflow4) ToPointer() *RecipientGetTemplateRecipientOverflow4 {
+	return &e
+}
+func (e *RecipientGetTemplateRecipientOverflow4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientGetTemplateRecipientOverflow4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientGetTemplateRecipientOverflow4: %v", v)
+	}
 }
 
 type RecipientGetTemplateRecipientFieldMetaTypeEmail string
@@ -1317,6 +1598,7 @@ type RecipientGetTemplateRecipientFieldMetaEmail struct {
 	Required    *bool                                           `json:"required,omitempty"`
 	ReadOnly    *bool                                           `json:"readOnly,omitempty"`
 	FontSize    *float64                                        `default:"12" json:"fontSize"`
+	Overflow    *RecipientGetTemplateRecipientOverflow4         `default:"auto" json:"overflow"`
 	Type        RecipientGetTemplateRecipientFieldMetaTypeEmail `json:"type"`
 	TextAlign   *RecipientGetTemplateRecipientTextAlign3        `json:"textAlign,omitempty"`
 }
@@ -1367,6 +1649,13 @@ func (r *RecipientGetTemplateRecipientFieldMetaEmail) GetFontSize() *float64 {
 	return r.FontSize
 }
 
+func (r *RecipientGetTemplateRecipientFieldMetaEmail) GetOverflow() *RecipientGetTemplateRecipientOverflow4 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientGetTemplateRecipientFieldMetaEmail) GetType() RecipientGetTemplateRecipientFieldMetaTypeEmail {
 	if r == nil {
 		return RecipientGetTemplateRecipientFieldMetaTypeEmail("")
@@ -1379,6 +1668,38 @@ func (r *RecipientGetTemplateRecipientFieldMetaEmail) GetTextAlign() *RecipientG
 		return nil
 	}
 	return r.TextAlign
+}
+
+type RecipientGetTemplateRecipientOverflow3 string
+
+const (
+	RecipientGetTemplateRecipientOverflow3Auto       RecipientGetTemplateRecipientOverflow3 = "auto"
+	RecipientGetTemplateRecipientOverflow3Horizontal RecipientGetTemplateRecipientOverflow3 = "horizontal"
+	RecipientGetTemplateRecipientOverflow3Vertical   RecipientGetTemplateRecipientOverflow3 = "vertical"
+	RecipientGetTemplateRecipientOverflow3Crop       RecipientGetTemplateRecipientOverflow3 = "crop"
+)
+
+func (e RecipientGetTemplateRecipientOverflow3) ToPointer() *RecipientGetTemplateRecipientOverflow3 {
+	return &e
+}
+func (e *RecipientGetTemplateRecipientOverflow3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientGetTemplateRecipientOverflow3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientGetTemplateRecipientOverflow3: %v", v)
+	}
 }
 
 type RecipientGetTemplateRecipientFieldMetaTypeName string
@@ -1439,6 +1760,7 @@ type RecipientGetTemplateRecipientFieldMetaName struct {
 	Required    *bool                                          `json:"required,omitempty"`
 	ReadOnly    *bool                                          `json:"readOnly,omitempty"`
 	FontSize    *float64                                       `default:"12" json:"fontSize"`
+	Overflow    *RecipientGetTemplateRecipientOverflow3        `json:"overflow,omitempty"`
 	Type        RecipientGetTemplateRecipientFieldMetaTypeName `json:"type"`
 	TextAlign   *RecipientGetTemplateRecipientTextAlign2       `json:"textAlign,omitempty"`
 }
@@ -1489,6 +1811,13 @@ func (r *RecipientGetTemplateRecipientFieldMetaName) GetFontSize() *float64 {
 	return r.FontSize
 }
 
+func (r *RecipientGetTemplateRecipientFieldMetaName) GetOverflow() *RecipientGetTemplateRecipientOverflow3 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientGetTemplateRecipientFieldMetaName) GetType() RecipientGetTemplateRecipientFieldMetaTypeName {
 	if r == nil {
 		return RecipientGetTemplateRecipientFieldMetaTypeName("")
@@ -1501,6 +1830,38 @@ func (r *RecipientGetTemplateRecipientFieldMetaName) GetTextAlign() *RecipientGe
 		return nil
 	}
 	return r.TextAlign
+}
+
+type RecipientGetTemplateRecipientOverflow2 string
+
+const (
+	RecipientGetTemplateRecipientOverflow2Auto       RecipientGetTemplateRecipientOverflow2 = "auto"
+	RecipientGetTemplateRecipientOverflow2Horizontal RecipientGetTemplateRecipientOverflow2 = "horizontal"
+	RecipientGetTemplateRecipientOverflow2Vertical   RecipientGetTemplateRecipientOverflow2 = "vertical"
+	RecipientGetTemplateRecipientOverflow2Crop       RecipientGetTemplateRecipientOverflow2 = "crop"
+)
+
+func (e RecipientGetTemplateRecipientOverflow2) ToPointer() *RecipientGetTemplateRecipientOverflow2 {
+	return &e
+}
+func (e *RecipientGetTemplateRecipientOverflow2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientGetTemplateRecipientOverflow2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientGetTemplateRecipientOverflow2: %v", v)
+	}
 }
 
 type RecipientGetTemplateRecipientFieldMetaTypeInitials string
@@ -1561,6 +1922,7 @@ type RecipientGetTemplateRecipientFieldMetaInitials struct {
 	Required    *bool                                              `json:"required,omitempty"`
 	ReadOnly    *bool                                              `json:"readOnly,omitempty"`
 	FontSize    *float64                                           `default:"12" json:"fontSize"`
+	Overflow    *RecipientGetTemplateRecipientOverflow2            `json:"overflow,omitempty"`
 	Type        RecipientGetTemplateRecipientFieldMetaTypeInitials `json:"type"`
 	TextAlign   *RecipientGetTemplateRecipientTextAlign1           `json:"textAlign,omitempty"`
 }
@@ -1611,6 +1973,13 @@ func (r *RecipientGetTemplateRecipientFieldMetaInitials) GetFontSize() *float64 
 	return r.FontSize
 }
 
+func (r *RecipientGetTemplateRecipientFieldMetaInitials) GetOverflow() *RecipientGetTemplateRecipientOverflow2 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientGetTemplateRecipientFieldMetaInitials) GetType() RecipientGetTemplateRecipientFieldMetaTypeInitials {
 	if r == nil {
 		return RecipientGetTemplateRecipientFieldMetaTypeInitials("")
@@ -1623,6 +1992,38 @@ func (r *RecipientGetTemplateRecipientFieldMetaInitials) GetTextAlign() *Recipie
 		return nil
 	}
 	return r.TextAlign
+}
+
+type RecipientGetTemplateRecipientOverflow1 string
+
+const (
+	RecipientGetTemplateRecipientOverflow1Auto       RecipientGetTemplateRecipientOverflow1 = "auto"
+	RecipientGetTemplateRecipientOverflow1Horizontal RecipientGetTemplateRecipientOverflow1 = "horizontal"
+	RecipientGetTemplateRecipientOverflow1Vertical   RecipientGetTemplateRecipientOverflow1 = "vertical"
+	RecipientGetTemplateRecipientOverflow1Crop       RecipientGetTemplateRecipientOverflow1 = "crop"
+)
+
+func (e RecipientGetTemplateRecipientOverflow1) ToPointer() *RecipientGetTemplateRecipientOverflow1 {
+	return &e
+}
+func (e *RecipientGetTemplateRecipientOverflow1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientGetTemplateRecipientOverflow1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientGetTemplateRecipientOverflow1: %v", v)
+	}
 }
 
 type RecipientGetTemplateRecipientFieldMetaTypeSignature string
@@ -1654,6 +2055,7 @@ type RecipientGetTemplateRecipientFieldMetaSignature struct {
 	Required    *bool                                               `json:"required,omitempty"`
 	ReadOnly    *bool                                               `json:"readOnly,omitempty"`
 	FontSize    *float64                                            `default:"12" json:"fontSize"`
+	Overflow    *RecipientGetTemplateRecipientOverflow1             `default:"auto" json:"overflow"`
 	Type        RecipientGetTemplateRecipientFieldMetaTypeSignature `json:"type"`
 }
 
@@ -1701,6 +2103,13 @@ func (r *RecipientGetTemplateRecipientFieldMetaSignature) GetFontSize() *float64
 		return nil
 	}
 	return r.FontSize
+}
+
+func (r *RecipientGetTemplateRecipientFieldMetaSignature) GetOverflow() *RecipientGetTemplateRecipientOverflow1 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
 }
 
 func (r *RecipientGetTemplateRecipientFieldMetaSignature) GetType() RecipientGetTemplateRecipientFieldMetaTypeSignature {
@@ -1830,7 +2239,14 @@ func CreateRecipientGetTemplateRecipientFieldMetaUnionRecipientGetTemplateRecipi
 	}
 }
 
-func (u *RecipientGetTemplateRecipientFieldMetaUnion) UnmarshalJSON(data []byte) error {
+func (u *RecipientGetTemplateRecipientFieldMetaUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = RecipientGetTemplateRecipientFieldMetaUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var recipientGetTemplateRecipientFieldMetaSignature RecipientGetTemplateRecipientFieldMetaSignature = RecipientGetTemplateRecipientFieldMetaSignature{}
 	if err := utils.UnmarshalJSON(data, &recipientGetTemplateRecipientFieldMetaSignature, "", true, nil); err == nil {
@@ -2082,24 +2498,26 @@ func (r *RecipientGetTemplateRecipientField) GetTemplateID() *float64 {
 
 // RecipientGetTemplateRecipientResponseBody - Successful response
 type RecipientGetTemplateRecipientResponseBody struct {
-	EnvelopeID        string                                     `json:"envelopeId"`
-	Role              RecipientGetTemplateRecipientRole          `json:"role"`
-	ReadStatus        RecipientGetTemplateRecipientReadStatus    `json:"readStatus"`
-	SigningStatus     RecipientGetTemplateRecipientSigningStatus `json:"signingStatus"`
-	SendStatus        RecipientGetTemplateRecipientSendStatus    `json:"sendStatus"`
-	ID                float64                                    `json:"id"`
-	Email             string                                     `json:"email"`
-	Name              string                                     `json:"name"`
-	Token             string                                     `json:"token"`
-	DocumentDeletedAt *string                                    `json:"documentDeletedAt"`
-	Expired           *string                                    `json:"expired"`
-	SignedAt          *string                                    `json:"signedAt"`
-	AuthOptions       *RecipientGetTemplateRecipientAuthOptions  `json:"authOptions"`
-	SigningOrder      *float64                                   `json:"signingOrder"`
-	RejectionReason   *string                                    `json:"rejectionReason"`
-	Fields            []RecipientGetTemplateRecipientField       `json:"fields"`
-	DocumentID        *float64                                   `json:"documentId,omitempty"`
-	TemplateID        *float64                                   `json:"templateId,omitempty"`
+	EnvelopeID           string                                     `json:"envelopeId"`
+	Role                 RecipientGetTemplateRecipientRole          `json:"role"`
+	ReadStatus           RecipientGetTemplateRecipientReadStatus    `json:"readStatus"`
+	SigningStatus        RecipientGetTemplateRecipientSigningStatus `json:"signingStatus"`
+	SendStatus           RecipientGetTemplateRecipientSendStatus    `json:"sendStatus"`
+	ID                   float64                                    `json:"id"`
+	Email                string                                     `json:"email"`
+	Name                 string                                     `json:"name"`
+	Token                string                                     `json:"token"`
+	DocumentDeletedAt    *string                                    `json:"documentDeletedAt"`
+	Expired              *string                                    `json:"expired"`
+	ExpiresAt            *string                                    `json:"expiresAt"`
+	ExpirationNotifiedAt *string                                    `json:"expirationNotifiedAt"`
+	SignedAt             *string                                    `json:"signedAt"`
+	AuthOptions          *RecipientGetTemplateRecipientAuthOptions  `json:"authOptions"`
+	SigningOrder         *float64                                   `json:"signingOrder"`
+	RejectionReason      *string                                    `json:"rejectionReason"`
+	Fields               []RecipientGetTemplateRecipientField       `json:"fields"`
+	DocumentID           *float64                                   `json:"documentId,omitempty"`
+	TemplateID           *float64                                   `json:"templateId,omitempty"`
 }
 
 func (r *RecipientGetTemplateRecipientResponseBody) GetEnvelopeID() string {
@@ -2177,6 +2595,20 @@ func (r *RecipientGetTemplateRecipientResponseBody) GetExpired() *string {
 		return nil
 	}
 	return r.Expired
+}
+
+func (r *RecipientGetTemplateRecipientResponseBody) GetExpiresAt() *string {
+	if r == nil {
+		return nil
+	}
+	return r.ExpiresAt
+}
+
+func (r *RecipientGetTemplateRecipientResponseBody) GetExpirationNotifiedAt() *string {
+	if r == nil {
+		return nil
+	}
+	return r.ExpirationNotifiedAt
 }
 
 func (r *RecipientGetTemplateRecipientResponseBody) GetSignedAt() *string {

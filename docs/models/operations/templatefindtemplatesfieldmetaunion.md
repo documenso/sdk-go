@@ -63,3 +63,31 @@ templateFindTemplatesFieldMetaUnion := operations.CreateTemplateFindTemplatesFie
 templateFindTemplatesFieldMetaUnion := operations.CreateTemplateFindTemplatesFieldMetaUnionTemplateFindTemplatesFieldMetaDropdown(operations.TemplateFindTemplatesFieldMetaDropdown{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch templateFindTemplatesFieldMetaUnion.Type {
+	case operations.TemplateFindTemplatesFieldMetaUnionTypeTemplateFindTemplatesFieldMetaSignature:
+		// templateFindTemplatesFieldMetaUnion.TemplateFindTemplatesFieldMetaSignature is populated
+	case operations.TemplateFindTemplatesFieldMetaUnionTypeTemplateFindTemplatesFieldMetaInitials:
+		// templateFindTemplatesFieldMetaUnion.TemplateFindTemplatesFieldMetaInitials is populated
+	case operations.TemplateFindTemplatesFieldMetaUnionTypeTemplateFindTemplatesFieldMetaName:
+		// templateFindTemplatesFieldMetaUnion.TemplateFindTemplatesFieldMetaName is populated
+	case operations.TemplateFindTemplatesFieldMetaUnionTypeTemplateFindTemplatesFieldMetaEmail:
+		// templateFindTemplatesFieldMetaUnion.TemplateFindTemplatesFieldMetaEmail is populated
+	case operations.TemplateFindTemplatesFieldMetaUnionTypeTemplateFindTemplatesFieldMetaDate:
+		// templateFindTemplatesFieldMetaUnion.TemplateFindTemplatesFieldMetaDate is populated
+	case operations.TemplateFindTemplatesFieldMetaUnionTypeTemplateFindTemplatesFieldMetaText:
+		// templateFindTemplatesFieldMetaUnion.TemplateFindTemplatesFieldMetaText is populated
+	case operations.TemplateFindTemplatesFieldMetaUnionTypeTemplateFindTemplatesFieldMetaNumber:
+		// templateFindTemplatesFieldMetaUnion.TemplateFindTemplatesFieldMetaNumber is populated
+	case operations.TemplateFindTemplatesFieldMetaUnionTypeTemplateFindTemplatesFieldMetaRadio:
+		// templateFindTemplatesFieldMetaUnion.TemplateFindTemplatesFieldMetaRadio is populated
+	case operations.TemplateFindTemplatesFieldMetaUnionTypeTemplateFindTemplatesFieldMetaCheckbox:
+		// templateFindTemplatesFieldMetaUnion.TemplateFindTemplatesFieldMetaCheckbox is populated
+	case operations.TemplateFindTemplatesFieldMetaUnionTypeTemplateFindTemplatesFieldMetaDropdown:
+		// templateFindTemplatesFieldMetaUnion.TemplateFindTemplatesFieldMetaDropdown is populated
+}
+```
