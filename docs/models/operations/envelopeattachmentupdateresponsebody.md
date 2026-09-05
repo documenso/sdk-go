@@ -7,4 +7,4 @@ Successful response
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Success`          | *bool*             | :heavy_check_mark: | N/A                |
+| `Success`          | `bool`             | :heavy_check_mark: | N/A                |

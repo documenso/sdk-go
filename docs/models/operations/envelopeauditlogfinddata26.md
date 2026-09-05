@@ -5,5 +5,6 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `From`             | **string*          | :heavy_minus_sign: | N/A                |
-| `To`               | **string*          | :heavy_minus_sign: | N/A                |
+| `RecipientEmail`   | `string`           | :heavy_check_mark: | N/A                |
+| `RecipientName`    | `string`           | :heavy_check_mark: | N/A                |
+| `RecipientID`      | `float64`          | :heavy_check_mark: | N/A                |

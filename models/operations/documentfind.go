@@ -48,6 +48,7 @@ const (
 	DocumentFindQueryParamStatusPending   DocumentFindQueryParamStatus = "PENDING"
 	DocumentFindQueryParamStatusCompleted DocumentFindQueryParamStatus = "COMPLETED"
 	DocumentFindQueryParamStatusRejected  DocumentFindQueryParamStatus = "REJECTED"
+	DocumentFindQueryParamStatusCancelled DocumentFindQueryParamStatus = "CANCELLED"
 )
 
 func (e DocumentFindQueryParamStatus) ToPointer() *DocumentFindQueryParamStatus {
@@ -66,10 +67,39 @@ func (e *DocumentFindQueryParamStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = DocumentFindQueryParamStatus(v)
 		return nil
 	default:
 		return fmt.Errorf("invalid value for DocumentFindQueryParamStatus: %v", v)
+	}
+}
+
+// DocumentFindHasExpiredRecipients - Filter for documents that have at least one recipient whose signing link has expired.
+type DocumentFindHasExpiredRecipients string
+
+const (
+	DocumentFindHasExpiredRecipientsTrue  DocumentFindHasExpiredRecipients = "true"
+	DocumentFindHasExpiredRecipientsFalse DocumentFindHasExpiredRecipients = "false"
+)
+
+func (e DocumentFindHasExpiredRecipients) ToPointer() *DocumentFindHasExpiredRecipients {
+	return &e
+}
+func (e *DocumentFindHasExpiredRecipients) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "true":
+		fallthrough
+	case "false":
+		*e = DocumentFindHasExpiredRecipients(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentFindHasExpiredRecipients: %v", v)
 	}
 }
 
@@ -135,6 +165,8 @@ type DocumentFindRequest struct {
 	Source *DocumentFindQueryParamSource `queryParam:"style=form,explode=true,name=source"`
 	// Filter documents by the current status
 	Status *DocumentFindQueryParamStatus `queryParam:"style=form,explode=true,name=status"`
+	// Filter for documents that have at least one recipient whose signing link has expired.
+	HasExpiredRecipients *DocumentFindHasExpiredRecipients `queryParam:"style=form,explode=true,name=hasExpiredRecipients"`
 	// Filter documents by folder ID
 	FolderID         *string                       `queryParam:"style=form,explode=true,name=folderId"`
 	OrderByColumn    *DocumentFindOrderByColumn    `queryParam:"style=form,explode=true,name=orderByColumn"`
@@ -194,6 +226,13 @@ func (d *DocumentFindRequest) GetStatus() *DocumentFindQueryParamStatus {
 	return d.Status
 }
 
+func (d *DocumentFindRequest) GetHasExpiredRecipients() *DocumentFindHasExpiredRecipients {
+	if d == nil {
+		return nil
+	}
+	return d.HasExpiredRecipients
+}
+
 func (d *DocumentFindRequest) GetFolderID() *string {
 	if d == nil {
 		return nil
@@ -251,6 +290,7 @@ const (
 	DocumentFindDataStatusPending   DocumentFindDataStatus = "PENDING"
 	DocumentFindDataStatusCompleted DocumentFindDataStatus = "COMPLETED"
 	DocumentFindDataStatusRejected  DocumentFindDataStatus = "REJECTED"
+	DocumentFindDataStatusCancelled DocumentFindDataStatus = "CANCELLED"
 )
 
 func (e DocumentFindDataStatus) ToPointer() *DocumentFindDataStatus {
@@ -269,6 +309,8 @@ func (e *DocumentFindDataStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = DocumentFindDataStatus(v)
 		return nil
 	default:
@@ -425,7 +467,14 @@ func CreateDocumentFindFormValuesNumber(number float64) DocumentFindFormValues {
 	}
 }
 
-func (u *DocumentFindFormValues) UnmarshalJSON(data []byte) error {
+func (u *DocumentFindFormValues) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentFindFormValues{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -691,23 +740,25 @@ func (d *DocumentFindRecipientAuthOptions) GetActionAuth() []DocumentFindActionA
 }
 
 type DocumentFindRecipient struct {
-	EnvelopeID        string                            `json:"envelopeId"`
-	Role              DocumentFindRole                  `json:"role"`
-	ReadStatus        DocumentFindReadStatus            `json:"readStatus"`
-	SigningStatus     DocumentFindSigningStatus         `json:"signingStatus"`
-	SendStatus        DocumentFindSendStatus            `json:"sendStatus"`
-	ID                float64                           `json:"id"`
-	Email             string                            `json:"email"`
-	Name              string                            `json:"name"`
-	Token             string                            `json:"token"`
-	DocumentDeletedAt *string                           `json:"documentDeletedAt"`
-	Expired           *string                           `json:"expired"`
-	SignedAt          *string                           `json:"signedAt"`
-	AuthOptions       *DocumentFindRecipientAuthOptions `json:"authOptions"`
-	SigningOrder      *float64                          `json:"signingOrder"`
-	RejectionReason   *string                           `json:"rejectionReason"`
-	DocumentID        *float64                          `json:"documentId,omitempty"`
-	TemplateID        *float64                          `json:"templateId,omitempty"`
+	EnvelopeID           string                            `json:"envelopeId"`
+	Role                 DocumentFindRole                  `json:"role"`
+	ReadStatus           DocumentFindReadStatus            `json:"readStatus"`
+	SigningStatus        DocumentFindSigningStatus         `json:"signingStatus"`
+	SendStatus           DocumentFindSendStatus            `json:"sendStatus"`
+	ID                   float64                           `json:"id"`
+	Email                string                            `json:"email"`
+	Name                 string                            `json:"name"`
+	Token                string                            `json:"token"`
+	DocumentDeletedAt    *string                           `json:"documentDeletedAt"`
+	Expired              *string                           `json:"expired"`
+	ExpiresAt            *string                           `json:"expiresAt"`
+	ExpirationNotifiedAt *string                           `json:"expirationNotifiedAt"`
+	SignedAt             *string                           `json:"signedAt"`
+	AuthOptions          *DocumentFindRecipientAuthOptions `json:"authOptions"`
+	SigningOrder         *float64                          `json:"signingOrder"`
+	RejectionReason      *string                           `json:"rejectionReason"`
+	DocumentID           *float64                          `json:"documentId,omitempty"`
+	TemplateID           *float64                          `json:"templateId,omitempty"`
 }
 
 func (d *DocumentFindRecipient) GetEnvelopeID() string {
@@ -785,6 +836,20 @@ func (d *DocumentFindRecipient) GetExpired() *string {
 		return nil
 	}
 	return d.Expired
+}
+
+func (d *DocumentFindRecipient) GetExpiresAt() *string {
+	if d == nil {
+		return nil
+	}
+	return d.ExpiresAt
+}
+
+func (d *DocumentFindRecipient) GetExpirationNotifiedAt() *string {
+	if d == nil {
+		return nil
+	}
+	return d.ExpirationNotifiedAt
 }
 
 func (d *DocumentFindRecipient) GetSignedAt() *string {

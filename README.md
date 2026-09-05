@@ -161,48 +161,48 @@ func main() {
 <details open>
 <summary>Available methods</summary>
 
-### [Document](docs/sdks/document/README.md)
+### [~~Document~~](docs/sdks/document/README.md)
 
-* [DocumentGetMany](docs/sdks/document/README.md#documentgetmany) - Get multiple documents
-* [DocumentDownload](docs/sdks/document/README.md#documentdownload) - Download document (beta)
+* [~~DocumentGetMany~~](docs/sdks/document/README.md#documentgetmany) - Get multiple documents :warning: **Deprecated**
+* [~~DocumentDownload~~](docs/sdks/document/README.md#documentdownload) - Download document (beta) :warning: **Deprecated**
 
-### [Documents](docs/sdks/documents/README.md)
+### [~~Documents~~](docs/sdks/documents/README.md)
 
-* [Get](docs/sdks/documents/README.md#get) - Get document
-* [Find](docs/sdks/documents/README.md#find) - Find documents
-* [Create](docs/sdks/documents/README.md#create) - Create document
-* [Update](docs/sdks/documents/README.md#update) - Update document
-* [Delete](docs/sdks/documents/README.md#delete) - Delete document
-* [Duplicate](docs/sdks/documents/README.md#duplicate) - Duplicate document
-* [Distribute](docs/sdks/documents/README.md#distribute) - Distribute document
-* [Redistribute](docs/sdks/documents/README.md#redistribute) - Redistribute document
-* [Download](docs/sdks/documents/README.md#download) - Download document
+* [~~Get~~](docs/sdks/documents/README.md#get) - Get document :warning: **Deprecated**
+* [~~Find~~](docs/sdks/documents/README.md#find) - Find documents :warning: **Deprecated**
+* [~~Create~~](docs/sdks/documents/README.md#create) - Create document :warning: **Deprecated**
+* [~~Update~~](docs/sdks/documents/README.md#update) - Update document :warning: **Deprecated**
+* [~~Delete~~](docs/sdks/documents/README.md#delete) - Delete document :warning: **Deprecated**
+* [~~Duplicate~~](docs/sdks/documents/README.md#duplicate) - Duplicate document :warning: **Deprecated**
+* [~~Distribute~~](docs/sdks/documents/README.md#distribute) - Distribute document :warning: **Deprecated**
+* [~~Redistribute~~](docs/sdks/documents/README.md#redistribute) - Redistribute document :warning: **Deprecated**
+* [~~Download~~](docs/sdks/documents/README.md#download) - Download document :warning: **Deprecated**
 * [~~CreateV0~~](docs/sdks/documents/README.md#createv0) - Create document :warning: **Deprecated**
 
-#### [Documents.Attachments](docs/sdks/documentsattachments/README.md)
+#### [~~Documents.Attachments~~](docs/sdks/documentsattachments/README.md)
 
-* [Create](docs/sdks/documentsattachments/README.md#create) - Create attachment
-* [Update](docs/sdks/documentsattachments/README.md#update) - Update attachment
-* [Delete](docs/sdks/documentsattachments/README.md#delete) - Delete attachment
-* [Find](docs/sdks/documentsattachments/README.md#find) - Find attachments
+* [~~Create~~](docs/sdks/documentsattachments/README.md#create) - Create attachment :warning: **Deprecated**
+* [~~Update~~](docs/sdks/documentsattachments/README.md#update) - Update attachment :warning: **Deprecated**
+* [~~Delete~~](docs/sdks/documentsattachments/README.md#delete) - Delete attachment :warning: **Deprecated**
+* [~~Find~~](docs/sdks/documentsattachments/README.md#find) - Find attachments :warning: **Deprecated**
 
-#### [Documents.Fields](docs/sdks/documentsfields/README.md)
+#### [~~Documents.Fields~~](docs/sdks/documentsfields/README.md)
 
-* [Get](docs/sdks/documentsfields/README.md#get) - Get document field
-* [Create](docs/sdks/documentsfields/README.md#create) - Create document field
-* [CreateMany](docs/sdks/documentsfields/README.md#createmany) - Create document fields
-* [Update](docs/sdks/documentsfields/README.md#update) - Update document field
-* [UpdateMany](docs/sdks/documentsfields/README.md#updatemany) - Update document fields
-* [Delete](docs/sdks/documentsfields/README.md#delete) - Delete document field
+* [~~Get~~](docs/sdks/documentsfields/README.md#get) - Get document field :warning: **Deprecated**
+* [~~Create~~](docs/sdks/documentsfields/README.md#create) - Create document field :warning: **Deprecated**
+* [~~CreateMany~~](docs/sdks/documentsfields/README.md#createmany) - Create document fields :warning: **Deprecated**
+* [~~Update~~](docs/sdks/documentsfields/README.md#update) - Update document field :warning: **Deprecated**
+* [~~UpdateMany~~](docs/sdks/documentsfields/README.md#updatemany) - Update document fields :warning: **Deprecated**
+* [~~Delete~~](docs/sdks/documentsfields/README.md#delete) - Delete document field :warning: **Deprecated**
 
-#### [Documents.Recipients](docs/sdks/documentsrecipients/README.md)
+#### [~~Documents.Recipients~~](docs/sdks/documentsrecipients/README.md)
 
-* [Get](docs/sdks/documentsrecipients/README.md#get) - Get document recipient
-* [Create](docs/sdks/documentsrecipients/README.md#create) - Create document recipient
-* [CreateMany](docs/sdks/documentsrecipients/README.md#createmany) - Create document recipients
-* [Update](docs/sdks/documentsrecipients/README.md#update) - Update document recipient
-* [UpdateMany](docs/sdks/documentsrecipients/README.md#updatemany) - Update document recipients
-* [Delete](docs/sdks/documentsrecipients/README.md#delete) - Delete document recipient
+* [~~Get~~](docs/sdks/documentsrecipients/README.md#get) - Get document recipient :warning: **Deprecated**
+* [~~Create~~](docs/sdks/documentsrecipients/README.md#create) - Create document recipient :warning: **Deprecated**
+* [~~CreateMany~~](docs/sdks/documentsrecipients/README.md#createmany) - Create document recipients :warning: **Deprecated**
+* [~~Update~~](docs/sdks/documentsrecipients/README.md#update) - Update document recipient :warning: **Deprecated**
+* [~~UpdateMany~~](docs/sdks/documentsrecipients/README.md#updatemany) - Update document recipients :warning: **Deprecated**
+* [~~Delete~~](docs/sdks/documentsrecipients/README.md#delete) - Delete document recipient :warning: **Deprecated**
 
 ### [Embedding](docs/sdks/embedding/README.md)
 
@@ -213,7 +213,14 @@ func main() {
 
 * [EnvelopeFind](docs/sdks/envelope/README.md#envelopefind) - Find envelopes
 * [EnvelopeAuditLogFind](docs/sdks/envelope/README.md#envelopeauditlogfind) - Get envelope audit logs
+* [EnvelopeAuditLogDownloadPdf](docs/sdks/envelope/README.md#envelopeauditlogdownloadpdf) - Download envelope audit log PDF
+* [EnvelopeCertificateDownloadPdf](docs/sdks/envelope/README.md#envelopecertificatedownloadpdf) - Download envelope certificate PDF
 * [EnvelopeGetMany](docs/sdks/envelope/README.md#envelopegetmany) - Get multiple envelopes
+* [EnvelopeCancel](docs/sdks/envelope/README.md#envelopecancel) - Cancel envelope
+
+### [EnvelopeRecipients](docs/sdks/enveloperecipients/README.md)
+
+* [EnvelopeRecipientRejectOnBehalfOf](docs/sdks/enveloperecipients/README.md#enveloperecipientrejectonbehalfof) - Reject envelope recipient on behalf of
 
 ### [Envelopes](docs/sdks/envelopes/README.md)
 
@@ -261,44 +268,44 @@ func main() {
 * [Update](docs/sdks/folders/README.md#update) - Update folder
 * [Delete](docs/sdks/folders/README.md#delete) - Delete folder
 
-### [Template](docs/sdks/template/README.md)
+### [~~Template~~](docs/sdks/template/README.md)
 
-* [TemplateGetMany](docs/sdks/template/README.md#templategetmany) - Get multiple templates
-* [TemplateCreateTemplateTemporary](docs/sdks/template/README.md#templatecreatetemplatetemporary) - Create template
+* [~~TemplateGetMany~~](docs/sdks/template/README.md#templategetmany) - Get multiple templates :warning: **Deprecated**
+* [~~TemplateCreateTemplateTemporary~~](docs/sdks/template/README.md#templatecreatetemplatetemporary) - Create template :warning: **Deprecated**
 
-### [Templates](docs/sdks/templates/README.md)
+### [~~Templates~~](docs/sdks/templates/README.md)
 
-* [Find](docs/sdks/templates/README.md#find) - Find templates
-* [Get](docs/sdks/templates/README.md#get) - Get template
-* [Create](docs/sdks/templates/README.md#create) - Create template
-* [Update](docs/sdks/templates/README.md#update) - Update template
-* [Duplicate](docs/sdks/templates/README.md#duplicate) - Duplicate template
-* [Delete](docs/sdks/templates/README.md#delete) - Delete template
-* [Use](docs/sdks/templates/README.md#use) - Use template
+* [~~Find~~](docs/sdks/templates/README.md#find) - Find templates :warning: **Deprecated**
+* [~~Get~~](docs/sdks/templates/README.md#get) - Get template :warning: **Deprecated**
+* [~~Create~~](docs/sdks/templates/README.md#create) - Create template :warning: **Deprecated**
+* [~~Update~~](docs/sdks/templates/README.md#update) - Update template :warning: **Deprecated**
+* [~~Duplicate~~](docs/sdks/templates/README.md#duplicate) - Duplicate template :warning: **Deprecated**
+* [~~Delete~~](docs/sdks/templates/README.md#delete) - Delete template :warning: **Deprecated**
+* [~~Use~~](docs/sdks/templates/README.md#use) - Use template :warning: **Deprecated**
 
-#### [Templates.DirectLink](docs/sdks/directlink/README.md)
+#### [~~Templates.DirectLink~~](docs/sdks/directlink/README.md)
 
-* [Create](docs/sdks/directlink/README.md#create) - Create direct link
-* [Delete](docs/sdks/directlink/README.md#delete) - Delete direct link
-* [Toggle](docs/sdks/directlink/README.md#toggle) - Toggle direct link
+* [~~Create~~](docs/sdks/directlink/README.md#create) - Create direct link :warning: **Deprecated**
+* [~~Delete~~](docs/sdks/directlink/README.md#delete) - Delete direct link :warning: **Deprecated**
+* [~~Toggle~~](docs/sdks/directlink/README.md#toggle) - Toggle direct link :warning: **Deprecated**
 
-#### [Templates.Fields](docs/sdks/templatesfields/README.md)
+#### [~~Templates.Fields~~](docs/sdks/templatesfields/README.md)
 
-* [Create](docs/sdks/templatesfields/README.md#create) - Create template field
-* [Get](docs/sdks/templatesfields/README.md#get) - Get template field
-* [CreateMany](docs/sdks/templatesfields/README.md#createmany) - Create template fields
-* [Update](docs/sdks/templatesfields/README.md#update) - Update template field
-* [UpdateMany](docs/sdks/templatesfields/README.md#updatemany) - Update template fields
-* [Delete](docs/sdks/templatesfields/README.md#delete) - Delete template field
+* [~~Create~~](docs/sdks/templatesfields/README.md#create) - Create template field :warning: **Deprecated**
+* [~~Get~~](docs/sdks/templatesfields/README.md#get) - Get template field :warning: **Deprecated**
+* [~~CreateMany~~](docs/sdks/templatesfields/README.md#createmany) - Create template fields :warning: **Deprecated**
+* [~~Update~~](docs/sdks/templatesfields/README.md#update) - Update template field :warning: **Deprecated**
+* [~~UpdateMany~~](docs/sdks/templatesfields/README.md#updatemany) - Update template fields :warning: **Deprecated**
+* [~~Delete~~](docs/sdks/templatesfields/README.md#delete) - Delete template field :warning: **Deprecated**
 
-#### [Templates.Recipients](docs/sdks/templatesrecipients/README.md)
+#### [~~Templates.Recipients~~](docs/sdks/templatesrecipients/README.md)
 
-* [Get](docs/sdks/templatesrecipients/README.md#get) - Get template recipient
-* [Create](docs/sdks/templatesrecipients/README.md#create) - Create template recipient
-* [CreateMany](docs/sdks/templatesrecipients/README.md#createmany) - Create template recipients
-* [Update](docs/sdks/templatesrecipients/README.md#update) - Update template recipient
-* [UpdateMany](docs/sdks/templatesrecipients/README.md#updatemany) - Update template recipients
-* [Delete](docs/sdks/templatesrecipients/README.md#delete) - Delete template recipient
+* [~~Get~~](docs/sdks/templatesrecipients/README.md#get) - Get template recipient :warning: **Deprecated**
+* [~~Create~~](docs/sdks/templatesrecipients/README.md#create) - Create template recipient :warning: **Deprecated**
+* [~~CreateMany~~](docs/sdks/templatesrecipients/README.md#createmany) - Create template recipients :warning: **Deprecated**
+* [~~Update~~](docs/sdks/templatesrecipients/README.md#update) - Update template recipient :warning: **Deprecated**
+* [~~UpdateMany~~](docs/sdks/templatesrecipients/README.md#updatemany) - Update template recipients :warning: **Deprecated**
+* [~~Delete~~](docs/sdks/templatesrecipients/README.md#delete) - Delete template recipient :warning: **Deprecated**
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
