@@ -2,7 +2,7 @@
 
 package sdkgo
 
-// Generated from OpenAPI doc version 1.0.0 and generator version 2.811.4
+// Generated from OpenAPI doc version 1.0.0 and generator version 2.935.1
 
 import (
 	"context"
@@ -51,15 +51,16 @@ func Pointer[T any](v T) *T { return &v }
 //
 // This API provides access to our system, which you can use to integrate applications, automate workflows, or build custom tools.
 type Documenso struct {
-	SDKVersion string
-	Envelopes  *Envelopes
-	Envelope   *Envelope
-	Documents  *Documents
-	Document   *Document
-	Templates  *Templates
-	Folders    *Folders
-	Template   *Template
-	Embedding  *Embedding
+	SDKVersion         string
+	Envelopes          *Envelopes
+	EnvelopeRecipients *EnvelopeRecipients
+	Envelope           *Envelope
+	Documents          *Documents
+	Document           *Document
+	Templates          *Templates
+	Folders            *Folders
+	Template           *Template
+	Embedding          *Embedding
 
 	sdkConfiguration config.SDKConfiguration
 	hooks            *hooks.Hooks
@@ -67,7 +68,7 @@ type Documenso struct {
 
 type SDKOption func(*Documenso)
 
-// WithServerURL allows the overriding of the default server URL
+// WithServerURL allows providing an alternative server URL
 func WithServerURL(serverURL string) SDKOption {
 	return func(sdk *Documenso) {
 		sdk.sdkConfiguration.ServerURL = serverURL
@@ -136,10 +137,13 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *Documenso {
 	sdk := &Documenso{
-		SDKVersion: "0.6.0",
+		SDKVersion: "0.6.1",
 		sdkConfiguration: config.SDKConfiguration{
-			UserAgent:  "speakeasy-sdk/go 0.6.0 2.811.4 1.0.0 github.com/documenso/sdk-go",
-			ServerList: ServerList,
+			UserAgent:         "speakeasy-sdk/go 0.6.1 2.935.1 1.0.0 github.com/documenso/sdk-go",
+			SDKVersion:        "0.6.1",
+			GenVersion:        "2.935.1",
+			OpenAPIDocVersion: "1.0.0",
+			ServerList:        ServerList,
 		},
 		hooks: hooks.New(),
 	}
@@ -167,6 +171,7 @@ func New(opts ...SDKOption) *Documenso {
 	}
 
 	sdk.Envelopes = newEnvelopes(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.EnvelopeRecipients = newEnvelopeRecipients(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Envelope = newEnvelope(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Documents = newDocuments(sdk, sdk.sdkConfiguration, sdk.hooks)
 	sdk.Document = newDocument(sdk, sdk.sdkConfiguration, sdk.hooks)

@@ -69,3 +69,33 @@ documentCreateFieldUnion := operations.CreateDocumentCreateFieldUnionDocumentCre
 documentCreateFieldUnion := operations.CreateDocumentCreateFieldUnionDocumentCreateFieldDropdown(operations.DocumentCreateFieldDropdown{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch documentCreateFieldUnion.Type {
+	case operations.DocumentCreateFieldUnionTypeDocumentCreateFieldSignature:
+		// documentCreateFieldUnion.DocumentCreateFieldSignature is populated
+	case operations.DocumentCreateFieldUnionTypeDocumentCreateFieldFreeSignature:
+		// documentCreateFieldUnion.DocumentCreateFieldFreeSignature is populated
+	case operations.DocumentCreateFieldUnionTypeDocumentCreateFieldInitials:
+		// documentCreateFieldUnion.DocumentCreateFieldInitials is populated
+	case operations.DocumentCreateFieldUnionTypeDocumentCreateFieldName:
+		// documentCreateFieldUnion.DocumentCreateFieldName is populated
+	case operations.DocumentCreateFieldUnionTypeDocumentCreateFieldEmail:
+		// documentCreateFieldUnion.DocumentCreateFieldEmail is populated
+	case operations.DocumentCreateFieldUnionTypeDocumentCreateFieldDate:
+		// documentCreateFieldUnion.DocumentCreateFieldDate is populated
+	case operations.DocumentCreateFieldUnionTypeDocumentCreateFieldText:
+		// documentCreateFieldUnion.DocumentCreateFieldText is populated
+	case operations.DocumentCreateFieldUnionTypeDocumentCreateFieldNumber:
+		// documentCreateFieldUnion.DocumentCreateFieldNumber is populated
+	case operations.DocumentCreateFieldUnionTypeDocumentCreateFieldRadio:
+		// documentCreateFieldUnion.DocumentCreateFieldRadio is populated
+	case operations.DocumentCreateFieldUnionTypeDocumentCreateFieldCheckbox:
+		// documentCreateFieldUnion.DocumentCreateFieldCheckbox is populated
+	case operations.DocumentCreateFieldUnionTypeDocumentCreateFieldDropdown:
+		// documentCreateFieldUnion.DocumentCreateFieldDropdown is populated
+}
+```

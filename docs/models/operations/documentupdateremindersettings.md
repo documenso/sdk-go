@@ -1,0 +1,9 @@
+# DocumentUpdateReminderSettings
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `SendAfter`                                                                                            | [operations.DocumentUpdateSendAfterUnion](../../models/operations/documentupdatesendafterunion.md)     | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `RepeatEvery`                                                                                          | [operations.DocumentUpdateRepeatEveryUnion](../../models/operations/documentupdaterepeateveryunion.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |

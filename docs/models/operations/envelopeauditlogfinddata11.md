@@ -3,7 +3,8 @@
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `Field`                                                      | [operations.FieldEnum](../../models/operations/fieldenum.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `FieldID`                                                    | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `DelegatedOwnerName`  | `*string`             | :heavy_check_mark:    | N/A                   |
+| `DelegatedOwnerEmail` | `string`              | :heavy_check_mark:    | N/A                   |
+| `TeamName`            | `string`              | :heavy_check_mark:    | N/A                   |

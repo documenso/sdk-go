@@ -32,7 +32,9 @@ func newTemplatesRecipients(rootSDK *Documenso, sdkConfig config.SDKConfiguratio
 }
 
 // Get template recipient
-// Returns a single recipient. If you want to retrieve all the recipients for a template, use the "Get Template" endpoint.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Returns a single recipient. If you want to retrieve all the recipients for a template, use the "Get Template" endpoint.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *TemplatesRecipients) Get(ctx context.Context, recipientID float64, opts ...operations.Option) (*operations.RecipientGetTemplateRecipientResponse, error) {
 	request := operations.RecipientGetTemplateRecipientRequest{
 		RecipientID: recipientID,
@@ -172,7 +174,7 @@ func (s *TemplatesRecipients) Get(ctx context.Context, recipientID float64, opts
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -366,7 +368,9 @@ func (s *TemplatesRecipients) Get(ctx context.Context, recipientID float64, opts
 }
 
 // Create template recipient
-// Create a single recipient for a template.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create a single recipient for a template.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *TemplatesRecipients) Create(ctx context.Context, request operations.RecipientCreateTemplateRecipientRequest, opts ...operations.Option) (*operations.RecipientCreateTemplateRecipientResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -509,7 +513,7 @@ func (s *TemplatesRecipients) Create(ctx context.Context, request operations.Rec
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -678,7 +682,9 @@ func (s *TemplatesRecipients) Create(ctx context.Context, request operations.Rec
 }
 
 // CreateMany - Create template recipients
-// Create multiple recipients for a template.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create multiple recipients for a template.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *TemplatesRecipients) CreateMany(ctx context.Context, request operations.RecipientCreateTemplateRecipientsRequest, opts ...operations.Option) (*operations.RecipientCreateTemplateRecipientsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -821,7 +827,7 @@ func (s *TemplatesRecipients) CreateMany(ctx context.Context, request operations
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -990,7 +996,9 @@ func (s *TemplatesRecipients) CreateMany(ctx context.Context, request operations
 }
 
 // Update template recipient
-// Update a single recipient for a template.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update a single recipient for a template.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *TemplatesRecipients) Update(ctx context.Context, request operations.RecipientUpdateTemplateRecipientRequest, opts ...operations.Option) (*operations.RecipientUpdateTemplateRecipientResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1133,7 +1141,7 @@ func (s *TemplatesRecipients) Update(ctx context.Context, request operations.Rec
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1302,7 +1310,9 @@ func (s *TemplatesRecipients) Update(ctx context.Context, request operations.Rec
 }
 
 // UpdateMany - Update template recipients
-// Update multiple recipients for a template.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update multiple recipients for a template.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *TemplatesRecipients) UpdateMany(ctx context.Context, request operations.RecipientUpdateTemplateRecipientsRequest, opts ...operations.Option) (*operations.RecipientUpdateTemplateRecipientsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1445,7 +1455,7 @@ func (s *TemplatesRecipients) UpdateMany(ctx context.Context, request operations
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1614,6 +1624,9 @@ func (s *TemplatesRecipients) UpdateMany(ctx context.Context, request operations
 }
 
 // Delete template recipient
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *TemplatesRecipients) Delete(ctx context.Context, request operations.RecipientDeleteTemplateRecipientRequest, opts ...operations.Option) (*operations.RecipientDeleteTemplateRecipientResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1756,7 +1769,7 @@ func (s *TemplatesRecipients) Delete(ctx context.Context, request operations.Rec
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err

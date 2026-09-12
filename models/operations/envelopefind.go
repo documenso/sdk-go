@@ -75,6 +75,7 @@ const (
 	EnvelopeFindQueryParamStatusPending   EnvelopeFindQueryParamStatus = "PENDING"
 	EnvelopeFindQueryParamStatusCompleted EnvelopeFindQueryParamStatus = "COMPLETED"
 	EnvelopeFindQueryParamStatusRejected  EnvelopeFindQueryParamStatus = "REJECTED"
+	EnvelopeFindQueryParamStatusCancelled EnvelopeFindQueryParamStatus = "CANCELLED"
 )
 
 func (e EnvelopeFindQueryParamStatus) ToPointer() *EnvelopeFindQueryParamStatus {
@@ -93,10 +94,39 @@ func (e *EnvelopeFindQueryParamStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = EnvelopeFindQueryParamStatus(v)
 		return nil
 	default:
 		return fmt.Errorf("invalid value for EnvelopeFindQueryParamStatus: %v", v)
+	}
+}
+
+// EnvelopeFindHasExpiredRecipients - Filter for envelopes that have at least one recipient whose signing link has expired.
+type EnvelopeFindHasExpiredRecipients string
+
+const (
+	EnvelopeFindHasExpiredRecipientsTrue  EnvelopeFindHasExpiredRecipients = "true"
+	EnvelopeFindHasExpiredRecipientsFalse EnvelopeFindHasExpiredRecipients = "false"
+)
+
+func (e EnvelopeFindHasExpiredRecipients) ToPointer() *EnvelopeFindHasExpiredRecipients {
+	return &e
+}
+func (e *EnvelopeFindHasExpiredRecipients) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "true":
+		fallthrough
+	case "false":
+		*e = EnvelopeFindHasExpiredRecipients(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFindHasExpiredRecipients: %v", v)
 	}
 }
 
@@ -165,6 +195,8 @@ type EnvelopeFindRequest struct {
 	Source *EnvelopeFindQueryParamSource `queryParam:"style=form,explode=true,name=source"`
 	// Filter envelopes by the current status.
 	Status *EnvelopeFindQueryParamStatus `queryParam:"style=form,explode=true,name=status"`
+	// Filter for envelopes that have at least one recipient whose signing link has expired.
+	HasExpiredRecipients *EnvelopeFindHasExpiredRecipients `queryParam:"style=form,explode=true,name=hasExpiredRecipients"`
 	// Filter envelopes by folder ID.
 	FolderID      *string                    `queryParam:"style=form,explode=true,name=folderId"`
 	OrderByColumn *EnvelopeFindOrderByColumn `queryParam:"style=form,explode=true,name=orderByColumn"`
@@ -232,6 +264,13 @@ func (e *EnvelopeFindRequest) GetStatus() *EnvelopeFindQueryParamStatus {
 	return e.Status
 }
 
+func (e *EnvelopeFindRequest) GetHasExpiredRecipients() *EnvelopeFindHasExpiredRecipients {
+	if e == nil {
+		return nil
+	}
+	return e.HasExpiredRecipients
+}
+
 func (e *EnvelopeFindRequest) GetFolderID() *string {
 	if e == nil {
 		return nil
@@ -286,6 +325,7 @@ const (
 	EnvelopeFindDataStatusPending   EnvelopeFindDataStatus = "PENDING"
 	EnvelopeFindDataStatusCompleted EnvelopeFindDataStatus = "COMPLETED"
 	EnvelopeFindDataStatusRejected  EnvelopeFindDataStatus = "REJECTED"
+	EnvelopeFindDataStatusCancelled EnvelopeFindDataStatus = "CANCELLED"
 )
 
 func (e EnvelopeFindDataStatus) ToPointer() *EnvelopeFindDataStatus {
@@ -304,6 +344,8 @@ func (e *EnvelopeFindDataStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = EnvelopeFindDataStatus(v)
 		return nil
 	default:
@@ -372,8 +414,9 @@ func (e *EnvelopeFindVisibility) UnmarshalJSON(data []byte) error {
 type EnvelopeFindTemplateType string
 
 const (
-	EnvelopeFindTemplateTypePublic  EnvelopeFindTemplateType = "PUBLIC"
-	EnvelopeFindTemplateTypePrivate EnvelopeFindTemplateType = "PRIVATE"
+	EnvelopeFindTemplateTypePublic       EnvelopeFindTemplateType = "PUBLIC"
+	EnvelopeFindTemplateTypePrivate      EnvelopeFindTemplateType = "PRIVATE"
+	EnvelopeFindTemplateTypeOrganisation EnvelopeFindTemplateType = "ORGANISATION"
 )
 
 func (e EnvelopeFindTemplateType) ToPointer() *EnvelopeFindTemplateType {
@@ -388,6 +431,8 @@ func (e *EnvelopeFindTemplateType) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
 		*e = EnvelopeFindTemplateType(v)
 		return nil
 	default:
@@ -515,7 +560,14 @@ func CreateEnvelopeFindFormValuesNumber(number float64) EnvelopeFindFormValues {
 	}
 }
 
-func (u *EnvelopeFindFormValues) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeFindFormValues) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeFindFormValues{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -781,21 +833,23 @@ func (e *EnvelopeFindRecipientAuthOptions) GetActionAuth() []EnvelopeFindActionA
 }
 
 type EnvelopeFindRecipient struct {
-	EnvelopeID        string                            `json:"envelopeId"`
-	Role              EnvelopeFindRole                  `json:"role"`
-	ReadStatus        EnvelopeFindReadStatus            `json:"readStatus"`
-	SigningStatus     EnvelopeFindSigningStatus         `json:"signingStatus"`
-	SendStatus        EnvelopeFindSendStatus            `json:"sendStatus"`
-	ID                float64                           `json:"id"`
-	Email             string                            `json:"email"`
-	Name              string                            `json:"name"`
-	Token             string                            `json:"token"`
-	DocumentDeletedAt *string                           `json:"documentDeletedAt"`
-	Expired           *string                           `json:"expired"`
-	SignedAt          *string                           `json:"signedAt"`
-	AuthOptions       *EnvelopeFindRecipientAuthOptions `json:"authOptions"`
-	SigningOrder      *float64                          `json:"signingOrder"`
-	RejectionReason   *string                           `json:"rejectionReason"`
+	EnvelopeID           string                            `json:"envelopeId"`
+	Role                 EnvelopeFindRole                  `json:"role"`
+	ReadStatus           EnvelopeFindReadStatus            `json:"readStatus"`
+	SigningStatus        EnvelopeFindSigningStatus         `json:"signingStatus"`
+	SendStatus           EnvelopeFindSendStatus            `json:"sendStatus"`
+	ID                   float64                           `json:"id"`
+	Email                string                            `json:"email"`
+	Name                 string                            `json:"name"`
+	Token                string                            `json:"token"`
+	DocumentDeletedAt    *string                           `json:"documentDeletedAt"`
+	Expired              *string                           `json:"expired"`
+	ExpiresAt            *string                           `json:"expiresAt"`
+	ExpirationNotifiedAt *string                           `json:"expirationNotifiedAt"`
+	SignedAt             *string                           `json:"signedAt"`
+	AuthOptions          *EnvelopeFindRecipientAuthOptions `json:"authOptions"`
+	SigningOrder         *float64                          `json:"signingOrder"`
+	RejectionReason      *string                           `json:"rejectionReason"`
 }
 
 func (e *EnvelopeFindRecipient) GetEnvelopeID() string {
@@ -873,6 +927,20 @@ func (e *EnvelopeFindRecipient) GetExpired() *string {
 		return nil
 	}
 	return e.Expired
+}
+
+func (e *EnvelopeFindRecipient) GetExpiresAt() *string {
+	if e == nil {
+		return nil
+	}
+	return e.ExpiresAt
+}
+
+func (e *EnvelopeFindRecipient) GetExpirationNotifiedAt() *string {
+	if e == nil {
+		return nil
+	}
+	return e.ExpirationNotifiedAt
 }
 
 func (e *EnvelopeFindRecipient) GetSignedAt() *string {

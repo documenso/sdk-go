@@ -65,7 +65,14 @@ func CreateEnvelopeUseEmailUnionStr(str string) EnvelopeUseEmailUnion {
 	}
 }
 
-func (u *EnvelopeUseEmailUnion) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeUseEmailUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeUseEmailUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var envelopeUseEmailEnum EnvelopeUseEmailEnum = EnvelopeUseEmailEnum("")
 	if err := utils.UnmarshalJSON(data, &envelopeUseEmailEnum, "", true, nil); err == nil {
@@ -163,7 +170,14 @@ func CreateEnvelopeUseIdentifierNumber(number float64) EnvelopeUseIdentifier {
 	}
 }
 
-func (u *EnvelopeUseIdentifier) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeUseIdentifier) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeUseIdentifier{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -711,7 +725,14 @@ func CreateEnvelopeUsePrefillFieldUnionEnvelopeUsePrefillFieldDate(envelopeUsePr
 	}
 }
 
-func (u *EnvelopeUsePrefillFieldUnion) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeUsePrefillFieldUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeUsePrefillFieldUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var envelopeUsePrefillFieldText EnvelopeUsePrefillFieldText = EnvelopeUsePrefillFieldText{}
 	if err := utils.UnmarshalJSON(data, &envelopeUsePrefillFieldText, "", true, nil); err == nil {
@@ -792,12 +813,15 @@ const (
 	EnvelopeUseDateFormatYyyyMMddHhMmA            EnvelopeUseDateFormat = "yyyy-MM-dd hh:mm a"
 	EnvelopeUseDateFormatYyyyMMdd                 EnvelopeUseDateFormat = "yyyy-MM-dd"
 	EnvelopeUseDateFormatDdMmSlashYyyy            EnvelopeUseDateFormat = "dd/MM/yyyy"
+	EnvelopeUseDateFormatDdMmDashYyyy             EnvelopeUseDateFormat = "dd-MM-yyyy"
 	EnvelopeUseDateFormatMmDdSlashYyyy            EnvelopeUseDateFormat = "MM/dd/yyyy"
 	EnvelopeUseDateFormatYyMMdd                   EnvelopeUseDateFormat = "yy-MM-dd"
 	EnvelopeUseDateFormatMmmmDdCommaYyyy          EnvelopeUseDateFormat = "MMMM dd, yyyy"
 	EnvelopeUseDateFormatEeeeMmmmDdCommaYyyy      EnvelopeUseDateFormat = "EEEE, MMMM dd, yyyy"
 	EnvelopeUseDateFormatDdMmSlashYyyyHhMmA       EnvelopeUseDateFormat = "dd/MM/yyyy hh:mm a"
 	EnvelopeUseDateFormatDdMmSlashYyyyHHmm        EnvelopeUseDateFormat = "dd/MM/yyyy HH:mm"
+	EnvelopeUseDateFormatDdMmDashYyyyHhMmA        EnvelopeUseDateFormat = "dd-MM-yyyy hh:mm a"
+	EnvelopeUseDateFormatDdMmDashYyyyHHmm         EnvelopeUseDateFormat = "dd-MM-yyyy HH:mm"
 	EnvelopeUseDateFormatMmDdSlashYyyyHhMmA       EnvelopeUseDateFormat = "MM/dd/yyyy hh:mm a"
 	EnvelopeUseDateFormatMmDdSlashYyyyHHmm        EnvelopeUseDateFormat = "MM/dd/yyyy HH:mm"
 	EnvelopeUseDateFormatDdDotMmDotYyyy           EnvelopeUseDateFormat = "dd.MM.yyyy"
@@ -828,6 +852,8 @@ func (e *EnvelopeUseDateFormat) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "dd/MM/yyyy":
 		fallthrough
+	case "dd-MM-yyyy":
+		fallthrough
 	case "MM/dd/yyyy":
 		fallthrough
 	case "yy-MM-dd":
@@ -839,6 +865,10 @@ func (e *EnvelopeUseDateFormat) UnmarshalJSON(data []byte) error {
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
 	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "dd-MM-yyyy hh:mm a":
+		fallthrough
+	case "dd-MM-yyyy HH:mm":
 		fallthrough
 	case "MM/dd/yyyy hh:mm a":
 		fallthrough
@@ -906,6 +936,8 @@ type EnvelopeUseEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (e EnvelopeUseEmailSettings) MarshalJSON() ([]byte, error) {
@@ -968,6 +1000,20 @@ func (e *EnvelopeUseEmailSettings) GetOwnerDocumentCompleted() *bool {
 	return e.OwnerDocumentCompleted
 }
 
+func (e *EnvelopeUseEmailSettings) GetOwnerRecipientExpired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.OwnerRecipientExpired
+}
+
+func (e *EnvelopeUseEmailSettings) GetOwnerDocumentCreated() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.OwnerDocumentCreated
+}
+
 type EnvelopeUseLanguage string
 
 const (
@@ -1021,20 +1067,179 @@ func (e *EnvelopeUseLanguage) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type EnvelopeUseEnvelopeExpirationPeriod2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (e EnvelopeUseEnvelopeExpirationPeriod2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeUseEnvelopeExpirationPeriod2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeUseEnvelopeExpirationPeriod2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-envelopeuseenvelopeexpirationperiod2
+// #endregion class-body-envelopeuseenvelopeexpirationperiod2
+
+type EnvelopeUseUnit string
+
+const (
+	EnvelopeUseUnitDay   EnvelopeUseUnit = "day"
+	EnvelopeUseUnitWeek  EnvelopeUseUnit = "week"
+	EnvelopeUseUnitMonth EnvelopeUseUnit = "month"
+	EnvelopeUseUnitYear  EnvelopeUseUnit = "year"
+)
+
+func (e EnvelopeUseUnit) ToPointer() *EnvelopeUseUnit {
+	return &e
+}
+func (e *EnvelopeUseUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		fallthrough
+	case "year":
+		*e = EnvelopeUseUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeUseUnit: %v", v)
+	}
+}
+
+type EnvelopeUseEnvelopeExpirationPeriod1 struct {
+	Unit   EnvelopeUseUnit `json:"unit"`
+	Amount int64           `json:"amount"`
+}
+
+func (e EnvelopeUseEnvelopeExpirationPeriod1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeUseEnvelopeExpirationPeriod1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeUseEnvelopeExpirationPeriod1) GetUnit() EnvelopeUseUnit {
+	if e == nil {
+		return EnvelopeUseUnit("")
+	}
+	return e.Unit
+}
+
+func (e *EnvelopeUseEnvelopeExpirationPeriod1) GetAmount() int64 {
+	if e == nil {
+		return 0
+	}
+	return e.Amount
+}
+
+// #region class-body-envelopeuseenvelopeexpirationperiod1
+// #endregion class-body-envelopeuseenvelopeexpirationperiod1
+
+type EnvelopeUseEnvelopeExpirationPeriodUnionType string
+
+const (
+	EnvelopeUseEnvelopeExpirationPeriodUnionTypeEnvelopeUseEnvelopeExpirationPeriod1 EnvelopeUseEnvelopeExpirationPeriodUnionType = "envelope_use_envelopeExpirationPeriod_1"
+	EnvelopeUseEnvelopeExpirationPeriodUnionTypeEnvelopeUseEnvelopeExpirationPeriod2 EnvelopeUseEnvelopeExpirationPeriodUnionType = "envelope_use_envelopeExpirationPeriod_2"
+)
+
+type EnvelopeUseEnvelopeExpirationPeriodUnion struct {
+	EnvelopeUseEnvelopeExpirationPeriod1 *EnvelopeUseEnvelopeExpirationPeriod1 `queryParam:"inline" union:"member"`
+	EnvelopeUseEnvelopeExpirationPeriod2 *EnvelopeUseEnvelopeExpirationPeriod2 `queryParam:"inline" union:"member"`
+
+	Type EnvelopeUseEnvelopeExpirationPeriodUnionType
+}
+
+func CreateEnvelopeUseEnvelopeExpirationPeriodUnionEnvelopeUseEnvelopeExpirationPeriod1(envelopeUseEnvelopeExpirationPeriod1 EnvelopeUseEnvelopeExpirationPeriod1) EnvelopeUseEnvelopeExpirationPeriodUnion {
+	typ := EnvelopeUseEnvelopeExpirationPeriodUnionTypeEnvelopeUseEnvelopeExpirationPeriod1
+
+	return EnvelopeUseEnvelopeExpirationPeriodUnion{
+		EnvelopeUseEnvelopeExpirationPeriod1: &envelopeUseEnvelopeExpirationPeriod1,
+		Type:                                 typ,
+	}
+}
+
+func CreateEnvelopeUseEnvelopeExpirationPeriodUnionEnvelopeUseEnvelopeExpirationPeriod2(envelopeUseEnvelopeExpirationPeriod2 EnvelopeUseEnvelopeExpirationPeriod2) EnvelopeUseEnvelopeExpirationPeriodUnion {
+	typ := EnvelopeUseEnvelopeExpirationPeriodUnionTypeEnvelopeUseEnvelopeExpirationPeriod2
+
+	return EnvelopeUseEnvelopeExpirationPeriodUnion{
+		EnvelopeUseEnvelopeExpirationPeriod2: &envelopeUseEnvelopeExpirationPeriod2,
+		Type:                                 typ,
+	}
+}
+
+func (u *EnvelopeUseEnvelopeExpirationPeriodUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeUseEnvelopeExpirationPeriodUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var envelopeUseEnvelopeExpirationPeriod1 EnvelopeUseEnvelopeExpirationPeriod1 = EnvelopeUseEnvelopeExpirationPeriod1{}
+	if err := utils.UnmarshalJSON(data, &envelopeUseEnvelopeExpirationPeriod1, "", true, nil); err == nil {
+		u.EnvelopeUseEnvelopeExpirationPeriod1 = &envelopeUseEnvelopeExpirationPeriod1
+		u.Type = EnvelopeUseEnvelopeExpirationPeriodUnionTypeEnvelopeUseEnvelopeExpirationPeriod1
+		return nil
+	}
+
+	var envelopeUseEnvelopeExpirationPeriod2 EnvelopeUseEnvelopeExpirationPeriod2 = EnvelopeUseEnvelopeExpirationPeriod2{}
+	if err := utils.UnmarshalJSON(data, &envelopeUseEnvelopeExpirationPeriod2, "", true, nil); err == nil {
+		u.EnvelopeUseEnvelopeExpirationPeriod2 = &envelopeUseEnvelopeExpirationPeriod2
+		u.Type = EnvelopeUseEnvelopeExpirationPeriodUnionTypeEnvelopeUseEnvelopeExpirationPeriod2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvelopeUseEnvelopeExpirationPeriodUnion", string(data))
+}
+
+func (u EnvelopeUseEnvelopeExpirationPeriodUnion) MarshalJSON() ([]byte, error) {
+	if u.EnvelopeUseEnvelopeExpirationPeriod1 != nil {
+		return utils.MarshalJSON(u.EnvelopeUseEnvelopeExpirationPeriod1, "", true)
+	}
+
+	if u.EnvelopeUseEnvelopeExpirationPeriod2 != nil {
+		return utils.MarshalJSON(u.EnvelopeUseEnvelopeExpirationPeriod2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvelopeUseEnvelopeExpirationPeriodUnion: all fields are null")
+}
+
 type EnvelopeUseOverride struct {
-	Title                  *string                        `json:"title,omitempty"`
-	Subject                *string                        `json:"subject,omitempty"`
-	Message                *string                        `json:"message,omitempty"`
-	Timezone               *string                        `json:"timezone,omitempty"`
-	DateFormat             *EnvelopeUseDateFormat         `json:"dateFormat,omitempty"`
-	RedirectURL            *string                        `json:"redirectUrl,omitempty"`
-	DistributionMethod     *EnvelopeUseDistributionMethod `json:"distributionMethod,omitempty"`
-	EmailSettings          *EnvelopeUseEmailSettings      `json:"emailSettings,omitempty"`
-	Language               *EnvelopeUseLanguage           `json:"language,omitempty"`
-	TypedSignatureEnabled  *bool                          `json:"typedSignatureEnabled,omitempty"`
-	UploadSignatureEnabled *bool                          `json:"uploadSignatureEnabled,omitempty"`
-	DrawSignatureEnabled   *bool                          `json:"drawSignatureEnabled,omitempty"`
-	AllowDictateNextSigner *bool                          `json:"allowDictateNextSigner,omitempty"`
+	Title                    *string                                   `json:"title,omitempty"`
+	Subject                  *string                                   `json:"subject,omitempty"`
+	Message                  *string                                   `json:"message,omitempty"`
+	Timezone                 *string                                   `json:"timezone,omitempty"`
+	DateFormat               *EnvelopeUseDateFormat                    `json:"dateFormat,omitempty"`
+	RedirectURL              *string                                   `json:"redirectUrl,omitempty"`
+	DistributionMethod       *EnvelopeUseDistributionMethod            `json:"distributionMethod,omitempty"`
+	EmailSettings            *EnvelopeUseEmailSettings                 `json:"emailSettings,omitempty"`
+	Language                 *EnvelopeUseLanguage                      `json:"language,omitempty"`
+	TypedSignatureEnabled    *bool                                     `json:"typedSignatureEnabled,omitempty"`
+	UploadSignatureEnabled   *bool                                     `json:"uploadSignatureEnabled,omitempty"`
+	DrawSignatureEnabled     *bool                                     `json:"drawSignatureEnabled,omitempty"`
+	AllowDictateNextSigner   *bool                                     `json:"allowDictateNextSigner,omitempty"`
+	EnvelopeExpirationPeriod *EnvelopeUseEnvelopeExpirationPeriodUnion `json:"envelopeExpirationPeriod,omitempty"`
 }
 
 func (e *EnvelopeUseOverride) GetTitle() *string {
@@ -1126,6 +1331,13 @@ func (e *EnvelopeUseOverride) GetAllowDictateNextSigner() *bool {
 		return nil
 	}
 	return e.AllowDictateNextSigner
+}
+
+func (e *EnvelopeUseOverride) GetEnvelopeExpirationPeriod() *EnvelopeUseEnvelopeExpirationPeriodUnion {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeExpirationPeriod
 }
 
 type EnvelopeUseTypeLink string
@@ -1232,7 +1444,14 @@ func CreateEnvelopeUseFormValuesNumber(number float64) EnvelopeUseFormValues {
 	}
 }
 
-func (u *EnvelopeUseFormValues) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeUseFormValues) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeUseFormValues{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {

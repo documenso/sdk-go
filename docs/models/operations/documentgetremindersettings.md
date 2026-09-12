@@ -1,0 +1,9 @@
+# DocumentGetReminderSettings
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `SendAfter`                                                                                      | [operations.DocumentGetSendAfterUnion](../../models/operations/documentgetsendafterunion.md)     | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `RepeatEvery`                                                                                    | [operations.DocumentGetRepeatEveryUnion](../../models/operations/documentgetrepeateveryunion.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |

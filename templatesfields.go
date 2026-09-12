@@ -32,7 +32,9 @@ func newTemplatesFields(rootSDK *Documenso, sdkConfig config.SDKConfiguration, h
 }
 
 // Create template field
-// Create a single field for a template.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create a single field for a template.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *TemplatesFields) Create(ctx context.Context, request operations.FieldCreateTemplateFieldRequest, opts ...operations.Option) (*operations.FieldCreateTemplateFieldResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -175,7 +177,7 @@ func (s *TemplatesFields) Create(ctx context.Context, request operations.FieldCr
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -344,7 +346,9 @@ func (s *TemplatesFields) Create(ctx context.Context, request operations.FieldCr
 }
 
 // Get template field
-// Returns a single field. If you want to retrieve all the fields for a template, use the "Get Template" endpoint.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Returns a single field. If you want to retrieve all the fields for a template, use the "Get Template" endpoint.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *TemplatesFields) Get(ctx context.Context, fieldID float64, opts ...operations.Option) (*operations.FieldGetTemplateFieldResponse, error) {
 	request := operations.FieldGetTemplateFieldRequest{
 		FieldID: fieldID,
@@ -484,7 +488,7 @@ func (s *TemplatesFields) Get(ctx context.Context, fieldID float64, opts ...oper
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -678,7 +682,9 @@ func (s *TemplatesFields) Get(ctx context.Context, fieldID float64, opts ...oper
 }
 
 // CreateMany - Create template fields
-// Create multiple fields for a template.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create multiple fields for a template.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *TemplatesFields) CreateMany(ctx context.Context, request operations.FieldCreateTemplateFieldsRequest, opts ...operations.Option) (*operations.FieldCreateTemplateFieldsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -821,7 +827,7 @@ func (s *TemplatesFields) CreateMany(ctx context.Context, request operations.Fie
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -990,7 +996,9 @@ func (s *TemplatesFields) CreateMany(ctx context.Context, request operations.Fie
 }
 
 // Update template field
-// Update a single field for a template.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update a single field for a template.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *TemplatesFields) Update(ctx context.Context, request operations.FieldUpdateTemplateFieldRequest, opts ...operations.Option) (*operations.FieldUpdateTemplateFieldResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1133,7 +1141,7 @@ func (s *TemplatesFields) Update(ctx context.Context, request operations.FieldUp
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1302,7 +1310,9 @@ func (s *TemplatesFields) Update(ctx context.Context, request operations.FieldUp
 }
 
 // UpdateMany - Update template fields
-// Update multiple fields for a template.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update multiple fields for a template.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *TemplatesFields) UpdateMany(ctx context.Context, request operations.FieldUpdateTemplateFieldsRequest, opts ...operations.Option) (*operations.FieldUpdateTemplateFieldsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1445,7 +1455,7 @@ func (s *TemplatesFields) UpdateMany(ctx context.Context, request operations.Fie
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1614,6 +1624,9 @@ func (s *TemplatesFields) UpdateMany(ctx context.Context, request operations.Fie
 }
 
 // Delete template field
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *TemplatesFields) Delete(ctx context.Context, request operations.FieldDeleteTemplateFieldRequest, opts ...operations.Option) (*operations.FieldDeleteTemplateFieldResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1756,7 +1769,7 @@ func (s *TemplatesFields) Delete(ctx context.Context, request operations.FieldDe
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err

@@ -32,7 +32,9 @@ func newDocumentsFields(rootSDK *Documenso, sdkConfig config.SDKConfiguration, h
 }
 
 // Get document field
-// Returns a single field. If you want to retrieve all the fields for a document, use the "Get Document" endpoint.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Returns a single field. If you want to retrieve all the fields for a document, use the "Get Document" endpoint.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsFields) Get(ctx context.Context, fieldID float64, opts ...operations.Option) (*operations.FieldGetDocumentFieldResponse, error) {
 	request := operations.FieldGetDocumentFieldRequest{
 		FieldID: fieldID,
@@ -172,7 +174,7 @@ func (s *DocumentsFields) Get(ctx context.Context, fieldID float64, opts ...oper
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -366,7 +368,9 @@ func (s *DocumentsFields) Get(ctx context.Context, fieldID float64, opts ...oper
 }
 
 // Create document field
-// Create a single field for a document.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create a single field for a document.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsFields) Create(ctx context.Context, request operations.FieldCreateDocumentFieldRequest, opts ...operations.Option) (*operations.FieldCreateDocumentFieldResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -509,7 +513,7 @@ func (s *DocumentsFields) Create(ctx context.Context, request operations.FieldCr
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -678,7 +682,9 @@ func (s *DocumentsFields) Create(ctx context.Context, request operations.FieldCr
 }
 
 // CreateMany - Create document fields
-// Create multiple fields for a document.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create multiple fields for a document.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsFields) CreateMany(ctx context.Context, request operations.FieldCreateDocumentFieldsRequest, opts ...operations.Option) (*operations.FieldCreateDocumentFieldsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -821,7 +827,7 @@ func (s *DocumentsFields) CreateMany(ctx context.Context, request operations.Fie
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -990,7 +996,9 @@ func (s *DocumentsFields) CreateMany(ctx context.Context, request operations.Fie
 }
 
 // Update document field
-// Update a single field for a document.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update a single field for a document.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsFields) Update(ctx context.Context, request operations.FieldUpdateDocumentFieldRequest, opts ...operations.Option) (*operations.FieldUpdateDocumentFieldResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1133,7 +1141,7 @@ func (s *DocumentsFields) Update(ctx context.Context, request operations.FieldUp
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1302,7 +1310,9 @@ func (s *DocumentsFields) Update(ctx context.Context, request operations.FieldUp
 }
 
 // UpdateMany - Update document fields
-// Update multiple fields for a document.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update multiple fields for a document.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsFields) UpdateMany(ctx context.Context, request operations.FieldUpdateDocumentFieldsRequest, opts ...operations.Option) (*operations.FieldUpdateDocumentFieldsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1445,7 +1455,7 @@ func (s *DocumentsFields) UpdateMany(ctx context.Context, request operations.Fie
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1614,6 +1624,9 @@ func (s *DocumentsFields) UpdateMany(ctx context.Context, request operations.Fie
 }
 
 // Delete document field
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsFields) Delete(ctx context.Context, request operations.FieldDeleteDocumentFieldRequest, opts ...operations.Option) (*operations.FieldDeleteDocumentFieldResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1756,7 +1769,7 @@ func (s *DocumentsFields) Delete(ctx context.Context, request operations.FieldDe
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err

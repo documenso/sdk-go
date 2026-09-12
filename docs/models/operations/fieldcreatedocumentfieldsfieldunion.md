@@ -69,3 +69,33 @@ fieldCreateDocumentFieldsFieldUnion := operations.CreateFieldCreateDocumentField
 fieldCreateDocumentFieldsFieldUnion := operations.CreateFieldCreateDocumentFieldsFieldUnionFieldCreateDocumentFieldsFieldDropdown(operations.FieldCreateDocumentFieldsFieldDropdown{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch fieldCreateDocumentFieldsFieldUnion.Type {
+	case operations.FieldCreateDocumentFieldsFieldUnionTypeFieldCreateDocumentFieldsFieldSignature:
+		// fieldCreateDocumentFieldsFieldUnion.FieldCreateDocumentFieldsFieldSignature is populated
+	case operations.FieldCreateDocumentFieldsFieldUnionTypeFieldCreateDocumentFieldsFieldFreeSignature:
+		// fieldCreateDocumentFieldsFieldUnion.FieldCreateDocumentFieldsFieldFreeSignature is populated
+	case operations.FieldCreateDocumentFieldsFieldUnionTypeFieldCreateDocumentFieldsFieldInitials:
+		// fieldCreateDocumentFieldsFieldUnion.FieldCreateDocumentFieldsFieldInitials is populated
+	case operations.FieldCreateDocumentFieldsFieldUnionTypeFieldCreateDocumentFieldsFieldName:
+		// fieldCreateDocumentFieldsFieldUnion.FieldCreateDocumentFieldsFieldName is populated
+	case operations.FieldCreateDocumentFieldsFieldUnionTypeFieldCreateDocumentFieldsFieldEmail:
+		// fieldCreateDocumentFieldsFieldUnion.FieldCreateDocumentFieldsFieldEmail is populated
+	case operations.FieldCreateDocumentFieldsFieldUnionTypeFieldCreateDocumentFieldsFieldDate:
+		// fieldCreateDocumentFieldsFieldUnion.FieldCreateDocumentFieldsFieldDate is populated
+	case operations.FieldCreateDocumentFieldsFieldUnionTypeFieldCreateDocumentFieldsFieldText:
+		// fieldCreateDocumentFieldsFieldUnion.FieldCreateDocumentFieldsFieldText is populated
+	case operations.FieldCreateDocumentFieldsFieldUnionTypeFieldCreateDocumentFieldsFieldNumber:
+		// fieldCreateDocumentFieldsFieldUnion.FieldCreateDocumentFieldsFieldNumber is populated
+	case operations.FieldCreateDocumentFieldsFieldUnionTypeFieldCreateDocumentFieldsFieldRadio:
+		// fieldCreateDocumentFieldsFieldUnion.FieldCreateDocumentFieldsFieldRadio is populated
+	case operations.FieldCreateDocumentFieldsFieldUnionTypeFieldCreateDocumentFieldsFieldCheckbox:
+		// fieldCreateDocumentFieldsFieldUnion.FieldCreateDocumentFieldsFieldCheckbox is populated
+	case operations.FieldCreateDocumentFieldsFieldUnionTypeFieldCreateDocumentFieldsFieldDropdown:
+		// fieldCreateDocumentFieldsFieldUnion.FieldCreateDocumentFieldsFieldDropdown is populated
+}
+```

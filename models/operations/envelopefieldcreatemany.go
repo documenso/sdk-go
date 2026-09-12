@@ -10,204 +10,6733 @@ import (
 	"github.com/documenso/sdk-go/models/components"
 )
 
-type EnvelopeFieldCreateManyDataRequest2 struct {
-	Placeholder    string   `json:"placeholder"`
-	Width          *float64 `json:"width,omitempty"`
-	Height         *float64 `json:"height,omitempty"`
-	MatchAll       *bool    `json:"matchAll,omitempty"`
-	RecipientID    float64  `json:"recipientId"`
-	EnvelopeItemID *string  `json:"envelopeItemId,omitempty"`
+type EnvelopeFieldCreateManyTypeDropdownRequest3 string
+
+const (
+	EnvelopeFieldCreateManyTypeDropdownRequest3Dropdown EnvelopeFieldCreateManyTypeDropdownRequest3 = "DROPDOWN"
+)
+
+func (e EnvelopeFieldCreateManyTypeDropdownRequest3) ToPointer() *EnvelopeFieldCreateManyTypeDropdownRequest3 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeDropdownRequest3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "DROPDOWN":
+		*e = EnvelopeFieldCreateManyTypeDropdownRequest3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeDropdownRequest3: %v", v)
+	}
 }
 
-func (e EnvelopeFieldCreateManyDataRequest2) MarshalJSON() ([]byte, error) {
+type EnvelopeFieldCreateManyOverflowDropdown2 string
+
+const (
+	EnvelopeFieldCreateManyOverflowDropdown2Auto       EnvelopeFieldCreateManyOverflowDropdown2 = "auto"
+	EnvelopeFieldCreateManyOverflowDropdown2Horizontal EnvelopeFieldCreateManyOverflowDropdown2 = "horizontal"
+	EnvelopeFieldCreateManyOverflowDropdown2Vertical   EnvelopeFieldCreateManyOverflowDropdown2 = "vertical"
+	EnvelopeFieldCreateManyOverflowDropdown2Crop       EnvelopeFieldCreateManyOverflowDropdown2 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowDropdown2) ToPointer() *EnvelopeFieldCreateManyOverflowDropdown2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowDropdown2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowDropdown2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowDropdown2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeDropdownRequest4 string
+
+const (
+	EnvelopeFieldCreateManyTypeDropdownRequest4Dropdown EnvelopeFieldCreateManyTypeDropdownRequest4 = "dropdown"
+)
+
+func (e EnvelopeFieldCreateManyTypeDropdownRequest4) ToPointer() *EnvelopeFieldCreateManyTypeDropdownRequest4 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeDropdownRequest4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "dropdown":
+		*e = EnvelopeFieldCreateManyTypeDropdownRequest4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeDropdownRequest4: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyValueDropdown2 struct {
+	Value string `json:"value"`
+}
+
+func (e EnvelopeFieldCreateManyValueDropdown2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
-func (e *EnvelopeFieldCreateManyDataRequest2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"placeholder", "recipientId"}); err != nil {
+func (e *EnvelopeFieldCreateManyValueDropdown2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"value"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldCreateManyDataRequest2) GetPlaceholder() string {
+func (e *EnvelopeFieldCreateManyValueDropdown2) GetValue() string {
+	if e == nil {
+		return ""
+	}
+	return e.Value
+}
+
+// #region class-body-envelopefieldcreatemanyvaluedropdown2
+// #endregion class-body-envelopefieldcreatemanyvaluedropdown2
+
+type EnvelopeFieldCreateManyFieldMetaDropdownRequest2 struct {
+	Label        *string                                     `json:"label,omitempty"`
+	Placeholder  *string                                     `json:"placeholder,omitempty"`
+	Required     *bool                                       `json:"required,omitempty"`
+	ReadOnly     *bool                                       `json:"readOnly,omitempty"`
+	FontSize     *float64                                    `default:"12" json:"fontSize"`
+	Overflow     *EnvelopeFieldCreateManyOverflowDropdown2   `json:"overflow,omitempty"`
+	Type         EnvelopeFieldCreateManyTypeDropdownRequest4 `json:"type"`
+	Values       []EnvelopeFieldCreateManyValueDropdown2     `json:"values,omitempty"`
+	DefaultValue *string                                     `json:"defaultValue,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaDropdownRequest2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest2) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest2) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest2) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest2) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest2) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest2) GetOverflow() *EnvelopeFieldCreateManyOverflowDropdown2 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest2) GetType() EnvelopeFieldCreateManyTypeDropdownRequest4 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeDropdownRequest4("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest2) GetValues() []EnvelopeFieldCreateManyValueDropdown2 {
+	if e == nil {
+		return nil
+	}
+	return e.Values
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest2) GetDefaultValue() *string {
+	if e == nil {
+		return nil
+	}
+	return e.DefaultValue
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetadropdownrequest2
+// #endregion class-body-envelopefieldcreatemanyfieldmetadropdownrequest2
+
+type EnvelopeFieldCreateManyDataDropdown2 struct {
+	Type           EnvelopeFieldCreateManyTypeDropdownRequest3       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaDropdownRequest2 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                           `json:"recipientId"`
+	EnvelopeItemID *string                                           `json:"envelopeItemId,omitempty"`
+	Placeholder    string                                            `json:"placeholder"`
+	Width          *float64                                          `json:"width,omitempty"`
+	Height         *float64                                          `json:"height,omitempty"`
+	MatchAll       *bool                                             `json:"matchAll,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyDataDropdown2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataDropdown2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "placeholder"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataDropdown2) GetType() EnvelopeFieldCreateManyTypeDropdownRequest3 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeDropdownRequest3("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataDropdown2) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaDropdownRequest2 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataDropdown2) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataDropdown2) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataDropdown2) GetPlaceholder() string {
 	if e == nil {
 		return ""
 	}
 	return e.Placeholder
 }
 
-func (e *EnvelopeFieldCreateManyDataRequest2) GetWidth() *float64 {
+func (e *EnvelopeFieldCreateManyDataDropdown2) GetWidth() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.Width
 }
 
-func (e *EnvelopeFieldCreateManyDataRequest2) GetHeight() *float64 {
+func (e *EnvelopeFieldCreateManyDataDropdown2) GetHeight() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.Height
 }
 
-func (e *EnvelopeFieldCreateManyDataRequest2) GetMatchAll() *bool {
+func (e *EnvelopeFieldCreateManyDataDropdown2) GetMatchAll() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.MatchAll
 }
 
-func (e *EnvelopeFieldCreateManyDataRequest2) GetRecipientID() float64 {
+// #region class-body-envelopefieldcreatemanydatadropdown2
+// #endregion class-body-envelopefieldcreatemanydatadropdown2
+
+type EnvelopeFieldCreateManyTypeCheckboxRequest3 string
+
+const (
+	EnvelopeFieldCreateManyTypeCheckboxRequest3Checkbox EnvelopeFieldCreateManyTypeCheckboxRequest3 = "CHECKBOX"
+)
+
+func (e EnvelopeFieldCreateManyTypeCheckboxRequest3) ToPointer() *EnvelopeFieldCreateManyTypeCheckboxRequest3 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeCheckboxRequest3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "CHECKBOX":
+		*e = EnvelopeFieldCreateManyTypeCheckboxRequest3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeCheckboxRequest3: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowCheckbox2 string
+
+const (
+	EnvelopeFieldCreateManyOverflowCheckbox2Auto       EnvelopeFieldCreateManyOverflowCheckbox2 = "auto"
+	EnvelopeFieldCreateManyOverflowCheckbox2Horizontal EnvelopeFieldCreateManyOverflowCheckbox2 = "horizontal"
+	EnvelopeFieldCreateManyOverflowCheckbox2Vertical   EnvelopeFieldCreateManyOverflowCheckbox2 = "vertical"
+	EnvelopeFieldCreateManyOverflowCheckbox2Crop       EnvelopeFieldCreateManyOverflowCheckbox2 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowCheckbox2) ToPointer() *EnvelopeFieldCreateManyOverflowCheckbox2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowCheckbox2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowCheckbox2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowCheckbox2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeCheckboxRequest4 string
+
+const (
+	EnvelopeFieldCreateManyTypeCheckboxRequest4Checkbox EnvelopeFieldCreateManyTypeCheckboxRequest4 = "checkbox"
+)
+
+func (e EnvelopeFieldCreateManyTypeCheckboxRequest4) ToPointer() *EnvelopeFieldCreateManyTypeCheckboxRequest4 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeCheckboxRequest4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "checkbox":
+		*e = EnvelopeFieldCreateManyTypeCheckboxRequest4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeCheckboxRequest4: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyValueCheckbox2 struct {
+	ID      float64 `json:"id"`
+	Checked bool    `json:"checked"`
+	Value   string  `json:"value"`
+}
+
+func (e EnvelopeFieldCreateManyValueCheckbox2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyValueCheckbox2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyValueCheckbox2) GetID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.ID
+}
+
+func (e *EnvelopeFieldCreateManyValueCheckbox2) GetChecked() bool {
+	if e == nil {
+		return false
+	}
+	return e.Checked
+}
+
+func (e *EnvelopeFieldCreateManyValueCheckbox2) GetValue() string {
+	if e == nil {
+		return ""
+	}
+	return e.Value
+}
+
+// #region class-body-envelopefieldcreatemanyvaluecheckbox2
+// #endregion class-body-envelopefieldcreatemanyvaluecheckbox2
+
+type EnvelopeFieldCreateManyDirectionCheckbox2 string
+
+const (
+	EnvelopeFieldCreateManyDirectionCheckbox2Vertical   EnvelopeFieldCreateManyDirectionCheckbox2 = "vertical"
+	EnvelopeFieldCreateManyDirectionCheckbox2Horizontal EnvelopeFieldCreateManyDirectionCheckbox2 = "horizontal"
+)
+
+func (e EnvelopeFieldCreateManyDirectionCheckbox2) ToPointer() *EnvelopeFieldCreateManyDirectionCheckbox2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyDirectionCheckbox2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = EnvelopeFieldCreateManyDirectionCheckbox2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyDirectionCheckbox2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaCheckboxRequest2 struct {
+	Label            *string                                     `json:"label,omitempty"`
+	Placeholder      *string                                     `json:"placeholder,omitempty"`
+	Required         *bool                                       `json:"required,omitempty"`
+	ReadOnly         *bool                                       `json:"readOnly,omitempty"`
+	FontSize         *float64                                    `default:"12" json:"fontSize"`
+	Overflow         *EnvelopeFieldCreateManyOverflowCheckbox2   `json:"overflow,omitempty"`
+	Type             EnvelopeFieldCreateManyTypeCheckboxRequest4 `json:"type"`
+	Values           []EnvelopeFieldCreateManyValueCheckbox2     `json:"values,omitempty"`
+	ValidationRule   *string                                     `json:"validationRule,omitempty"`
+	ValidationLength *float64                                    `json:"validationLength,omitempty"`
+	Direction        *EnvelopeFieldCreateManyDirectionCheckbox2  `default:"vertical" json:"direction"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaCheckboxRequest2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest2) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest2) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest2) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest2) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest2) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest2) GetOverflow() *EnvelopeFieldCreateManyOverflowCheckbox2 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest2) GetType() EnvelopeFieldCreateManyTypeCheckboxRequest4 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeCheckboxRequest4("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest2) GetValues() []EnvelopeFieldCreateManyValueCheckbox2 {
+	if e == nil {
+		return nil
+	}
+	return e.Values
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest2) GetValidationRule() *string {
+	if e == nil {
+		return nil
+	}
+	return e.ValidationRule
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest2) GetValidationLength() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.ValidationLength
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest2) GetDirection() *EnvelopeFieldCreateManyDirectionCheckbox2 {
+	if e == nil {
+		return nil
+	}
+	return e.Direction
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetacheckboxrequest2
+// #endregion class-body-envelopefieldcreatemanyfieldmetacheckboxrequest2
+
+type EnvelopeFieldCreateManyDataCheckbox2 struct {
+	Type           EnvelopeFieldCreateManyTypeCheckboxRequest3       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaCheckboxRequest2 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                           `json:"recipientId"`
+	EnvelopeItemID *string                                           `json:"envelopeItemId,omitempty"`
+	Placeholder    string                                            `json:"placeholder"`
+	Width          *float64                                          `json:"width,omitempty"`
+	Height         *float64                                          `json:"height,omitempty"`
+	MatchAll       *bool                                             `json:"matchAll,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyDataCheckbox2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataCheckbox2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "placeholder"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataCheckbox2) GetType() EnvelopeFieldCreateManyTypeCheckboxRequest3 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeCheckboxRequest3("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataCheckbox2) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaCheckboxRequest2 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataCheckbox2) GetRecipientID() float64 {
 	if e == nil {
 		return 0.0
 	}
 	return e.RecipientID
 }
 
-func (e *EnvelopeFieldCreateManyDataRequest2) GetEnvelopeItemID() *string {
+func (e *EnvelopeFieldCreateManyDataCheckbox2) GetEnvelopeItemID() *string {
 	if e == nil {
 		return nil
 	}
 	return e.EnvelopeItemID
 }
 
-type EnvelopeFieldCreateManyDataRequest1 struct {
-	Page           float64 `json:"page"`
-	PositionX      float64 `json:"positionX"`
-	PositionY      float64 `json:"positionY"`
-	Width          float64 `json:"width"`
-	Height         float64 `json:"height"`
-	RecipientID    float64 `json:"recipientId"`
-	EnvelopeItemID *string `json:"envelopeItemId,omitempty"`
+func (e *EnvelopeFieldCreateManyDataCheckbox2) GetPlaceholder() string {
+	if e == nil {
+		return ""
+	}
+	return e.Placeholder
 }
 
-func (e EnvelopeFieldCreateManyDataRequest1) MarshalJSON() ([]byte, error) {
+func (e *EnvelopeFieldCreateManyDataCheckbox2) GetWidth() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataCheckbox2) GetHeight() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Height
+}
+
+func (e *EnvelopeFieldCreateManyDataCheckbox2) GetMatchAll() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.MatchAll
+}
+
+// #region class-body-envelopefieldcreatemanydatacheckbox2
+// #endregion class-body-envelopefieldcreatemanydatacheckbox2
+
+type EnvelopeFieldCreateManyTypeRadioRequest3 string
+
+const (
+	EnvelopeFieldCreateManyTypeRadioRequest3Radio EnvelopeFieldCreateManyTypeRadioRequest3 = "RADIO"
+)
+
+func (e EnvelopeFieldCreateManyTypeRadioRequest3) ToPointer() *EnvelopeFieldCreateManyTypeRadioRequest3 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeRadioRequest3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "RADIO":
+		*e = EnvelopeFieldCreateManyTypeRadioRequest3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeRadioRequest3: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowRadio2 string
+
+const (
+	EnvelopeFieldCreateManyOverflowRadio2Auto       EnvelopeFieldCreateManyOverflowRadio2 = "auto"
+	EnvelopeFieldCreateManyOverflowRadio2Horizontal EnvelopeFieldCreateManyOverflowRadio2 = "horizontal"
+	EnvelopeFieldCreateManyOverflowRadio2Vertical   EnvelopeFieldCreateManyOverflowRadio2 = "vertical"
+	EnvelopeFieldCreateManyOverflowRadio2Crop       EnvelopeFieldCreateManyOverflowRadio2 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowRadio2) ToPointer() *EnvelopeFieldCreateManyOverflowRadio2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowRadio2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowRadio2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowRadio2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeRadioRequest4 string
+
+const (
+	EnvelopeFieldCreateManyTypeRadioRequest4Radio EnvelopeFieldCreateManyTypeRadioRequest4 = "radio"
+)
+
+func (e EnvelopeFieldCreateManyTypeRadioRequest4) ToPointer() *EnvelopeFieldCreateManyTypeRadioRequest4 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeRadioRequest4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "radio":
+		*e = EnvelopeFieldCreateManyTypeRadioRequest4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeRadioRequest4: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyValueRadio2 struct {
+	ID      float64 `json:"id"`
+	Checked bool    `json:"checked"`
+	Value   string  `json:"value"`
+}
+
+func (e EnvelopeFieldCreateManyValueRadio2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
-func (e *EnvelopeFieldCreateManyDataRequest1) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"page", "positionX", "positionY", "width", "height", "recipientId"}); err != nil {
+func (e *EnvelopeFieldCreateManyValueRadio2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"id", "checked", "value"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldCreateManyDataRequest1) GetPage() float64 {
+func (e *EnvelopeFieldCreateManyValueRadio2) GetID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.ID
+}
+
+func (e *EnvelopeFieldCreateManyValueRadio2) GetChecked() bool {
+	if e == nil {
+		return false
+	}
+	return e.Checked
+}
+
+func (e *EnvelopeFieldCreateManyValueRadio2) GetValue() string {
+	if e == nil {
+		return ""
+	}
+	return e.Value
+}
+
+// #region class-body-envelopefieldcreatemanyvalueradio2
+// #endregion class-body-envelopefieldcreatemanyvalueradio2
+
+type EnvelopeFieldCreateManyDirectionRadio2 string
+
+const (
+	EnvelopeFieldCreateManyDirectionRadio2Vertical   EnvelopeFieldCreateManyDirectionRadio2 = "vertical"
+	EnvelopeFieldCreateManyDirectionRadio2Horizontal EnvelopeFieldCreateManyDirectionRadio2 = "horizontal"
+)
+
+func (e EnvelopeFieldCreateManyDirectionRadio2) ToPointer() *EnvelopeFieldCreateManyDirectionRadio2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyDirectionRadio2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = EnvelopeFieldCreateManyDirectionRadio2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyDirectionRadio2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaRadioRequest2 struct {
+	Label       *string                                  `json:"label,omitempty"`
+	Placeholder *string                                  `json:"placeholder,omitempty"`
+	Required    *bool                                    `json:"required,omitempty"`
+	ReadOnly    *bool                                    `json:"readOnly,omitempty"`
+	FontSize    *float64                                 `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowRadio2   `json:"overflow,omitempty"`
+	Type        EnvelopeFieldCreateManyTypeRadioRequest4 `json:"type"`
+	Values      []EnvelopeFieldCreateManyValueRadio2     `json:"values,omitempty"`
+	Direction   *EnvelopeFieldCreateManyDirectionRadio2  `default:"vertical" json:"direction"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaRadioRequest2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest2) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest2) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest2) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest2) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest2) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest2) GetOverflow() *EnvelopeFieldCreateManyOverflowRadio2 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest2) GetType() EnvelopeFieldCreateManyTypeRadioRequest4 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeRadioRequest4("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest2) GetValues() []EnvelopeFieldCreateManyValueRadio2 {
+	if e == nil {
+		return nil
+	}
+	return e.Values
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest2) GetDirection() *EnvelopeFieldCreateManyDirectionRadio2 {
+	if e == nil {
+		return nil
+	}
+	return e.Direction
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetaradiorequest2
+// #endregion class-body-envelopefieldcreatemanyfieldmetaradiorequest2
+
+type EnvelopeFieldCreateManyDataRadio2 struct {
+	Type           EnvelopeFieldCreateManyTypeRadioRequest3       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaRadioRequest2 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                        `json:"recipientId"`
+	EnvelopeItemID *string                                        `json:"envelopeItemId,omitempty"`
+	Placeholder    string                                         `json:"placeholder"`
+	Width          *float64                                       `json:"width,omitempty"`
+	Height         *float64                                       `json:"height,omitempty"`
+	MatchAll       *bool                                          `json:"matchAll,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyDataRadio2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "placeholder"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio2) GetType() EnvelopeFieldCreateManyTypeRadioRequest3 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeRadioRequest3("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio2) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaRadioRequest2 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio2) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio2) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio2) GetPlaceholder() string {
+	if e == nil {
+		return ""
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio2) GetWidth() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio2) GetHeight() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Height
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio2) GetMatchAll() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.MatchAll
+}
+
+// #region class-body-envelopefieldcreatemanydataradio2
+// #endregion class-body-envelopefieldcreatemanydataradio2
+
+type EnvelopeFieldCreateManyTypeNumberRequest3 string
+
+const (
+	EnvelopeFieldCreateManyTypeNumberRequest3Number EnvelopeFieldCreateManyTypeNumberRequest3 = "NUMBER"
+)
+
+func (e EnvelopeFieldCreateManyTypeNumberRequest3) ToPointer() *EnvelopeFieldCreateManyTypeNumberRequest3 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeNumberRequest3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "NUMBER":
+		*e = EnvelopeFieldCreateManyTypeNumberRequest3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeNumberRequest3: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowNumber2 string
+
+const (
+	EnvelopeFieldCreateManyOverflowNumber2Auto       EnvelopeFieldCreateManyOverflowNumber2 = "auto"
+	EnvelopeFieldCreateManyOverflowNumber2Horizontal EnvelopeFieldCreateManyOverflowNumber2 = "horizontal"
+	EnvelopeFieldCreateManyOverflowNumber2Vertical   EnvelopeFieldCreateManyOverflowNumber2 = "vertical"
+	EnvelopeFieldCreateManyOverflowNumber2Crop       EnvelopeFieldCreateManyOverflowNumber2 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowNumber2) ToPointer() *EnvelopeFieldCreateManyOverflowNumber2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowNumber2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowNumber2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowNumber2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeNumberRequest4 string
+
+const (
+	EnvelopeFieldCreateManyTypeNumberRequest4Number EnvelopeFieldCreateManyTypeNumberRequest4 = "number"
+)
+
+func (e EnvelopeFieldCreateManyTypeNumberRequest4) ToPointer() *EnvelopeFieldCreateManyTypeNumberRequest4 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeNumberRequest4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "number":
+		*e = EnvelopeFieldCreateManyTypeNumberRequest4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeNumberRequest4: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTextAlignNumber2 string
+
+const (
+	EnvelopeFieldCreateManyTextAlignNumber2Left   EnvelopeFieldCreateManyTextAlignNumber2 = "left"
+	EnvelopeFieldCreateManyTextAlignNumber2Center EnvelopeFieldCreateManyTextAlignNumber2 = "center"
+	EnvelopeFieldCreateManyTextAlignNumber2Right  EnvelopeFieldCreateManyTextAlignNumber2 = "right"
+)
+
+func (e EnvelopeFieldCreateManyTextAlignNumber2) ToPointer() *EnvelopeFieldCreateManyTextAlignNumber2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTextAlignNumber2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = EnvelopeFieldCreateManyTextAlignNumber2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignNumber2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyVerticalAlignNumber2 string
+
+const (
+	EnvelopeFieldCreateManyVerticalAlignNumber2Top    EnvelopeFieldCreateManyVerticalAlignNumber2 = "top"
+	EnvelopeFieldCreateManyVerticalAlignNumber2Middle EnvelopeFieldCreateManyVerticalAlignNumber2 = "middle"
+	EnvelopeFieldCreateManyVerticalAlignNumber2Bottom EnvelopeFieldCreateManyVerticalAlignNumber2 = "bottom"
+)
+
+func (e EnvelopeFieldCreateManyVerticalAlignNumber2) ToPointer() *EnvelopeFieldCreateManyVerticalAlignNumber2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyVerticalAlignNumber2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = EnvelopeFieldCreateManyVerticalAlignNumber2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyVerticalAlignNumber2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaNumberRequest2 struct {
+	Label         *string                                      `json:"label,omitempty"`
+	Placeholder   *string                                      `json:"placeholder,omitempty"`
+	Required      *bool                                        `json:"required,omitempty"`
+	ReadOnly      *bool                                        `json:"readOnly,omitempty"`
+	FontSize      *float64                                     `default:"12" json:"fontSize"`
+	Overflow      *EnvelopeFieldCreateManyOverflowNumber2      `json:"overflow,omitempty"`
+	Type          EnvelopeFieldCreateManyTypeNumberRequest4    `json:"type"`
+	NumberFormat  *string                                      `json:"numberFormat,omitempty"`
+	Value         *string                                      `json:"value,omitempty"`
+	MinValue      *float64                                     `json:"minValue,omitempty"`
+	MaxValue      *float64                                     `json:"maxValue,omitempty"`
+	TextAlign     *EnvelopeFieldCreateManyTextAlignNumber2     `json:"textAlign,omitempty"`
+	LineHeight    *float64                                     `json:"lineHeight,omitempty"`
+	LetterSpacing *float64                                     `json:"letterSpacing,omitempty"`
+	VerticalAlign *EnvelopeFieldCreateManyVerticalAlignNumber2 `json:"verticalAlign,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaNumberRequest2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) GetOverflow() *EnvelopeFieldCreateManyOverflowNumber2 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) GetType() EnvelopeFieldCreateManyTypeNumberRequest4 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeNumberRequest4("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) GetNumberFormat() *string {
+	if e == nil {
+		return nil
+	}
+	return e.NumberFormat
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) GetValue() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Value
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) GetMinValue() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.MinValue
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) GetMaxValue() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.MaxValue
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) GetTextAlign() *EnvelopeFieldCreateManyTextAlignNumber2 {
+	if e == nil {
+		return nil
+	}
+	return e.TextAlign
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) GetLineHeight() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.LineHeight
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) GetLetterSpacing() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.LetterSpacing
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest2) GetVerticalAlign() *EnvelopeFieldCreateManyVerticalAlignNumber2 {
+	if e == nil {
+		return nil
+	}
+	return e.VerticalAlign
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetanumberrequest2
+// #endregion class-body-envelopefieldcreatemanyfieldmetanumberrequest2
+
+type EnvelopeFieldCreateManyDataNumber2 struct {
+	Type           EnvelopeFieldCreateManyTypeNumberRequest3       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaNumberRequest2 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                         `json:"recipientId"`
+	EnvelopeItemID *string                                         `json:"envelopeItemId,omitempty"`
+	Placeholder    string                                          `json:"placeholder"`
+	Width          *float64                                        `json:"width,omitempty"`
+	Height         *float64                                        `json:"height,omitempty"`
+	MatchAll       *bool                                           `json:"matchAll,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyDataNumber2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "placeholder"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber2) GetType() EnvelopeFieldCreateManyTypeNumberRequest3 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeNumberRequest3("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber2) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaNumberRequest2 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber2) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber2) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber2) GetPlaceholder() string {
+	if e == nil {
+		return ""
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber2) GetWidth() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber2) GetHeight() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Height
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber2) GetMatchAll() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.MatchAll
+}
+
+// #region class-body-envelopefieldcreatemanydatanumber2
+// #endregion class-body-envelopefieldcreatemanydatanumber2
+
+type EnvelopeFieldCreateManyTypeTextRequest3 string
+
+const (
+	EnvelopeFieldCreateManyTypeTextRequest3Text EnvelopeFieldCreateManyTypeTextRequest3 = "TEXT"
+)
+
+func (e EnvelopeFieldCreateManyTypeTextRequest3) ToPointer() *EnvelopeFieldCreateManyTypeTextRequest3 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeTextRequest3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "TEXT":
+		*e = EnvelopeFieldCreateManyTypeTextRequest3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeTextRequest3: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowText2 string
+
+const (
+	EnvelopeFieldCreateManyOverflowText2Auto       EnvelopeFieldCreateManyOverflowText2 = "auto"
+	EnvelopeFieldCreateManyOverflowText2Horizontal EnvelopeFieldCreateManyOverflowText2 = "horizontal"
+	EnvelopeFieldCreateManyOverflowText2Vertical   EnvelopeFieldCreateManyOverflowText2 = "vertical"
+	EnvelopeFieldCreateManyOverflowText2Crop       EnvelopeFieldCreateManyOverflowText2 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowText2) ToPointer() *EnvelopeFieldCreateManyOverflowText2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowText2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowText2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowText2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeTextRequest4 string
+
+const (
+	EnvelopeFieldCreateManyTypeTextRequest4Text EnvelopeFieldCreateManyTypeTextRequest4 = "text"
+)
+
+func (e EnvelopeFieldCreateManyTypeTextRequest4) ToPointer() *EnvelopeFieldCreateManyTypeTextRequest4 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeTextRequest4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "text":
+		*e = EnvelopeFieldCreateManyTypeTextRequest4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeTextRequest4: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTextAlignText2 string
+
+const (
+	EnvelopeFieldCreateManyTextAlignText2Left   EnvelopeFieldCreateManyTextAlignText2 = "left"
+	EnvelopeFieldCreateManyTextAlignText2Center EnvelopeFieldCreateManyTextAlignText2 = "center"
+	EnvelopeFieldCreateManyTextAlignText2Right  EnvelopeFieldCreateManyTextAlignText2 = "right"
+)
+
+func (e EnvelopeFieldCreateManyTextAlignText2) ToPointer() *EnvelopeFieldCreateManyTextAlignText2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTextAlignText2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = EnvelopeFieldCreateManyTextAlignText2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignText2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyVerticalAlignText2 string
+
+const (
+	EnvelopeFieldCreateManyVerticalAlignText2Top    EnvelopeFieldCreateManyVerticalAlignText2 = "top"
+	EnvelopeFieldCreateManyVerticalAlignText2Middle EnvelopeFieldCreateManyVerticalAlignText2 = "middle"
+	EnvelopeFieldCreateManyVerticalAlignText2Bottom EnvelopeFieldCreateManyVerticalAlignText2 = "bottom"
+)
+
+func (e EnvelopeFieldCreateManyVerticalAlignText2) ToPointer() *EnvelopeFieldCreateManyVerticalAlignText2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyVerticalAlignText2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = EnvelopeFieldCreateManyVerticalAlignText2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyVerticalAlignText2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaTextRequest2 struct {
+	Label          *string                                    `json:"label,omitempty"`
+	Placeholder    *string                                    `json:"placeholder,omitempty"`
+	Required       *bool                                      `json:"required,omitempty"`
+	ReadOnly       *bool                                      `json:"readOnly,omitempty"`
+	FontSize       *float64                                   `default:"12" json:"fontSize"`
+	Overflow       *EnvelopeFieldCreateManyOverflowText2      `json:"overflow,omitempty"`
+	Type           EnvelopeFieldCreateManyTypeTextRequest4    `json:"type"`
+	Text           *string                                    `json:"text,omitempty"`
+	CharacterLimit *float64                                   `json:"characterLimit,omitempty"`
+	TextAlign      *EnvelopeFieldCreateManyTextAlignText2     `json:"textAlign,omitempty"`
+	LineHeight     *float64                                   `json:"lineHeight,omitempty"`
+	LetterSpacing  *float64                                   `json:"letterSpacing,omitempty"`
+	VerticalAlign  *EnvelopeFieldCreateManyVerticalAlignText2 `json:"verticalAlign,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaTextRequest2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest2) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest2) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest2) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest2) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest2) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest2) GetOverflow() *EnvelopeFieldCreateManyOverflowText2 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest2) GetType() EnvelopeFieldCreateManyTypeTextRequest4 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeTextRequest4("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest2) GetText() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Text
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest2) GetCharacterLimit() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.CharacterLimit
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest2) GetTextAlign() *EnvelopeFieldCreateManyTextAlignText2 {
+	if e == nil {
+		return nil
+	}
+	return e.TextAlign
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest2) GetLineHeight() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.LineHeight
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest2) GetLetterSpacing() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.LetterSpacing
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest2) GetVerticalAlign() *EnvelopeFieldCreateManyVerticalAlignText2 {
+	if e == nil {
+		return nil
+	}
+	return e.VerticalAlign
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetatextrequest2
+// #endregion class-body-envelopefieldcreatemanyfieldmetatextrequest2
+
+type EnvelopeFieldCreateManyDataText2 struct {
+	Type           EnvelopeFieldCreateManyTypeTextRequest3       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaTextRequest2 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                       `json:"recipientId"`
+	EnvelopeItemID *string                                       `json:"envelopeItemId,omitempty"`
+	Placeholder    string                                        `json:"placeholder"`
+	Width          *float64                                      `json:"width,omitempty"`
+	Height         *float64                                      `json:"height,omitempty"`
+	MatchAll       *bool                                         `json:"matchAll,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyDataText2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataText2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "placeholder"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataText2) GetType() EnvelopeFieldCreateManyTypeTextRequest3 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeTextRequest3("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataText2) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaTextRequest2 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataText2) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataText2) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataText2) GetPlaceholder() string {
+	if e == nil {
+		return ""
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyDataText2) GetWidth() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataText2) GetHeight() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Height
+}
+
+func (e *EnvelopeFieldCreateManyDataText2) GetMatchAll() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.MatchAll
+}
+
+// #region class-body-envelopefieldcreatemanydatatext2
+// #endregion class-body-envelopefieldcreatemanydatatext2
+
+type EnvelopeFieldCreateManyTypeDateRequest3 string
+
+const (
+	EnvelopeFieldCreateManyTypeDateRequest3Date EnvelopeFieldCreateManyTypeDateRequest3 = "DATE"
+)
+
+func (e EnvelopeFieldCreateManyTypeDateRequest3) ToPointer() *EnvelopeFieldCreateManyTypeDateRequest3 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeDateRequest3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "DATE":
+		*e = EnvelopeFieldCreateManyTypeDateRequest3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeDateRequest3: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowDate2 string
+
+const (
+	EnvelopeFieldCreateManyOverflowDate2Auto       EnvelopeFieldCreateManyOverflowDate2 = "auto"
+	EnvelopeFieldCreateManyOverflowDate2Horizontal EnvelopeFieldCreateManyOverflowDate2 = "horizontal"
+	EnvelopeFieldCreateManyOverflowDate2Vertical   EnvelopeFieldCreateManyOverflowDate2 = "vertical"
+	EnvelopeFieldCreateManyOverflowDate2Crop       EnvelopeFieldCreateManyOverflowDate2 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowDate2) ToPointer() *EnvelopeFieldCreateManyOverflowDate2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowDate2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowDate2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowDate2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeDateRequest4 string
+
+const (
+	EnvelopeFieldCreateManyTypeDateRequest4Date EnvelopeFieldCreateManyTypeDateRequest4 = "date"
+)
+
+func (e EnvelopeFieldCreateManyTypeDateRequest4) ToPointer() *EnvelopeFieldCreateManyTypeDateRequest4 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeDateRequest4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "date":
+		*e = EnvelopeFieldCreateManyTypeDateRequest4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeDateRequest4: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTextAlignDate2 string
+
+const (
+	EnvelopeFieldCreateManyTextAlignDate2Left   EnvelopeFieldCreateManyTextAlignDate2 = "left"
+	EnvelopeFieldCreateManyTextAlignDate2Center EnvelopeFieldCreateManyTextAlignDate2 = "center"
+	EnvelopeFieldCreateManyTextAlignDate2Right  EnvelopeFieldCreateManyTextAlignDate2 = "right"
+)
+
+func (e EnvelopeFieldCreateManyTextAlignDate2) ToPointer() *EnvelopeFieldCreateManyTextAlignDate2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTextAlignDate2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = EnvelopeFieldCreateManyTextAlignDate2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignDate2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaDateRequest2 struct {
+	Label       *string                                 `json:"label,omitempty"`
+	Placeholder *string                                 `json:"placeholder,omitempty"`
+	Required    *bool                                   `json:"required,omitempty"`
+	ReadOnly    *bool                                   `json:"readOnly,omitempty"`
+	FontSize    *float64                                `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowDate2   `default:"auto" json:"overflow"`
+	Type        EnvelopeFieldCreateManyTypeDateRequest4 `json:"type"`
+	TextAlign   *EnvelopeFieldCreateManyTextAlignDate2  `json:"textAlign,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaDateRequest2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest2) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest2) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest2) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest2) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest2) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest2) GetOverflow() *EnvelopeFieldCreateManyOverflowDate2 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest2) GetType() EnvelopeFieldCreateManyTypeDateRequest4 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeDateRequest4("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest2) GetTextAlign() *EnvelopeFieldCreateManyTextAlignDate2 {
+	if e == nil {
+		return nil
+	}
+	return e.TextAlign
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetadaterequest2
+// #endregion class-body-envelopefieldcreatemanyfieldmetadaterequest2
+
+type EnvelopeFieldCreateManyDataDate2 struct {
+	Type           EnvelopeFieldCreateManyTypeDateRequest3       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaDateRequest2 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                       `json:"recipientId"`
+	EnvelopeItemID *string                                       `json:"envelopeItemId,omitempty"`
+	Placeholder    string                                        `json:"placeholder"`
+	Width          *float64                                      `json:"width,omitempty"`
+	Height         *float64                                      `json:"height,omitempty"`
+	MatchAll       *bool                                         `json:"matchAll,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyDataDate2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataDate2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "placeholder"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataDate2) GetType() EnvelopeFieldCreateManyTypeDateRequest3 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeDateRequest3("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataDate2) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaDateRequest2 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataDate2) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataDate2) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataDate2) GetPlaceholder() string {
+	if e == nil {
+		return ""
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyDataDate2) GetWidth() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataDate2) GetHeight() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Height
+}
+
+func (e *EnvelopeFieldCreateManyDataDate2) GetMatchAll() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.MatchAll
+}
+
+// #region class-body-envelopefieldcreatemanydatadate2
+// #endregion class-body-envelopefieldcreatemanydatadate2
+
+type EnvelopeFieldCreateManyTypeEmailRequest3 string
+
+const (
+	EnvelopeFieldCreateManyTypeEmailRequest3Email EnvelopeFieldCreateManyTypeEmailRequest3 = "EMAIL"
+)
+
+func (e EnvelopeFieldCreateManyTypeEmailRequest3) ToPointer() *EnvelopeFieldCreateManyTypeEmailRequest3 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeEmailRequest3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "EMAIL":
+		*e = EnvelopeFieldCreateManyTypeEmailRequest3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeEmailRequest3: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowEmail2 string
+
+const (
+	EnvelopeFieldCreateManyOverflowEmail2Auto       EnvelopeFieldCreateManyOverflowEmail2 = "auto"
+	EnvelopeFieldCreateManyOverflowEmail2Horizontal EnvelopeFieldCreateManyOverflowEmail2 = "horizontal"
+	EnvelopeFieldCreateManyOverflowEmail2Vertical   EnvelopeFieldCreateManyOverflowEmail2 = "vertical"
+	EnvelopeFieldCreateManyOverflowEmail2Crop       EnvelopeFieldCreateManyOverflowEmail2 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowEmail2) ToPointer() *EnvelopeFieldCreateManyOverflowEmail2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowEmail2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowEmail2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowEmail2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeEmailRequest4 string
+
+const (
+	EnvelopeFieldCreateManyTypeEmailRequest4Email EnvelopeFieldCreateManyTypeEmailRequest4 = "email"
+)
+
+func (e EnvelopeFieldCreateManyTypeEmailRequest4) ToPointer() *EnvelopeFieldCreateManyTypeEmailRequest4 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeEmailRequest4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "email":
+		*e = EnvelopeFieldCreateManyTypeEmailRequest4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeEmailRequest4: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTextAlignEmail2 string
+
+const (
+	EnvelopeFieldCreateManyTextAlignEmail2Left   EnvelopeFieldCreateManyTextAlignEmail2 = "left"
+	EnvelopeFieldCreateManyTextAlignEmail2Center EnvelopeFieldCreateManyTextAlignEmail2 = "center"
+	EnvelopeFieldCreateManyTextAlignEmail2Right  EnvelopeFieldCreateManyTextAlignEmail2 = "right"
+)
+
+func (e EnvelopeFieldCreateManyTextAlignEmail2) ToPointer() *EnvelopeFieldCreateManyTextAlignEmail2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTextAlignEmail2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = EnvelopeFieldCreateManyTextAlignEmail2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignEmail2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaEmailRequest2 struct {
+	Label       *string                                  `json:"label,omitempty"`
+	Placeholder *string                                  `json:"placeholder,omitempty"`
+	Required    *bool                                    `json:"required,omitempty"`
+	ReadOnly    *bool                                    `json:"readOnly,omitempty"`
+	FontSize    *float64                                 `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowEmail2   `default:"auto" json:"overflow"`
+	Type        EnvelopeFieldCreateManyTypeEmailRequest4 `json:"type"`
+	TextAlign   *EnvelopeFieldCreateManyTextAlignEmail2  `json:"textAlign,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaEmailRequest2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest2) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest2) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest2) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest2) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest2) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest2) GetOverflow() *EnvelopeFieldCreateManyOverflowEmail2 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest2) GetType() EnvelopeFieldCreateManyTypeEmailRequest4 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeEmailRequest4("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest2) GetTextAlign() *EnvelopeFieldCreateManyTextAlignEmail2 {
+	if e == nil {
+		return nil
+	}
+	return e.TextAlign
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetaemailrequest2
+// #endregion class-body-envelopefieldcreatemanyfieldmetaemailrequest2
+
+type EnvelopeFieldCreateManyDataEmail2 struct {
+	Type           EnvelopeFieldCreateManyTypeEmailRequest3       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaEmailRequest2 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                        `json:"recipientId"`
+	EnvelopeItemID *string                                        `json:"envelopeItemId,omitempty"`
+	Placeholder    string                                         `json:"placeholder"`
+	Width          *float64                                       `json:"width,omitempty"`
+	Height         *float64                                       `json:"height,omitempty"`
+	MatchAll       *bool                                          `json:"matchAll,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyDataEmail2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "placeholder"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail2) GetType() EnvelopeFieldCreateManyTypeEmailRequest3 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeEmailRequest3("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail2) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaEmailRequest2 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail2) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail2) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail2) GetPlaceholder() string {
+	if e == nil {
+		return ""
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail2) GetWidth() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail2) GetHeight() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Height
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail2) GetMatchAll() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.MatchAll
+}
+
+// #region class-body-envelopefieldcreatemanydataemail2
+// #endregion class-body-envelopefieldcreatemanydataemail2
+
+type EnvelopeFieldCreateManyTypeNameRequest3 string
+
+const (
+	EnvelopeFieldCreateManyTypeNameRequest3Name EnvelopeFieldCreateManyTypeNameRequest3 = "NAME"
+)
+
+func (e EnvelopeFieldCreateManyTypeNameRequest3) ToPointer() *EnvelopeFieldCreateManyTypeNameRequest3 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeNameRequest3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "NAME":
+		*e = EnvelopeFieldCreateManyTypeNameRequest3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeNameRequest3: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowName2 string
+
+const (
+	EnvelopeFieldCreateManyOverflowName2Auto       EnvelopeFieldCreateManyOverflowName2 = "auto"
+	EnvelopeFieldCreateManyOverflowName2Horizontal EnvelopeFieldCreateManyOverflowName2 = "horizontal"
+	EnvelopeFieldCreateManyOverflowName2Vertical   EnvelopeFieldCreateManyOverflowName2 = "vertical"
+	EnvelopeFieldCreateManyOverflowName2Crop       EnvelopeFieldCreateManyOverflowName2 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowName2) ToPointer() *EnvelopeFieldCreateManyOverflowName2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowName2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowName2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowName2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeNameRequest4 string
+
+const (
+	EnvelopeFieldCreateManyTypeNameRequest4Name EnvelopeFieldCreateManyTypeNameRequest4 = "name"
+)
+
+func (e EnvelopeFieldCreateManyTypeNameRequest4) ToPointer() *EnvelopeFieldCreateManyTypeNameRequest4 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeNameRequest4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "name":
+		*e = EnvelopeFieldCreateManyTypeNameRequest4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeNameRequest4: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTextAlignName2 string
+
+const (
+	EnvelopeFieldCreateManyTextAlignName2Left   EnvelopeFieldCreateManyTextAlignName2 = "left"
+	EnvelopeFieldCreateManyTextAlignName2Center EnvelopeFieldCreateManyTextAlignName2 = "center"
+	EnvelopeFieldCreateManyTextAlignName2Right  EnvelopeFieldCreateManyTextAlignName2 = "right"
+)
+
+func (e EnvelopeFieldCreateManyTextAlignName2) ToPointer() *EnvelopeFieldCreateManyTextAlignName2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTextAlignName2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = EnvelopeFieldCreateManyTextAlignName2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignName2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaNameRequest2 struct {
+	Label       *string                                 `json:"label,omitempty"`
+	Placeholder *string                                 `json:"placeholder,omitempty"`
+	Required    *bool                                   `json:"required,omitempty"`
+	ReadOnly    *bool                                   `json:"readOnly,omitempty"`
+	FontSize    *float64                                `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowName2   `json:"overflow,omitempty"`
+	Type        EnvelopeFieldCreateManyTypeNameRequest4 `json:"type"`
+	TextAlign   *EnvelopeFieldCreateManyTextAlignName2  `json:"textAlign,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaNameRequest2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest2) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest2) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest2) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest2) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest2) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest2) GetOverflow() *EnvelopeFieldCreateManyOverflowName2 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest2) GetType() EnvelopeFieldCreateManyTypeNameRequest4 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeNameRequest4("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest2) GetTextAlign() *EnvelopeFieldCreateManyTextAlignName2 {
+	if e == nil {
+		return nil
+	}
+	return e.TextAlign
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetanamerequest2
+// #endregion class-body-envelopefieldcreatemanyfieldmetanamerequest2
+
+type EnvelopeFieldCreateManyDataName2 struct {
+	Type           EnvelopeFieldCreateManyTypeNameRequest3       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaNameRequest2 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                       `json:"recipientId"`
+	EnvelopeItemID *string                                       `json:"envelopeItemId,omitempty"`
+	Placeholder    string                                        `json:"placeholder"`
+	Width          *float64                                      `json:"width,omitempty"`
+	Height         *float64                                      `json:"height,omitempty"`
+	MatchAll       *bool                                         `json:"matchAll,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyDataName2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataName2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "placeholder"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataName2) GetType() EnvelopeFieldCreateManyTypeNameRequest3 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeNameRequest3("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataName2) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaNameRequest2 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataName2) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataName2) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataName2) GetPlaceholder() string {
+	if e == nil {
+		return ""
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyDataName2) GetWidth() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataName2) GetHeight() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Height
+}
+
+func (e *EnvelopeFieldCreateManyDataName2) GetMatchAll() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.MatchAll
+}
+
+// #region class-body-envelopefieldcreatemanydataname2
+// #endregion class-body-envelopefieldcreatemanydataname2
+
+type EnvelopeFieldCreateManyTypeInitialsRequest3 string
+
+const (
+	EnvelopeFieldCreateManyTypeInitialsRequest3Initials EnvelopeFieldCreateManyTypeInitialsRequest3 = "INITIALS"
+)
+
+func (e EnvelopeFieldCreateManyTypeInitialsRequest3) ToPointer() *EnvelopeFieldCreateManyTypeInitialsRequest3 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeInitialsRequest3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "INITIALS":
+		*e = EnvelopeFieldCreateManyTypeInitialsRequest3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeInitialsRequest3: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowInitials2 string
+
+const (
+	EnvelopeFieldCreateManyOverflowInitials2Auto       EnvelopeFieldCreateManyOverflowInitials2 = "auto"
+	EnvelopeFieldCreateManyOverflowInitials2Horizontal EnvelopeFieldCreateManyOverflowInitials2 = "horizontal"
+	EnvelopeFieldCreateManyOverflowInitials2Vertical   EnvelopeFieldCreateManyOverflowInitials2 = "vertical"
+	EnvelopeFieldCreateManyOverflowInitials2Crop       EnvelopeFieldCreateManyOverflowInitials2 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowInitials2) ToPointer() *EnvelopeFieldCreateManyOverflowInitials2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowInitials2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowInitials2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowInitials2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeInitialsRequest4 string
+
+const (
+	EnvelopeFieldCreateManyTypeInitialsRequest4Initials EnvelopeFieldCreateManyTypeInitialsRequest4 = "initials"
+)
+
+func (e EnvelopeFieldCreateManyTypeInitialsRequest4) ToPointer() *EnvelopeFieldCreateManyTypeInitialsRequest4 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeInitialsRequest4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "initials":
+		*e = EnvelopeFieldCreateManyTypeInitialsRequest4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeInitialsRequest4: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTextAlignInitials2 string
+
+const (
+	EnvelopeFieldCreateManyTextAlignInitials2Left   EnvelopeFieldCreateManyTextAlignInitials2 = "left"
+	EnvelopeFieldCreateManyTextAlignInitials2Center EnvelopeFieldCreateManyTextAlignInitials2 = "center"
+	EnvelopeFieldCreateManyTextAlignInitials2Right  EnvelopeFieldCreateManyTextAlignInitials2 = "right"
+)
+
+func (e EnvelopeFieldCreateManyTextAlignInitials2) ToPointer() *EnvelopeFieldCreateManyTextAlignInitials2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTextAlignInitials2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = EnvelopeFieldCreateManyTextAlignInitials2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignInitials2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaInitialsRequest2 struct {
+	Label       *string                                     `json:"label,omitempty"`
+	Placeholder *string                                     `json:"placeholder,omitempty"`
+	Required    *bool                                       `json:"required,omitempty"`
+	ReadOnly    *bool                                       `json:"readOnly,omitempty"`
+	FontSize    *float64                                    `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowInitials2   `json:"overflow,omitempty"`
+	Type        EnvelopeFieldCreateManyTypeInitialsRequest4 `json:"type"`
+	TextAlign   *EnvelopeFieldCreateManyTextAlignInitials2  `json:"textAlign,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaInitialsRequest2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest2) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest2) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest2) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest2) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest2) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest2) GetOverflow() *EnvelopeFieldCreateManyOverflowInitials2 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest2) GetType() EnvelopeFieldCreateManyTypeInitialsRequest4 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeInitialsRequest4("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest2) GetTextAlign() *EnvelopeFieldCreateManyTextAlignInitials2 {
+	if e == nil {
+		return nil
+	}
+	return e.TextAlign
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetainitialsrequest2
+// #endregion class-body-envelopefieldcreatemanyfieldmetainitialsrequest2
+
+type EnvelopeFieldCreateManyDataInitials2 struct {
+	Type           EnvelopeFieldCreateManyTypeInitialsRequest3       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaInitialsRequest2 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                           `json:"recipientId"`
+	EnvelopeItemID *string                                           `json:"envelopeItemId,omitempty"`
+	Placeholder    string                                            `json:"placeholder"`
+	Width          *float64                                          `json:"width,omitempty"`
+	Height         *float64                                          `json:"height,omitempty"`
+	MatchAll       *bool                                             `json:"matchAll,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyDataInitials2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "placeholder"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials2) GetType() EnvelopeFieldCreateManyTypeInitialsRequest3 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeInitialsRequest3("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials2) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaInitialsRequest2 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials2) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials2) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials2) GetPlaceholder() string {
+	if e == nil {
+		return ""
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials2) GetWidth() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials2) GetHeight() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Height
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials2) GetMatchAll() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.MatchAll
+}
+
+// #region class-body-envelopefieldcreatemanydatainitials2
+// #endregion class-body-envelopefieldcreatemanydatainitials2
+
+type EnvelopeFieldCreateManyTypeFreeSignature2 string
+
+const (
+	EnvelopeFieldCreateManyTypeFreeSignature2FreeSignature EnvelopeFieldCreateManyTypeFreeSignature2 = "FREE_SIGNATURE"
+)
+
+func (e EnvelopeFieldCreateManyTypeFreeSignature2) ToPointer() *EnvelopeFieldCreateManyTypeFreeSignature2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeFreeSignature2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "FREE_SIGNATURE":
+		*e = EnvelopeFieldCreateManyTypeFreeSignature2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeFreeSignature2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyDataFreeSignature2 struct {
+	Type           EnvelopeFieldCreateManyTypeFreeSignature2 `json:"type"`
+	RecipientID    float64                                   `json:"recipientId"`
+	EnvelopeItemID *string                                   `json:"envelopeItemId,omitempty"`
+	Placeholder    string                                    `json:"placeholder"`
+	Width          *float64                                  `json:"width,omitempty"`
+	Height         *float64                                  `json:"height,omitempty"`
+	MatchAll       *bool                                     `json:"matchAll,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyDataFreeSignature2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "placeholder"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature2) GetType() EnvelopeFieldCreateManyTypeFreeSignature2 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeFreeSignature2("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature2) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature2) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature2) GetPlaceholder() string {
+	if e == nil {
+		return ""
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature2) GetWidth() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature2) GetHeight() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Height
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature2) GetMatchAll() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.MatchAll
+}
+
+// #region class-body-envelopefieldcreatemanydatafreesignature2
+// #endregion class-body-envelopefieldcreatemanydatafreesignature2
+
+type EnvelopeFieldCreateManyTypeSignatureRequest3 string
+
+const (
+	EnvelopeFieldCreateManyTypeSignatureRequest3Signature EnvelopeFieldCreateManyTypeSignatureRequest3 = "SIGNATURE"
+)
+
+func (e EnvelopeFieldCreateManyTypeSignatureRequest3) ToPointer() *EnvelopeFieldCreateManyTypeSignatureRequest3 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeSignatureRequest3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SIGNATURE":
+		*e = EnvelopeFieldCreateManyTypeSignatureRequest3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeSignatureRequest3: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowSignature2 string
+
+const (
+	EnvelopeFieldCreateManyOverflowSignature2Auto       EnvelopeFieldCreateManyOverflowSignature2 = "auto"
+	EnvelopeFieldCreateManyOverflowSignature2Horizontal EnvelopeFieldCreateManyOverflowSignature2 = "horizontal"
+	EnvelopeFieldCreateManyOverflowSignature2Vertical   EnvelopeFieldCreateManyOverflowSignature2 = "vertical"
+	EnvelopeFieldCreateManyOverflowSignature2Crop       EnvelopeFieldCreateManyOverflowSignature2 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowSignature2) ToPointer() *EnvelopeFieldCreateManyOverflowSignature2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowSignature2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowSignature2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowSignature2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeSignatureRequest4 string
+
+const (
+	EnvelopeFieldCreateManyTypeSignatureRequest4Signature EnvelopeFieldCreateManyTypeSignatureRequest4 = "signature"
+)
+
+func (e EnvelopeFieldCreateManyTypeSignatureRequest4) ToPointer() *EnvelopeFieldCreateManyTypeSignatureRequest4 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeSignatureRequest4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "signature":
+		*e = EnvelopeFieldCreateManyTypeSignatureRequest4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeSignatureRequest4: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaSignatureRequest2 struct {
+	Label       *string                                      `json:"label,omitempty"`
+	Placeholder *string                                      `json:"placeholder,omitempty"`
+	Required    *bool                                        `json:"required,omitempty"`
+	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
+	FontSize    *float64                                     `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowSignature2   `default:"auto" json:"overflow"`
+	Type        EnvelopeFieldCreateManyTypeSignatureRequest4 `json:"type"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaSignatureRequest2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest2) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest2) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest2) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest2) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest2) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest2) GetOverflow() *EnvelopeFieldCreateManyOverflowSignature2 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest2) GetType() EnvelopeFieldCreateManyTypeSignatureRequest4 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeSignatureRequest4("")
+	}
+	return e.Type
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetasignaturerequest2
+// #endregion class-body-envelopefieldcreatemanyfieldmetasignaturerequest2
+
+type EnvelopeFieldCreateManyDataSignature2 struct {
+	Type           EnvelopeFieldCreateManyTypeSignatureRequest3       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaSignatureRequest2 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                            `json:"recipientId"`
+	EnvelopeItemID *string                                            `json:"envelopeItemId,omitempty"`
+	Placeholder    string                                             `json:"placeholder"`
+	Width          *float64                                           `json:"width,omitempty"`
+	Height         *float64                                           `json:"height,omitempty"`
+	MatchAll       *bool                                              `json:"matchAll,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyDataSignature2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "placeholder"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature2) GetType() EnvelopeFieldCreateManyTypeSignatureRequest3 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeSignatureRequest3("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature2) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaSignatureRequest2 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature2) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature2) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature2) GetPlaceholder() string {
+	if e == nil {
+		return ""
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature2) GetWidth() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature2) GetHeight() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.Height
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature2) GetMatchAll() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.MatchAll
+}
+
+// #region class-body-envelopefieldcreatemanydatasignature2
+// #endregion class-body-envelopefieldcreatemanydatasignature2
+
+type EnvelopeFieldCreateManyDataUnion3Type string
+
+const (
+	EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataSignature2     EnvelopeFieldCreateManyDataUnion3Type = "envelope_field_createMany_data_Signature_2"
+	EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataFreeSignature2 EnvelopeFieldCreateManyDataUnion3Type = "envelope_field_createMany_data_FreeSignature_2"
+	EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataInitials2      EnvelopeFieldCreateManyDataUnion3Type = "envelope_field_createMany_data_Initials_2"
+	EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataName2          EnvelopeFieldCreateManyDataUnion3Type = "envelope_field_createMany_data_Name_2"
+	EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataEmail2         EnvelopeFieldCreateManyDataUnion3Type = "envelope_field_createMany_data_Email_2"
+	EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataDate2          EnvelopeFieldCreateManyDataUnion3Type = "envelope_field_createMany_data_Date_2"
+	EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataText2          EnvelopeFieldCreateManyDataUnion3Type = "envelope_field_createMany_data_Text_2"
+	EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataNumber2        EnvelopeFieldCreateManyDataUnion3Type = "envelope_field_createMany_data_Number_2"
+	EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataRadio2         EnvelopeFieldCreateManyDataUnion3Type = "envelope_field_createMany_data_Radio_2"
+	EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataCheckbox2      EnvelopeFieldCreateManyDataUnion3Type = "envelope_field_createMany_data_Checkbox_2"
+	EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataDropdown2      EnvelopeFieldCreateManyDataUnion3Type = "envelope_field_createMany_data_Dropdown_2"
+)
+
+type EnvelopeFieldCreateManyDataUnion3 struct {
+	EnvelopeFieldCreateManyDataSignature2     *EnvelopeFieldCreateManyDataSignature2     `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataFreeSignature2 *EnvelopeFieldCreateManyDataFreeSignature2 `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataInitials2      *EnvelopeFieldCreateManyDataInitials2      `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataName2          *EnvelopeFieldCreateManyDataName2          `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataEmail2         *EnvelopeFieldCreateManyDataEmail2         `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataDate2          *EnvelopeFieldCreateManyDataDate2          `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataText2          *EnvelopeFieldCreateManyDataText2          `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataNumber2        *EnvelopeFieldCreateManyDataNumber2        `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataRadio2         *EnvelopeFieldCreateManyDataRadio2         `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataCheckbox2      *EnvelopeFieldCreateManyDataCheckbox2      `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataDropdown2      *EnvelopeFieldCreateManyDataDropdown2      `queryParam:"inline" union:"member"`
+
+	Type EnvelopeFieldCreateManyDataUnion3Type
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion3EnvelopeFieldCreateManyDataSignature2(envelopeFieldCreateManyDataSignature2 EnvelopeFieldCreateManyDataSignature2) EnvelopeFieldCreateManyDataUnion3 {
+	typ := EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataSignature2
+
+	return EnvelopeFieldCreateManyDataUnion3{
+		EnvelopeFieldCreateManyDataSignature2: &envelopeFieldCreateManyDataSignature2,
+		Type:                                  typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion3EnvelopeFieldCreateManyDataFreeSignature2(envelopeFieldCreateManyDataFreeSignature2 EnvelopeFieldCreateManyDataFreeSignature2) EnvelopeFieldCreateManyDataUnion3 {
+	typ := EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataFreeSignature2
+
+	return EnvelopeFieldCreateManyDataUnion3{
+		EnvelopeFieldCreateManyDataFreeSignature2: &envelopeFieldCreateManyDataFreeSignature2,
+		Type: typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion3EnvelopeFieldCreateManyDataInitials2(envelopeFieldCreateManyDataInitials2 EnvelopeFieldCreateManyDataInitials2) EnvelopeFieldCreateManyDataUnion3 {
+	typ := EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataInitials2
+
+	return EnvelopeFieldCreateManyDataUnion3{
+		EnvelopeFieldCreateManyDataInitials2: &envelopeFieldCreateManyDataInitials2,
+		Type:                                 typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion3EnvelopeFieldCreateManyDataName2(envelopeFieldCreateManyDataName2 EnvelopeFieldCreateManyDataName2) EnvelopeFieldCreateManyDataUnion3 {
+	typ := EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataName2
+
+	return EnvelopeFieldCreateManyDataUnion3{
+		EnvelopeFieldCreateManyDataName2: &envelopeFieldCreateManyDataName2,
+		Type:                             typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion3EnvelopeFieldCreateManyDataEmail2(envelopeFieldCreateManyDataEmail2 EnvelopeFieldCreateManyDataEmail2) EnvelopeFieldCreateManyDataUnion3 {
+	typ := EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataEmail2
+
+	return EnvelopeFieldCreateManyDataUnion3{
+		EnvelopeFieldCreateManyDataEmail2: &envelopeFieldCreateManyDataEmail2,
+		Type:                              typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion3EnvelopeFieldCreateManyDataDate2(envelopeFieldCreateManyDataDate2 EnvelopeFieldCreateManyDataDate2) EnvelopeFieldCreateManyDataUnion3 {
+	typ := EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataDate2
+
+	return EnvelopeFieldCreateManyDataUnion3{
+		EnvelopeFieldCreateManyDataDate2: &envelopeFieldCreateManyDataDate2,
+		Type:                             typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion3EnvelopeFieldCreateManyDataText2(envelopeFieldCreateManyDataText2 EnvelopeFieldCreateManyDataText2) EnvelopeFieldCreateManyDataUnion3 {
+	typ := EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataText2
+
+	return EnvelopeFieldCreateManyDataUnion3{
+		EnvelopeFieldCreateManyDataText2: &envelopeFieldCreateManyDataText2,
+		Type:                             typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion3EnvelopeFieldCreateManyDataNumber2(envelopeFieldCreateManyDataNumber2 EnvelopeFieldCreateManyDataNumber2) EnvelopeFieldCreateManyDataUnion3 {
+	typ := EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataNumber2
+
+	return EnvelopeFieldCreateManyDataUnion3{
+		EnvelopeFieldCreateManyDataNumber2: &envelopeFieldCreateManyDataNumber2,
+		Type:                               typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion3EnvelopeFieldCreateManyDataRadio2(envelopeFieldCreateManyDataRadio2 EnvelopeFieldCreateManyDataRadio2) EnvelopeFieldCreateManyDataUnion3 {
+	typ := EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataRadio2
+
+	return EnvelopeFieldCreateManyDataUnion3{
+		EnvelopeFieldCreateManyDataRadio2: &envelopeFieldCreateManyDataRadio2,
+		Type:                              typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion3EnvelopeFieldCreateManyDataCheckbox2(envelopeFieldCreateManyDataCheckbox2 EnvelopeFieldCreateManyDataCheckbox2) EnvelopeFieldCreateManyDataUnion3 {
+	typ := EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataCheckbox2
+
+	return EnvelopeFieldCreateManyDataUnion3{
+		EnvelopeFieldCreateManyDataCheckbox2: &envelopeFieldCreateManyDataCheckbox2,
+		Type:                                 typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion3EnvelopeFieldCreateManyDataDropdown2(envelopeFieldCreateManyDataDropdown2 EnvelopeFieldCreateManyDataDropdown2) EnvelopeFieldCreateManyDataUnion3 {
+	typ := EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataDropdown2
+
+	return EnvelopeFieldCreateManyDataUnion3{
+		EnvelopeFieldCreateManyDataDropdown2: &envelopeFieldCreateManyDataDropdown2,
+		Type:                                 typ,
+	}
+}
+
+func (u *EnvelopeFieldCreateManyDataUnion3) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeFieldCreateManyDataUnion3{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var envelopeFieldCreateManyDataSignature2 EnvelopeFieldCreateManyDataSignature2 = EnvelopeFieldCreateManyDataSignature2{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataSignature2, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataSignature2 = &envelopeFieldCreateManyDataSignature2
+		u.Type = EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataSignature2
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataFreeSignature2 EnvelopeFieldCreateManyDataFreeSignature2 = EnvelopeFieldCreateManyDataFreeSignature2{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataFreeSignature2, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataFreeSignature2 = &envelopeFieldCreateManyDataFreeSignature2
+		u.Type = EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataFreeSignature2
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataInitials2 EnvelopeFieldCreateManyDataInitials2 = EnvelopeFieldCreateManyDataInitials2{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataInitials2, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataInitials2 = &envelopeFieldCreateManyDataInitials2
+		u.Type = EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataInitials2
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataName2 EnvelopeFieldCreateManyDataName2 = EnvelopeFieldCreateManyDataName2{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataName2, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataName2 = &envelopeFieldCreateManyDataName2
+		u.Type = EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataName2
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataEmail2 EnvelopeFieldCreateManyDataEmail2 = EnvelopeFieldCreateManyDataEmail2{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataEmail2, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataEmail2 = &envelopeFieldCreateManyDataEmail2
+		u.Type = EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataEmail2
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataDate2 EnvelopeFieldCreateManyDataDate2 = EnvelopeFieldCreateManyDataDate2{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataDate2, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataDate2 = &envelopeFieldCreateManyDataDate2
+		u.Type = EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataDate2
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataText2 EnvelopeFieldCreateManyDataText2 = EnvelopeFieldCreateManyDataText2{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataText2, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataText2 = &envelopeFieldCreateManyDataText2
+		u.Type = EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataText2
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataNumber2 EnvelopeFieldCreateManyDataNumber2 = EnvelopeFieldCreateManyDataNumber2{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataNumber2, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataNumber2 = &envelopeFieldCreateManyDataNumber2
+		u.Type = EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataNumber2
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataRadio2 EnvelopeFieldCreateManyDataRadio2 = EnvelopeFieldCreateManyDataRadio2{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataRadio2, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataRadio2 = &envelopeFieldCreateManyDataRadio2
+		u.Type = EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataRadio2
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataCheckbox2 EnvelopeFieldCreateManyDataCheckbox2 = EnvelopeFieldCreateManyDataCheckbox2{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataCheckbox2, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataCheckbox2 = &envelopeFieldCreateManyDataCheckbox2
+		u.Type = EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataCheckbox2
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataDropdown2 EnvelopeFieldCreateManyDataDropdown2 = EnvelopeFieldCreateManyDataDropdown2{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataDropdown2, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataDropdown2 = &envelopeFieldCreateManyDataDropdown2
+		u.Type = EnvelopeFieldCreateManyDataUnion3TypeEnvelopeFieldCreateManyDataDropdown2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvelopeFieldCreateManyDataUnion3", string(data))
+}
+
+func (u EnvelopeFieldCreateManyDataUnion3) MarshalJSON() ([]byte, error) {
+	if u.EnvelopeFieldCreateManyDataSignature2 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataSignature2, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataFreeSignature2 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataFreeSignature2, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataInitials2 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataInitials2, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataName2 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataName2, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataEmail2 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataEmail2, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataDate2 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataDate2, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataText2 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataText2, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataNumber2 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataNumber2, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataRadio2 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataRadio2, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataCheckbox2 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataCheckbox2, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataDropdown2 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataDropdown2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvelopeFieldCreateManyDataUnion3: all fields are null")
+}
+
+type EnvelopeFieldCreateManyTypeDropdownRequest1 string
+
+const (
+	EnvelopeFieldCreateManyTypeDropdownRequest1Dropdown EnvelopeFieldCreateManyTypeDropdownRequest1 = "DROPDOWN"
+)
+
+func (e EnvelopeFieldCreateManyTypeDropdownRequest1) ToPointer() *EnvelopeFieldCreateManyTypeDropdownRequest1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeDropdownRequest1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "DROPDOWN":
+		*e = EnvelopeFieldCreateManyTypeDropdownRequest1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeDropdownRequest1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowDropdown1 string
+
+const (
+	EnvelopeFieldCreateManyOverflowDropdown1Auto       EnvelopeFieldCreateManyOverflowDropdown1 = "auto"
+	EnvelopeFieldCreateManyOverflowDropdown1Horizontal EnvelopeFieldCreateManyOverflowDropdown1 = "horizontal"
+	EnvelopeFieldCreateManyOverflowDropdown1Vertical   EnvelopeFieldCreateManyOverflowDropdown1 = "vertical"
+	EnvelopeFieldCreateManyOverflowDropdown1Crop       EnvelopeFieldCreateManyOverflowDropdown1 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowDropdown1) ToPointer() *EnvelopeFieldCreateManyOverflowDropdown1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowDropdown1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowDropdown1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowDropdown1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeDropdownRequest2 string
+
+const (
+	EnvelopeFieldCreateManyTypeDropdownRequest2Dropdown EnvelopeFieldCreateManyTypeDropdownRequest2 = "dropdown"
+)
+
+func (e EnvelopeFieldCreateManyTypeDropdownRequest2) ToPointer() *EnvelopeFieldCreateManyTypeDropdownRequest2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeDropdownRequest2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "dropdown":
+		*e = EnvelopeFieldCreateManyTypeDropdownRequest2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeDropdownRequest2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyValueDropdown1 struct {
+	Value string `json:"value"`
+}
+
+func (e EnvelopeFieldCreateManyValueDropdown1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyValueDropdown1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyValueDropdown1) GetValue() string {
+	if e == nil {
+		return ""
+	}
+	return e.Value
+}
+
+// #region class-body-envelopefieldcreatemanyvaluedropdown1
+// #endregion class-body-envelopefieldcreatemanyvaluedropdown1
+
+type EnvelopeFieldCreateManyFieldMetaDropdownRequest1 struct {
+	Label        *string                                     `json:"label,omitempty"`
+	Placeholder  *string                                     `json:"placeholder,omitempty"`
+	Required     *bool                                       `json:"required,omitempty"`
+	ReadOnly     *bool                                       `json:"readOnly,omitempty"`
+	FontSize     *float64                                    `default:"12" json:"fontSize"`
+	Overflow     *EnvelopeFieldCreateManyOverflowDropdown1   `json:"overflow,omitempty"`
+	Type         EnvelopeFieldCreateManyTypeDropdownRequest2 `json:"type"`
+	Values       []EnvelopeFieldCreateManyValueDropdown1     `json:"values,omitempty"`
+	DefaultValue *string                                     `json:"defaultValue,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaDropdownRequest1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest1) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest1) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest1) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest1) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest1) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest1) GetOverflow() *EnvelopeFieldCreateManyOverflowDropdown1 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest1) GetType() EnvelopeFieldCreateManyTypeDropdownRequest2 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeDropdownRequest2("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest1) GetValues() []EnvelopeFieldCreateManyValueDropdown1 {
+	if e == nil {
+		return nil
+	}
+	return e.Values
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownRequest1) GetDefaultValue() *string {
+	if e == nil {
+		return nil
+	}
+	return e.DefaultValue
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetadropdownrequest1
+// #endregion class-body-envelopefieldcreatemanyfieldmetadropdownrequest1
+
+type EnvelopeFieldCreateManyDataDropdown1 struct {
+	Type           EnvelopeFieldCreateManyTypeDropdownRequest1       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaDropdownRequest1 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                           `json:"recipientId"`
+	EnvelopeItemID *string                                           `json:"envelopeItemId,omitempty"`
+	Page           float64                                           `json:"page"`
+	PositionX      float64                                           `json:"positionX"`
+	PositionY      float64                                           `json:"positionY"`
+	Width          float64                                           `json:"width"`
+	Height         float64                                           `json:"height"`
+}
+
+func (e EnvelopeFieldCreateManyDataDropdown1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataDropdown1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "page", "positionX", "positionY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataDropdown1) GetType() EnvelopeFieldCreateManyTypeDropdownRequest1 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeDropdownRequest1("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataDropdown1) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaDropdownRequest1 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataDropdown1) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataDropdown1) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataDropdown1) GetPage() float64 {
 	if e == nil {
 		return 0.0
 	}
 	return e.Page
 }
 
-func (e *EnvelopeFieldCreateManyDataRequest1) GetPositionX() float64 {
+func (e *EnvelopeFieldCreateManyDataDropdown1) GetPositionX() float64 {
 	if e == nil {
 		return 0.0
 	}
 	return e.PositionX
 }
 
-func (e *EnvelopeFieldCreateManyDataRequest1) GetPositionY() float64 {
+func (e *EnvelopeFieldCreateManyDataDropdown1) GetPositionY() float64 {
 	if e == nil {
 		return 0.0
 	}
 	return e.PositionY
 }
 
-func (e *EnvelopeFieldCreateManyDataRequest1) GetWidth() float64 {
+func (e *EnvelopeFieldCreateManyDataDropdown1) GetWidth() float64 {
 	if e == nil {
 		return 0.0
 	}
 	return e.Width
 }
 
-func (e *EnvelopeFieldCreateManyDataRequest1) GetHeight() float64 {
+func (e *EnvelopeFieldCreateManyDataDropdown1) GetHeight() float64 {
 	if e == nil {
 		return 0.0
 	}
 	return e.Height
 }
 
-func (e *EnvelopeFieldCreateManyDataRequest1) GetRecipientID() float64 {
+// #region class-body-envelopefieldcreatemanydatadropdown1
+// #endregion class-body-envelopefieldcreatemanydatadropdown1
+
+type EnvelopeFieldCreateManyTypeCheckboxRequest1 string
+
+const (
+	EnvelopeFieldCreateManyTypeCheckboxRequest1Checkbox EnvelopeFieldCreateManyTypeCheckboxRequest1 = "CHECKBOX"
+)
+
+func (e EnvelopeFieldCreateManyTypeCheckboxRequest1) ToPointer() *EnvelopeFieldCreateManyTypeCheckboxRequest1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeCheckboxRequest1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "CHECKBOX":
+		*e = EnvelopeFieldCreateManyTypeCheckboxRequest1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeCheckboxRequest1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowCheckbox1 string
+
+const (
+	EnvelopeFieldCreateManyOverflowCheckbox1Auto       EnvelopeFieldCreateManyOverflowCheckbox1 = "auto"
+	EnvelopeFieldCreateManyOverflowCheckbox1Horizontal EnvelopeFieldCreateManyOverflowCheckbox1 = "horizontal"
+	EnvelopeFieldCreateManyOverflowCheckbox1Vertical   EnvelopeFieldCreateManyOverflowCheckbox1 = "vertical"
+	EnvelopeFieldCreateManyOverflowCheckbox1Crop       EnvelopeFieldCreateManyOverflowCheckbox1 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowCheckbox1) ToPointer() *EnvelopeFieldCreateManyOverflowCheckbox1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowCheckbox1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowCheckbox1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowCheckbox1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeCheckboxRequest2 string
+
+const (
+	EnvelopeFieldCreateManyTypeCheckboxRequest2Checkbox EnvelopeFieldCreateManyTypeCheckboxRequest2 = "checkbox"
+)
+
+func (e EnvelopeFieldCreateManyTypeCheckboxRequest2) ToPointer() *EnvelopeFieldCreateManyTypeCheckboxRequest2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeCheckboxRequest2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "checkbox":
+		*e = EnvelopeFieldCreateManyTypeCheckboxRequest2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeCheckboxRequest2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyValueCheckbox1 struct {
+	ID      float64 `json:"id"`
+	Checked bool    `json:"checked"`
+	Value   string  `json:"value"`
+}
+
+func (e EnvelopeFieldCreateManyValueCheckbox1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyValueCheckbox1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyValueCheckbox1) GetID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.ID
+}
+
+func (e *EnvelopeFieldCreateManyValueCheckbox1) GetChecked() bool {
+	if e == nil {
+		return false
+	}
+	return e.Checked
+}
+
+func (e *EnvelopeFieldCreateManyValueCheckbox1) GetValue() string {
+	if e == nil {
+		return ""
+	}
+	return e.Value
+}
+
+// #region class-body-envelopefieldcreatemanyvaluecheckbox1
+// #endregion class-body-envelopefieldcreatemanyvaluecheckbox1
+
+type EnvelopeFieldCreateManyDirectionCheckbox1 string
+
+const (
+	EnvelopeFieldCreateManyDirectionCheckbox1Vertical   EnvelopeFieldCreateManyDirectionCheckbox1 = "vertical"
+	EnvelopeFieldCreateManyDirectionCheckbox1Horizontal EnvelopeFieldCreateManyDirectionCheckbox1 = "horizontal"
+)
+
+func (e EnvelopeFieldCreateManyDirectionCheckbox1) ToPointer() *EnvelopeFieldCreateManyDirectionCheckbox1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyDirectionCheckbox1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = EnvelopeFieldCreateManyDirectionCheckbox1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyDirectionCheckbox1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaCheckboxRequest1 struct {
+	Label            *string                                     `json:"label,omitempty"`
+	Placeholder      *string                                     `json:"placeholder,omitempty"`
+	Required         *bool                                       `json:"required,omitempty"`
+	ReadOnly         *bool                                       `json:"readOnly,omitempty"`
+	FontSize         *float64                                    `default:"12" json:"fontSize"`
+	Overflow         *EnvelopeFieldCreateManyOverflowCheckbox1   `json:"overflow,omitempty"`
+	Type             EnvelopeFieldCreateManyTypeCheckboxRequest2 `json:"type"`
+	Values           []EnvelopeFieldCreateManyValueCheckbox1     `json:"values,omitempty"`
+	ValidationRule   *string                                     `json:"validationRule,omitempty"`
+	ValidationLength *float64                                    `json:"validationLength,omitempty"`
+	Direction        *EnvelopeFieldCreateManyDirectionCheckbox1  `default:"vertical" json:"direction"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaCheckboxRequest1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest1) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest1) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest1) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest1) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest1) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest1) GetOverflow() *EnvelopeFieldCreateManyOverflowCheckbox1 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest1) GetType() EnvelopeFieldCreateManyTypeCheckboxRequest2 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeCheckboxRequest2("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest1) GetValues() []EnvelopeFieldCreateManyValueCheckbox1 {
+	if e == nil {
+		return nil
+	}
+	return e.Values
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest1) GetValidationRule() *string {
+	if e == nil {
+		return nil
+	}
+	return e.ValidationRule
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest1) GetValidationLength() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.ValidationLength
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxRequest1) GetDirection() *EnvelopeFieldCreateManyDirectionCheckbox1 {
+	if e == nil {
+		return nil
+	}
+	return e.Direction
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetacheckboxrequest1
+// #endregion class-body-envelopefieldcreatemanyfieldmetacheckboxrequest1
+
+type EnvelopeFieldCreateManyDataCheckbox1 struct {
+	Type           EnvelopeFieldCreateManyTypeCheckboxRequest1       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaCheckboxRequest1 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                           `json:"recipientId"`
+	EnvelopeItemID *string                                           `json:"envelopeItemId,omitempty"`
+	Page           float64                                           `json:"page"`
+	PositionX      float64                                           `json:"positionX"`
+	PositionY      float64                                           `json:"positionY"`
+	Width          float64                                           `json:"width"`
+	Height         float64                                           `json:"height"`
+}
+
+func (e EnvelopeFieldCreateManyDataCheckbox1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataCheckbox1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "page", "positionX", "positionY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataCheckbox1) GetType() EnvelopeFieldCreateManyTypeCheckboxRequest1 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeCheckboxRequest1("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataCheckbox1) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaCheckboxRequest1 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataCheckbox1) GetRecipientID() float64 {
 	if e == nil {
 		return 0.0
 	}
 	return e.RecipientID
 }
 
-func (e *EnvelopeFieldCreateManyDataRequest1) GetEnvelopeItemID() *string {
+func (e *EnvelopeFieldCreateManyDataCheckbox1) GetEnvelopeItemID() *string {
 	if e == nil {
 		return nil
 	}
 	return e.EnvelopeItemID
 }
 
-type EnvelopeFieldCreateManyDataUnionType string
+func (e *EnvelopeFieldCreateManyDataCheckbox1) GetPage() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Page
+}
+
+func (e *EnvelopeFieldCreateManyDataCheckbox1) GetPositionX() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionX
+}
+
+func (e *EnvelopeFieldCreateManyDataCheckbox1) GetPositionY() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionY
+}
+
+func (e *EnvelopeFieldCreateManyDataCheckbox1) GetWidth() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataCheckbox1) GetHeight() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Height
+}
+
+// #region class-body-envelopefieldcreatemanydatacheckbox1
+// #endregion class-body-envelopefieldcreatemanydatacheckbox1
+
+type EnvelopeFieldCreateManyTypeRadioRequest1 string
 
 const (
-	EnvelopeFieldCreateManyDataUnionTypeEnvelopeFieldCreateManyDataRequest1 EnvelopeFieldCreateManyDataUnionType = "envelope_field_createMany_data_request_1"
-	EnvelopeFieldCreateManyDataUnionTypeEnvelopeFieldCreateManyDataRequest2 EnvelopeFieldCreateManyDataUnionType = "envelope_field_createMany_data_request_2"
+	EnvelopeFieldCreateManyTypeRadioRequest1Radio EnvelopeFieldCreateManyTypeRadioRequest1 = "RADIO"
 )
 
-type EnvelopeFieldCreateManyDataUnion struct {
-	EnvelopeFieldCreateManyDataRequest1 *EnvelopeFieldCreateManyDataRequest1 `queryParam:"inline" union:"member"`
-	EnvelopeFieldCreateManyDataRequest2 *EnvelopeFieldCreateManyDataRequest2 `queryParam:"inline" union:"member"`
-
-	Type EnvelopeFieldCreateManyDataUnionType
+func (e EnvelopeFieldCreateManyTypeRadioRequest1) ToPointer() *EnvelopeFieldCreateManyTypeRadioRequest1 {
+	return &e
 }
-
-func CreateEnvelopeFieldCreateManyDataUnionEnvelopeFieldCreateManyDataRequest1(envelopeFieldCreateManyDataRequest1 EnvelopeFieldCreateManyDataRequest1) EnvelopeFieldCreateManyDataUnion {
-	typ := EnvelopeFieldCreateManyDataUnionTypeEnvelopeFieldCreateManyDataRequest1
-
-	return EnvelopeFieldCreateManyDataUnion{
-		EnvelopeFieldCreateManyDataRequest1: &envelopeFieldCreateManyDataRequest1,
-		Type:                                typ,
+func (e *EnvelopeFieldCreateManyTypeRadioRequest1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "RADIO":
+		*e = EnvelopeFieldCreateManyTypeRadioRequest1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeRadioRequest1: %v", v)
 	}
 }
 
-func CreateEnvelopeFieldCreateManyDataUnionEnvelopeFieldCreateManyDataRequest2(envelopeFieldCreateManyDataRequest2 EnvelopeFieldCreateManyDataRequest2) EnvelopeFieldCreateManyDataUnion {
-	typ := EnvelopeFieldCreateManyDataUnionTypeEnvelopeFieldCreateManyDataRequest2
+type EnvelopeFieldCreateManyOverflowRadio1 string
 
-	return EnvelopeFieldCreateManyDataUnion{
-		EnvelopeFieldCreateManyDataRequest2: &envelopeFieldCreateManyDataRequest2,
-		Type:                                typ,
+const (
+	EnvelopeFieldCreateManyOverflowRadio1Auto       EnvelopeFieldCreateManyOverflowRadio1 = "auto"
+	EnvelopeFieldCreateManyOverflowRadio1Horizontal EnvelopeFieldCreateManyOverflowRadio1 = "horizontal"
+	EnvelopeFieldCreateManyOverflowRadio1Vertical   EnvelopeFieldCreateManyOverflowRadio1 = "vertical"
+	EnvelopeFieldCreateManyOverflowRadio1Crop       EnvelopeFieldCreateManyOverflowRadio1 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowRadio1) ToPointer() *EnvelopeFieldCreateManyOverflowRadio1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowRadio1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowRadio1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowRadio1: %v", v)
 	}
 }
 
-func (u *EnvelopeFieldCreateManyDataUnion) UnmarshalJSON(data []byte) error {
+type EnvelopeFieldCreateManyTypeRadioRequest2 string
 
-	var envelopeFieldCreateManyDataRequest1 EnvelopeFieldCreateManyDataRequest1 = EnvelopeFieldCreateManyDataRequest1{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataRequest1, "", true, nil); err == nil {
-		u.EnvelopeFieldCreateManyDataRequest1 = &envelopeFieldCreateManyDataRequest1
-		u.Type = EnvelopeFieldCreateManyDataUnionTypeEnvelopeFieldCreateManyDataRequest1
+const (
+	EnvelopeFieldCreateManyTypeRadioRequest2Radio EnvelopeFieldCreateManyTypeRadioRequest2 = "radio"
+)
+
+func (e EnvelopeFieldCreateManyTypeRadioRequest2) ToPointer() *EnvelopeFieldCreateManyTypeRadioRequest2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeRadioRequest2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "radio":
+		*e = EnvelopeFieldCreateManyTypeRadioRequest2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeRadioRequest2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyValueRadio1 struct {
+	ID      float64 `json:"id"`
+	Checked bool    `json:"checked"`
+	Value   string  `json:"value"`
+}
+
+func (e EnvelopeFieldCreateManyValueRadio1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyValueRadio1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"id", "checked", "value"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyValueRadio1) GetID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.ID
+}
+
+func (e *EnvelopeFieldCreateManyValueRadio1) GetChecked() bool {
+	if e == nil {
+		return false
+	}
+	return e.Checked
+}
+
+func (e *EnvelopeFieldCreateManyValueRadio1) GetValue() string {
+	if e == nil {
+		return ""
+	}
+	return e.Value
+}
+
+// #region class-body-envelopefieldcreatemanyvalueradio1
+// #endregion class-body-envelopefieldcreatemanyvalueradio1
+
+type EnvelopeFieldCreateManyDirectionRadio1 string
+
+const (
+	EnvelopeFieldCreateManyDirectionRadio1Vertical   EnvelopeFieldCreateManyDirectionRadio1 = "vertical"
+	EnvelopeFieldCreateManyDirectionRadio1Horizontal EnvelopeFieldCreateManyDirectionRadio1 = "horizontal"
+)
+
+func (e EnvelopeFieldCreateManyDirectionRadio1) ToPointer() *EnvelopeFieldCreateManyDirectionRadio1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyDirectionRadio1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "vertical":
+		fallthrough
+	case "horizontal":
+		*e = EnvelopeFieldCreateManyDirectionRadio1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyDirectionRadio1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaRadioRequest1 struct {
+	Label       *string                                  `json:"label,omitempty"`
+	Placeholder *string                                  `json:"placeholder,omitempty"`
+	Required    *bool                                    `json:"required,omitempty"`
+	ReadOnly    *bool                                    `json:"readOnly,omitempty"`
+	FontSize    *float64                                 `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowRadio1   `json:"overflow,omitempty"`
+	Type        EnvelopeFieldCreateManyTypeRadioRequest2 `json:"type"`
+	Values      []EnvelopeFieldCreateManyValueRadio1     `json:"values,omitempty"`
+	Direction   *EnvelopeFieldCreateManyDirectionRadio1  `default:"vertical" json:"direction"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaRadioRequest1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest1) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest1) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest1) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest1) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest1) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest1) GetOverflow() *EnvelopeFieldCreateManyOverflowRadio1 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest1) GetType() EnvelopeFieldCreateManyTypeRadioRequest2 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeRadioRequest2("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest1) GetValues() []EnvelopeFieldCreateManyValueRadio1 {
+	if e == nil {
+		return nil
+	}
+	return e.Values
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioRequest1) GetDirection() *EnvelopeFieldCreateManyDirectionRadio1 {
+	if e == nil {
+		return nil
+	}
+	return e.Direction
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetaradiorequest1
+// #endregion class-body-envelopefieldcreatemanyfieldmetaradiorequest1
+
+type EnvelopeFieldCreateManyDataRadio1 struct {
+	Type           EnvelopeFieldCreateManyTypeRadioRequest1       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaRadioRequest1 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                        `json:"recipientId"`
+	EnvelopeItemID *string                                        `json:"envelopeItemId,omitempty"`
+	Page           float64                                        `json:"page"`
+	PositionX      float64                                        `json:"positionX"`
+	PositionY      float64                                        `json:"positionY"`
+	Width          float64                                        `json:"width"`
+	Height         float64                                        `json:"height"`
+}
+
+func (e EnvelopeFieldCreateManyDataRadio1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "page", "positionX", "positionY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio1) GetType() EnvelopeFieldCreateManyTypeRadioRequest1 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeRadioRequest1("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio1) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaRadioRequest1 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio1) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio1) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio1) GetPage() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Page
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio1) GetPositionX() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionX
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio1) GetPositionY() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionY
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio1) GetWidth() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataRadio1) GetHeight() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Height
+}
+
+// #region class-body-envelopefieldcreatemanydataradio1
+// #endregion class-body-envelopefieldcreatemanydataradio1
+
+type EnvelopeFieldCreateManyTypeNumberRequest1 string
+
+const (
+	EnvelopeFieldCreateManyTypeNumberRequest1Number EnvelopeFieldCreateManyTypeNumberRequest1 = "NUMBER"
+)
+
+func (e EnvelopeFieldCreateManyTypeNumberRequest1) ToPointer() *EnvelopeFieldCreateManyTypeNumberRequest1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeNumberRequest1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "NUMBER":
+		*e = EnvelopeFieldCreateManyTypeNumberRequest1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeNumberRequest1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowNumber1 string
+
+const (
+	EnvelopeFieldCreateManyOverflowNumber1Auto       EnvelopeFieldCreateManyOverflowNumber1 = "auto"
+	EnvelopeFieldCreateManyOverflowNumber1Horizontal EnvelopeFieldCreateManyOverflowNumber1 = "horizontal"
+	EnvelopeFieldCreateManyOverflowNumber1Vertical   EnvelopeFieldCreateManyOverflowNumber1 = "vertical"
+	EnvelopeFieldCreateManyOverflowNumber1Crop       EnvelopeFieldCreateManyOverflowNumber1 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowNumber1) ToPointer() *EnvelopeFieldCreateManyOverflowNumber1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowNumber1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowNumber1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowNumber1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeNumberRequest2 string
+
+const (
+	EnvelopeFieldCreateManyTypeNumberRequest2Number EnvelopeFieldCreateManyTypeNumberRequest2 = "number"
+)
+
+func (e EnvelopeFieldCreateManyTypeNumberRequest2) ToPointer() *EnvelopeFieldCreateManyTypeNumberRequest2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeNumberRequest2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "number":
+		*e = EnvelopeFieldCreateManyTypeNumberRequest2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeNumberRequest2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTextAlignNumber1 string
+
+const (
+	EnvelopeFieldCreateManyTextAlignNumber1Left   EnvelopeFieldCreateManyTextAlignNumber1 = "left"
+	EnvelopeFieldCreateManyTextAlignNumber1Center EnvelopeFieldCreateManyTextAlignNumber1 = "center"
+	EnvelopeFieldCreateManyTextAlignNumber1Right  EnvelopeFieldCreateManyTextAlignNumber1 = "right"
+)
+
+func (e EnvelopeFieldCreateManyTextAlignNumber1) ToPointer() *EnvelopeFieldCreateManyTextAlignNumber1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTextAlignNumber1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = EnvelopeFieldCreateManyTextAlignNumber1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignNumber1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyVerticalAlignNumber1 string
+
+const (
+	EnvelopeFieldCreateManyVerticalAlignNumber1Top    EnvelopeFieldCreateManyVerticalAlignNumber1 = "top"
+	EnvelopeFieldCreateManyVerticalAlignNumber1Middle EnvelopeFieldCreateManyVerticalAlignNumber1 = "middle"
+	EnvelopeFieldCreateManyVerticalAlignNumber1Bottom EnvelopeFieldCreateManyVerticalAlignNumber1 = "bottom"
+)
+
+func (e EnvelopeFieldCreateManyVerticalAlignNumber1) ToPointer() *EnvelopeFieldCreateManyVerticalAlignNumber1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyVerticalAlignNumber1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = EnvelopeFieldCreateManyVerticalAlignNumber1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyVerticalAlignNumber1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaNumberRequest1 struct {
+	Label         *string                                      `json:"label,omitempty"`
+	Placeholder   *string                                      `json:"placeholder,omitempty"`
+	Required      *bool                                        `json:"required,omitempty"`
+	ReadOnly      *bool                                        `json:"readOnly,omitempty"`
+	FontSize      *float64                                     `default:"12" json:"fontSize"`
+	Overflow      *EnvelopeFieldCreateManyOverflowNumber1      `json:"overflow,omitempty"`
+	Type          EnvelopeFieldCreateManyTypeNumberRequest2    `json:"type"`
+	NumberFormat  *string                                      `json:"numberFormat,omitempty"`
+	Value         *string                                      `json:"value,omitempty"`
+	MinValue      *float64                                     `json:"minValue,omitempty"`
+	MaxValue      *float64                                     `json:"maxValue,omitempty"`
+	TextAlign     *EnvelopeFieldCreateManyTextAlignNumber1     `json:"textAlign,omitempty"`
+	LineHeight    *float64                                     `json:"lineHeight,omitempty"`
+	LetterSpacing *float64                                     `json:"letterSpacing,omitempty"`
+	VerticalAlign *EnvelopeFieldCreateManyVerticalAlignNumber1 `json:"verticalAlign,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaNumberRequest1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) GetOverflow() *EnvelopeFieldCreateManyOverflowNumber1 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) GetType() EnvelopeFieldCreateManyTypeNumberRequest2 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeNumberRequest2("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) GetNumberFormat() *string {
+	if e == nil {
+		return nil
+	}
+	return e.NumberFormat
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) GetValue() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Value
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) GetMinValue() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.MinValue
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) GetMaxValue() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.MaxValue
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) GetTextAlign() *EnvelopeFieldCreateManyTextAlignNumber1 {
+	if e == nil {
+		return nil
+	}
+	return e.TextAlign
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) GetLineHeight() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.LineHeight
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) GetLetterSpacing() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.LetterSpacing
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberRequest1) GetVerticalAlign() *EnvelopeFieldCreateManyVerticalAlignNumber1 {
+	if e == nil {
+		return nil
+	}
+	return e.VerticalAlign
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetanumberrequest1
+// #endregion class-body-envelopefieldcreatemanyfieldmetanumberrequest1
+
+type EnvelopeFieldCreateManyDataNumber1 struct {
+	Type           EnvelopeFieldCreateManyTypeNumberRequest1       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaNumberRequest1 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                         `json:"recipientId"`
+	EnvelopeItemID *string                                         `json:"envelopeItemId,omitempty"`
+	Page           float64                                         `json:"page"`
+	PositionX      float64                                         `json:"positionX"`
+	PositionY      float64                                         `json:"positionY"`
+	Width          float64                                         `json:"width"`
+	Height         float64                                         `json:"height"`
+}
+
+func (e EnvelopeFieldCreateManyDataNumber1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "page", "positionX", "positionY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber1) GetType() EnvelopeFieldCreateManyTypeNumberRequest1 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeNumberRequest1("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber1) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaNumberRequest1 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber1) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber1) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber1) GetPage() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Page
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber1) GetPositionX() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionX
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber1) GetPositionY() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionY
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber1) GetWidth() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataNumber1) GetHeight() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Height
+}
+
+// #region class-body-envelopefieldcreatemanydatanumber1
+// #endregion class-body-envelopefieldcreatemanydatanumber1
+
+type EnvelopeFieldCreateManyTypeTextRequest1 string
+
+const (
+	EnvelopeFieldCreateManyTypeTextRequest1Text EnvelopeFieldCreateManyTypeTextRequest1 = "TEXT"
+)
+
+func (e EnvelopeFieldCreateManyTypeTextRequest1) ToPointer() *EnvelopeFieldCreateManyTypeTextRequest1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeTextRequest1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "TEXT":
+		*e = EnvelopeFieldCreateManyTypeTextRequest1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeTextRequest1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowText1 string
+
+const (
+	EnvelopeFieldCreateManyOverflowText1Auto       EnvelopeFieldCreateManyOverflowText1 = "auto"
+	EnvelopeFieldCreateManyOverflowText1Horizontal EnvelopeFieldCreateManyOverflowText1 = "horizontal"
+	EnvelopeFieldCreateManyOverflowText1Vertical   EnvelopeFieldCreateManyOverflowText1 = "vertical"
+	EnvelopeFieldCreateManyOverflowText1Crop       EnvelopeFieldCreateManyOverflowText1 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowText1) ToPointer() *EnvelopeFieldCreateManyOverflowText1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowText1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowText1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowText1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeTextRequest2 string
+
+const (
+	EnvelopeFieldCreateManyTypeTextRequest2Text EnvelopeFieldCreateManyTypeTextRequest2 = "text"
+)
+
+func (e EnvelopeFieldCreateManyTypeTextRequest2) ToPointer() *EnvelopeFieldCreateManyTypeTextRequest2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeTextRequest2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "text":
+		*e = EnvelopeFieldCreateManyTypeTextRequest2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeTextRequest2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTextAlignText1 string
+
+const (
+	EnvelopeFieldCreateManyTextAlignText1Left   EnvelopeFieldCreateManyTextAlignText1 = "left"
+	EnvelopeFieldCreateManyTextAlignText1Center EnvelopeFieldCreateManyTextAlignText1 = "center"
+	EnvelopeFieldCreateManyTextAlignText1Right  EnvelopeFieldCreateManyTextAlignText1 = "right"
+)
+
+func (e EnvelopeFieldCreateManyTextAlignText1) ToPointer() *EnvelopeFieldCreateManyTextAlignText1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTextAlignText1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = EnvelopeFieldCreateManyTextAlignText1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignText1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyVerticalAlignText1 string
+
+const (
+	EnvelopeFieldCreateManyVerticalAlignText1Top    EnvelopeFieldCreateManyVerticalAlignText1 = "top"
+	EnvelopeFieldCreateManyVerticalAlignText1Middle EnvelopeFieldCreateManyVerticalAlignText1 = "middle"
+	EnvelopeFieldCreateManyVerticalAlignText1Bottom EnvelopeFieldCreateManyVerticalAlignText1 = "bottom"
+)
+
+func (e EnvelopeFieldCreateManyVerticalAlignText1) ToPointer() *EnvelopeFieldCreateManyVerticalAlignText1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyVerticalAlignText1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "top":
+		fallthrough
+	case "middle":
+		fallthrough
+	case "bottom":
+		*e = EnvelopeFieldCreateManyVerticalAlignText1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyVerticalAlignText1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaTextRequest1 struct {
+	Label          *string                                    `json:"label,omitempty"`
+	Placeholder    *string                                    `json:"placeholder,omitempty"`
+	Required       *bool                                      `json:"required,omitempty"`
+	ReadOnly       *bool                                      `json:"readOnly,omitempty"`
+	FontSize       *float64                                   `default:"12" json:"fontSize"`
+	Overflow       *EnvelopeFieldCreateManyOverflowText1      `json:"overflow,omitempty"`
+	Type           EnvelopeFieldCreateManyTypeTextRequest2    `json:"type"`
+	Text           *string                                    `json:"text,omitempty"`
+	CharacterLimit *float64                                   `json:"characterLimit,omitempty"`
+	TextAlign      *EnvelopeFieldCreateManyTextAlignText1     `json:"textAlign,omitempty"`
+	LineHeight     *float64                                   `json:"lineHeight,omitempty"`
+	LetterSpacing  *float64                                   `json:"letterSpacing,omitempty"`
+	VerticalAlign  *EnvelopeFieldCreateManyVerticalAlignText1 `json:"verticalAlign,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaTextRequest1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest1) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest1) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest1) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest1) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest1) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest1) GetOverflow() *EnvelopeFieldCreateManyOverflowText1 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest1) GetType() EnvelopeFieldCreateManyTypeTextRequest2 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeTextRequest2("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest1) GetText() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Text
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest1) GetCharacterLimit() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.CharacterLimit
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest1) GetTextAlign() *EnvelopeFieldCreateManyTextAlignText1 {
+	if e == nil {
+		return nil
+	}
+	return e.TextAlign
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest1) GetLineHeight() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.LineHeight
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest1) GetLetterSpacing() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.LetterSpacing
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextRequest1) GetVerticalAlign() *EnvelopeFieldCreateManyVerticalAlignText1 {
+	if e == nil {
+		return nil
+	}
+	return e.VerticalAlign
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetatextrequest1
+// #endregion class-body-envelopefieldcreatemanyfieldmetatextrequest1
+
+type EnvelopeFieldCreateManyDataText1 struct {
+	Type           EnvelopeFieldCreateManyTypeTextRequest1       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaTextRequest1 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                       `json:"recipientId"`
+	EnvelopeItemID *string                                       `json:"envelopeItemId,omitempty"`
+	Page           float64                                       `json:"page"`
+	PositionX      float64                                       `json:"positionX"`
+	PositionY      float64                                       `json:"positionY"`
+	Width          float64                                       `json:"width"`
+	Height         float64                                       `json:"height"`
+}
+
+func (e EnvelopeFieldCreateManyDataText1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataText1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "page", "positionX", "positionY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataText1) GetType() EnvelopeFieldCreateManyTypeTextRequest1 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeTextRequest1("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataText1) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaTextRequest1 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataText1) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataText1) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataText1) GetPage() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Page
+}
+
+func (e *EnvelopeFieldCreateManyDataText1) GetPositionX() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionX
+}
+
+func (e *EnvelopeFieldCreateManyDataText1) GetPositionY() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionY
+}
+
+func (e *EnvelopeFieldCreateManyDataText1) GetWidth() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataText1) GetHeight() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Height
+}
+
+// #region class-body-envelopefieldcreatemanydatatext1
+// #endregion class-body-envelopefieldcreatemanydatatext1
+
+type EnvelopeFieldCreateManyTypeDateRequest1 string
+
+const (
+	EnvelopeFieldCreateManyTypeDateRequest1Date EnvelopeFieldCreateManyTypeDateRequest1 = "DATE"
+)
+
+func (e EnvelopeFieldCreateManyTypeDateRequest1) ToPointer() *EnvelopeFieldCreateManyTypeDateRequest1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeDateRequest1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "DATE":
+		*e = EnvelopeFieldCreateManyTypeDateRequest1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeDateRequest1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowDate1 string
+
+const (
+	EnvelopeFieldCreateManyOverflowDate1Auto       EnvelopeFieldCreateManyOverflowDate1 = "auto"
+	EnvelopeFieldCreateManyOverflowDate1Horizontal EnvelopeFieldCreateManyOverflowDate1 = "horizontal"
+	EnvelopeFieldCreateManyOverflowDate1Vertical   EnvelopeFieldCreateManyOverflowDate1 = "vertical"
+	EnvelopeFieldCreateManyOverflowDate1Crop       EnvelopeFieldCreateManyOverflowDate1 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowDate1) ToPointer() *EnvelopeFieldCreateManyOverflowDate1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowDate1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowDate1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowDate1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeDateRequest2 string
+
+const (
+	EnvelopeFieldCreateManyTypeDateRequest2Date EnvelopeFieldCreateManyTypeDateRequest2 = "date"
+)
+
+func (e EnvelopeFieldCreateManyTypeDateRequest2) ToPointer() *EnvelopeFieldCreateManyTypeDateRequest2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeDateRequest2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "date":
+		*e = EnvelopeFieldCreateManyTypeDateRequest2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeDateRequest2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTextAlignDate1 string
+
+const (
+	EnvelopeFieldCreateManyTextAlignDate1Left   EnvelopeFieldCreateManyTextAlignDate1 = "left"
+	EnvelopeFieldCreateManyTextAlignDate1Center EnvelopeFieldCreateManyTextAlignDate1 = "center"
+	EnvelopeFieldCreateManyTextAlignDate1Right  EnvelopeFieldCreateManyTextAlignDate1 = "right"
+)
+
+func (e EnvelopeFieldCreateManyTextAlignDate1) ToPointer() *EnvelopeFieldCreateManyTextAlignDate1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTextAlignDate1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = EnvelopeFieldCreateManyTextAlignDate1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignDate1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaDateRequest1 struct {
+	Label       *string                                 `json:"label,omitempty"`
+	Placeholder *string                                 `json:"placeholder,omitempty"`
+	Required    *bool                                   `json:"required,omitempty"`
+	ReadOnly    *bool                                   `json:"readOnly,omitempty"`
+	FontSize    *float64                                `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowDate1   `default:"auto" json:"overflow"`
+	Type        EnvelopeFieldCreateManyTypeDateRequest2 `json:"type"`
+	TextAlign   *EnvelopeFieldCreateManyTextAlignDate1  `json:"textAlign,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaDateRequest1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest1) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest1) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest1) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest1) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest1) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest1) GetOverflow() *EnvelopeFieldCreateManyOverflowDate1 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest1) GetType() EnvelopeFieldCreateManyTypeDateRequest2 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeDateRequest2("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateRequest1) GetTextAlign() *EnvelopeFieldCreateManyTextAlignDate1 {
+	if e == nil {
+		return nil
+	}
+	return e.TextAlign
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetadaterequest1
+// #endregion class-body-envelopefieldcreatemanyfieldmetadaterequest1
+
+type EnvelopeFieldCreateManyDataDate1 struct {
+	Type           EnvelopeFieldCreateManyTypeDateRequest1       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaDateRequest1 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                       `json:"recipientId"`
+	EnvelopeItemID *string                                       `json:"envelopeItemId,omitempty"`
+	Page           float64                                       `json:"page"`
+	PositionX      float64                                       `json:"positionX"`
+	PositionY      float64                                       `json:"positionY"`
+	Width          float64                                       `json:"width"`
+	Height         float64                                       `json:"height"`
+}
+
+func (e EnvelopeFieldCreateManyDataDate1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataDate1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "page", "positionX", "positionY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataDate1) GetType() EnvelopeFieldCreateManyTypeDateRequest1 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeDateRequest1("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataDate1) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaDateRequest1 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataDate1) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataDate1) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataDate1) GetPage() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Page
+}
+
+func (e *EnvelopeFieldCreateManyDataDate1) GetPositionX() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionX
+}
+
+func (e *EnvelopeFieldCreateManyDataDate1) GetPositionY() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionY
+}
+
+func (e *EnvelopeFieldCreateManyDataDate1) GetWidth() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataDate1) GetHeight() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Height
+}
+
+// #region class-body-envelopefieldcreatemanydatadate1
+// #endregion class-body-envelopefieldcreatemanydatadate1
+
+type EnvelopeFieldCreateManyTypeEmailRequest1 string
+
+const (
+	EnvelopeFieldCreateManyTypeEmailRequest1Email EnvelopeFieldCreateManyTypeEmailRequest1 = "EMAIL"
+)
+
+func (e EnvelopeFieldCreateManyTypeEmailRequest1) ToPointer() *EnvelopeFieldCreateManyTypeEmailRequest1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeEmailRequest1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "EMAIL":
+		*e = EnvelopeFieldCreateManyTypeEmailRequest1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeEmailRequest1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowEmail1 string
+
+const (
+	EnvelopeFieldCreateManyOverflowEmail1Auto       EnvelopeFieldCreateManyOverflowEmail1 = "auto"
+	EnvelopeFieldCreateManyOverflowEmail1Horizontal EnvelopeFieldCreateManyOverflowEmail1 = "horizontal"
+	EnvelopeFieldCreateManyOverflowEmail1Vertical   EnvelopeFieldCreateManyOverflowEmail1 = "vertical"
+	EnvelopeFieldCreateManyOverflowEmail1Crop       EnvelopeFieldCreateManyOverflowEmail1 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowEmail1) ToPointer() *EnvelopeFieldCreateManyOverflowEmail1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowEmail1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowEmail1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowEmail1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeEmailRequest2 string
+
+const (
+	EnvelopeFieldCreateManyTypeEmailRequest2Email EnvelopeFieldCreateManyTypeEmailRequest2 = "email"
+)
+
+func (e EnvelopeFieldCreateManyTypeEmailRequest2) ToPointer() *EnvelopeFieldCreateManyTypeEmailRequest2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeEmailRequest2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "email":
+		*e = EnvelopeFieldCreateManyTypeEmailRequest2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeEmailRequest2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTextAlignEmail1 string
+
+const (
+	EnvelopeFieldCreateManyTextAlignEmail1Left   EnvelopeFieldCreateManyTextAlignEmail1 = "left"
+	EnvelopeFieldCreateManyTextAlignEmail1Center EnvelopeFieldCreateManyTextAlignEmail1 = "center"
+	EnvelopeFieldCreateManyTextAlignEmail1Right  EnvelopeFieldCreateManyTextAlignEmail1 = "right"
+)
+
+func (e EnvelopeFieldCreateManyTextAlignEmail1) ToPointer() *EnvelopeFieldCreateManyTextAlignEmail1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTextAlignEmail1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = EnvelopeFieldCreateManyTextAlignEmail1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignEmail1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaEmailRequest1 struct {
+	Label       *string                                  `json:"label,omitempty"`
+	Placeholder *string                                  `json:"placeholder,omitempty"`
+	Required    *bool                                    `json:"required,omitempty"`
+	ReadOnly    *bool                                    `json:"readOnly,omitempty"`
+	FontSize    *float64                                 `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowEmail1   `default:"auto" json:"overflow"`
+	Type        EnvelopeFieldCreateManyTypeEmailRequest2 `json:"type"`
+	TextAlign   *EnvelopeFieldCreateManyTextAlignEmail1  `json:"textAlign,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaEmailRequest1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest1) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest1) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest1) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest1) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest1) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest1) GetOverflow() *EnvelopeFieldCreateManyOverflowEmail1 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest1) GetType() EnvelopeFieldCreateManyTypeEmailRequest2 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeEmailRequest2("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailRequest1) GetTextAlign() *EnvelopeFieldCreateManyTextAlignEmail1 {
+	if e == nil {
+		return nil
+	}
+	return e.TextAlign
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetaemailrequest1
+// #endregion class-body-envelopefieldcreatemanyfieldmetaemailrequest1
+
+type EnvelopeFieldCreateManyDataEmail1 struct {
+	Type           EnvelopeFieldCreateManyTypeEmailRequest1       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaEmailRequest1 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                        `json:"recipientId"`
+	EnvelopeItemID *string                                        `json:"envelopeItemId,omitempty"`
+	Page           float64                                        `json:"page"`
+	PositionX      float64                                        `json:"positionX"`
+	PositionY      float64                                        `json:"positionY"`
+	Width          float64                                        `json:"width"`
+	Height         float64                                        `json:"height"`
+}
+
+func (e EnvelopeFieldCreateManyDataEmail1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "page", "positionX", "positionY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail1) GetType() EnvelopeFieldCreateManyTypeEmailRequest1 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeEmailRequest1("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail1) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaEmailRequest1 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail1) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail1) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail1) GetPage() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Page
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail1) GetPositionX() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionX
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail1) GetPositionY() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionY
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail1) GetWidth() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataEmail1) GetHeight() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Height
+}
+
+// #region class-body-envelopefieldcreatemanydataemail1
+// #endregion class-body-envelopefieldcreatemanydataemail1
+
+type EnvelopeFieldCreateManyTypeNameRequest1 string
+
+const (
+	EnvelopeFieldCreateManyTypeNameRequest1Name EnvelopeFieldCreateManyTypeNameRequest1 = "NAME"
+)
+
+func (e EnvelopeFieldCreateManyTypeNameRequest1) ToPointer() *EnvelopeFieldCreateManyTypeNameRequest1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeNameRequest1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "NAME":
+		*e = EnvelopeFieldCreateManyTypeNameRequest1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeNameRequest1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowName1 string
+
+const (
+	EnvelopeFieldCreateManyOverflowName1Auto       EnvelopeFieldCreateManyOverflowName1 = "auto"
+	EnvelopeFieldCreateManyOverflowName1Horizontal EnvelopeFieldCreateManyOverflowName1 = "horizontal"
+	EnvelopeFieldCreateManyOverflowName1Vertical   EnvelopeFieldCreateManyOverflowName1 = "vertical"
+	EnvelopeFieldCreateManyOverflowName1Crop       EnvelopeFieldCreateManyOverflowName1 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowName1) ToPointer() *EnvelopeFieldCreateManyOverflowName1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowName1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowName1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowName1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeNameRequest2 string
+
+const (
+	EnvelopeFieldCreateManyTypeNameRequest2Name EnvelopeFieldCreateManyTypeNameRequest2 = "name"
+)
+
+func (e EnvelopeFieldCreateManyTypeNameRequest2) ToPointer() *EnvelopeFieldCreateManyTypeNameRequest2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeNameRequest2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "name":
+		*e = EnvelopeFieldCreateManyTypeNameRequest2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeNameRequest2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTextAlignName1 string
+
+const (
+	EnvelopeFieldCreateManyTextAlignName1Left   EnvelopeFieldCreateManyTextAlignName1 = "left"
+	EnvelopeFieldCreateManyTextAlignName1Center EnvelopeFieldCreateManyTextAlignName1 = "center"
+	EnvelopeFieldCreateManyTextAlignName1Right  EnvelopeFieldCreateManyTextAlignName1 = "right"
+)
+
+func (e EnvelopeFieldCreateManyTextAlignName1) ToPointer() *EnvelopeFieldCreateManyTextAlignName1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTextAlignName1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = EnvelopeFieldCreateManyTextAlignName1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignName1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaNameRequest1 struct {
+	Label       *string                                 `json:"label,omitempty"`
+	Placeholder *string                                 `json:"placeholder,omitempty"`
+	Required    *bool                                   `json:"required,omitempty"`
+	ReadOnly    *bool                                   `json:"readOnly,omitempty"`
+	FontSize    *float64                                `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowName1   `json:"overflow,omitempty"`
+	Type        EnvelopeFieldCreateManyTypeNameRequest2 `json:"type"`
+	TextAlign   *EnvelopeFieldCreateManyTextAlignName1  `json:"textAlign,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaNameRequest1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest1) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest1) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest1) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest1) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest1) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest1) GetOverflow() *EnvelopeFieldCreateManyOverflowName1 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest1) GetType() EnvelopeFieldCreateManyTypeNameRequest2 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeNameRequest2("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameRequest1) GetTextAlign() *EnvelopeFieldCreateManyTextAlignName1 {
+	if e == nil {
+		return nil
+	}
+	return e.TextAlign
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetanamerequest1
+// #endregion class-body-envelopefieldcreatemanyfieldmetanamerequest1
+
+type EnvelopeFieldCreateManyDataName1 struct {
+	Type           EnvelopeFieldCreateManyTypeNameRequest1       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaNameRequest1 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                       `json:"recipientId"`
+	EnvelopeItemID *string                                       `json:"envelopeItemId,omitempty"`
+	Page           float64                                       `json:"page"`
+	PositionX      float64                                       `json:"positionX"`
+	PositionY      float64                                       `json:"positionY"`
+	Width          float64                                       `json:"width"`
+	Height         float64                                       `json:"height"`
+}
+
+func (e EnvelopeFieldCreateManyDataName1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataName1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "page", "positionX", "positionY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataName1) GetType() EnvelopeFieldCreateManyTypeNameRequest1 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeNameRequest1("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataName1) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaNameRequest1 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataName1) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataName1) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataName1) GetPage() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Page
+}
+
+func (e *EnvelopeFieldCreateManyDataName1) GetPositionX() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionX
+}
+
+func (e *EnvelopeFieldCreateManyDataName1) GetPositionY() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionY
+}
+
+func (e *EnvelopeFieldCreateManyDataName1) GetWidth() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataName1) GetHeight() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Height
+}
+
+// #region class-body-envelopefieldcreatemanydataname1
+// #endregion class-body-envelopefieldcreatemanydataname1
+
+type EnvelopeFieldCreateManyTypeInitialsRequest1 string
+
+const (
+	EnvelopeFieldCreateManyTypeInitialsRequest1Initials EnvelopeFieldCreateManyTypeInitialsRequest1 = "INITIALS"
+)
+
+func (e EnvelopeFieldCreateManyTypeInitialsRequest1) ToPointer() *EnvelopeFieldCreateManyTypeInitialsRequest1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeInitialsRequest1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "INITIALS":
+		*e = EnvelopeFieldCreateManyTypeInitialsRequest1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeInitialsRequest1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowInitials1 string
+
+const (
+	EnvelopeFieldCreateManyOverflowInitials1Auto       EnvelopeFieldCreateManyOverflowInitials1 = "auto"
+	EnvelopeFieldCreateManyOverflowInitials1Horizontal EnvelopeFieldCreateManyOverflowInitials1 = "horizontal"
+	EnvelopeFieldCreateManyOverflowInitials1Vertical   EnvelopeFieldCreateManyOverflowInitials1 = "vertical"
+	EnvelopeFieldCreateManyOverflowInitials1Crop       EnvelopeFieldCreateManyOverflowInitials1 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowInitials1) ToPointer() *EnvelopeFieldCreateManyOverflowInitials1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowInitials1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowInitials1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowInitials1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeInitialsRequest2 string
+
+const (
+	EnvelopeFieldCreateManyTypeInitialsRequest2Initials EnvelopeFieldCreateManyTypeInitialsRequest2 = "initials"
+)
+
+func (e EnvelopeFieldCreateManyTypeInitialsRequest2) ToPointer() *EnvelopeFieldCreateManyTypeInitialsRequest2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeInitialsRequest2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "initials":
+		*e = EnvelopeFieldCreateManyTypeInitialsRequest2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeInitialsRequest2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTextAlignInitials1 string
+
+const (
+	EnvelopeFieldCreateManyTextAlignInitials1Left   EnvelopeFieldCreateManyTextAlignInitials1 = "left"
+	EnvelopeFieldCreateManyTextAlignInitials1Center EnvelopeFieldCreateManyTextAlignInitials1 = "center"
+	EnvelopeFieldCreateManyTextAlignInitials1Right  EnvelopeFieldCreateManyTextAlignInitials1 = "right"
+)
+
+func (e EnvelopeFieldCreateManyTextAlignInitials1) ToPointer() *EnvelopeFieldCreateManyTextAlignInitials1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTextAlignInitials1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "left":
+		fallthrough
+	case "center":
+		fallthrough
+	case "right":
+		*e = EnvelopeFieldCreateManyTextAlignInitials1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignInitials1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaInitialsRequest1 struct {
+	Label       *string                                     `json:"label,omitempty"`
+	Placeholder *string                                     `json:"placeholder,omitempty"`
+	Required    *bool                                       `json:"required,omitempty"`
+	ReadOnly    *bool                                       `json:"readOnly,omitempty"`
+	FontSize    *float64                                    `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowInitials1   `json:"overflow,omitempty"`
+	Type        EnvelopeFieldCreateManyTypeInitialsRequest2 `json:"type"`
+	TextAlign   *EnvelopeFieldCreateManyTextAlignInitials1  `json:"textAlign,omitempty"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaInitialsRequest1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest1) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest1) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest1) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest1) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest1) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest1) GetOverflow() *EnvelopeFieldCreateManyOverflowInitials1 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest1) GetType() EnvelopeFieldCreateManyTypeInitialsRequest2 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeInitialsRequest2("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsRequest1) GetTextAlign() *EnvelopeFieldCreateManyTextAlignInitials1 {
+	if e == nil {
+		return nil
+	}
+	return e.TextAlign
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetainitialsrequest1
+// #endregion class-body-envelopefieldcreatemanyfieldmetainitialsrequest1
+
+type EnvelopeFieldCreateManyDataInitials1 struct {
+	Type           EnvelopeFieldCreateManyTypeInitialsRequest1       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaInitialsRequest1 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                           `json:"recipientId"`
+	EnvelopeItemID *string                                           `json:"envelopeItemId,omitempty"`
+	Page           float64                                           `json:"page"`
+	PositionX      float64                                           `json:"positionX"`
+	PositionY      float64                                           `json:"positionY"`
+	Width          float64                                           `json:"width"`
+	Height         float64                                           `json:"height"`
+}
+
+func (e EnvelopeFieldCreateManyDataInitials1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "page", "positionX", "positionY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials1) GetType() EnvelopeFieldCreateManyTypeInitialsRequest1 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeInitialsRequest1("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials1) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaInitialsRequest1 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials1) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials1) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials1) GetPage() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Page
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials1) GetPositionX() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionX
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials1) GetPositionY() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionY
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials1) GetWidth() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataInitials1) GetHeight() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Height
+}
+
+// #region class-body-envelopefieldcreatemanydatainitials1
+// #endregion class-body-envelopefieldcreatemanydatainitials1
+
+type EnvelopeFieldCreateManyTypeFreeSignature1 string
+
+const (
+	EnvelopeFieldCreateManyTypeFreeSignature1FreeSignature EnvelopeFieldCreateManyTypeFreeSignature1 = "FREE_SIGNATURE"
+)
+
+func (e EnvelopeFieldCreateManyTypeFreeSignature1) ToPointer() *EnvelopeFieldCreateManyTypeFreeSignature1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeFreeSignature1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "FREE_SIGNATURE":
+		*e = EnvelopeFieldCreateManyTypeFreeSignature1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeFreeSignature1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyDataFreeSignature1 struct {
+	Type           EnvelopeFieldCreateManyTypeFreeSignature1 `json:"type"`
+	RecipientID    float64                                   `json:"recipientId"`
+	EnvelopeItemID *string                                   `json:"envelopeItemId,omitempty"`
+	Page           float64                                   `json:"page"`
+	PositionX      float64                                   `json:"positionX"`
+	PositionY      float64                                   `json:"positionY"`
+	Width          float64                                   `json:"width"`
+	Height         float64                                   `json:"height"`
+}
+
+func (e EnvelopeFieldCreateManyDataFreeSignature1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "page", "positionX", "positionY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature1) GetType() EnvelopeFieldCreateManyTypeFreeSignature1 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeFreeSignature1("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature1) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature1) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature1) GetPage() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Page
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature1) GetPositionX() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionX
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature1) GetPositionY() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionY
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature1) GetWidth() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataFreeSignature1) GetHeight() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Height
+}
+
+// #region class-body-envelopefieldcreatemanydatafreesignature1
+// #endregion class-body-envelopefieldcreatemanydatafreesignature1
+
+type EnvelopeFieldCreateManyTypeSignatureRequest1 string
+
+const (
+	EnvelopeFieldCreateManyTypeSignatureRequest1Signature EnvelopeFieldCreateManyTypeSignatureRequest1 = "SIGNATURE"
+)
+
+func (e EnvelopeFieldCreateManyTypeSignatureRequest1) ToPointer() *EnvelopeFieldCreateManyTypeSignatureRequest1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeSignatureRequest1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "SIGNATURE":
+		*e = EnvelopeFieldCreateManyTypeSignatureRequest1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeSignatureRequest1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowSignature1 string
+
+const (
+	EnvelopeFieldCreateManyOverflowSignature1Auto       EnvelopeFieldCreateManyOverflowSignature1 = "auto"
+	EnvelopeFieldCreateManyOverflowSignature1Horizontal EnvelopeFieldCreateManyOverflowSignature1 = "horizontal"
+	EnvelopeFieldCreateManyOverflowSignature1Vertical   EnvelopeFieldCreateManyOverflowSignature1 = "vertical"
+	EnvelopeFieldCreateManyOverflowSignature1Crop       EnvelopeFieldCreateManyOverflowSignature1 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowSignature1) ToPointer() *EnvelopeFieldCreateManyOverflowSignature1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowSignature1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowSignature1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowSignature1: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyTypeSignatureRequest2 string
+
+const (
+	EnvelopeFieldCreateManyTypeSignatureRequest2Signature EnvelopeFieldCreateManyTypeSignatureRequest2 = "signature"
+)
+
+func (e EnvelopeFieldCreateManyTypeSignatureRequest2) ToPointer() *EnvelopeFieldCreateManyTypeSignatureRequest2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyTypeSignatureRequest2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "signature":
+		*e = EnvelopeFieldCreateManyTypeSignatureRequest2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeSignatureRequest2: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyFieldMetaSignatureRequest1 struct {
+	Label       *string                                      `json:"label,omitempty"`
+	Placeholder *string                                      `json:"placeholder,omitempty"`
+	Required    *bool                                        `json:"required,omitempty"`
+	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
+	FontSize    *float64                                     `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowSignature1   `default:"auto" json:"overflow"`
+	Type        EnvelopeFieldCreateManyTypeSignatureRequest2 `json:"type"`
+}
+
+func (e EnvelopeFieldCreateManyFieldMetaSignatureRequest1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest1) GetLabel() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Label
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest1) GetPlaceholder() *string {
+	if e == nil {
+		return nil
+	}
+	return e.Placeholder
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest1) GetRequired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.Required
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest1) GetReadOnly() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.ReadOnly
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest1) GetFontSize() *float64 {
+	if e == nil {
+		return nil
+	}
+	return e.FontSize
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest1) GetOverflow() *EnvelopeFieldCreateManyOverflowSignature1 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureRequest1) GetType() EnvelopeFieldCreateManyTypeSignatureRequest2 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeSignatureRequest2("")
+	}
+	return e.Type
+}
+
+// #region class-body-envelopefieldcreatemanyfieldmetasignaturerequest1
+// #endregion class-body-envelopefieldcreatemanyfieldmetasignaturerequest1
+
+type EnvelopeFieldCreateManyDataSignature1 struct {
+	Type           EnvelopeFieldCreateManyTypeSignatureRequest1       `json:"type"`
+	FieldMeta      *EnvelopeFieldCreateManyFieldMetaSignatureRequest1 `json:"fieldMeta,omitempty"`
+	RecipientID    float64                                            `json:"recipientId"`
+	EnvelopeItemID *string                                            `json:"envelopeItemId,omitempty"`
+	Page           float64                                            `json:"page"`
+	PositionX      float64                                            `json:"positionX"`
+	PositionY      float64                                            `json:"positionY"`
+	Width          float64                                            `json:"width"`
+	Height         float64                                            `json:"height"`
+}
+
+func (e EnvelopeFieldCreateManyDataSignature1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type", "recipientId", "page", "positionX", "positionY", "width", "height"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature1) GetType() EnvelopeFieldCreateManyTypeSignatureRequest1 {
+	if e == nil {
+		return EnvelopeFieldCreateManyTypeSignatureRequest1("")
+	}
+	return e.Type
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature1) GetFieldMeta() *EnvelopeFieldCreateManyFieldMetaSignatureRequest1 {
+	if e == nil {
+		return nil
+	}
+	return e.FieldMeta
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature1) GetRecipientID() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.RecipientID
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature1) GetEnvelopeItemID() *string {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeItemID
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature1) GetPage() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Page
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature1) GetPositionX() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionX
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature1) GetPositionY() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.PositionY
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature1) GetWidth() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Width
+}
+
+func (e *EnvelopeFieldCreateManyDataSignature1) GetHeight() float64 {
+	if e == nil {
+		return 0.0
+	}
+	return e.Height
+}
+
+// #region class-body-envelopefieldcreatemanydatasignature1
+// #endregion class-body-envelopefieldcreatemanydatasignature1
+
+type EnvelopeFieldCreateManyDataUnion2Type string
+
+const (
+	EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataSignature1     EnvelopeFieldCreateManyDataUnion2Type = "envelope_field_createMany_data_Signature_1"
+	EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataFreeSignature1 EnvelopeFieldCreateManyDataUnion2Type = "envelope_field_createMany_data_FreeSignature_1"
+	EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataInitials1      EnvelopeFieldCreateManyDataUnion2Type = "envelope_field_createMany_data_Initials_1"
+	EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataName1          EnvelopeFieldCreateManyDataUnion2Type = "envelope_field_createMany_data_Name_1"
+	EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataEmail1         EnvelopeFieldCreateManyDataUnion2Type = "envelope_field_createMany_data_Email_1"
+	EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataDate1          EnvelopeFieldCreateManyDataUnion2Type = "envelope_field_createMany_data_Date_1"
+	EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataText1          EnvelopeFieldCreateManyDataUnion2Type = "envelope_field_createMany_data_Text_1"
+	EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataNumber1        EnvelopeFieldCreateManyDataUnion2Type = "envelope_field_createMany_data_Number_1"
+	EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataRadio1         EnvelopeFieldCreateManyDataUnion2Type = "envelope_field_createMany_data_Radio_1"
+	EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataCheckbox1      EnvelopeFieldCreateManyDataUnion2Type = "envelope_field_createMany_data_Checkbox_1"
+	EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataDropdown1      EnvelopeFieldCreateManyDataUnion2Type = "envelope_field_createMany_data_Dropdown_1"
+)
+
+type EnvelopeFieldCreateManyDataUnion2 struct {
+	EnvelopeFieldCreateManyDataSignature1     *EnvelopeFieldCreateManyDataSignature1     `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataFreeSignature1 *EnvelopeFieldCreateManyDataFreeSignature1 `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataInitials1      *EnvelopeFieldCreateManyDataInitials1      `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataName1          *EnvelopeFieldCreateManyDataName1          `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataEmail1         *EnvelopeFieldCreateManyDataEmail1         `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataDate1          *EnvelopeFieldCreateManyDataDate1          `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataText1          *EnvelopeFieldCreateManyDataText1          `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataNumber1        *EnvelopeFieldCreateManyDataNumber1        `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataRadio1         *EnvelopeFieldCreateManyDataRadio1         `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataCheckbox1      *EnvelopeFieldCreateManyDataCheckbox1      `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataDropdown1      *EnvelopeFieldCreateManyDataDropdown1      `queryParam:"inline" union:"member"`
+
+	Type EnvelopeFieldCreateManyDataUnion2Type
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion2EnvelopeFieldCreateManyDataSignature1(envelopeFieldCreateManyDataSignature1 EnvelopeFieldCreateManyDataSignature1) EnvelopeFieldCreateManyDataUnion2 {
+	typ := EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataSignature1
+
+	return EnvelopeFieldCreateManyDataUnion2{
+		EnvelopeFieldCreateManyDataSignature1: &envelopeFieldCreateManyDataSignature1,
+		Type:                                  typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion2EnvelopeFieldCreateManyDataFreeSignature1(envelopeFieldCreateManyDataFreeSignature1 EnvelopeFieldCreateManyDataFreeSignature1) EnvelopeFieldCreateManyDataUnion2 {
+	typ := EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataFreeSignature1
+
+	return EnvelopeFieldCreateManyDataUnion2{
+		EnvelopeFieldCreateManyDataFreeSignature1: &envelopeFieldCreateManyDataFreeSignature1,
+		Type: typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion2EnvelopeFieldCreateManyDataInitials1(envelopeFieldCreateManyDataInitials1 EnvelopeFieldCreateManyDataInitials1) EnvelopeFieldCreateManyDataUnion2 {
+	typ := EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataInitials1
+
+	return EnvelopeFieldCreateManyDataUnion2{
+		EnvelopeFieldCreateManyDataInitials1: &envelopeFieldCreateManyDataInitials1,
+		Type:                                 typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion2EnvelopeFieldCreateManyDataName1(envelopeFieldCreateManyDataName1 EnvelopeFieldCreateManyDataName1) EnvelopeFieldCreateManyDataUnion2 {
+	typ := EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataName1
+
+	return EnvelopeFieldCreateManyDataUnion2{
+		EnvelopeFieldCreateManyDataName1: &envelopeFieldCreateManyDataName1,
+		Type:                             typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion2EnvelopeFieldCreateManyDataEmail1(envelopeFieldCreateManyDataEmail1 EnvelopeFieldCreateManyDataEmail1) EnvelopeFieldCreateManyDataUnion2 {
+	typ := EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataEmail1
+
+	return EnvelopeFieldCreateManyDataUnion2{
+		EnvelopeFieldCreateManyDataEmail1: &envelopeFieldCreateManyDataEmail1,
+		Type:                              typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion2EnvelopeFieldCreateManyDataDate1(envelopeFieldCreateManyDataDate1 EnvelopeFieldCreateManyDataDate1) EnvelopeFieldCreateManyDataUnion2 {
+	typ := EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataDate1
+
+	return EnvelopeFieldCreateManyDataUnion2{
+		EnvelopeFieldCreateManyDataDate1: &envelopeFieldCreateManyDataDate1,
+		Type:                             typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion2EnvelopeFieldCreateManyDataText1(envelopeFieldCreateManyDataText1 EnvelopeFieldCreateManyDataText1) EnvelopeFieldCreateManyDataUnion2 {
+	typ := EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataText1
+
+	return EnvelopeFieldCreateManyDataUnion2{
+		EnvelopeFieldCreateManyDataText1: &envelopeFieldCreateManyDataText1,
+		Type:                             typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion2EnvelopeFieldCreateManyDataNumber1(envelopeFieldCreateManyDataNumber1 EnvelopeFieldCreateManyDataNumber1) EnvelopeFieldCreateManyDataUnion2 {
+	typ := EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataNumber1
+
+	return EnvelopeFieldCreateManyDataUnion2{
+		EnvelopeFieldCreateManyDataNumber1: &envelopeFieldCreateManyDataNumber1,
+		Type:                               typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion2EnvelopeFieldCreateManyDataRadio1(envelopeFieldCreateManyDataRadio1 EnvelopeFieldCreateManyDataRadio1) EnvelopeFieldCreateManyDataUnion2 {
+	typ := EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataRadio1
+
+	return EnvelopeFieldCreateManyDataUnion2{
+		EnvelopeFieldCreateManyDataRadio1: &envelopeFieldCreateManyDataRadio1,
+		Type:                              typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion2EnvelopeFieldCreateManyDataCheckbox1(envelopeFieldCreateManyDataCheckbox1 EnvelopeFieldCreateManyDataCheckbox1) EnvelopeFieldCreateManyDataUnion2 {
+	typ := EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataCheckbox1
+
+	return EnvelopeFieldCreateManyDataUnion2{
+		EnvelopeFieldCreateManyDataCheckbox1: &envelopeFieldCreateManyDataCheckbox1,
+		Type:                                 typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion2EnvelopeFieldCreateManyDataDropdown1(envelopeFieldCreateManyDataDropdown1 EnvelopeFieldCreateManyDataDropdown1) EnvelopeFieldCreateManyDataUnion2 {
+	typ := EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataDropdown1
+
+	return EnvelopeFieldCreateManyDataUnion2{
+		EnvelopeFieldCreateManyDataDropdown1: &envelopeFieldCreateManyDataDropdown1,
+		Type:                                 typ,
+	}
+}
+
+func (u *EnvelopeFieldCreateManyDataUnion2) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeFieldCreateManyDataUnion2{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var envelopeFieldCreateManyDataSignature1 EnvelopeFieldCreateManyDataSignature1 = EnvelopeFieldCreateManyDataSignature1{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataSignature1, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataSignature1 = &envelopeFieldCreateManyDataSignature1
+		u.Type = EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataSignature1
 		return nil
 	}
 
-	var envelopeFieldCreateManyDataRequest2 EnvelopeFieldCreateManyDataRequest2 = EnvelopeFieldCreateManyDataRequest2{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataRequest2, "", true, nil); err == nil {
-		u.EnvelopeFieldCreateManyDataRequest2 = &envelopeFieldCreateManyDataRequest2
-		u.Type = EnvelopeFieldCreateManyDataUnionTypeEnvelopeFieldCreateManyDataRequest2
+	var envelopeFieldCreateManyDataFreeSignature1 EnvelopeFieldCreateManyDataFreeSignature1 = EnvelopeFieldCreateManyDataFreeSignature1{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataFreeSignature1, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataFreeSignature1 = &envelopeFieldCreateManyDataFreeSignature1
+		u.Type = EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataFreeSignature1
 		return nil
 	}
 
-	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvelopeFieldCreateManyDataUnion", string(data))
+	var envelopeFieldCreateManyDataInitials1 EnvelopeFieldCreateManyDataInitials1 = EnvelopeFieldCreateManyDataInitials1{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataInitials1, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataInitials1 = &envelopeFieldCreateManyDataInitials1
+		u.Type = EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataInitials1
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataName1 EnvelopeFieldCreateManyDataName1 = EnvelopeFieldCreateManyDataName1{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataName1, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataName1 = &envelopeFieldCreateManyDataName1
+		u.Type = EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataName1
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataEmail1 EnvelopeFieldCreateManyDataEmail1 = EnvelopeFieldCreateManyDataEmail1{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataEmail1, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataEmail1 = &envelopeFieldCreateManyDataEmail1
+		u.Type = EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataEmail1
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataDate1 EnvelopeFieldCreateManyDataDate1 = EnvelopeFieldCreateManyDataDate1{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataDate1, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataDate1 = &envelopeFieldCreateManyDataDate1
+		u.Type = EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataDate1
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataText1 EnvelopeFieldCreateManyDataText1 = EnvelopeFieldCreateManyDataText1{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataText1, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataText1 = &envelopeFieldCreateManyDataText1
+		u.Type = EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataText1
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataNumber1 EnvelopeFieldCreateManyDataNumber1 = EnvelopeFieldCreateManyDataNumber1{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataNumber1, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataNumber1 = &envelopeFieldCreateManyDataNumber1
+		u.Type = EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataNumber1
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataRadio1 EnvelopeFieldCreateManyDataRadio1 = EnvelopeFieldCreateManyDataRadio1{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataRadio1, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataRadio1 = &envelopeFieldCreateManyDataRadio1
+		u.Type = EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataRadio1
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataCheckbox1 EnvelopeFieldCreateManyDataCheckbox1 = EnvelopeFieldCreateManyDataCheckbox1{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataCheckbox1, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataCheckbox1 = &envelopeFieldCreateManyDataCheckbox1
+		u.Type = EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataCheckbox1
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataDropdown1 EnvelopeFieldCreateManyDataDropdown1 = EnvelopeFieldCreateManyDataDropdown1{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataDropdown1, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataDropdown1 = &envelopeFieldCreateManyDataDropdown1
+		u.Type = EnvelopeFieldCreateManyDataUnion2TypeEnvelopeFieldCreateManyDataDropdown1
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvelopeFieldCreateManyDataUnion2", string(data))
 }
 
-func (u EnvelopeFieldCreateManyDataUnion) MarshalJSON() ([]byte, error) {
-	if u.EnvelopeFieldCreateManyDataRequest1 != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataRequest1, "", true)
+func (u EnvelopeFieldCreateManyDataUnion2) MarshalJSON() ([]byte, error) {
+	if u.EnvelopeFieldCreateManyDataSignature1 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataSignature1, "", true)
 	}
 
-	if u.EnvelopeFieldCreateManyDataRequest2 != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataRequest2, "", true)
+	if u.EnvelopeFieldCreateManyDataFreeSignature1 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataFreeSignature1, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type EnvelopeFieldCreateManyDataUnion: all fields are null")
+	if u.EnvelopeFieldCreateManyDataInitials1 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataInitials1, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataName1 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataName1, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataEmail1 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataEmail1, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataDate1 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataDate1, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataText1 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataText1, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataNumber1 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataNumber1, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataRadio1 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataRadio1, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataCheckbox1 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataCheckbox1, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataDropdown1 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataDropdown1, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvelopeFieldCreateManyDataUnion2: all fields are null")
+}
+
+type EnvelopeFieldCreateManyDataUnion1Type string
+
+const (
+	EnvelopeFieldCreateManyDataUnion1TypeEnvelopeFieldCreateManyDataUnion2 EnvelopeFieldCreateManyDataUnion1Type = "envelope_field_createMany_data_union_2"
+	EnvelopeFieldCreateManyDataUnion1TypeEnvelopeFieldCreateManyDataUnion3 EnvelopeFieldCreateManyDataUnion1Type = "envelope_field_createMany_data_union_3"
+)
+
+type EnvelopeFieldCreateManyDataUnion1 struct {
+	EnvelopeFieldCreateManyDataUnion2 *EnvelopeFieldCreateManyDataUnion2 `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyDataUnion3 *EnvelopeFieldCreateManyDataUnion3 `queryParam:"inline" union:"member"`
+
+	Type EnvelopeFieldCreateManyDataUnion1Type
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion1EnvelopeFieldCreateManyDataUnion2(envelopeFieldCreateManyDataUnion2 EnvelopeFieldCreateManyDataUnion2) EnvelopeFieldCreateManyDataUnion1 {
+	typ := EnvelopeFieldCreateManyDataUnion1TypeEnvelopeFieldCreateManyDataUnion2
+
+	return EnvelopeFieldCreateManyDataUnion1{
+		EnvelopeFieldCreateManyDataUnion2: &envelopeFieldCreateManyDataUnion2,
+		Type:                              typ,
+	}
+}
+
+func CreateEnvelopeFieldCreateManyDataUnion1EnvelopeFieldCreateManyDataUnion3(envelopeFieldCreateManyDataUnion3 EnvelopeFieldCreateManyDataUnion3) EnvelopeFieldCreateManyDataUnion1 {
+	typ := EnvelopeFieldCreateManyDataUnion1TypeEnvelopeFieldCreateManyDataUnion3
+
+	return EnvelopeFieldCreateManyDataUnion1{
+		EnvelopeFieldCreateManyDataUnion3: &envelopeFieldCreateManyDataUnion3,
+		Type:                              typ,
+	}
+}
+
+func (u *EnvelopeFieldCreateManyDataUnion1) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeFieldCreateManyDataUnion1{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var envelopeFieldCreateManyDataUnion2 EnvelopeFieldCreateManyDataUnion2 = EnvelopeFieldCreateManyDataUnion2{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataUnion2, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataUnion2 = &envelopeFieldCreateManyDataUnion2
+		u.Type = EnvelopeFieldCreateManyDataUnion1TypeEnvelopeFieldCreateManyDataUnion2
+		return nil
+	}
+
+	var envelopeFieldCreateManyDataUnion3 EnvelopeFieldCreateManyDataUnion3 = EnvelopeFieldCreateManyDataUnion3{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyDataUnion3, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyDataUnion3 = &envelopeFieldCreateManyDataUnion3
+		u.Type = EnvelopeFieldCreateManyDataUnion1TypeEnvelopeFieldCreateManyDataUnion3
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvelopeFieldCreateManyDataUnion1", string(data))
+}
+
+func (u EnvelopeFieldCreateManyDataUnion1) MarshalJSON() ([]byte, error) {
+	if u.EnvelopeFieldCreateManyDataUnion2 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataUnion2, "", true)
+	}
+
+	if u.EnvelopeFieldCreateManyDataUnion3 != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyDataUnion3, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvelopeFieldCreateManyDataUnion1: all fields are null")
 }
 
 type EnvelopeFieldCreateManyRequest struct {
-	EnvelopeID string                             `json:"envelopeId"`
-	Data       []EnvelopeFieldCreateManyDataUnion `json:"data"`
+	EnvelopeID string                              `json:"envelopeId"`
+	Data       []EnvelopeFieldCreateManyDataUnion1 `json:"data"`
 }
 
 func (e *EnvelopeFieldCreateManyRequest) GetEnvelopeID() string {
@@ -217,33 +6746,33 @@ func (e *EnvelopeFieldCreateManyRequest) GetEnvelopeID() string {
 	return e.EnvelopeID
 }
 
-func (e *EnvelopeFieldCreateManyRequest) GetData() []EnvelopeFieldCreateManyDataUnion {
+func (e *EnvelopeFieldCreateManyRequest) GetData() []EnvelopeFieldCreateManyDataUnion1 {
 	if e == nil {
-		return []EnvelopeFieldCreateManyDataUnion{}
+		return []EnvelopeFieldCreateManyDataUnion1{}
 	}
 	return e.Data
 }
 
-type EnvelopeFieldCreateManyType string
+type EnvelopeFieldCreateManyTypeResponse string
 
 const (
-	EnvelopeFieldCreateManyTypeSignature     EnvelopeFieldCreateManyType = "SIGNATURE"
-	EnvelopeFieldCreateManyTypeFreeSignature EnvelopeFieldCreateManyType = "FREE_SIGNATURE"
-	EnvelopeFieldCreateManyTypeInitials      EnvelopeFieldCreateManyType = "INITIALS"
-	EnvelopeFieldCreateManyTypeName          EnvelopeFieldCreateManyType = "NAME"
-	EnvelopeFieldCreateManyTypeEmail         EnvelopeFieldCreateManyType = "EMAIL"
-	EnvelopeFieldCreateManyTypeDate          EnvelopeFieldCreateManyType = "DATE"
-	EnvelopeFieldCreateManyTypeText          EnvelopeFieldCreateManyType = "TEXT"
-	EnvelopeFieldCreateManyTypeNumber        EnvelopeFieldCreateManyType = "NUMBER"
-	EnvelopeFieldCreateManyTypeRadio         EnvelopeFieldCreateManyType = "RADIO"
-	EnvelopeFieldCreateManyTypeCheckbox      EnvelopeFieldCreateManyType = "CHECKBOX"
-	EnvelopeFieldCreateManyTypeDropdown      EnvelopeFieldCreateManyType = "DROPDOWN"
+	EnvelopeFieldCreateManyTypeResponseSignature     EnvelopeFieldCreateManyTypeResponse = "SIGNATURE"
+	EnvelopeFieldCreateManyTypeResponseFreeSignature EnvelopeFieldCreateManyTypeResponse = "FREE_SIGNATURE"
+	EnvelopeFieldCreateManyTypeResponseInitials      EnvelopeFieldCreateManyTypeResponse = "INITIALS"
+	EnvelopeFieldCreateManyTypeResponseName          EnvelopeFieldCreateManyTypeResponse = "NAME"
+	EnvelopeFieldCreateManyTypeResponseEmail         EnvelopeFieldCreateManyTypeResponse = "EMAIL"
+	EnvelopeFieldCreateManyTypeResponseDate          EnvelopeFieldCreateManyTypeResponse = "DATE"
+	EnvelopeFieldCreateManyTypeResponseText          EnvelopeFieldCreateManyTypeResponse = "TEXT"
+	EnvelopeFieldCreateManyTypeResponseNumber        EnvelopeFieldCreateManyTypeResponse = "NUMBER"
+	EnvelopeFieldCreateManyTypeResponseRadio         EnvelopeFieldCreateManyTypeResponse = "RADIO"
+	EnvelopeFieldCreateManyTypeResponseCheckbox      EnvelopeFieldCreateManyTypeResponse = "CHECKBOX"
+	EnvelopeFieldCreateManyTypeResponseDropdown      EnvelopeFieldCreateManyTypeResponse = "DROPDOWN"
 )
 
-func (e EnvelopeFieldCreateManyType) ToPointer() *EnvelopeFieldCreateManyType {
+func (e EnvelopeFieldCreateManyTypeResponse) ToPointer() *EnvelopeFieldCreateManyTypeResponse {
 	return &e
 }
-func (e *EnvelopeFieldCreateManyType) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyTypeResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -270,10 +6799,42 @@ func (e *EnvelopeFieldCreateManyType) UnmarshalJSON(data []byte) error {
 	case "CHECKBOX":
 		fallthrough
 	case "DROPDOWN":
-		*e = EnvelopeFieldCreateManyType(v)
+		*e = EnvelopeFieldCreateManyTypeResponse(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyType: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTypeResponse: %v", v)
+	}
+}
+
+type EnvelopeFieldCreateManyOverflowResponse10 string
+
+const (
+	EnvelopeFieldCreateManyOverflowResponse10Auto       EnvelopeFieldCreateManyOverflowResponse10 = "auto"
+	EnvelopeFieldCreateManyOverflowResponse10Horizontal EnvelopeFieldCreateManyOverflowResponse10 = "horizontal"
+	EnvelopeFieldCreateManyOverflowResponse10Vertical   EnvelopeFieldCreateManyOverflowResponse10 = "vertical"
+	EnvelopeFieldCreateManyOverflowResponse10Crop       EnvelopeFieldCreateManyOverflowResponse10 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowResponse10) ToPointer() *EnvelopeFieldCreateManyOverflowResponse10 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowResponse10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowResponse10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowResponse10: %v", v)
 	}
 }
 
@@ -300,104 +6861,147 @@ func (e *EnvelopeFieldCreateManyFieldMetaTypeDropdown) UnmarshalJSON(data []byte
 	}
 }
 
-type EnvelopeFieldCreateManyValue3 struct {
+type EnvelopeFieldCreateManyValueResponse3 struct {
 	Value string `json:"value"`
 }
 
-func (e EnvelopeFieldCreateManyValue3) MarshalJSON() ([]byte, error) {
+func (e EnvelopeFieldCreateManyValueResponse3) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
-func (e *EnvelopeFieldCreateManyValue3) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyValueResponse3) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"value"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldCreateManyValue3) GetValue() string {
+func (e *EnvelopeFieldCreateManyValueResponse3) GetValue() string {
 	if e == nil {
 		return ""
 	}
 	return e.Value
 }
 
-type EnvelopeFieldCreateManyFieldMetaDropdown struct {
+// #region class-body-envelopefieldcreatemanyvalueresponse3
+// #endregion class-body-envelopefieldcreatemanyvalueresponse3
+
+type EnvelopeFieldCreateManyFieldMetaDropdownResponse struct {
 	Label        *string                                      `json:"label,omitempty"`
 	Placeholder  *string                                      `json:"placeholder,omitempty"`
 	Required     *bool                                        `json:"required,omitempty"`
 	ReadOnly     *bool                                        `json:"readOnly,omitempty"`
 	FontSize     *float64                                     `default:"12" json:"fontSize"`
+	Overflow     *EnvelopeFieldCreateManyOverflowResponse10   `json:"overflow,omitempty"`
 	Type         EnvelopeFieldCreateManyFieldMetaTypeDropdown `json:"type"`
-	Values       []EnvelopeFieldCreateManyValue3              `json:"values,omitempty"`
+	Values       []EnvelopeFieldCreateManyValueResponse3      `json:"values,omitempty"`
 	DefaultValue *string                                      `json:"defaultValue,omitempty"`
 }
 
-func (e EnvelopeFieldCreateManyFieldMetaDropdown) MarshalJSON() ([]byte, error) {
+func (e EnvelopeFieldCreateManyFieldMetaDropdownResponse) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDropdown) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownResponse) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDropdown) GetLabel() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownResponse) GetLabel() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Label
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDropdown) GetPlaceholder() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownResponse) GetPlaceholder() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Placeholder
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDropdown) GetRequired() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownResponse) GetRequired() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.Required
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDropdown) GetReadOnly() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownResponse) GetReadOnly() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.ReadOnly
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDropdown) GetFontSize() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownResponse) GetFontSize() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.FontSize
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDropdown) GetType() EnvelopeFieldCreateManyFieldMetaTypeDropdown {
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownResponse) GetOverflow() *EnvelopeFieldCreateManyOverflowResponse10 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownResponse) GetType() EnvelopeFieldCreateManyFieldMetaTypeDropdown {
 	if e == nil {
 		return EnvelopeFieldCreateManyFieldMetaTypeDropdown("")
 	}
 	return e.Type
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDropdown) GetValues() []EnvelopeFieldCreateManyValue3 {
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownResponse) GetValues() []EnvelopeFieldCreateManyValueResponse3 {
 	if e == nil {
 		return nil
 	}
 	return e.Values
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDropdown) GetDefaultValue() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaDropdownResponse) GetDefaultValue() *string {
 	if e == nil {
 		return nil
 	}
 	return e.DefaultValue
+}
+
+type EnvelopeFieldCreateManyOverflowResponse9 string
+
+const (
+	EnvelopeFieldCreateManyOverflowResponse9Auto       EnvelopeFieldCreateManyOverflowResponse9 = "auto"
+	EnvelopeFieldCreateManyOverflowResponse9Horizontal EnvelopeFieldCreateManyOverflowResponse9 = "horizontal"
+	EnvelopeFieldCreateManyOverflowResponse9Vertical   EnvelopeFieldCreateManyOverflowResponse9 = "vertical"
+	EnvelopeFieldCreateManyOverflowResponse9Crop       EnvelopeFieldCreateManyOverflowResponse9 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowResponse9) ToPointer() *EnvelopeFieldCreateManyOverflowResponse9 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowResponse9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowResponse9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowResponse9: %v", v)
+	}
 }
 
 type EnvelopeFieldCreateManyFieldMetaTypeCheckbox string
@@ -423,55 +7027,58 @@ func (e *EnvelopeFieldCreateManyFieldMetaTypeCheckbox) UnmarshalJSON(data []byte
 	}
 }
 
-type EnvelopeFieldCreateManyValue2 struct {
+type EnvelopeFieldCreateManyValueResponse2 struct {
 	ID      float64 `json:"id"`
 	Checked bool    `json:"checked"`
 	Value   string  `json:"value"`
 }
 
-func (e EnvelopeFieldCreateManyValue2) MarshalJSON() ([]byte, error) {
+func (e EnvelopeFieldCreateManyValueResponse2) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
-func (e *EnvelopeFieldCreateManyValue2) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyValueResponse2) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"id", "checked", "value"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldCreateManyValue2) GetID() float64 {
+func (e *EnvelopeFieldCreateManyValueResponse2) GetID() float64 {
 	if e == nil {
 		return 0.0
 	}
 	return e.ID
 }
 
-func (e *EnvelopeFieldCreateManyValue2) GetChecked() bool {
+func (e *EnvelopeFieldCreateManyValueResponse2) GetChecked() bool {
 	if e == nil {
 		return false
 	}
 	return e.Checked
 }
 
-func (e *EnvelopeFieldCreateManyValue2) GetValue() string {
+func (e *EnvelopeFieldCreateManyValueResponse2) GetValue() string {
 	if e == nil {
 		return ""
 	}
 	return e.Value
 }
 
-type EnvelopeFieldCreateManyDirection2 string
+// #region class-body-envelopefieldcreatemanyvalueresponse2
+// #endregion class-body-envelopefieldcreatemanyvalueresponse2
+
+type EnvelopeFieldCreateManyDirectionResponse2 string
 
 const (
-	EnvelopeFieldCreateManyDirection2Vertical   EnvelopeFieldCreateManyDirection2 = "vertical"
-	EnvelopeFieldCreateManyDirection2Horizontal EnvelopeFieldCreateManyDirection2 = "horizontal"
+	EnvelopeFieldCreateManyDirectionResponse2Vertical   EnvelopeFieldCreateManyDirectionResponse2 = "vertical"
+	EnvelopeFieldCreateManyDirectionResponse2Horizontal EnvelopeFieldCreateManyDirectionResponse2 = "horizontal"
 )
 
-func (e EnvelopeFieldCreateManyDirection2) ToPointer() *EnvelopeFieldCreateManyDirection2 {
+func (e EnvelopeFieldCreateManyDirectionResponse2) ToPointer() *EnvelopeFieldCreateManyDirectionResponse2 {
 	return &e
 }
-func (e *EnvelopeFieldCreateManyDirection2) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyDirectionResponse2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -480,105 +7087,145 @@ func (e *EnvelopeFieldCreateManyDirection2) UnmarshalJSON(data []byte) error {
 	case "vertical":
 		fallthrough
 	case "horizontal":
-		*e = EnvelopeFieldCreateManyDirection2(v)
+		*e = EnvelopeFieldCreateManyDirectionResponse2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyDirection2: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyDirectionResponse2: %v", v)
 	}
 }
 
-type EnvelopeFieldCreateManyFieldMetaCheckbox struct {
+type EnvelopeFieldCreateManyFieldMetaCheckboxResponse struct {
 	Label            *string                                      `json:"label,omitempty"`
 	Placeholder      *string                                      `json:"placeholder,omitempty"`
 	Required         *bool                                        `json:"required,omitempty"`
 	ReadOnly         *bool                                        `json:"readOnly,omitempty"`
 	FontSize         *float64                                     `default:"12" json:"fontSize"`
+	Overflow         *EnvelopeFieldCreateManyOverflowResponse9    `json:"overflow,omitempty"`
 	Type             EnvelopeFieldCreateManyFieldMetaTypeCheckbox `json:"type"`
-	Values           []EnvelopeFieldCreateManyValue2              `json:"values,omitempty"`
+	Values           []EnvelopeFieldCreateManyValueResponse2      `json:"values,omitempty"`
 	ValidationRule   *string                                      `json:"validationRule,omitempty"`
 	ValidationLength *float64                                     `json:"validationLength,omitempty"`
-	Direction        *EnvelopeFieldCreateManyDirection2           `default:"vertical" json:"direction"`
+	Direction        *EnvelopeFieldCreateManyDirectionResponse2   `default:"vertical" json:"direction"`
 }
 
-func (e EnvelopeFieldCreateManyFieldMetaCheckbox) MarshalJSON() ([]byte, error) {
+func (e EnvelopeFieldCreateManyFieldMetaCheckboxResponse) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaCheckbox) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxResponse) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaCheckbox) GetLabel() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxResponse) GetLabel() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Label
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaCheckbox) GetPlaceholder() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxResponse) GetPlaceholder() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Placeholder
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaCheckbox) GetRequired() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxResponse) GetRequired() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.Required
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaCheckbox) GetReadOnly() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxResponse) GetReadOnly() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.ReadOnly
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaCheckbox) GetFontSize() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxResponse) GetFontSize() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.FontSize
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaCheckbox) GetType() EnvelopeFieldCreateManyFieldMetaTypeCheckbox {
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxResponse) GetOverflow() *EnvelopeFieldCreateManyOverflowResponse9 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxResponse) GetType() EnvelopeFieldCreateManyFieldMetaTypeCheckbox {
 	if e == nil {
 		return EnvelopeFieldCreateManyFieldMetaTypeCheckbox("")
 	}
 	return e.Type
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaCheckbox) GetValues() []EnvelopeFieldCreateManyValue2 {
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxResponse) GetValues() []EnvelopeFieldCreateManyValueResponse2 {
 	if e == nil {
 		return nil
 	}
 	return e.Values
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaCheckbox) GetValidationRule() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxResponse) GetValidationRule() *string {
 	if e == nil {
 		return nil
 	}
 	return e.ValidationRule
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaCheckbox) GetValidationLength() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxResponse) GetValidationLength() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.ValidationLength
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaCheckbox) GetDirection() *EnvelopeFieldCreateManyDirection2 {
+func (e *EnvelopeFieldCreateManyFieldMetaCheckboxResponse) GetDirection() *EnvelopeFieldCreateManyDirectionResponse2 {
 	if e == nil {
 		return nil
 	}
 	return e.Direction
+}
+
+type EnvelopeFieldCreateManyOverflowResponse8 string
+
+const (
+	EnvelopeFieldCreateManyOverflowResponse8Auto       EnvelopeFieldCreateManyOverflowResponse8 = "auto"
+	EnvelopeFieldCreateManyOverflowResponse8Horizontal EnvelopeFieldCreateManyOverflowResponse8 = "horizontal"
+	EnvelopeFieldCreateManyOverflowResponse8Vertical   EnvelopeFieldCreateManyOverflowResponse8 = "vertical"
+	EnvelopeFieldCreateManyOverflowResponse8Crop       EnvelopeFieldCreateManyOverflowResponse8 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowResponse8) ToPointer() *EnvelopeFieldCreateManyOverflowResponse8 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowResponse8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowResponse8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowResponse8: %v", v)
+	}
 }
 
 type EnvelopeFieldCreateManyFieldMetaTypeRadio string
@@ -604,55 +7251,58 @@ func (e *EnvelopeFieldCreateManyFieldMetaTypeRadio) UnmarshalJSON(data []byte) e
 	}
 }
 
-type EnvelopeFieldCreateManyValue1 struct {
+type EnvelopeFieldCreateManyValueResponse1 struct {
 	ID      float64 `json:"id"`
 	Checked bool    `json:"checked"`
 	Value   string  `json:"value"`
 }
 
-func (e EnvelopeFieldCreateManyValue1) MarshalJSON() ([]byte, error) {
+func (e EnvelopeFieldCreateManyValueResponse1) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
-func (e *EnvelopeFieldCreateManyValue1) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyValueResponse1) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"id", "checked", "value"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldCreateManyValue1) GetID() float64 {
+func (e *EnvelopeFieldCreateManyValueResponse1) GetID() float64 {
 	if e == nil {
 		return 0.0
 	}
 	return e.ID
 }
 
-func (e *EnvelopeFieldCreateManyValue1) GetChecked() bool {
+func (e *EnvelopeFieldCreateManyValueResponse1) GetChecked() bool {
 	if e == nil {
 		return false
 	}
 	return e.Checked
 }
 
-func (e *EnvelopeFieldCreateManyValue1) GetValue() string {
+func (e *EnvelopeFieldCreateManyValueResponse1) GetValue() string {
 	if e == nil {
 		return ""
 	}
 	return e.Value
 }
 
-type EnvelopeFieldCreateManyDirection1 string
+// #region class-body-envelopefieldcreatemanyvalueresponse1
+// #endregion class-body-envelopefieldcreatemanyvalueresponse1
+
+type EnvelopeFieldCreateManyDirectionResponse1 string
 
 const (
-	EnvelopeFieldCreateManyDirection1Vertical   EnvelopeFieldCreateManyDirection1 = "vertical"
-	EnvelopeFieldCreateManyDirection1Horizontal EnvelopeFieldCreateManyDirection1 = "horizontal"
+	EnvelopeFieldCreateManyDirectionResponse1Vertical   EnvelopeFieldCreateManyDirectionResponse1 = "vertical"
+	EnvelopeFieldCreateManyDirectionResponse1Horizontal EnvelopeFieldCreateManyDirectionResponse1 = "horizontal"
 )
 
-func (e EnvelopeFieldCreateManyDirection1) ToPointer() *EnvelopeFieldCreateManyDirection1 {
+func (e EnvelopeFieldCreateManyDirectionResponse1) ToPointer() *EnvelopeFieldCreateManyDirectionResponse1 {
 	return &e
 }
-func (e *EnvelopeFieldCreateManyDirection1) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyDirectionResponse1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -661,89 +7311,129 @@ func (e *EnvelopeFieldCreateManyDirection1) UnmarshalJSON(data []byte) error {
 	case "vertical":
 		fallthrough
 	case "horizontal":
-		*e = EnvelopeFieldCreateManyDirection1(v)
+		*e = EnvelopeFieldCreateManyDirectionResponse1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyDirection1: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyDirectionResponse1: %v", v)
 	}
 }
 
-type EnvelopeFieldCreateManyFieldMetaRadio struct {
-	Label       *string                                   `json:"label,omitempty"`
-	Placeholder *string                                   `json:"placeholder,omitempty"`
-	Required    *bool                                     `json:"required,omitempty"`
-	ReadOnly    *bool                                     `json:"readOnly,omitempty"`
-	FontSize    *float64                                  `default:"12" json:"fontSize"`
-	Type        EnvelopeFieldCreateManyFieldMetaTypeRadio `json:"type"`
-	Values      []EnvelopeFieldCreateManyValue1           `json:"values,omitempty"`
-	Direction   *EnvelopeFieldCreateManyDirection1        `default:"vertical" json:"direction"`
+type EnvelopeFieldCreateManyFieldMetaRadioResponse struct {
+	Label       *string                                    `json:"label,omitempty"`
+	Placeholder *string                                    `json:"placeholder,omitempty"`
+	Required    *bool                                      `json:"required,omitempty"`
+	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
+	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowResponse8  `json:"overflow,omitempty"`
+	Type        EnvelopeFieldCreateManyFieldMetaTypeRadio  `json:"type"`
+	Values      []EnvelopeFieldCreateManyValueResponse1    `json:"values,omitempty"`
+	Direction   *EnvelopeFieldCreateManyDirectionResponse1 `default:"vertical" json:"direction"`
 }
 
-func (e EnvelopeFieldCreateManyFieldMetaRadio) MarshalJSON() ([]byte, error) {
+func (e EnvelopeFieldCreateManyFieldMetaRadioResponse) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaRadio) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyFieldMetaRadioResponse) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaRadio) GetLabel() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaRadioResponse) GetLabel() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Label
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaRadio) GetPlaceholder() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaRadioResponse) GetPlaceholder() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Placeholder
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaRadio) GetRequired() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaRadioResponse) GetRequired() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.Required
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaRadio) GetReadOnly() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaRadioResponse) GetReadOnly() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.ReadOnly
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaRadio) GetFontSize() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaRadioResponse) GetFontSize() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.FontSize
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaRadio) GetType() EnvelopeFieldCreateManyFieldMetaTypeRadio {
+func (e *EnvelopeFieldCreateManyFieldMetaRadioResponse) GetOverflow() *EnvelopeFieldCreateManyOverflowResponse8 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaRadioResponse) GetType() EnvelopeFieldCreateManyFieldMetaTypeRadio {
 	if e == nil {
 		return EnvelopeFieldCreateManyFieldMetaTypeRadio("")
 	}
 	return e.Type
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaRadio) GetValues() []EnvelopeFieldCreateManyValue1 {
+func (e *EnvelopeFieldCreateManyFieldMetaRadioResponse) GetValues() []EnvelopeFieldCreateManyValueResponse1 {
 	if e == nil {
 		return nil
 	}
 	return e.Values
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaRadio) GetDirection() *EnvelopeFieldCreateManyDirection1 {
+func (e *EnvelopeFieldCreateManyFieldMetaRadioResponse) GetDirection() *EnvelopeFieldCreateManyDirectionResponse1 {
 	if e == nil {
 		return nil
 	}
 	return e.Direction
+}
+
+type EnvelopeFieldCreateManyOverflowResponse7 string
+
+const (
+	EnvelopeFieldCreateManyOverflowResponse7Auto       EnvelopeFieldCreateManyOverflowResponse7 = "auto"
+	EnvelopeFieldCreateManyOverflowResponse7Horizontal EnvelopeFieldCreateManyOverflowResponse7 = "horizontal"
+	EnvelopeFieldCreateManyOverflowResponse7Vertical   EnvelopeFieldCreateManyOverflowResponse7 = "vertical"
+	EnvelopeFieldCreateManyOverflowResponse7Crop       EnvelopeFieldCreateManyOverflowResponse7 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowResponse7) ToPointer() *EnvelopeFieldCreateManyOverflowResponse7 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowResponse7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowResponse7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowResponse7: %v", v)
+	}
 }
 
 type EnvelopeFieldCreateManyFieldMetaTypeNumber string
@@ -769,18 +7459,18 @@ func (e *EnvelopeFieldCreateManyFieldMetaTypeNumber) UnmarshalJSON(data []byte) 
 	}
 }
 
-type EnvelopeFieldCreateManyTextAlign6 string
+type EnvelopeFieldCreateManyTextAlignResponse6 string
 
 const (
-	EnvelopeFieldCreateManyTextAlign6Left   EnvelopeFieldCreateManyTextAlign6 = "left"
-	EnvelopeFieldCreateManyTextAlign6Center EnvelopeFieldCreateManyTextAlign6 = "center"
-	EnvelopeFieldCreateManyTextAlign6Right  EnvelopeFieldCreateManyTextAlign6 = "right"
+	EnvelopeFieldCreateManyTextAlignResponse6Left   EnvelopeFieldCreateManyTextAlignResponse6 = "left"
+	EnvelopeFieldCreateManyTextAlignResponse6Center EnvelopeFieldCreateManyTextAlignResponse6 = "center"
+	EnvelopeFieldCreateManyTextAlignResponse6Right  EnvelopeFieldCreateManyTextAlignResponse6 = "right"
 )
 
-func (e EnvelopeFieldCreateManyTextAlign6) ToPointer() *EnvelopeFieldCreateManyTextAlign6 {
+func (e EnvelopeFieldCreateManyTextAlignResponse6) ToPointer() *EnvelopeFieldCreateManyTextAlignResponse6 {
 	return &e
 }
-func (e *EnvelopeFieldCreateManyTextAlign6) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyTextAlignResponse6) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -791,25 +7481,25 @@ func (e *EnvelopeFieldCreateManyTextAlign6) UnmarshalJSON(data []byte) error {
 	case "center":
 		fallthrough
 	case "right":
-		*e = EnvelopeFieldCreateManyTextAlign6(v)
+		*e = EnvelopeFieldCreateManyTextAlignResponse6(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlign6: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignResponse6: %v", v)
 	}
 }
 
-type EnvelopeFieldCreateManyVerticalAlign2 string
+type EnvelopeFieldCreateManyVerticalAlignResponse2 string
 
 const (
-	EnvelopeFieldCreateManyVerticalAlign2Top    EnvelopeFieldCreateManyVerticalAlign2 = "top"
-	EnvelopeFieldCreateManyVerticalAlign2Middle EnvelopeFieldCreateManyVerticalAlign2 = "middle"
-	EnvelopeFieldCreateManyVerticalAlign2Bottom EnvelopeFieldCreateManyVerticalAlign2 = "bottom"
+	EnvelopeFieldCreateManyVerticalAlignResponse2Top    EnvelopeFieldCreateManyVerticalAlignResponse2 = "top"
+	EnvelopeFieldCreateManyVerticalAlignResponse2Middle EnvelopeFieldCreateManyVerticalAlignResponse2 = "middle"
+	EnvelopeFieldCreateManyVerticalAlignResponse2Bottom EnvelopeFieldCreateManyVerticalAlignResponse2 = "bottom"
 )
 
-func (e EnvelopeFieldCreateManyVerticalAlign2) ToPointer() *EnvelopeFieldCreateManyVerticalAlign2 {
+func (e EnvelopeFieldCreateManyVerticalAlignResponse2) ToPointer() *EnvelopeFieldCreateManyVerticalAlignResponse2 {
 	return &e
 }
-func (e *EnvelopeFieldCreateManyVerticalAlign2) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyVerticalAlignResponse2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -820,137 +7510,177 @@ func (e *EnvelopeFieldCreateManyVerticalAlign2) UnmarshalJSON(data []byte) error
 	case "middle":
 		fallthrough
 	case "bottom":
-		*e = EnvelopeFieldCreateManyVerticalAlign2(v)
+		*e = EnvelopeFieldCreateManyVerticalAlignResponse2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyVerticalAlign2: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyVerticalAlignResponse2: %v", v)
 	}
 }
 
-type EnvelopeFieldCreateManyFieldMetaNumber struct {
-	Label         *string                                    `json:"label,omitempty"`
-	Placeholder   *string                                    `json:"placeholder,omitempty"`
-	Required      *bool                                      `json:"required,omitempty"`
-	ReadOnly      *bool                                      `json:"readOnly,omitempty"`
-	FontSize      *float64                                   `default:"12" json:"fontSize"`
-	Type          EnvelopeFieldCreateManyFieldMetaTypeNumber `json:"type"`
-	NumberFormat  *string                                    `json:"numberFormat,omitempty"`
-	Value         *string                                    `json:"value,omitempty"`
-	MinValue      *float64                                   `json:"minValue,omitempty"`
-	MaxValue      *float64                                   `json:"maxValue,omitempty"`
-	TextAlign     *EnvelopeFieldCreateManyTextAlign6         `json:"textAlign,omitempty"`
-	LineHeight    *float64                                   `json:"lineHeight,omitempty"`
-	LetterSpacing *float64                                   `json:"letterSpacing,omitempty"`
-	VerticalAlign *EnvelopeFieldCreateManyVerticalAlign2     `json:"verticalAlign,omitempty"`
+type EnvelopeFieldCreateManyFieldMetaNumberResponse struct {
+	Label         *string                                        `json:"label,omitempty"`
+	Placeholder   *string                                        `json:"placeholder,omitempty"`
+	Required      *bool                                          `json:"required,omitempty"`
+	ReadOnly      *bool                                          `json:"readOnly,omitempty"`
+	FontSize      *float64                                       `default:"12" json:"fontSize"`
+	Overflow      *EnvelopeFieldCreateManyOverflowResponse7      `json:"overflow,omitempty"`
+	Type          EnvelopeFieldCreateManyFieldMetaTypeNumber     `json:"type"`
+	NumberFormat  *string                                        `json:"numberFormat,omitempty"`
+	Value         *string                                        `json:"value,omitempty"`
+	MinValue      *float64                                       `json:"minValue,omitempty"`
+	MaxValue      *float64                                       `json:"maxValue,omitempty"`
+	TextAlign     *EnvelopeFieldCreateManyTextAlignResponse6     `json:"textAlign,omitempty"`
+	LineHeight    *float64                                       `json:"lineHeight,omitempty"`
+	LetterSpacing *float64                                       `json:"letterSpacing,omitempty"`
+	VerticalAlign *EnvelopeFieldCreateManyVerticalAlignResponse2 `json:"verticalAlign,omitempty"`
 }
 
-func (e EnvelopeFieldCreateManyFieldMetaNumber) MarshalJSON() ([]byte, error) {
+func (e EnvelopeFieldCreateManyFieldMetaNumberResponse) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaNumber) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaNumber) GetLabel() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) GetLabel() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Label
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaNumber) GetPlaceholder() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) GetPlaceholder() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Placeholder
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaNumber) GetRequired() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) GetRequired() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.Required
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaNumber) GetReadOnly() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) GetReadOnly() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.ReadOnly
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaNumber) GetFontSize() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) GetFontSize() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.FontSize
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaNumber) GetType() EnvelopeFieldCreateManyFieldMetaTypeNumber {
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) GetOverflow() *EnvelopeFieldCreateManyOverflowResponse7 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) GetType() EnvelopeFieldCreateManyFieldMetaTypeNumber {
 	if e == nil {
 		return EnvelopeFieldCreateManyFieldMetaTypeNumber("")
 	}
 	return e.Type
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaNumber) GetNumberFormat() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) GetNumberFormat() *string {
 	if e == nil {
 		return nil
 	}
 	return e.NumberFormat
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaNumber) GetValue() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) GetValue() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Value
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaNumber) GetMinValue() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) GetMinValue() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.MinValue
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaNumber) GetMaxValue() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) GetMaxValue() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.MaxValue
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaNumber) GetTextAlign() *EnvelopeFieldCreateManyTextAlign6 {
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) GetTextAlign() *EnvelopeFieldCreateManyTextAlignResponse6 {
 	if e == nil {
 		return nil
 	}
 	return e.TextAlign
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaNumber) GetLineHeight() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) GetLineHeight() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.LineHeight
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaNumber) GetLetterSpacing() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) GetLetterSpacing() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.LetterSpacing
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaNumber) GetVerticalAlign() *EnvelopeFieldCreateManyVerticalAlign2 {
+func (e *EnvelopeFieldCreateManyFieldMetaNumberResponse) GetVerticalAlign() *EnvelopeFieldCreateManyVerticalAlignResponse2 {
 	if e == nil {
 		return nil
 	}
 	return e.VerticalAlign
+}
+
+type EnvelopeFieldCreateManyOverflowResponse6 string
+
+const (
+	EnvelopeFieldCreateManyOverflowResponse6Auto       EnvelopeFieldCreateManyOverflowResponse6 = "auto"
+	EnvelopeFieldCreateManyOverflowResponse6Horizontal EnvelopeFieldCreateManyOverflowResponse6 = "horizontal"
+	EnvelopeFieldCreateManyOverflowResponse6Vertical   EnvelopeFieldCreateManyOverflowResponse6 = "vertical"
+	EnvelopeFieldCreateManyOverflowResponse6Crop       EnvelopeFieldCreateManyOverflowResponse6 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowResponse6) ToPointer() *EnvelopeFieldCreateManyOverflowResponse6 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowResponse6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowResponse6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowResponse6: %v", v)
+	}
 }
 
 type EnvelopeFieldCreateManyFieldMetaTypeText string
@@ -976,18 +7706,18 @@ func (e *EnvelopeFieldCreateManyFieldMetaTypeText) UnmarshalJSON(data []byte) er
 	}
 }
 
-type EnvelopeFieldCreateManyTextAlign5 string
+type EnvelopeFieldCreateManyTextAlignResponse5 string
 
 const (
-	EnvelopeFieldCreateManyTextAlign5Left   EnvelopeFieldCreateManyTextAlign5 = "left"
-	EnvelopeFieldCreateManyTextAlign5Center EnvelopeFieldCreateManyTextAlign5 = "center"
-	EnvelopeFieldCreateManyTextAlign5Right  EnvelopeFieldCreateManyTextAlign5 = "right"
+	EnvelopeFieldCreateManyTextAlignResponse5Left   EnvelopeFieldCreateManyTextAlignResponse5 = "left"
+	EnvelopeFieldCreateManyTextAlignResponse5Center EnvelopeFieldCreateManyTextAlignResponse5 = "center"
+	EnvelopeFieldCreateManyTextAlignResponse5Right  EnvelopeFieldCreateManyTextAlignResponse5 = "right"
 )
 
-func (e EnvelopeFieldCreateManyTextAlign5) ToPointer() *EnvelopeFieldCreateManyTextAlign5 {
+func (e EnvelopeFieldCreateManyTextAlignResponse5) ToPointer() *EnvelopeFieldCreateManyTextAlignResponse5 {
 	return &e
 }
-func (e *EnvelopeFieldCreateManyTextAlign5) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyTextAlignResponse5) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -998,25 +7728,25 @@ func (e *EnvelopeFieldCreateManyTextAlign5) UnmarshalJSON(data []byte) error {
 	case "center":
 		fallthrough
 	case "right":
-		*e = EnvelopeFieldCreateManyTextAlign5(v)
+		*e = EnvelopeFieldCreateManyTextAlignResponse5(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlign5: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignResponse5: %v", v)
 	}
 }
 
-type EnvelopeFieldCreateManyVerticalAlign1 string
+type EnvelopeFieldCreateManyVerticalAlignResponse1 string
 
 const (
-	EnvelopeFieldCreateManyVerticalAlign1Top    EnvelopeFieldCreateManyVerticalAlign1 = "top"
-	EnvelopeFieldCreateManyVerticalAlign1Middle EnvelopeFieldCreateManyVerticalAlign1 = "middle"
-	EnvelopeFieldCreateManyVerticalAlign1Bottom EnvelopeFieldCreateManyVerticalAlign1 = "bottom"
+	EnvelopeFieldCreateManyVerticalAlignResponse1Top    EnvelopeFieldCreateManyVerticalAlignResponse1 = "top"
+	EnvelopeFieldCreateManyVerticalAlignResponse1Middle EnvelopeFieldCreateManyVerticalAlignResponse1 = "middle"
+	EnvelopeFieldCreateManyVerticalAlignResponse1Bottom EnvelopeFieldCreateManyVerticalAlignResponse1 = "bottom"
 )
 
-func (e EnvelopeFieldCreateManyVerticalAlign1) ToPointer() *EnvelopeFieldCreateManyVerticalAlign1 {
+func (e EnvelopeFieldCreateManyVerticalAlignResponse1) ToPointer() *EnvelopeFieldCreateManyVerticalAlignResponse1 {
 	return &e
 }
-func (e *EnvelopeFieldCreateManyVerticalAlign1) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyVerticalAlignResponse1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1027,121 +7757,161 @@ func (e *EnvelopeFieldCreateManyVerticalAlign1) UnmarshalJSON(data []byte) error
 	case "middle":
 		fallthrough
 	case "bottom":
-		*e = EnvelopeFieldCreateManyVerticalAlign1(v)
+		*e = EnvelopeFieldCreateManyVerticalAlignResponse1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyVerticalAlign1: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyVerticalAlignResponse1: %v", v)
 	}
 }
 
-type EnvelopeFieldCreateManyFieldMetaText struct {
-	Label          *string                                  `json:"label,omitempty"`
-	Placeholder    *string                                  `json:"placeholder,omitempty"`
-	Required       *bool                                    `json:"required,omitempty"`
-	ReadOnly       *bool                                    `json:"readOnly,omitempty"`
-	FontSize       *float64                                 `default:"12" json:"fontSize"`
-	Type           EnvelopeFieldCreateManyFieldMetaTypeText `json:"type"`
-	Text           *string                                  `json:"text,omitempty"`
-	CharacterLimit *float64                                 `json:"characterLimit,omitempty"`
-	TextAlign      *EnvelopeFieldCreateManyTextAlign5       `json:"textAlign,omitempty"`
-	LineHeight     *float64                                 `json:"lineHeight,omitempty"`
-	LetterSpacing  *float64                                 `json:"letterSpacing,omitempty"`
-	VerticalAlign  *EnvelopeFieldCreateManyVerticalAlign1   `json:"verticalAlign,omitempty"`
+type EnvelopeFieldCreateManyFieldMetaTextResponse struct {
+	Label          *string                                        `json:"label,omitempty"`
+	Placeholder    *string                                        `json:"placeholder,omitempty"`
+	Required       *bool                                          `json:"required,omitempty"`
+	ReadOnly       *bool                                          `json:"readOnly,omitempty"`
+	FontSize       *float64                                       `default:"12" json:"fontSize"`
+	Overflow       *EnvelopeFieldCreateManyOverflowResponse6      `json:"overflow,omitempty"`
+	Type           EnvelopeFieldCreateManyFieldMetaTypeText       `json:"type"`
+	Text           *string                                        `json:"text,omitempty"`
+	CharacterLimit *float64                                       `json:"characterLimit,omitempty"`
+	TextAlign      *EnvelopeFieldCreateManyTextAlignResponse5     `json:"textAlign,omitempty"`
+	LineHeight     *float64                                       `json:"lineHeight,omitempty"`
+	LetterSpacing  *float64                                       `json:"letterSpacing,omitempty"`
+	VerticalAlign  *EnvelopeFieldCreateManyVerticalAlignResponse1 `json:"verticalAlign,omitempty"`
 }
 
-func (e EnvelopeFieldCreateManyFieldMetaText) MarshalJSON() ([]byte, error) {
+func (e EnvelopeFieldCreateManyFieldMetaTextResponse) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaText) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyFieldMetaTextResponse) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaText) GetLabel() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaTextResponse) GetLabel() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Label
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaText) GetPlaceholder() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaTextResponse) GetPlaceholder() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Placeholder
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaText) GetRequired() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaTextResponse) GetRequired() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.Required
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaText) GetReadOnly() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaTextResponse) GetReadOnly() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.ReadOnly
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaText) GetFontSize() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaTextResponse) GetFontSize() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.FontSize
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaText) GetType() EnvelopeFieldCreateManyFieldMetaTypeText {
+func (e *EnvelopeFieldCreateManyFieldMetaTextResponse) GetOverflow() *EnvelopeFieldCreateManyOverflowResponse6 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaTextResponse) GetType() EnvelopeFieldCreateManyFieldMetaTypeText {
 	if e == nil {
 		return EnvelopeFieldCreateManyFieldMetaTypeText("")
 	}
 	return e.Type
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaText) GetText() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaTextResponse) GetText() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Text
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaText) GetCharacterLimit() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaTextResponse) GetCharacterLimit() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.CharacterLimit
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaText) GetTextAlign() *EnvelopeFieldCreateManyTextAlign5 {
+func (e *EnvelopeFieldCreateManyFieldMetaTextResponse) GetTextAlign() *EnvelopeFieldCreateManyTextAlignResponse5 {
 	if e == nil {
 		return nil
 	}
 	return e.TextAlign
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaText) GetLineHeight() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaTextResponse) GetLineHeight() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.LineHeight
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaText) GetLetterSpacing() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaTextResponse) GetLetterSpacing() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.LetterSpacing
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaText) GetVerticalAlign() *EnvelopeFieldCreateManyVerticalAlign1 {
+func (e *EnvelopeFieldCreateManyFieldMetaTextResponse) GetVerticalAlign() *EnvelopeFieldCreateManyVerticalAlignResponse1 {
 	if e == nil {
 		return nil
 	}
 	return e.VerticalAlign
+}
+
+type EnvelopeFieldCreateManyOverflowResponse5 string
+
+const (
+	EnvelopeFieldCreateManyOverflowResponse5Auto       EnvelopeFieldCreateManyOverflowResponse5 = "auto"
+	EnvelopeFieldCreateManyOverflowResponse5Horizontal EnvelopeFieldCreateManyOverflowResponse5 = "horizontal"
+	EnvelopeFieldCreateManyOverflowResponse5Vertical   EnvelopeFieldCreateManyOverflowResponse5 = "vertical"
+	EnvelopeFieldCreateManyOverflowResponse5Crop       EnvelopeFieldCreateManyOverflowResponse5 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowResponse5) ToPointer() *EnvelopeFieldCreateManyOverflowResponse5 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowResponse5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowResponse5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowResponse5: %v", v)
+	}
 }
 
 type EnvelopeFieldCreateManyFieldMetaTypeDate string
@@ -1167,18 +7937,18 @@ func (e *EnvelopeFieldCreateManyFieldMetaTypeDate) UnmarshalJSON(data []byte) er
 	}
 }
 
-type EnvelopeFieldCreateManyTextAlign4 string
+type EnvelopeFieldCreateManyTextAlignResponse4 string
 
 const (
-	EnvelopeFieldCreateManyTextAlign4Left   EnvelopeFieldCreateManyTextAlign4 = "left"
-	EnvelopeFieldCreateManyTextAlign4Center EnvelopeFieldCreateManyTextAlign4 = "center"
-	EnvelopeFieldCreateManyTextAlign4Right  EnvelopeFieldCreateManyTextAlign4 = "right"
+	EnvelopeFieldCreateManyTextAlignResponse4Left   EnvelopeFieldCreateManyTextAlignResponse4 = "left"
+	EnvelopeFieldCreateManyTextAlignResponse4Center EnvelopeFieldCreateManyTextAlignResponse4 = "center"
+	EnvelopeFieldCreateManyTextAlignResponse4Right  EnvelopeFieldCreateManyTextAlignResponse4 = "right"
 )
 
-func (e EnvelopeFieldCreateManyTextAlign4) ToPointer() *EnvelopeFieldCreateManyTextAlign4 {
+func (e EnvelopeFieldCreateManyTextAlignResponse4) ToPointer() *EnvelopeFieldCreateManyTextAlignResponse4 {
 	return &e
 }
-func (e *EnvelopeFieldCreateManyTextAlign4) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyTextAlignResponse4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1189,81 +7959,121 @@ func (e *EnvelopeFieldCreateManyTextAlign4) UnmarshalJSON(data []byte) error {
 	case "center":
 		fallthrough
 	case "right":
-		*e = EnvelopeFieldCreateManyTextAlign4(v)
+		*e = EnvelopeFieldCreateManyTextAlignResponse4(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlign4: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignResponse4: %v", v)
 	}
 }
 
-type EnvelopeFieldCreateManyFieldMetaDate struct {
-	Label       *string                                  `json:"label,omitempty"`
-	Placeholder *string                                  `json:"placeholder,omitempty"`
-	Required    *bool                                    `json:"required,omitempty"`
-	ReadOnly    *bool                                    `json:"readOnly,omitempty"`
-	FontSize    *float64                                 `default:"12" json:"fontSize"`
-	Type        EnvelopeFieldCreateManyFieldMetaTypeDate `json:"type"`
-	TextAlign   *EnvelopeFieldCreateManyTextAlign4       `json:"textAlign,omitempty"`
+type EnvelopeFieldCreateManyFieldMetaDateResponse struct {
+	Label       *string                                    `json:"label,omitempty"`
+	Placeholder *string                                    `json:"placeholder,omitempty"`
+	Required    *bool                                      `json:"required,omitempty"`
+	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
+	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowResponse5  `default:"auto" json:"overflow"`
+	Type        EnvelopeFieldCreateManyFieldMetaTypeDate   `json:"type"`
+	TextAlign   *EnvelopeFieldCreateManyTextAlignResponse4 `json:"textAlign,omitempty"`
 }
 
-func (e EnvelopeFieldCreateManyFieldMetaDate) MarshalJSON() ([]byte, error) {
+func (e EnvelopeFieldCreateManyFieldMetaDateResponse) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDate) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyFieldMetaDateResponse) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDate) GetLabel() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaDateResponse) GetLabel() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Label
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDate) GetPlaceholder() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaDateResponse) GetPlaceholder() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Placeholder
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDate) GetRequired() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaDateResponse) GetRequired() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.Required
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDate) GetReadOnly() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaDateResponse) GetReadOnly() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.ReadOnly
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDate) GetFontSize() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaDateResponse) GetFontSize() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.FontSize
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDate) GetType() EnvelopeFieldCreateManyFieldMetaTypeDate {
+func (e *EnvelopeFieldCreateManyFieldMetaDateResponse) GetOverflow() *EnvelopeFieldCreateManyOverflowResponse5 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaDateResponse) GetType() EnvelopeFieldCreateManyFieldMetaTypeDate {
 	if e == nil {
 		return EnvelopeFieldCreateManyFieldMetaTypeDate("")
 	}
 	return e.Type
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaDate) GetTextAlign() *EnvelopeFieldCreateManyTextAlign4 {
+func (e *EnvelopeFieldCreateManyFieldMetaDateResponse) GetTextAlign() *EnvelopeFieldCreateManyTextAlignResponse4 {
 	if e == nil {
 		return nil
 	}
 	return e.TextAlign
+}
+
+type EnvelopeFieldCreateManyOverflowResponse4 string
+
+const (
+	EnvelopeFieldCreateManyOverflowResponse4Auto       EnvelopeFieldCreateManyOverflowResponse4 = "auto"
+	EnvelopeFieldCreateManyOverflowResponse4Horizontal EnvelopeFieldCreateManyOverflowResponse4 = "horizontal"
+	EnvelopeFieldCreateManyOverflowResponse4Vertical   EnvelopeFieldCreateManyOverflowResponse4 = "vertical"
+	EnvelopeFieldCreateManyOverflowResponse4Crop       EnvelopeFieldCreateManyOverflowResponse4 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowResponse4) ToPointer() *EnvelopeFieldCreateManyOverflowResponse4 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowResponse4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowResponse4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowResponse4: %v", v)
+	}
 }
 
 type EnvelopeFieldCreateManyFieldMetaTypeEmail string
@@ -1289,18 +8099,18 @@ func (e *EnvelopeFieldCreateManyFieldMetaTypeEmail) UnmarshalJSON(data []byte) e
 	}
 }
 
-type EnvelopeFieldCreateManyTextAlign3 string
+type EnvelopeFieldCreateManyTextAlignResponse3 string
 
 const (
-	EnvelopeFieldCreateManyTextAlign3Left   EnvelopeFieldCreateManyTextAlign3 = "left"
-	EnvelopeFieldCreateManyTextAlign3Center EnvelopeFieldCreateManyTextAlign3 = "center"
-	EnvelopeFieldCreateManyTextAlign3Right  EnvelopeFieldCreateManyTextAlign3 = "right"
+	EnvelopeFieldCreateManyTextAlignResponse3Left   EnvelopeFieldCreateManyTextAlignResponse3 = "left"
+	EnvelopeFieldCreateManyTextAlignResponse3Center EnvelopeFieldCreateManyTextAlignResponse3 = "center"
+	EnvelopeFieldCreateManyTextAlignResponse3Right  EnvelopeFieldCreateManyTextAlignResponse3 = "right"
 )
 
-func (e EnvelopeFieldCreateManyTextAlign3) ToPointer() *EnvelopeFieldCreateManyTextAlign3 {
+func (e EnvelopeFieldCreateManyTextAlignResponse3) ToPointer() *EnvelopeFieldCreateManyTextAlignResponse3 {
 	return &e
 }
-func (e *EnvelopeFieldCreateManyTextAlign3) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyTextAlignResponse3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1311,81 +8121,121 @@ func (e *EnvelopeFieldCreateManyTextAlign3) UnmarshalJSON(data []byte) error {
 	case "center":
 		fallthrough
 	case "right":
-		*e = EnvelopeFieldCreateManyTextAlign3(v)
+		*e = EnvelopeFieldCreateManyTextAlignResponse3(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlign3: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignResponse3: %v", v)
 	}
 }
 
-type EnvelopeFieldCreateManyFieldMetaEmail struct {
-	Label       *string                                   `json:"label,omitempty"`
-	Placeholder *string                                   `json:"placeholder,omitempty"`
-	Required    *bool                                     `json:"required,omitempty"`
-	ReadOnly    *bool                                     `json:"readOnly,omitempty"`
-	FontSize    *float64                                  `default:"12" json:"fontSize"`
-	Type        EnvelopeFieldCreateManyFieldMetaTypeEmail `json:"type"`
-	TextAlign   *EnvelopeFieldCreateManyTextAlign3        `json:"textAlign,omitempty"`
+type EnvelopeFieldCreateManyFieldMetaEmailResponse struct {
+	Label       *string                                    `json:"label,omitempty"`
+	Placeholder *string                                    `json:"placeholder,omitempty"`
+	Required    *bool                                      `json:"required,omitempty"`
+	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
+	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowResponse4  `default:"auto" json:"overflow"`
+	Type        EnvelopeFieldCreateManyFieldMetaTypeEmail  `json:"type"`
+	TextAlign   *EnvelopeFieldCreateManyTextAlignResponse3 `json:"textAlign,omitempty"`
 }
 
-func (e EnvelopeFieldCreateManyFieldMetaEmail) MarshalJSON() ([]byte, error) {
+func (e EnvelopeFieldCreateManyFieldMetaEmailResponse) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaEmail) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyFieldMetaEmailResponse) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaEmail) GetLabel() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaEmailResponse) GetLabel() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Label
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaEmail) GetPlaceholder() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaEmailResponse) GetPlaceholder() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Placeholder
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaEmail) GetRequired() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaEmailResponse) GetRequired() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.Required
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaEmail) GetReadOnly() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaEmailResponse) GetReadOnly() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.ReadOnly
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaEmail) GetFontSize() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaEmailResponse) GetFontSize() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.FontSize
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaEmail) GetType() EnvelopeFieldCreateManyFieldMetaTypeEmail {
+func (e *EnvelopeFieldCreateManyFieldMetaEmailResponse) GetOverflow() *EnvelopeFieldCreateManyOverflowResponse4 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaEmailResponse) GetType() EnvelopeFieldCreateManyFieldMetaTypeEmail {
 	if e == nil {
 		return EnvelopeFieldCreateManyFieldMetaTypeEmail("")
 	}
 	return e.Type
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaEmail) GetTextAlign() *EnvelopeFieldCreateManyTextAlign3 {
+func (e *EnvelopeFieldCreateManyFieldMetaEmailResponse) GetTextAlign() *EnvelopeFieldCreateManyTextAlignResponse3 {
 	if e == nil {
 		return nil
 	}
 	return e.TextAlign
+}
+
+type EnvelopeFieldCreateManyOverflowResponse3 string
+
+const (
+	EnvelopeFieldCreateManyOverflowResponse3Auto       EnvelopeFieldCreateManyOverflowResponse3 = "auto"
+	EnvelopeFieldCreateManyOverflowResponse3Horizontal EnvelopeFieldCreateManyOverflowResponse3 = "horizontal"
+	EnvelopeFieldCreateManyOverflowResponse3Vertical   EnvelopeFieldCreateManyOverflowResponse3 = "vertical"
+	EnvelopeFieldCreateManyOverflowResponse3Crop       EnvelopeFieldCreateManyOverflowResponse3 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowResponse3) ToPointer() *EnvelopeFieldCreateManyOverflowResponse3 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowResponse3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowResponse3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowResponse3: %v", v)
+	}
 }
 
 type EnvelopeFieldCreateManyFieldMetaTypeName string
@@ -1411,18 +8261,18 @@ func (e *EnvelopeFieldCreateManyFieldMetaTypeName) UnmarshalJSON(data []byte) er
 	}
 }
 
-type EnvelopeFieldCreateManyTextAlign2 string
+type EnvelopeFieldCreateManyTextAlignResponse2 string
 
 const (
-	EnvelopeFieldCreateManyTextAlign2Left   EnvelopeFieldCreateManyTextAlign2 = "left"
-	EnvelopeFieldCreateManyTextAlign2Center EnvelopeFieldCreateManyTextAlign2 = "center"
-	EnvelopeFieldCreateManyTextAlign2Right  EnvelopeFieldCreateManyTextAlign2 = "right"
+	EnvelopeFieldCreateManyTextAlignResponse2Left   EnvelopeFieldCreateManyTextAlignResponse2 = "left"
+	EnvelopeFieldCreateManyTextAlignResponse2Center EnvelopeFieldCreateManyTextAlignResponse2 = "center"
+	EnvelopeFieldCreateManyTextAlignResponse2Right  EnvelopeFieldCreateManyTextAlignResponse2 = "right"
 )
 
-func (e EnvelopeFieldCreateManyTextAlign2) ToPointer() *EnvelopeFieldCreateManyTextAlign2 {
+func (e EnvelopeFieldCreateManyTextAlignResponse2) ToPointer() *EnvelopeFieldCreateManyTextAlignResponse2 {
 	return &e
 }
-func (e *EnvelopeFieldCreateManyTextAlign2) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyTextAlignResponse2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1433,81 +8283,121 @@ func (e *EnvelopeFieldCreateManyTextAlign2) UnmarshalJSON(data []byte) error {
 	case "center":
 		fallthrough
 	case "right":
-		*e = EnvelopeFieldCreateManyTextAlign2(v)
+		*e = EnvelopeFieldCreateManyTextAlignResponse2(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlign2: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignResponse2: %v", v)
 	}
 }
 
-type EnvelopeFieldCreateManyFieldMetaName struct {
-	Label       *string                                  `json:"label,omitempty"`
-	Placeholder *string                                  `json:"placeholder,omitempty"`
-	Required    *bool                                    `json:"required,omitempty"`
-	ReadOnly    *bool                                    `json:"readOnly,omitempty"`
-	FontSize    *float64                                 `default:"12" json:"fontSize"`
-	Type        EnvelopeFieldCreateManyFieldMetaTypeName `json:"type"`
-	TextAlign   *EnvelopeFieldCreateManyTextAlign2       `json:"textAlign,omitempty"`
+type EnvelopeFieldCreateManyFieldMetaNameResponse struct {
+	Label       *string                                    `json:"label,omitempty"`
+	Placeholder *string                                    `json:"placeholder,omitempty"`
+	Required    *bool                                      `json:"required,omitempty"`
+	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
+	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowResponse3  `json:"overflow,omitempty"`
+	Type        EnvelopeFieldCreateManyFieldMetaTypeName   `json:"type"`
+	TextAlign   *EnvelopeFieldCreateManyTextAlignResponse2 `json:"textAlign,omitempty"`
 }
 
-func (e EnvelopeFieldCreateManyFieldMetaName) MarshalJSON() ([]byte, error) {
+func (e EnvelopeFieldCreateManyFieldMetaNameResponse) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaName) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyFieldMetaNameResponse) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaName) GetLabel() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaNameResponse) GetLabel() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Label
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaName) GetPlaceholder() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaNameResponse) GetPlaceholder() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Placeholder
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaName) GetRequired() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaNameResponse) GetRequired() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.Required
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaName) GetReadOnly() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaNameResponse) GetReadOnly() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.ReadOnly
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaName) GetFontSize() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaNameResponse) GetFontSize() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.FontSize
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaName) GetType() EnvelopeFieldCreateManyFieldMetaTypeName {
+func (e *EnvelopeFieldCreateManyFieldMetaNameResponse) GetOverflow() *EnvelopeFieldCreateManyOverflowResponse3 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaNameResponse) GetType() EnvelopeFieldCreateManyFieldMetaTypeName {
 	if e == nil {
 		return EnvelopeFieldCreateManyFieldMetaTypeName("")
 	}
 	return e.Type
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaName) GetTextAlign() *EnvelopeFieldCreateManyTextAlign2 {
+func (e *EnvelopeFieldCreateManyFieldMetaNameResponse) GetTextAlign() *EnvelopeFieldCreateManyTextAlignResponse2 {
 	if e == nil {
 		return nil
 	}
 	return e.TextAlign
+}
+
+type EnvelopeFieldCreateManyOverflowResponse2 string
+
+const (
+	EnvelopeFieldCreateManyOverflowResponse2Auto       EnvelopeFieldCreateManyOverflowResponse2 = "auto"
+	EnvelopeFieldCreateManyOverflowResponse2Horizontal EnvelopeFieldCreateManyOverflowResponse2 = "horizontal"
+	EnvelopeFieldCreateManyOverflowResponse2Vertical   EnvelopeFieldCreateManyOverflowResponse2 = "vertical"
+	EnvelopeFieldCreateManyOverflowResponse2Crop       EnvelopeFieldCreateManyOverflowResponse2 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowResponse2) ToPointer() *EnvelopeFieldCreateManyOverflowResponse2 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowResponse2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowResponse2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowResponse2: %v", v)
+	}
 }
 
 type EnvelopeFieldCreateManyFieldMetaTypeInitials string
@@ -1533,18 +8423,18 @@ func (e *EnvelopeFieldCreateManyFieldMetaTypeInitials) UnmarshalJSON(data []byte
 	}
 }
 
-type EnvelopeFieldCreateManyTextAlign1 string
+type EnvelopeFieldCreateManyTextAlignResponse1 string
 
 const (
-	EnvelopeFieldCreateManyTextAlign1Left   EnvelopeFieldCreateManyTextAlign1 = "left"
-	EnvelopeFieldCreateManyTextAlign1Center EnvelopeFieldCreateManyTextAlign1 = "center"
-	EnvelopeFieldCreateManyTextAlign1Right  EnvelopeFieldCreateManyTextAlign1 = "right"
+	EnvelopeFieldCreateManyTextAlignResponse1Left   EnvelopeFieldCreateManyTextAlignResponse1 = "left"
+	EnvelopeFieldCreateManyTextAlignResponse1Center EnvelopeFieldCreateManyTextAlignResponse1 = "center"
+	EnvelopeFieldCreateManyTextAlignResponse1Right  EnvelopeFieldCreateManyTextAlignResponse1 = "right"
 )
 
-func (e EnvelopeFieldCreateManyTextAlign1) ToPointer() *EnvelopeFieldCreateManyTextAlign1 {
+func (e EnvelopeFieldCreateManyTextAlignResponse1) ToPointer() *EnvelopeFieldCreateManyTextAlignResponse1 {
 	return &e
 }
-func (e *EnvelopeFieldCreateManyTextAlign1) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyTextAlignResponse1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -1555,81 +8445,121 @@ func (e *EnvelopeFieldCreateManyTextAlign1) UnmarshalJSON(data []byte) error {
 	case "center":
 		fallthrough
 	case "right":
-		*e = EnvelopeFieldCreateManyTextAlign1(v)
+		*e = EnvelopeFieldCreateManyTextAlignResponse1(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlign1: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyTextAlignResponse1: %v", v)
 	}
 }
 
-type EnvelopeFieldCreateManyFieldMetaInitials struct {
+type EnvelopeFieldCreateManyFieldMetaInitialsResponse struct {
 	Label       *string                                      `json:"label,omitempty"`
 	Placeholder *string                                      `json:"placeholder,omitempty"`
 	Required    *bool                                        `json:"required,omitempty"`
 	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
 	FontSize    *float64                                     `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowResponse2    `json:"overflow,omitempty"`
 	Type        EnvelopeFieldCreateManyFieldMetaTypeInitials `json:"type"`
-	TextAlign   *EnvelopeFieldCreateManyTextAlign1           `json:"textAlign,omitempty"`
+	TextAlign   *EnvelopeFieldCreateManyTextAlignResponse1   `json:"textAlign,omitempty"`
 }
 
-func (e EnvelopeFieldCreateManyFieldMetaInitials) MarshalJSON() ([]byte, error) {
+func (e EnvelopeFieldCreateManyFieldMetaInitialsResponse) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaInitials) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsResponse) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaInitials) GetLabel() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsResponse) GetLabel() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Label
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaInitials) GetPlaceholder() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsResponse) GetPlaceholder() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Placeholder
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaInitials) GetRequired() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsResponse) GetRequired() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.Required
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaInitials) GetReadOnly() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsResponse) GetReadOnly() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.ReadOnly
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaInitials) GetFontSize() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsResponse) GetFontSize() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.FontSize
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaInitials) GetType() EnvelopeFieldCreateManyFieldMetaTypeInitials {
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsResponse) GetOverflow() *EnvelopeFieldCreateManyOverflowResponse2 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsResponse) GetType() EnvelopeFieldCreateManyFieldMetaTypeInitials {
 	if e == nil {
 		return EnvelopeFieldCreateManyFieldMetaTypeInitials("")
 	}
 	return e.Type
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaInitials) GetTextAlign() *EnvelopeFieldCreateManyTextAlign1 {
+func (e *EnvelopeFieldCreateManyFieldMetaInitialsResponse) GetTextAlign() *EnvelopeFieldCreateManyTextAlignResponse1 {
 	if e == nil {
 		return nil
 	}
 	return e.TextAlign
+}
+
+type EnvelopeFieldCreateManyOverflowResponse1 string
+
+const (
+	EnvelopeFieldCreateManyOverflowResponse1Auto       EnvelopeFieldCreateManyOverflowResponse1 = "auto"
+	EnvelopeFieldCreateManyOverflowResponse1Horizontal EnvelopeFieldCreateManyOverflowResponse1 = "horizontal"
+	EnvelopeFieldCreateManyOverflowResponse1Vertical   EnvelopeFieldCreateManyOverflowResponse1 = "vertical"
+	EnvelopeFieldCreateManyOverflowResponse1Crop       EnvelopeFieldCreateManyOverflowResponse1 = "crop"
+)
+
+func (e EnvelopeFieldCreateManyOverflowResponse1) ToPointer() *EnvelopeFieldCreateManyOverflowResponse1 {
+	return &e
+}
+func (e *EnvelopeFieldCreateManyOverflowResponse1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldCreateManyOverflowResponse1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldCreateManyOverflowResponse1: %v", v)
+	}
 }
 
 type EnvelopeFieldCreateManyFieldMetaTypeSignature string
@@ -1655,62 +8585,70 @@ func (e *EnvelopeFieldCreateManyFieldMetaTypeSignature) UnmarshalJSON(data []byt
 	}
 }
 
-type EnvelopeFieldCreateManyFieldMetaSignature struct {
+type EnvelopeFieldCreateManyFieldMetaSignatureResponse struct {
 	Label       *string                                       `json:"label,omitempty"`
 	Placeholder *string                                       `json:"placeholder,omitempty"`
 	Required    *bool                                         `json:"required,omitempty"`
 	ReadOnly    *bool                                         `json:"readOnly,omitempty"`
 	FontSize    *float64                                      `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldCreateManyOverflowResponse1     `default:"auto" json:"overflow"`
 	Type        EnvelopeFieldCreateManyFieldMetaTypeSignature `json:"type"`
 }
 
-func (e EnvelopeFieldCreateManyFieldMetaSignature) MarshalJSON() ([]byte, error) {
+func (e EnvelopeFieldCreateManyFieldMetaSignatureResponse) MarshalJSON() ([]byte, error) {
 	return utils.MarshalJSON(e, "", false)
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaSignature) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureResponse) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"type"}); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaSignature) GetLabel() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureResponse) GetLabel() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Label
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaSignature) GetPlaceholder() *string {
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureResponse) GetPlaceholder() *string {
 	if e == nil {
 		return nil
 	}
 	return e.Placeholder
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaSignature) GetRequired() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureResponse) GetRequired() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.Required
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaSignature) GetReadOnly() *bool {
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureResponse) GetReadOnly() *bool {
 	if e == nil {
 		return nil
 	}
 	return e.ReadOnly
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaSignature) GetFontSize() *float64 {
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureResponse) GetFontSize() *float64 {
 	if e == nil {
 		return nil
 	}
 	return e.FontSize
 }
 
-func (e *EnvelopeFieldCreateManyFieldMetaSignature) GetType() EnvelopeFieldCreateManyFieldMetaTypeSignature {
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureResponse) GetOverflow() *EnvelopeFieldCreateManyOverflowResponse1 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
+func (e *EnvelopeFieldCreateManyFieldMetaSignatureResponse) GetType() EnvelopeFieldCreateManyFieldMetaTypeSignature {
 	if e == nil {
 		return EnvelopeFieldCreateManyFieldMetaTypeSignature("")
 	}
@@ -1720,192 +8658,199 @@ func (e *EnvelopeFieldCreateManyFieldMetaSignature) GetType() EnvelopeFieldCreat
 type EnvelopeFieldCreateManyFieldMetaUnionType string
 
 const (
-	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaSignature EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Signature"
-	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaInitials  EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Initials"
-	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaName      EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Name"
-	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaEmail     EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Email"
-	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaDate      EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Date"
-	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaText      EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Text"
-	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaNumber    EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Number"
-	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaRadio     EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Radio"
-	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaCheckbox  EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Checkbox"
-	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaDropdown  EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Dropdown"
+	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaSignatureResponse EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Signature_response"
+	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaInitialsResponse  EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Initials_response"
+	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaNameResponse      EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Name_response"
+	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaEmailResponse     EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Email_response"
+	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaDateResponse      EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Date_response"
+	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaTextResponse      EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Text_response"
+	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaNumberResponse    EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Number_response"
+	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaRadioResponse     EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Radio_response"
+	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaCheckboxResponse  EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Checkbox_response"
+	EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaDropdownResponse  EnvelopeFieldCreateManyFieldMetaUnionType = "envelope_field_createMany_fieldMeta_Dropdown_response"
 )
 
 type EnvelopeFieldCreateManyFieldMetaUnion struct {
-	EnvelopeFieldCreateManyFieldMetaSignature *EnvelopeFieldCreateManyFieldMetaSignature `queryParam:"inline" union:"member"`
-	EnvelopeFieldCreateManyFieldMetaInitials  *EnvelopeFieldCreateManyFieldMetaInitials  `queryParam:"inline" union:"member"`
-	EnvelopeFieldCreateManyFieldMetaName      *EnvelopeFieldCreateManyFieldMetaName      `queryParam:"inline" union:"member"`
-	EnvelopeFieldCreateManyFieldMetaEmail     *EnvelopeFieldCreateManyFieldMetaEmail     `queryParam:"inline" union:"member"`
-	EnvelopeFieldCreateManyFieldMetaDate      *EnvelopeFieldCreateManyFieldMetaDate      `queryParam:"inline" union:"member"`
-	EnvelopeFieldCreateManyFieldMetaText      *EnvelopeFieldCreateManyFieldMetaText      `queryParam:"inline" union:"member"`
-	EnvelopeFieldCreateManyFieldMetaNumber    *EnvelopeFieldCreateManyFieldMetaNumber    `queryParam:"inline" union:"member"`
-	EnvelopeFieldCreateManyFieldMetaRadio     *EnvelopeFieldCreateManyFieldMetaRadio     `queryParam:"inline" union:"member"`
-	EnvelopeFieldCreateManyFieldMetaCheckbox  *EnvelopeFieldCreateManyFieldMetaCheckbox  `queryParam:"inline" union:"member"`
-	EnvelopeFieldCreateManyFieldMetaDropdown  *EnvelopeFieldCreateManyFieldMetaDropdown  `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaSignatureResponse *EnvelopeFieldCreateManyFieldMetaSignatureResponse `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaInitialsResponse  *EnvelopeFieldCreateManyFieldMetaInitialsResponse  `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaNameResponse      *EnvelopeFieldCreateManyFieldMetaNameResponse      `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaEmailResponse     *EnvelopeFieldCreateManyFieldMetaEmailResponse     `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaDateResponse      *EnvelopeFieldCreateManyFieldMetaDateResponse      `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaTextResponse      *EnvelopeFieldCreateManyFieldMetaTextResponse      `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaNumberResponse    *EnvelopeFieldCreateManyFieldMetaNumberResponse    `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaRadioResponse     *EnvelopeFieldCreateManyFieldMetaRadioResponse     `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaCheckboxResponse  *EnvelopeFieldCreateManyFieldMetaCheckboxResponse  `queryParam:"inline" union:"member"`
+	EnvelopeFieldCreateManyFieldMetaDropdownResponse  *EnvelopeFieldCreateManyFieldMetaDropdownResponse  `queryParam:"inline" union:"member"`
 
 	Type EnvelopeFieldCreateManyFieldMetaUnionType
 }
 
-func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaSignature(envelopeFieldCreateManyFieldMetaSignature EnvelopeFieldCreateManyFieldMetaSignature) EnvelopeFieldCreateManyFieldMetaUnion {
-	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaSignature
+func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaSignatureResponse(envelopeFieldCreateManyFieldMetaSignatureResponse EnvelopeFieldCreateManyFieldMetaSignatureResponse) EnvelopeFieldCreateManyFieldMetaUnion {
+	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaSignatureResponse
 
 	return EnvelopeFieldCreateManyFieldMetaUnion{
-		EnvelopeFieldCreateManyFieldMetaSignature: &envelopeFieldCreateManyFieldMetaSignature,
+		EnvelopeFieldCreateManyFieldMetaSignatureResponse: &envelopeFieldCreateManyFieldMetaSignatureResponse,
 		Type: typ,
 	}
 }
 
-func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaInitials(envelopeFieldCreateManyFieldMetaInitials EnvelopeFieldCreateManyFieldMetaInitials) EnvelopeFieldCreateManyFieldMetaUnion {
-	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaInitials
+func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaInitialsResponse(envelopeFieldCreateManyFieldMetaInitialsResponse EnvelopeFieldCreateManyFieldMetaInitialsResponse) EnvelopeFieldCreateManyFieldMetaUnion {
+	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaInitialsResponse
 
 	return EnvelopeFieldCreateManyFieldMetaUnion{
-		EnvelopeFieldCreateManyFieldMetaInitials: &envelopeFieldCreateManyFieldMetaInitials,
-		Type:                                     typ,
+		EnvelopeFieldCreateManyFieldMetaInitialsResponse: &envelopeFieldCreateManyFieldMetaInitialsResponse,
+		Type: typ,
 	}
 }
 
-func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaName(envelopeFieldCreateManyFieldMetaName EnvelopeFieldCreateManyFieldMetaName) EnvelopeFieldCreateManyFieldMetaUnion {
-	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaName
+func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaNameResponse(envelopeFieldCreateManyFieldMetaNameResponse EnvelopeFieldCreateManyFieldMetaNameResponse) EnvelopeFieldCreateManyFieldMetaUnion {
+	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaNameResponse
 
 	return EnvelopeFieldCreateManyFieldMetaUnion{
-		EnvelopeFieldCreateManyFieldMetaName: &envelopeFieldCreateManyFieldMetaName,
-		Type:                                 typ,
+		EnvelopeFieldCreateManyFieldMetaNameResponse: &envelopeFieldCreateManyFieldMetaNameResponse,
+		Type: typ,
 	}
 }
 
-func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaEmail(envelopeFieldCreateManyFieldMetaEmail EnvelopeFieldCreateManyFieldMetaEmail) EnvelopeFieldCreateManyFieldMetaUnion {
-	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaEmail
+func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaEmailResponse(envelopeFieldCreateManyFieldMetaEmailResponse EnvelopeFieldCreateManyFieldMetaEmailResponse) EnvelopeFieldCreateManyFieldMetaUnion {
+	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaEmailResponse
 
 	return EnvelopeFieldCreateManyFieldMetaUnion{
-		EnvelopeFieldCreateManyFieldMetaEmail: &envelopeFieldCreateManyFieldMetaEmail,
-		Type:                                  typ,
+		EnvelopeFieldCreateManyFieldMetaEmailResponse: &envelopeFieldCreateManyFieldMetaEmailResponse,
+		Type: typ,
 	}
 }
 
-func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaDate(envelopeFieldCreateManyFieldMetaDate EnvelopeFieldCreateManyFieldMetaDate) EnvelopeFieldCreateManyFieldMetaUnion {
-	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaDate
+func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaDateResponse(envelopeFieldCreateManyFieldMetaDateResponse EnvelopeFieldCreateManyFieldMetaDateResponse) EnvelopeFieldCreateManyFieldMetaUnion {
+	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaDateResponse
 
 	return EnvelopeFieldCreateManyFieldMetaUnion{
-		EnvelopeFieldCreateManyFieldMetaDate: &envelopeFieldCreateManyFieldMetaDate,
-		Type:                                 typ,
+		EnvelopeFieldCreateManyFieldMetaDateResponse: &envelopeFieldCreateManyFieldMetaDateResponse,
+		Type: typ,
 	}
 }
 
-func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaText(envelopeFieldCreateManyFieldMetaText EnvelopeFieldCreateManyFieldMetaText) EnvelopeFieldCreateManyFieldMetaUnion {
-	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaText
+func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaTextResponse(envelopeFieldCreateManyFieldMetaTextResponse EnvelopeFieldCreateManyFieldMetaTextResponse) EnvelopeFieldCreateManyFieldMetaUnion {
+	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaTextResponse
 
 	return EnvelopeFieldCreateManyFieldMetaUnion{
-		EnvelopeFieldCreateManyFieldMetaText: &envelopeFieldCreateManyFieldMetaText,
-		Type:                                 typ,
+		EnvelopeFieldCreateManyFieldMetaTextResponse: &envelopeFieldCreateManyFieldMetaTextResponse,
+		Type: typ,
 	}
 }
 
-func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaNumber(envelopeFieldCreateManyFieldMetaNumber EnvelopeFieldCreateManyFieldMetaNumber) EnvelopeFieldCreateManyFieldMetaUnion {
-	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaNumber
+func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaNumberResponse(envelopeFieldCreateManyFieldMetaNumberResponse EnvelopeFieldCreateManyFieldMetaNumberResponse) EnvelopeFieldCreateManyFieldMetaUnion {
+	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaNumberResponse
 
 	return EnvelopeFieldCreateManyFieldMetaUnion{
-		EnvelopeFieldCreateManyFieldMetaNumber: &envelopeFieldCreateManyFieldMetaNumber,
-		Type:                                   typ,
+		EnvelopeFieldCreateManyFieldMetaNumberResponse: &envelopeFieldCreateManyFieldMetaNumberResponse,
+		Type: typ,
 	}
 }
 
-func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaRadio(envelopeFieldCreateManyFieldMetaRadio EnvelopeFieldCreateManyFieldMetaRadio) EnvelopeFieldCreateManyFieldMetaUnion {
-	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaRadio
+func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaRadioResponse(envelopeFieldCreateManyFieldMetaRadioResponse EnvelopeFieldCreateManyFieldMetaRadioResponse) EnvelopeFieldCreateManyFieldMetaUnion {
+	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaRadioResponse
 
 	return EnvelopeFieldCreateManyFieldMetaUnion{
-		EnvelopeFieldCreateManyFieldMetaRadio: &envelopeFieldCreateManyFieldMetaRadio,
-		Type:                                  typ,
+		EnvelopeFieldCreateManyFieldMetaRadioResponse: &envelopeFieldCreateManyFieldMetaRadioResponse,
+		Type: typ,
 	}
 }
 
-func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaCheckbox(envelopeFieldCreateManyFieldMetaCheckbox EnvelopeFieldCreateManyFieldMetaCheckbox) EnvelopeFieldCreateManyFieldMetaUnion {
-	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaCheckbox
+func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaCheckboxResponse(envelopeFieldCreateManyFieldMetaCheckboxResponse EnvelopeFieldCreateManyFieldMetaCheckboxResponse) EnvelopeFieldCreateManyFieldMetaUnion {
+	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaCheckboxResponse
 
 	return EnvelopeFieldCreateManyFieldMetaUnion{
-		EnvelopeFieldCreateManyFieldMetaCheckbox: &envelopeFieldCreateManyFieldMetaCheckbox,
-		Type:                                     typ,
+		EnvelopeFieldCreateManyFieldMetaCheckboxResponse: &envelopeFieldCreateManyFieldMetaCheckboxResponse,
+		Type: typ,
 	}
 }
 
-func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaDropdown(envelopeFieldCreateManyFieldMetaDropdown EnvelopeFieldCreateManyFieldMetaDropdown) EnvelopeFieldCreateManyFieldMetaUnion {
-	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaDropdown
+func CreateEnvelopeFieldCreateManyFieldMetaUnionEnvelopeFieldCreateManyFieldMetaDropdownResponse(envelopeFieldCreateManyFieldMetaDropdownResponse EnvelopeFieldCreateManyFieldMetaDropdownResponse) EnvelopeFieldCreateManyFieldMetaUnion {
+	typ := EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaDropdownResponse
 
 	return EnvelopeFieldCreateManyFieldMetaUnion{
-		EnvelopeFieldCreateManyFieldMetaDropdown: &envelopeFieldCreateManyFieldMetaDropdown,
-		Type:                                     typ,
+		EnvelopeFieldCreateManyFieldMetaDropdownResponse: &envelopeFieldCreateManyFieldMetaDropdownResponse,
+		Type: typ,
 	}
 }
 
-func (u *EnvelopeFieldCreateManyFieldMetaUnion) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeFieldCreateManyFieldMetaUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeFieldCreateManyFieldMetaUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
-	var envelopeFieldCreateManyFieldMetaSignature EnvelopeFieldCreateManyFieldMetaSignature = EnvelopeFieldCreateManyFieldMetaSignature{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaSignature, "", true, nil); err == nil {
-		u.EnvelopeFieldCreateManyFieldMetaSignature = &envelopeFieldCreateManyFieldMetaSignature
-		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaSignature
+	var envelopeFieldCreateManyFieldMetaSignatureResponse EnvelopeFieldCreateManyFieldMetaSignatureResponse = EnvelopeFieldCreateManyFieldMetaSignatureResponse{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaSignatureResponse, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyFieldMetaSignatureResponse = &envelopeFieldCreateManyFieldMetaSignatureResponse
+		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaSignatureResponse
 		return nil
 	}
 
-	var envelopeFieldCreateManyFieldMetaInitials EnvelopeFieldCreateManyFieldMetaInitials = EnvelopeFieldCreateManyFieldMetaInitials{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaInitials, "", true, nil); err == nil {
-		u.EnvelopeFieldCreateManyFieldMetaInitials = &envelopeFieldCreateManyFieldMetaInitials
-		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaInitials
+	var envelopeFieldCreateManyFieldMetaInitialsResponse EnvelopeFieldCreateManyFieldMetaInitialsResponse = EnvelopeFieldCreateManyFieldMetaInitialsResponse{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaInitialsResponse, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyFieldMetaInitialsResponse = &envelopeFieldCreateManyFieldMetaInitialsResponse
+		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaInitialsResponse
 		return nil
 	}
 
-	var envelopeFieldCreateManyFieldMetaName EnvelopeFieldCreateManyFieldMetaName = EnvelopeFieldCreateManyFieldMetaName{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaName, "", true, nil); err == nil {
-		u.EnvelopeFieldCreateManyFieldMetaName = &envelopeFieldCreateManyFieldMetaName
-		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaName
+	var envelopeFieldCreateManyFieldMetaNameResponse EnvelopeFieldCreateManyFieldMetaNameResponse = EnvelopeFieldCreateManyFieldMetaNameResponse{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaNameResponse, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyFieldMetaNameResponse = &envelopeFieldCreateManyFieldMetaNameResponse
+		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaNameResponse
 		return nil
 	}
 
-	var envelopeFieldCreateManyFieldMetaEmail EnvelopeFieldCreateManyFieldMetaEmail = EnvelopeFieldCreateManyFieldMetaEmail{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaEmail, "", true, nil); err == nil {
-		u.EnvelopeFieldCreateManyFieldMetaEmail = &envelopeFieldCreateManyFieldMetaEmail
-		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaEmail
+	var envelopeFieldCreateManyFieldMetaEmailResponse EnvelopeFieldCreateManyFieldMetaEmailResponse = EnvelopeFieldCreateManyFieldMetaEmailResponse{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaEmailResponse, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyFieldMetaEmailResponse = &envelopeFieldCreateManyFieldMetaEmailResponse
+		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaEmailResponse
 		return nil
 	}
 
-	var envelopeFieldCreateManyFieldMetaDate EnvelopeFieldCreateManyFieldMetaDate = EnvelopeFieldCreateManyFieldMetaDate{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaDate, "", true, nil); err == nil {
-		u.EnvelopeFieldCreateManyFieldMetaDate = &envelopeFieldCreateManyFieldMetaDate
-		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaDate
+	var envelopeFieldCreateManyFieldMetaDateResponse EnvelopeFieldCreateManyFieldMetaDateResponse = EnvelopeFieldCreateManyFieldMetaDateResponse{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaDateResponse, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyFieldMetaDateResponse = &envelopeFieldCreateManyFieldMetaDateResponse
+		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaDateResponse
 		return nil
 	}
 
-	var envelopeFieldCreateManyFieldMetaText EnvelopeFieldCreateManyFieldMetaText = EnvelopeFieldCreateManyFieldMetaText{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaText, "", true, nil); err == nil {
-		u.EnvelopeFieldCreateManyFieldMetaText = &envelopeFieldCreateManyFieldMetaText
-		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaText
+	var envelopeFieldCreateManyFieldMetaTextResponse EnvelopeFieldCreateManyFieldMetaTextResponse = EnvelopeFieldCreateManyFieldMetaTextResponse{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaTextResponse, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyFieldMetaTextResponse = &envelopeFieldCreateManyFieldMetaTextResponse
+		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaTextResponse
 		return nil
 	}
 
-	var envelopeFieldCreateManyFieldMetaNumber EnvelopeFieldCreateManyFieldMetaNumber = EnvelopeFieldCreateManyFieldMetaNumber{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaNumber, "", true, nil); err == nil {
-		u.EnvelopeFieldCreateManyFieldMetaNumber = &envelopeFieldCreateManyFieldMetaNumber
-		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaNumber
+	var envelopeFieldCreateManyFieldMetaNumberResponse EnvelopeFieldCreateManyFieldMetaNumberResponse = EnvelopeFieldCreateManyFieldMetaNumberResponse{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaNumberResponse, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyFieldMetaNumberResponse = &envelopeFieldCreateManyFieldMetaNumberResponse
+		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaNumberResponse
 		return nil
 	}
 
-	var envelopeFieldCreateManyFieldMetaRadio EnvelopeFieldCreateManyFieldMetaRadio = EnvelopeFieldCreateManyFieldMetaRadio{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaRadio, "", true, nil); err == nil {
-		u.EnvelopeFieldCreateManyFieldMetaRadio = &envelopeFieldCreateManyFieldMetaRadio
-		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaRadio
+	var envelopeFieldCreateManyFieldMetaRadioResponse EnvelopeFieldCreateManyFieldMetaRadioResponse = EnvelopeFieldCreateManyFieldMetaRadioResponse{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaRadioResponse, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyFieldMetaRadioResponse = &envelopeFieldCreateManyFieldMetaRadioResponse
+		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaRadioResponse
 		return nil
 	}
 
-	var envelopeFieldCreateManyFieldMetaCheckbox EnvelopeFieldCreateManyFieldMetaCheckbox = EnvelopeFieldCreateManyFieldMetaCheckbox{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaCheckbox, "", true, nil); err == nil {
-		u.EnvelopeFieldCreateManyFieldMetaCheckbox = &envelopeFieldCreateManyFieldMetaCheckbox
-		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaCheckbox
+	var envelopeFieldCreateManyFieldMetaCheckboxResponse EnvelopeFieldCreateManyFieldMetaCheckboxResponse = EnvelopeFieldCreateManyFieldMetaCheckboxResponse{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaCheckboxResponse, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyFieldMetaCheckboxResponse = &envelopeFieldCreateManyFieldMetaCheckboxResponse
+		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaCheckboxResponse
 		return nil
 	}
 
-	var envelopeFieldCreateManyFieldMetaDropdown EnvelopeFieldCreateManyFieldMetaDropdown = EnvelopeFieldCreateManyFieldMetaDropdown{}
-	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaDropdown, "", true, nil); err == nil {
-		u.EnvelopeFieldCreateManyFieldMetaDropdown = &envelopeFieldCreateManyFieldMetaDropdown
-		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaDropdown
+	var envelopeFieldCreateManyFieldMetaDropdownResponse EnvelopeFieldCreateManyFieldMetaDropdownResponse = EnvelopeFieldCreateManyFieldMetaDropdownResponse{}
+	if err := utils.UnmarshalJSON(data, &envelopeFieldCreateManyFieldMetaDropdownResponse, "", true, nil); err == nil {
+		u.EnvelopeFieldCreateManyFieldMetaDropdownResponse = &envelopeFieldCreateManyFieldMetaDropdownResponse
+		u.Type = EnvelopeFieldCreateManyFieldMetaUnionTypeEnvelopeFieldCreateManyFieldMetaDropdownResponse
 		return nil
 	}
 
@@ -1913,44 +8858,44 @@ func (u *EnvelopeFieldCreateManyFieldMetaUnion) UnmarshalJSON(data []byte) error
 }
 
 func (u EnvelopeFieldCreateManyFieldMetaUnion) MarshalJSON() ([]byte, error) {
-	if u.EnvelopeFieldCreateManyFieldMetaSignature != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaSignature, "", true)
+	if u.EnvelopeFieldCreateManyFieldMetaSignatureResponse != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaSignatureResponse, "", true)
 	}
 
-	if u.EnvelopeFieldCreateManyFieldMetaInitials != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaInitials, "", true)
+	if u.EnvelopeFieldCreateManyFieldMetaInitialsResponse != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaInitialsResponse, "", true)
 	}
 
-	if u.EnvelopeFieldCreateManyFieldMetaName != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaName, "", true)
+	if u.EnvelopeFieldCreateManyFieldMetaNameResponse != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaNameResponse, "", true)
 	}
 
-	if u.EnvelopeFieldCreateManyFieldMetaEmail != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaEmail, "", true)
+	if u.EnvelopeFieldCreateManyFieldMetaEmailResponse != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaEmailResponse, "", true)
 	}
 
-	if u.EnvelopeFieldCreateManyFieldMetaDate != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaDate, "", true)
+	if u.EnvelopeFieldCreateManyFieldMetaDateResponse != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaDateResponse, "", true)
 	}
 
-	if u.EnvelopeFieldCreateManyFieldMetaText != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaText, "", true)
+	if u.EnvelopeFieldCreateManyFieldMetaTextResponse != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaTextResponse, "", true)
 	}
 
-	if u.EnvelopeFieldCreateManyFieldMetaNumber != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaNumber, "", true)
+	if u.EnvelopeFieldCreateManyFieldMetaNumberResponse != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaNumberResponse, "", true)
 	}
 
-	if u.EnvelopeFieldCreateManyFieldMetaRadio != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaRadio, "", true)
+	if u.EnvelopeFieldCreateManyFieldMetaRadioResponse != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaRadioResponse, "", true)
 	}
 
-	if u.EnvelopeFieldCreateManyFieldMetaCheckbox != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaCheckbox, "", true)
+	if u.EnvelopeFieldCreateManyFieldMetaCheckboxResponse != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaCheckboxResponse, "", true)
 	}
 
-	if u.EnvelopeFieldCreateManyFieldMetaDropdown != nil {
-		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaDropdown, "", true)
+	if u.EnvelopeFieldCreateManyFieldMetaDropdownResponse != nil {
+		return utils.MarshalJSON(u.EnvelopeFieldCreateManyFieldMetaDropdownResponse, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type EnvelopeFieldCreateManyFieldMetaUnion: all fields are null")
@@ -1959,7 +8904,7 @@ func (u EnvelopeFieldCreateManyFieldMetaUnion) MarshalJSON() ([]byte, error) {
 type EnvelopeFieldCreateManyDataResponse struct {
 	EnvelopeID     string                                 `json:"envelopeId"`
 	EnvelopeItemID string                                 `json:"envelopeItemId"`
-	Type           EnvelopeFieldCreateManyType            `json:"type"`
+	Type           EnvelopeFieldCreateManyTypeResponse    `json:"type"`
 	ID             float64                                `json:"id"`
 	SecondaryID    string                                 `json:"secondaryId"`
 	RecipientID    float64                                `json:"recipientId"`
@@ -1989,9 +8934,9 @@ func (e *EnvelopeFieldCreateManyDataResponse) GetEnvelopeItemID() string {
 	return e.EnvelopeItemID
 }
 
-func (e *EnvelopeFieldCreateManyDataResponse) GetType() EnvelopeFieldCreateManyType {
+func (e *EnvelopeFieldCreateManyDataResponse) GetType() EnvelopeFieldCreateManyTypeResponse {
 	if e == nil {
-		return EnvelopeFieldCreateManyType("")
+		return EnvelopeFieldCreateManyTypeResponse("")
 	}
 	return e.Type
 }
