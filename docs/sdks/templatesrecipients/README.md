@@ -1,19 +1,24 @@
-# Templates.Recipients
+# ~~Templates.Recipients~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
 ### Available Operations
 
-* [Get](#get) - Get template recipient
-* [Create](#create) - Create template recipient
-* [CreateMany](#createmany) - Create template recipients
-* [Update](#update) - Update template recipient
-* [UpdateMany](#updatemany) - Update template recipients
-* [Delete](#delete) - Delete template recipient
+* [~~Get~~](#get) - Get template recipient :warning: **Deprecated**
+* [~~Create~~](#create) - Create template recipient :warning: **Deprecated**
+* [~~CreateMany~~](#createmany) - Create template recipients :warning: **Deprecated**
+* [~~Update~~](#update) - Update template recipient :warning: **Deprecated**
+* [~~UpdateMany~~](#updatemany) - Update template recipients :warning: **Deprecated**
+* [~~Delete~~](#delete) - Delete template recipient :warning: **Deprecated**
 
-## Get
+## ~~Get~~
 
-Returns a single recipient. If you want to retrieve all the recipients for a template, use the "Get Template" endpoint.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Returns a single recipient. If you want to retrieve all the recipients for a template, use the "Get Template" endpoint.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -50,7 +55,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `recipientID`                                            | *float64*                                                | :heavy_check_mark:                                       | N/A                                                      |
+| `recipientID`                                            | `float64`                                                | :heavy_check_mark:                                       | N/A                                                      |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -68,9 +73,11 @@ func main() {
 | apierrors.RecipientGetTemplateRecipientInternalServerError | 500                                                        | application/json                                           |
 | apierrors.APIError                                         | 4XX, 5XX                                                   | \*/\*                                                      |
 
-## Create
+## ~~Create~~
 
-Create a single recipient for a template.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create a single recipient for a template.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -132,9 +139,11 @@ func main() {
 | apierrors.RecipientCreateTemplateRecipientInternalServerError | 500                                                           | application/json                                              |
 | apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |
 
-## CreateMany
+## ~~CreateMany~~
 
-Create multiple recipients for a template.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create multiple recipients for a template.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -192,9 +201,11 @@ func main() {
 | apierrors.RecipientCreateTemplateRecipientsInternalServerError | 500                                                            | application/json                                               |
 | apierrors.APIError                                             | 4XX, 5XX                                                       | \*/\*                                                          |
 
-## Update
+## ~~Update~~
 
-Update a single recipient for a template.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update a single recipient for a template.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -254,9 +265,11 @@ func main() {
 | apierrors.RecipientUpdateTemplateRecipientInternalServerError | 500                                                           | application/json                                              |
 | apierrors.APIError                                            | 4XX, 5XX                                                      | \*/\*                                                         |
 
-## UpdateMany
+## ~~UpdateMany~~
 
-Update multiple recipients for a template.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update multiple recipients for a template.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -318,9 +331,11 @@ func main() {
 | apierrors.RecipientUpdateTemplateRecipientsInternalServerError | 500                                                            | application/json                                               |
 | apierrors.APIError                                             | 4XX, 5XX                                                       | \*/\*                                                          |
 
-## Delete
+## ~~Delete~~
 
-Delete template recipient
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

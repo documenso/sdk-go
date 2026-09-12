@@ -23,8 +23,9 @@ func (t *TemplateDuplicateTemplateRequest) GetTemplateID() float64 {
 type TemplateDuplicateTemplateType string
 
 const (
-	TemplateDuplicateTemplateTypePublic  TemplateDuplicateTemplateType = "PUBLIC"
-	TemplateDuplicateTemplateTypePrivate TemplateDuplicateTemplateType = "PRIVATE"
+	TemplateDuplicateTemplateTypePublic       TemplateDuplicateTemplateType = "PUBLIC"
+	TemplateDuplicateTemplateTypePrivate      TemplateDuplicateTemplateType = "PRIVATE"
+	TemplateDuplicateTemplateTypeOrganisation TemplateDuplicateTemplateType = "ORGANISATION"
 )
 
 func (e TemplateDuplicateTemplateType) ToPointer() *TemplateDuplicateTemplateType {
@@ -39,6 +40,8 @@ func (e *TemplateDuplicateTemplateType) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
 		*e = TemplateDuplicateTemplateType(v)
 		return nil
 	default:

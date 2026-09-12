@@ -140,7 +140,14 @@ func CreateDocumentCreateFormValuesNumber(number float64) DocumentCreateFormValu
 	}
 }
 
-func (u *DocumentCreateFormValues) UnmarshalJSON(data []byte) error {
+func (u *DocumentCreateFormValues) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentCreateFormValues{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -301,6 +308,38 @@ func (e *DocumentCreateTypeDropdown1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type DocumentCreateOverflowDropdown string
+
+const (
+	DocumentCreateOverflowDropdownAuto       DocumentCreateOverflowDropdown = "auto"
+	DocumentCreateOverflowDropdownHorizontal DocumentCreateOverflowDropdown = "horizontal"
+	DocumentCreateOverflowDropdownVertical   DocumentCreateOverflowDropdown = "vertical"
+	DocumentCreateOverflowDropdownCrop       DocumentCreateOverflowDropdown = "crop"
+)
+
+func (e DocumentCreateOverflowDropdown) ToPointer() *DocumentCreateOverflowDropdown {
+	return &e
+}
+func (e *DocumentCreateOverflowDropdown) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentCreateOverflowDropdown(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentCreateOverflowDropdown: %v", v)
+	}
+}
+
 type DocumentCreateTypeDropdown2 string
 
 const (
@@ -347,14 +386,15 @@ func (d *DocumentCreateValueDropdown) GetValue() string {
 }
 
 type DocumentCreateFieldMetaDropdown struct {
-	Label        *string                       `json:"label,omitempty"`
-	Placeholder  *string                       `json:"placeholder,omitempty"`
-	Required     *bool                         `json:"required,omitempty"`
-	ReadOnly     *bool                         `json:"readOnly,omitempty"`
-	FontSize     *float64                      `default:"12" json:"fontSize"`
-	Type         DocumentCreateTypeDropdown2   `json:"type"`
-	Values       []DocumentCreateValueDropdown `json:"values,omitempty"`
-	DefaultValue *string                       `json:"defaultValue,omitempty"`
+	Label        *string                         `json:"label,omitempty"`
+	Placeholder  *string                         `json:"placeholder,omitempty"`
+	Required     *bool                           `json:"required,omitempty"`
+	ReadOnly     *bool                           `json:"readOnly,omitempty"`
+	FontSize     *float64                        `default:"12" json:"fontSize"`
+	Overflow     *DocumentCreateOverflowDropdown `json:"overflow,omitempty"`
+	Type         DocumentCreateTypeDropdown2     `json:"type"`
+	Values       []DocumentCreateValueDropdown   `json:"values,omitempty"`
+	DefaultValue *string                         `json:"defaultValue,omitempty"`
 }
 
 func (d DocumentCreateFieldMetaDropdown) MarshalJSON() ([]byte, error) {
@@ -401,6 +441,13 @@ func (d *DocumentCreateFieldMetaDropdown) GetFontSize() *float64 {
 		return nil
 	}
 	return d.FontSize
+}
+
+func (d *DocumentCreateFieldMetaDropdown) GetOverflow() *DocumentCreateOverflowDropdown {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
 }
 
 func (d *DocumentCreateFieldMetaDropdown) GetType() DocumentCreateTypeDropdown2 {
@@ -517,6 +564,38 @@ func (e *DocumentCreateTypeCheckbox1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type DocumentCreateOverflowCheckbox string
+
+const (
+	DocumentCreateOverflowCheckboxAuto       DocumentCreateOverflowCheckbox = "auto"
+	DocumentCreateOverflowCheckboxHorizontal DocumentCreateOverflowCheckbox = "horizontal"
+	DocumentCreateOverflowCheckboxVertical   DocumentCreateOverflowCheckbox = "vertical"
+	DocumentCreateOverflowCheckboxCrop       DocumentCreateOverflowCheckbox = "crop"
+)
+
+func (e DocumentCreateOverflowCheckbox) ToPointer() *DocumentCreateOverflowCheckbox {
+	return &e
+}
+func (e *DocumentCreateOverflowCheckbox) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentCreateOverflowCheckbox(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentCreateOverflowCheckbox: %v", v)
+	}
+}
+
 type DocumentCreateTypeCheckbox2 string
 
 const (
@@ -610,6 +689,7 @@ type DocumentCreateFieldMetaCheckbox struct {
 	Required         *bool                            `json:"required,omitempty"`
 	ReadOnly         *bool                            `json:"readOnly,omitempty"`
 	FontSize         *float64                         `default:"12" json:"fontSize"`
+	Overflow         *DocumentCreateOverflowCheckbox  `json:"overflow,omitempty"`
 	Type             DocumentCreateTypeCheckbox2      `json:"type"`
 	Values           []DocumentCreateValueCheckbox    `json:"values,omitempty"`
 	ValidationRule   *string                          `json:"validationRule,omitempty"`
@@ -661,6 +741,13 @@ func (d *DocumentCreateFieldMetaCheckbox) GetFontSize() *float64 {
 		return nil
 	}
 	return d.FontSize
+}
+
+func (d *DocumentCreateFieldMetaCheckbox) GetOverflow() *DocumentCreateOverflowCheckbox {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
 }
 
 func (d *DocumentCreateFieldMetaCheckbox) GetType() DocumentCreateTypeCheckbox2 {
@@ -791,6 +878,38 @@ func (e *DocumentCreateTypeRadio1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type DocumentCreateOverflowRadio string
+
+const (
+	DocumentCreateOverflowRadioAuto       DocumentCreateOverflowRadio = "auto"
+	DocumentCreateOverflowRadioHorizontal DocumentCreateOverflowRadio = "horizontal"
+	DocumentCreateOverflowRadioVertical   DocumentCreateOverflowRadio = "vertical"
+	DocumentCreateOverflowRadioCrop       DocumentCreateOverflowRadio = "crop"
+)
+
+func (e DocumentCreateOverflowRadio) ToPointer() *DocumentCreateOverflowRadio {
+	return &e
+}
+func (e *DocumentCreateOverflowRadio) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentCreateOverflowRadio(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentCreateOverflowRadio: %v", v)
+	}
+}
+
 type DocumentCreateTypeRadio2 string
 
 const (
@@ -884,6 +1003,7 @@ type DocumentCreateFieldMetaRadio struct {
 	Required    *bool                         `json:"required,omitempty"`
 	ReadOnly    *bool                         `json:"readOnly,omitempty"`
 	FontSize    *float64                      `default:"12" json:"fontSize"`
+	Overflow    *DocumentCreateOverflowRadio  `json:"overflow,omitempty"`
 	Type        DocumentCreateTypeRadio2      `json:"type"`
 	Values      []DocumentCreateValueRadio    `json:"values,omitempty"`
 	Direction   *DocumentCreateDirectionRadio `default:"vertical" json:"direction"`
@@ -933,6 +1053,13 @@ func (d *DocumentCreateFieldMetaRadio) GetFontSize() *float64 {
 		return nil
 	}
 	return d.FontSize
+}
+
+func (d *DocumentCreateFieldMetaRadio) GetOverflow() *DocumentCreateOverflowRadio {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
 }
 
 func (d *DocumentCreateFieldMetaRadio) GetType() DocumentCreateTypeRadio2 {
@@ -1049,6 +1176,38 @@ func (e *DocumentCreateTypeNumber1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type DocumentCreateOverflowNumber string
+
+const (
+	DocumentCreateOverflowNumberAuto       DocumentCreateOverflowNumber = "auto"
+	DocumentCreateOverflowNumberHorizontal DocumentCreateOverflowNumber = "horizontal"
+	DocumentCreateOverflowNumberVertical   DocumentCreateOverflowNumber = "vertical"
+	DocumentCreateOverflowNumberCrop       DocumentCreateOverflowNumber = "crop"
+)
+
+func (e DocumentCreateOverflowNumber) ToPointer() *DocumentCreateOverflowNumber {
+	return &e
+}
+func (e *DocumentCreateOverflowNumber) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentCreateOverflowNumber(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentCreateOverflowNumber: %v", v)
+	}
+}
+
 type DocumentCreateTypeNumber2 string
 
 const (
@@ -1136,6 +1295,7 @@ type DocumentCreateFieldMetaNumber struct {
 	Required      *bool                              `json:"required,omitempty"`
 	ReadOnly      *bool                              `json:"readOnly,omitempty"`
 	FontSize      *float64                           `default:"12" json:"fontSize"`
+	Overflow      *DocumentCreateOverflowNumber      `json:"overflow,omitempty"`
 	Type          DocumentCreateTypeNumber2          `json:"type"`
 	NumberFormat  *string                            `json:"numberFormat,omitempty"`
 	Value         *string                            `json:"value,omitempty"`
@@ -1191,6 +1351,13 @@ func (d *DocumentCreateFieldMetaNumber) GetFontSize() *float64 {
 		return nil
 	}
 	return d.FontSize
+}
+
+func (d *DocumentCreateFieldMetaNumber) GetOverflow() *DocumentCreateOverflowNumber {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
 }
 
 func (d *DocumentCreateFieldMetaNumber) GetType() DocumentCreateTypeNumber2 {
@@ -1349,6 +1516,38 @@ func (e *DocumentCreateTypeText1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type DocumentCreateOverflowText string
+
+const (
+	DocumentCreateOverflowTextAuto       DocumentCreateOverflowText = "auto"
+	DocumentCreateOverflowTextHorizontal DocumentCreateOverflowText = "horizontal"
+	DocumentCreateOverflowTextVertical   DocumentCreateOverflowText = "vertical"
+	DocumentCreateOverflowTextCrop       DocumentCreateOverflowText = "crop"
+)
+
+func (e DocumentCreateOverflowText) ToPointer() *DocumentCreateOverflowText {
+	return &e
+}
+func (e *DocumentCreateOverflowText) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentCreateOverflowText(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentCreateOverflowText: %v", v)
+	}
+}
+
 type DocumentCreateTypeText2 string
 
 const (
@@ -1436,6 +1635,7 @@ type DocumentCreateFieldMetaText struct {
 	Required       *bool                            `json:"required,omitempty"`
 	ReadOnly       *bool                            `json:"readOnly,omitempty"`
 	FontSize       *float64                         `default:"12" json:"fontSize"`
+	Overflow       *DocumentCreateOverflowText      `json:"overflow,omitempty"`
 	Type           DocumentCreateTypeText2          `json:"type"`
 	Text           *string                          `json:"text,omitempty"`
 	CharacterLimit *float64                         `json:"characterLimit,omitempty"`
@@ -1489,6 +1689,13 @@ func (d *DocumentCreateFieldMetaText) GetFontSize() *float64 {
 		return nil
 	}
 	return d.FontSize
+}
+
+func (d *DocumentCreateFieldMetaText) GetOverflow() *DocumentCreateOverflowText {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
 }
 
 func (d *DocumentCreateFieldMetaText) GetType() DocumentCreateTypeText2 {
@@ -1633,6 +1840,38 @@ func (e *DocumentCreateTypeDate1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type DocumentCreateOverflowDate string
+
+const (
+	DocumentCreateOverflowDateAuto       DocumentCreateOverflowDate = "auto"
+	DocumentCreateOverflowDateHorizontal DocumentCreateOverflowDate = "horizontal"
+	DocumentCreateOverflowDateVertical   DocumentCreateOverflowDate = "vertical"
+	DocumentCreateOverflowDateCrop       DocumentCreateOverflowDate = "crop"
+)
+
+func (e DocumentCreateOverflowDate) ToPointer() *DocumentCreateOverflowDate {
+	return &e
+}
+func (e *DocumentCreateOverflowDate) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentCreateOverflowDate(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentCreateOverflowDate: %v", v)
+	}
+}
+
 type DocumentCreateTypeDate2 string
 
 const (
@@ -1691,6 +1930,7 @@ type DocumentCreateFieldMetaDate struct {
 	Required    *bool                        `json:"required,omitempty"`
 	ReadOnly    *bool                        `json:"readOnly,omitempty"`
 	FontSize    *float64                     `default:"12" json:"fontSize"`
+	Overflow    *DocumentCreateOverflowDate  `default:"auto" json:"overflow"`
 	Type        DocumentCreateTypeDate2      `json:"type"`
 	TextAlign   *DocumentCreateTextAlignDate `json:"textAlign,omitempty"`
 }
@@ -1739,6 +1979,13 @@ func (d *DocumentCreateFieldMetaDate) GetFontSize() *float64 {
 		return nil
 	}
 	return d.FontSize
+}
+
+func (d *DocumentCreateFieldMetaDate) GetOverflow() *DocumentCreateOverflowDate {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
 }
 
 func (d *DocumentCreateFieldMetaDate) GetType() DocumentCreateTypeDate2 {
@@ -1848,6 +2095,38 @@ func (e *DocumentCreateTypeEmail1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type DocumentCreateOverflowEmail string
+
+const (
+	DocumentCreateOverflowEmailAuto       DocumentCreateOverflowEmail = "auto"
+	DocumentCreateOverflowEmailHorizontal DocumentCreateOverflowEmail = "horizontal"
+	DocumentCreateOverflowEmailVertical   DocumentCreateOverflowEmail = "vertical"
+	DocumentCreateOverflowEmailCrop       DocumentCreateOverflowEmail = "crop"
+)
+
+func (e DocumentCreateOverflowEmail) ToPointer() *DocumentCreateOverflowEmail {
+	return &e
+}
+func (e *DocumentCreateOverflowEmail) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentCreateOverflowEmail(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentCreateOverflowEmail: %v", v)
+	}
+}
+
 type DocumentCreateTypeEmail2 string
 
 const (
@@ -1906,6 +2185,7 @@ type DocumentCreateFieldMetaEmail struct {
 	Required    *bool                         `json:"required,omitempty"`
 	ReadOnly    *bool                         `json:"readOnly,omitempty"`
 	FontSize    *float64                      `default:"12" json:"fontSize"`
+	Overflow    *DocumentCreateOverflowEmail  `default:"auto" json:"overflow"`
 	Type        DocumentCreateTypeEmail2      `json:"type"`
 	TextAlign   *DocumentCreateTextAlignEmail `json:"textAlign,omitempty"`
 }
@@ -1954,6 +2234,13 @@ func (d *DocumentCreateFieldMetaEmail) GetFontSize() *float64 {
 		return nil
 	}
 	return d.FontSize
+}
+
+func (d *DocumentCreateFieldMetaEmail) GetOverflow() *DocumentCreateOverflowEmail {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
 }
 
 func (d *DocumentCreateFieldMetaEmail) GetType() DocumentCreateTypeEmail2 {
@@ -2063,6 +2350,38 @@ func (e *DocumentCreateTypeName1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type DocumentCreateOverflowName string
+
+const (
+	DocumentCreateOverflowNameAuto       DocumentCreateOverflowName = "auto"
+	DocumentCreateOverflowNameHorizontal DocumentCreateOverflowName = "horizontal"
+	DocumentCreateOverflowNameVertical   DocumentCreateOverflowName = "vertical"
+	DocumentCreateOverflowNameCrop       DocumentCreateOverflowName = "crop"
+)
+
+func (e DocumentCreateOverflowName) ToPointer() *DocumentCreateOverflowName {
+	return &e
+}
+func (e *DocumentCreateOverflowName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentCreateOverflowName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentCreateOverflowName: %v", v)
+	}
+}
+
 type DocumentCreateTypeName2 string
 
 const (
@@ -2121,6 +2440,7 @@ type DocumentCreateFieldMetaName struct {
 	Required    *bool                        `json:"required,omitempty"`
 	ReadOnly    *bool                        `json:"readOnly,omitempty"`
 	FontSize    *float64                     `default:"12" json:"fontSize"`
+	Overflow    *DocumentCreateOverflowName  `json:"overflow,omitempty"`
 	Type        DocumentCreateTypeName2      `json:"type"`
 	TextAlign   *DocumentCreateTextAlignName `json:"textAlign,omitempty"`
 }
@@ -2169,6 +2489,13 @@ func (d *DocumentCreateFieldMetaName) GetFontSize() *float64 {
 		return nil
 	}
 	return d.FontSize
+}
+
+func (d *DocumentCreateFieldMetaName) GetOverflow() *DocumentCreateOverflowName {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
 }
 
 func (d *DocumentCreateFieldMetaName) GetType() DocumentCreateTypeName2 {
@@ -2278,6 +2605,38 @@ func (e *DocumentCreateTypeInitials1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type DocumentCreateOverflowInitials string
+
+const (
+	DocumentCreateOverflowInitialsAuto       DocumentCreateOverflowInitials = "auto"
+	DocumentCreateOverflowInitialsHorizontal DocumentCreateOverflowInitials = "horizontal"
+	DocumentCreateOverflowInitialsVertical   DocumentCreateOverflowInitials = "vertical"
+	DocumentCreateOverflowInitialsCrop       DocumentCreateOverflowInitials = "crop"
+)
+
+func (e DocumentCreateOverflowInitials) ToPointer() *DocumentCreateOverflowInitials {
+	return &e
+}
+func (e *DocumentCreateOverflowInitials) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentCreateOverflowInitials(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentCreateOverflowInitials: %v", v)
+	}
+}
+
 type DocumentCreateTypeInitials2 string
 
 const (
@@ -2336,6 +2695,7 @@ type DocumentCreateFieldMetaInitials struct {
 	Required    *bool                            `json:"required,omitempty"`
 	ReadOnly    *bool                            `json:"readOnly,omitempty"`
 	FontSize    *float64                         `default:"12" json:"fontSize"`
+	Overflow    *DocumentCreateOverflowInitials  `json:"overflow,omitempty"`
 	Type        DocumentCreateTypeInitials2      `json:"type"`
 	TextAlign   *DocumentCreateTextAlignInitials `json:"textAlign,omitempty"`
 }
@@ -2384,6 +2744,13 @@ func (d *DocumentCreateFieldMetaInitials) GetFontSize() *float64 {
 		return nil
 	}
 	return d.FontSize
+}
+
+func (d *DocumentCreateFieldMetaInitials) GetOverflow() *DocumentCreateOverflowInitials {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
 }
 
 func (d *DocumentCreateFieldMetaInitials) GetType() DocumentCreateTypeInitials2 {
@@ -2578,6 +2945,38 @@ func (e *DocumentCreateTypeSignature1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type DocumentCreateOverflowSignature string
+
+const (
+	DocumentCreateOverflowSignatureAuto       DocumentCreateOverflowSignature = "auto"
+	DocumentCreateOverflowSignatureHorizontal DocumentCreateOverflowSignature = "horizontal"
+	DocumentCreateOverflowSignatureVertical   DocumentCreateOverflowSignature = "vertical"
+	DocumentCreateOverflowSignatureCrop       DocumentCreateOverflowSignature = "crop"
+)
+
+func (e DocumentCreateOverflowSignature) ToPointer() *DocumentCreateOverflowSignature {
+	return &e
+}
+func (e *DocumentCreateOverflowSignature) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentCreateOverflowSignature(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentCreateOverflowSignature: %v", v)
+	}
+}
+
 type DocumentCreateTypeSignature2 string
 
 const (
@@ -2602,12 +3001,13 @@ func (e *DocumentCreateTypeSignature2) UnmarshalJSON(data []byte) error {
 }
 
 type DocumentCreateFieldMetaSignature struct {
-	Label       *string                      `json:"label,omitempty"`
-	Placeholder *string                      `json:"placeholder,omitempty"`
-	Required    *bool                        `json:"required,omitempty"`
-	ReadOnly    *bool                        `json:"readOnly,omitempty"`
-	FontSize    *float64                     `default:"12" json:"fontSize"`
-	Type        DocumentCreateTypeSignature2 `json:"type"`
+	Label       *string                          `json:"label,omitempty"`
+	Placeholder *string                          `json:"placeholder,omitempty"`
+	Required    *bool                            `json:"required,omitempty"`
+	ReadOnly    *bool                            `json:"readOnly,omitempty"`
+	FontSize    *float64                         `default:"12" json:"fontSize"`
+	Overflow    *DocumentCreateOverflowSignature `default:"auto" json:"overflow"`
+	Type        DocumentCreateTypeSignature2     `json:"type"`
 }
 
 func (d DocumentCreateFieldMetaSignature) MarshalJSON() ([]byte, error) {
@@ -2654,6 +3054,13 @@ func (d *DocumentCreateFieldMetaSignature) GetFontSize() *float64 {
 		return nil
 	}
 	return d.FontSize
+}
+
+func (d *DocumentCreateFieldMetaSignature) GetOverflow() *DocumentCreateOverflowSignature {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
 }
 
 func (d *DocumentCreateFieldMetaSignature) GetType() DocumentCreateTypeSignature2 {
@@ -2864,7 +3271,14 @@ func CreateDocumentCreateFieldUnionDocumentCreateFieldDropdown(documentCreateFie
 	}
 }
 
-func (u *DocumentCreateFieldUnion) UnmarshalJSON(data []byte) error {
+func (u *DocumentCreateFieldUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentCreateFieldUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var documentCreateFieldSignature DocumentCreateFieldSignature = DocumentCreateFieldSignature{}
 	if err := utils.UnmarshalJSON(data, &documentCreateFieldSignature, "", true, nil); err == nil {
@@ -3120,12 +3534,15 @@ const (
 	DocumentCreateDateFormatYyyyMMddHhMmA            DocumentCreateDateFormat = "yyyy-MM-dd hh:mm a"
 	DocumentCreateDateFormatYyyyMMdd                 DocumentCreateDateFormat = "yyyy-MM-dd"
 	DocumentCreateDateFormatDdMmSlashYyyy            DocumentCreateDateFormat = "dd/MM/yyyy"
+	DocumentCreateDateFormatDdMmDashYyyy             DocumentCreateDateFormat = "dd-MM-yyyy"
 	DocumentCreateDateFormatMmDdSlashYyyy            DocumentCreateDateFormat = "MM/dd/yyyy"
 	DocumentCreateDateFormatYyMMdd                   DocumentCreateDateFormat = "yy-MM-dd"
 	DocumentCreateDateFormatMmmmDdCommaYyyy          DocumentCreateDateFormat = "MMMM dd, yyyy"
 	DocumentCreateDateFormatEeeeMmmmDdCommaYyyy      DocumentCreateDateFormat = "EEEE, MMMM dd, yyyy"
 	DocumentCreateDateFormatDdMmSlashYyyyHhMmA       DocumentCreateDateFormat = "dd/MM/yyyy hh:mm a"
 	DocumentCreateDateFormatDdMmSlashYyyyHHmm        DocumentCreateDateFormat = "dd/MM/yyyy HH:mm"
+	DocumentCreateDateFormatDdMmDashYyyyHhMmA        DocumentCreateDateFormat = "dd-MM-yyyy hh:mm a"
+	DocumentCreateDateFormatDdMmDashYyyyHHmm         DocumentCreateDateFormat = "dd-MM-yyyy HH:mm"
 	DocumentCreateDateFormatMmDdSlashYyyyHhMmA       DocumentCreateDateFormat = "MM/dd/yyyy hh:mm a"
 	DocumentCreateDateFormatMmDdSlashYyyyHHmm        DocumentCreateDateFormat = "MM/dd/yyyy HH:mm"
 	DocumentCreateDateFormatDdDotMmDotYyyy           DocumentCreateDateFormat = "dd.MM.yyyy"
@@ -3156,6 +3573,8 @@ func (e *DocumentCreateDateFormat) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "dd/MM/yyyy":
 		fallthrough
+	case "dd-MM-yyyy":
+		fallthrough
 	case "MM/dd/yyyy":
 		fallthrough
 	case "yy-MM-dd":
@@ -3167,6 +3586,10 @@ func (e *DocumentCreateDateFormat) UnmarshalJSON(data []byte) error {
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
 	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "dd-MM-yyyy hh:mm a":
+		fallthrough
+	case "dd-MM-yyyy HH:mm":
 		fallthrough
 	case "MM/dd/yyyy hh:mm a":
 		fallthrough
@@ -3313,6 +3736,8 @@ type DocumentCreateEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (d DocumentCreateEmailSettings) MarshalJSON() ([]byte, error) {
@@ -3375,22 +3800,525 @@ func (d *DocumentCreateEmailSettings) GetOwnerDocumentCompleted() *bool {
 	return d.OwnerDocumentCompleted
 }
 
+func (d *DocumentCreateEmailSettings) GetOwnerRecipientExpired() *bool {
+	if d == nil {
+		return nil
+	}
+	return d.OwnerRecipientExpired
+}
+
+func (d *DocumentCreateEmailSettings) GetOwnerDocumentCreated() *bool {
+	if d == nil {
+		return nil
+	}
+	return d.OwnerDocumentCreated
+}
+
+type DocumentCreateEnvelopeExpirationPeriod2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (d DocumentCreateEnvelopeExpirationPeriod2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateEnvelopeExpirationPeriod2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentCreateEnvelopeExpirationPeriod2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-documentcreateenvelopeexpirationperiod2
+// #endregion class-body-documentcreateenvelopeexpirationperiod2
+
+type DocumentCreateEnvelopeExpirationPeriodUnit string
+
+const (
+	DocumentCreateEnvelopeExpirationPeriodUnitDay   DocumentCreateEnvelopeExpirationPeriodUnit = "day"
+	DocumentCreateEnvelopeExpirationPeriodUnitWeek  DocumentCreateEnvelopeExpirationPeriodUnit = "week"
+	DocumentCreateEnvelopeExpirationPeriodUnitMonth DocumentCreateEnvelopeExpirationPeriodUnit = "month"
+	DocumentCreateEnvelopeExpirationPeriodUnitYear  DocumentCreateEnvelopeExpirationPeriodUnit = "year"
+)
+
+func (e DocumentCreateEnvelopeExpirationPeriodUnit) ToPointer() *DocumentCreateEnvelopeExpirationPeriodUnit {
+	return &e
+}
+func (e *DocumentCreateEnvelopeExpirationPeriodUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		fallthrough
+	case "year":
+		*e = DocumentCreateEnvelopeExpirationPeriodUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentCreateEnvelopeExpirationPeriodUnit: %v", v)
+	}
+}
+
+type DocumentCreateEnvelopeExpirationPeriod1 struct {
+	Unit   DocumentCreateEnvelopeExpirationPeriodUnit `json:"unit"`
+	Amount int64                                      `json:"amount"`
+}
+
+func (d DocumentCreateEnvelopeExpirationPeriod1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateEnvelopeExpirationPeriod1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentCreateEnvelopeExpirationPeriod1) GetUnit() DocumentCreateEnvelopeExpirationPeriodUnit {
+	if d == nil {
+		return DocumentCreateEnvelopeExpirationPeriodUnit("")
+	}
+	return d.Unit
+}
+
+func (d *DocumentCreateEnvelopeExpirationPeriod1) GetAmount() int64 {
+	if d == nil {
+		return 0
+	}
+	return d.Amount
+}
+
+// #region class-body-documentcreateenvelopeexpirationperiod1
+// #endregion class-body-documentcreateenvelopeexpirationperiod1
+
+type DocumentCreateEnvelopeExpirationPeriodUnionType string
+
+const (
+	DocumentCreateEnvelopeExpirationPeriodUnionTypeDocumentCreateEnvelopeExpirationPeriod1 DocumentCreateEnvelopeExpirationPeriodUnionType = "document_create_envelopeExpirationPeriod_1"
+	DocumentCreateEnvelopeExpirationPeriodUnionTypeDocumentCreateEnvelopeExpirationPeriod2 DocumentCreateEnvelopeExpirationPeriodUnionType = "document_create_envelopeExpirationPeriod_2"
+)
+
+type DocumentCreateEnvelopeExpirationPeriodUnion struct {
+	DocumentCreateEnvelopeExpirationPeriod1 *DocumentCreateEnvelopeExpirationPeriod1 `queryParam:"inline" union:"member"`
+	DocumentCreateEnvelopeExpirationPeriod2 *DocumentCreateEnvelopeExpirationPeriod2 `queryParam:"inline" union:"member"`
+
+	Type DocumentCreateEnvelopeExpirationPeriodUnionType
+}
+
+func CreateDocumentCreateEnvelopeExpirationPeriodUnionDocumentCreateEnvelopeExpirationPeriod1(documentCreateEnvelopeExpirationPeriod1 DocumentCreateEnvelopeExpirationPeriod1) DocumentCreateEnvelopeExpirationPeriodUnion {
+	typ := DocumentCreateEnvelopeExpirationPeriodUnionTypeDocumentCreateEnvelopeExpirationPeriod1
+
+	return DocumentCreateEnvelopeExpirationPeriodUnion{
+		DocumentCreateEnvelopeExpirationPeriod1: &documentCreateEnvelopeExpirationPeriod1,
+		Type:                                    typ,
+	}
+}
+
+func CreateDocumentCreateEnvelopeExpirationPeriodUnionDocumentCreateEnvelopeExpirationPeriod2(documentCreateEnvelopeExpirationPeriod2 DocumentCreateEnvelopeExpirationPeriod2) DocumentCreateEnvelopeExpirationPeriodUnion {
+	typ := DocumentCreateEnvelopeExpirationPeriodUnionTypeDocumentCreateEnvelopeExpirationPeriod2
+
+	return DocumentCreateEnvelopeExpirationPeriodUnion{
+		DocumentCreateEnvelopeExpirationPeriod2: &documentCreateEnvelopeExpirationPeriod2,
+		Type:                                    typ,
+	}
+}
+
+func (u *DocumentCreateEnvelopeExpirationPeriodUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentCreateEnvelopeExpirationPeriodUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var documentCreateEnvelopeExpirationPeriod1 DocumentCreateEnvelopeExpirationPeriod1 = DocumentCreateEnvelopeExpirationPeriod1{}
+	if err := utils.UnmarshalJSON(data, &documentCreateEnvelopeExpirationPeriod1, "", true, nil); err == nil {
+		u.DocumentCreateEnvelopeExpirationPeriod1 = &documentCreateEnvelopeExpirationPeriod1
+		u.Type = DocumentCreateEnvelopeExpirationPeriodUnionTypeDocumentCreateEnvelopeExpirationPeriod1
+		return nil
+	}
+
+	var documentCreateEnvelopeExpirationPeriod2 DocumentCreateEnvelopeExpirationPeriod2 = DocumentCreateEnvelopeExpirationPeriod2{}
+	if err := utils.UnmarshalJSON(data, &documentCreateEnvelopeExpirationPeriod2, "", true, nil); err == nil {
+		u.DocumentCreateEnvelopeExpirationPeriod2 = &documentCreateEnvelopeExpirationPeriod2
+		u.Type = DocumentCreateEnvelopeExpirationPeriodUnionTypeDocumentCreateEnvelopeExpirationPeriod2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DocumentCreateEnvelopeExpirationPeriodUnion", string(data))
+}
+
+func (u DocumentCreateEnvelopeExpirationPeriodUnion) MarshalJSON() ([]byte, error) {
+	if u.DocumentCreateEnvelopeExpirationPeriod1 != nil {
+		return utils.MarshalJSON(u.DocumentCreateEnvelopeExpirationPeriod1, "", true)
+	}
+
+	if u.DocumentCreateEnvelopeExpirationPeriod2 != nil {
+		return utils.MarshalJSON(u.DocumentCreateEnvelopeExpirationPeriod2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DocumentCreateEnvelopeExpirationPeriodUnion: all fields are null")
+}
+
+type DocumentCreateSendAfter2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (d DocumentCreateSendAfter2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateSendAfter2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentCreateSendAfter2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-documentcreatesendafter2
+// #endregion class-body-documentcreatesendafter2
+
+type DocumentCreateSendAfterUnit string
+
+const (
+	DocumentCreateSendAfterUnitDay   DocumentCreateSendAfterUnit = "day"
+	DocumentCreateSendAfterUnitWeek  DocumentCreateSendAfterUnit = "week"
+	DocumentCreateSendAfterUnitMonth DocumentCreateSendAfterUnit = "month"
+)
+
+func (e DocumentCreateSendAfterUnit) ToPointer() *DocumentCreateSendAfterUnit {
+	return &e
+}
+func (e *DocumentCreateSendAfterUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		*e = DocumentCreateSendAfterUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentCreateSendAfterUnit: %v", v)
+	}
+}
+
+type DocumentCreateSendAfter1 struct {
+	Unit   DocumentCreateSendAfterUnit `json:"unit"`
+	Amount int64                       `json:"amount"`
+}
+
+func (d DocumentCreateSendAfter1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateSendAfter1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentCreateSendAfter1) GetUnit() DocumentCreateSendAfterUnit {
+	if d == nil {
+		return DocumentCreateSendAfterUnit("")
+	}
+	return d.Unit
+}
+
+func (d *DocumentCreateSendAfter1) GetAmount() int64 {
+	if d == nil {
+		return 0
+	}
+	return d.Amount
+}
+
+// #region class-body-documentcreatesendafter1
+// #endregion class-body-documentcreatesendafter1
+
+type DocumentCreateSendAfterUnionType string
+
+const (
+	DocumentCreateSendAfterUnionTypeDocumentCreateSendAfter1 DocumentCreateSendAfterUnionType = "document_create_sendAfter_1"
+	DocumentCreateSendAfterUnionTypeDocumentCreateSendAfter2 DocumentCreateSendAfterUnionType = "document_create_sendAfter_2"
+)
+
+type DocumentCreateSendAfterUnion struct {
+	DocumentCreateSendAfter1 *DocumentCreateSendAfter1 `queryParam:"inline" union:"member"`
+	DocumentCreateSendAfter2 *DocumentCreateSendAfter2 `queryParam:"inline" union:"member"`
+
+	Type DocumentCreateSendAfterUnionType
+}
+
+func CreateDocumentCreateSendAfterUnionDocumentCreateSendAfter1(documentCreateSendAfter1 DocumentCreateSendAfter1) DocumentCreateSendAfterUnion {
+	typ := DocumentCreateSendAfterUnionTypeDocumentCreateSendAfter1
+
+	return DocumentCreateSendAfterUnion{
+		DocumentCreateSendAfter1: &documentCreateSendAfter1,
+		Type:                     typ,
+	}
+}
+
+func CreateDocumentCreateSendAfterUnionDocumentCreateSendAfter2(documentCreateSendAfter2 DocumentCreateSendAfter2) DocumentCreateSendAfterUnion {
+	typ := DocumentCreateSendAfterUnionTypeDocumentCreateSendAfter2
+
+	return DocumentCreateSendAfterUnion{
+		DocumentCreateSendAfter2: &documentCreateSendAfter2,
+		Type:                     typ,
+	}
+}
+
+func (u *DocumentCreateSendAfterUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentCreateSendAfterUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var documentCreateSendAfter1 DocumentCreateSendAfter1 = DocumentCreateSendAfter1{}
+	if err := utils.UnmarshalJSON(data, &documentCreateSendAfter1, "", true, nil); err == nil {
+		u.DocumentCreateSendAfter1 = &documentCreateSendAfter1
+		u.Type = DocumentCreateSendAfterUnionTypeDocumentCreateSendAfter1
+		return nil
+	}
+
+	var documentCreateSendAfter2 DocumentCreateSendAfter2 = DocumentCreateSendAfter2{}
+	if err := utils.UnmarshalJSON(data, &documentCreateSendAfter2, "", true, nil); err == nil {
+		u.DocumentCreateSendAfter2 = &documentCreateSendAfter2
+		u.Type = DocumentCreateSendAfterUnionTypeDocumentCreateSendAfter2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DocumentCreateSendAfterUnion", string(data))
+}
+
+func (u DocumentCreateSendAfterUnion) MarshalJSON() ([]byte, error) {
+	if u.DocumentCreateSendAfter1 != nil {
+		return utils.MarshalJSON(u.DocumentCreateSendAfter1, "", true)
+	}
+
+	if u.DocumentCreateSendAfter2 != nil {
+		return utils.MarshalJSON(u.DocumentCreateSendAfter2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DocumentCreateSendAfterUnion: all fields are null")
+}
+
+type DocumentCreateRepeatEvery2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (d DocumentCreateRepeatEvery2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateRepeatEvery2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentCreateRepeatEvery2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-documentcreaterepeatevery2
+// #endregion class-body-documentcreaterepeatevery2
+
+type DocumentCreateRepeatEveryUnit string
+
+const (
+	DocumentCreateRepeatEveryUnitDay   DocumentCreateRepeatEveryUnit = "day"
+	DocumentCreateRepeatEveryUnitWeek  DocumentCreateRepeatEveryUnit = "week"
+	DocumentCreateRepeatEveryUnitMonth DocumentCreateRepeatEveryUnit = "month"
+)
+
+func (e DocumentCreateRepeatEveryUnit) ToPointer() *DocumentCreateRepeatEveryUnit {
+	return &e
+}
+func (e *DocumentCreateRepeatEveryUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		*e = DocumentCreateRepeatEveryUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentCreateRepeatEveryUnit: %v", v)
+	}
+}
+
+type DocumentCreateRepeatEvery1 struct {
+	Unit   DocumentCreateRepeatEveryUnit `json:"unit"`
+	Amount int64                         `json:"amount"`
+}
+
+func (d DocumentCreateRepeatEvery1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentCreateRepeatEvery1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentCreateRepeatEvery1) GetUnit() DocumentCreateRepeatEveryUnit {
+	if d == nil {
+		return DocumentCreateRepeatEveryUnit("")
+	}
+	return d.Unit
+}
+
+func (d *DocumentCreateRepeatEvery1) GetAmount() int64 {
+	if d == nil {
+		return 0
+	}
+	return d.Amount
+}
+
+// #region class-body-documentcreaterepeatevery1
+// #endregion class-body-documentcreaterepeatevery1
+
+type DocumentCreateRepeatEveryUnionType string
+
+const (
+	DocumentCreateRepeatEveryUnionTypeDocumentCreateRepeatEvery1 DocumentCreateRepeatEveryUnionType = "document_create_repeatEvery_1"
+	DocumentCreateRepeatEveryUnionTypeDocumentCreateRepeatEvery2 DocumentCreateRepeatEveryUnionType = "document_create_repeatEvery_2"
+)
+
+type DocumentCreateRepeatEveryUnion struct {
+	DocumentCreateRepeatEvery1 *DocumentCreateRepeatEvery1 `queryParam:"inline" union:"member"`
+	DocumentCreateRepeatEvery2 *DocumentCreateRepeatEvery2 `queryParam:"inline" union:"member"`
+
+	Type DocumentCreateRepeatEveryUnionType
+}
+
+func CreateDocumentCreateRepeatEveryUnionDocumentCreateRepeatEvery1(documentCreateRepeatEvery1 DocumentCreateRepeatEvery1) DocumentCreateRepeatEveryUnion {
+	typ := DocumentCreateRepeatEveryUnionTypeDocumentCreateRepeatEvery1
+
+	return DocumentCreateRepeatEveryUnion{
+		DocumentCreateRepeatEvery1: &documentCreateRepeatEvery1,
+		Type:                       typ,
+	}
+}
+
+func CreateDocumentCreateRepeatEveryUnionDocumentCreateRepeatEvery2(documentCreateRepeatEvery2 DocumentCreateRepeatEvery2) DocumentCreateRepeatEveryUnion {
+	typ := DocumentCreateRepeatEveryUnionTypeDocumentCreateRepeatEvery2
+
+	return DocumentCreateRepeatEveryUnion{
+		DocumentCreateRepeatEvery2: &documentCreateRepeatEvery2,
+		Type:                       typ,
+	}
+}
+
+func (u *DocumentCreateRepeatEveryUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentCreateRepeatEveryUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var documentCreateRepeatEvery1 DocumentCreateRepeatEvery1 = DocumentCreateRepeatEvery1{}
+	if err := utils.UnmarshalJSON(data, &documentCreateRepeatEvery1, "", true, nil); err == nil {
+		u.DocumentCreateRepeatEvery1 = &documentCreateRepeatEvery1
+		u.Type = DocumentCreateRepeatEveryUnionTypeDocumentCreateRepeatEvery1
+		return nil
+	}
+
+	var documentCreateRepeatEvery2 DocumentCreateRepeatEvery2 = DocumentCreateRepeatEvery2{}
+	if err := utils.UnmarshalJSON(data, &documentCreateRepeatEvery2, "", true, nil); err == nil {
+		u.DocumentCreateRepeatEvery2 = &documentCreateRepeatEvery2
+		u.Type = DocumentCreateRepeatEveryUnionTypeDocumentCreateRepeatEvery2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DocumentCreateRepeatEveryUnion", string(data))
+}
+
+func (u DocumentCreateRepeatEveryUnion) MarshalJSON() ([]byte, error) {
+	if u.DocumentCreateRepeatEvery1 != nil {
+		return utils.MarshalJSON(u.DocumentCreateRepeatEvery1, "", true)
+	}
+
+	if u.DocumentCreateRepeatEvery2 != nil {
+		return utils.MarshalJSON(u.DocumentCreateRepeatEvery2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DocumentCreateRepeatEveryUnion: all fields are null")
+}
+
+type DocumentCreateReminderSettings struct {
+	SendAfter   DocumentCreateSendAfterUnion   `json:"sendAfter"`
+	RepeatEvery DocumentCreateRepeatEveryUnion `json:"repeatEvery"`
+}
+
+func (d *DocumentCreateReminderSettings) GetSendAfter() DocumentCreateSendAfterUnion {
+	if d == nil {
+		return DocumentCreateSendAfterUnion{}
+	}
+	return d.SendAfter
+}
+
+func (d *DocumentCreateReminderSettings) GetRepeatEvery() DocumentCreateRepeatEveryUnion {
+	if d == nil {
+		return DocumentCreateRepeatEveryUnion{}
+	}
+	return d.RepeatEvery
+}
+
 type DocumentCreateMeta struct {
-	Subject                *string                           `json:"subject,omitempty"`
-	Message                *string                           `json:"message,omitempty"`
-	Timezone               *string                           `json:"timezone,omitempty"`
-	DateFormat             *DocumentCreateDateFormat         `json:"dateFormat,omitempty"`
-	DistributionMethod     *DocumentCreateDistributionMethod `json:"distributionMethod,omitempty"`
-	SigningOrder           *DocumentCreateSigningOrder       `json:"signingOrder,omitempty"`
-	AllowDictateNextSigner *bool                             `json:"allowDictateNextSigner,omitempty"`
-	RedirectURL            *string                           `json:"redirectUrl,omitempty"`
-	Language               *DocumentCreateLanguage           `json:"language,omitempty"`
-	TypedSignatureEnabled  *bool                             `json:"typedSignatureEnabled,omitempty"`
-	UploadSignatureEnabled *bool                             `json:"uploadSignatureEnabled,omitempty"`
-	DrawSignatureEnabled   *bool                             `json:"drawSignatureEnabled,omitempty"`
-	EmailID                *string                           `json:"emailId,omitempty"`
-	EmailReplyTo           *string                           `json:"emailReplyTo,omitempty"`
-	EmailSettings          *DocumentCreateEmailSettings      `json:"emailSettings,omitempty"`
+	Subject                  *string                                      `json:"subject,omitempty"`
+	Message                  *string                                      `json:"message,omitempty"`
+	Timezone                 *string                                      `json:"timezone,omitempty"`
+	DateFormat               *DocumentCreateDateFormat                    `json:"dateFormat,omitempty"`
+	DistributionMethod       *DocumentCreateDistributionMethod            `json:"distributionMethod,omitempty"`
+	SigningOrder             *DocumentCreateSigningOrder                  `json:"signingOrder,omitempty"`
+	AllowDictateNextSigner   *bool                                        `json:"allowDictateNextSigner,omitempty"`
+	RedirectURL              *string                                      `json:"redirectUrl,omitempty"`
+	Language                 *DocumentCreateLanguage                      `json:"language,omitempty"`
+	TypedSignatureEnabled    *bool                                        `json:"typedSignatureEnabled,omitempty"`
+	UploadSignatureEnabled   *bool                                        `json:"uploadSignatureEnabled,omitempty"`
+	DrawSignatureEnabled     *bool                                        `json:"drawSignatureEnabled,omitempty"`
+	EmailID                  *string                                      `json:"emailId,omitempty"`
+	EmailReplyTo             *string                                      `json:"emailReplyTo,omitempty"`
+	EmailSettings            *DocumentCreateEmailSettings                 `json:"emailSettings,omitempty"`
+	EnvelopeExpirationPeriod *DocumentCreateEnvelopeExpirationPeriodUnion `json:"envelopeExpirationPeriod,omitempty"`
+	ReminderSettings         *DocumentCreateReminderSettings              `json:"reminderSettings,omitempty"`
 }
 
 func (d *DocumentCreateMeta) GetSubject() *string {
@@ -3496,6 +4424,20 @@ func (d *DocumentCreateMeta) GetEmailSettings() *DocumentCreateEmailSettings {
 		return nil
 	}
 	return d.EmailSettings
+}
+
+func (d *DocumentCreateMeta) GetEnvelopeExpirationPeriod() *DocumentCreateEnvelopeExpirationPeriodUnion {
+	if d == nil {
+		return nil
+	}
+	return d.EnvelopeExpirationPeriod
+}
+
+func (d *DocumentCreateMeta) GetReminderSettings() *DocumentCreateReminderSettings {
+	if d == nil {
+		return nil
+	}
+	return d.ReminderSettings
 }
 
 type DocumentCreatePayload struct {

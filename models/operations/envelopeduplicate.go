@@ -3,11 +3,25 @@
 package operations
 
 import (
+	"github.com/documenso/sdk-go/internal/utils"
 	"github.com/documenso/sdk-go/models/components"
 )
 
 type EnvelopeDuplicateRequest struct {
-	EnvelopeID string `json:"envelopeId"`
+	EnvelopeID        string `json:"envelopeId"`
+	IncludeRecipients *bool  `default:"true" json:"includeRecipients"`
+	IncludeFields     *bool  `default:"true" json:"includeFields"`
+}
+
+func (e EnvelopeDuplicateRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeDuplicateRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, nil); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (e *EnvelopeDuplicateRequest) GetEnvelopeID() string {
@@ -15,6 +29,20 @@ func (e *EnvelopeDuplicateRequest) GetEnvelopeID() string {
 		return ""
 	}
 	return e.EnvelopeID
+}
+
+func (e *EnvelopeDuplicateRequest) GetIncludeRecipients() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.IncludeRecipients
+}
+
+func (e *EnvelopeDuplicateRequest) GetIncludeFields() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.IncludeFields
 }
 
 // EnvelopeDuplicateResponseBody - Successful response

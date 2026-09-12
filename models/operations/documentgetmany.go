@@ -57,6 +57,7 @@ const (
 	DocumentGetManyStatusPending   DocumentGetManyStatus = "PENDING"
 	DocumentGetManyStatusCompleted DocumentGetManyStatus = "COMPLETED"
 	DocumentGetManyStatusRejected  DocumentGetManyStatus = "REJECTED"
+	DocumentGetManyStatusCancelled DocumentGetManyStatus = "CANCELLED"
 )
 
 func (e DocumentGetManyStatus) ToPointer() *DocumentGetManyStatus {
@@ -75,6 +76,8 @@ func (e *DocumentGetManyStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = DocumentGetManyStatus(v)
 		return nil
 	default:
@@ -231,7 +234,14 @@ func CreateDocumentGetManyFormValuesNumber(number float64) DocumentGetManyFormVa
 	}
 }
 
-func (u *DocumentGetManyFormValues) UnmarshalJSON(data []byte) error {
+func (u *DocumentGetManyFormValues) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentGetManyFormValues{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -497,23 +507,25 @@ func (d *DocumentGetManyRecipientAuthOptions) GetActionAuth() []DocumentGetManyA
 }
 
 type DocumentGetManyRecipient struct {
-	EnvelopeID        string                               `json:"envelopeId"`
-	Role              DocumentGetManyRole                  `json:"role"`
-	ReadStatus        DocumentGetManyReadStatus            `json:"readStatus"`
-	SigningStatus     DocumentGetManySigningStatus         `json:"signingStatus"`
-	SendStatus        DocumentGetManySendStatus            `json:"sendStatus"`
-	ID                float64                              `json:"id"`
-	Email             string                               `json:"email"`
-	Name              string                               `json:"name"`
-	Token             string                               `json:"token"`
-	DocumentDeletedAt *string                              `json:"documentDeletedAt"`
-	Expired           *string                              `json:"expired"`
-	SignedAt          *string                              `json:"signedAt"`
-	AuthOptions       *DocumentGetManyRecipientAuthOptions `json:"authOptions"`
-	SigningOrder      *float64                             `json:"signingOrder"`
-	RejectionReason   *string                              `json:"rejectionReason"`
-	DocumentID        *float64                             `json:"documentId,omitempty"`
-	TemplateID        *float64                             `json:"templateId,omitempty"`
+	EnvelopeID           string                               `json:"envelopeId"`
+	Role                 DocumentGetManyRole                  `json:"role"`
+	ReadStatus           DocumentGetManyReadStatus            `json:"readStatus"`
+	SigningStatus        DocumentGetManySigningStatus         `json:"signingStatus"`
+	SendStatus           DocumentGetManySendStatus            `json:"sendStatus"`
+	ID                   float64                              `json:"id"`
+	Email                string                               `json:"email"`
+	Name                 string                               `json:"name"`
+	Token                string                               `json:"token"`
+	DocumentDeletedAt    *string                              `json:"documentDeletedAt"`
+	Expired              *string                              `json:"expired"`
+	ExpiresAt            *string                              `json:"expiresAt"`
+	ExpirationNotifiedAt *string                              `json:"expirationNotifiedAt"`
+	SignedAt             *string                              `json:"signedAt"`
+	AuthOptions          *DocumentGetManyRecipientAuthOptions `json:"authOptions"`
+	SigningOrder         *float64                             `json:"signingOrder"`
+	RejectionReason      *string                              `json:"rejectionReason"`
+	DocumentID           *float64                             `json:"documentId,omitempty"`
+	TemplateID           *float64                             `json:"templateId,omitempty"`
 }
 
 func (d *DocumentGetManyRecipient) GetEnvelopeID() string {
@@ -591,6 +603,20 @@ func (d *DocumentGetManyRecipient) GetExpired() *string {
 		return nil
 	}
 	return d.Expired
+}
+
+func (d *DocumentGetManyRecipient) GetExpiresAt() *string {
+	if d == nil {
+		return nil
+	}
+	return d.ExpiresAt
+}
+
+func (d *DocumentGetManyRecipient) GetExpirationNotifiedAt() *string {
+	if d == nil {
+		return nil
+	}
+	return d.ExpirationNotifiedAt
 }
 
 func (d *DocumentGetManyRecipient) GetSignedAt() *string {

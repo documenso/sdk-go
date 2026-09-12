@@ -1,5 +1,15 @@
 # TemplateCreateTemplateDateFormat
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.TemplateCreateTemplateDateFormatYyyyMMddHhMmA
+```
+
 
 ## Values
 
@@ -8,12 +18,15 @@
 | `TemplateCreateTemplateDateFormatYyyyMMddHhMmA`            | yyyy-MM-dd hh:mm a                                         |
 | `TemplateCreateTemplateDateFormatYyyyMMdd`                 | yyyy-MM-dd                                                 |
 | `TemplateCreateTemplateDateFormatDdMmSlashYyyy`            | dd/MM/yyyy                                                 |
+| `TemplateCreateTemplateDateFormatDdMmDashYyyy`             | dd-MM-yyyy                                                 |
 | `TemplateCreateTemplateDateFormatMmDdSlashYyyy`            | MM/dd/yyyy                                                 |
 | `TemplateCreateTemplateDateFormatYyMMdd`                   | yy-MM-dd                                                   |
 | `TemplateCreateTemplateDateFormatMmmmDdCommaYyyy`          | MMMM dd, yyyy                                              |
 | `TemplateCreateTemplateDateFormatEeeeMmmmDdCommaYyyy`      | EEEE, MMMM dd, yyyy                                        |
 | `TemplateCreateTemplateDateFormatDdMmSlashYyyyHhMmA`       | dd/MM/yyyy hh:mm a                                         |
 | `TemplateCreateTemplateDateFormatDdMmSlashYyyyHHmm`        | dd/MM/yyyy HH:mm                                           |
+| `TemplateCreateTemplateDateFormatDdMmDashYyyyHhMmA`        | dd-MM-yyyy hh:mm a                                         |
+| `TemplateCreateTemplateDateFormatDdMmDashYyyyHHmm`         | dd-MM-yyyy HH:mm                                           |
 | `TemplateCreateTemplateDateFormatMmDdSlashYyyyHhMmA`       | MM/dd/yyyy hh:mm a                                         |
 | `TemplateCreateTemplateDateFormatMmDdSlashYyyyHHmm`        | MM/dd/yyyy HH:mm                                           |
 | `TemplateCreateTemplateDateFormatDdDotMmDotYyyy`           | dd.MM.yyyy                                                 |
