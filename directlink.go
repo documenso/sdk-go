@@ -32,7 +32,9 @@ func newDirectLink(rootSDK *Documenso, sdkConfig config.SDKConfiguration, hooks 
 }
 
 // Create direct link
-// Create a direct link for a template
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create a direct link for a template
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCreateTemplateDirectLinkRequest, opts ...operations.Option) (*operations.TemplateCreateTemplateDirectLinkResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -175,7 +177,7 @@ func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCrea
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -344,7 +346,9 @@ func (s *DirectLink) Create(ctx context.Context, request operations.TemplateCrea
 }
 
 // Delete direct link
-// Delete a direct link for a template
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Delete a direct link for a template
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDeleteTemplateDirectLinkRequest, opts ...operations.Option) (*operations.TemplateDeleteTemplateDirectLinkResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -487,7 +491,7 @@ func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDele
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -656,7 +660,9 @@ func (s *DirectLink) Delete(ctx context.Context, request operations.TemplateDele
 }
 
 // Toggle direct link
-// Enable or disable a direct link for a template
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Enable or disable a direct link for a template
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DirectLink) Toggle(ctx context.Context, request operations.TemplateToggleTemplateDirectLinkRequest, opts ...operations.Option) (*operations.TemplateToggleTemplateDirectLinkResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -799,7 +805,7 @@ func (s *DirectLink) Toggle(ctx context.Context, request operations.TemplateTogg
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
