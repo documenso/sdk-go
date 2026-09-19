@@ -1,0 +1,9 @@
+# DocumentCreateReminderSettings
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `SendAfter`                                                                                            | [operations.DocumentCreateSendAfterUnion](../../models/operations/documentcreatesendafterunion.md)     | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `RepeatEvery`                                                                                          | [operations.DocumentCreateRepeatEveryUnion](../../models/operations/documentcreaterepeateveryunion.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |

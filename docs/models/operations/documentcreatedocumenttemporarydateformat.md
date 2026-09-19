@@ -1,5 +1,15 @@
 # DocumentCreateDocumentTemporaryDateFormat
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.DocumentCreateDocumentTemporaryDateFormatYyyyMMddHhMmA
+```
+
 
 ## Values
 
@@ -8,12 +18,15 @@
 | `DocumentCreateDocumentTemporaryDateFormatYyyyMMddHhMmA`            | yyyy-MM-dd hh:mm a                                                  |
 | `DocumentCreateDocumentTemporaryDateFormatYyyyMMdd`                 | yyyy-MM-dd                                                          |
 | `DocumentCreateDocumentTemporaryDateFormatDdMmSlashYyyy`            | dd/MM/yyyy                                                          |
+| `DocumentCreateDocumentTemporaryDateFormatDdMmDashYyyy`             | dd-MM-yyyy                                                          |
 | `DocumentCreateDocumentTemporaryDateFormatMmDdSlashYyyy`            | MM/dd/yyyy                                                          |
 | `DocumentCreateDocumentTemporaryDateFormatYyMMdd`                   | yy-MM-dd                                                            |
 | `DocumentCreateDocumentTemporaryDateFormatMmmmDdCommaYyyy`          | MMMM dd, yyyy                                                       |
 | `DocumentCreateDocumentTemporaryDateFormatEeeeMmmmDdCommaYyyy`      | EEEE, MMMM dd, yyyy                                                 |
 | `DocumentCreateDocumentTemporaryDateFormatDdMmSlashYyyyHhMmA`       | dd/MM/yyyy hh:mm a                                                  |
 | `DocumentCreateDocumentTemporaryDateFormatDdMmSlashYyyyHHmm`        | dd/MM/yyyy HH:mm                                                    |
+| `DocumentCreateDocumentTemporaryDateFormatDdMmDashYyyyHhMmA`        | dd-MM-yyyy hh:mm a                                                  |
+| `DocumentCreateDocumentTemporaryDateFormatDdMmDashYyyyHHmm`         | dd-MM-yyyy HH:mm                                                    |
 | `DocumentCreateDocumentTemporaryDateFormatMmDdSlashYyyyHhMmA`       | MM/dd/yyyy hh:mm a                                                  |
 | `DocumentCreateDocumentTemporaryDateFormatMmDdSlashYyyyHHmm`        | MM/dd/yyyy HH:mm                                                    |
 | `DocumentCreateDocumentTemporaryDateFormatDdDotMmDotYyyy`           | dd.MM.yyyy                                                          |

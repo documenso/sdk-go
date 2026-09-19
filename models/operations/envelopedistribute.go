@@ -15,12 +15,15 @@ const (
 	EnvelopeDistributeDateFormatYyyyMMddHhMmA            EnvelopeDistributeDateFormat = "yyyy-MM-dd hh:mm a"
 	EnvelopeDistributeDateFormatYyyyMMdd                 EnvelopeDistributeDateFormat = "yyyy-MM-dd"
 	EnvelopeDistributeDateFormatDdMmSlashYyyy            EnvelopeDistributeDateFormat = "dd/MM/yyyy"
+	EnvelopeDistributeDateFormatDdMmDashYyyy             EnvelopeDistributeDateFormat = "dd-MM-yyyy"
 	EnvelopeDistributeDateFormatMmDdSlashYyyy            EnvelopeDistributeDateFormat = "MM/dd/yyyy"
 	EnvelopeDistributeDateFormatYyMMdd                   EnvelopeDistributeDateFormat = "yy-MM-dd"
 	EnvelopeDistributeDateFormatMmmmDdCommaYyyy          EnvelopeDistributeDateFormat = "MMMM dd, yyyy"
 	EnvelopeDistributeDateFormatEeeeMmmmDdCommaYyyy      EnvelopeDistributeDateFormat = "EEEE, MMMM dd, yyyy"
 	EnvelopeDistributeDateFormatDdMmSlashYyyyHhMmA       EnvelopeDistributeDateFormat = "dd/MM/yyyy hh:mm a"
 	EnvelopeDistributeDateFormatDdMmSlashYyyyHHmm        EnvelopeDistributeDateFormat = "dd/MM/yyyy HH:mm"
+	EnvelopeDistributeDateFormatDdMmDashYyyyHhMmA        EnvelopeDistributeDateFormat = "dd-MM-yyyy hh:mm a"
+	EnvelopeDistributeDateFormatDdMmDashYyyyHHmm         EnvelopeDistributeDateFormat = "dd-MM-yyyy HH:mm"
 	EnvelopeDistributeDateFormatMmDdSlashYyyyHhMmA       EnvelopeDistributeDateFormat = "MM/dd/yyyy hh:mm a"
 	EnvelopeDistributeDateFormatMmDdSlashYyyyHHmm        EnvelopeDistributeDateFormat = "MM/dd/yyyy HH:mm"
 	EnvelopeDistributeDateFormatDdDotMmDotYyyy           EnvelopeDistributeDateFormat = "dd.MM.yyyy"
@@ -51,6 +54,8 @@ func (e *EnvelopeDistributeDateFormat) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "dd/MM/yyyy":
 		fallthrough
+	case "dd-MM-yyyy":
+		fallthrough
 	case "MM/dd/yyyy":
 		fallthrough
 	case "yy-MM-dd":
@@ -62,6 +67,10 @@ func (e *EnvelopeDistributeDateFormat) UnmarshalJSON(data []byte) error {
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
 	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "dd-MM-yyyy hh:mm a":
+		fallthrough
+	case "dd-MM-yyyy HH:mm":
 		fallthrough
 	case "MM/dd/yyyy hh:mm a":
 		fallthrough
@@ -182,6 +191,8 @@ type EnvelopeDistributeEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (e EnvelopeDistributeEmailSettings) MarshalJSON() ([]byte, error) {
@@ -242,6 +253,20 @@ func (e *EnvelopeDistributeEmailSettings) GetOwnerDocumentCompleted() *bool {
 		return nil
 	}
 	return e.OwnerDocumentCompleted
+}
+
+func (e *EnvelopeDistributeEmailSettings) GetOwnerRecipientExpired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.OwnerRecipientExpired
+}
+
+func (e *EnvelopeDistributeEmailSettings) GetOwnerDocumentCreated() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.OwnerDocumentCreated
 }
 
 type EnvelopeDistributeMeta struct {
