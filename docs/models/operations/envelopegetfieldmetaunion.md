@@ -63,3 +63,31 @@ envelopeGetFieldMetaUnion := operations.CreateEnvelopeGetFieldMetaUnionEnvelopeG
 envelopeGetFieldMetaUnion := operations.CreateEnvelopeGetFieldMetaUnionEnvelopeGetFieldMetaDropdown(operations.EnvelopeGetFieldMetaDropdown{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch envelopeGetFieldMetaUnion.Type {
+	case operations.EnvelopeGetFieldMetaUnionTypeEnvelopeGetFieldMetaSignature:
+		// envelopeGetFieldMetaUnion.EnvelopeGetFieldMetaSignature is populated
+	case operations.EnvelopeGetFieldMetaUnionTypeEnvelopeGetFieldMetaInitials:
+		// envelopeGetFieldMetaUnion.EnvelopeGetFieldMetaInitials is populated
+	case operations.EnvelopeGetFieldMetaUnionTypeEnvelopeGetFieldMetaName:
+		// envelopeGetFieldMetaUnion.EnvelopeGetFieldMetaName is populated
+	case operations.EnvelopeGetFieldMetaUnionTypeEnvelopeGetFieldMetaEmail:
+		// envelopeGetFieldMetaUnion.EnvelopeGetFieldMetaEmail is populated
+	case operations.EnvelopeGetFieldMetaUnionTypeEnvelopeGetFieldMetaDate:
+		// envelopeGetFieldMetaUnion.EnvelopeGetFieldMetaDate is populated
+	case operations.EnvelopeGetFieldMetaUnionTypeEnvelopeGetFieldMetaText:
+		// envelopeGetFieldMetaUnion.EnvelopeGetFieldMetaText is populated
+	case operations.EnvelopeGetFieldMetaUnionTypeEnvelopeGetFieldMetaNumber:
+		// envelopeGetFieldMetaUnion.EnvelopeGetFieldMetaNumber is populated
+	case operations.EnvelopeGetFieldMetaUnionTypeEnvelopeGetFieldMetaRadio:
+		// envelopeGetFieldMetaUnion.EnvelopeGetFieldMetaRadio is populated
+	case operations.EnvelopeGetFieldMetaUnionTypeEnvelopeGetFieldMetaCheckbox:
+		// envelopeGetFieldMetaUnion.EnvelopeGetFieldMetaCheckbox is populated
+	case operations.EnvelopeGetFieldMetaUnionTypeEnvelopeGetFieldMetaDropdown:
+		// envelopeGetFieldMetaUnion.EnvelopeGetFieldMetaDropdown is populated
+}
+```

@@ -1,5 +1,15 @@
 # FieldSecurityType1
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.FieldSecurityType1Account
+```
+
 
 ## Values
 

@@ -99,8 +99,9 @@ func (e *TemplateCreateTemplateGlobalActionAuth) UnmarshalJSON(data []byte) erro
 type TemplateCreateTemplateType string
 
 const (
-	TemplateCreateTemplateTypePublic  TemplateCreateTemplateType = "PUBLIC"
-	TemplateCreateTemplateTypePrivate TemplateCreateTemplateType = "PRIVATE"
+	TemplateCreateTemplateTypePublic       TemplateCreateTemplateType = "PUBLIC"
+	TemplateCreateTemplateTypePrivate      TemplateCreateTemplateType = "PRIVATE"
+	TemplateCreateTemplateTypeOrganisation TemplateCreateTemplateType = "ORGANISATION"
 )
 
 func (e TemplateCreateTemplateType) ToPointer() *TemplateCreateTemplateType {
@@ -115,6 +116,8 @@ func (e *TemplateCreateTemplateType) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
 		*e = TemplateCreateTemplateType(v)
 		return nil
 	default:
@@ -128,12 +131,15 @@ const (
 	TemplateCreateTemplateDateFormatYyyyMMddHhMmA            TemplateCreateTemplateDateFormat = "yyyy-MM-dd hh:mm a"
 	TemplateCreateTemplateDateFormatYyyyMMdd                 TemplateCreateTemplateDateFormat = "yyyy-MM-dd"
 	TemplateCreateTemplateDateFormatDdMmSlashYyyy            TemplateCreateTemplateDateFormat = "dd/MM/yyyy"
+	TemplateCreateTemplateDateFormatDdMmDashYyyy             TemplateCreateTemplateDateFormat = "dd-MM-yyyy"
 	TemplateCreateTemplateDateFormatMmDdSlashYyyy            TemplateCreateTemplateDateFormat = "MM/dd/yyyy"
 	TemplateCreateTemplateDateFormatYyMMdd                   TemplateCreateTemplateDateFormat = "yy-MM-dd"
 	TemplateCreateTemplateDateFormatMmmmDdCommaYyyy          TemplateCreateTemplateDateFormat = "MMMM dd, yyyy"
 	TemplateCreateTemplateDateFormatEeeeMmmmDdCommaYyyy      TemplateCreateTemplateDateFormat = "EEEE, MMMM dd, yyyy"
 	TemplateCreateTemplateDateFormatDdMmSlashYyyyHhMmA       TemplateCreateTemplateDateFormat = "dd/MM/yyyy hh:mm a"
 	TemplateCreateTemplateDateFormatDdMmSlashYyyyHHmm        TemplateCreateTemplateDateFormat = "dd/MM/yyyy HH:mm"
+	TemplateCreateTemplateDateFormatDdMmDashYyyyHhMmA        TemplateCreateTemplateDateFormat = "dd-MM-yyyy hh:mm a"
+	TemplateCreateTemplateDateFormatDdMmDashYyyyHHmm         TemplateCreateTemplateDateFormat = "dd-MM-yyyy HH:mm"
 	TemplateCreateTemplateDateFormatMmDdSlashYyyyHhMmA       TemplateCreateTemplateDateFormat = "MM/dd/yyyy hh:mm a"
 	TemplateCreateTemplateDateFormatMmDdSlashYyyyHHmm        TemplateCreateTemplateDateFormat = "MM/dd/yyyy HH:mm"
 	TemplateCreateTemplateDateFormatDdDotMmDotYyyy           TemplateCreateTemplateDateFormat = "dd.MM.yyyy"
@@ -164,6 +170,8 @@ func (e *TemplateCreateTemplateDateFormat) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "dd/MM/yyyy":
 		fallthrough
+	case "dd-MM-yyyy":
+		fallthrough
 	case "MM/dd/yyyy":
 		fallthrough
 	case "yy-MM-dd":
@@ -175,6 +183,10 @@ func (e *TemplateCreateTemplateDateFormat) UnmarshalJSON(data []byte) error {
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
 	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "dd-MM-yyyy hh:mm a":
+		fallthrough
+	case "dd-MM-yyyy HH:mm":
 		fallthrough
 	case "MM/dd/yyyy hh:mm a":
 		fallthrough
@@ -242,6 +254,8 @@ type TemplateCreateTemplateEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (t TemplateCreateTemplateEmailSettings) MarshalJSON() ([]byte, error) {
@@ -302,6 +316,20 @@ func (t *TemplateCreateTemplateEmailSettings) GetOwnerDocumentCompleted() *bool 
 		return nil
 	}
 	return t.OwnerDocumentCompleted
+}
+
+func (t *TemplateCreateTemplateEmailSettings) GetOwnerRecipientExpired() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerRecipientExpired
+}
+
+func (t *TemplateCreateTemplateEmailSettings) GetOwnerDocumentCreated() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerDocumentCreated
 }
 
 type TemplateCreateTemplateLanguage string
