@@ -24,8 +24,9 @@ func (t *TemplateGetManyRequest) GetTemplateIds() []float64 {
 type TemplateGetManyType string
 
 const (
-	TemplateGetManyTypePublic  TemplateGetManyType = "PUBLIC"
-	TemplateGetManyTypePrivate TemplateGetManyType = "PRIVATE"
+	TemplateGetManyTypePublic       TemplateGetManyType = "PUBLIC"
+	TemplateGetManyTypePrivate      TemplateGetManyType = "PRIVATE"
+	TemplateGetManyTypeOrganisation TemplateGetManyType = "ORGANISATION"
 )
 
 func (e TemplateGetManyType) ToPointer() *TemplateGetManyType {
@@ -40,6 +41,8 @@ func (e *TemplateGetManyType) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
 		*e = TemplateGetManyType(v)
 		return nil
 	default:
@@ -154,8 +157,9 @@ func (t *TemplateGetManyAuthOptions) GetGlobalActionAuth() []TemplateGetManyGlob
 }
 
 type TemplateGetManyTeam struct {
-	ID  float64 `json:"id"`
-	URL string  `json:"url"`
+	ID   float64 `json:"id"`
+	URL  string  `json:"url"`
+	Name string  `json:"name"`
 }
 
 func (t *TemplateGetManyTeam) GetID() float64 {
@@ -170,6 +174,13 @@ func (t *TemplateGetManyTeam) GetURL() string {
 		return ""
 	}
 	return t.URL
+}
+
+func (t *TemplateGetManyTeam) GetName() string {
+	if t == nil {
+		return ""
+	}
+	return t.Name
 }
 
 type TemplateGetManyFieldType string
@@ -225,6 +236,38 @@ func (e *TemplateGetManyFieldType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type TemplateGetManyOverflow10 string
+
+const (
+	TemplateGetManyOverflow10Auto       TemplateGetManyOverflow10 = "auto"
+	TemplateGetManyOverflow10Horizontal TemplateGetManyOverflow10 = "horizontal"
+	TemplateGetManyOverflow10Vertical   TemplateGetManyOverflow10 = "vertical"
+	TemplateGetManyOverflow10Crop       TemplateGetManyOverflow10 = "crop"
+)
+
+func (e TemplateGetManyOverflow10) ToPointer() *TemplateGetManyOverflow10 {
+	return &e
+}
+func (e *TemplateGetManyOverflow10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateGetManyOverflow10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateGetManyOverflow10: %v", v)
+	}
+}
+
 type TemplateGetManyTypeDropdown string
 
 const (
@@ -270,12 +313,16 @@ func (t *TemplateGetManyValue3) GetValue() string {
 	return t.Value
 }
 
+// #region class-body-templategetmanyvalue3
+// #endregion class-body-templategetmanyvalue3
+
 type TemplateGetManyFieldMetaDropdown struct {
 	Label        *string                     `json:"label,omitempty"`
 	Placeholder  *string                     `json:"placeholder,omitempty"`
 	Required     *bool                       `json:"required,omitempty"`
 	ReadOnly     *bool                       `json:"readOnly,omitempty"`
 	FontSize     *float64                    `default:"12" json:"fontSize"`
+	Overflow     *TemplateGetManyOverflow10  `json:"overflow,omitempty"`
 	Type         TemplateGetManyTypeDropdown `json:"type"`
 	Values       []TemplateGetManyValue3     `json:"values,omitempty"`
 	DefaultValue *string                     `json:"defaultValue,omitempty"`
@@ -327,6 +374,13 @@ func (t *TemplateGetManyFieldMetaDropdown) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateGetManyFieldMetaDropdown) GetOverflow() *TemplateGetManyOverflow10 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateGetManyFieldMetaDropdown) GetType() TemplateGetManyTypeDropdown {
 	if t == nil {
 		return TemplateGetManyTypeDropdown("")
@@ -346,6 +400,38 @@ func (t *TemplateGetManyFieldMetaDropdown) GetDefaultValue() *string {
 		return nil
 	}
 	return t.DefaultValue
+}
+
+type TemplateGetManyOverflow9 string
+
+const (
+	TemplateGetManyOverflow9Auto       TemplateGetManyOverflow9 = "auto"
+	TemplateGetManyOverflow9Horizontal TemplateGetManyOverflow9 = "horizontal"
+	TemplateGetManyOverflow9Vertical   TemplateGetManyOverflow9 = "vertical"
+	TemplateGetManyOverflow9Crop       TemplateGetManyOverflow9 = "crop"
+)
+
+func (e TemplateGetManyOverflow9) ToPointer() *TemplateGetManyOverflow9 {
+	return &e
+}
+func (e *TemplateGetManyOverflow9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateGetManyOverflow9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateGetManyOverflow9: %v", v)
+	}
 }
 
 type TemplateGetManyTypeCheckbox string
@@ -409,6 +495,9 @@ func (t *TemplateGetManyValue2) GetValue() string {
 	return t.Value
 }
 
+// #region class-body-templategetmanyvalue2
+// #endregion class-body-templategetmanyvalue2
+
 type TemplateGetManyDirection2 string
 
 const (
@@ -441,6 +530,7 @@ type TemplateGetManyFieldMetaCheckbox struct {
 	Required         *bool                       `json:"required,omitempty"`
 	ReadOnly         *bool                       `json:"readOnly,omitempty"`
 	FontSize         *float64                    `default:"12" json:"fontSize"`
+	Overflow         *TemplateGetManyOverflow9   `json:"overflow,omitempty"`
 	Type             TemplateGetManyTypeCheckbox `json:"type"`
 	Values           []TemplateGetManyValue2     `json:"values,omitempty"`
 	ValidationRule   *string                     `json:"validationRule,omitempty"`
@@ -494,6 +584,13 @@ func (t *TemplateGetManyFieldMetaCheckbox) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateGetManyFieldMetaCheckbox) GetOverflow() *TemplateGetManyOverflow9 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateGetManyFieldMetaCheckbox) GetType() TemplateGetManyTypeCheckbox {
 	if t == nil {
 		return TemplateGetManyTypeCheckbox("")
@@ -527,6 +624,38 @@ func (t *TemplateGetManyFieldMetaCheckbox) GetDirection() *TemplateGetManyDirect
 		return nil
 	}
 	return t.Direction
+}
+
+type TemplateGetManyOverflow8 string
+
+const (
+	TemplateGetManyOverflow8Auto       TemplateGetManyOverflow8 = "auto"
+	TemplateGetManyOverflow8Horizontal TemplateGetManyOverflow8 = "horizontal"
+	TemplateGetManyOverflow8Vertical   TemplateGetManyOverflow8 = "vertical"
+	TemplateGetManyOverflow8Crop       TemplateGetManyOverflow8 = "crop"
+)
+
+func (e TemplateGetManyOverflow8) ToPointer() *TemplateGetManyOverflow8 {
+	return &e
+}
+func (e *TemplateGetManyOverflow8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateGetManyOverflow8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateGetManyOverflow8: %v", v)
+	}
 }
 
 type TemplateGetManyTypeRadio string
@@ -590,6 +719,9 @@ func (t *TemplateGetManyValue1) GetValue() string {
 	return t.Value
 }
 
+// #region class-body-templategetmanyvalue1
+// #endregion class-body-templategetmanyvalue1
+
 type TemplateGetManyDirection1 string
 
 const (
@@ -622,6 +754,7 @@ type TemplateGetManyFieldMetaRadio struct {
 	Required    *bool                      `json:"required,omitempty"`
 	ReadOnly    *bool                      `json:"readOnly,omitempty"`
 	FontSize    *float64                   `default:"12" json:"fontSize"`
+	Overflow    *TemplateGetManyOverflow8  `json:"overflow,omitempty"`
 	Type        TemplateGetManyTypeRadio   `json:"type"`
 	Values      []TemplateGetManyValue1    `json:"values,omitempty"`
 	Direction   *TemplateGetManyDirection1 `default:"vertical" json:"direction"`
@@ -673,6 +806,13 @@ func (t *TemplateGetManyFieldMetaRadio) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateGetManyFieldMetaRadio) GetOverflow() *TemplateGetManyOverflow8 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateGetManyFieldMetaRadio) GetType() TemplateGetManyTypeRadio {
 	if t == nil {
 		return TemplateGetManyTypeRadio("")
@@ -692,6 +832,38 @@ func (t *TemplateGetManyFieldMetaRadio) GetDirection() *TemplateGetManyDirection
 		return nil
 	}
 	return t.Direction
+}
+
+type TemplateGetManyOverflow7 string
+
+const (
+	TemplateGetManyOverflow7Auto       TemplateGetManyOverflow7 = "auto"
+	TemplateGetManyOverflow7Horizontal TemplateGetManyOverflow7 = "horizontal"
+	TemplateGetManyOverflow7Vertical   TemplateGetManyOverflow7 = "vertical"
+	TemplateGetManyOverflow7Crop       TemplateGetManyOverflow7 = "crop"
+)
+
+func (e TemplateGetManyOverflow7) ToPointer() *TemplateGetManyOverflow7 {
+	return &e
+}
+func (e *TemplateGetManyOverflow7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateGetManyOverflow7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateGetManyOverflow7: %v", v)
+	}
 }
 
 type TemplateGetManyTypeNumber string
@@ -781,6 +953,7 @@ type TemplateGetManyFieldMetaNumber struct {
 	Required      *bool                          `json:"required,omitempty"`
 	ReadOnly      *bool                          `json:"readOnly,omitempty"`
 	FontSize      *float64                       `default:"12" json:"fontSize"`
+	Overflow      *TemplateGetManyOverflow7      `json:"overflow,omitempty"`
 	Type          TemplateGetManyTypeNumber      `json:"type"`
 	NumberFormat  *string                        `json:"numberFormat,omitempty"`
 	Value         *string                        `json:"value,omitempty"`
@@ -836,6 +1009,13 @@ func (t *TemplateGetManyFieldMetaNumber) GetFontSize() *float64 {
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateGetManyFieldMetaNumber) GetOverflow() *TemplateGetManyOverflow7 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
 }
 
 func (t *TemplateGetManyFieldMetaNumber) GetType() TemplateGetManyTypeNumber {
@@ -899,6 +1079,38 @@ func (t *TemplateGetManyFieldMetaNumber) GetVerticalAlign() *TemplateGetManyVert
 		return nil
 	}
 	return t.VerticalAlign
+}
+
+type TemplateGetManyOverflow6 string
+
+const (
+	TemplateGetManyOverflow6Auto       TemplateGetManyOverflow6 = "auto"
+	TemplateGetManyOverflow6Horizontal TemplateGetManyOverflow6 = "horizontal"
+	TemplateGetManyOverflow6Vertical   TemplateGetManyOverflow6 = "vertical"
+	TemplateGetManyOverflow6Crop       TemplateGetManyOverflow6 = "crop"
+)
+
+func (e TemplateGetManyOverflow6) ToPointer() *TemplateGetManyOverflow6 {
+	return &e
+}
+func (e *TemplateGetManyOverflow6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateGetManyOverflow6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateGetManyOverflow6: %v", v)
+	}
 }
 
 type TemplateGetManyTypeText string
@@ -988,6 +1200,7 @@ type TemplateGetManyFieldMetaText struct {
 	Required       *bool                          `json:"required,omitempty"`
 	ReadOnly       *bool                          `json:"readOnly,omitempty"`
 	FontSize       *float64                       `default:"12" json:"fontSize"`
+	Overflow       *TemplateGetManyOverflow6      `json:"overflow,omitempty"`
 	Type           TemplateGetManyTypeText        `json:"type"`
 	Text           *string                        `json:"text,omitempty"`
 	CharacterLimit *float64                       `json:"characterLimit,omitempty"`
@@ -1043,6 +1256,13 @@ func (t *TemplateGetManyFieldMetaText) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateGetManyFieldMetaText) GetOverflow() *TemplateGetManyOverflow6 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateGetManyFieldMetaText) GetType() TemplateGetManyTypeText {
 	if t == nil {
 		return TemplateGetManyTypeText("")
@@ -1090,6 +1310,38 @@ func (t *TemplateGetManyFieldMetaText) GetVerticalAlign() *TemplateGetManyVertic
 		return nil
 	}
 	return t.VerticalAlign
+}
+
+type TemplateGetManyOverflow5 string
+
+const (
+	TemplateGetManyOverflow5Auto       TemplateGetManyOverflow5 = "auto"
+	TemplateGetManyOverflow5Horizontal TemplateGetManyOverflow5 = "horizontal"
+	TemplateGetManyOverflow5Vertical   TemplateGetManyOverflow5 = "vertical"
+	TemplateGetManyOverflow5Crop       TemplateGetManyOverflow5 = "crop"
+)
+
+func (e TemplateGetManyOverflow5) ToPointer() *TemplateGetManyOverflow5 {
+	return &e
+}
+func (e *TemplateGetManyOverflow5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateGetManyOverflow5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateGetManyOverflow5: %v", v)
+	}
 }
 
 type TemplateGetManyTypeDate string
@@ -1150,6 +1402,7 @@ type TemplateGetManyFieldMetaDate struct {
 	Required    *bool                      `json:"required,omitempty"`
 	ReadOnly    *bool                      `json:"readOnly,omitempty"`
 	FontSize    *float64                   `default:"12" json:"fontSize"`
+	Overflow    *TemplateGetManyOverflow5  `default:"auto" json:"overflow"`
 	Type        TemplateGetManyTypeDate    `json:"type"`
 	TextAlign   *TemplateGetManyTextAlign4 `json:"textAlign,omitempty"`
 }
@@ -1200,6 +1453,13 @@ func (t *TemplateGetManyFieldMetaDate) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateGetManyFieldMetaDate) GetOverflow() *TemplateGetManyOverflow5 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateGetManyFieldMetaDate) GetType() TemplateGetManyTypeDate {
 	if t == nil {
 		return TemplateGetManyTypeDate("")
@@ -1212,6 +1472,38 @@ func (t *TemplateGetManyFieldMetaDate) GetTextAlign() *TemplateGetManyTextAlign4
 		return nil
 	}
 	return t.TextAlign
+}
+
+type TemplateGetManyOverflow4 string
+
+const (
+	TemplateGetManyOverflow4Auto       TemplateGetManyOverflow4 = "auto"
+	TemplateGetManyOverflow4Horizontal TemplateGetManyOverflow4 = "horizontal"
+	TemplateGetManyOverflow4Vertical   TemplateGetManyOverflow4 = "vertical"
+	TemplateGetManyOverflow4Crop       TemplateGetManyOverflow4 = "crop"
+)
+
+func (e TemplateGetManyOverflow4) ToPointer() *TemplateGetManyOverflow4 {
+	return &e
+}
+func (e *TemplateGetManyOverflow4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateGetManyOverflow4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateGetManyOverflow4: %v", v)
+	}
 }
 
 type TemplateGetManyTypeEmail string
@@ -1272,6 +1564,7 @@ type TemplateGetManyFieldMetaEmail struct {
 	Required    *bool                      `json:"required,omitempty"`
 	ReadOnly    *bool                      `json:"readOnly,omitempty"`
 	FontSize    *float64                   `default:"12" json:"fontSize"`
+	Overflow    *TemplateGetManyOverflow4  `default:"auto" json:"overflow"`
 	Type        TemplateGetManyTypeEmail   `json:"type"`
 	TextAlign   *TemplateGetManyTextAlign3 `json:"textAlign,omitempty"`
 }
@@ -1322,6 +1615,13 @@ func (t *TemplateGetManyFieldMetaEmail) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateGetManyFieldMetaEmail) GetOverflow() *TemplateGetManyOverflow4 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateGetManyFieldMetaEmail) GetType() TemplateGetManyTypeEmail {
 	if t == nil {
 		return TemplateGetManyTypeEmail("")
@@ -1334,6 +1634,38 @@ func (t *TemplateGetManyFieldMetaEmail) GetTextAlign() *TemplateGetManyTextAlign
 		return nil
 	}
 	return t.TextAlign
+}
+
+type TemplateGetManyOverflow3 string
+
+const (
+	TemplateGetManyOverflow3Auto       TemplateGetManyOverflow3 = "auto"
+	TemplateGetManyOverflow3Horizontal TemplateGetManyOverflow3 = "horizontal"
+	TemplateGetManyOverflow3Vertical   TemplateGetManyOverflow3 = "vertical"
+	TemplateGetManyOverflow3Crop       TemplateGetManyOverflow3 = "crop"
+)
+
+func (e TemplateGetManyOverflow3) ToPointer() *TemplateGetManyOverflow3 {
+	return &e
+}
+func (e *TemplateGetManyOverflow3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateGetManyOverflow3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateGetManyOverflow3: %v", v)
+	}
 }
 
 type TemplateGetManyTypeName string
@@ -1394,6 +1726,7 @@ type TemplateGetManyFieldMetaName struct {
 	Required    *bool                      `json:"required,omitempty"`
 	ReadOnly    *bool                      `json:"readOnly,omitempty"`
 	FontSize    *float64                   `default:"12" json:"fontSize"`
+	Overflow    *TemplateGetManyOverflow3  `json:"overflow,omitempty"`
 	Type        TemplateGetManyTypeName    `json:"type"`
 	TextAlign   *TemplateGetManyTextAlign2 `json:"textAlign,omitempty"`
 }
@@ -1444,6 +1777,13 @@ func (t *TemplateGetManyFieldMetaName) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateGetManyFieldMetaName) GetOverflow() *TemplateGetManyOverflow3 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateGetManyFieldMetaName) GetType() TemplateGetManyTypeName {
 	if t == nil {
 		return TemplateGetManyTypeName("")
@@ -1456,6 +1796,38 @@ func (t *TemplateGetManyFieldMetaName) GetTextAlign() *TemplateGetManyTextAlign2
 		return nil
 	}
 	return t.TextAlign
+}
+
+type TemplateGetManyOverflow2 string
+
+const (
+	TemplateGetManyOverflow2Auto       TemplateGetManyOverflow2 = "auto"
+	TemplateGetManyOverflow2Horizontal TemplateGetManyOverflow2 = "horizontal"
+	TemplateGetManyOverflow2Vertical   TemplateGetManyOverflow2 = "vertical"
+	TemplateGetManyOverflow2Crop       TemplateGetManyOverflow2 = "crop"
+)
+
+func (e TemplateGetManyOverflow2) ToPointer() *TemplateGetManyOverflow2 {
+	return &e
+}
+func (e *TemplateGetManyOverflow2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateGetManyOverflow2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateGetManyOverflow2: %v", v)
+	}
 }
 
 type TemplateGetManyTypeInitials string
@@ -1516,6 +1888,7 @@ type TemplateGetManyFieldMetaInitials struct {
 	Required    *bool                       `json:"required,omitempty"`
 	ReadOnly    *bool                       `json:"readOnly,omitempty"`
 	FontSize    *float64                    `default:"12" json:"fontSize"`
+	Overflow    *TemplateGetManyOverflow2   `json:"overflow,omitempty"`
 	Type        TemplateGetManyTypeInitials `json:"type"`
 	TextAlign   *TemplateGetManyTextAlign1  `json:"textAlign,omitempty"`
 }
@@ -1566,6 +1939,13 @@ func (t *TemplateGetManyFieldMetaInitials) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateGetManyFieldMetaInitials) GetOverflow() *TemplateGetManyOverflow2 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateGetManyFieldMetaInitials) GetType() TemplateGetManyTypeInitials {
 	if t == nil {
 		return TemplateGetManyTypeInitials("")
@@ -1578,6 +1958,38 @@ func (t *TemplateGetManyFieldMetaInitials) GetTextAlign() *TemplateGetManyTextAl
 		return nil
 	}
 	return t.TextAlign
+}
+
+type TemplateGetManyOverflow1 string
+
+const (
+	TemplateGetManyOverflow1Auto       TemplateGetManyOverflow1 = "auto"
+	TemplateGetManyOverflow1Horizontal TemplateGetManyOverflow1 = "horizontal"
+	TemplateGetManyOverflow1Vertical   TemplateGetManyOverflow1 = "vertical"
+	TemplateGetManyOverflow1Crop       TemplateGetManyOverflow1 = "crop"
+)
+
+func (e TemplateGetManyOverflow1) ToPointer() *TemplateGetManyOverflow1 {
+	return &e
+}
+func (e *TemplateGetManyOverflow1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateGetManyOverflow1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateGetManyOverflow1: %v", v)
+	}
 }
 
 type TemplateGetManyTypeSignature string
@@ -1609,6 +2021,7 @@ type TemplateGetManyFieldMetaSignature struct {
 	Required    *bool                        `json:"required,omitempty"`
 	ReadOnly    *bool                        `json:"readOnly,omitempty"`
 	FontSize    *float64                     `default:"12" json:"fontSize"`
+	Overflow    *TemplateGetManyOverflow1    `default:"auto" json:"overflow"`
 	Type        TemplateGetManyTypeSignature `json:"type"`
 }
 
@@ -1656,6 +2069,13 @@ func (t *TemplateGetManyFieldMetaSignature) GetFontSize() *float64 {
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateGetManyFieldMetaSignature) GetOverflow() *TemplateGetManyOverflow1 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
 }
 
 func (t *TemplateGetManyFieldMetaSignature) GetType() TemplateGetManyTypeSignature {
@@ -1785,7 +2205,14 @@ func CreateTemplateGetManyFieldMetaUnionTemplateGetManyFieldMetaDropdown(templat
 	}
 }
 
-func (u *TemplateGetManyFieldMetaUnion) UnmarshalJSON(data []byte) error {
+func (u *TemplateGetManyFieldMetaUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = TemplateGetManyFieldMetaUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var templateGetManyFieldMetaSignature TemplateGetManyFieldMetaSignature = TemplateGetManyFieldMetaSignature{}
 	if err := utils.UnmarshalJSON(data, &templateGetManyFieldMetaSignature, "", true, nil); err == nil {
@@ -2232,23 +2659,25 @@ func (t *TemplateGetManyRecipientAuthOptions) GetActionAuth() []TemplateGetManyA
 }
 
 type TemplateGetManyRecipient struct {
-	EnvelopeID        string                               `json:"envelopeId"`
-	Role              TemplateGetManyRole                  `json:"role"`
-	ReadStatus        TemplateGetManyReadStatus            `json:"readStatus"`
-	SigningStatus     TemplateGetManySigningStatus         `json:"signingStatus"`
-	SendStatus        TemplateGetManySendStatus            `json:"sendStatus"`
-	ID                float64                              `json:"id"`
-	Email             string                               `json:"email"`
-	Name              string                               `json:"name"`
-	Token             string                               `json:"token"`
-	DocumentDeletedAt *string                              `json:"documentDeletedAt"`
-	Expired           *string                              `json:"expired"`
-	SignedAt          *string                              `json:"signedAt"`
-	AuthOptions       *TemplateGetManyRecipientAuthOptions `json:"authOptions"`
-	SigningOrder      *float64                             `json:"signingOrder"`
-	RejectionReason   *string                              `json:"rejectionReason"`
-	DocumentID        *float64                             `json:"documentId,omitempty"`
-	TemplateID        *float64                             `json:"templateId,omitempty"`
+	EnvelopeID           string                               `json:"envelopeId"`
+	Role                 TemplateGetManyRole                  `json:"role"`
+	ReadStatus           TemplateGetManyReadStatus            `json:"readStatus"`
+	SigningStatus        TemplateGetManySigningStatus         `json:"signingStatus"`
+	SendStatus           TemplateGetManySendStatus            `json:"sendStatus"`
+	ID                   float64                              `json:"id"`
+	Email                string                               `json:"email"`
+	Name                 string                               `json:"name"`
+	Token                string                               `json:"token"`
+	DocumentDeletedAt    *string                              `json:"documentDeletedAt"`
+	Expired              *string                              `json:"expired"`
+	ExpiresAt            *string                              `json:"expiresAt"`
+	ExpirationNotifiedAt *string                              `json:"expirationNotifiedAt"`
+	SignedAt             *string                              `json:"signedAt"`
+	AuthOptions          *TemplateGetManyRecipientAuthOptions `json:"authOptions"`
+	SigningOrder         *float64                             `json:"signingOrder"`
+	RejectionReason      *string                              `json:"rejectionReason"`
+	DocumentID           *float64                             `json:"documentId,omitempty"`
+	TemplateID           *float64                             `json:"templateId,omitempty"`
 }
 
 func (t *TemplateGetManyRecipient) GetEnvelopeID() string {
@@ -2326,6 +2755,20 @@ func (t *TemplateGetManyRecipient) GetExpired() *string {
 		return nil
 	}
 	return t.Expired
+}
+
+func (t *TemplateGetManyRecipient) GetExpiresAt() *string {
+	if t == nil {
+		return nil
+	}
+	return t.ExpiresAt
+}
+
+func (t *TemplateGetManyRecipient) GetExpirationNotifiedAt() *string {
+	if t == nil {
+		return nil
+	}
+	return t.ExpirationNotifiedAt
 }
 
 func (t *TemplateGetManyRecipient) GetSignedAt() *string {

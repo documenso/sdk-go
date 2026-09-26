@@ -63,3 +63,31 @@ documentGetFieldMetaUnion := operations.CreateDocumentGetFieldMetaUnionDocumentG
 documentGetFieldMetaUnion := operations.CreateDocumentGetFieldMetaUnionDocumentGetFieldMetaDropdown(operations.DocumentGetFieldMetaDropdown{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch documentGetFieldMetaUnion.Type {
+	case operations.DocumentGetFieldMetaUnionTypeDocumentGetFieldMetaSignature:
+		// documentGetFieldMetaUnion.DocumentGetFieldMetaSignature is populated
+	case operations.DocumentGetFieldMetaUnionTypeDocumentGetFieldMetaInitials:
+		// documentGetFieldMetaUnion.DocumentGetFieldMetaInitials is populated
+	case operations.DocumentGetFieldMetaUnionTypeDocumentGetFieldMetaName:
+		// documentGetFieldMetaUnion.DocumentGetFieldMetaName is populated
+	case operations.DocumentGetFieldMetaUnionTypeDocumentGetFieldMetaEmail:
+		// documentGetFieldMetaUnion.DocumentGetFieldMetaEmail is populated
+	case operations.DocumentGetFieldMetaUnionTypeDocumentGetFieldMetaDate:
+		// documentGetFieldMetaUnion.DocumentGetFieldMetaDate is populated
+	case operations.DocumentGetFieldMetaUnionTypeDocumentGetFieldMetaText:
+		// documentGetFieldMetaUnion.DocumentGetFieldMetaText is populated
+	case operations.DocumentGetFieldMetaUnionTypeDocumentGetFieldMetaNumber:
+		// documentGetFieldMetaUnion.DocumentGetFieldMetaNumber is populated
+	case operations.DocumentGetFieldMetaUnionTypeDocumentGetFieldMetaRadio:
+		// documentGetFieldMetaUnion.DocumentGetFieldMetaRadio is populated
+	case operations.DocumentGetFieldMetaUnionTypeDocumentGetFieldMetaCheckbox:
+		// documentGetFieldMetaUnion.DocumentGetFieldMetaCheckbox is populated
+	case operations.DocumentGetFieldMetaUnionTypeDocumentGetFieldMetaDropdown:
+		// documentGetFieldMetaUnion.DocumentGetFieldMetaDropdown is populated
+}
+```

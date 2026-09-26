@@ -1,0 +1,93 @@
+# EnvelopeRecipientRejectOnBehalfOfFieldMetaUnion
+
+
+## Supported Types
+
+### EnvelopeRecipientRejectOnBehalfOfFieldMetaSignature
+
+```go
+envelopeRecipientRejectOnBehalfOfFieldMetaUnion := operations.CreateEnvelopeRecipientRejectOnBehalfOfFieldMetaUnionEnvelopeRecipientRejectOnBehalfOfFieldMetaSignature(operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaSignature{/* values here */})
+```
+
+### EnvelopeRecipientRejectOnBehalfOfFieldMetaInitials
+
+```go
+envelopeRecipientRejectOnBehalfOfFieldMetaUnion := operations.CreateEnvelopeRecipientRejectOnBehalfOfFieldMetaUnionEnvelopeRecipientRejectOnBehalfOfFieldMetaInitials(operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaInitials{/* values here */})
+```
+
+### EnvelopeRecipientRejectOnBehalfOfFieldMetaName
+
+```go
+envelopeRecipientRejectOnBehalfOfFieldMetaUnion := operations.CreateEnvelopeRecipientRejectOnBehalfOfFieldMetaUnionEnvelopeRecipientRejectOnBehalfOfFieldMetaName(operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaName{/* values here */})
+```
+
+### EnvelopeRecipientRejectOnBehalfOfFieldMetaEmail
+
+```go
+envelopeRecipientRejectOnBehalfOfFieldMetaUnion := operations.CreateEnvelopeRecipientRejectOnBehalfOfFieldMetaUnionEnvelopeRecipientRejectOnBehalfOfFieldMetaEmail(operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaEmail{/* values here */})
+```
+
+### EnvelopeRecipientRejectOnBehalfOfFieldMetaDate
+
+```go
+envelopeRecipientRejectOnBehalfOfFieldMetaUnion := operations.CreateEnvelopeRecipientRejectOnBehalfOfFieldMetaUnionEnvelopeRecipientRejectOnBehalfOfFieldMetaDate(operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaDate{/* values here */})
+```
+
+### EnvelopeRecipientRejectOnBehalfOfFieldMetaText
+
+```go
+envelopeRecipientRejectOnBehalfOfFieldMetaUnion := operations.CreateEnvelopeRecipientRejectOnBehalfOfFieldMetaUnionEnvelopeRecipientRejectOnBehalfOfFieldMetaText(operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaText{/* values here */})
+```
+
+### EnvelopeRecipientRejectOnBehalfOfFieldMetaNumber
+
+```go
+envelopeRecipientRejectOnBehalfOfFieldMetaUnion := operations.CreateEnvelopeRecipientRejectOnBehalfOfFieldMetaUnionEnvelopeRecipientRejectOnBehalfOfFieldMetaNumber(operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaNumber{/* values here */})
+```
+
+### EnvelopeRecipientRejectOnBehalfOfFieldMetaRadio
+
+```go
+envelopeRecipientRejectOnBehalfOfFieldMetaUnion := operations.CreateEnvelopeRecipientRejectOnBehalfOfFieldMetaUnionEnvelopeRecipientRejectOnBehalfOfFieldMetaRadio(operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaRadio{/* values here */})
+```
+
+### EnvelopeRecipientRejectOnBehalfOfFieldMetaCheckbox
+
+```go
+envelopeRecipientRejectOnBehalfOfFieldMetaUnion := operations.CreateEnvelopeRecipientRejectOnBehalfOfFieldMetaUnionEnvelopeRecipientRejectOnBehalfOfFieldMetaCheckbox(operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaCheckbox{/* values here */})
+```
+
+### EnvelopeRecipientRejectOnBehalfOfFieldMetaDropdown
+
+```go
+envelopeRecipientRejectOnBehalfOfFieldMetaUnion := operations.CreateEnvelopeRecipientRejectOnBehalfOfFieldMetaUnionEnvelopeRecipientRejectOnBehalfOfFieldMetaDropdown(operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaDropdown{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch envelopeRecipientRejectOnBehalfOfFieldMetaUnion.Type {
+	case operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaUnionTypeEnvelopeRecipientRejectOnBehalfOfFieldMetaSignature:
+		// envelopeRecipientRejectOnBehalfOfFieldMetaUnion.EnvelopeRecipientRejectOnBehalfOfFieldMetaSignature is populated
+	case operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaUnionTypeEnvelopeRecipientRejectOnBehalfOfFieldMetaInitials:
+		// envelopeRecipientRejectOnBehalfOfFieldMetaUnion.EnvelopeRecipientRejectOnBehalfOfFieldMetaInitials is populated
+	case operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaUnionTypeEnvelopeRecipientRejectOnBehalfOfFieldMetaName:
+		// envelopeRecipientRejectOnBehalfOfFieldMetaUnion.EnvelopeRecipientRejectOnBehalfOfFieldMetaName is populated
+	case operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaUnionTypeEnvelopeRecipientRejectOnBehalfOfFieldMetaEmail:
+		// envelopeRecipientRejectOnBehalfOfFieldMetaUnion.EnvelopeRecipientRejectOnBehalfOfFieldMetaEmail is populated
+	case operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaUnionTypeEnvelopeRecipientRejectOnBehalfOfFieldMetaDate:
+		// envelopeRecipientRejectOnBehalfOfFieldMetaUnion.EnvelopeRecipientRejectOnBehalfOfFieldMetaDate is populated
+	case operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaUnionTypeEnvelopeRecipientRejectOnBehalfOfFieldMetaText:
+		// envelopeRecipientRejectOnBehalfOfFieldMetaUnion.EnvelopeRecipientRejectOnBehalfOfFieldMetaText is populated
+	case operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaUnionTypeEnvelopeRecipientRejectOnBehalfOfFieldMetaNumber:
+		// envelopeRecipientRejectOnBehalfOfFieldMetaUnion.EnvelopeRecipientRejectOnBehalfOfFieldMetaNumber is populated
+	case operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaUnionTypeEnvelopeRecipientRejectOnBehalfOfFieldMetaRadio:
+		// envelopeRecipientRejectOnBehalfOfFieldMetaUnion.EnvelopeRecipientRejectOnBehalfOfFieldMetaRadio is populated
+	case operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaUnionTypeEnvelopeRecipientRejectOnBehalfOfFieldMetaCheckbox:
+		// envelopeRecipientRejectOnBehalfOfFieldMetaUnion.EnvelopeRecipientRejectOnBehalfOfFieldMetaCheckbox is populated
+	case operations.EnvelopeRecipientRejectOnBehalfOfFieldMetaUnionTypeEnvelopeRecipientRejectOnBehalfOfFieldMetaDropdown:
+		// envelopeRecipientRejectOnBehalfOfFieldMetaUnion.EnvelopeRecipientRejectOnBehalfOfFieldMetaDropdown is populated
+}
+```

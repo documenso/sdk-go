@@ -1,5 +1,15 @@
 # TemplateCreateDocumentFromTemplateStatus
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.TemplateCreateDocumentFromTemplateStatusDraft
+```
+
 
 ## Values
 
@@ -9,3 +19,4 @@
 | `TemplateCreateDocumentFromTemplateStatusPending`   | PENDING                                             |
 | `TemplateCreateDocumentFromTemplateStatusCompleted` | COMPLETED                                           |
 | `TemplateCreateDocumentFromTemplateStatusRejected`  | REJECTED                                            |
+| `TemplateCreateDocumentFromTemplateStatusCancelled` | CANCELLED                                           |
