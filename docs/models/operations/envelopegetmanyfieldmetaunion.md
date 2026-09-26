@@ -63,3 +63,31 @@ envelopeGetManyFieldMetaUnion := operations.CreateEnvelopeGetManyFieldMetaUnionE
 envelopeGetManyFieldMetaUnion := operations.CreateEnvelopeGetManyFieldMetaUnionEnvelopeGetManyFieldMetaDropdown(operations.EnvelopeGetManyFieldMetaDropdown{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch envelopeGetManyFieldMetaUnion.Type {
+	case operations.EnvelopeGetManyFieldMetaUnionTypeEnvelopeGetManyFieldMetaSignature:
+		// envelopeGetManyFieldMetaUnion.EnvelopeGetManyFieldMetaSignature is populated
+	case operations.EnvelopeGetManyFieldMetaUnionTypeEnvelopeGetManyFieldMetaInitials:
+		// envelopeGetManyFieldMetaUnion.EnvelopeGetManyFieldMetaInitials is populated
+	case operations.EnvelopeGetManyFieldMetaUnionTypeEnvelopeGetManyFieldMetaName:
+		// envelopeGetManyFieldMetaUnion.EnvelopeGetManyFieldMetaName is populated
+	case operations.EnvelopeGetManyFieldMetaUnionTypeEnvelopeGetManyFieldMetaEmail:
+		// envelopeGetManyFieldMetaUnion.EnvelopeGetManyFieldMetaEmail is populated
+	case operations.EnvelopeGetManyFieldMetaUnionTypeEnvelopeGetManyFieldMetaDate:
+		// envelopeGetManyFieldMetaUnion.EnvelopeGetManyFieldMetaDate is populated
+	case operations.EnvelopeGetManyFieldMetaUnionTypeEnvelopeGetManyFieldMetaText:
+		// envelopeGetManyFieldMetaUnion.EnvelopeGetManyFieldMetaText is populated
+	case operations.EnvelopeGetManyFieldMetaUnionTypeEnvelopeGetManyFieldMetaNumber:
+		// envelopeGetManyFieldMetaUnion.EnvelopeGetManyFieldMetaNumber is populated
+	case operations.EnvelopeGetManyFieldMetaUnionTypeEnvelopeGetManyFieldMetaRadio:
+		// envelopeGetManyFieldMetaUnion.EnvelopeGetManyFieldMetaRadio is populated
+	case operations.EnvelopeGetManyFieldMetaUnionTypeEnvelopeGetManyFieldMetaCheckbox:
+		// envelopeGetManyFieldMetaUnion.EnvelopeGetManyFieldMetaCheckbox is populated
+	case operations.EnvelopeGetManyFieldMetaUnionTypeEnvelopeGetManyFieldMetaDropdown:
+		// envelopeGetManyFieldMetaUnion.EnvelopeGetManyFieldMetaDropdown is populated
+}
+```
