@@ -32,7 +32,9 @@ func newDocument(rootSDK *Documenso, sdkConfig config.SDKConfiguration, hooks *h
 }
 
 // DocumentGetMany - Get multiple documents
-// Retrieve multiple documents by their IDs
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Retrieve multiple documents by their IDs
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Document) DocumentGetMany(ctx context.Context, request operations.DocumentGetManyRequest, opts ...operations.Option) (*operations.DocumentGetManyResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -175,7 +177,7 @@ func (s *Document) DocumentGetMany(ctx context.Context, request operations.Docum
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -229,7 +231,7 @@ func (s *Document) DocumentGetMany(ctx context.Context, request operations.Docum
 
 			var out apierrors.DocumentGetManyBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -254,7 +256,7 @@ func (s *Document) DocumentGetMany(ctx context.Context, request operations.Docum
 
 			var out apierrors.DocumentGetManyUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -279,7 +281,7 @@ func (s *Document) DocumentGetMany(ctx context.Context, request operations.Docum
 
 			var out apierrors.DocumentGetManyForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -304,7 +306,7 @@ func (s *Document) DocumentGetMany(ctx context.Context, request operations.Docum
 
 			var out apierrors.DocumentGetManyInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -344,7 +346,9 @@ func (s *Document) DocumentGetMany(ctx context.Context, request operations.Docum
 }
 
 // DocumentDownload - Download document (beta)
-// Get a pre-signed download URL for the original or signed version of a document
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Get a pre-signed download URL for the original or signed version of a document
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Document) DocumentDownload(ctx context.Context, documentID float64, version *operations.DocumentDownloadBetaVersion, opts ...operations.Option) (*operations.DocumentDownloadBetaResponse, error) {
 	request := operations.DocumentDownloadBetaRequest{
 		DocumentID: documentID,
@@ -489,7 +493,7 @@ func (s *Document) DocumentDownload(ctx context.Context, documentID float64, ver
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -543,7 +547,7 @@ func (s *Document) DocumentDownload(ctx context.Context, documentID float64, ver
 
 			var out apierrors.DocumentDownloadBetaBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -568,7 +572,7 @@ func (s *Document) DocumentDownload(ctx context.Context, documentID float64, ver
 
 			var out apierrors.DocumentDownloadBetaUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -593,7 +597,7 @@ func (s *Document) DocumentDownload(ctx context.Context, documentID float64, ver
 
 			var out apierrors.DocumentDownloadBetaForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -618,7 +622,7 @@ func (s *Document) DocumentDownload(ctx context.Context, documentID float64, ver
 
 			var out apierrors.DocumentDownloadBetaNotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -643,7 +647,7 @@ func (s *Document) DocumentDownload(ctx context.Context, documentID float64, ver
 
 			var out apierrors.DocumentDownloadBetaInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
