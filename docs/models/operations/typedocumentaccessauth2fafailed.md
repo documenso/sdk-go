@@ -1,5 +1,15 @@
 # TypeDocumentAccessAuth2FaFailed
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.TypeDocumentAccessAuth2FaFailedDocumentAccessAuth2FaFailed
+```
+
 
 ## Values
 

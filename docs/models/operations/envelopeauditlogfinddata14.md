@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `From`                                                         | [operations.FromUnion2](../../models/operations/fromunion2.md) | :heavy_check_mark:                                             | N/A                                                            |
-| `To`                                                           | [operations.ToUnion2](../../models/operations/tounion2.md)     | :heavy_check_mark:                                             | N/A                                                            |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `Field`                                                      | [operations.FieldEnum](../../models/operations/fieldenum.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `FieldID`                                                    | `string`                                                     | :heavy_check_mark:                                           | N/A                                                          |

@@ -99,8 +99,9 @@ func (e *TemplateUpdateTemplateGlobalActionAuthRequest) UnmarshalJSON(data []byt
 type TemplateUpdateTemplateDataType string
 
 const (
-	TemplateUpdateTemplateDataTypePublic  TemplateUpdateTemplateDataType = "PUBLIC"
-	TemplateUpdateTemplateDataTypePrivate TemplateUpdateTemplateDataType = "PRIVATE"
+	TemplateUpdateTemplateDataTypePublic       TemplateUpdateTemplateDataType = "PUBLIC"
+	TemplateUpdateTemplateDataTypePrivate      TemplateUpdateTemplateDataType = "PRIVATE"
+	TemplateUpdateTemplateDataTypeOrganisation TemplateUpdateTemplateDataType = "ORGANISATION"
 )
 
 func (e TemplateUpdateTemplateDataType) ToPointer() *TemplateUpdateTemplateDataType {
@@ -115,6 +116,8 @@ func (e *TemplateUpdateTemplateDataType) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
 		*e = TemplateUpdateTemplateDataType(v)
 		return nil
 	default:
@@ -211,12 +214,15 @@ const (
 	TemplateUpdateTemplateDateFormatYyyyMMddHhMmA            TemplateUpdateTemplateDateFormat = "yyyy-MM-dd hh:mm a"
 	TemplateUpdateTemplateDateFormatYyyyMMdd                 TemplateUpdateTemplateDateFormat = "yyyy-MM-dd"
 	TemplateUpdateTemplateDateFormatDdMmSlashYyyy            TemplateUpdateTemplateDateFormat = "dd/MM/yyyy"
+	TemplateUpdateTemplateDateFormatDdMmDashYyyy             TemplateUpdateTemplateDateFormat = "dd-MM-yyyy"
 	TemplateUpdateTemplateDateFormatMmDdSlashYyyy            TemplateUpdateTemplateDateFormat = "MM/dd/yyyy"
 	TemplateUpdateTemplateDateFormatYyMMdd                   TemplateUpdateTemplateDateFormat = "yy-MM-dd"
 	TemplateUpdateTemplateDateFormatMmmmDdCommaYyyy          TemplateUpdateTemplateDateFormat = "MMMM dd, yyyy"
 	TemplateUpdateTemplateDateFormatEeeeMmmmDdCommaYyyy      TemplateUpdateTemplateDateFormat = "EEEE, MMMM dd, yyyy"
 	TemplateUpdateTemplateDateFormatDdMmSlashYyyyHhMmA       TemplateUpdateTemplateDateFormat = "dd/MM/yyyy hh:mm a"
 	TemplateUpdateTemplateDateFormatDdMmSlashYyyyHHmm        TemplateUpdateTemplateDateFormat = "dd/MM/yyyy HH:mm"
+	TemplateUpdateTemplateDateFormatDdMmDashYyyyHhMmA        TemplateUpdateTemplateDateFormat = "dd-MM-yyyy hh:mm a"
+	TemplateUpdateTemplateDateFormatDdMmDashYyyyHHmm         TemplateUpdateTemplateDateFormat = "dd-MM-yyyy HH:mm"
 	TemplateUpdateTemplateDateFormatMmDdSlashYyyyHhMmA       TemplateUpdateTemplateDateFormat = "MM/dd/yyyy hh:mm a"
 	TemplateUpdateTemplateDateFormatMmDdSlashYyyyHHmm        TemplateUpdateTemplateDateFormat = "MM/dd/yyyy HH:mm"
 	TemplateUpdateTemplateDateFormatDdDotMmDotYyyy           TemplateUpdateTemplateDateFormat = "dd.MM.yyyy"
@@ -247,6 +253,8 @@ func (e *TemplateUpdateTemplateDateFormat) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "dd/MM/yyyy":
 		fallthrough
+	case "dd-MM-yyyy":
+		fallthrough
 	case "MM/dd/yyyy":
 		fallthrough
 	case "yy-MM-dd":
@@ -258,6 +266,10 @@ func (e *TemplateUpdateTemplateDateFormat) UnmarshalJSON(data []byte) error {
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
 	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "dd-MM-yyyy hh:mm a":
+		fallthrough
+	case "dd-MM-yyyy HH:mm":
 		fallthrough
 	case "MM/dd/yyyy hh:mm a":
 		fallthrough
@@ -325,6 +337,8 @@ type TemplateUpdateTemplateEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (t TemplateUpdateTemplateEmailSettings) MarshalJSON() ([]byte, error) {
@@ -385,6 +399,20 @@ func (t *TemplateUpdateTemplateEmailSettings) GetOwnerDocumentCompleted() *bool 
 		return nil
 	}
 	return t.OwnerDocumentCompleted
+}
+
+func (t *TemplateUpdateTemplateEmailSettings) GetOwnerRecipientExpired() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerRecipientExpired
+}
+
+func (t *TemplateUpdateTemplateEmailSettings) GetOwnerDocumentCreated() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerDocumentCreated
 }
 
 type TemplateUpdateTemplateLanguage string
@@ -619,8 +647,9 @@ func (t *TemplateUpdateTemplateRequest) GetMeta() *TemplateUpdateTemplateMeta {
 type TemplateUpdateTemplateTypeResponse string
 
 const (
-	TemplateUpdateTemplateTypeResponsePublic  TemplateUpdateTemplateTypeResponse = "PUBLIC"
-	TemplateUpdateTemplateTypeResponsePrivate TemplateUpdateTemplateTypeResponse = "PRIVATE"
+	TemplateUpdateTemplateTypeResponsePublic       TemplateUpdateTemplateTypeResponse = "PUBLIC"
+	TemplateUpdateTemplateTypeResponsePrivate      TemplateUpdateTemplateTypeResponse = "PRIVATE"
+	TemplateUpdateTemplateTypeResponseOrganisation TemplateUpdateTemplateTypeResponse = "ORGANISATION"
 )
 
 func (e TemplateUpdateTemplateTypeResponse) ToPointer() *TemplateUpdateTemplateTypeResponse {
@@ -635,6 +664,8 @@ func (e *TemplateUpdateTemplateTypeResponse) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
 		*e = TemplateUpdateTemplateTypeResponse(v)
 		return nil
 	default:

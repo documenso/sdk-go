@@ -65,7 +65,14 @@ func CreateEnvelopeRecipientCreateManyEmailUnionStr(str string) EnvelopeRecipien
 	}
 }
 
-func (u *EnvelopeRecipientCreateManyEmailUnion) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeRecipientCreateManyEmailUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeRecipientCreateManyEmailUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var envelopeRecipientCreateManyEmailEnum EnvelopeRecipientCreateManyEmailEnum = EnvelopeRecipientCreateManyEmailEnum("")
 	if err := utils.UnmarshalJSON(data, &envelopeRecipientCreateManyEmailEnum, "", true, nil); err == nil {
@@ -459,21 +466,23 @@ func (e *EnvelopeRecipientCreateManyAuthOptions) GetActionAuth() []EnvelopeRecip
 }
 
 type EnvelopeRecipientCreateManyDataResponse struct {
-	EnvelopeID        string                                   `json:"envelopeId"`
-	Role              EnvelopeRecipientCreateManyRoleResponse  `json:"role"`
-	ReadStatus        EnvelopeRecipientCreateManyReadStatus    `json:"readStatus"`
-	SigningStatus     EnvelopeRecipientCreateManySigningStatus `json:"signingStatus"`
-	SendStatus        EnvelopeRecipientCreateManySendStatus    `json:"sendStatus"`
-	ID                float64                                  `json:"id"`
-	Email             string                                   `json:"email"`
-	Name              string                                   `json:"name"`
-	Token             string                                   `json:"token"`
-	DocumentDeletedAt *string                                  `json:"documentDeletedAt"`
-	Expired           *string                                  `json:"expired"`
-	SignedAt          *string                                  `json:"signedAt"`
-	AuthOptions       *EnvelopeRecipientCreateManyAuthOptions  `json:"authOptions"`
-	SigningOrder      *float64                                 `json:"signingOrder"`
-	RejectionReason   *string                                  `json:"rejectionReason"`
+	EnvelopeID           string                                   `json:"envelopeId"`
+	Role                 EnvelopeRecipientCreateManyRoleResponse  `json:"role"`
+	ReadStatus           EnvelopeRecipientCreateManyReadStatus    `json:"readStatus"`
+	SigningStatus        EnvelopeRecipientCreateManySigningStatus `json:"signingStatus"`
+	SendStatus           EnvelopeRecipientCreateManySendStatus    `json:"sendStatus"`
+	ID                   float64                                  `json:"id"`
+	Email                string                                   `json:"email"`
+	Name                 string                                   `json:"name"`
+	Token                string                                   `json:"token"`
+	DocumentDeletedAt    *string                                  `json:"documentDeletedAt"`
+	Expired              *string                                  `json:"expired"`
+	ExpiresAt            *string                                  `json:"expiresAt"`
+	ExpirationNotifiedAt *string                                  `json:"expirationNotifiedAt"`
+	SignedAt             *string                                  `json:"signedAt"`
+	AuthOptions          *EnvelopeRecipientCreateManyAuthOptions  `json:"authOptions"`
+	SigningOrder         *float64                                 `json:"signingOrder"`
+	RejectionReason      *string                                  `json:"rejectionReason"`
 }
 
 func (e *EnvelopeRecipientCreateManyDataResponse) GetEnvelopeID() string {
@@ -551,6 +560,20 @@ func (e *EnvelopeRecipientCreateManyDataResponse) GetExpired() *string {
 		return nil
 	}
 	return e.Expired
+}
+
+func (e *EnvelopeRecipientCreateManyDataResponse) GetExpiresAt() *string {
+	if e == nil {
+		return nil
+	}
+	return e.ExpiresAt
+}
+
+func (e *EnvelopeRecipientCreateManyDataResponse) GetExpirationNotifiedAt() *string {
+	if e == nil {
+		return nil
+	}
+	return e.ExpirationNotifiedAt
 }
 
 func (e *EnvelopeRecipientCreateManyDataResponse) GetSignedAt() *string {

@@ -1,15 +1,20 @@
-# Document
+# ~~Document~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
 ### Available Operations
 
-* [DocumentGetMany](#documentgetmany) - Get multiple documents
-* [DocumentDownload](#documentdownload) - Download document (beta)
+* [~~DocumentGetMany~~](#documentgetmany) - Get multiple documents :warning: **Deprecated**
+* [~~DocumentDownload~~](#documentdownload) - Download document (beta) :warning: **Deprecated**
 
-## DocumentGetMany
+## ~~DocumentGetMany~~
 
-Retrieve multiple documents by their IDs
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Retrieve multiple documents by their IDs
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -66,9 +71,11 @@ func main() {
 | apierrors.DocumentGetManyInternalServerError | 500                                          | application/json                             |
 | apierrors.APIError                           | 4XX, 5XX                                     | \*/\*                                        |
 
-## DocumentDownload
+## ~~DocumentDownload~~
 
-Get a pre-signed download URL for the original or signed version of a document
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Get a pre-signed download URL for the original or signed version of a document
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -106,7 +113,7 @@ func main() {
 | Parameter                                                                                                                                            | Type                                                                                                                                                 | Required                                                                                                                                             | Description                                                                                                                                          |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                                                | :heavy_check_mark:                                                                                                                                   | The context to use for the request.                                                                                                                  |
-| `documentID`                                                                                                                                         | *float64*                                                                                                                                            | :heavy_check_mark:                                                                                                                                   | The ID of the document to download.                                                                                                                  |
+| `documentID`                                                                                                                                         | `float64`                                                                                                                                            | :heavy_check_mark:                                                                                                                                   | The ID of the document to download.                                                                                                                  |
 | `version`                                                                                                                                            | [*operations.DocumentDownloadBetaVersion](../../models/operations/documentdownloadbetaversion.md)                                                    | :heavy_minus_sign:                                                                                                                                   | The version of the document to download. "signed" returns the completed document with signatures, "original" returns the original uploaded document. |
 | `opts`                                                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                                                             | :heavy_minus_sign:                                                                                                                                   | The options for this request.                                                                                                                        |
 

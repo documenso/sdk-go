@@ -1,5 +1,15 @@
 # DocumentUpdateStatus
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.DocumentUpdateStatusDraft
+```
+
 
 ## Values
 
@@ -9,3 +19,4 @@
 | `DocumentUpdateStatusPending`   | PENDING                         |
 | `DocumentUpdateStatusCompleted` | COMPLETED                       |
 | `DocumentUpdateStatusRejected`  | REJECTED                        |
+| `DocumentUpdateStatusCancelled` | CANCELLED                       |
