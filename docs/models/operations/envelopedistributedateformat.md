@@ -1,5 +1,15 @@
 # EnvelopeDistributeDateFormat
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.EnvelopeDistributeDateFormatYyyyMMddHhMmA
+```
+
 
 ## Values
 
@@ -8,12 +18,15 @@
 | `EnvelopeDistributeDateFormatYyyyMMddHhMmA`            | yyyy-MM-dd hh:mm a                                     |
 | `EnvelopeDistributeDateFormatYyyyMMdd`                 | yyyy-MM-dd                                             |
 | `EnvelopeDistributeDateFormatDdMmSlashYyyy`            | dd/MM/yyyy                                             |
+| `EnvelopeDistributeDateFormatDdMmDashYyyy`             | dd-MM-yyyy                                             |
 | `EnvelopeDistributeDateFormatMmDdSlashYyyy`            | MM/dd/yyyy                                             |
 | `EnvelopeDistributeDateFormatYyMMdd`                   | yy-MM-dd                                               |
 | `EnvelopeDistributeDateFormatMmmmDdCommaYyyy`          | MMMM dd, yyyy                                          |
 | `EnvelopeDistributeDateFormatEeeeMmmmDdCommaYyyy`      | EEEE, MMMM dd, yyyy                                    |
 | `EnvelopeDistributeDateFormatDdMmSlashYyyyHhMmA`       | dd/MM/yyyy hh:mm a                                     |
 | `EnvelopeDistributeDateFormatDdMmSlashYyyyHHmm`        | dd/MM/yyyy HH:mm                                       |
+| `EnvelopeDistributeDateFormatDdMmDashYyyyHhMmA`        | dd-MM-yyyy hh:mm a                                     |
+| `EnvelopeDistributeDateFormatDdMmDashYyyyHHmm`         | dd-MM-yyyy HH:mm                                       |
 | `EnvelopeDistributeDateFormatMmDdSlashYyyyHhMmA`       | MM/dd/yyyy hh:mm a                                     |
 | `EnvelopeDistributeDateFormatMmDdSlashYyyyHHmm`        | MM/dd/yyyy HH:mm                                       |
 | `EnvelopeDistributeDateFormatDdDotMmDotYyyy`           | dd.MM.yyyy                                             |

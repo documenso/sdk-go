@@ -32,7 +32,9 @@ func newDocumentsRecipients(rootSDK *Documenso, sdkConfig config.SDKConfiguratio
 }
 
 // Get document recipient
-// Returns a single recipient. If you want to retrieve all the recipients for a document, use the "Get Document" endpoint.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Returns a single recipient. If you want to retrieve all the recipients for a document, use the "Get Document" endpoint.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsRecipients) Get(ctx context.Context, recipientID float64, opts ...operations.Option) (*operations.RecipientGetDocumentRecipientResponse, error) {
 	request := operations.RecipientGetDocumentRecipientRequest{
 		RecipientID: recipientID,
@@ -172,7 +174,7 @@ func (s *DocumentsRecipients) Get(ctx context.Context, recipientID float64, opts
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -226,7 +228,7 @@ func (s *DocumentsRecipients) Get(ctx context.Context, recipientID float64, opts
 
 			var out apierrors.RecipientGetDocumentRecipientBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -251,7 +253,7 @@ func (s *DocumentsRecipients) Get(ctx context.Context, recipientID float64, opts
 
 			var out apierrors.RecipientGetDocumentRecipientUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -276,7 +278,7 @@ func (s *DocumentsRecipients) Get(ctx context.Context, recipientID float64, opts
 
 			var out apierrors.RecipientGetDocumentRecipientForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -301,7 +303,7 @@ func (s *DocumentsRecipients) Get(ctx context.Context, recipientID float64, opts
 
 			var out apierrors.RecipientGetDocumentRecipientNotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -326,7 +328,7 @@ func (s *DocumentsRecipients) Get(ctx context.Context, recipientID float64, opts
 
 			var out apierrors.RecipientGetDocumentRecipientInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -366,7 +368,9 @@ func (s *DocumentsRecipients) Get(ctx context.Context, recipientID float64, opts
 }
 
 // Create document recipient
-// Create a single recipient for a document.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create a single recipient for a document.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsRecipients) Create(ctx context.Context, request operations.RecipientCreateDocumentRecipientRequest, opts ...operations.Option) (*operations.RecipientCreateDocumentRecipientResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -509,7 +513,7 @@ func (s *DocumentsRecipients) Create(ctx context.Context, request operations.Rec
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -563,7 +567,7 @@ func (s *DocumentsRecipients) Create(ctx context.Context, request operations.Rec
 
 			var out apierrors.RecipientCreateDocumentRecipientBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -588,7 +592,7 @@ func (s *DocumentsRecipients) Create(ctx context.Context, request operations.Rec
 
 			var out apierrors.RecipientCreateDocumentRecipientUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -613,7 +617,7 @@ func (s *DocumentsRecipients) Create(ctx context.Context, request operations.Rec
 
 			var out apierrors.RecipientCreateDocumentRecipientForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -638,7 +642,7 @@ func (s *DocumentsRecipients) Create(ctx context.Context, request operations.Rec
 
 			var out apierrors.RecipientCreateDocumentRecipientInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -678,7 +682,9 @@ func (s *DocumentsRecipients) Create(ctx context.Context, request operations.Rec
 }
 
 // CreateMany - Create document recipients
-// Create multiple recipients for a document.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create multiple recipients for a document.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsRecipients) CreateMany(ctx context.Context, request operations.RecipientCreateDocumentRecipientsRequest, opts ...operations.Option) (*operations.RecipientCreateDocumentRecipientsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -821,7 +827,7 @@ func (s *DocumentsRecipients) CreateMany(ctx context.Context, request operations
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -875,7 +881,7 @@ func (s *DocumentsRecipients) CreateMany(ctx context.Context, request operations
 
 			var out apierrors.RecipientCreateDocumentRecipientsBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -900,7 +906,7 @@ func (s *DocumentsRecipients) CreateMany(ctx context.Context, request operations
 
 			var out apierrors.RecipientCreateDocumentRecipientsUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -925,7 +931,7 @@ func (s *DocumentsRecipients) CreateMany(ctx context.Context, request operations
 
 			var out apierrors.RecipientCreateDocumentRecipientsForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -950,7 +956,7 @@ func (s *DocumentsRecipients) CreateMany(ctx context.Context, request operations
 
 			var out apierrors.RecipientCreateDocumentRecipientsInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -990,7 +996,9 @@ func (s *DocumentsRecipients) CreateMany(ctx context.Context, request operations
 }
 
 // Update document recipient
-// Update a single recipient for a document.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update a single recipient for a document.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsRecipients) Update(ctx context.Context, request operations.RecipientUpdateDocumentRecipientRequest, opts ...operations.Option) (*operations.RecipientUpdateDocumentRecipientResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1133,7 +1141,7 @@ func (s *DocumentsRecipients) Update(ctx context.Context, request operations.Rec
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1187,7 +1195,7 @@ func (s *DocumentsRecipients) Update(ctx context.Context, request operations.Rec
 
 			var out apierrors.RecipientUpdateDocumentRecipientBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1212,7 +1220,7 @@ func (s *DocumentsRecipients) Update(ctx context.Context, request operations.Rec
 
 			var out apierrors.RecipientUpdateDocumentRecipientUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1237,7 +1245,7 @@ func (s *DocumentsRecipients) Update(ctx context.Context, request operations.Rec
 
 			var out apierrors.RecipientUpdateDocumentRecipientForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1262,7 +1270,7 @@ func (s *DocumentsRecipients) Update(ctx context.Context, request operations.Rec
 
 			var out apierrors.RecipientUpdateDocumentRecipientInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1302,7 +1310,9 @@ func (s *DocumentsRecipients) Update(ctx context.Context, request operations.Rec
 }
 
 // UpdateMany - Update document recipients
-// Update multiple recipients for a document.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update multiple recipients for a document.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsRecipients) UpdateMany(ctx context.Context, request operations.RecipientUpdateDocumentRecipientsRequest, opts ...operations.Option) (*operations.RecipientUpdateDocumentRecipientsResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1445,7 +1455,7 @@ func (s *DocumentsRecipients) UpdateMany(ctx context.Context, request operations
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1499,7 +1509,7 @@ func (s *DocumentsRecipients) UpdateMany(ctx context.Context, request operations
 
 			var out apierrors.RecipientUpdateDocumentRecipientsBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1524,7 +1534,7 @@ func (s *DocumentsRecipients) UpdateMany(ctx context.Context, request operations
 
 			var out apierrors.RecipientUpdateDocumentRecipientsUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1549,7 +1559,7 @@ func (s *DocumentsRecipients) UpdateMany(ctx context.Context, request operations
 
 			var out apierrors.RecipientUpdateDocumentRecipientsForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1574,7 +1584,7 @@ func (s *DocumentsRecipients) UpdateMany(ctx context.Context, request operations
 
 			var out apierrors.RecipientUpdateDocumentRecipientsInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1614,6 +1624,9 @@ func (s *DocumentsRecipients) UpdateMany(ctx context.Context, request operations
 }
 
 // Delete document recipient
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsRecipients) Delete(ctx context.Context, request operations.RecipientDeleteDocumentRecipientRequest, opts ...operations.Option) (*operations.RecipientDeleteDocumentRecipientResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1756,7 +1769,7 @@ func (s *DocumentsRecipients) Delete(ctx context.Context, request operations.Rec
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1810,7 +1823,7 @@ func (s *DocumentsRecipients) Delete(ctx context.Context, request operations.Rec
 
 			var out apierrors.RecipientDeleteDocumentRecipientBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1835,7 +1848,7 @@ func (s *DocumentsRecipients) Delete(ctx context.Context, request operations.Rec
 
 			var out apierrors.RecipientDeleteDocumentRecipientUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1860,7 +1873,7 @@ func (s *DocumentsRecipients) Delete(ctx context.Context, request operations.Rec
 
 			var out apierrors.RecipientDeleteDocumentRecipientForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1885,7 +1898,7 @@ func (s *DocumentsRecipients) Delete(ctx context.Context, request operations.Rec
 
 			var out apierrors.RecipientDeleteDocumentRecipientInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{

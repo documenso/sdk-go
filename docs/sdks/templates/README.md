@@ -1,20 +1,25 @@
-# Templates
+# ~~Templates~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
 ### Available Operations
 
-* [Find](#find) - Find templates
-* [Get](#get) - Get template
-* [Create](#create) - Create template
-* [Update](#update) - Update template
-* [Duplicate](#duplicate) - Duplicate template
-* [Delete](#delete) - Delete template
-* [Use](#use) - Use template
+* [~~Find~~](#find) - Find templates :warning: **Deprecated**
+* [~~Get~~](#get) - Get template :warning: **Deprecated**
+* [~~Create~~](#create) - Create template :warning: **Deprecated**
+* [~~Update~~](#update) - Update template :warning: **Deprecated**
+* [~~Duplicate~~](#duplicate) - Duplicate template :warning: **Deprecated**
+* [~~Delete~~](#delete) - Delete template :warning: **Deprecated**
+* [~~Use~~](#use) - Use template :warning: **Deprecated**
 
-## Find
+## ~~Find~~
 
-Find templates based on a search criteria
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Find templates based on a search criteria
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -70,9 +75,11 @@ func main() {
 | apierrors.TemplateFindTemplatesInternalServerError | 500                                                | application/json                                   |
 | apierrors.APIError                                 | 4XX, 5XX                                           | \*/\*                                              |
 
-## Get
+## ~~Get~~
 
-Get template
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -109,7 +116,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `templateID`                                             | *float64*                                                | :heavy_check_mark:                                       | N/A                                                      |
+| `templateID`                                             | `float64`                                                | :heavy_check_mark:                                       | N/A                                                      |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -127,9 +134,11 @@ func main() {
 | apierrors.TemplateGetTemplateByIDInternalServerError | 500                                                  | application/json                                     |
 | apierrors.APIError                                   | 4XX, 5XX                                             | \*/\*                                                |
 
-## Create
+## ~~Create~~
 
-Create a new template
+Create a new template. Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -197,9 +206,11 @@ func main() {
 | apierrors.TemplateCreateTemplateInternalServerError | 500                                                 | application/json                                    |
 | apierrors.APIError                                  | 4XX, 5XX                                            | \*/\*                                               |
 
-## Update
+## ~~Update~~
 
-Update template
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -256,9 +267,11 @@ func main() {
 | apierrors.TemplateUpdateTemplateInternalServerError | 500                                                 | application/json                                    |
 | apierrors.APIError                                  | 4XX, 5XX                                            | \*/\*                                               |
 
-## Duplicate
+## ~~Duplicate~~
 
-Duplicate template
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -315,9 +328,11 @@ func main() {
 | apierrors.TemplateDuplicateTemplateInternalServerError | 500                                                    | application/json                                       |
 | apierrors.APIError                                     | 4XX, 5XX                                               | \*/\*                                                  |
 
-## Delete
+## ~~Delete~~
 
-Delete template
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -374,9 +389,11 @@ func main() {
 | apierrors.TemplateDeleteTemplateInternalServerError | 500                                                 | application/json                                    |
 | apierrors.APIError                                  | 4XX, 5XX                                            | \*/\*                                               |
 
-## Use
+## ~~Use~~
 
-Use the template to create a document
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Use the template to create a document
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

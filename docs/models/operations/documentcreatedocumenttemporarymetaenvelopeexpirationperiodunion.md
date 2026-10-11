@@ -1,0 +1,29 @@
+# DocumentCreateDocumentTemporaryMetaEnvelopeExpirationPeriodUnion
+
+
+## Supported Types
+
+### DocumentCreateDocumentTemporaryEnvelopeExpirationPeriodMeta1
+
+```go
+documentCreateDocumentTemporaryMetaEnvelopeExpirationPeriodUnion := operations.CreateDocumentCreateDocumentTemporaryMetaEnvelopeExpirationPeriodUnionDocumentCreateDocumentTemporaryEnvelopeExpirationPeriodMeta1(operations.DocumentCreateDocumentTemporaryEnvelopeExpirationPeriodMeta1{/* values here */})
+```
+
+### DocumentCreateDocumentTemporaryEnvelopeExpirationPeriodMeta2
+
+```go
+documentCreateDocumentTemporaryMetaEnvelopeExpirationPeriodUnion := operations.CreateDocumentCreateDocumentTemporaryMetaEnvelopeExpirationPeriodUnionDocumentCreateDocumentTemporaryEnvelopeExpirationPeriodMeta2(operations.DocumentCreateDocumentTemporaryEnvelopeExpirationPeriodMeta2{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch documentCreateDocumentTemporaryMetaEnvelopeExpirationPeriodUnion.Type {
+	case operations.DocumentCreateDocumentTemporaryMetaEnvelopeExpirationPeriodUnionTypeDocumentCreateDocumentTemporaryEnvelopeExpirationPeriodMeta1:
+		// documentCreateDocumentTemporaryMetaEnvelopeExpirationPeriodUnion.DocumentCreateDocumentTemporaryEnvelopeExpirationPeriodMeta1 is populated
+	case operations.DocumentCreateDocumentTemporaryMetaEnvelopeExpirationPeriodUnionTypeDocumentCreateDocumentTemporaryEnvelopeExpirationPeriodMeta2:
+		// documentCreateDocumentTemporaryMetaEnvelopeExpirationPeriodUnion.DocumentCreateDocumentTemporaryEnvelopeExpirationPeriodMeta2 is populated
+}
+```

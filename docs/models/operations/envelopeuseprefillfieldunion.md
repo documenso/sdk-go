@@ -39,3 +39,23 @@ envelopeUsePrefillFieldUnion := operations.CreateEnvelopeUsePrefillFieldUnionEnv
 envelopeUsePrefillFieldUnion := operations.CreateEnvelopeUsePrefillFieldUnionEnvelopeUsePrefillFieldDate(operations.EnvelopeUsePrefillFieldDate{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch envelopeUsePrefillFieldUnion.Type {
+	case operations.EnvelopeUsePrefillFieldUnionTypeEnvelopeUsePrefillFieldText:
+		// envelopeUsePrefillFieldUnion.EnvelopeUsePrefillFieldText is populated
+	case operations.EnvelopeUsePrefillFieldUnionTypeEnvelopeUsePrefillFieldNumber:
+		// envelopeUsePrefillFieldUnion.EnvelopeUsePrefillFieldNumber is populated
+	case operations.EnvelopeUsePrefillFieldUnionTypeEnvelopeUsePrefillFieldRadio:
+		// envelopeUsePrefillFieldUnion.EnvelopeUsePrefillFieldRadio is populated
+	case operations.EnvelopeUsePrefillFieldUnionTypeEnvelopeUsePrefillFieldCheckbox:
+		// envelopeUsePrefillFieldUnion.EnvelopeUsePrefillFieldCheckbox is populated
+	case operations.EnvelopeUsePrefillFieldUnionTypeEnvelopeUsePrefillFieldDropdown:
+		// envelopeUsePrefillFieldUnion.EnvelopeUsePrefillFieldDropdown is populated
+	case operations.EnvelopeUsePrefillFieldUnionTypeEnvelopeUsePrefillFieldDate:
+		// envelopeUsePrefillFieldUnion.EnvelopeUsePrefillFieldDate is populated
+}
+```

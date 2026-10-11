@@ -14,8 +14,9 @@ import (
 type TemplateFindTemplatesQueryParamType string
 
 const (
-	TemplateFindTemplatesQueryParamTypePublic  TemplateFindTemplatesQueryParamType = "PUBLIC"
-	TemplateFindTemplatesQueryParamTypePrivate TemplateFindTemplatesQueryParamType = "PRIVATE"
+	TemplateFindTemplatesQueryParamTypePublic       TemplateFindTemplatesQueryParamType = "PUBLIC"
+	TemplateFindTemplatesQueryParamTypePrivate      TemplateFindTemplatesQueryParamType = "PRIVATE"
+	TemplateFindTemplatesQueryParamTypeOrganisation TemplateFindTemplatesQueryParamType = "ORGANISATION"
 )
 
 func (e TemplateFindTemplatesQueryParamType) ToPointer() *TemplateFindTemplatesQueryParamType {
@@ -30,6 +31,8 @@ func (e *TemplateFindTemplatesQueryParamType) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
 		*e = TemplateFindTemplatesQueryParamType(v)
 		return nil
 	default:
@@ -88,8 +91,9 @@ func (t *TemplateFindTemplatesRequest) GetFolderID() *string {
 type TemplateFindTemplatesDataType string
 
 const (
-	TemplateFindTemplatesDataTypePublic  TemplateFindTemplatesDataType = "PUBLIC"
-	TemplateFindTemplatesDataTypePrivate TemplateFindTemplatesDataType = "PRIVATE"
+	TemplateFindTemplatesDataTypePublic       TemplateFindTemplatesDataType = "PUBLIC"
+	TemplateFindTemplatesDataTypePrivate      TemplateFindTemplatesDataType = "PRIVATE"
+	TemplateFindTemplatesDataTypeOrganisation TemplateFindTemplatesDataType = "ORGANISATION"
 )
 
 func (e TemplateFindTemplatesDataType) ToPointer() *TemplateFindTemplatesDataType {
@@ -104,6 +108,8 @@ func (e *TemplateFindTemplatesDataType) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
 		*e = TemplateFindTemplatesDataType(v)
 		return nil
 	default:
@@ -218,8 +224,9 @@ func (t *TemplateFindTemplatesAuthOptions) GetGlobalActionAuth() []TemplateFindT
 }
 
 type TemplateFindTemplatesTeam struct {
-	ID  float64 `json:"id"`
-	URL string  `json:"url"`
+	ID   float64 `json:"id"`
+	URL  string  `json:"url"`
+	Name string  `json:"name"`
 }
 
 func (t *TemplateFindTemplatesTeam) GetID() float64 {
@@ -234,6 +241,13 @@ func (t *TemplateFindTemplatesTeam) GetURL() string {
 		return ""
 	}
 	return t.URL
+}
+
+func (t *TemplateFindTemplatesTeam) GetName() string {
+	if t == nil {
+		return ""
+	}
+	return t.Name
 }
 
 type TemplateFindTemplatesFieldType string
@@ -289,6 +303,38 @@ func (e *TemplateFindTemplatesFieldType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type TemplateFindTemplatesOverflow10 string
+
+const (
+	TemplateFindTemplatesOverflow10Auto       TemplateFindTemplatesOverflow10 = "auto"
+	TemplateFindTemplatesOverflow10Horizontal TemplateFindTemplatesOverflow10 = "horizontal"
+	TemplateFindTemplatesOverflow10Vertical   TemplateFindTemplatesOverflow10 = "vertical"
+	TemplateFindTemplatesOverflow10Crop       TemplateFindTemplatesOverflow10 = "crop"
+)
+
+func (e TemplateFindTemplatesOverflow10) ToPointer() *TemplateFindTemplatesOverflow10 {
+	return &e
+}
+func (e *TemplateFindTemplatesOverflow10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateFindTemplatesOverflow10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateFindTemplatesOverflow10: %v", v)
+	}
+}
+
 type TemplateFindTemplatesTypeDropdown string
 
 const (
@@ -334,12 +380,16 @@ func (t *TemplateFindTemplatesValue3) GetValue() string {
 	return t.Value
 }
 
+// #region class-body-templatefindtemplatesvalue3
+// #endregion class-body-templatefindtemplatesvalue3
+
 type TemplateFindTemplatesFieldMetaDropdown struct {
 	Label        *string                           `json:"label,omitempty"`
 	Placeholder  *string                           `json:"placeholder,omitempty"`
 	Required     *bool                             `json:"required,omitempty"`
 	ReadOnly     *bool                             `json:"readOnly,omitempty"`
 	FontSize     *float64                          `default:"12" json:"fontSize"`
+	Overflow     *TemplateFindTemplatesOverflow10  `json:"overflow,omitempty"`
 	Type         TemplateFindTemplatesTypeDropdown `json:"type"`
 	Values       []TemplateFindTemplatesValue3     `json:"values,omitempty"`
 	DefaultValue *string                           `json:"defaultValue,omitempty"`
@@ -391,6 +441,13 @@ func (t *TemplateFindTemplatesFieldMetaDropdown) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateFindTemplatesFieldMetaDropdown) GetOverflow() *TemplateFindTemplatesOverflow10 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateFindTemplatesFieldMetaDropdown) GetType() TemplateFindTemplatesTypeDropdown {
 	if t == nil {
 		return TemplateFindTemplatesTypeDropdown("")
@@ -410,6 +467,38 @@ func (t *TemplateFindTemplatesFieldMetaDropdown) GetDefaultValue() *string {
 		return nil
 	}
 	return t.DefaultValue
+}
+
+type TemplateFindTemplatesOverflow9 string
+
+const (
+	TemplateFindTemplatesOverflow9Auto       TemplateFindTemplatesOverflow9 = "auto"
+	TemplateFindTemplatesOverflow9Horizontal TemplateFindTemplatesOverflow9 = "horizontal"
+	TemplateFindTemplatesOverflow9Vertical   TemplateFindTemplatesOverflow9 = "vertical"
+	TemplateFindTemplatesOverflow9Crop       TemplateFindTemplatesOverflow9 = "crop"
+)
+
+func (e TemplateFindTemplatesOverflow9) ToPointer() *TemplateFindTemplatesOverflow9 {
+	return &e
+}
+func (e *TemplateFindTemplatesOverflow9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateFindTemplatesOverflow9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateFindTemplatesOverflow9: %v", v)
+	}
 }
 
 type TemplateFindTemplatesTypeCheckbox string
@@ -473,6 +562,9 @@ func (t *TemplateFindTemplatesValue2) GetValue() string {
 	return t.Value
 }
 
+// #region class-body-templatefindtemplatesvalue2
+// #endregion class-body-templatefindtemplatesvalue2
+
 type TemplateFindTemplatesDirection2 string
 
 const (
@@ -505,6 +597,7 @@ type TemplateFindTemplatesFieldMetaCheckbox struct {
 	Required         *bool                             `json:"required,omitempty"`
 	ReadOnly         *bool                             `json:"readOnly,omitempty"`
 	FontSize         *float64                          `default:"12" json:"fontSize"`
+	Overflow         *TemplateFindTemplatesOverflow9   `json:"overflow,omitempty"`
 	Type             TemplateFindTemplatesTypeCheckbox `json:"type"`
 	Values           []TemplateFindTemplatesValue2     `json:"values,omitempty"`
 	ValidationRule   *string                           `json:"validationRule,omitempty"`
@@ -558,6 +651,13 @@ func (t *TemplateFindTemplatesFieldMetaCheckbox) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateFindTemplatesFieldMetaCheckbox) GetOverflow() *TemplateFindTemplatesOverflow9 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateFindTemplatesFieldMetaCheckbox) GetType() TemplateFindTemplatesTypeCheckbox {
 	if t == nil {
 		return TemplateFindTemplatesTypeCheckbox("")
@@ -591,6 +691,38 @@ func (t *TemplateFindTemplatesFieldMetaCheckbox) GetDirection() *TemplateFindTem
 		return nil
 	}
 	return t.Direction
+}
+
+type TemplateFindTemplatesOverflow8 string
+
+const (
+	TemplateFindTemplatesOverflow8Auto       TemplateFindTemplatesOverflow8 = "auto"
+	TemplateFindTemplatesOverflow8Horizontal TemplateFindTemplatesOverflow8 = "horizontal"
+	TemplateFindTemplatesOverflow8Vertical   TemplateFindTemplatesOverflow8 = "vertical"
+	TemplateFindTemplatesOverflow8Crop       TemplateFindTemplatesOverflow8 = "crop"
+)
+
+func (e TemplateFindTemplatesOverflow8) ToPointer() *TemplateFindTemplatesOverflow8 {
+	return &e
+}
+func (e *TemplateFindTemplatesOverflow8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateFindTemplatesOverflow8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateFindTemplatesOverflow8: %v", v)
+	}
 }
 
 type TemplateFindTemplatesTypeRadio string
@@ -654,6 +786,9 @@ func (t *TemplateFindTemplatesValue1) GetValue() string {
 	return t.Value
 }
 
+// #region class-body-templatefindtemplatesvalue1
+// #endregion class-body-templatefindtemplatesvalue1
+
 type TemplateFindTemplatesDirection1 string
 
 const (
@@ -686,6 +821,7 @@ type TemplateFindTemplatesFieldMetaRadio struct {
 	Required    *bool                            `json:"required,omitempty"`
 	ReadOnly    *bool                            `json:"readOnly,omitempty"`
 	FontSize    *float64                         `default:"12" json:"fontSize"`
+	Overflow    *TemplateFindTemplatesOverflow8  `json:"overflow,omitempty"`
 	Type        TemplateFindTemplatesTypeRadio   `json:"type"`
 	Values      []TemplateFindTemplatesValue1    `json:"values,omitempty"`
 	Direction   *TemplateFindTemplatesDirection1 `default:"vertical" json:"direction"`
@@ -737,6 +873,13 @@ func (t *TemplateFindTemplatesFieldMetaRadio) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateFindTemplatesFieldMetaRadio) GetOverflow() *TemplateFindTemplatesOverflow8 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateFindTemplatesFieldMetaRadio) GetType() TemplateFindTemplatesTypeRadio {
 	if t == nil {
 		return TemplateFindTemplatesTypeRadio("")
@@ -756,6 +899,38 @@ func (t *TemplateFindTemplatesFieldMetaRadio) GetDirection() *TemplateFindTempla
 		return nil
 	}
 	return t.Direction
+}
+
+type TemplateFindTemplatesOverflow7 string
+
+const (
+	TemplateFindTemplatesOverflow7Auto       TemplateFindTemplatesOverflow7 = "auto"
+	TemplateFindTemplatesOverflow7Horizontal TemplateFindTemplatesOverflow7 = "horizontal"
+	TemplateFindTemplatesOverflow7Vertical   TemplateFindTemplatesOverflow7 = "vertical"
+	TemplateFindTemplatesOverflow7Crop       TemplateFindTemplatesOverflow7 = "crop"
+)
+
+func (e TemplateFindTemplatesOverflow7) ToPointer() *TemplateFindTemplatesOverflow7 {
+	return &e
+}
+func (e *TemplateFindTemplatesOverflow7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateFindTemplatesOverflow7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateFindTemplatesOverflow7: %v", v)
+	}
 }
 
 type TemplateFindTemplatesTypeNumber string
@@ -845,6 +1020,7 @@ type TemplateFindTemplatesFieldMetaNumber struct {
 	Required      *bool                                `json:"required,omitempty"`
 	ReadOnly      *bool                                `json:"readOnly,omitempty"`
 	FontSize      *float64                             `default:"12" json:"fontSize"`
+	Overflow      *TemplateFindTemplatesOverflow7      `json:"overflow,omitempty"`
 	Type          TemplateFindTemplatesTypeNumber      `json:"type"`
 	NumberFormat  *string                              `json:"numberFormat,omitempty"`
 	Value         *string                              `json:"value,omitempty"`
@@ -900,6 +1076,13 @@ func (t *TemplateFindTemplatesFieldMetaNumber) GetFontSize() *float64 {
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateFindTemplatesFieldMetaNumber) GetOverflow() *TemplateFindTemplatesOverflow7 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
 }
 
 func (t *TemplateFindTemplatesFieldMetaNumber) GetType() TemplateFindTemplatesTypeNumber {
@@ -963,6 +1146,38 @@ func (t *TemplateFindTemplatesFieldMetaNumber) GetVerticalAlign() *TemplateFindT
 		return nil
 	}
 	return t.VerticalAlign
+}
+
+type TemplateFindTemplatesOverflow6 string
+
+const (
+	TemplateFindTemplatesOverflow6Auto       TemplateFindTemplatesOverflow6 = "auto"
+	TemplateFindTemplatesOverflow6Horizontal TemplateFindTemplatesOverflow6 = "horizontal"
+	TemplateFindTemplatesOverflow6Vertical   TemplateFindTemplatesOverflow6 = "vertical"
+	TemplateFindTemplatesOverflow6Crop       TemplateFindTemplatesOverflow6 = "crop"
+)
+
+func (e TemplateFindTemplatesOverflow6) ToPointer() *TemplateFindTemplatesOverflow6 {
+	return &e
+}
+func (e *TemplateFindTemplatesOverflow6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateFindTemplatesOverflow6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateFindTemplatesOverflow6: %v", v)
+	}
 }
 
 type TemplateFindTemplatesTypeText string
@@ -1052,6 +1267,7 @@ type TemplateFindTemplatesFieldMetaText struct {
 	Required       *bool                                `json:"required,omitempty"`
 	ReadOnly       *bool                                `json:"readOnly,omitempty"`
 	FontSize       *float64                             `default:"12" json:"fontSize"`
+	Overflow       *TemplateFindTemplatesOverflow6      `json:"overflow,omitempty"`
 	Type           TemplateFindTemplatesTypeText        `json:"type"`
 	Text           *string                              `json:"text,omitempty"`
 	CharacterLimit *float64                             `json:"characterLimit,omitempty"`
@@ -1107,6 +1323,13 @@ func (t *TemplateFindTemplatesFieldMetaText) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateFindTemplatesFieldMetaText) GetOverflow() *TemplateFindTemplatesOverflow6 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateFindTemplatesFieldMetaText) GetType() TemplateFindTemplatesTypeText {
 	if t == nil {
 		return TemplateFindTemplatesTypeText("")
@@ -1154,6 +1377,38 @@ func (t *TemplateFindTemplatesFieldMetaText) GetVerticalAlign() *TemplateFindTem
 		return nil
 	}
 	return t.VerticalAlign
+}
+
+type TemplateFindTemplatesOverflow5 string
+
+const (
+	TemplateFindTemplatesOverflow5Auto       TemplateFindTemplatesOverflow5 = "auto"
+	TemplateFindTemplatesOverflow5Horizontal TemplateFindTemplatesOverflow5 = "horizontal"
+	TemplateFindTemplatesOverflow5Vertical   TemplateFindTemplatesOverflow5 = "vertical"
+	TemplateFindTemplatesOverflow5Crop       TemplateFindTemplatesOverflow5 = "crop"
+)
+
+func (e TemplateFindTemplatesOverflow5) ToPointer() *TemplateFindTemplatesOverflow5 {
+	return &e
+}
+func (e *TemplateFindTemplatesOverflow5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateFindTemplatesOverflow5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateFindTemplatesOverflow5: %v", v)
+	}
 }
 
 type TemplateFindTemplatesTypeDate string
@@ -1214,6 +1469,7 @@ type TemplateFindTemplatesFieldMetaDate struct {
 	Required    *bool                            `json:"required,omitempty"`
 	ReadOnly    *bool                            `json:"readOnly,omitempty"`
 	FontSize    *float64                         `default:"12" json:"fontSize"`
+	Overflow    *TemplateFindTemplatesOverflow5  `default:"auto" json:"overflow"`
 	Type        TemplateFindTemplatesTypeDate    `json:"type"`
 	TextAlign   *TemplateFindTemplatesTextAlign4 `json:"textAlign,omitempty"`
 }
@@ -1264,6 +1520,13 @@ func (t *TemplateFindTemplatesFieldMetaDate) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateFindTemplatesFieldMetaDate) GetOverflow() *TemplateFindTemplatesOverflow5 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateFindTemplatesFieldMetaDate) GetType() TemplateFindTemplatesTypeDate {
 	if t == nil {
 		return TemplateFindTemplatesTypeDate("")
@@ -1276,6 +1539,38 @@ func (t *TemplateFindTemplatesFieldMetaDate) GetTextAlign() *TemplateFindTemplat
 		return nil
 	}
 	return t.TextAlign
+}
+
+type TemplateFindTemplatesOverflow4 string
+
+const (
+	TemplateFindTemplatesOverflow4Auto       TemplateFindTemplatesOverflow4 = "auto"
+	TemplateFindTemplatesOverflow4Horizontal TemplateFindTemplatesOverflow4 = "horizontal"
+	TemplateFindTemplatesOverflow4Vertical   TemplateFindTemplatesOverflow4 = "vertical"
+	TemplateFindTemplatesOverflow4Crop       TemplateFindTemplatesOverflow4 = "crop"
+)
+
+func (e TemplateFindTemplatesOverflow4) ToPointer() *TemplateFindTemplatesOverflow4 {
+	return &e
+}
+func (e *TemplateFindTemplatesOverflow4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateFindTemplatesOverflow4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateFindTemplatesOverflow4: %v", v)
+	}
 }
 
 type TemplateFindTemplatesTypeEmail string
@@ -1336,6 +1631,7 @@ type TemplateFindTemplatesFieldMetaEmail struct {
 	Required    *bool                            `json:"required,omitempty"`
 	ReadOnly    *bool                            `json:"readOnly,omitempty"`
 	FontSize    *float64                         `default:"12" json:"fontSize"`
+	Overflow    *TemplateFindTemplatesOverflow4  `default:"auto" json:"overflow"`
 	Type        TemplateFindTemplatesTypeEmail   `json:"type"`
 	TextAlign   *TemplateFindTemplatesTextAlign3 `json:"textAlign,omitempty"`
 }
@@ -1386,6 +1682,13 @@ func (t *TemplateFindTemplatesFieldMetaEmail) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateFindTemplatesFieldMetaEmail) GetOverflow() *TemplateFindTemplatesOverflow4 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateFindTemplatesFieldMetaEmail) GetType() TemplateFindTemplatesTypeEmail {
 	if t == nil {
 		return TemplateFindTemplatesTypeEmail("")
@@ -1398,6 +1701,38 @@ func (t *TemplateFindTemplatesFieldMetaEmail) GetTextAlign() *TemplateFindTempla
 		return nil
 	}
 	return t.TextAlign
+}
+
+type TemplateFindTemplatesOverflow3 string
+
+const (
+	TemplateFindTemplatesOverflow3Auto       TemplateFindTemplatesOverflow3 = "auto"
+	TemplateFindTemplatesOverflow3Horizontal TemplateFindTemplatesOverflow3 = "horizontal"
+	TemplateFindTemplatesOverflow3Vertical   TemplateFindTemplatesOverflow3 = "vertical"
+	TemplateFindTemplatesOverflow3Crop       TemplateFindTemplatesOverflow3 = "crop"
+)
+
+func (e TemplateFindTemplatesOverflow3) ToPointer() *TemplateFindTemplatesOverflow3 {
+	return &e
+}
+func (e *TemplateFindTemplatesOverflow3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateFindTemplatesOverflow3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateFindTemplatesOverflow3: %v", v)
+	}
 }
 
 type TemplateFindTemplatesTypeName string
@@ -1458,6 +1793,7 @@ type TemplateFindTemplatesFieldMetaName struct {
 	Required    *bool                            `json:"required,omitempty"`
 	ReadOnly    *bool                            `json:"readOnly,omitempty"`
 	FontSize    *float64                         `default:"12" json:"fontSize"`
+	Overflow    *TemplateFindTemplatesOverflow3  `json:"overflow,omitempty"`
 	Type        TemplateFindTemplatesTypeName    `json:"type"`
 	TextAlign   *TemplateFindTemplatesTextAlign2 `json:"textAlign,omitempty"`
 }
@@ -1508,6 +1844,13 @@ func (t *TemplateFindTemplatesFieldMetaName) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateFindTemplatesFieldMetaName) GetOverflow() *TemplateFindTemplatesOverflow3 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateFindTemplatesFieldMetaName) GetType() TemplateFindTemplatesTypeName {
 	if t == nil {
 		return TemplateFindTemplatesTypeName("")
@@ -1520,6 +1863,38 @@ func (t *TemplateFindTemplatesFieldMetaName) GetTextAlign() *TemplateFindTemplat
 		return nil
 	}
 	return t.TextAlign
+}
+
+type TemplateFindTemplatesOverflow2 string
+
+const (
+	TemplateFindTemplatesOverflow2Auto       TemplateFindTemplatesOverflow2 = "auto"
+	TemplateFindTemplatesOverflow2Horizontal TemplateFindTemplatesOverflow2 = "horizontal"
+	TemplateFindTemplatesOverflow2Vertical   TemplateFindTemplatesOverflow2 = "vertical"
+	TemplateFindTemplatesOverflow2Crop       TemplateFindTemplatesOverflow2 = "crop"
+)
+
+func (e TemplateFindTemplatesOverflow2) ToPointer() *TemplateFindTemplatesOverflow2 {
+	return &e
+}
+func (e *TemplateFindTemplatesOverflow2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateFindTemplatesOverflow2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateFindTemplatesOverflow2: %v", v)
+	}
 }
 
 type TemplateFindTemplatesTypeInitials string
@@ -1580,6 +1955,7 @@ type TemplateFindTemplatesFieldMetaInitials struct {
 	Required    *bool                             `json:"required,omitempty"`
 	ReadOnly    *bool                             `json:"readOnly,omitempty"`
 	FontSize    *float64                          `default:"12" json:"fontSize"`
+	Overflow    *TemplateFindTemplatesOverflow2   `json:"overflow,omitempty"`
 	Type        TemplateFindTemplatesTypeInitials `json:"type"`
 	TextAlign   *TemplateFindTemplatesTextAlign1  `json:"textAlign,omitempty"`
 }
@@ -1630,6 +2006,13 @@ func (t *TemplateFindTemplatesFieldMetaInitials) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateFindTemplatesFieldMetaInitials) GetOverflow() *TemplateFindTemplatesOverflow2 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateFindTemplatesFieldMetaInitials) GetType() TemplateFindTemplatesTypeInitials {
 	if t == nil {
 		return TemplateFindTemplatesTypeInitials("")
@@ -1642,6 +2025,38 @@ func (t *TemplateFindTemplatesFieldMetaInitials) GetTextAlign() *TemplateFindTem
 		return nil
 	}
 	return t.TextAlign
+}
+
+type TemplateFindTemplatesOverflow1 string
+
+const (
+	TemplateFindTemplatesOverflow1Auto       TemplateFindTemplatesOverflow1 = "auto"
+	TemplateFindTemplatesOverflow1Horizontal TemplateFindTemplatesOverflow1 = "horizontal"
+	TemplateFindTemplatesOverflow1Vertical   TemplateFindTemplatesOverflow1 = "vertical"
+	TemplateFindTemplatesOverflow1Crop       TemplateFindTemplatesOverflow1 = "crop"
+)
+
+func (e TemplateFindTemplatesOverflow1) ToPointer() *TemplateFindTemplatesOverflow1 {
+	return &e
+}
+func (e *TemplateFindTemplatesOverflow1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateFindTemplatesOverflow1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateFindTemplatesOverflow1: %v", v)
+	}
 }
 
 type TemplateFindTemplatesTypeSignature string
@@ -1673,6 +2088,7 @@ type TemplateFindTemplatesFieldMetaSignature struct {
 	Required    *bool                              `json:"required,omitempty"`
 	ReadOnly    *bool                              `json:"readOnly,omitempty"`
 	FontSize    *float64                           `default:"12" json:"fontSize"`
+	Overflow    *TemplateFindTemplatesOverflow1    `default:"auto" json:"overflow"`
 	Type        TemplateFindTemplatesTypeSignature `json:"type"`
 }
 
@@ -1720,6 +2136,13 @@ func (t *TemplateFindTemplatesFieldMetaSignature) GetFontSize() *float64 {
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateFindTemplatesFieldMetaSignature) GetOverflow() *TemplateFindTemplatesOverflow1 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
 }
 
 func (t *TemplateFindTemplatesFieldMetaSignature) GetType() TemplateFindTemplatesTypeSignature {
@@ -1849,7 +2272,14 @@ func CreateTemplateFindTemplatesFieldMetaUnionTemplateFindTemplatesFieldMetaDrop
 	}
 }
 
-func (u *TemplateFindTemplatesFieldMetaUnion) UnmarshalJSON(data []byte) error {
+func (u *TemplateFindTemplatesFieldMetaUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = TemplateFindTemplatesFieldMetaUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var templateFindTemplatesFieldMetaSignature TemplateFindTemplatesFieldMetaSignature = TemplateFindTemplatesFieldMetaSignature{}
 	if err := utils.UnmarshalJSON(data, &templateFindTemplatesFieldMetaSignature, "", true, nil); err == nil {
@@ -2296,23 +2726,25 @@ func (t *TemplateFindTemplatesRecipientAuthOptions) GetActionAuth() []TemplateFi
 }
 
 type TemplateFindTemplatesRecipient struct {
-	EnvelopeID        string                                     `json:"envelopeId"`
-	Role              TemplateFindTemplatesRole                  `json:"role"`
-	ReadStatus        TemplateFindTemplatesReadStatus            `json:"readStatus"`
-	SigningStatus     TemplateFindTemplatesSigningStatus         `json:"signingStatus"`
-	SendStatus        TemplateFindTemplatesSendStatus            `json:"sendStatus"`
-	ID                float64                                    `json:"id"`
-	Email             string                                     `json:"email"`
-	Name              string                                     `json:"name"`
-	Token             string                                     `json:"token"`
-	DocumentDeletedAt *string                                    `json:"documentDeletedAt"`
-	Expired           *string                                    `json:"expired"`
-	SignedAt          *string                                    `json:"signedAt"`
-	AuthOptions       *TemplateFindTemplatesRecipientAuthOptions `json:"authOptions"`
-	SigningOrder      *float64                                   `json:"signingOrder"`
-	RejectionReason   *string                                    `json:"rejectionReason"`
-	DocumentID        *float64                                   `json:"documentId,omitempty"`
-	TemplateID        *float64                                   `json:"templateId,omitempty"`
+	EnvelopeID           string                                     `json:"envelopeId"`
+	Role                 TemplateFindTemplatesRole                  `json:"role"`
+	ReadStatus           TemplateFindTemplatesReadStatus            `json:"readStatus"`
+	SigningStatus        TemplateFindTemplatesSigningStatus         `json:"signingStatus"`
+	SendStatus           TemplateFindTemplatesSendStatus            `json:"sendStatus"`
+	ID                   float64                                    `json:"id"`
+	Email                string                                     `json:"email"`
+	Name                 string                                     `json:"name"`
+	Token                string                                     `json:"token"`
+	DocumentDeletedAt    *string                                    `json:"documentDeletedAt"`
+	Expired              *string                                    `json:"expired"`
+	ExpiresAt            *string                                    `json:"expiresAt"`
+	ExpirationNotifiedAt *string                                    `json:"expirationNotifiedAt"`
+	SignedAt             *string                                    `json:"signedAt"`
+	AuthOptions          *TemplateFindTemplatesRecipientAuthOptions `json:"authOptions"`
+	SigningOrder         *float64                                   `json:"signingOrder"`
+	RejectionReason      *string                                    `json:"rejectionReason"`
+	DocumentID           *float64                                   `json:"documentId,omitempty"`
+	TemplateID           *float64                                   `json:"templateId,omitempty"`
 }
 
 func (t *TemplateFindTemplatesRecipient) GetEnvelopeID() string {
@@ -2390,6 +2822,20 @@ func (t *TemplateFindTemplatesRecipient) GetExpired() *string {
 		return nil
 	}
 	return t.Expired
+}
+
+func (t *TemplateFindTemplatesRecipient) GetExpiresAt() *string {
+	if t == nil {
+		return nil
+	}
+	return t.ExpiresAt
+}
+
+func (t *TemplateFindTemplatesRecipient) GetExpirationNotifiedAt() *string {
+	if t == nil {
+		return nil
+	}
+	return t.ExpirationNotifiedAt
 }
 
 func (t *TemplateFindTemplatesRecipient) GetSignedAt() *string {
