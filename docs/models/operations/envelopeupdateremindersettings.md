@@ -1,0 +1,9 @@
+# EnvelopeUpdateReminderSettings
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `SendAfter`                                                                                            | [operations.EnvelopeUpdateSendAfterUnion](../../models/operations/envelopeupdatesendafterunion.md)     | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `RepeatEvery`                                                                                          | [operations.EnvelopeUpdateRepeatEveryUnion](../../models/operations/envelopeupdaterepeateveryunion.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
