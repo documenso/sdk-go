@@ -24,6 +24,7 @@ import(
 	"os"
 	sdkgo "github.com/documenso/sdk-go"
 	"log"
+	"github.com/documenso/sdk-go/models/operations"
 )
 
 func main() {
@@ -38,7 +39,29 @@ func main() {
         log.Fatal(err)
     }
     if res.Object != nil {
-        // handle response
+        switch res.Object.FieldMeta.Type {
+            case operations.EnvelopeFieldGetFieldMetaUnionTypeEnvelopeFieldGetFieldMetaSignature:
+                // res.Object.FieldMeta.EnvelopeFieldGetFieldMetaSignature is populated
+            case operations.EnvelopeFieldGetFieldMetaUnionTypeEnvelopeFieldGetFieldMetaInitials:
+                // res.Object.FieldMeta.EnvelopeFieldGetFieldMetaInitials is populated
+            case operations.EnvelopeFieldGetFieldMetaUnionTypeEnvelopeFieldGetFieldMetaName:
+                // res.Object.FieldMeta.EnvelopeFieldGetFieldMetaName is populated
+            case operations.EnvelopeFieldGetFieldMetaUnionTypeEnvelopeFieldGetFieldMetaEmail:
+                // res.Object.FieldMeta.EnvelopeFieldGetFieldMetaEmail is populated
+            case operations.EnvelopeFieldGetFieldMetaUnionTypeEnvelopeFieldGetFieldMetaDate:
+                // res.Object.FieldMeta.EnvelopeFieldGetFieldMetaDate is populated
+            case operations.EnvelopeFieldGetFieldMetaUnionTypeEnvelopeFieldGetFieldMetaText:
+                // res.Object.FieldMeta.EnvelopeFieldGetFieldMetaText is populated
+            case operations.EnvelopeFieldGetFieldMetaUnionTypeEnvelopeFieldGetFieldMetaNumber:
+                // res.Object.FieldMeta.EnvelopeFieldGetFieldMetaNumber is populated
+            case operations.EnvelopeFieldGetFieldMetaUnionTypeEnvelopeFieldGetFieldMetaRadio:
+                // res.Object.FieldMeta.EnvelopeFieldGetFieldMetaRadio is populated
+            case operations.EnvelopeFieldGetFieldMetaUnionTypeEnvelopeFieldGetFieldMetaCheckbox:
+                // res.Object.FieldMeta.EnvelopeFieldGetFieldMetaCheckbox is populated
+            case operations.EnvelopeFieldGetFieldMetaUnionTypeEnvelopeFieldGetFieldMetaDropdown:
+                // res.Object.FieldMeta.EnvelopeFieldGetFieldMetaDropdown is populated
+        }
+
     }
 }
 ```
@@ -48,7 +71,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `fieldID`                                                | *float64*                                                | :heavy_check_mark:                                       | N/A                                                      |
+| `fieldID`                                                | `float64`                                                | :heavy_check_mark:                                       | N/A                                                      |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -93,7 +116,7 @@ func main() {
 
     res, err := s.Envelopes.Fields.CreateMany(ctx, operations.EnvelopeFieldCreateManyRequest{
         EnvelopeID: "<id>",
-        Data: []operations.EnvelopeFieldCreateManyDataUnion{},
+        Data: []operations.EnvelopeFieldCreateManyDataUnion1{},
     })
     if err != nil {
         log.Fatal(err)
