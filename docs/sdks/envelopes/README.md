@@ -52,7 +52,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `envelopeID`                                             | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `envelopeID`                                             | `string`                                                 | :heavy_check_mark:                                       | N/A                                                      |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -431,7 +431,7 @@ func main() {
 
 ## Redistribute
 
-Redistribute the envelope to the provided recipients who have not actioned the envelope. Will use the distribution method set in the envelope
+Redistribute the envelope to the provided recipients who have not actioned the envelope. Will use the distribution method set in the envelope. This also refreshes the signing-link expiration for the targeted unsigned recipients, renewing any expired links.
 
 ### Example Usage
 
