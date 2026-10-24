@@ -39,7 +39,9 @@ func newTemplates(rootSDK *Documenso, sdkConfig config.SDKConfiguration, hooks *
 }
 
 // Find templates
-// Find templates based on a search criteria
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Find templates based on a search criteria
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Templates) Find(ctx context.Context, request operations.TemplateFindTemplatesRequest, opts ...operations.Option) (*operations.TemplateFindTemplatesResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -179,7 +181,7 @@ func (s *Templates) Find(ctx context.Context, request operations.TemplateFindTem
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -233,7 +235,7 @@ func (s *Templates) Find(ctx context.Context, request operations.TemplateFindTem
 
 			var out apierrors.TemplateFindTemplatesBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -258,7 +260,7 @@ func (s *Templates) Find(ctx context.Context, request operations.TemplateFindTem
 
 			var out apierrors.TemplateFindTemplatesUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -283,7 +285,7 @@ func (s *Templates) Find(ctx context.Context, request operations.TemplateFindTem
 
 			var out apierrors.TemplateFindTemplatesForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -308,7 +310,7 @@ func (s *Templates) Find(ctx context.Context, request operations.TemplateFindTem
 
 			var out apierrors.TemplateFindTemplatesNotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -333,7 +335,7 @@ func (s *Templates) Find(ctx context.Context, request operations.TemplateFindTem
 
 			var out apierrors.TemplateFindTemplatesInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -373,6 +375,9 @@ func (s *Templates) Find(ctx context.Context, request operations.TemplateFindTem
 }
 
 // Get template
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operations.Option) (*operations.TemplateGetTemplateByIDResponse, error) {
 	request := operations.TemplateGetTemplateByIDRequest{
 		TemplateID: templateID,
@@ -512,7 +517,7 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -566,7 +571,7 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 
 			var out apierrors.TemplateGetTemplateByIDBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -591,7 +596,7 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 
 			var out apierrors.TemplateGetTemplateByIDUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -616,7 +621,7 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 
 			var out apierrors.TemplateGetTemplateByIDForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -641,7 +646,7 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 
 			var out apierrors.TemplateGetTemplateByIDNotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -666,7 +671,7 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 
 			var out apierrors.TemplateGetTemplateByIDInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -706,7 +711,9 @@ func (s *Templates) Get(ctx context.Context, templateID float64, opts ...operati
 }
 
 // Create template
-// Create a new template
+// Create a new template. Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Templates) Create(ctx context.Context, request operations.TemplateCreateTemplateRequest, opts ...operations.Option) (*operations.TemplateCreateTemplateResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -849,7 +856,7 @@ func (s *Templates) Create(ctx context.Context, request operations.TemplateCreat
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -903,7 +910,7 @@ func (s *Templates) Create(ctx context.Context, request operations.TemplateCreat
 
 			var out apierrors.TemplateCreateTemplateBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -928,7 +935,7 @@ func (s *Templates) Create(ctx context.Context, request operations.TemplateCreat
 
 			var out apierrors.TemplateCreateTemplateUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -953,7 +960,7 @@ func (s *Templates) Create(ctx context.Context, request operations.TemplateCreat
 
 			var out apierrors.TemplateCreateTemplateForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -978,7 +985,7 @@ func (s *Templates) Create(ctx context.Context, request operations.TemplateCreat
 
 			var out apierrors.TemplateCreateTemplateInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1018,6 +1025,9 @@ func (s *Templates) Create(ctx context.Context, request operations.TemplateCreat
 }
 
 // Update template
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdateTemplateRequest, opts ...operations.Option) (*operations.TemplateUpdateTemplateResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1160,7 +1170,7 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1214,7 +1224,7 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 
 			var out apierrors.TemplateUpdateTemplateBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1239,7 +1249,7 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 
 			var out apierrors.TemplateUpdateTemplateUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1264,7 +1274,7 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 
 			var out apierrors.TemplateUpdateTemplateForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1289,7 +1299,7 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 
 			var out apierrors.TemplateUpdateTemplateInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1329,6 +1339,9 @@ func (s *Templates) Update(ctx context.Context, request operations.TemplateUpdat
 }
 
 // Duplicate template
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDuplicateTemplateRequest, opts ...operations.Option) (*operations.TemplateDuplicateTemplateResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1471,7 +1484,7 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1525,7 +1538,7 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 
 			var out apierrors.TemplateDuplicateTemplateBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1550,7 +1563,7 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 
 			var out apierrors.TemplateDuplicateTemplateUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1575,7 +1588,7 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 
 			var out apierrors.TemplateDuplicateTemplateForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1600,7 +1613,7 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 
 			var out apierrors.TemplateDuplicateTemplateInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1640,6 +1653,9 @@ func (s *Templates) Duplicate(ctx context.Context, request operations.TemplateDu
 }
 
 // Delete template
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Templates) Delete(ctx context.Context, request operations.TemplateDeleteTemplateRequest, opts ...operations.Option) (*operations.TemplateDeleteTemplateResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -1782,7 +1798,7 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1836,7 +1852,7 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 
 			var out apierrors.TemplateDeleteTemplateBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1861,7 +1877,7 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 
 			var out apierrors.TemplateDeleteTemplateUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1886,7 +1902,7 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 
 			var out apierrors.TemplateDeleteTemplateForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1911,7 +1927,7 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 
 			var out apierrors.TemplateDeleteTemplateInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1951,7 +1967,9 @@ func (s *Templates) Delete(ctx context.Context, request operations.TemplateDelet
 }
 
 // Use template
-// Use the template to create a document
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Use the template to create a document
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDocumentFromTemplateRequest, opts ...operations.Option) (*operations.TemplateCreateDocumentFromTemplateResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -2094,7 +2112,7 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -2148,7 +2166,7 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 
 			var out apierrors.TemplateCreateDocumentFromTemplateBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -2173,7 +2191,7 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 
 			var out apierrors.TemplateCreateDocumentFromTemplateUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -2198,7 +2216,7 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 
 			var out apierrors.TemplateCreateDocumentFromTemplateForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -2223,7 +2241,7 @@ func (s *Templates) Use(ctx context.Context, request operations.TemplateCreateDo
 
 			var out apierrors.TemplateCreateDocumentFromTemplateInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{

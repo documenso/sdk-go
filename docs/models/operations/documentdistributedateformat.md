@@ -1,5 +1,15 @@
 # DocumentDistributeDateFormat
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.DocumentDistributeDateFormatYyyyMMddHhMmA
+```
+
 
 ## Values
 
@@ -8,12 +18,15 @@
 | `DocumentDistributeDateFormatYyyyMMddHhMmA`            | yyyy-MM-dd hh:mm a                                     |
 | `DocumentDistributeDateFormatYyyyMMdd`                 | yyyy-MM-dd                                             |
 | `DocumentDistributeDateFormatDdMmSlashYyyy`            | dd/MM/yyyy                                             |
+| `DocumentDistributeDateFormatDdMmDashYyyy`             | dd-MM-yyyy                                             |
 | `DocumentDistributeDateFormatMmDdSlashYyyy`            | MM/dd/yyyy                                             |
 | `DocumentDistributeDateFormatYyMMdd`                   | yy-MM-dd                                               |
 | `DocumentDistributeDateFormatMmmmDdCommaYyyy`          | MMMM dd, yyyy                                          |
 | `DocumentDistributeDateFormatEeeeMmmmDdCommaYyyy`      | EEEE, MMMM dd, yyyy                                    |
 | `DocumentDistributeDateFormatDdMmSlashYyyyHhMmA`       | dd/MM/yyyy hh:mm a                                     |
 | `DocumentDistributeDateFormatDdMmSlashYyyyHHmm`        | dd/MM/yyyy HH:mm                                       |
+| `DocumentDistributeDateFormatDdMmDashYyyyHhMmA`        | dd-MM-yyyy hh:mm a                                     |
+| `DocumentDistributeDateFormatDdMmDashYyyyHHmm`         | dd-MM-yyyy HH:mm                                       |
 | `DocumentDistributeDateFormatMmDdSlashYyyyHhMmA`       | MM/dd/yyyy hh:mm a                                     |
 | `DocumentDistributeDateFormatMmDdSlashYyyyHHmm`        | MM/dd/yyyy HH:mm                                       |
 | `DocumentDistributeDateFormatDdDotMmDotYyyy`           | dd.MM.yyyy                                             |

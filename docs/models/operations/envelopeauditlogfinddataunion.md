@@ -15,6 +15,18 @@ envelopeAuditLogFindDataUnion := operations.CreateEnvelopeAuditLogFindDataUnionD
 envelopeAuditLogFindDataUnion := operations.CreateEnvelopeAuditLogFindDataUnionDataEnvelopeItemDeleted(operations.DataEnvelopeItemDeleted{/* values here */})
 ```
 
+### DataEnvelopeItemUpdated
+
+```go
+envelopeAuditLogFindDataUnion := operations.CreateEnvelopeAuditLogFindDataUnionDataEnvelopeItemUpdated(operations.DataEnvelopeItemUpdated{/* values here */})
+```
+
+### DataEnvelopeItemPdfReplaced
+
+```go
+envelopeAuditLogFindDataUnion := operations.CreateEnvelopeAuditLogFindDataUnionDataEnvelopeItemPdfReplaced(operations.DataEnvelopeItemPdfReplaced{/* values here */})
+```
+
 ### DataEmailSent
 
 ```go
@@ -37,6 +49,12 @@ envelopeAuditLogFindDataUnion := operations.CreateEnvelopeAuditLogFindDataUnionD
 
 ```go
 envelopeAuditLogFindDataUnion := operations.CreateEnvelopeAuditLogFindDataUnionDataDocumentDeleted(operations.DataDocumentDeleted{/* values here */})
+```
+
+### DataDocumentCancelled
+
+```go
+envelopeAuditLogFindDataUnion := operations.CreateEnvelopeAuditLogFindDataUnionDataDocumentCancelled(operations.DataDocumentCancelled{/* values here */})
 ```
 
 ### DataDocumentMovedToTeam
@@ -195,3 +213,129 @@ envelopeAuditLogFindDataUnion := operations.CreateEnvelopeAuditLogFindDataUnionD
 envelopeAuditLogFindDataUnion := operations.CreateEnvelopeAuditLogFindDataUnionDataRecipientDeleted(operations.DataRecipientDeleted{/* values here */})
 ```
 
+### DataDocumentRecipientExpired
+
+```go
+envelopeAuditLogFindDataUnion := operations.CreateEnvelopeAuditLogFindDataUnionDataDocumentRecipientExpired(operations.DataDocumentRecipientExpired{/* values here */})
+```
+
+### DataDocumentRecipientCscAuthenticated
+
+```go
+envelopeAuditLogFindDataUnion := operations.CreateEnvelopeAuditLogFindDataUnionDataDocumentRecipientCscAuthenticated(operations.DataDocumentRecipientCscAuthenticated{/* values here */})
+```
+
+### DataDocumentRecipientCscAuthenticationFailed
+
+```go
+envelopeAuditLogFindDataUnion := operations.CreateEnvelopeAuditLogFindDataUnionDataDocumentRecipientCscAuthenticationFailed(operations.DataDocumentRecipientCscAuthenticationFailed{/* values here */})
+```
+
+### DataDocumentRecipientCscSignRequested
+
+```go
+envelopeAuditLogFindDataUnion := operations.CreateEnvelopeAuditLogFindDataUnionDataDocumentRecipientCscSignRequested(operations.DataDocumentRecipientCscSignRequested{/* values here */})
+```
+
+### DataDocumentRecipientCscAuthorized
+
+```go
+envelopeAuditLogFindDataUnion := operations.CreateEnvelopeAuditLogFindDataUnionDataDocumentRecipientCscAuthorized(operations.DataDocumentRecipientCscAuthorized{/* values here */})
+```
+
+### DataDocumentRecipientCscSigned
+
+```go
+envelopeAuditLogFindDataUnion := operations.CreateEnvelopeAuditLogFindDataUnionDataDocumentRecipientCscSigned(operations.DataDocumentRecipientCscSigned{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch envelopeAuditLogFindDataUnion.Type {
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataEnvelopeItemCreated:
+		// envelopeAuditLogFindDataUnion.DataEnvelopeItemCreated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataEnvelopeItemDeleted:
+		// envelopeAuditLogFindDataUnion.DataEnvelopeItemDeleted is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataEnvelopeItemUpdated:
+		// envelopeAuditLogFindDataUnion.DataEnvelopeItemUpdated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataEnvelopeItemPdfReplaced:
+		// envelopeAuditLogFindDataUnion.DataEnvelopeItemPdfReplaced is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataEmailSent:
+		// envelopeAuditLogFindDataUnion.DataEmailSent is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentCompleted:
+		// envelopeAuditLogFindDataUnion.DataDocumentCompleted is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentCreated:
+		// envelopeAuditLogFindDataUnion.DataDocumentCreated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentDeleted:
+		// envelopeAuditLogFindDataUnion.DataDocumentDeleted is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentCancelled:
+		// envelopeAuditLogFindDataUnion.DataDocumentCancelled is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentMovedToTeam:
+		// envelopeAuditLogFindDataUnion.DataDocumentMovedToTeam is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentDelegatedOwnerCreated:
+		// envelopeAuditLogFindDataUnion.DataDocumentDelegatedOwnerCreated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentFieldsAutoInserted:
+		// envelopeAuditLogFindDataUnion.DataDocumentFieldsAutoInserted is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentFieldInserted:
+		// envelopeAuditLogFindDataUnion.DataDocumentFieldInserted is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentFieldUninserted:
+		// envelopeAuditLogFindDataUnion.DataDocumentFieldUninserted is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentFieldPrefilled:
+		// envelopeAuditLogFindDataUnion.DataDocumentFieldPrefilled is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentVisibilityUpdated:
+		// envelopeAuditLogFindDataUnion.DataDocumentVisibilityUpdated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentGlobalAuthAccessUpdated:
+		// envelopeAuditLogFindDataUnion.DataDocumentGlobalAuthAccessUpdated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentGlobalAuthActionUpdated:
+		// envelopeAuditLogFindDataUnion.DataDocumentGlobalAuthActionUpdated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentMetaUpdated:
+		// envelopeAuditLogFindDataUnion.DataDocumentMetaUpdated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentOpened:
+		// envelopeAuditLogFindDataUnion.DataDocumentOpened is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentViewed:
+		// envelopeAuditLogFindDataUnion.DataDocumentViewed is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentRecipientCompleted:
+		// envelopeAuditLogFindDataUnion.DataDocumentRecipientCompleted is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentRecipientRejected:
+		// envelopeAuditLogFindDataUnion.DataDocumentRecipientRejected is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentAccessAuth2FaRequested:
+		// envelopeAuditLogFindDataUnion.DataDocumentAccessAuth2FaRequested is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentAccessAuth2FaValidated:
+		// envelopeAuditLogFindDataUnion.DataDocumentAccessAuth2FaValidated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentAccessAuth2FaFailed:
+		// envelopeAuditLogFindDataUnion.DataDocumentAccessAuth2FaFailed is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentSent:
+		// envelopeAuditLogFindDataUnion.DataDocumentSent is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentTitleUpdated:
+		// envelopeAuditLogFindDataUnion.DataDocumentTitleUpdated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentExternalIDUpdated:
+		// envelopeAuditLogFindDataUnion.DataDocumentExternalIDUpdated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataFieldCreated:
+		// envelopeAuditLogFindDataUnion.DataFieldCreated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataFieldDeleted:
+		// envelopeAuditLogFindDataUnion.DataFieldDeleted is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataFieldUpdated:
+		// envelopeAuditLogFindDataUnion.DataFieldUpdated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataRecipientCreated:
+		// envelopeAuditLogFindDataUnion.DataRecipientCreated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataRecipientUpdated:
+		// envelopeAuditLogFindDataUnion.DataRecipientUpdated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataRecipientDeleted:
+		// envelopeAuditLogFindDataUnion.DataRecipientDeleted is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentRecipientExpired:
+		// envelopeAuditLogFindDataUnion.DataDocumentRecipientExpired is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentRecipientCscAuthenticated:
+		// envelopeAuditLogFindDataUnion.DataDocumentRecipientCscAuthenticated is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentRecipientCscAuthenticationFailed:
+		// envelopeAuditLogFindDataUnion.DataDocumentRecipientCscAuthenticationFailed is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentRecipientCscSignRequested:
+		// envelopeAuditLogFindDataUnion.DataDocumentRecipientCscSignRequested is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentRecipientCscAuthorized:
+		// envelopeAuditLogFindDataUnion.DataDocumentRecipientCscAuthorized is populated
+	case operations.EnvelopeAuditLogFindDataUnionTypeDataDocumentRecipientCscSigned:
+		// envelopeAuditLogFindDataUnion.DataDocumentRecipientCscSigned is populated
+}
+```

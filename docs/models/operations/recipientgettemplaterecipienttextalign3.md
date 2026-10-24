@@ -1,5 +1,15 @@
 # RecipientGetTemplateRecipientTextAlign3
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.RecipientGetTemplateRecipientTextAlign3Left
+```
+
 
 ## Values
 
