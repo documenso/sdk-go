@@ -74,6 +74,38 @@ func (e *FieldGetDocumentFieldType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type FieldGetDocumentFieldOverflow10 string
+
+const (
+	FieldGetDocumentFieldOverflow10Auto       FieldGetDocumentFieldOverflow10 = "auto"
+	FieldGetDocumentFieldOverflow10Horizontal FieldGetDocumentFieldOverflow10 = "horizontal"
+	FieldGetDocumentFieldOverflow10Vertical   FieldGetDocumentFieldOverflow10 = "vertical"
+	FieldGetDocumentFieldOverflow10Crop       FieldGetDocumentFieldOverflow10 = "crop"
+)
+
+func (e FieldGetDocumentFieldOverflow10) ToPointer() *FieldGetDocumentFieldOverflow10 {
+	return &e
+}
+func (e *FieldGetDocumentFieldOverflow10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetDocumentFieldOverflow10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetDocumentFieldOverflow10: %v", v)
+	}
+}
+
 type FieldGetDocumentFieldFieldMetaTypeDropdown string
 
 const (
@@ -119,12 +151,16 @@ func (f *FieldGetDocumentFieldValue3) GetValue() string {
 	return f.Value
 }
 
+// #region class-body-fieldgetdocumentfieldvalue3
+// #endregion class-body-fieldgetdocumentfieldvalue3
+
 type FieldGetDocumentFieldFieldMetaDropdown struct {
 	Label        *string                                    `json:"label,omitempty"`
 	Placeholder  *string                                    `json:"placeholder,omitempty"`
 	Required     *bool                                      `json:"required,omitempty"`
 	ReadOnly     *bool                                      `json:"readOnly,omitempty"`
 	FontSize     *float64                                   `default:"12" json:"fontSize"`
+	Overflow     *FieldGetDocumentFieldOverflow10           `json:"overflow,omitempty"`
 	Type         FieldGetDocumentFieldFieldMetaTypeDropdown `json:"type"`
 	Values       []FieldGetDocumentFieldValue3              `json:"values,omitempty"`
 	DefaultValue *string                                    `json:"defaultValue,omitempty"`
@@ -176,6 +212,13 @@ func (f *FieldGetDocumentFieldFieldMetaDropdown) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetDocumentFieldFieldMetaDropdown) GetOverflow() *FieldGetDocumentFieldOverflow10 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetDocumentFieldFieldMetaDropdown) GetType() FieldGetDocumentFieldFieldMetaTypeDropdown {
 	if f == nil {
 		return FieldGetDocumentFieldFieldMetaTypeDropdown("")
@@ -195,6 +238,38 @@ func (f *FieldGetDocumentFieldFieldMetaDropdown) GetDefaultValue() *string {
 		return nil
 	}
 	return f.DefaultValue
+}
+
+type FieldGetDocumentFieldOverflow9 string
+
+const (
+	FieldGetDocumentFieldOverflow9Auto       FieldGetDocumentFieldOverflow9 = "auto"
+	FieldGetDocumentFieldOverflow9Horizontal FieldGetDocumentFieldOverflow9 = "horizontal"
+	FieldGetDocumentFieldOverflow9Vertical   FieldGetDocumentFieldOverflow9 = "vertical"
+	FieldGetDocumentFieldOverflow9Crop       FieldGetDocumentFieldOverflow9 = "crop"
+)
+
+func (e FieldGetDocumentFieldOverflow9) ToPointer() *FieldGetDocumentFieldOverflow9 {
+	return &e
+}
+func (e *FieldGetDocumentFieldOverflow9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetDocumentFieldOverflow9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetDocumentFieldOverflow9: %v", v)
+	}
 }
 
 type FieldGetDocumentFieldFieldMetaTypeCheckbox string
@@ -258,6 +333,9 @@ func (f *FieldGetDocumentFieldValue2) GetValue() string {
 	return f.Value
 }
 
+// #region class-body-fieldgetdocumentfieldvalue2
+// #endregion class-body-fieldgetdocumentfieldvalue2
+
 type FieldGetDocumentFieldDirection2 string
 
 const (
@@ -290,6 +368,7 @@ type FieldGetDocumentFieldFieldMetaCheckbox struct {
 	Required         *bool                                      `json:"required,omitempty"`
 	ReadOnly         *bool                                      `json:"readOnly,omitempty"`
 	FontSize         *float64                                   `default:"12" json:"fontSize"`
+	Overflow         *FieldGetDocumentFieldOverflow9            `json:"overflow,omitempty"`
 	Type             FieldGetDocumentFieldFieldMetaTypeCheckbox `json:"type"`
 	Values           []FieldGetDocumentFieldValue2              `json:"values,omitempty"`
 	ValidationRule   *string                                    `json:"validationRule,omitempty"`
@@ -343,6 +422,13 @@ func (f *FieldGetDocumentFieldFieldMetaCheckbox) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetDocumentFieldFieldMetaCheckbox) GetOverflow() *FieldGetDocumentFieldOverflow9 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetDocumentFieldFieldMetaCheckbox) GetType() FieldGetDocumentFieldFieldMetaTypeCheckbox {
 	if f == nil {
 		return FieldGetDocumentFieldFieldMetaTypeCheckbox("")
@@ -376,6 +462,38 @@ func (f *FieldGetDocumentFieldFieldMetaCheckbox) GetDirection() *FieldGetDocumen
 		return nil
 	}
 	return f.Direction
+}
+
+type FieldGetDocumentFieldOverflow8 string
+
+const (
+	FieldGetDocumentFieldOverflow8Auto       FieldGetDocumentFieldOverflow8 = "auto"
+	FieldGetDocumentFieldOverflow8Horizontal FieldGetDocumentFieldOverflow8 = "horizontal"
+	FieldGetDocumentFieldOverflow8Vertical   FieldGetDocumentFieldOverflow8 = "vertical"
+	FieldGetDocumentFieldOverflow8Crop       FieldGetDocumentFieldOverflow8 = "crop"
+)
+
+func (e FieldGetDocumentFieldOverflow8) ToPointer() *FieldGetDocumentFieldOverflow8 {
+	return &e
+}
+func (e *FieldGetDocumentFieldOverflow8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetDocumentFieldOverflow8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetDocumentFieldOverflow8: %v", v)
+	}
 }
 
 type FieldGetDocumentFieldFieldMetaTypeRadio string
@@ -439,6 +557,9 @@ func (f *FieldGetDocumentFieldValue1) GetValue() string {
 	return f.Value
 }
 
+// #region class-body-fieldgetdocumentfieldvalue1
+// #endregion class-body-fieldgetdocumentfieldvalue1
+
 type FieldGetDocumentFieldDirection1 string
 
 const (
@@ -471,6 +592,7 @@ type FieldGetDocumentFieldFieldMetaRadio struct {
 	Required    *bool                                   `json:"required,omitempty"`
 	ReadOnly    *bool                                   `json:"readOnly,omitempty"`
 	FontSize    *float64                                `default:"12" json:"fontSize"`
+	Overflow    *FieldGetDocumentFieldOverflow8         `json:"overflow,omitempty"`
 	Type        FieldGetDocumentFieldFieldMetaTypeRadio `json:"type"`
 	Values      []FieldGetDocumentFieldValue1           `json:"values,omitempty"`
 	Direction   *FieldGetDocumentFieldDirection1        `default:"vertical" json:"direction"`
@@ -522,6 +644,13 @@ func (f *FieldGetDocumentFieldFieldMetaRadio) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetDocumentFieldFieldMetaRadio) GetOverflow() *FieldGetDocumentFieldOverflow8 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetDocumentFieldFieldMetaRadio) GetType() FieldGetDocumentFieldFieldMetaTypeRadio {
 	if f == nil {
 		return FieldGetDocumentFieldFieldMetaTypeRadio("")
@@ -541,6 +670,38 @@ func (f *FieldGetDocumentFieldFieldMetaRadio) GetDirection() *FieldGetDocumentFi
 		return nil
 	}
 	return f.Direction
+}
+
+type FieldGetDocumentFieldOverflow7 string
+
+const (
+	FieldGetDocumentFieldOverflow7Auto       FieldGetDocumentFieldOverflow7 = "auto"
+	FieldGetDocumentFieldOverflow7Horizontal FieldGetDocumentFieldOverflow7 = "horizontal"
+	FieldGetDocumentFieldOverflow7Vertical   FieldGetDocumentFieldOverflow7 = "vertical"
+	FieldGetDocumentFieldOverflow7Crop       FieldGetDocumentFieldOverflow7 = "crop"
+)
+
+func (e FieldGetDocumentFieldOverflow7) ToPointer() *FieldGetDocumentFieldOverflow7 {
+	return &e
+}
+func (e *FieldGetDocumentFieldOverflow7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetDocumentFieldOverflow7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetDocumentFieldOverflow7: %v", v)
+	}
 }
 
 type FieldGetDocumentFieldFieldMetaTypeNumber string
@@ -630,6 +791,7 @@ type FieldGetDocumentFieldFieldMetaNumber struct {
 	Required      *bool                                    `json:"required,omitempty"`
 	ReadOnly      *bool                                    `json:"readOnly,omitempty"`
 	FontSize      *float64                                 `default:"12" json:"fontSize"`
+	Overflow      *FieldGetDocumentFieldOverflow7          `json:"overflow,omitempty"`
 	Type          FieldGetDocumentFieldFieldMetaTypeNumber `json:"type"`
 	NumberFormat  *string                                  `json:"numberFormat,omitempty"`
 	Value         *string                                  `json:"value,omitempty"`
@@ -685,6 +847,13 @@ func (f *FieldGetDocumentFieldFieldMetaNumber) GetFontSize() *float64 {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldGetDocumentFieldFieldMetaNumber) GetOverflow() *FieldGetDocumentFieldOverflow7 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldGetDocumentFieldFieldMetaNumber) GetType() FieldGetDocumentFieldFieldMetaTypeNumber {
@@ -748,6 +917,38 @@ func (f *FieldGetDocumentFieldFieldMetaNumber) GetVerticalAlign() *FieldGetDocum
 		return nil
 	}
 	return f.VerticalAlign
+}
+
+type FieldGetDocumentFieldOverflow6 string
+
+const (
+	FieldGetDocumentFieldOverflow6Auto       FieldGetDocumentFieldOverflow6 = "auto"
+	FieldGetDocumentFieldOverflow6Horizontal FieldGetDocumentFieldOverflow6 = "horizontal"
+	FieldGetDocumentFieldOverflow6Vertical   FieldGetDocumentFieldOverflow6 = "vertical"
+	FieldGetDocumentFieldOverflow6Crop       FieldGetDocumentFieldOverflow6 = "crop"
+)
+
+func (e FieldGetDocumentFieldOverflow6) ToPointer() *FieldGetDocumentFieldOverflow6 {
+	return &e
+}
+func (e *FieldGetDocumentFieldOverflow6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetDocumentFieldOverflow6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetDocumentFieldOverflow6: %v", v)
+	}
 }
 
 type FieldGetDocumentFieldFieldMetaTypeText string
@@ -837,6 +1038,7 @@ type FieldGetDocumentFieldFieldMetaText struct {
 	Required       *bool                                  `json:"required,omitempty"`
 	ReadOnly       *bool                                  `json:"readOnly,omitempty"`
 	FontSize       *float64                               `default:"12" json:"fontSize"`
+	Overflow       *FieldGetDocumentFieldOverflow6        `json:"overflow,omitempty"`
 	Type           FieldGetDocumentFieldFieldMetaTypeText `json:"type"`
 	Text           *string                                `json:"text,omitempty"`
 	CharacterLimit *float64                               `json:"characterLimit,omitempty"`
@@ -892,6 +1094,13 @@ func (f *FieldGetDocumentFieldFieldMetaText) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetDocumentFieldFieldMetaText) GetOverflow() *FieldGetDocumentFieldOverflow6 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetDocumentFieldFieldMetaText) GetType() FieldGetDocumentFieldFieldMetaTypeText {
 	if f == nil {
 		return FieldGetDocumentFieldFieldMetaTypeText("")
@@ -939,6 +1148,38 @@ func (f *FieldGetDocumentFieldFieldMetaText) GetVerticalAlign() *FieldGetDocumen
 		return nil
 	}
 	return f.VerticalAlign
+}
+
+type FieldGetDocumentFieldOverflow5 string
+
+const (
+	FieldGetDocumentFieldOverflow5Auto       FieldGetDocumentFieldOverflow5 = "auto"
+	FieldGetDocumentFieldOverflow5Horizontal FieldGetDocumentFieldOverflow5 = "horizontal"
+	FieldGetDocumentFieldOverflow5Vertical   FieldGetDocumentFieldOverflow5 = "vertical"
+	FieldGetDocumentFieldOverflow5Crop       FieldGetDocumentFieldOverflow5 = "crop"
+)
+
+func (e FieldGetDocumentFieldOverflow5) ToPointer() *FieldGetDocumentFieldOverflow5 {
+	return &e
+}
+func (e *FieldGetDocumentFieldOverflow5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetDocumentFieldOverflow5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetDocumentFieldOverflow5: %v", v)
+	}
 }
 
 type FieldGetDocumentFieldFieldMetaTypeDate string
@@ -999,6 +1240,7 @@ type FieldGetDocumentFieldFieldMetaDate struct {
 	Required    *bool                                  `json:"required,omitempty"`
 	ReadOnly    *bool                                  `json:"readOnly,omitempty"`
 	FontSize    *float64                               `default:"12" json:"fontSize"`
+	Overflow    *FieldGetDocumentFieldOverflow5        `default:"auto" json:"overflow"`
 	Type        FieldGetDocumentFieldFieldMetaTypeDate `json:"type"`
 	TextAlign   *FieldGetDocumentFieldTextAlign4       `json:"textAlign,omitempty"`
 }
@@ -1049,6 +1291,13 @@ func (f *FieldGetDocumentFieldFieldMetaDate) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetDocumentFieldFieldMetaDate) GetOverflow() *FieldGetDocumentFieldOverflow5 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetDocumentFieldFieldMetaDate) GetType() FieldGetDocumentFieldFieldMetaTypeDate {
 	if f == nil {
 		return FieldGetDocumentFieldFieldMetaTypeDate("")
@@ -1061,6 +1310,38 @@ func (f *FieldGetDocumentFieldFieldMetaDate) GetTextAlign() *FieldGetDocumentFie
 		return nil
 	}
 	return f.TextAlign
+}
+
+type FieldGetDocumentFieldOverflow4 string
+
+const (
+	FieldGetDocumentFieldOverflow4Auto       FieldGetDocumentFieldOverflow4 = "auto"
+	FieldGetDocumentFieldOverflow4Horizontal FieldGetDocumentFieldOverflow4 = "horizontal"
+	FieldGetDocumentFieldOverflow4Vertical   FieldGetDocumentFieldOverflow4 = "vertical"
+	FieldGetDocumentFieldOverflow4Crop       FieldGetDocumentFieldOverflow4 = "crop"
+)
+
+func (e FieldGetDocumentFieldOverflow4) ToPointer() *FieldGetDocumentFieldOverflow4 {
+	return &e
+}
+func (e *FieldGetDocumentFieldOverflow4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetDocumentFieldOverflow4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetDocumentFieldOverflow4: %v", v)
+	}
 }
 
 type FieldGetDocumentFieldFieldMetaTypeEmail string
@@ -1121,6 +1402,7 @@ type FieldGetDocumentFieldFieldMetaEmail struct {
 	Required    *bool                                   `json:"required,omitempty"`
 	ReadOnly    *bool                                   `json:"readOnly,omitempty"`
 	FontSize    *float64                                `default:"12" json:"fontSize"`
+	Overflow    *FieldGetDocumentFieldOverflow4         `default:"auto" json:"overflow"`
 	Type        FieldGetDocumentFieldFieldMetaTypeEmail `json:"type"`
 	TextAlign   *FieldGetDocumentFieldTextAlign3        `json:"textAlign,omitempty"`
 }
@@ -1171,6 +1453,13 @@ func (f *FieldGetDocumentFieldFieldMetaEmail) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetDocumentFieldFieldMetaEmail) GetOverflow() *FieldGetDocumentFieldOverflow4 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetDocumentFieldFieldMetaEmail) GetType() FieldGetDocumentFieldFieldMetaTypeEmail {
 	if f == nil {
 		return FieldGetDocumentFieldFieldMetaTypeEmail("")
@@ -1183,6 +1472,38 @@ func (f *FieldGetDocumentFieldFieldMetaEmail) GetTextAlign() *FieldGetDocumentFi
 		return nil
 	}
 	return f.TextAlign
+}
+
+type FieldGetDocumentFieldOverflow3 string
+
+const (
+	FieldGetDocumentFieldOverflow3Auto       FieldGetDocumentFieldOverflow3 = "auto"
+	FieldGetDocumentFieldOverflow3Horizontal FieldGetDocumentFieldOverflow3 = "horizontal"
+	FieldGetDocumentFieldOverflow3Vertical   FieldGetDocumentFieldOverflow3 = "vertical"
+	FieldGetDocumentFieldOverflow3Crop       FieldGetDocumentFieldOverflow3 = "crop"
+)
+
+func (e FieldGetDocumentFieldOverflow3) ToPointer() *FieldGetDocumentFieldOverflow3 {
+	return &e
+}
+func (e *FieldGetDocumentFieldOverflow3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetDocumentFieldOverflow3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetDocumentFieldOverflow3: %v", v)
+	}
 }
 
 type FieldGetDocumentFieldFieldMetaTypeName string
@@ -1243,6 +1564,7 @@ type FieldGetDocumentFieldFieldMetaName struct {
 	Required    *bool                                  `json:"required,omitempty"`
 	ReadOnly    *bool                                  `json:"readOnly,omitempty"`
 	FontSize    *float64                               `default:"12" json:"fontSize"`
+	Overflow    *FieldGetDocumentFieldOverflow3        `json:"overflow,omitempty"`
 	Type        FieldGetDocumentFieldFieldMetaTypeName `json:"type"`
 	TextAlign   *FieldGetDocumentFieldTextAlign2       `json:"textAlign,omitempty"`
 }
@@ -1293,6 +1615,13 @@ func (f *FieldGetDocumentFieldFieldMetaName) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetDocumentFieldFieldMetaName) GetOverflow() *FieldGetDocumentFieldOverflow3 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetDocumentFieldFieldMetaName) GetType() FieldGetDocumentFieldFieldMetaTypeName {
 	if f == nil {
 		return FieldGetDocumentFieldFieldMetaTypeName("")
@@ -1305,6 +1634,38 @@ func (f *FieldGetDocumentFieldFieldMetaName) GetTextAlign() *FieldGetDocumentFie
 		return nil
 	}
 	return f.TextAlign
+}
+
+type FieldGetDocumentFieldOverflow2 string
+
+const (
+	FieldGetDocumentFieldOverflow2Auto       FieldGetDocumentFieldOverflow2 = "auto"
+	FieldGetDocumentFieldOverflow2Horizontal FieldGetDocumentFieldOverflow2 = "horizontal"
+	FieldGetDocumentFieldOverflow2Vertical   FieldGetDocumentFieldOverflow2 = "vertical"
+	FieldGetDocumentFieldOverflow2Crop       FieldGetDocumentFieldOverflow2 = "crop"
+)
+
+func (e FieldGetDocumentFieldOverflow2) ToPointer() *FieldGetDocumentFieldOverflow2 {
+	return &e
+}
+func (e *FieldGetDocumentFieldOverflow2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetDocumentFieldOverflow2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetDocumentFieldOverflow2: %v", v)
+	}
 }
 
 type FieldGetDocumentFieldFieldMetaTypeInitials string
@@ -1365,6 +1726,7 @@ type FieldGetDocumentFieldFieldMetaInitials struct {
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
 	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Overflow    *FieldGetDocumentFieldOverflow2            `json:"overflow,omitempty"`
 	Type        FieldGetDocumentFieldFieldMetaTypeInitials `json:"type"`
 	TextAlign   *FieldGetDocumentFieldTextAlign1           `json:"textAlign,omitempty"`
 }
@@ -1415,6 +1777,13 @@ func (f *FieldGetDocumentFieldFieldMetaInitials) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetDocumentFieldFieldMetaInitials) GetOverflow() *FieldGetDocumentFieldOverflow2 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetDocumentFieldFieldMetaInitials) GetType() FieldGetDocumentFieldFieldMetaTypeInitials {
 	if f == nil {
 		return FieldGetDocumentFieldFieldMetaTypeInitials("")
@@ -1427,6 +1796,38 @@ func (f *FieldGetDocumentFieldFieldMetaInitials) GetTextAlign() *FieldGetDocumen
 		return nil
 	}
 	return f.TextAlign
+}
+
+type FieldGetDocumentFieldOverflow1 string
+
+const (
+	FieldGetDocumentFieldOverflow1Auto       FieldGetDocumentFieldOverflow1 = "auto"
+	FieldGetDocumentFieldOverflow1Horizontal FieldGetDocumentFieldOverflow1 = "horizontal"
+	FieldGetDocumentFieldOverflow1Vertical   FieldGetDocumentFieldOverflow1 = "vertical"
+	FieldGetDocumentFieldOverflow1Crop       FieldGetDocumentFieldOverflow1 = "crop"
+)
+
+func (e FieldGetDocumentFieldOverflow1) ToPointer() *FieldGetDocumentFieldOverflow1 {
+	return &e
+}
+func (e *FieldGetDocumentFieldOverflow1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetDocumentFieldOverflow1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetDocumentFieldOverflow1: %v", v)
+	}
 }
 
 type FieldGetDocumentFieldFieldMetaTypeSignature string
@@ -1458,6 +1859,7 @@ type FieldGetDocumentFieldFieldMetaSignature struct {
 	Required    *bool                                       `json:"required,omitempty"`
 	ReadOnly    *bool                                       `json:"readOnly,omitempty"`
 	FontSize    *float64                                    `default:"12" json:"fontSize"`
+	Overflow    *FieldGetDocumentFieldOverflow1             `default:"auto" json:"overflow"`
 	Type        FieldGetDocumentFieldFieldMetaTypeSignature `json:"type"`
 }
 
@@ -1505,6 +1907,13 @@ func (f *FieldGetDocumentFieldFieldMetaSignature) GetFontSize() *float64 {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldGetDocumentFieldFieldMetaSignature) GetOverflow() *FieldGetDocumentFieldOverflow1 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldGetDocumentFieldFieldMetaSignature) GetType() FieldGetDocumentFieldFieldMetaTypeSignature {
@@ -1634,7 +2043,14 @@ func CreateFieldGetDocumentFieldFieldMetaUnionFieldGetDocumentFieldFieldMetaDrop
 	}
 }
 
-func (u *FieldGetDocumentFieldFieldMetaUnion) UnmarshalJSON(data []byte) error {
+func (u *FieldGetDocumentFieldFieldMetaUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = FieldGetDocumentFieldFieldMetaUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var fieldGetDocumentFieldFieldMetaSignature FieldGetDocumentFieldFieldMetaSignature = FieldGetDocumentFieldFieldMetaSignature{}
 	if err := utils.UnmarshalJSON(data, &fieldGetDocumentFieldFieldMetaSignature, "", true, nil); err == nil {

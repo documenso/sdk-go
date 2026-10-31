@@ -63,3 +63,31 @@ documentFieldMetaUnion := operations.CreateDocumentFieldMetaUnionFieldMetaDocume
 documentFieldMetaUnion := operations.CreateDocumentFieldMetaUnionFieldMetaDocumentDropdown(operations.FieldMetaDocumentDropdown{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch documentFieldMetaUnion.Type {
+	case operations.DocumentFieldMetaUnionTypeFieldMetaDocumentSignature:
+		// documentFieldMetaUnion.FieldMetaDocumentSignature is populated
+	case operations.DocumentFieldMetaUnionTypeFieldMetaDocumentInitials:
+		// documentFieldMetaUnion.FieldMetaDocumentInitials is populated
+	case operations.DocumentFieldMetaUnionTypeFieldMetaDocumentName:
+		// documentFieldMetaUnion.FieldMetaDocumentName is populated
+	case operations.DocumentFieldMetaUnionTypeFieldMetaDocumentEmail:
+		// documentFieldMetaUnion.FieldMetaDocumentEmail is populated
+	case operations.DocumentFieldMetaUnionTypeFieldMetaDocumentDate:
+		// documentFieldMetaUnion.FieldMetaDocumentDate is populated
+	case operations.DocumentFieldMetaUnionTypeFieldMetaDocumentText:
+		// documentFieldMetaUnion.FieldMetaDocumentText is populated
+	case operations.DocumentFieldMetaUnionTypeFieldMetaDocumentNumber:
+		// documentFieldMetaUnion.FieldMetaDocumentNumber is populated
+	case operations.DocumentFieldMetaUnionTypeFieldMetaDocumentRadio:
+		// documentFieldMetaUnion.FieldMetaDocumentRadio is populated
+	case operations.DocumentFieldMetaUnionTypeFieldMetaDocumentCheckbox:
+		// documentFieldMetaUnion.FieldMetaDocumentCheckbox is populated
+	case operations.DocumentFieldMetaUnionTypeFieldMetaDocumentDropdown:
+		// documentFieldMetaUnion.FieldMetaDocumentDropdown is populated
+}
+```
