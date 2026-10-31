@@ -97,6 +97,35 @@ func (e *EnvelopeUpdateGlobalActionAuthRequest) UnmarshalJSON(data []byte) error
 	}
 }
 
+type TemplateTypeRequest string
+
+const (
+	TemplateTypeRequestPublic       TemplateTypeRequest = "PUBLIC"
+	TemplateTypeRequestPrivate      TemplateTypeRequest = "PRIVATE"
+	TemplateTypeRequestOrganisation TemplateTypeRequest = "ORGANISATION"
+)
+
+func (e TemplateTypeRequest) ToPointer() *TemplateTypeRequest {
+	return &e
+}
+func (e *TemplateTypeRequest) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "PUBLIC":
+		fallthrough
+	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
+		*e = TemplateTypeRequest(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateTypeRequest: %v", v)
+	}
+}
+
 type EnvelopeUpdateData struct {
 	Title            *string                                 `json:"title,omitempty"`
 	ExternalID       *string                                 `json:"externalId,omitempty"`
@@ -104,6 +133,7 @@ type EnvelopeUpdateData struct {
 	GlobalAccessAuth []EnvelopeUpdateGlobalAccessAuthRequest `json:"globalAccessAuth,omitempty"`
 	GlobalActionAuth []EnvelopeUpdateGlobalActionAuthRequest `json:"globalActionAuth,omitempty"`
 	FolderID         *string                                 `json:"folderId,omitempty"`
+	TemplateType     *TemplateTypeRequest                    `json:"templateType,omitempty"`
 }
 
 func (e *EnvelopeUpdateData) GetTitle() *string {
@@ -148,18 +178,28 @@ func (e *EnvelopeUpdateData) GetFolderID() *string {
 	return e.FolderID
 }
 
+func (e *EnvelopeUpdateData) GetTemplateType() *TemplateTypeRequest {
+	if e == nil {
+		return nil
+	}
+	return e.TemplateType
+}
+
 type EnvelopeUpdateDateFormat string
 
 const (
 	EnvelopeUpdateDateFormatYyyyMMddHhMmA            EnvelopeUpdateDateFormat = "yyyy-MM-dd hh:mm a"
 	EnvelopeUpdateDateFormatYyyyMMdd                 EnvelopeUpdateDateFormat = "yyyy-MM-dd"
 	EnvelopeUpdateDateFormatDdMmSlashYyyy            EnvelopeUpdateDateFormat = "dd/MM/yyyy"
+	EnvelopeUpdateDateFormatDdMmDashYyyy             EnvelopeUpdateDateFormat = "dd-MM-yyyy"
 	EnvelopeUpdateDateFormatMmDdSlashYyyy            EnvelopeUpdateDateFormat = "MM/dd/yyyy"
 	EnvelopeUpdateDateFormatYyMMdd                   EnvelopeUpdateDateFormat = "yy-MM-dd"
 	EnvelopeUpdateDateFormatMmmmDdCommaYyyy          EnvelopeUpdateDateFormat = "MMMM dd, yyyy"
 	EnvelopeUpdateDateFormatEeeeMmmmDdCommaYyyy      EnvelopeUpdateDateFormat = "EEEE, MMMM dd, yyyy"
 	EnvelopeUpdateDateFormatDdMmSlashYyyyHhMmA       EnvelopeUpdateDateFormat = "dd/MM/yyyy hh:mm a"
 	EnvelopeUpdateDateFormatDdMmSlashYyyyHHmm        EnvelopeUpdateDateFormat = "dd/MM/yyyy HH:mm"
+	EnvelopeUpdateDateFormatDdMmDashYyyyHhMmA        EnvelopeUpdateDateFormat = "dd-MM-yyyy hh:mm a"
+	EnvelopeUpdateDateFormatDdMmDashYyyyHHmm         EnvelopeUpdateDateFormat = "dd-MM-yyyy HH:mm"
 	EnvelopeUpdateDateFormatMmDdSlashYyyyHhMmA       EnvelopeUpdateDateFormat = "MM/dd/yyyy hh:mm a"
 	EnvelopeUpdateDateFormatMmDdSlashYyyyHHmm        EnvelopeUpdateDateFormat = "MM/dd/yyyy HH:mm"
 	EnvelopeUpdateDateFormatDdDotMmDotYyyy           EnvelopeUpdateDateFormat = "dd.MM.yyyy"
@@ -190,6 +230,8 @@ func (e *EnvelopeUpdateDateFormat) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "dd/MM/yyyy":
 		fallthrough
+	case "dd-MM-yyyy":
+		fallthrough
 	case "MM/dd/yyyy":
 		fallthrough
 	case "yy-MM-dd":
@@ -201,6 +243,10 @@ func (e *EnvelopeUpdateDateFormat) UnmarshalJSON(data []byte) error {
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
 	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "dd-MM-yyyy hh:mm a":
+		fallthrough
+	case "dd-MM-yyyy HH:mm":
 		fallthrough
 	case "MM/dd/yyyy hh:mm a":
 		fallthrough
@@ -347,6 +393,8 @@ type EnvelopeUpdateEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (e EnvelopeUpdateEmailSettings) MarshalJSON() ([]byte, error) {
@@ -409,22 +457,525 @@ func (e *EnvelopeUpdateEmailSettings) GetOwnerDocumentCompleted() *bool {
 	return e.OwnerDocumentCompleted
 }
 
+func (e *EnvelopeUpdateEmailSettings) GetOwnerRecipientExpired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.OwnerRecipientExpired
+}
+
+func (e *EnvelopeUpdateEmailSettings) GetOwnerDocumentCreated() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.OwnerDocumentCreated
+}
+
+type EnvelopeUpdateEnvelopeExpirationPeriod2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (e EnvelopeUpdateEnvelopeExpirationPeriod2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeUpdateEnvelopeExpirationPeriod2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeUpdateEnvelopeExpirationPeriod2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-envelopeupdateenvelopeexpirationperiod2
+// #endregion class-body-envelopeupdateenvelopeexpirationperiod2
+
+type EnvelopeUpdateEnvelopeExpirationPeriodUnit string
+
+const (
+	EnvelopeUpdateEnvelopeExpirationPeriodUnitDay   EnvelopeUpdateEnvelopeExpirationPeriodUnit = "day"
+	EnvelopeUpdateEnvelopeExpirationPeriodUnitWeek  EnvelopeUpdateEnvelopeExpirationPeriodUnit = "week"
+	EnvelopeUpdateEnvelopeExpirationPeriodUnitMonth EnvelopeUpdateEnvelopeExpirationPeriodUnit = "month"
+	EnvelopeUpdateEnvelopeExpirationPeriodUnitYear  EnvelopeUpdateEnvelopeExpirationPeriodUnit = "year"
+)
+
+func (e EnvelopeUpdateEnvelopeExpirationPeriodUnit) ToPointer() *EnvelopeUpdateEnvelopeExpirationPeriodUnit {
+	return &e
+}
+func (e *EnvelopeUpdateEnvelopeExpirationPeriodUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		fallthrough
+	case "year":
+		*e = EnvelopeUpdateEnvelopeExpirationPeriodUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeUpdateEnvelopeExpirationPeriodUnit: %v", v)
+	}
+}
+
+type EnvelopeUpdateEnvelopeExpirationPeriod1 struct {
+	Unit   EnvelopeUpdateEnvelopeExpirationPeriodUnit `json:"unit"`
+	Amount int64                                      `json:"amount"`
+}
+
+func (e EnvelopeUpdateEnvelopeExpirationPeriod1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeUpdateEnvelopeExpirationPeriod1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeUpdateEnvelopeExpirationPeriod1) GetUnit() EnvelopeUpdateEnvelopeExpirationPeriodUnit {
+	if e == nil {
+		return EnvelopeUpdateEnvelopeExpirationPeriodUnit("")
+	}
+	return e.Unit
+}
+
+func (e *EnvelopeUpdateEnvelopeExpirationPeriod1) GetAmount() int64 {
+	if e == nil {
+		return 0
+	}
+	return e.Amount
+}
+
+// #region class-body-envelopeupdateenvelopeexpirationperiod1
+// #endregion class-body-envelopeupdateenvelopeexpirationperiod1
+
+type EnvelopeUpdateEnvelopeExpirationPeriodUnionType string
+
+const (
+	EnvelopeUpdateEnvelopeExpirationPeriodUnionTypeEnvelopeUpdateEnvelopeExpirationPeriod1 EnvelopeUpdateEnvelopeExpirationPeriodUnionType = "envelope_update_envelopeExpirationPeriod_1"
+	EnvelopeUpdateEnvelopeExpirationPeriodUnionTypeEnvelopeUpdateEnvelopeExpirationPeriod2 EnvelopeUpdateEnvelopeExpirationPeriodUnionType = "envelope_update_envelopeExpirationPeriod_2"
+)
+
+type EnvelopeUpdateEnvelopeExpirationPeriodUnion struct {
+	EnvelopeUpdateEnvelopeExpirationPeriod1 *EnvelopeUpdateEnvelopeExpirationPeriod1 `queryParam:"inline" union:"member"`
+	EnvelopeUpdateEnvelopeExpirationPeriod2 *EnvelopeUpdateEnvelopeExpirationPeriod2 `queryParam:"inline" union:"member"`
+
+	Type EnvelopeUpdateEnvelopeExpirationPeriodUnionType
+}
+
+func CreateEnvelopeUpdateEnvelopeExpirationPeriodUnionEnvelopeUpdateEnvelopeExpirationPeriod1(envelopeUpdateEnvelopeExpirationPeriod1 EnvelopeUpdateEnvelopeExpirationPeriod1) EnvelopeUpdateEnvelopeExpirationPeriodUnion {
+	typ := EnvelopeUpdateEnvelopeExpirationPeriodUnionTypeEnvelopeUpdateEnvelopeExpirationPeriod1
+
+	return EnvelopeUpdateEnvelopeExpirationPeriodUnion{
+		EnvelopeUpdateEnvelopeExpirationPeriod1: &envelopeUpdateEnvelopeExpirationPeriod1,
+		Type:                                    typ,
+	}
+}
+
+func CreateEnvelopeUpdateEnvelopeExpirationPeriodUnionEnvelopeUpdateEnvelopeExpirationPeriod2(envelopeUpdateEnvelopeExpirationPeriod2 EnvelopeUpdateEnvelopeExpirationPeriod2) EnvelopeUpdateEnvelopeExpirationPeriodUnion {
+	typ := EnvelopeUpdateEnvelopeExpirationPeriodUnionTypeEnvelopeUpdateEnvelopeExpirationPeriod2
+
+	return EnvelopeUpdateEnvelopeExpirationPeriodUnion{
+		EnvelopeUpdateEnvelopeExpirationPeriod2: &envelopeUpdateEnvelopeExpirationPeriod2,
+		Type:                                    typ,
+	}
+}
+
+func (u *EnvelopeUpdateEnvelopeExpirationPeriodUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeUpdateEnvelopeExpirationPeriodUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var envelopeUpdateEnvelopeExpirationPeriod1 EnvelopeUpdateEnvelopeExpirationPeriod1 = EnvelopeUpdateEnvelopeExpirationPeriod1{}
+	if err := utils.UnmarshalJSON(data, &envelopeUpdateEnvelopeExpirationPeriod1, "", true, nil); err == nil {
+		u.EnvelopeUpdateEnvelopeExpirationPeriod1 = &envelopeUpdateEnvelopeExpirationPeriod1
+		u.Type = EnvelopeUpdateEnvelopeExpirationPeriodUnionTypeEnvelopeUpdateEnvelopeExpirationPeriod1
+		return nil
+	}
+
+	var envelopeUpdateEnvelopeExpirationPeriod2 EnvelopeUpdateEnvelopeExpirationPeriod2 = EnvelopeUpdateEnvelopeExpirationPeriod2{}
+	if err := utils.UnmarshalJSON(data, &envelopeUpdateEnvelopeExpirationPeriod2, "", true, nil); err == nil {
+		u.EnvelopeUpdateEnvelopeExpirationPeriod2 = &envelopeUpdateEnvelopeExpirationPeriod2
+		u.Type = EnvelopeUpdateEnvelopeExpirationPeriodUnionTypeEnvelopeUpdateEnvelopeExpirationPeriod2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvelopeUpdateEnvelopeExpirationPeriodUnion", string(data))
+}
+
+func (u EnvelopeUpdateEnvelopeExpirationPeriodUnion) MarshalJSON() ([]byte, error) {
+	if u.EnvelopeUpdateEnvelopeExpirationPeriod1 != nil {
+		return utils.MarshalJSON(u.EnvelopeUpdateEnvelopeExpirationPeriod1, "", true)
+	}
+
+	if u.EnvelopeUpdateEnvelopeExpirationPeriod2 != nil {
+		return utils.MarshalJSON(u.EnvelopeUpdateEnvelopeExpirationPeriod2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvelopeUpdateEnvelopeExpirationPeriodUnion: all fields are null")
+}
+
+type EnvelopeUpdateSendAfter2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (e EnvelopeUpdateSendAfter2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeUpdateSendAfter2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeUpdateSendAfter2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-envelopeupdatesendafter2
+// #endregion class-body-envelopeupdatesendafter2
+
+type EnvelopeUpdateSendAfterUnit string
+
+const (
+	EnvelopeUpdateSendAfterUnitDay   EnvelopeUpdateSendAfterUnit = "day"
+	EnvelopeUpdateSendAfterUnitWeek  EnvelopeUpdateSendAfterUnit = "week"
+	EnvelopeUpdateSendAfterUnitMonth EnvelopeUpdateSendAfterUnit = "month"
+)
+
+func (e EnvelopeUpdateSendAfterUnit) ToPointer() *EnvelopeUpdateSendAfterUnit {
+	return &e
+}
+func (e *EnvelopeUpdateSendAfterUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		*e = EnvelopeUpdateSendAfterUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeUpdateSendAfterUnit: %v", v)
+	}
+}
+
+type EnvelopeUpdateSendAfter1 struct {
+	Unit   EnvelopeUpdateSendAfterUnit `json:"unit"`
+	Amount int64                       `json:"amount"`
+}
+
+func (e EnvelopeUpdateSendAfter1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeUpdateSendAfter1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeUpdateSendAfter1) GetUnit() EnvelopeUpdateSendAfterUnit {
+	if e == nil {
+		return EnvelopeUpdateSendAfterUnit("")
+	}
+	return e.Unit
+}
+
+func (e *EnvelopeUpdateSendAfter1) GetAmount() int64 {
+	if e == nil {
+		return 0
+	}
+	return e.Amount
+}
+
+// #region class-body-envelopeupdatesendafter1
+// #endregion class-body-envelopeupdatesendafter1
+
+type EnvelopeUpdateSendAfterUnionType string
+
+const (
+	EnvelopeUpdateSendAfterUnionTypeEnvelopeUpdateSendAfter1 EnvelopeUpdateSendAfterUnionType = "envelope_update_sendAfter_1"
+	EnvelopeUpdateSendAfterUnionTypeEnvelopeUpdateSendAfter2 EnvelopeUpdateSendAfterUnionType = "envelope_update_sendAfter_2"
+)
+
+type EnvelopeUpdateSendAfterUnion struct {
+	EnvelopeUpdateSendAfter1 *EnvelopeUpdateSendAfter1 `queryParam:"inline" union:"member"`
+	EnvelopeUpdateSendAfter2 *EnvelopeUpdateSendAfter2 `queryParam:"inline" union:"member"`
+
+	Type EnvelopeUpdateSendAfterUnionType
+}
+
+func CreateEnvelopeUpdateSendAfterUnionEnvelopeUpdateSendAfter1(envelopeUpdateSendAfter1 EnvelopeUpdateSendAfter1) EnvelopeUpdateSendAfterUnion {
+	typ := EnvelopeUpdateSendAfterUnionTypeEnvelopeUpdateSendAfter1
+
+	return EnvelopeUpdateSendAfterUnion{
+		EnvelopeUpdateSendAfter1: &envelopeUpdateSendAfter1,
+		Type:                     typ,
+	}
+}
+
+func CreateEnvelopeUpdateSendAfterUnionEnvelopeUpdateSendAfter2(envelopeUpdateSendAfter2 EnvelopeUpdateSendAfter2) EnvelopeUpdateSendAfterUnion {
+	typ := EnvelopeUpdateSendAfterUnionTypeEnvelopeUpdateSendAfter2
+
+	return EnvelopeUpdateSendAfterUnion{
+		EnvelopeUpdateSendAfter2: &envelopeUpdateSendAfter2,
+		Type:                     typ,
+	}
+}
+
+func (u *EnvelopeUpdateSendAfterUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeUpdateSendAfterUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var envelopeUpdateSendAfter1 EnvelopeUpdateSendAfter1 = EnvelopeUpdateSendAfter1{}
+	if err := utils.UnmarshalJSON(data, &envelopeUpdateSendAfter1, "", true, nil); err == nil {
+		u.EnvelopeUpdateSendAfter1 = &envelopeUpdateSendAfter1
+		u.Type = EnvelopeUpdateSendAfterUnionTypeEnvelopeUpdateSendAfter1
+		return nil
+	}
+
+	var envelopeUpdateSendAfter2 EnvelopeUpdateSendAfter2 = EnvelopeUpdateSendAfter2{}
+	if err := utils.UnmarshalJSON(data, &envelopeUpdateSendAfter2, "", true, nil); err == nil {
+		u.EnvelopeUpdateSendAfter2 = &envelopeUpdateSendAfter2
+		u.Type = EnvelopeUpdateSendAfterUnionTypeEnvelopeUpdateSendAfter2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvelopeUpdateSendAfterUnion", string(data))
+}
+
+func (u EnvelopeUpdateSendAfterUnion) MarshalJSON() ([]byte, error) {
+	if u.EnvelopeUpdateSendAfter1 != nil {
+		return utils.MarshalJSON(u.EnvelopeUpdateSendAfter1, "", true)
+	}
+
+	if u.EnvelopeUpdateSendAfter2 != nil {
+		return utils.MarshalJSON(u.EnvelopeUpdateSendAfter2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvelopeUpdateSendAfterUnion: all fields are null")
+}
+
+type EnvelopeUpdateRepeatEvery2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (e EnvelopeUpdateRepeatEvery2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeUpdateRepeatEvery2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeUpdateRepeatEvery2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-envelopeupdaterepeatevery2
+// #endregion class-body-envelopeupdaterepeatevery2
+
+type EnvelopeUpdateRepeatEveryUnit string
+
+const (
+	EnvelopeUpdateRepeatEveryUnitDay   EnvelopeUpdateRepeatEveryUnit = "day"
+	EnvelopeUpdateRepeatEveryUnitWeek  EnvelopeUpdateRepeatEveryUnit = "week"
+	EnvelopeUpdateRepeatEveryUnitMonth EnvelopeUpdateRepeatEveryUnit = "month"
+)
+
+func (e EnvelopeUpdateRepeatEveryUnit) ToPointer() *EnvelopeUpdateRepeatEveryUnit {
+	return &e
+}
+func (e *EnvelopeUpdateRepeatEveryUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		*e = EnvelopeUpdateRepeatEveryUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeUpdateRepeatEveryUnit: %v", v)
+	}
+}
+
+type EnvelopeUpdateRepeatEvery1 struct {
+	Unit   EnvelopeUpdateRepeatEveryUnit `json:"unit"`
+	Amount int64                         `json:"amount"`
+}
+
+func (e EnvelopeUpdateRepeatEvery1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeUpdateRepeatEvery1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeUpdateRepeatEvery1) GetUnit() EnvelopeUpdateRepeatEveryUnit {
+	if e == nil {
+		return EnvelopeUpdateRepeatEveryUnit("")
+	}
+	return e.Unit
+}
+
+func (e *EnvelopeUpdateRepeatEvery1) GetAmount() int64 {
+	if e == nil {
+		return 0
+	}
+	return e.Amount
+}
+
+// #region class-body-envelopeupdaterepeatevery1
+// #endregion class-body-envelopeupdaterepeatevery1
+
+type EnvelopeUpdateRepeatEveryUnionType string
+
+const (
+	EnvelopeUpdateRepeatEveryUnionTypeEnvelopeUpdateRepeatEvery1 EnvelopeUpdateRepeatEveryUnionType = "envelope_update_repeatEvery_1"
+	EnvelopeUpdateRepeatEveryUnionTypeEnvelopeUpdateRepeatEvery2 EnvelopeUpdateRepeatEveryUnionType = "envelope_update_repeatEvery_2"
+)
+
+type EnvelopeUpdateRepeatEveryUnion struct {
+	EnvelopeUpdateRepeatEvery1 *EnvelopeUpdateRepeatEvery1 `queryParam:"inline" union:"member"`
+	EnvelopeUpdateRepeatEvery2 *EnvelopeUpdateRepeatEvery2 `queryParam:"inline" union:"member"`
+
+	Type EnvelopeUpdateRepeatEveryUnionType
+}
+
+func CreateEnvelopeUpdateRepeatEveryUnionEnvelopeUpdateRepeatEvery1(envelopeUpdateRepeatEvery1 EnvelopeUpdateRepeatEvery1) EnvelopeUpdateRepeatEveryUnion {
+	typ := EnvelopeUpdateRepeatEveryUnionTypeEnvelopeUpdateRepeatEvery1
+
+	return EnvelopeUpdateRepeatEveryUnion{
+		EnvelopeUpdateRepeatEvery1: &envelopeUpdateRepeatEvery1,
+		Type:                       typ,
+	}
+}
+
+func CreateEnvelopeUpdateRepeatEveryUnionEnvelopeUpdateRepeatEvery2(envelopeUpdateRepeatEvery2 EnvelopeUpdateRepeatEvery2) EnvelopeUpdateRepeatEveryUnion {
+	typ := EnvelopeUpdateRepeatEveryUnionTypeEnvelopeUpdateRepeatEvery2
+
+	return EnvelopeUpdateRepeatEveryUnion{
+		EnvelopeUpdateRepeatEvery2: &envelopeUpdateRepeatEvery2,
+		Type:                       typ,
+	}
+}
+
+func (u *EnvelopeUpdateRepeatEveryUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeUpdateRepeatEveryUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var envelopeUpdateRepeatEvery1 EnvelopeUpdateRepeatEvery1 = EnvelopeUpdateRepeatEvery1{}
+	if err := utils.UnmarshalJSON(data, &envelopeUpdateRepeatEvery1, "", true, nil); err == nil {
+		u.EnvelopeUpdateRepeatEvery1 = &envelopeUpdateRepeatEvery1
+		u.Type = EnvelopeUpdateRepeatEveryUnionTypeEnvelopeUpdateRepeatEvery1
+		return nil
+	}
+
+	var envelopeUpdateRepeatEvery2 EnvelopeUpdateRepeatEvery2 = EnvelopeUpdateRepeatEvery2{}
+	if err := utils.UnmarshalJSON(data, &envelopeUpdateRepeatEvery2, "", true, nil); err == nil {
+		u.EnvelopeUpdateRepeatEvery2 = &envelopeUpdateRepeatEvery2
+		u.Type = EnvelopeUpdateRepeatEveryUnionTypeEnvelopeUpdateRepeatEvery2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvelopeUpdateRepeatEveryUnion", string(data))
+}
+
+func (u EnvelopeUpdateRepeatEveryUnion) MarshalJSON() ([]byte, error) {
+	if u.EnvelopeUpdateRepeatEvery1 != nil {
+		return utils.MarshalJSON(u.EnvelopeUpdateRepeatEvery1, "", true)
+	}
+
+	if u.EnvelopeUpdateRepeatEvery2 != nil {
+		return utils.MarshalJSON(u.EnvelopeUpdateRepeatEvery2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvelopeUpdateRepeatEveryUnion: all fields are null")
+}
+
+type EnvelopeUpdateReminderSettings struct {
+	SendAfter   EnvelopeUpdateSendAfterUnion   `json:"sendAfter"`
+	RepeatEvery EnvelopeUpdateRepeatEveryUnion `json:"repeatEvery"`
+}
+
+func (e *EnvelopeUpdateReminderSettings) GetSendAfter() EnvelopeUpdateSendAfterUnion {
+	if e == nil {
+		return EnvelopeUpdateSendAfterUnion{}
+	}
+	return e.SendAfter
+}
+
+func (e *EnvelopeUpdateReminderSettings) GetRepeatEvery() EnvelopeUpdateRepeatEveryUnion {
+	if e == nil {
+		return EnvelopeUpdateRepeatEveryUnion{}
+	}
+	return e.RepeatEvery
+}
+
 type EnvelopeUpdateMeta struct {
-	Subject                *string                           `json:"subject,omitempty"`
-	Message                *string                           `json:"message,omitempty"`
-	Timezone               *string                           `json:"timezone,omitempty"`
-	DateFormat             *EnvelopeUpdateDateFormat         `json:"dateFormat,omitempty"`
-	DistributionMethod     *EnvelopeUpdateDistributionMethod `json:"distributionMethod,omitempty"`
-	SigningOrder           *EnvelopeUpdateSigningOrder       `json:"signingOrder,omitempty"`
-	AllowDictateNextSigner *bool                             `json:"allowDictateNextSigner,omitempty"`
-	RedirectURL            *string                           `json:"redirectUrl,omitempty"`
-	Language               *EnvelopeUpdateLanguage           `json:"language,omitempty"`
-	TypedSignatureEnabled  *bool                             `json:"typedSignatureEnabled,omitempty"`
-	UploadSignatureEnabled *bool                             `json:"uploadSignatureEnabled,omitempty"`
-	DrawSignatureEnabled   *bool                             `json:"drawSignatureEnabled,omitempty"`
-	EmailID                *string                           `json:"emailId,omitempty"`
-	EmailReplyTo           *string                           `json:"emailReplyTo,omitempty"`
-	EmailSettings          *EnvelopeUpdateEmailSettings      `json:"emailSettings,omitempty"`
+	Subject                  *string                                      `json:"subject,omitempty"`
+	Message                  *string                                      `json:"message,omitempty"`
+	Timezone                 *string                                      `json:"timezone,omitempty"`
+	DateFormat               *EnvelopeUpdateDateFormat                    `json:"dateFormat,omitempty"`
+	DistributionMethod       *EnvelopeUpdateDistributionMethod            `json:"distributionMethod,omitempty"`
+	SigningOrder             *EnvelopeUpdateSigningOrder                  `json:"signingOrder,omitempty"`
+	AllowDictateNextSigner   *bool                                        `json:"allowDictateNextSigner,omitempty"`
+	RedirectURL              *string                                      `json:"redirectUrl,omitempty"`
+	Language                 *EnvelopeUpdateLanguage                      `json:"language,omitempty"`
+	TypedSignatureEnabled    *bool                                        `json:"typedSignatureEnabled,omitempty"`
+	UploadSignatureEnabled   *bool                                        `json:"uploadSignatureEnabled,omitempty"`
+	DrawSignatureEnabled     *bool                                        `json:"drawSignatureEnabled,omitempty"`
+	EmailID                  *string                                      `json:"emailId,omitempty"`
+	EmailReplyTo             *string                                      `json:"emailReplyTo,omitempty"`
+	EmailSettings            *EnvelopeUpdateEmailSettings                 `json:"emailSettings,omitempty"`
+	EnvelopeExpirationPeriod *EnvelopeUpdateEnvelopeExpirationPeriodUnion `json:"envelopeExpirationPeriod,omitempty"`
+	ReminderSettings         *EnvelopeUpdateReminderSettings              `json:"reminderSettings,omitempty"`
 }
 
 func (e *EnvelopeUpdateMeta) GetSubject() *string {
@@ -532,6 +1083,20 @@ func (e *EnvelopeUpdateMeta) GetEmailSettings() *EnvelopeUpdateEmailSettings {
 	return e.EmailSettings
 }
 
+func (e *EnvelopeUpdateMeta) GetEnvelopeExpirationPeriod() *EnvelopeUpdateEnvelopeExpirationPeriodUnion {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeExpirationPeriod
+}
+
+func (e *EnvelopeUpdateMeta) GetReminderSettings() *EnvelopeUpdateReminderSettings {
+	if e == nil {
+		return nil
+	}
+	return e.ReminderSettings
+}
+
 type EnvelopeUpdateRequest struct {
 	EnvelopeID string              `json:"envelopeId"`
 	Data       *EnvelopeUpdateData `json:"data,omitempty"`
@@ -592,6 +1157,7 @@ const (
 	EnvelopeUpdateStatusPending   EnvelopeUpdateStatus = "PENDING"
 	EnvelopeUpdateStatusCompleted EnvelopeUpdateStatus = "COMPLETED"
 	EnvelopeUpdateStatusRejected  EnvelopeUpdateStatus = "REJECTED"
+	EnvelopeUpdateStatusCancelled EnvelopeUpdateStatus = "CANCELLED"
 )
 
 func (e EnvelopeUpdateStatus) ToPointer() *EnvelopeUpdateStatus {
@@ -610,6 +1176,8 @@ func (e *EnvelopeUpdateStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = EnvelopeUpdateStatus(v)
 		return nil
 	default:
@@ -675,17 +1243,18 @@ func (e *EnvelopeUpdateVisibilityResponse) UnmarshalJSON(data []byte) error {
 	}
 }
 
-type EnvelopeUpdateTemplateType string
+type EnvelopeUpdateTemplateTypeResponse string
 
 const (
-	EnvelopeUpdateTemplateTypePublic  EnvelopeUpdateTemplateType = "PUBLIC"
-	EnvelopeUpdateTemplateTypePrivate EnvelopeUpdateTemplateType = "PRIVATE"
+	EnvelopeUpdateTemplateTypeResponsePublic       EnvelopeUpdateTemplateTypeResponse = "PUBLIC"
+	EnvelopeUpdateTemplateTypeResponsePrivate      EnvelopeUpdateTemplateTypeResponse = "PRIVATE"
+	EnvelopeUpdateTemplateTypeResponseOrganisation EnvelopeUpdateTemplateTypeResponse = "ORGANISATION"
 )
 
-func (e EnvelopeUpdateTemplateType) ToPointer() *EnvelopeUpdateTemplateType {
+func (e EnvelopeUpdateTemplateTypeResponse) ToPointer() *EnvelopeUpdateTemplateTypeResponse {
 	return &e
 }
-func (e *EnvelopeUpdateTemplateType) UnmarshalJSON(data []byte) error {
+func (e *EnvelopeUpdateTemplateTypeResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -694,10 +1263,12 @@ func (e *EnvelopeUpdateTemplateType) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
-		*e = EnvelopeUpdateTemplateType(v)
+		fallthrough
+	case "ORGANISATION":
+		*e = EnvelopeUpdateTemplateTypeResponse(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnvelopeUpdateTemplateType: %v", v)
+		return fmt.Errorf("invalid value for EnvelopeUpdateTemplateTypeResponse: %v", v)
 	}
 }
 
@@ -821,7 +1392,14 @@ func CreateEnvelopeUpdateFormValuesNumber(number float64) EnvelopeUpdateFormValu
 	}
 }
 
-func (u *EnvelopeUpdateFormValues) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeUpdateFormValues) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeUpdateFormValues{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -870,7 +1448,7 @@ type EnvelopeUpdateResponseBody struct {
 	Status            EnvelopeUpdateStatus                `json:"status"`
 	Source            EnvelopeUpdateSource                `json:"source"`
 	Visibility        EnvelopeUpdateVisibilityResponse    `json:"visibility"`
-	TemplateType      EnvelopeUpdateTemplateType          `json:"templateType"`
+	TemplateType      EnvelopeUpdateTemplateTypeResponse  `json:"templateType"`
 	ID                string                              `json:"id"`
 	SecondaryID       string                              `json:"secondaryId"`
 	ExternalID        *string                             `json:"externalId"`
@@ -923,9 +1501,9 @@ func (e *EnvelopeUpdateResponseBody) GetVisibility() EnvelopeUpdateVisibilityRes
 	return e.Visibility
 }
 
-func (e *EnvelopeUpdateResponseBody) GetTemplateType() EnvelopeUpdateTemplateType {
+func (e *EnvelopeUpdateResponseBody) GetTemplateType() EnvelopeUpdateTemplateTypeResponse {
 	if e == nil {
-		return EnvelopeUpdateTemplateType("")
+		return EnvelopeUpdateTemplateTypeResponse("")
 	}
 	return e.TemplateType
 }

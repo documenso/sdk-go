@@ -65,7 +65,14 @@ func CreateTemplateCreateDocumentFromTemplateEmailUnionStr(str string) TemplateC
 	}
 }
 
-func (u *TemplateCreateDocumentFromTemplateEmailUnion) UnmarshalJSON(data []byte) error {
+func (u *TemplateCreateDocumentFromTemplateEmailUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = TemplateCreateDocumentFromTemplateEmailUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var templateCreateDocumentFromTemplateEmailEnum TemplateCreateDocumentFromTemplateEmailEnum = TemplateCreateDocumentFromTemplateEmailEnum("")
 	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateEmailEnum, "", true, nil); err == nil {
@@ -640,7 +647,14 @@ func CreateTemplateCreateDocumentFromTemplatePrefillFieldUnionTemplateCreateDocu
 	}
 }
 
-func (u *TemplateCreateDocumentFromTemplatePrefillFieldUnion) UnmarshalJSON(data []byte) error {
+func (u *TemplateCreateDocumentFromTemplatePrefillFieldUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = TemplateCreateDocumentFromTemplatePrefillFieldUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var templateCreateDocumentFromTemplatePrefillFieldText TemplateCreateDocumentFromTemplatePrefillFieldText = TemplateCreateDocumentFromTemplatePrefillFieldText{}
 	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplatePrefillFieldText, "", true, nil); err == nil {
@@ -721,12 +735,15 @@ const (
 	TemplateCreateDocumentFromTemplateDateFormatYyyyMMddHhMmA            TemplateCreateDocumentFromTemplateDateFormat = "yyyy-MM-dd hh:mm a"
 	TemplateCreateDocumentFromTemplateDateFormatYyyyMMdd                 TemplateCreateDocumentFromTemplateDateFormat = "yyyy-MM-dd"
 	TemplateCreateDocumentFromTemplateDateFormatDdMmSlashYyyy            TemplateCreateDocumentFromTemplateDateFormat = "dd/MM/yyyy"
+	TemplateCreateDocumentFromTemplateDateFormatDdMmDashYyyy             TemplateCreateDocumentFromTemplateDateFormat = "dd-MM-yyyy"
 	TemplateCreateDocumentFromTemplateDateFormatMmDdSlashYyyy            TemplateCreateDocumentFromTemplateDateFormat = "MM/dd/yyyy"
 	TemplateCreateDocumentFromTemplateDateFormatYyMMdd                   TemplateCreateDocumentFromTemplateDateFormat = "yy-MM-dd"
 	TemplateCreateDocumentFromTemplateDateFormatMmmmDdCommaYyyy          TemplateCreateDocumentFromTemplateDateFormat = "MMMM dd, yyyy"
 	TemplateCreateDocumentFromTemplateDateFormatEeeeMmmmDdCommaYyyy      TemplateCreateDocumentFromTemplateDateFormat = "EEEE, MMMM dd, yyyy"
 	TemplateCreateDocumentFromTemplateDateFormatDdMmSlashYyyyHhMmA       TemplateCreateDocumentFromTemplateDateFormat = "dd/MM/yyyy hh:mm a"
 	TemplateCreateDocumentFromTemplateDateFormatDdMmSlashYyyyHHmm        TemplateCreateDocumentFromTemplateDateFormat = "dd/MM/yyyy HH:mm"
+	TemplateCreateDocumentFromTemplateDateFormatDdMmDashYyyyHhMmA        TemplateCreateDocumentFromTemplateDateFormat = "dd-MM-yyyy hh:mm a"
+	TemplateCreateDocumentFromTemplateDateFormatDdMmDashYyyyHHmm         TemplateCreateDocumentFromTemplateDateFormat = "dd-MM-yyyy HH:mm"
 	TemplateCreateDocumentFromTemplateDateFormatMmDdSlashYyyyHhMmA       TemplateCreateDocumentFromTemplateDateFormat = "MM/dd/yyyy hh:mm a"
 	TemplateCreateDocumentFromTemplateDateFormatMmDdSlashYyyyHHmm        TemplateCreateDocumentFromTemplateDateFormat = "MM/dd/yyyy HH:mm"
 	TemplateCreateDocumentFromTemplateDateFormatDdDotMmDotYyyy           TemplateCreateDocumentFromTemplateDateFormat = "dd.MM.yyyy"
@@ -757,6 +774,8 @@ func (e *TemplateCreateDocumentFromTemplateDateFormat) UnmarshalJSON(data []byte
 		fallthrough
 	case "dd/MM/yyyy":
 		fallthrough
+	case "dd-MM-yyyy":
+		fallthrough
 	case "MM/dd/yyyy":
 		fallthrough
 	case "yy-MM-dd":
@@ -768,6 +787,10 @@ func (e *TemplateCreateDocumentFromTemplateDateFormat) UnmarshalJSON(data []byte
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
 	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "dd-MM-yyyy hh:mm a":
+		fallthrough
+	case "dd-MM-yyyy HH:mm":
 		fallthrough
 	case "MM/dd/yyyy hh:mm a":
 		fallthrough
@@ -835,6 +858,8 @@ type TemplateCreateDocumentFromTemplateOverrideEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (t TemplateCreateDocumentFromTemplateOverrideEmailSettings) MarshalJSON() ([]byte, error) {
@@ -897,6 +922,20 @@ func (t *TemplateCreateDocumentFromTemplateOverrideEmailSettings) GetOwnerDocume
 	return t.OwnerDocumentCompleted
 }
 
+func (t *TemplateCreateDocumentFromTemplateOverrideEmailSettings) GetOwnerRecipientExpired() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerRecipientExpired
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverrideEmailSettings) GetOwnerDocumentCreated() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerDocumentCreated
+}
+
 type TemplateCreateDocumentFromTemplateLanguage string
 
 const (
@@ -950,20 +989,179 @@ func (e *TemplateCreateDocumentFromTemplateLanguage) UnmarshalJSON(data []byte) 
 	}
 }
 
+type TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (t TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-templatecreatedocumentfromtemplateenvelopeexpirationperiodoverride2
+// #endregion class-body-templatecreatedocumentfromtemplateenvelopeexpirationperiodoverride2
+
+type TemplateCreateDocumentFromTemplateOverrideUnit string
+
+const (
+	TemplateCreateDocumentFromTemplateOverrideUnitDay   TemplateCreateDocumentFromTemplateOverrideUnit = "day"
+	TemplateCreateDocumentFromTemplateOverrideUnitWeek  TemplateCreateDocumentFromTemplateOverrideUnit = "week"
+	TemplateCreateDocumentFromTemplateOverrideUnitMonth TemplateCreateDocumentFromTemplateOverrideUnit = "month"
+	TemplateCreateDocumentFromTemplateOverrideUnitYear  TemplateCreateDocumentFromTemplateOverrideUnit = "year"
+)
+
+func (e TemplateCreateDocumentFromTemplateOverrideUnit) ToPointer() *TemplateCreateDocumentFromTemplateOverrideUnit {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateOverrideUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		fallthrough
+	case "year":
+		*e = TemplateCreateDocumentFromTemplateOverrideUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateOverrideUnit: %v", v)
+	}
+}
+
+type TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1 struct {
+	Unit   TemplateCreateDocumentFromTemplateOverrideUnit `json:"unit"`
+	Amount int64                                          `json:"amount"`
+}
+
+func (t TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1) GetUnit() TemplateCreateDocumentFromTemplateOverrideUnit {
+	if t == nil {
+		return TemplateCreateDocumentFromTemplateOverrideUnit("")
+	}
+	return t.Unit
+}
+
+func (t *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1) GetAmount() int64 {
+	if t == nil {
+		return 0
+	}
+	return t.Amount
+}
+
+// #region class-body-templatecreatedocumentfromtemplateenvelopeexpirationperiodoverride1
+// #endregion class-body-templatecreatedocumentfromtemplateenvelopeexpirationperiodoverride1
+
+type TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionType string
+
+const (
+	TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1 TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionType = "template_createDocumentFromTemplate_envelopeExpirationPeriod_override_1"
+	TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2 TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionType = "template_createDocumentFromTemplate_envelopeExpirationPeriod_override_2"
+)
+
+type TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion struct {
+	TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1 *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1 `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2 *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2 `queryParam:"inline" union:"member"`
+
+	Type TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionType
+}
+
+func CreateTemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1(templateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1 TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1) TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion {
+	typ := TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1
+
+	return TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion{
+		TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1: &templateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1,
+		Type: typ,
+	}
+}
+
+func CreateTemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2(templateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2 TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2) TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion {
+	typ := TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2
+
+	return TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion{
+		TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2: &templateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2,
+		Type: typ,
+	}
+}
+
+func (u *TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var templateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1 TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1 = TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1, "", true, nil); err == nil {
+		u.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1 = &templateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1
+		u.Type = TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1
+		return nil
+	}
+
+	var templateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2 TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2 = TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2, "", true, nil); err == nil {
+		u.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2 = &templateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2
+		u.Type = TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion", string(data))
+}
+
+func (u TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion) MarshalJSON() ([]byte, error) {
+	if u.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1 != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1, "", true)
+	}
+
+	if u.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2 != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion: all fields are null")
+}
+
 type TemplateCreateDocumentFromTemplateOverride struct {
-	Title                  *string                                                       `json:"title,omitempty"`
-	Subject                *string                                                       `json:"subject,omitempty"`
-	Message                *string                                                       `json:"message,omitempty"`
-	Timezone               *string                                                       `json:"timezone,omitempty"`
-	DateFormat             *TemplateCreateDocumentFromTemplateDateFormat                 `json:"dateFormat,omitempty"`
-	RedirectURL            *string                                                       `json:"redirectUrl,omitempty"`
-	DistributionMethod     *TemplateCreateDocumentFromTemplateOverrideDistributionMethod `json:"distributionMethod,omitempty"`
-	EmailSettings          *TemplateCreateDocumentFromTemplateOverrideEmailSettings      `json:"emailSettings,omitempty"`
-	Language               *TemplateCreateDocumentFromTemplateLanguage                   `json:"language,omitempty"`
-	TypedSignatureEnabled  *bool                                                         `json:"typedSignatureEnabled,omitempty"`
-	UploadSignatureEnabled *bool                                                         `json:"uploadSignatureEnabled,omitempty"`
-	DrawSignatureEnabled   *bool                                                         `json:"drawSignatureEnabled,omitempty"`
-	AllowDictateNextSigner *bool                                                         `json:"allowDictateNextSigner,omitempty"`
+	Title                    *string                                                                  `json:"title,omitempty"`
+	Subject                  *string                                                                  `json:"subject,omitempty"`
+	Message                  *string                                                                  `json:"message,omitempty"`
+	Timezone                 *string                                                                  `json:"timezone,omitempty"`
+	DateFormat               *TemplateCreateDocumentFromTemplateDateFormat                            `json:"dateFormat,omitempty"`
+	RedirectURL              *string                                                                  `json:"redirectUrl,omitempty"`
+	DistributionMethod       *TemplateCreateDocumentFromTemplateOverrideDistributionMethod            `json:"distributionMethod,omitempty"`
+	EmailSettings            *TemplateCreateDocumentFromTemplateOverrideEmailSettings                 `json:"emailSettings,omitempty"`
+	Language                 *TemplateCreateDocumentFromTemplateLanguage                              `json:"language,omitempty"`
+	TypedSignatureEnabled    *bool                                                                    `json:"typedSignatureEnabled,omitempty"`
+	UploadSignatureEnabled   *bool                                                                    `json:"uploadSignatureEnabled,omitempty"`
+	DrawSignatureEnabled     *bool                                                                    `json:"drawSignatureEnabled,omitempty"`
+	AllowDictateNextSigner   *bool                                                                    `json:"allowDictateNextSigner,omitempty"`
+	EnvelopeExpirationPeriod *TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion `json:"envelopeExpirationPeriod,omitempty"`
 }
 
 func (t *TemplateCreateDocumentFromTemplateOverride) GetTitle() *string {
@@ -1055,6 +1253,13 @@ func (t *TemplateCreateDocumentFromTemplateOverride) GetAllowDictateNextSigner()
 		return nil
 	}
 	return t.AllowDictateNextSigner
+}
+
+func (t *TemplateCreateDocumentFromTemplateOverride) GetEnvelopeExpirationPeriod() *TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion {
+	if t == nil {
+		return nil
+	}
+	return t.EnvelopeExpirationPeriod
 }
 
 type TemplateCreateDocumentFromTemplateTypeLink string
@@ -1161,7 +1366,14 @@ func CreateTemplateCreateDocumentFromTemplateFormValuesRequestNumber(number floa
 	}
 }
 
-func (u *TemplateCreateDocumentFromTemplateFormValuesRequest) UnmarshalJSON(data []byte) error {
+func (u *TemplateCreateDocumentFromTemplateFormValuesRequest) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = TemplateCreateDocumentFromTemplateFormValuesRequest{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -1330,6 +1542,7 @@ const (
 	TemplateCreateDocumentFromTemplateStatusPending   TemplateCreateDocumentFromTemplateStatus = "PENDING"
 	TemplateCreateDocumentFromTemplateStatusCompleted TemplateCreateDocumentFromTemplateStatus = "COMPLETED"
 	TemplateCreateDocumentFromTemplateStatusRejected  TemplateCreateDocumentFromTemplateStatus = "REJECTED"
+	TemplateCreateDocumentFromTemplateStatusCancelled TemplateCreateDocumentFromTemplateStatus = "CANCELLED"
 )
 
 func (e TemplateCreateDocumentFromTemplateStatus) ToPointer() *TemplateCreateDocumentFromTemplateStatus {
@@ -1348,6 +1561,8 @@ func (e *TemplateCreateDocumentFromTemplateStatus) UnmarshalJSON(data []byte) er
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = TemplateCreateDocumentFromTemplateStatus(v)
 		return nil
 	default:
@@ -1504,7 +1719,14 @@ func CreateTemplateCreateDocumentFromTemplateFormValuesResponseNumber(number flo
 	}
 }
 
-func (u *TemplateCreateDocumentFromTemplateFormValuesResponse) UnmarshalJSON(data []byte) error {
+func (u *TemplateCreateDocumentFromTemplateFormValuesResponse) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = TemplateCreateDocumentFromTemplateFormValuesResponse{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -1678,6 +1900,8 @@ type TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (t TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings) MarshalJSON() ([]byte, error) {
@@ -1740,25 +1964,528 @@ func (t *TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings) GetOwnerDo
 	return t.OwnerDocumentCompleted
 }
 
+func (t *TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings) GetOwnerRecipientExpired() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerRecipientExpired
+}
+
+func (t *TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings) GetOwnerDocumentCreated() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerDocumentCreated
+}
+
+type TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (t TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-templatecreatedocumentfromtemplateenvelopeexpirationperiodresponse2
+// #endregion class-body-templatecreatedocumentfromtemplateenvelopeexpirationperiodresponse2
+
+type TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponse string
+
+const (
+	TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponseDay   TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponse = "day"
+	TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponseWeek  TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponse = "week"
+	TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponseMonth TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponse = "month"
+	TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponseYear  TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponse = "year"
+)
+
+func (e TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponse) ToPointer() *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponse {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponse) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		fallthrough
+	case "year":
+		*e = TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponse(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponse: %v", v)
+	}
+}
+
+type TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1 struct {
+	Unit   TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponse `json:"unit"`
+	Amount int64                                                                  `json:"amount"`
+}
+
+func (t TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1) GetUnit() TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponse {
+	if t == nil {
+		return TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodUnitResponse("")
+	}
+	return t.Unit
+}
+
+func (t *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1) GetAmount() int64 {
+	if t == nil {
+		return 0
+	}
+	return t.Amount
+}
+
+// #region class-body-templatecreatedocumentfromtemplateenvelopeexpirationperiodresponse1
+// #endregion class-body-templatecreatedocumentfromtemplateenvelopeexpirationperiodresponse1
+
+type TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionType string
+
+const (
+	TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1 TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionType = "template_createDocumentFromTemplate_envelopeExpirationPeriod_response_1"
+	TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2 TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionType = "template_createDocumentFromTemplate_envelopeExpirationPeriod_response_2"
+)
+
+type TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion struct {
+	TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1 *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1 `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2 *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2 `queryParam:"inline" union:"member"`
+
+	Type TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionType
+}
+
+func CreateTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1(templateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1 TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1) TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion {
+	typ := TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1
+
+	return TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion{
+		TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1: &templateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1,
+		Type: typ,
+	}
+}
+
+func CreateTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2(templateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2 TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2) TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion {
+	typ := TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2
+
+	return TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion{
+		TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2: &templateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2,
+		Type: typ,
+	}
+}
+
+func (u *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var templateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1 TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1 = TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1, "", true, nil); err == nil {
+		u.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1 = &templateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1
+		u.Type = TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1
+		return nil
+	}
+
+	var templateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2 TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2 = TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2, "", true, nil); err == nil {
+		u.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2 = &templateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2
+		u.Type = TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion", string(data))
+}
+
+func (u TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion) MarshalJSON() ([]byte, error) {
+	if u.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1 != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1, "", true)
+	}
+
+	if u.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2 != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion: all fields are null")
+}
+
+type TemplateCreateDocumentFromTemplateSendAfter2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (t TemplateCreateDocumentFromTemplateSendAfter2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateCreateDocumentFromTemplateSendAfter2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TemplateCreateDocumentFromTemplateSendAfter2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-templatecreatedocumentfromtemplatesendafter2
+// #endregion class-body-templatecreatedocumentfromtemplatesendafter2
+
+type TemplateCreateDocumentFromTemplateSendAfterUnit string
+
+const (
+	TemplateCreateDocumentFromTemplateSendAfterUnitDay   TemplateCreateDocumentFromTemplateSendAfterUnit = "day"
+	TemplateCreateDocumentFromTemplateSendAfterUnitWeek  TemplateCreateDocumentFromTemplateSendAfterUnit = "week"
+	TemplateCreateDocumentFromTemplateSendAfterUnitMonth TemplateCreateDocumentFromTemplateSendAfterUnit = "month"
+)
+
+func (e TemplateCreateDocumentFromTemplateSendAfterUnit) ToPointer() *TemplateCreateDocumentFromTemplateSendAfterUnit {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateSendAfterUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		*e = TemplateCreateDocumentFromTemplateSendAfterUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateSendAfterUnit: %v", v)
+	}
+}
+
+type TemplateCreateDocumentFromTemplateSendAfter1 struct {
+	Unit   TemplateCreateDocumentFromTemplateSendAfterUnit `json:"unit"`
+	Amount int64                                           `json:"amount"`
+}
+
+func (t TemplateCreateDocumentFromTemplateSendAfter1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateCreateDocumentFromTemplateSendAfter1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TemplateCreateDocumentFromTemplateSendAfter1) GetUnit() TemplateCreateDocumentFromTemplateSendAfterUnit {
+	if t == nil {
+		return TemplateCreateDocumentFromTemplateSendAfterUnit("")
+	}
+	return t.Unit
+}
+
+func (t *TemplateCreateDocumentFromTemplateSendAfter1) GetAmount() int64 {
+	if t == nil {
+		return 0
+	}
+	return t.Amount
+}
+
+// #region class-body-templatecreatedocumentfromtemplatesendafter1
+// #endregion class-body-templatecreatedocumentfromtemplatesendafter1
+
+type TemplateCreateDocumentFromTemplateSendAfterUnionType string
+
+const (
+	TemplateCreateDocumentFromTemplateSendAfterUnionTypeTemplateCreateDocumentFromTemplateSendAfter1 TemplateCreateDocumentFromTemplateSendAfterUnionType = "template_createDocumentFromTemplate_sendAfter_1"
+	TemplateCreateDocumentFromTemplateSendAfterUnionTypeTemplateCreateDocumentFromTemplateSendAfter2 TemplateCreateDocumentFromTemplateSendAfterUnionType = "template_createDocumentFromTemplate_sendAfter_2"
+)
+
+type TemplateCreateDocumentFromTemplateSendAfterUnion struct {
+	TemplateCreateDocumentFromTemplateSendAfter1 *TemplateCreateDocumentFromTemplateSendAfter1 `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplateSendAfter2 *TemplateCreateDocumentFromTemplateSendAfter2 `queryParam:"inline" union:"member"`
+
+	Type TemplateCreateDocumentFromTemplateSendAfterUnionType
+}
+
+func CreateTemplateCreateDocumentFromTemplateSendAfterUnionTemplateCreateDocumentFromTemplateSendAfter1(templateCreateDocumentFromTemplateSendAfter1 TemplateCreateDocumentFromTemplateSendAfter1) TemplateCreateDocumentFromTemplateSendAfterUnion {
+	typ := TemplateCreateDocumentFromTemplateSendAfterUnionTypeTemplateCreateDocumentFromTemplateSendAfter1
+
+	return TemplateCreateDocumentFromTemplateSendAfterUnion{
+		TemplateCreateDocumentFromTemplateSendAfter1: &templateCreateDocumentFromTemplateSendAfter1,
+		Type: typ,
+	}
+}
+
+func CreateTemplateCreateDocumentFromTemplateSendAfterUnionTemplateCreateDocumentFromTemplateSendAfter2(templateCreateDocumentFromTemplateSendAfter2 TemplateCreateDocumentFromTemplateSendAfter2) TemplateCreateDocumentFromTemplateSendAfterUnion {
+	typ := TemplateCreateDocumentFromTemplateSendAfterUnionTypeTemplateCreateDocumentFromTemplateSendAfter2
+
+	return TemplateCreateDocumentFromTemplateSendAfterUnion{
+		TemplateCreateDocumentFromTemplateSendAfter2: &templateCreateDocumentFromTemplateSendAfter2,
+		Type: typ,
+	}
+}
+
+func (u *TemplateCreateDocumentFromTemplateSendAfterUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = TemplateCreateDocumentFromTemplateSendAfterUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var templateCreateDocumentFromTemplateSendAfter1 TemplateCreateDocumentFromTemplateSendAfter1 = TemplateCreateDocumentFromTemplateSendAfter1{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateSendAfter1, "", true, nil); err == nil {
+		u.TemplateCreateDocumentFromTemplateSendAfter1 = &templateCreateDocumentFromTemplateSendAfter1
+		u.Type = TemplateCreateDocumentFromTemplateSendAfterUnionTypeTemplateCreateDocumentFromTemplateSendAfter1
+		return nil
+	}
+
+	var templateCreateDocumentFromTemplateSendAfter2 TemplateCreateDocumentFromTemplateSendAfter2 = TemplateCreateDocumentFromTemplateSendAfter2{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateSendAfter2, "", true, nil); err == nil {
+		u.TemplateCreateDocumentFromTemplateSendAfter2 = &templateCreateDocumentFromTemplateSendAfter2
+		u.Type = TemplateCreateDocumentFromTemplateSendAfterUnionTypeTemplateCreateDocumentFromTemplateSendAfter2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TemplateCreateDocumentFromTemplateSendAfterUnion", string(data))
+}
+
+func (u TemplateCreateDocumentFromTemplateSendAfterUnion) MarshalJSON() ([]byte, error) {
+	if u.TemplateCreateDocumentFromTemplateSendAfter1 != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateSendAfter1, "", true)
+	}
+
+	if u.TemplateCreateDocumentFromTemplateSendAfter2 != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateSendAfter2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type TemplateCreateDocumentFromTemplateSendAfterUnion: all fields are null")
+}
+
+type TemplateCreateDocumentFromTemplateRepeatEvery2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (t TemplateCreateDocumentFromTemplateRepeatEvery2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateCreateDocumentFromTemplateRepeatEvery2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TemplateCreateDocumentFromTemplateRepeatEvery2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-templatecreatedocumentfromtemplaterepeatevery2
+// #endregion class-body-templatecreatedocumentfromtemplaterepeatevery2
+
+type TemplateCreateDocumentFromTemplateRepeatEveryUnit string
+
+const (
+	TemplateCreateDocumentFromTemplateRepeatEveryUnitDay   TemplateCreateDocumentFromTemplateRepeatEveryUnit = "day"
+	TemplateCreateDocumentFromTemplateRepeatEveryUnitWeek  TemplateCreateDocumentFromTemplateRepeatEveryUnit = "week"
+	TemplateCreateDocumentFromTemplateRepeatEveryUnitMonth TemplateCreateDocumentFromTemplateRepeatEveryUnit = "month"
+)
+
+func (e TemplateCreateDocumentFromTemplateRepeatEveryUnit) ToPointer() *TemplateCreateDocumentFromTemplateRepeatEveryUnit {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateRepeatEveryUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		*e = TemplateCreateDocumentFromTemplateRepeatEveryUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateRepeatEveryUnit: %v", v)
+	}
+}
+
+type TemplateCreateDocumentFromTemplateRepeatEvery1 struct {
+	Unit   TemplateCreateDocumentFromTemplateRepeatEveryUnit `json:"unit"`
+	Amount int64                                             `json:"amount"`
+}
+
+func (t TemplateCreateDocumentFromTemplateRepeatEvery1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TemplateCreateDocumentFromTemplateRepeatEvery1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *TemplateCreateDocumentFromTemplateRepeatEvery1) GetUnit() TemplateCreateDocumentFromTemplateRepeatEveryUnit {
+	if t == nil {
+		return TemplateCreateDocumentFromTemplateRepeatEveryUnit("")
+	}
+	return t.Unit
+}
+
+func (t *TemplateCreateDocumentFromTemplateRepeatEvery1) GetAmount() int64 {
+	if t == nil {
+		return 0
+	}
+	return t.Amount
+}
+
+// #region class-body-templatecreatedocumentfromtemplaterepeatevery1
+// #endregion class-body-templatecreatedocumentfromtemplaterepeatevery1
+
+type TemplateCreateDocumentFromTemplateRepeatEveryUnionType string
+
+const (
+	TemplateCreateDocumentFromTemplateRepeatEveryUnionTypeTemplateCreateDocumentFromTemplateRepeatEvery1 TemplateCreateDocumentFromTemplateRepeatEveryUnionType = "template_createDocumentFromTemplate_repeatEvery_1"
+	TemplateCreateDocumentFromTemplateRepeatEveryUnionTypeTemplateCreateDocumentFromTemplateRepeatEvery2 TemplateCreateDocumentFromTemplateRepeatEveryUnionType = "template_createDocumentFromTemplate_repeatEvery_2"
+)
+
+type TemplateCreateDocumentFromTemplateRepeatEveryUnion struct {
+	TemplateCreateDocumentFromTemplateRepeatEvery1 *TemplateCreateDocumentFromTemplateRepeatEvery1 `queryParam:"inline" union:"member"`
+	TemplateCreateDocumentFromTemplateRepeatEvery2 *TemplateCreateDocumentFromTemplateRepeatEvery2 `queryParam:"inline" union:"member"`
+
+	Type TemplateCreateDocumentFromTemplateRepeatEveryUnionType
+}
+
+func CreateTemplateCreateDocumentFromTemplateRepeatEveryUnionTemplateCreateDocumentFromTemplateRepeatEvery1(templateCreateDocumentFromTemplateRepeatEvery1 TemplateCreateDocumentFromTemplateRepeatEvery1) TemplateCreateDocumentFromTemplateRepeatEveryUnion {
+	typ := TemplateCreateDocumentFromTemplateRepeatEveryUnionTypeTemplateCreateDocumentFromTemplateRepeatEvery1
+
+	return TemplateCreateDocumentFromTemplateRepeatEveryUnion{
+		TemplateCreateDocumentFromTemplateRepeatEvery1: &templateCreateDocumentFromTemplateRepeatEvery1,
+		Type: typ,
+	}
+}
+
+func CreateTemplateCreateDocumentFromTemplateRepeatEveryUnionTemplateCreateDocumentFromTemplateRepeatEvery2(templateCreateDocumentFromTemplateRepeatEvery2 TemplateCreateDocumentFromTemplateRepeatEvery2) TemplateCreateDocumentFromTemplateRepeatEveryUnion {
+	typ := TemplateCreateDocumentFromTemplateRepeatEveryUnionTypeTemplateCreateDocumentFromTemplateRepeatEvery2
+
+	return TemplateCreateDocumentFromTemplateRepeatEveryUnion{
+		TemplateCreateDocumentFromTemplateRepeatEvery2: &templateCreateDocumentFromTemplateRepeatEvery2,
+		Type: typ,
+	}
+}
+
+func (u *TemplateCreateDocumentFromTemplateRepeatEveryUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = TemplateCreateDocumentFromTemplateRepeatEveryUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var templateCreateDocumentFromTemplateRepeatEvery1 TemplateCreateDocumentFromTemplateRepeatEvery1 = TemplateCreateDocumentFromTemplateRepeatEvery1{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateRepeatEvery1, "", true, nil); err == nil {
+		u.TemplateCreateDocumentFromTemplateRepeatEvery1 = &templateCreateDocumentFromTemplateRepeatEvery1
+		u.Type = TemplateCreateDocumentFromTemplateRepeatEveryUnionTypeTemplateCreateDocumentFromTemplateRepeatEvery1
+		return nil
+	}
+
+	var templateCreateDocumentFromTemplateRepeatEvery2 TemplateCreateDocumentFromTemplateRepeatEvery2 = TemplateCreateDocumentFromTemplateRepeatEvery2{}
+	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateRepeatEvery2, "", true, nil); err == nil {
+		u.TemplateCreateDocumentFromTemplateRepeatEvery2 = &templateCreateDocumentFromTemplateRepeatEvery2
+		u.Type = TemplateCreateDocumentFromTemplateRepeatEveryUnionTypeTemplateCreateDocumentFromTemplateRepeatEvery2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for TemplateCreateDocumentFromTemplateRepeatEveryUnion", string(data))
+}
+
+func (u TemplateCreateDocumentFromTemplateRepeatEveryUnion) MarshalJSON() ([]byte, error) {
+	if u.TemplateCreateDocumentFromTemplateRepeatEvery1 != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateRepeatEvery1, "", true)
+	}
+
+	if u.TemplateCreateDocumentFromTemplateRepeatEvery2 != nil {
+		return utils.MarshalJSON(u.TemplateCreateDocumentFromTemplateRepeatEvery2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type TemplateCreateDocumentFromTemplateRepeatEveryUnion: all fields are null")
+}
+
+type TemplateCreateDocumentFromTemplateReminderSettings struct {
+	SendAfter   TemplateCreateDocumentFromTemplateSendAfterUnion   `json:"sendAfter"`
+	RepeatEvery TemplateCreateDocumentFromTemplateRepeatEveryUnion `json:"repeatEvery"`
+}
+
+func (t *TemplateCreateDocumentFromTemplateReminderSettings) GetSendAfter() TemplateCreateDocumentFromTemplateSendAfterUnion {
+	if t == nil {
+		return TemplateCreateDocumentFromTemplateSendAfterUnion{}
+	}
+	return t.SendAfter
+}
+
+func (t *TemplateCreateDocumentFromTemplateReminderSettings) GetRepeatEvery() TemplateCreateDocumentFromTemplateRepeatEveryUnion {
+	if t == nil {
+		return TemplateCreateDocumentFromTemplateRepeatEveryUnion{}
+	}
+	return t.RepeatEvery
+}
+
 type TemplateCreateDocumentFromTemplateDocumentMeta struct {
-	SigningOrder           TemplateCreateDocumentFromTemplateSigningOrder                   `json:"signingOrder"`
-	DistributionMethod     TemplateCreateDocumentFromTemplateDocumentMetaDistributionMethod `json:"distributionMethod"`
-	ID                     string                                                           `json:"id"`
-	Subject                *string                                                          `json:"subject"`
-	Message                *string                                                          `json:"message"`
-	Timezone               *string                                                          `json:"timezone"`
-	DateFormat             *string                                                          `json:"dateFormat"`
-	RedirectURL            *string                                                          `json:"redirectUrl"`
-	TypedSignatureEnabled  bool                                                             `json:"typedSignatureEnabled"`
-	UploadSignatureEnabled bool                                                             `json:"uploadSignatureEnabled"`
-	DrawSignatureEnabled   bool                                                             `json:"drawSignatureEnabled"`
-	AllowDictateNextSigner bool                                                             `json:"allowDictateNextSigner"`
-	Language               string                                                           `json:"language"`
-	EmailSettings          *TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings     `json:"emailSettings"`
-	EmailID                *string                                                          `json:"emailId"`
-	EmailReplyTo           *string                                                          `json:"emailReplyTo"`
-	Password               *string                                                          `default:"null" json:"password"`
-	DocumentID             *float64                                                         `default:"-1" json:"documentId"`
+	SigningOrder             TemplateCreateDocumentFromTemplateSigningOrder                           `json:"signingOrder"`
+	DistributionMethod       TemplateCreateDocumentFromTemplateDocumentMetaDistributionMethod         `json:"distributionMethod"`
+	ID                       string                                                                   `json:"id"`
+	Subject                  *string                                                                  `json:"subject"`
+	Message                  *string                                                                  `json:"message"`
+	Timezone                 *string                                                                  `json:"timezone"`
+	DateFormat               *string                                                                  `json:"dateFormat"`
+	RedirectURL              *string                                                                  `json:"redirectUrl"`
+	TypedSignatureEnabled    bool                                                                     `json:"typedSignatureEnabled"`
+	UploadSignatureEnabled   bool                                                                     `json:"uploadSignatureEnabled"`
+	DrawSignatureEnabled     bool                                                                     `json:"drawSignatureEnabled"`
+	AllowDictateNextSigner   bool                                                                     `json:"allowDictateNextSigner"`
+	Language                 string                                                                   `json:"language"`
+	EmailSettings            *TemplateCreateDocumentFromTemplateDocumentMetaEmailSettings             `json:"emailSettings"`
+	EmailID                  *string                                                                  `json:"emailId"`
+	EmailReplyTo             *string                                                                  `json:"emailReplyTo"`
+	EnvelopeExpirationPeriod *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion `json:"envelopeExpirationPeriod"`
+	ReminderSettings         *TemplateCreateDocumentFromTemplateReminderSettings                      `json:"reminderSettings"`
+	Password                 *string                                                                  `default:"null" json:"password"`
+	DocumentID               *float64                                                                 `default:"-1" json:"documentId"`
 }
 
 func (t TemplateCreateDocumentFromTemplateDocumentMeta) MarshalJSON() ([]byte, error) {
@@ -1882,6 +2609,20 @@ func (t *TemplateCreateDocumentFromTemplateDocumentMeta) GetEmailReplyTo() *stri
 		return nil
 	}
 	return t.EmailReplyTo
+}
+
+func (t *TemplateCreateDocumentFromTemplateDocumentMeta) GetEnvelopeExpirationPeriod() *TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion {
+	if t == nil {
+		return nil
+	}
+	return t.EnvelopeExpirationPeriod
+}
+
+func (t *TemplateCreateDocumentFromTemplateDocumentMeta) GetReminderSettings() *TemplateCreateDocumentFromTemplateReminderSettings {
+	if t == nil {
+		return nil
+	}
+	return t.ReminderSettings
 }
 
 func (t *TemplateCreateDocumentFromTemplateDocumentMeta) GetPassword() *string {
@@ -2252,23 +2993,25 @@ func (t *TemplateCreateDocumentFromTemplateRecipientAuthOptions) GetActionAuth()
 }
 
 type TemplateCreateDocumentFromTemplateRecipientResponse struct {
-	EnvelopeID        string                                                  `json:"envelopeId"`
-	Role              TemplateCreateDocumentFromTemplateRole                  `json:"role"`
-	ReadStatus        TemplateCreateDocumentFromTemplateReadStatus            `json:"readStatus"`
-	SigningStatus     TemplateCreateDocumentFromTemplateSigningStatus         `json:"signingStatus"`
-	SendStatus        TemplateCreateDocumentFromTemplateSendStatus            `json:"sendStatus"`
-	ID                float64                                                 `json:"id"`
-	Email             string                                                  `json:"email"`
-	Name              string                                                  `json:"name"`
-	Token             string                                                  `json:"token"`
-	DocumentDeletedAt *string                                                 `json:"documentDeletedAt"`
-	Expired           *string                                                 `json:"expired"`
-	SignedAt          *string                                                 `json:"signedAt"`
-	AuthOptions       *TemplateCreateDocumentFromTemplateRecipientAuthOptions `json:"authOptions"`
-	SigningOrder      *float64                                                `json:"signingOrder"`
-	RejectionReason   *string                                                 `json:"rejectionReason"`
-	DocumentID        *float64                                                `json:"documentId,omitempty"`
-	TemplateID        *float64                                                `json:"templateId,omitempty"`
+	EnvelopeID           string                                                  `json:"envelopeId"`
+	Role                 TemplateCreateDocumentFromTemplateRole                  `json:"role"`
+	ReadStatus           TemplateCreateDocumentFromTemplateReadStatus            `json:"readStatus"`
+	SigningStatus        TemplateCreateDocumentFromTemplateSigningStatus         `json:"signingStatus"`
+	SendStatus           TemplateCreateDocumentFromTemplateSendStatus            `json:"sendStatus"`
+	ID                   float64                                                 `json:"id"`
+	Email                string                                                  `json:"email"`
+	Name                 string                                                  `json:"name"`
+	Token                string                                                  `json:"token"`
+	DocumentDeletedAt    *string                                                 `json:"documentDeletedAt"`
+	Expired              *string                                                 `json:"expired"`
+	ExpiresAt            *string                                                 `json:"expiresAt"`
+	ExpirationNotifiedAt *string                                                 `json:"expirationNotifiedAt"`
+	SignedAt             *string                                                 `json:"signedAt"`
+	AuthOptions          *TemplateCreateDocumentFromTemplateRecipientAuthOptions `json:"authOptions"`
+	SigningOrder         *float64                                                `json:"signingOrder"`
+	RejectionReason      *string                                                 `json:"rejectionReason"`
+	DocumentID           *float64                                                `json:"documentId,omitempty"`
+	TemplateID           *float64                                                `json:"templateId,omitempty"`
 }
 
 func (t *TemplateCreateDocumentFromTemplateRecipientResponse) GetEnvelopeID() string {
@@ -2346,6 +3089,20 @@ func (t *TemplateCreateDocumentFromTemplateRecipientResponse) GetExpired() *stri
 		return nil
 	}
 	return t.Expired
+}
+
+func (t *TemplateCreateDocumentFromTemplateRecipientResponse) GetExpiresAt() *string {
+	if t == nil {
+		return nil
+	}
+	return t.ExpiresAt
+}
+
+func (t *TemplateCreateDocumentFromTemplateRecipientResponse) GetExpirationNotifiedAt() *string {
+	if t == nil {
+		return nil
+	}
+	return t.ExpirationNotifiedAt
 }
 
 func (t *TemplateCreateDocumentFromTemplateRecipientResponse) GetSignedAt() *string {
@@ -2443,6 +3200,38 @@ func (e *TemplateCreateDocumentFromTemplateFieldType) UnmarshalJSON(data []byte)
 	}
 }
 
+type TemplateCreateDocumentFromTemplateOverflow10 string
+
+const (
+	TemplateCreateDocumentFromTemplateOverflow10Auto       TemplateCreateDocumentFromTemplateOverflow10 = "auto"
+	TemplateCreateDocumentFromTemplateOverflow10Horizontal TemplateCreateDocumentFromTemplateOverflow10 = "horizontal"
+	TemplateCreateDocumentFromTemplateOverflow10Vertical   TemplateCreateDocumentFromTemplateOverflow10 = "vertical"
+	TemplateCreateDocumentFromTemplateOverflow10Crop       TemplateCreateDocumentFromTemplateOverflow10 = "crop"
+)
+
+func (e TemplateCreateDocumentFromTemplateOverflow10) ToPointer() *TemplateCreateDocumentFromTemplateOverflow10 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateOverflow10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateDocumentFromTemplateOverflow10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateOverflow10: %v", v)
+	}
+}
+
 type TemplateCreateDocumentFromTemplateFieldMetaTypeDropdown string
 
 const (
@@ -2488,12 +3277,16 @@ func (t *TemplateCreateDocumentFromTemplateValue3) GetValue() string {
 	return t.Value
 }
 
+// #region class-body-templatecreatedocumentfromtemplatevalue3
+// #endregion class-body-templatecreatedocumentfromtemplatevalue3
+
 type TemplateCreateDocumentFromTemplateFieldMetaDropdown struct {
 	Label        *string                                                 `json:"label,omitempty"`
 	Placeholder  *string                                                 `json:"placeholder,omitempty"`
 	Required     *bool                                                   `json:"required,omitempty"`
 	ReadOnly     *bool                                                   `json:"readOnly,omitempty"`
 	FontSize     *float64                                                `default:"12" json:"fontSize"`
+	Overflow     *TemplateCreateDocumentFromTemplateOverflow10           `json:"overflow,omitempty"`
 	Type         TemplateCreateDocumentFromTemplateFieldMetaTypeDropdown `json:"type"`
 	Values       []TemplateCreateDocumentFromTemplateValue3              `json:"values,omitempty"`
 	DefaultValue *string                                                 `json:"defaultValue,omitempty"`
@@ -2545,6 +3338,13 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaDropdown) GetFontSize() *flo
 	return t.FontSize
 }
 
+func (t *TemplateCreateDocumentFromTemplateFieldMetaDropdown) GetOverflow() *TemplateCreateDocumentFromTemplateOverflow10 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateDocumentFromTemplateFieldMetaDropdown) GetType() TemplateCreateDocumentFromTemplateFieldMetaTypeDropdown {
 	if t == nil {
 		return TemplateCreateDocumentFromTemplateFieldMetaTypeDropdown("")
@@ -2564,6 +3364,38 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaDropdown) GetDefaultValue() 
 		return nil
 	}
 	return t.DefaultValue
+}
+
+type TemplateCreateDocumentFromTemplateOverflow9 string
+
+const (
+	TemplateCreateDocumentFromTemplateOverflow9Auto       TemplateCreateDocumentFromTemplateOverflow9 = "auto"
+	TemplateCreateDocumentFromTemplateOverflow9Horizontal TemplateCreateDocumentFromTemplateOverflow9 = "horizontal"
+	TemplateCreateDocumentFromTemplateOverflow9Vertical   TemplateCreateDocumentFromTemplateOverflow9 = "vertical"
+	TemplateCreateDocumentFromTemplateOverflow9Crop       TemplateCreateDocumentFromTemplateOverflow9 = "crop"
+)
+
+func (e TemplateCreateDocumentFromTemplateOverflow9) ToPointer() *TemplateCreateDocumentFromTemplateOverflow9 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateOverflow9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateDocumentFromTemplateOverflow9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateOverflow9: %v", v)
+	}
 }
 
 type TemplateCreateDocumentFromTemplateFieldMetaTypeCheckbox string
@@ -2627,6 +3459,9 @@ func (t *TemplateCreateDocumentFromTemplateValue2) GetValue() string {
 	return t.Value
 }
 
+// #region class-body-templatecreatedocumentfromtemplatevalue2
+// #endregion class-body-templatecreatedocumentfromtemplatevalue2
+
 type TemplateCreateDocumentFromTemplateDirection2 string
 
 const (
@@ -2659,6 +3494,7 @@ type TemplateCreateDocumentFromTemplateFieldMetaCheckbox struct {
 	Required         *bool                                                   `json:"required,omitempty"`
 	ReadOnly         *bool                                                   `json:"readOnly,omitempty"`
 	FontSize         *float64                                                `default:"12" json:"fontSize"`
+	Overflow         *TemplateCreateDocumentFromTemplateOverflow9            `json:"overflow,omitempty"`
 	Type             TemplateCreateDocumentFromTemplateFieldMetaTypeCheckbox `json:"type"`
 	Values           []TemplateCreateDocumentFromTemplateValue2              `json:"values,omitempty"`
 	ValidationRule   *string                                                 `json:"validationRule,omitempty"`
@@ -2712,6 +3548,13 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaCheckbox) GetFontSize() *flo
 	return t.FontSize
 }
 
+func (t *TemplateCreateDocumentFromTemplateFieldMetaCheckbox) GetOverflow() *TemplateCreateDocumentFromTemplateOverflow9 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateDocumentFromTemplateFieldMetaCheckbox) GetType() TemplateCreateDocumentFromTemplateFieldMetaTypeCheckbox {
 	if t == nil {
 		return TemplateCreateDocumentFromTemplateFieldMetaTypeCheckbox("")
@@ -2745,6 +3588,38 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaCheckbox) GetDirection() *Te
 		return nil
 	}
 	return t.Direction
+}
+
+type TemplateCreateDocumentFromTemplateOverflow8 string
+
+const (
+	TemplateCreateDocumentFromTemplateOverflow8Auto       TemplateCreateDocumentFromTemplateOverflow8 = "auto"
+	TemplateCreateDocumentFromTemplateOverflow8Horizontal TemplateCreateDocumentFromTemplateOverflow8 = "horizontal"
+	TemplateCreateDocumentFromTemplateOverflow8Vertical   TemplateCreateDocumentFromTemplateOverflow8 = "vertical"
+	TemplateCreateDocumentFromTemplateOverflow8Crop       TemplateCreateDocumentFromTemplateOverflow8 = "crop"
+)
+
+func (e TemplateCreateDocumentFromTemplateOverflow8) ToPointer() *TemplateCreateDocumentFromTemplateOverflow8 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateOverflow8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateDocumentFromTemplateOverflow8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateOverflow8: %v", v)
+	}
 }
 
 type TemplateCreateDocumentFromTemplateFieldMetaTypeRadio string
@@ -2808,6 +3683,9 @@ func (t *TemplateCreateDocumentFromTemplateValue1) GetValue() string {
 	return t.Value
 }
 
+// #region class-body-templatecreatedocumentfromtemplatevalue1
+// #endregion class-body-templatecreatedocumentfromtemplatevalue1
+
 type TemplateCreateDocumentFromTemplateDirection1 string
 
 const (
@@ -2840,6 +3718,7 @@ type TemplateCreateDocumentFromTemplateFieldMetaRadio struct {
 	Required    *bool                                                `json:"required,omitempty"`
 	ReadOnly    *bool                                                `json:"readOnly,omitempty"`
 	FontSize    *float64                                             `default:"12" json:"fontSize"`
+	Overflow    *TemplateCreateDocumentFromTemplateOverflow8         `json:"overflow,omitempty"`
 	Type        TemplateCreateDocumentFromTemplateFieldMetaTypeRadio `json:"type"`
 	Values      []TemplateCreateDocumentFromTemplateValue1           `json:"values,omitempty"`
 	Direction   *TemplateCreateDocumentFromTemplateDirection1        `default:"vertical" json:"direction"`
@@ -2891,6 +3770,13 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaRadio) GetFontSize() *float6
 	return t.FontSize
 }
 
+func (t *TemplateCreateDocumentFromTemplateFieldMetaRadio) GetOverflow() *TemplateCreateDocumentFromTemplateOverflow8 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateDocumentFromTemplateFieldMetaRadio) GetType() TemplateCreateDocumentFromTemplateFieldMetaTypeRadio {
 	if t == nil {
 		return TemplateCreateDocumentFromTemplateFieldMetaTypeRadio("")
@@ -2910,6 +3796,38 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaRadio) GetDirection() *Templ
 		return nil
 	}
 	return t.Direction
+}
+
+type TemplateCreateDocumentFromTemplateOverflow7 string
+
+const (
+	TemplateCreateDocumentFromTemplateOverflow7Auto       TemplateCreateDocumentFromTemplateOverflow7 = "auto"
+	TemplateCreateDocumentFromTemplateOverflow7Horizontal TemplateCreateDocumentFromTemplateOverflow7 = "horizontal"
+	TemplateCreateDocumentFromTemplateOverflow7Vertical   TemplateCreateDocumentFromTemplateOverflow7 = "vertical"
+	TemplateCreateDocumentFromTemplateOverflow7Crop       TemplateCreateDocumentFromTemplateOverflow7 = "crop"
+)
+
+func (e TemplateCreateDocumentFromTemplateOverflow7) ToPointer() *TemplateCreateDocumentFromTemplateOverflow7 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateOverflow7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateDocumentFromTemplateOverflow7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateOverflow7: %v", v)
+	}
 }
 
 type TemplateCreateDocumentFromTemplateFieldMetaTypeNumber string
@@ -2999,6 +3917,7 @@ type TemplateCreateDocumentFromTemplateFieldMetaNumber struct {
 	Required      *bool                                                 `json:"required,omitempty"`
 	ReadOnly      *bool                                                 `json:"readOnly,omitempty"`
 	FontSize      *float64                                              `default:"12" json:"fontSize"`
+	Overflow      *TemplateCreateDocumentFromTemplateOverflow7          `json:"overflow,omitempty"`
 	Type          TemplateCreateDocumentFromTemplateFieldMetaTypeNumber `json:"type"`
 	NumberFormat  *string                                               `json:"numberFormat,omitempty"`
 	Value         *string                                               `json:"value,omitempty"`
@@ -3054,6 +3973,13 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaNumber) GetFontSize() *float
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateCreateDocumentFromTemplateFieldMetaNumber) GetOverflow() *TemplateCreateDocumentFromTemplateOverflow7 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
 }
 
 func (t *TemplateCreateDocumentFromTemplateFieldMetaNumber) GetType() TemplateCreateDocumentFromTemplateFieldMetaTypeNumber {
@@ -3117,6 +4043,38 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaNumber) GetVerticalAlign() *
 		return nil
 	}
 	return t.VerticalAlign
+}
+
+type TemplateCreateDocumentFromTemplateOverflow6 string
+
+const (
+	TemplateCreateDocumentFromTemplateOverflow6Auto       TemplateCreateDocumentFromTemplateOverflow6 = "auto"
+	TemplateCreateDocumentFromTemplateOverflow6Horizontal TemplateCreateDocumentFromTemplateOverflow6 = "horizontal"
+	TemplateCreateDocumentFromTemplateOverflow6Vertical   TemplateCreateDocumentFromTemplateOverflow6 = "vertical"
+	TemplateCreateDocumentFromTemplateOverflow6Crop       TemplateCreateDocumentFromTemplateOverflow6 = "crop"
+)
+
+func (e TemplateCreateDocumentFromTemplateOverflow6) ToPointer() *TemplateCreateDocumentFromTemplateOverflow6 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateOverflow6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateDocumentFromTemplateOverflow6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateOverflow6: %v", v)
+	}
 }
 
 type TemplateCreateDocumentFromTemplateFieldMetaTypeText string
@@ -3206,6 +4164,7 @@ type TemplateCreateDocumentFromTemplateFieldMetaText struct {
 	Required       *bool                                               `json:"required,omitempty"`
 	ReadOnly       *bool                                               `json:"readOnly,omitempty"`
 	FontSize       *float64                                            `default:"12" json:"fontSize"`
+	Overflow       *TemplateCreateDocumentFromTemplateOverflow6        `json:"overflow,omitempty"`
 	Type           TemplateCreateDocumentFromTemplateFieldMetaTypeText `json:"type"`
 	Text           *string                                             `json:"text,omitempty"`
 	CharacterLimit *float64                                            `json:"characterLimit,omitempty"`
@@ -3261,6 +4220,13 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaText) GetFontSize() *float64
 	return t.FontSize
 }
 
+func (t *TemplateCreateDocumentFromTemplateFieldMetaText) GetOverflow() *TemplateCreateDocumentFromTemplateOverflow6 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateDocumentFromTemplateFieldMetaText) GetType() TemplateCreateDocumentFromTemplateFieldMetaTypeText {
 	if t == nil {
 		return TemplateCreateDocumentFromTemplateFieldMetaTypeText("")
@@ -3308,6 +4274,38 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaText) GetVerticalAlign() *Te
 		return nil
 	}
 	return t.VerticalAlign
+}
+
+type TemplateCreateDocumentFromTemplateOverflow5 string
+
+const (
+	TemplateCreateDocumentFromTemplateOverflow5Auto       TemplateCreateDocumentFromTemplateOverflow5 = "auto"
+	TemplateCreateDocumentFromTemplateOverflow5Horizontal TemplateCreateDocumentFromTemplateOverflow5 = "horizontal"
+	TemplateCreateDocumentFromTemplateOverflow5Vertical   TemplateCreateDocumentFromTemplateOverflow5 = "vertical"
+	TemplateCreateDocumentFromTemplateOverflow5Crop       TemplateCreateDocumentFromTemplateOverflow5 = "crop"
+)
+
+func (e TemplateCreateDocumentFromTemplateOverflow5) ToPointer() *TemplateCreateDocumentFromTemplateOverflow5 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateOverflow5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateDocumentFromTemplateOverflow5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateOverflow5: %v", v)
+	}
 }
 
 type TemplateCreateDocumentFromTemplateFieldMetaTypeDate string
@@ -3368,6 +4366,7 @@ type TemplateCreateDocumentFromTemplateFieldMetaDate struct {
 	Required    *bool                                               `json:"required,omitempty"`
 	ReadOnly    *bool                                               `json:"readOnly,omitempty"`
 	FontSize    *float64                                            `default:"12" json:"fontSize"`
+	Overflow    *TemplateCreateDocumentFromTemplateOverflow5        `default:"auto" json:"overflow"`
 	Type        TemplateCreateDocumentFromTemplateFieldMetaTypeDate `json:"type"`
 	TextAlign   *TemplateCreateDocumentFromTemplateTextAlign4       `json:"textAlign,omitempty"`
 }
@@ -3418,6 +4417,13 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaDate) GetFontSize() *float64
 	return t.FontSize
 }
 
+func (t *TemplateCreateDocumentFromTemplateFieldMetaDate) GetOverflow() *TemplateCreateDocumentFromTemplateOverflow5 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateDocumentFromTemplateFieldMetaDate) GetType() TemplateCreateDocumentFromTemplateFieldMetaTypeDate {
 	if t == nil {
 		return TemplateCreateDocumentFromTemplateFieldMetaTypeDate("")
@@ -3430,6 +4436,38 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaDate) GetTextAlign() *Templa
 		return nil
 	}
 	return t.TextAlign
+}
+
+type TemplateCreateDocumentFromTemplateOverflow4 string
+
+const (
+	TemplateCreateDocumentFromTemplateOverflow4Auto       TemplateCreateDocumentFromTemplateOverflow4 = "auto"
+	TemplateCreateDocumentFromTemplateOverflow4Horizontal TemplateCreateDocumentFromTemplateOverflow4 = "horizontal"
+	TemplateCreateDocumentFromTemplateOverflow4Vertical   TemplateCreateDocumentFromTemplateOverflow4 = "vertical"
+	TemplateCreateDocumentFromTemplateOverflow4Crop       TemplateCreateDocumentFromTemplateOverflow4 = "crop"
+)
+
+func (e TemplateCreateDocumentFromTemplateOverflow4) ToPointer() *TemplateCreateDocumentFromTemplateOverflow4 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateOverflow4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateDocumentFromTemplateOverflow4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateOverflow4: %v", v)
+	}
 }
 
 type TemplateCreateDocumentFromTemplateTypeEmail string
@@ -3490,6 +4528,7 @@ type TemplateCreateDocumentFromTemplateFieldMetaEmail struct {
 	Required    *bool                                         `json:"required,omitempty"`
 	ReadOnly    *bool                                         `json:"readOnly,omitempty"`
 	FontSize    *float64                                      `default:"12" json:"fontSize"`
+	Overflow    *TemplateCreateDocumentFromTemplateOverflow4  `default:"auto" json:"overflow"`
 	Type        TemplateCreateDocumentFromTemplateTypeEmail   `json:"type"`
 	TextAlign   *TemplateCreateDocumentFromTemplateTextAlign3 `json:"textAlign,omitempty"`
 }
@@ -3540,6 +4579,13 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaEmail) GetFontSize() *float6
 	return t.FontSize
 }
 
+func (t *TemplateCreateDocumentFromTemplateFieldMetaEmail) GetOverflow() *TemplateCreateDocumentFromTemplateOverflow4 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateDocumentFromTemplateFieldMetaEmail) GetType() TemplateCreateDocumentFromTemplateTypeEmail {
 	if t == nil {
 		return TemplateCreateDocumentFromTemplateTypeEmail("")
@@ -3552,6 +4598,38 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaEmail) GetTextAlign() *Templ
 		return nil
 	}
 	return t.TextAlign
+}
+
+type TemplateCreateDocumentFromTemplateOverflow3 string
+
+const (
+	TemplateCreateDocumentFromTemplateOverflow3Auto       TemplateCreateDocumentFromTemplateOverflow3 = "auto"
+	TemplateCreateDocumentFromTemplateOverflow3Horizontal TemplateCreateDocumentFromTemplateOverflow3 = "horizontal"
+	TemplateCreateDocumentFromTemplateOverflow3Vertical   TemplateCreateDocumentFromTemplateOverflow3 = "vertical"
+	TemplateCreateDocumentFromTemplateOverflow3Crop       TemplateCreateDocumentFromTemplateOverflow3 = "crop"
+)
+
+func (e TemplateCreateDocumentFromTemplateOverflow3) ToPointer() *TemplateCreateDocumentFromTemplateOverflow3 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateOverflow3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateDocumentFromTemplateOverflow3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateOverflow3: %v", v)
+	}
 }
 
 type TemplateCreateDocumentFromTemplateTypeName string
@@ -3612,6 +4690,7 @@ type TemplateCreateDocumentFromTemplateFieldMetaName struct {
 	Required    *bool                                         `json:"required,omitempty"`
 	ReadOnly    *bool                                         `json:"readOnly,omitempty"`
 	FontSize    *float64                                      `default:"12" json:"fontSize"`
+	Overflow    *TemplateCreateDocumentFromTemplateOverflow3  `json:"overflow,omitempty"`
 	Type        TemplateCreateDocumentFromTemplateTypeName    `json:"type"`
 	TextAlign   *TemplateCreateDocumentFromTemplateTextAlign2 `json:"textAlign,omitempty"`
 }
@@ -3662,6 +4741,13 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaName) GetFontSize() *float64
 	return t.FontSize
 }
 
+func (t *TemplateCreateDocumentFromTemplateFieldMetaName) GetOverflow() *TemplateCreateDocumentFromTemplateOverflow3 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateDocumentFromTemplateFieldMetaName) GetType() TemplateCreateDocumentFromTemplateTypeName {
 	if t == nil {
 		return TemplateCreateDocumentFromTemplateTypeName("")
@@ -3674,6 +4760,38 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaName) GetTextAlign() *Templa
 		return nil
 	}
 	return t.TextAlign
+}
+
+type TemplateCreateDocumentFromTemplateOverflow2 string
+
+const (
+	TemplateCreateDocumentFromTemplateOverflow2Auto       TemplateCreateDocumentFromTemplateOverflow2 = "auto"
+	TemplateCreateDocumentFromTemplateOverflow2Horizontal TemplateCreateDocumentFromTemplateOverflow2 = "horizontal"
+	TemplateCreateDocumentFromTemplateOverflow2Vertical   TemplateCreateDocumentFromTemplateOverflow2 = "vertical"
+	TemplateCreateDocumentFromTemplateOverflow2Crop       TemplateCreateDocumentFromTemplateOverflow2 = "crop"
+)
+
+func (e TemplateCreateDocumentFromTemplateOverflow2) ToPointer() *TemplateCreateDocumentFromTemplateOverflow2 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateOverflow2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateDocumentFromTemplateOverflow2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateOverflow2: %v", v)
+	}
 }
 
 type TemplateCreateDocumentFromTemplateTypeInitials string
@@ -3734,6 +4852,7 @@ type TemplateCreateDocumentFromTemplateFieldMetaInitials struct {
 	Required    *bool                                          `json:"required,omitempty"`
 	ReadOnly    *bool                                          `json:"readOnly,omitempty"`
 	FontSize    *float64                                       `default:"12" json:"fontSize"`
+	Overflow    *TemplateCreateDocumentFromTemplateOverflow2   `json:"overflow,omitempty"`
 	Type        TemplateCreateDocumentFromTemplateTypeInitials `json:"type"`
 	TextAlign   *TemplateCreateDocumentFromTemplateTextAlign1  `json:"textAlign,omitempty"`
 }
@@ -3784,6 +4903,13 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaInitials) GetFontSize() *flo
 	return t.FontSize
 }
 
+func (t *TemplateCreateDocumentFromTemplateFieldMetaInitials) GetOverflow() *TemplateCreateDocumentFromTemplateOverflow2 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateDocumentFromTemplateFieldMetaInitials) GetType() TemplateCreateDocumentFromTemplateTypeInitials {
 	if t == nil {
 		return TemplateCreateDocumentFromTemplateTypeInitials("")
@@ -3796,6 +4922,38 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaInitials) GetTextAlign() *Te
 		return nil
 	}
 	return t.TextAlign
+}
+
+type TemplateCreateDocumentFromTemplateOverflow1 string
+
+const (
+	TemplateCreateDocumentFromTemplateOverflow1Auto       TemplateCreateDocumentFromTemplateOverflow1 = "auto"
+	TemplateCreateDocumentFromTemplateOverflow1Horizontal TemplateCreateDocumentFromTemplateOverflow1 = "horizontal"
+	TemplateCreateDocumentFromTemplateOverflow1Vertical   TemplateCreateDocumentFromTemplateOverflow1 = "vertical"
+	TemplateCreateDocumentFromTemplateOverflow1Crop       TemplateCreateDocumentFromTemplateOverflow1 = "crop"
+)
+
+func (e TemplateCreateDocumentFromTemplateOverflow1) ToPointer() *TemplateCreateDocumentFromTemplateOverflow1 {
+	return &e
+}
+func (e *TemplateCreateDocumentFromTemplateOverflow1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateDocumentFromTemplateOverflow1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateDocumentFromTemplateOverflow1: %v", v)
+	}
 }
 
 type TemplateCreateDocumentFromTemplateTypeSignature string
@@ -3827,6 +4985,7 @@ type TemplateCreateDocumentFromTemplateFieldMetaSignature struct {
 	Required    *bool                                           `json:"required,omitempty"`
 	ReadOnly    *bool                                           `json:"readOnly,omitempty"`
 	FontSize    *float64                                        `default:"12" json:"fontSize"`
+	Overflow    *TemplateCreateDocumentFromTemplateOverflow1    `default:"auto" json:"overflow"`
 	Type        TemplateCreateDocumentFromTemplateTypeSignature `json:"type"`
 }
 
@@ -3874,6 +5033,13 @@ func (t *TemplateCreateDocumentFromTemplateFieldMetaSignature) GetFontSize() *fl
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateCreateDocumentFromTemplateFieldMetaSignature) GetOverflow() *TemplateCreateDocumentFromTemplateOverflow1 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
 }
 
 func (t *TemplateCreateDocumentFromTemplateFieldMetaSignature) GetType() TemplateCreateDocumentFromTemplateTypeSignature {
@@ -4003,7 +5169,14 @@ func CreateTemplateCreateDocumentFromTemplateFieldMetaUnionTemplateCreateDocumen
 	}
 }
 
-func (u *TemplateCreateDocumentFromTemplateFieldMetaUnion) UnmarshalJSON(data []byte) error {
+func (u *TemplateCreateDocumentFromTemplateFieldMetaUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = TemplateCreateDocumentFromTemplateFieldMetaUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var templateCreateDocumentFromTemplateFieldMetaSignature TemplateCreateDocumentFromTemplateFieldMetaSignature = TemplateCreateDocumentFromTemplateFieldMetaSignature{}
 	if err := utils.UnmarshalJSON(data, &templateCreateDocumentFromTemplateFieldMetaSignature, "", true, nil); err == nil {

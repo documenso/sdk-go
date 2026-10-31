@@ -1,5 +1,15 @@
 # TemplateGetTemplateByIDActionAuth
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.TemplateGetTemplateByIDActionAuthAccount
+```
+
 
 ## Values
 

@@ -1,5 +1,15 @@
 # TemplateCreateDocumentFromTemplateDateFormat
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.TemplateCreateDocumentFromTemplateDateFormatYyyyMMddHhMmA
+```
+
 
 ## Values
 
@@ -8,12 +18,15 @@
 | `TemplateCreateDocumentFromTemplateDateFormatYyyyMMddHhMmA`            | yyyy-MM-dd hh:mm a                                                     |
 | `TemplateCreateDocumentFromTemplateDateFormatYyyyMMdd`                 | yyyy-MM-dd                                                             |
 | `TemplateCreateDocumentFromTemplateDateFormatDdMmSlashYyyy`            | dd/MM/yyyy                                                             |
+| `TemplateCreateDocumentFromTemplateDateFormatDdMmDashYyyy`             | dd-MM-yyyy                                                             |
 | `TemplateCreateDocumentFromTemplateDateFormatMmDdSlashYyyy`            | MM/dd/yyyy                                                             |
 | `TemplateCreateDocumentFromTemplateDateFormatYyMMdd`                   | yy-MM-dd                                                               |
 | `TemplateCreateDocumentFromTemplateDateFormatMmmmDdCommaYyyy`          | MMMM dd, yyyy                                                          |
 | `TemplateCreateDocumentFromTemplateDateFormatEeeeMmmmDdCommaYyyy`      | EEEE, MMMM dd, yyyy                                                    |
 | `TemplateCreateDocumentFromTemplateDateFormatDdMmSlashYyyyHhMmA`       | dd/MM/yyyy hh:mm a                                                     |
 | `TemplateCreateDocumentFromTemplateDateFormatDdMmSlashYyyyHHmm`        | dd/MM/yyyy HH:mm                                                       |
+| `TemplateCreateDocumentFromTemplateDateFormatDdMmDashYyyyHhMmA`        | dd-MM-yyyy hh:mm a                                                     |
+| `TemplateCreateDocumentFromTemplateDateFormatDdMmDashYyyyHHmm`         | dd-MM-yyyy HH:mm                                                       |
 | `TemplateCreateDocumentFromTemplateDateFormatMmDdSlashYyyyHhMmA`       | MM/dd/yyyy hh:mm a                                                     |
 | `TemplateCreateDocumentFromTemplateDateFormatMmDdSlashYyyyHHmm`        | MM/dd/yyyy HH:mm                                                       |
 | `TemplateCreateDocumentFromTemplateDateFormatDdDotMmDotYyyy`           | dd.MM.yyyy                                                             |
