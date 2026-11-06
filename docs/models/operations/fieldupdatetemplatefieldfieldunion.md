@@ -69,3 +69,33 @@ fieldUpdateTemplateFieldFieldUnion := operations.CreateFieldUpdateTemplateFieldF
 fieldUpdateTemplateFieldFieldUnion := operations.CreateFieldUpdateTemplateFieldFieldUnionFieldUpdateTemplateFieldFieldDropdown(operations.FieldUpdateTemplateFieldFieldDropdown{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch fieldUpdateTemplateFieldFieldUnion.Type {
+	case operations.FieldUpdateTemplateFieldFieldUnionTypeFieldUpdateTemplateFieldFieldSignature:
+		// fieldUpdateTemplateFieldFieldUnion.FieldUpdateTemplateFieldFieldSignature is populated
+	case operations.FieldUpdateTemplateFieldFieldUnionTypeFieldUpdateTemplateFieldFieldFreeSignature:
+		// fieldUpdateTemplateFieldFieldUnion.FieldUpdateTemplateFieldFieldFreeSignature is populated
+	case operations.FieldUpdateTemplateFieldFieldUnionTypeFieldUpdateTemplateFieldFieldInitials:
+		// fieldUpdateTemplateFieldFieldUnion.FieldUpdateTemplateFieldFieldInitials is populated
+	case operations.FieldUpdateTemplateFieldFieldUnionTypeFieldUpdateTemplateFieldFieldName:
+		// fieldUpdateTemplateFieldFieldUnion.FieldUpdateTemplateFieldFieldName is populated
+	case operations.FieldUpdateTemplateFieldFieldUnionTypeFieldUpdateTemplateFieldFieldEmail:
+		// fieldUpdateTemplateFieldFieldUnion.FieldUpdateTemplateFieldFieldEmail is populated
+	case operations.FieldUpdateTemplateFieldFieldUnionTypeFieldUpdateTemplateFieldFieldDate:
+		// fieldUpdateTemplateFieldFieldUnion.FieldUpdateTemplateFieldFieldDate is populated
+	case operations.FieldUpdateTemplateFieldFieldUnionTypeFieldUpdateTemplateFieldFieldText:
+		// fieldUpdateTemplateFieldFieldUnion.FieldUpdateTemplateFieldFieldText is populated
+	case operations.FieldUpdateTemplateFieldFieldUnionTypeFieldUpdateTemplateFieldFieldNumber:
+		// fieldUpdateTemplateFieldFieldUnion.FieldUpdateTemplateFieldFieldNumber is populated
+	case operations.FieldUpdateTemplateFieldFieldUnionTypeFieldUpdateTemplateFieldFieldRadio:
+		// fieldUpdateTemplateFieldFieldUnion.FieldUpdateTemplateFieldFieldRadio is populated
+	case operations.FieldUpdateTemplateFieldFieldUnionTypeFieldUpdateTemplateFieldFieldCheckbox:
+		// fieldUpdateTemplateFieldFieldUnion.FieldUpdateTemplateFieldFieldCheckbox is populated
+	case operations.FieldUpdateTemplateFieldFieldUnionTypeFieldUpdateTemplateFieldFieldDropdown:
+		// fieldUpdateTemplateFieldFieldUnion.FieldUpdateTemplateFieldFieldDropdown is populated
+}
+```

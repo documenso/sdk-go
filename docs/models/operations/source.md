@@ -21,3 +21,17 @@ source := operations.CreateSourceSourceTemplate(operations.SourceTemplate{/* val
 source := operations.CreateSourceSourceTemplateDirectLink(operations.SourceTemplateDirectLink{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch source.Type {
+	case operations.SourceTypeEnvelopeAuditLogFindSourceDocument:
+		// source.EnvelopeAuditLogFindSourceDocument is populated
+	case operations.SourceTypeSourceTemplate:
+		// source.SourceTemplate is populated
+	case operations.SourceTypeSourceTemplateDirectLink:
+		// source.SourceTemplateDirectLink is populated
+}
+```

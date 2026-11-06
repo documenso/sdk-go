@@ -1,19 +1,24 @@
-# Templates.Fields
+# ~~Templates.Fields~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
 ### Available Operations
 
-* [Create](#create) - Create template field
-* [Get](#get) - Get template field
-* [CreateMany](#createmany) - Create template fields
-* [Update](#update) - Update template field
-* [UpdateMany](#updatemany) - Update template fields
-* [Delete](#delete) - Delete template field
+* [~~Create~~](#create) - Create template field :warning: **Deprecated**
+* [~~Get~~](#get) - Get template field :warning: **Deprecated**
+* [~~CreateMany~~](#createmany) - Create template fields :warning: **Deprecated**
+* [~~Update~~](#update) - Update template field :warning: **Deprecated**
+* [~~UpdateMany~~](#updatemany) - Update template fields :warning: **Deprecated**
+* [~~Delete~~](#delete) - Delete template field :warning: **Deprecated**
 
-## Create
+## ~~Create~~
 
-Create a single field for a template.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create a single field for a template.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -54,7 +59,29 @@ func main() {
         log.Fatal(err)
     }
     if res.Object != nil {
-        // handle response
+        switch res.Object.FieldMeta.Type {
+            case operations.FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaSignatureResponse:
+                // res.Object.FieldMeta.FieldCreateTemplateFieldFieldMetaSignatureResponse is populated
+            case operations.FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaInitialsResponse:
+                // res.Object.FieldMeta.FieldCreateTemplateFieldFieldMetaInitialsResponse is populated
+            case operations.FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaNameResponse:
+                // res.Object.FieldMeta.FieldCreateTemplateFieldFieldMetaNameResponse is populated
+            case operations.FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaEmailResponse:
+                // res.Object.FieldMeta.FieldCreateTemplateFieldFieldMetaEmailResponse is populated
+            case operations.FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaDateResponse:
+                // res.Object.FieldMeta.FieldCreateTemplateFieldFieldMetaDateResponse is populated
+            case operations.FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaTextResponse:
+                // res.Object.FieldMeta.FieldCreateTemplateFieldFieldMetaTextResponse is populated
+            case operations.FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaNumberResponse:
+                // res.Object.FieldMeta.FieldCreateTemplateFieldFieldMetaNumberResponse is populated
+            case operations.FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaRadioResponse:
+                // res.Object.FieldMeta.FieldCreateTemplateFieldFieldMetaRadioResponse is populated
+            case operations.FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaCheckboxResponse:
+                // res.Object.FieldMeta.FieldCreateTemplateFieldFieldMetaCheckboxResponse is populated
+            case operations.FieldCreateTemplateFieldFieldMetaUnionTypeFieldCreateTemplateFieldFieldMetaDropdownResponse:
+                // res.Object.FieldMeta.FieldCreateTemplateFieldFieldMetaDropdownResponse is populated
+        }
+
     }
 }
 ```
@@ -81,9 +108,11 @@ func main() {
 | apierrors.FieldCreateTemplateFieldInternalServerError | 500                                                   | application/json                                      |
 | apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
 
-## Get
+## ~~Get~~
 
-Returns a single field. If you want to retrieve all the fields for a template, use the "Get Template" endpoint.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Returns a single field. If you want to retrieve all the fields for a template, use the "Get Template" endpoint.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -96,6 +125,7 @@ import(
 	"os"
 	sdkgo "github.com/documenso/sdk-go"
 	"log"
+	"github.com/documenso/sdk-go/models/operations"
 )
 
 func main() {
@@ -110,7 +140,29 @@ func main() {
         log.Fatal(err)
     }
     if res.Object != nil {
-        // handle response
+        switch res.Object.FieldMeta.Type {
+            case operations.FieldGetTemplateFieldFieldMetaUnionTypeFieldGetTemplateFieldFieldMetaSignature:
+                // res.Object.FieldMeta.FieldGetTemplateFieldFieldMetaSignature is populated
+            case operations.FieldGetTemplateFieldFieldMetaUnionTypeFieldGetTemplateFieldFieldMetaInitials:
+                // res.Object.FieldMeta.FieldGetTemplateFieldFieldMetaInitials is populated
+            case operations.FieldGetTemplateFieldFieldMetaUnionTypeFieldGetTemplateFieldFieldMetaName:
+                // res.Object.FieldMeta.FieldGetTemplateFieldFieldMetaName is populated
+            case operations.FieldGetTemplateFieldFieldMetaUnionTypeFieldGetTemplateFieldFieldMetaEmail:
+                // res.Object.FieldMeta.FieldGetTemplateFieldFieldMetaEmail is populated
+            case operations.FieldGetTemplateFieldFieldMetaUnionTypeFieldGetTemplateFieldFieldMetaDate:
+                // res.Object.FieldMeta.FieldGetTemplateFieldFieldMetaDate is populated
+            case operations.FieldGetTemplateFieldFieldMetaUnionTypeFieldGetTemplateFieldFieldMetaText:
+                // res.Object.FieldMeta.FieldGetTemplateFieldFieldMetaText is populated
+            case operations.FieldGetTemplateFieldFieldMetaUnionTypeFieldGetTemplateFieldFieldMetaNumber:
+                // res.Object.FieldMeta.FieldGetTemplateFieldFieldMetaNumber is populated
+            case operations.FieldGetTemplateFieldFieldMetaUnionTypeFieldGetTemplateFieldFieldMetaRadio:
+                // res.Object.FieldMeta.FieldGetTemplateFieldFieldMetaRadio is populated
+            case operations.FieldGetTemplateFieldFieldMetaUnionTypeFieldGetTemplateFieldFieldMetaCheckbox:
+                // res.Object.FieldMeta.FieldGetTemplateFieldFieldMetaCheckbox is populated
+            case operations.FieldGetTemplateFieldFieldMetaUnionTypeFieldGetTemplateFieldFieldMetaDropdown:
+                // res.Object.FieldMeta.FieldGetTemplateFieldFieldMetaDropdown is populated
+        }
+
     }
 }
 ```
@@ -120,7 +172,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `fieldID`                                                | *float64*                                                | :heavy_check_mark:                                       | N/A                                                      |
+| `fieldID`                                                | `float64`                                                | :heavy_check_mark:                                       | N/A                                                      |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -138,9 +190,11 @@ func main() {
 | apierrors.FieldGetTemplateFieldInternalServerError | 500                                                | application/json                                   |
 | apierrors.APIError                                 | 4XX, 5XX                                           | \*/\*                                              |
 
-## CreateMany
+## ~~CreateMany~~
 
-Create multiple fields for a template.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create multiple fields for a template.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -210,9 +264,11 @@ func main() {
 | apierrors.FieldCreateTemplateFieldsInternalServerError | 500                                                    | application/json                                       |
 | apierrors.APIError                                     | 4XX, 5XX                                               | \*/\*                                                  |
 
-## Update
+## ~~Update~~
 
-Update a single field for a template.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update a single field for a template.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -248,7 +304,29 @@ func main() {
         log.Fatal(err)
     }
     if res.Object != nil {
-        // handle response
+        switch res.Object.FieldMeta.Type {
+            case operations.FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaSignatureResponse:
+                // res.Object.FieldMeta.FieldUpdateTemplateFieldFieldMetaSignatureResponse is populated
+            case operations.FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaInitialsResponse:
+                // res.Object.FieldMeta.FieldUpdateTemplateFieldFieldMetaInitialsResponse is populated
+            case operations.FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaNameResponse:
+                // res.Object.FieldMeta.FieldUpdateTemplateFieldFieldMetaNameResponse is populated
+            case operations.FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaEmailResponse:
+                // res.Object.FieldMeta.FieldUpdateTemplateFieldFieldMetaEmailResponse is populated
+            case operations.FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaDateResponse:
+                // res.Object.FieldMeta.FieldUpdateTemplateFieldFieldMetaDateResponse is populated
+            case operations.FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaTextResponse:
+                // res.Object.FieldMeta.FieldUpdateTemplateFieldFieldMetaTextResponse is populated
+            case operations.FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaNumberResponse:
+                // res.Object.FieldMeta.FieldUpdateTemplateFieldFieldMetaNumberResponse is populated
+            case operations.FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaRadioResponse:
+                // res.Object.FieldMeta.FieldUpdateTemplateFieldFieldMetaRadioResponse is populated
+            case operations.FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaCheckboxResponse:
+                // res.Object.FieldMeta.FieldUpdateTemplateFieldFieldMetaCheckboxResponse is populated
+            case operations.FieldUpdateTemplateFieldFieldMetaUnionTypeFieldUpdateTemplateFieldFieldMetaDropdownResponse:
+                // res.Object.FieldMeta.FieldUpdateTemplateFieldFieldMetaDropdownResponse is populated
+        }
+
     }
 }
 ```
@@ -275,9 +353,11 @@ func main() {
 | apierrors.FieldUpdateTemplateFieldInternalServerError | 500                                                   | application/json                                      |
 | apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
 
-## UpdateMany
+## ~~UpdateMany~~
 
-Update multiple fields for a template.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update multiple fields for a template.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -342,9 +422,11 @@ func main() {
 | apierrors.FieldUpdateTemplateFieldsInternalServerError | 500                                                    | application/json                                       |
 | apierrors.APIError                                     | 4XX, 5XX                                               | \*/\*                                                  |
 
-## Delete
+## ~~Delete~~
 
-Delete template field
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

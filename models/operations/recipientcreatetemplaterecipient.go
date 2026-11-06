@@ -372,23 +372,25 @@ func (r *RecipientCreateTemplateRecipientAuthOptions) GetActionAuth() []Recipien
 
 // RecipientCreateTemplateRecipientResponseBody - Successful response
 type RecipientCreateTemplateRecipientResponseBody struct {
-	EnvelopeID        string                                        `json:"envelopeId"`
-	Role              RecipientCreateTemplateRecipientRoleResponse  `json:"role"`
-	ReadStatus        RecipientCreateTemplateRecipientReadStatus    `json:"readStatus"`
-	SigningStatus     RecipientCreateTemplateRecipientSigningStatus `json:"signingStatus"`
-	SendStatus        RecipientCreateTemplateRecipientSendStatus    `json:"sendStatus"`
-	ID                float64                                       `json:"id"`
-	Email             string                                        `json:"email"`
-	Name              string                                        `json:"name"`
-	Token             string                                        `json:"token"`
-	DocumentDeletedAt *string                                       `json:"documentDeletedAt"`
-	Expired           *string                                       `json:"expired"`
-	SignedAt          *string                                       `json:"signedAt"`
-	AuthOptions       *RecipientCreateTemplateRecipientAuthOptions  `json:"authOptions"`
-	SigningOrder      *float64                                      `json:"signingOrder"`
-	RejectionReason   *string                                       `json:"rejectionReason"`
-	DocumentID        *float64                                      `json:"documentId,omitempty"`
-	TemplateID        *float64                                      `json:"templateId,omitempty"`
+	EnvelopeID           string                                        `json:"envelopeId"`
+	Role                 RecipientCreateTemplateRecipientRoleResponse  `json:"role"`
+	ReadStatus           RecipientCreateTemplateRecipientReadStatus    `json:"readStatus"`
+	SigningStatus        RecipientCreateTemplateRecipientSigningStatus `json:"signingStatus"`
+	SendStatus           RecipientCreateTemplateRecipientSendStatus    `json:"sendStatus"`
+	ID                   float64                                       `json:"id"`
+	Email                string                                        `json:"email"`
+	Name                 string                                        `json:"name"`
+	Token                string                                        `json:"token"`
+	DocumentDeletedAt    *string                                       `json:"documentDeletedAt"`
+	Expired              *string                                       `json:"expired"`
+	ExpiresAt            *string                                       `json:"expiresAt"`
+	ExpirationNotifiedAt *string                                       `json:"expirationNotifiedAt"`
+	SignedAt             *string                                       `json:"signedAt"`
+	AuthOptions          *RecipientCreateTemplateRecipientAuthOptions  `json:"authOptions"`
+	SigningOrder         *float64                                      `json:"signingOrder"`
+	RejectionReason      *string                                       `json:"rejectionReason"`
+	DocumentID           *float64                                      `json:"documentId,omitempty"`
+	TemplateID           *float64                                      `json:"templateId,omitempty"`
 }
 
 func (r *RecipientCreateTemplateRecipientResponseBody) GetEnvelopeID() string {
@@ -466,6 +468,20 @@ func (r *RecipientCreateTemplateRecipientResponseBody) GetExpired() *string {
 		return nil
 	}
 	return r.Expired
+}
+
+func (r *RecipientCreateTemplateRecipientResponseBody) GetExpiresAt() *string {
+	if r == nil {
+		return nil
+	}
+	return r.ExpiresAt
+}
+
+func (r *RecipientCreateTemplateRecipientResponseBody) GetExpirationNotifiedAt() *string {
+	if r == nil {
+		return nil
+	}
+	return r.ExpirationNotifiedAt
 }
 
 func (r *RecipientCreateTemplateRecipientResponseBody) GetSignedAt() *string {
