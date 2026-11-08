@@ -1,5 +1,15 @@
 # EnvelopeGetManyStatus
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.EnvelopeGetManyStatusDraft
+```
+
 
 ## Values
 
@@ -9,3 +19,4 @@
 | `EnvelopeGetManyStatusPending`   | PENDING                          |
 | `EnvelopeGetManyStatusCompleted` | COMPLETED                        |
 | `EnvelopeGetManyStatusRejected`  | REJECTED                         |
+| `EnvelopeGetManyStatusCancelled` | CANCELLED                        |
