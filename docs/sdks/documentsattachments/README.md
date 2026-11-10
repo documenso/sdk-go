@@ -1,17 +1,22 @@
-# Documents.Attachments
+# ~~Documents.Attachments~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
 ### Available Operations
 
-* [Create](#create) - Create attachment
-* [Update](#update) - Update attachment
-* [Delete](#delete) - Delete attachment
-* [Find](#find) - Find attachments
+* [~~Create~~](#create) - Create attachment :warning: **Deprecated**
+* [~~Update~~](#update) - Update attachment :warning: **Deprecated**
+* [~~Delete~~](#delete) - Delete attachment :warning: **Deprecated**
+* [~~Find~~](#find) - Find attachments :warning: **Deprecated**
 
-## Create
+## ~~Create~~
 
-Create a new attachment for a document
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create a new attachment for a document
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -72,9 +77,11 @@ func main() {
 | apierrors.DocumentAttachmentCreateInternalServerError | 500                                                   | application/json                                      |
 | apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
 
-## Update
+## ~~Update~~
 
-Update an existing attachment
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update an existing attachment
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -135,9 +142,11 @@ func main() {
 | apierrors.DocumentAttachmentUpdateInternalServerError | 500                                                   | application/json                                      |
 | apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
 
-## Delete
+## ~~Delete~~
 
-Delete an attachment from a document
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Delete an attachment from a document
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -194,9 +203,11 @@ func main() {
 | apierrors.DocumentAttachmentDeleteInternalServerError | 500                                                   | application/json                                      |
 | apierrors.APIError                                    | 4XX, 5XX                                              | \*/\*                                                 |
 
-## Find
+## ~~Find~~
 
-Find all attachments for a document
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Find all attachments for a document
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -233,7 +244,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `documentID`                                             | *float64*                                                | :heavy_check_mark:                                       | N/A                                                      |
+| `documentID`                                             | `float64`                                                | :heavy_check_mark:                                       | N/A                                                      |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response

@@ -57,10 +57,11 @@ func (e *EnvelopeItemCreateManyRequest) GetFiles() []EnvelopeItemCreateManyFile 
 }
 
 type EnvelopeItemCreateManyData struct {
-	ID         string  `json:"id"`
-	Title      string  `json:"title"`
-	EnvelopeID string  `json:"envelopeId"`
-	Order      float64 `json:"order"`
+	ID             string  `json:"id"`
+	Title          string  `json:"title"`
+	EnvelopeID     string  `json:"envelopeId"`
+	Order          float64 `json:"order"`
+	DocumentDataID string  `json:"documentDataId"`
 }
 
 func (e *EnvelopeItemCreateManyData) GetID() string {
@@ -89,6 +90,13 @@ func (e *EnvelopeItemCreateManyData) GetOrder() float64 {
 		return 0.0
 	}
 	return e.Order
+}
+
+func (e *EnvelopeItemCreateManyData) GetDocumentDataID() string {
+	if e == nil {
+		return ""
+	}
+	return e.DocumentDataID
 }
 
 // EnvelopeItemCreateManyResponseBody - Successful response

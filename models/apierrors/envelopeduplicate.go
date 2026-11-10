@@ -29,6 +29,10 @@ type EnvelopeDuplicateInternalServerError struct {
 var _ error = &EnvelopeDuplicateInternalServerError{}
 
 func (e *EnvelopeDuplicateInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type EnvelopeDuplicateForbiddenError struct {
 var _ error = &EnvelopeDuplicateForbiddenError{}
 
 func (e *EnvelopeDuplicateForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type EnvelopeDuplicateUnauthorizedError struct {
 var _ error = &EnvelopeDuplicateUnauthorizedError{}
 
 func (e *EnvelopeDuplicateUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type EnvelopeDuplicateBadRequestError struct {
 var _ error = &EnvelopeDuplicateBadRequestError{}
 
 func (e *EnvelopeDuplicateBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

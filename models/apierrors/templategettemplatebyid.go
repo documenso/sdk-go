@@ -29,6 +29,10 @@ type TemplateGetTemplateByIDInternalServerError struct {
 var _ error = &TemplateGetTemplateByIDInternalServerError{}
 
 func (e *TemplateGetTemplateByIDInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type TemplateGetTemplateByIDNotFoundError struct {
 var _ error = &TemplateGetTemplateByIDNotFoundError{}
 
 func (e *TemplateGetTemplateByIDNotFoundError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type TemplateGetTemplateByIDForbiddenError struct {
 var _ error = &TemplateGetTemplateByIDForbiddenError{}
 
 func (e *TemplateGetTemplateByIDForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type TemplateGetTemplateByIDUnauthorizedError struct {
 var _ error = &TemplateGetTemplateByIDUnauthorizedError{}
 
 func (e *TemplateGetTemplateByIDUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -133,6 +149,10 @@ type TemplateGetTemplateByIDBadRequestError struct {
 var _ error = &TemplateGetTemplateByIDBadRequestError{}
 
 func (e *TemplateGetTemplateByIDBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

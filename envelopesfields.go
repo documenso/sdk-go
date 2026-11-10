@@ -172,7 +172,7 @@ func (s *EnvelopesFields) Get(ctx context.Context, fieldID float64, opts ...oper
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -226,7 +226,7 @@ func (s *EnvelopesFields) Get(ctx context.Context, fieldID float64, opts ...oper
 
 			var out apierrors.EnvelopeFieldGetBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -251,7 +251,7 @@ func (s *EnvelopesFields) Get(ctx context.Context, fieldID float64, opts ...oper
 
 			var out apierrors.EnvelopeFieldGetUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -276,7 +276,7 @@ func (s *EnvelopesFields) Get(ctx context.Context, fieldID float64, opts ...oper
 
 			var out apierrors.EnvelopeFieldGetForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -301,7 +301,7 @@ func (s *EnvelopesFields) Get(ctx context.Context, fieldID float64, opts ...oper
 
 			var out apierrors.EnvelopeFieldGetNotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -326,7 +326,7 @@ func (s *EnvelopesFields) Get(ctx context.Context, fieldID float64, opts ...oper
 
 			var out apierrors.EnvelopeFieldGetInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -509,7 +509,7 @@ func (s *EnvelopesFields) CreateMany(ctx context.Context, request operations.Env
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -563,7 +563,7 @@ func (s *EnvelopesFields) CreateMany(ctx context.Context, request operations.Env
 
 			var out apierrors.EnvelopeFieldCreateManyBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -588,7 +588,7 @@ func (s *EnvelopesFields) CreateMany(ctx context.Context, request operations.Env
 
 			var out apierrors.EnvelopeFieldCreateManyUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -613,7 +613,7 @@ func (s *EnvelopesFields) CreateMany(ctx context.Context, request operations.Env
 
 			var out apierrors.EnvelopeFieldCreateManyForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -638,7 +638,7 @@ func (s *EnvelopesFields) CreateMany(ctx context.Context, request operations.Env
 
 			var out apierrors.EnvelopeFieldCreateManyInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -821,7 +821,7 @@ func (s *EnvelopesFields) UpdateMany(ctx context.Context, request operations.Env
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -875,7 +875,7 @@ func (s *EnvelopesFields) UpdateMany(ctx context.Context, request operations.Env
 
 			var out apierrors.EnvelopeFieldUpdateManyBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -900,7 +900,7 @@ func (s *EnvelopesFields) UpdateMany(ctx context.Context, request operations.Env
 
 			var out apierrors.EnvelopeFieldUpdateManyUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -925,7 +925,7 @@ func (s *EnvelopesFields) UpdateMany(ctx context.Context, request operations.Env
 
 			var out apierrors.EnvelopeFieldUpdateManyForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -950,7 +950,7 @@ func (s *EnvelopesFields) UpdateMany(ctx context.Context, request operations.Env
 
 			var out apierrors.EnvelopeFieldUpdateManyInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1133,7 +1133,7 @@ func (s *EnvelopesFields) Delete(ctx context.Context, request operations.Envelop
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1187,7 +1187,7 @@ func (s *EnvelopesFields) Delete(ctx context.Context, request operations.Envelop
 
 			var out apierrors.EnvelopeFieldDeleteBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1212,7 +1212,7 @@ func (s *EnvelopesFields) Delete(ctx context.Context, request operations.Envelop
 
 			var out apierrors.EnvelopeFieldDeleteUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1237,7 +1237,7 @@ func (s *EnvelopesFields) Delete(ctx context.Context, request operations.Envelop
 
 			var out apierrors.EnvelopeFieldDeleteForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1262,7 +1262,7 @@ func (s *EnvelopesFields) Delete(ctx context.Context, request operations.Envelop
 
 			var out apierrors.EnvelopeFieldDeleteInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{

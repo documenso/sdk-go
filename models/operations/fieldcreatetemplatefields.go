@@ -33,6 +33,38 @@ func (e *FieldCreateTemplateFieldsTypeDropdownRequest1) UnmarshalJSON(data []byt
 	}
 }
 
+type FieldCreateTemplateFieldsOverflowDropdown string
+
+const (
+	FieldCreateTemplateFieldsOverflowDropdownAuto       FieldCreateTemplateFieldsOverflowDropdown = "auto"
+	FieldCreateTemplateFieldsOverflowDropdownHorizontal FieldCreateTemplateFieldsOverflowDropdown = "horizontal"
+	FieldCreateTemplateFieldsOverflowDropdownVertical   FieldCreateTemplateFieldsOverflowDropdown = "vertical"
+	FieldCreateTemplateFieldsOverflowDropdownCrop       FieldCreateTemplateFieldsOverflowDropdown = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowDropdown) ToPointer() *FieldCreateTemplateFieldsOverflowDropdown {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowDropdown) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowDropdown(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowDropdown: %v", v)
+	}
+}
+
 type FieldCreateTemplateFieldsTypeDropdownRequest2 string
 
 const (
@@ -84,6 +116,7 @@ type FieldCreateTemplateFieldsFieldMetaDropdownRequest struct {
 	Required     *bool                                         `json:"required,omitempty"`
 	ReadOnly     *bool                                         `json:"readOnly,omitempty"`
 	FontSize     *float64                                      `default:"12" json:"fontSize"`
+	Overflow     *FieldCreateTemplateFieldsOverflowDropdown    `json:"overflow,omitempty"`
 	Type         FieldCreateTemplateFieldsTypeDropdownRequest2 `json:"type"`
 	Values       []FieldCreateTemplateFieldsValueDropdown      `json:"values,omitempty"`
 	DefaultValue *string                                       `json:"defaultValue,omitempty"`
@@ -133,6 +166,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaDropdownRequest) GetFontSize() *float
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateTemplateFieldsFieldMetaDropdownRequest) GetOverflow() *FieldCreateTemplateFieldsOverflowDropdown {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateTemplateFieldsFieldMetaDropdownRequest) GetType() FieldCreateTemplateFieldsTypeDropdownRequest2 {
@@ -257,6 +297,38 @@ func (e *FieldCreateTemplateFieldsTypeCheckboxRequest1) UnmarshalJSON(data []byt
 	}
 }
 
+type FieldCreateTemplateFieldsOverflowCheckbox string
+
+const (
+	FieldCreateTemplateFieldsOverflowCheckboxAuto       FieldCreateTemplateFieldsOverflowCheckbox = "auto"
+	FieldCreateTemplateFieldsOverflowCheckboxHorizontal FieldCreateTemplateFieldsOverflowCheckbox = "horizontal"
+	FieldCreateTemplateFieldsOverflowCheckboxVertical   FieldCreateTemplateFieldsOverflowCheckbox = "vertical"
+	FieldCreateTemplateFieldsOverflowCheckboxCrop       FieldCreateTemplateFieldsOverflowCheckbox = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowCheckbox) ToPointer() *FieldCreateTemplateFieldsOverflowCheckbox {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowCheckbox) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowCheckbox(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowCheckbox: %v", v)
+	}
+}
+
 type FieldCreateTemplateFieldsTypeCheckboxRequest2 string
 
 const (
@@ -350,6 +422,7 @@ type FieldCreateTemplateFieldsFieldMetaCheckboxRequest struct {
 	Required         *bool                                         `json:"required,omitempty"`
 	ReadOnly         *bool                                         `json:"readOnly,omitempty"`
 	FontSize         *float64                                      `default:"12" json:"fontSize"`
+	Overflow         *FieldCreateTemplateFieldsOverflowCheckbox    `json:"overflow,omitempty"`
 	Type             FieldCreateTemplateFieldsTypeCheckboxRequest2 `json:"type"`
 	Values           []FieldCreateTemplateFieldsValueCheckbox      `json:"values,omitempty"`
 	ValidationRule   *string                                       `json:"validationRule,omitempty"`
@@ -401,6 +474,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaCheckboxRequest) GetFontSize() *float
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateTemplateFieldsFieldMetaCheckboxRequest) GetOverflow() *FieldCreateTemplateFieldsOverflowCheckbox {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateTemplateFieldsFieldMetaCheckboxRequest) GetType() FieldCreateTemplateFieldsTypeCheckboxRequest2 {
@@ -539,6 +619,38 @@ func (e *FieldCreateTemplateFieldsTypeRadioRequest1) UnmarshalJSON(data []byte) 
 	}
 }
 
+type FieldCreateTemplateFieldsOverflowRadio string
+
+const (
+	FieldCreateTemplateFieldsOverflowRadioAuto       FieldCreateTemplateFieldsOverflowRadio = "auto"
+	FieldCreateTemplateFieldsOverflowRadioHorizontal FieldCreateTemplateFieldsOverflowRadio = "horizontal"
+	FieldCreateTemplateFieldsOverflowRadioVertical   FieldCreateTemplateFieldsOverflowRadio = "vertical"
+	FieldCreateTemplateFieldsOverflowRadioCrop       FieldCreateTemplateFieldsOverflowRadio = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowRadio) ToPointer() *FieldCreateTemplateFieldsOverflowRadio {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowRadio) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowRadio(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowRadio: %v", v)
+	}
+}
+
 type FieldCreateTemplateFieldsTypeRadioRequest2 string
 
 const (
@@ -632,6 +744,7 @@ type FieldCreateTemplateFieldsFieldMetaRadioRequest struct {
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
 	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateTemplateFieldsOverflowRadio    `json:"overflow,omitempty"`
 	Type        FieldCreateTemplateFieldsTypeRadioRequest2 `json:"type"`
 	Values      []FieldCreateTemplateFieldsValueRadio      `json:"values,omitempty"`
 	Direction   *FieldCreateTemplateFieldsDirectionRadio   `default:"vertical" json:"direction"`
@@ -681,6 +794,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaRadioRequest) GetFontSize() *float64 
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateTemplateFieldsFieldMetaRadioRequest) GetOverflow() *FieldCreateTemplateFieldsOverflowRadio {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateTemplateFieldsFieldMetaRadioRequest) GetType() FieldCreateTemplateFieldsTypeRadioRequest2 {
@@ -805,6 +925,38 @@ func (e *FieldCreateTemplateFieldsTypeNumberRequest1) UnmarshalJSON(data []byte)
 	}
 }
 
+type FieldCreateTemplateFieldsOverflowNumber string
+
+const (
+	FieldCreateTemplateFieldsOverflowNumberAuto       FieldCreateTemplateFieldsOverflowNumber = "auto"
+	FieldCreateTemplateFieldsOverflowNumberHorizontal FieldCreateTemplateFieldsOverflowNumber = "horizontal"
+	FieldCreateTemplateFieldsOverflowNumberVertical   FieldCreateTemplateFieldsOverflowNumber = "vertical"
+	FieldCreateTemplateFieldsOverflowNumberCrop       FieldCreateTemplateFieldsOverflowNumber = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowNumber) ToPointer() *FieldCreateTemplateFieldsOverflowNumber {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowNumber) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowNumber(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowNumber: %v", v)
+	}
+}
+
 type FieldCreateTemplateFieldsTypeNumberRequest2 string
 
 const (
@@ -892,6 +1044,7 @@ type FieldCreateTemplateFieldsFieldMetaNumberRequest struct {
 	Required      *bool                                         `json:"required,omitempty"`
 	ReadOnly      *bool                                         `json:"readOnly,omitempty"`
 	FontSize      *float64                                      `default:"12" json:"fontSize"`
+	Overflow      *FieldCreateTemplateFieldsOverflowNumber      `json:"overflow,omitempty"`
 	Type          FieldCreateTemplateFieldsTypeNumberRequest2   `json:"type"`
 	NumberFormat  *string                                       `json:"numberFormat,omitempty"`
 	Value         *string                                       `json:"value,omitempty"`
@@ -947,6 +1100,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaNumberRequest) GetFontSize() *float64
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateTemplateFieldsFieldMetaNumberRequest) GetOverflow() *FieldCreateTemplateFieldsOverflowNumber {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateTemplateFieldsFieldMetaNumberRequest) GetType() FieldCreateTemplateFieldsTypeNumberRequest2 {
@@ -1113,6 +1273,38 @@ func (e *FieldCreateTemplateFieldsTypeTextRequest1) UnmarshalJSON(data []byte) e
 	}
 }
 
+type FieldCreateTemplateFieldsOverflowText string
+
+const (
+	FieldCreateTemplateFieldsOverflowTextAuto       FieldCreateTemplateFieldsOverflowText = "auto"
+	FieldCreateTemplateFieldsOverflowTextHorizontal FieldCreateTemplateFieldsOverflowText = "horizontal"
+	FieldCreateTemplateFieldsOverflowTextVertical   FieldCreateTemplateFieldsOverflowText = "vertical"
+	FieldCreateTemplateFieldsOverflowTextCrop       FieldCreateTemplateFieldsOverflowText = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowText) ToPointer() *FieldCreateTemplateFieldsOverflowText {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowText) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowText(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowText: %v", v)
+	}
+}
+
 type FieldCreateTemplateFieldsTypeTextRequest2 string
 
 const (
@@ -1200,6 +1392,7 @@ type FieldCreateTemplateFieldsFieldMetaTextRequest struct {
 	Required       *bool                                       `json:"required,omitempty"`
 	ReadOnly       *bool                                       `json:"readOnly,omitempty"`
 	FontSize       *float64                                    `default:"12" json:"fontSize"`
+	Overflow       *FieldCreateTemplateFieldsOverflowText      `json:"overflow,omitempty"`
 	Type           FieldCreateTemplateFieldsTypeTextRequest2   `json:"type"`
 	Text           *string                                     `json:"text,omitempty"`
 	CharacterLimit *float64                                    `json:"characterLimit,omitempty"`
@@ -1253,6 +1446,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaTextRequest) GetFontSize() *float64 {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateTemplateFieldsFieldMetaTextRequest) GetOverflow() *FieldCreateTemplateFieldsOverflowText {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateTemplateFieldsFieldMetaTextRequest) GetType() FieldCreateTemplateFieldsTypeTextRequest2 {
@@ -1405,6 +1605,38 @@ func (e *FieldCreateTemplateFieldsTypeDateRequest1) UnmarshalJSON(data []byte) e
 	}
 }
 
+type FieldCreateTemplateFieldsOverflowDate string
+
+const (
+	FieldCreateTemplateFieldsOverflowDateAuto       FieldCreateTemplateFieldsOverflowDate = "auto"
+	FieldCreateTemplateFieldsOverflowDateHorizontal FieldCreateTemplateFieldsOverflowDate = "horizontal"
+	FieldCreateTemplateFieldsOverflowDateVertical   FieldCreateTemplateFieldsOverflowDate = "vertical"
+	FieldCreateTemplateFieldsOverflowDateCrop       FieldCreateTemplateFieldsOverflowDate = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowDate) ToPointer() *FieldCreateTemplateFieldsOverflowDate {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowDate) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowDate(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowDate: %v", v)
+	}
+}
+
 type FieldCreateTemplateFieldsTypeDateRequest2 string
 
 const (
@@ -1463,6 +1695,7 @@ type FieldCreateTemplateFieldsFieldMetaDateRequest struct {
 	Required    *bool                                     `json:"required,omitempty"`
 	ReadOnly    *bool                                     `json:"readOnly,omitempty"`
 	FontSize    *float64                                  `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateTemplateFieldsOverflowDate    `default:"auto" json:"overflow"`
 	Type        FieldCreateTemplateFieldsTypeDateRequest2 `json:"type"`
 	TextAlign   *FieldCreateTemplateFieldsTextAlignDate   `json:"textAlign,omitempty"`
 }
@@ -1511,6 +1744,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaDateRequest) GetFontSize() *float64 {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateTemplateFieldsFieldMetaDateRequest) GetOverflow() *FieldCreateTemplateFieldsOverflowDate {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateTemplateFieldsFieldMetaDateRequest) GetType() FieldCreateTemplateFieldsTypeDateRequest2 {
@@ -1628,6 +1868,38 @@ func (e *FieldCreateTemplateFieldsTypeEmailRequest1) UnmarshalJSON(data []byte) 
 	}
 }
 
+type FieldCreateTemplateFieldsOverflowEmail string
+
+const (
+	FieldCreateTemplateFieldsOverflowEmailAuto       FieldCreateTemplateFieldsOverflowEmail = "auto"
+	FieldCreateTemplateFieldsOverflowEmailHorizontal FieldCreateTemplateFieldsOverflowEmail = "horizontal"
+	FieldCreateTemplateFieldsOverflowEmailVertical   FieldCreateTemplateFieldsOverflowEmail = "vertical"
+	FieldCreateTemplateFieldsOverflowEmailCrop       FieldCreateTemplateFieldsOverflowEmail = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowEmail) ToPointer() *FieldCreateTemplateFieldsOverflowEmail {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowEmail) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowEmail(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowEmail: %v", v)
+	}
+}
+
 type FieldCreateTemplateFieldsTypeEmailRequest2 string
 
 const (
@@ -1686,6 +1958,7 @@ type FieldCreateTemplateFieldsFieldMetaEmailRequest struct {
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
 	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateTemplateFieldsOverflowEmail    `default:"auto" json:"overflow"`
 	Type        FieldCreateTemplateFieldsTypeEmailRequest2 `json:"type"`
 	TextAlign   *FieldCreateTemplateFieldsTextAlignEmail   `json:"textAlign,omitempty"`
 }
@@ -1734,6 +2007,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaEmailRequest) GetFontSize() *float64 
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateTemplateFieldsFieldMetaEmailRequest) GetOverflow() *FieldCreateTemplateFieldsOverflowEmail {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateTemplateFieldsFieldMetaEmailRequest) GetType() FieldCreateTemplateFieldsTypeEmailRequest2 {
@@ -1851,6 +2131,38 @@ func (e *FieldCreateTemplateFieldsTypeNameRequest1) UnmarshalJSON(data []byte) e
 	}
 }
 
+type FieldCreateTemplateFieldsOverflowName string
+
+const (
+	FieldCreateTemplateFieldsOverflowNameAuto       FieldCreateTemplateFieldsOverflowName = "auto"
+	FieldCreateTemplateFieldsOverflowNameHorizontal FieldCreateTemplateFieldsOverflowName = "horizontal"
+	FieldCreateTemplateFieldsOverflowNameVertical   FieldCreateTemplateFieldsOverflowName = "vertical"
+	FieldCreateTemplateFieldsOverflowNameCrop       FieldCreateTemplateFieldsOverflowName = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowName) ToPointer() *FieldCreateTemplateFieldsOverflowName {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowName: %v", v)
+	}
+}
+
 type FieldCreateTemplateFieldsTypeNameRequest2 string
 
 const (
@@ -1909,6 +2221,7 @@ type FieldCreateTemplateFieldsFieldMetaNameRequest struct {
 	Required    *bool                                     `json:"required,omitempty"`
 	ReadOnly    *bool                                     `json:"readOnly,omitempty"`
 	FontSize    *float64                                  `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateTemplateFieldsOverflowName    `json:"overflow,omitempty"`
 	Type        FieldCreateTemplateFieldsTypeNameRequest2 `json:"type"`
 	TextAlign   *FieldCreateTemplateFieldsTextAlignName   `json:"textAlign,omitempty"`
 }
@@ -1957,6 +2270,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaNameRequest) GetFontSize() *float64 {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateTemplateFieldsFieldMetaNameRequest) GetOverflow() *FieldCreateTemplateFieldsOverflowName {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateTemplateFieldsFieldMetaNameRequest) GetType() FieldCreateTemplateFieldsTypeNameRequest2 {
@@ -2074,6 +2394,38 @@ func (e *FieldCreateTemplateFieldsTypeInitialsRequest1) UnmarshalJSON(data []byt
 	}
 }
 
+type FieldCreateTemplateFieldsOverflowInitials string
+
+const (
+	FieldCreateTemplateFieldsOverflowInitialsAuto       FieldCreateTemplateFieldsOverflowInitials = "auto"
+	FieldCreateTemplateFieldsOverflowInitialsHorizontal FieldCreateTemplateFieldsOverflowInitials = "horizontal"
+	FieldCreateTemplateFieldsOverflowInitialsVertical   FieldCreateTemplateFieldsOverflowInitials = "vertical"
+	FieldCreateTemplateFieldsOverflowInitialsCrop       FieldCreateTemplateFieldsOverflowInitials = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowInitials) ToPointer() *FieldCreateTemplateFieldsOverflowInitials {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowInitials) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowInitials(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowInitials: %v", v)
+	}
+}
+
 type FieldCreateTemplateFieldsTypeInitialsRequest2 string
 
 const (
@@ -2132,6 +2484,7 @@ type FieldCreateTemplateFieldsFieldMetaInitialsRequest struct {
 	Required    *bool                                         `json:"required,omitempty"`
 	ReadOnly    *bool                                         `json:"readOnly,omitempty"`
 	FontSize    *float64                                      `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateTemplateFieldsOverflowInitials    `json:"overflow,omitempty"`
 	Type        FieldCreateTemplateFieldsTypeInitialsRequest2 `json:"type"`
 	TextAlign   *FieldCreateTemplateFieldsTextAlignInitials   `json:"textAlign,omitempty"`
 }
@@ -2180,6 +2533,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaInitialsRequest) GetFontSize() *float
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateTemplateFieldsFieldMetaInitialsRequest) GetOverflow() *FieldCreateTemplateFieldsOverflowInitials {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateTemplateFieldsFieldMetaInitialsRequest) GetType() FieldCreateTemplateFieldsTypeInitialsRequest2 {
@@ -2390,6 +2750,38 @@ func (e *FieldCreateTemplateFieldsTypeSignatureRequest1) UnmarshalJSON(data []by
 	}
 }
 
+type FieldCreateTemplateFieldsOverflowSignature string
+
+const (
+	FieldCreateTemplateFieldsOverflowSignatureAuto       FieldCreateTemplateFieldsOverflowSignature = "auto"
+	FieldCreateTemplateFieldsOverflowSignatureHorizontal FieldCreateTemplateFieldsOverflowSignature = "horizontal"
+	FieldCreateTemplateFieldsOverflowSignatureVertical   FieldCreateTemplateFieldsOverflowSignature = "vertical"
+	FieldCreateTemplateFieldsOverflowSignatureCrop       FieldCreateTemplateFieldsOverflowSignature = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowSignature) ToPointer() *FieldCreateTemplateFieldsOverflowSignature {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowSignature) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowSignature(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowSignature: %v", v)
+	}
+}
+
 type FieldCreateTemplateFieldsTypeSignatureRequest2 string
 
 const (
@@ -2419,6 +2811,7 @@ type FieldCreateTemplateFieldsFieldMetaSignatureRequest struct {
 	Required    *bool                                          `json:"required,omitempty"`
 	ReadOnly    *bool                                          `json:"readOnly,omitempty"`
 	FontSize    *float64                                       `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateTemplateFieldsOverflowSignature    `default:"auto" json:"overflow"`
 	Type        FieldCreateTemplateFieldsTypeSignatureRequest2 `json:"type"`
 }
 
@@ -2466,6 +2859,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaSignatureRequest) GetFontSize() *floa
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateTemplateFieldsFieldMetaSignatureRequest) GetOverflow() *FieldCreateTemplateFieldsOverflowSignature {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateTemplateFieldsFieldMetaSignatureRequest) GetType() FieldCreateTemplateFieldsTypeSignatureRequest2 {
@@ -2684,7 +3084,14 @@ func CreateFieldCreateTemplateFieldsFieldUnionFieldCreateTemplateFieldsFieldDrop
 	}
 }
 
-func (u *FieldCreateTemplateFieldsFieldUnion) UnmarshalJSON(data []byte) error {
+func (u *FieldCreateTemplateFieldsFieldUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = FieldCreateTemplateFieldsFieldUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var fieldCreateTemplateFieldsFieldSignature FieldCreateTemplateFieldsFieldSignature = FieldCreateTemplateFieldsFieldSignature{}
 	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldsFieldSignature, "", true, nil); err == nil {
@@ -2886,6 +3293,38 @@ func (e *FieldCreateTemplateFieldsTypeResponse) UnmarshalJSON(data []byte) error
 	}
 }
 
+type FieldCreateTemplateFieldsOverflowResponse10 string
+
+const (
+	FieldCreateTemplateFieldsOverflowResponse10Auto       FieldCreateTemplateFieldsOverflowResponse10 = "auto"
+	FieldCreateTemplateFieldsOverflowResponse10Horizontal FieldCreateTemplateFieldsOverflowResponse10 = "horizontal"
+	FieldCreateTemplateFieldsOverflowResponse10Vertical   FieldCreateTemplateFieldsOverflowResponse10 = "vertical"
+	FieldCreateTemplateFieldsOverflowResponse10Crop       FieldCreateTemplateFieldsOverflowResponse10 = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowResponse10) ToPointer() *FieldCreateTemplateFieldsOverflowResponse10 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowResponse10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowResponse10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowResponse10: %v", v)
+	}
+}
+
 type FieldCreateTemplateFieldsFieldMetaTypeDropdown string
 
 const (
@@ -2931,12 +3370,16 @@ func (f *FieldCreateTemplateFieldsValueResponse3) GetValue() string {
 	return f.Value
 }
 
+// #region class-body-fieldcreatetemplatefieldsvalueresponse3
+// #endregion class-body-fieldcreatetemplatefieldsvalueresponse3
+
 type FieldCreateTemplateFieldsFieldMetaDropdownResponse struct {
 	Label        *string                                        `json:"label,omitempty"`
 	Placeholder  *string                                        `json:"placeholder,omitempty"`
 	Required     *bool                                          `json:"required,omitempty"`
 	ReadOnly     *bool                                          `json:"readOnly,omitempty"`
 	FontSize     *float64                                       `default:"12" json:"fontSize"`
+	Overflow     *FieldCreateTemplateFieldsOverflowResponse10   `json:"overflow,omitempty"`
 	Type         FieldCreateTemplateFieldsFieldMetaTypeDropdown `json:"type"`
 	Values       []FieldCreateTemplateFieldsValueResponse3      `json:"values,omitempty"`
 	DefaultValue *string                                        `json:"defaultValue,omitempty"`
@@ -2988,6 +3431,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaDropdownResponse) GetFontSize() *floa
 	return f.FontSize
 }
 
+func (f *FieldCreateTemplateFieldsFieldMetaDropdownResponse) GetOverflow() *FieldCreateTemplateFieldsOverflowResponse10 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateTemplateFieldsFieldMetaDropdownResponse) GetType() FieldCreateTemplateFieldsFieldMetaTypeDropdown {
 	if f == nil {
 		return FieldCreateTemplateFieldsFieldMetaTypeDropdown("")
@@ -3007,6 +3457,38 @@ func (f *FieldCreateTemplateFieldsFieldMetaDropdownResponse) GetDefaultValue() *
 		return nil
 	}
 	return f.DefaultValue
+}
+
+type FieldCreateTemplateFieldsOverflowResponse9 string
+
+const (
+	FieldCreateTemplateFieldsOverflowResponse9Auto       FieldCreateTemplateFieldsOverflowResponse9 = "auto"
+	FieldCreateTemplateFieldsOverflowResponse9Horizontal FieldCreateTemplateFieldsOverflowResponse9 = "horizontal"
+	FieldCreateTemplateFieldsOverflowResponse9Vertical   FieldCreateTemplateFieldsOverflowResponse9 = "vertical"
+	FieldCreateTemplateFieldsOverflowResponse9Crop       FieldCreateTemplateFieldsOverflowResponse9 = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowResponse9) ToPointer() *FieldCreateTemplateFieldsOverflowResponse9 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowResponse9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowResponse9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowResponse9: %v", v)
+	}
 }
 
 type FieldCreateTemplateFieldsFieldMetaTypeCheckbox string
@@ -3070,6 +3552,9 @@ func (f *FieldCreateTemplateFieldsValueResponse2) GetValue() string {
 	return f.Value
 }
 
+// #region class-body-fieldcreatetemplatefieldsvalueresponse2
+// #endregion class-body-fieldcreatetemplatefieldsvalueresponse2
+
 type FieldCreateTemplateFieldsDirectionResponse2 string
 
 const (
@@ -3102,6 +3587,7 @@ type FieldCreateTemplateFieldsFieldMetaCheckboxResponse struct {
 	Required         *bool                                          `json:"required,omitempty"`
 	ReadOnly         *bool                                          `json:"readOnly,omitempty"`
 	FontSize         *float64                                       `default:"12" json:"fontSize"`
+	Overflow         *FieldCreateTemplateFieldsOverflowResponse9    `json:"overflow,omitempty"`
 	Type             FieldCreateTemplateFieldsFieldMetaTypeCheckbox `json:"type"`
 	Values           []FieldCreateTemplateFieldsValueResponse2      `json:"values,omitempty"`
 	ValidationRule   *string                                        `json:"validationRule,omitempty"`
@@ -3155,6 +3641,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaCheckboxResponse) GetFontSize() *floa
 	return f.FontSize
 }
 
+func (f *FieldCreateTemplateFieldsFieldMetaCheckboxResponse) GetOverflow() *FieldCreateTemplateFieldsOverflowResponse9 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateTemplateFieldsFieldMetaCheckboxResponse) GetType() FieldCreateTemplateFieldsFieldMetaTypeCheckbox {
 	if f == nil {
 		return FieldCreateTemplateFieldsFieldMetaTypeCheckbox("")
@@ -3188,6 +3681,38 @@ func (f *FieldCreateTemplateFieldsFieldMetaCheckboxResponse) GetDirection() *Fie
 		return nil
 	}
 	return f.Direction
+}
+
+type FieldCreateTemplateFieldsOverflowResponse8 string
+
+const (
+	FieldCreateTemplateFieldsOverflowResponse8Auto       FieldCreateTemplateFieldsOverflowResponse8 = "auto"
+	FieldCreateTemplateFieldsOverflowResponse8Horizontal FieldCreateTemplateFieldsOverflowResponse8 = "horizontal"
+	FieldCreateTemplateFieldsOverflowResponse8Vertical   FieldCreateTemplateFieldsOverflowResponse8 = "vertical"
+	FieldCreateTemplateFieldsOverflowResponse8Crop       FieldCreateTemplateFieldsOverflowResponse8 = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowResponse8) ToPointer() *FieldCreateTemplateFieldsOverflowResponse8 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowResponse8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowResponse8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowResponse8: %v", v)
+	}
 }
 
 type FieldCreateTemplateFieldsFieldMetaTypeRadio string
@@ -3251,6 +3776,9 @@ func (f *FieldCreateTemplateFieldsValueResponse1) GetValue() string {
 	return f.Value
 }
 
+// #region class-body-fieldcreatetemplatefieldsvalueresponse1
+// #endregion class-body-fieldcreatetemplatefieldsvalueresponse1
+
 type FieldCreateTemplateFieldsDirectionResponse1 string
 
 const (
@@ -3283,6 +3811,7 @@ type FieldCreateTemplateFieldsFieldMetaRadioResponse struct {
 	Required    *bool                                        `json:"required,omitempty"`
 	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
 	FontSize    *float64                                     `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateTemplateFieldsOverflowResponse8  `json:"overflow,omitempty"`
 	Type        FieldCreateTemplateFieldsFieldMetaTypeRadio  `json:"type"`
 	Values      []FieldCreateTemplateFieldsValueResponse1    `json:"values,omitempty"`
 	Direction   *FieldCreateTemplateFieldsDirectionResponse1 `default:"vertical" json:"direction"`
@@ -3334,6 +3863,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaRadioResponse) GetFontSize() *float64
 	return f.FontSize
 }
 
+func (f *FieldCreateTemplateFieldsFieldMetaRadioResponse) GetOverflow() *FieldCreateTemplateFieldsOverflowResponse8 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateTemplateFieldsFieldMetaRadioResponse) GetType() FieldCreateTemplateFieldsFieldMetaTypeRadio {
 	if f == nil {
 		return FieldCreateTemplateFieldsFieldMetaTypeRadio("")
@@ -3353,6 +3889,38 @@ func (f *FieldCreateTemplateFieldsFieldMetaRadioResponse) GetDirection() *FieldC
 		return nil
 	}
 	return f.Direction
+}
+
+type FieldCreateTemplateFieldsOverflowResponse7 string
+
+const (
+	FieldCreateTemplateFieldsOverflowResponse7Auto       FieldCreateTemplateFieldsOverflowResponse7 = "auto"
+	FieldCreateTemplateFieldsOverflowResponse7Horizontal FieldCreateTemplateFieldsOverflowResponse7 = "horizontal"
+	FieldCreateTemplateFieldsOverflowResponse7Vertical   FieldCreateTemplateFieldsOverflowResponse7 = "vertical"
+	FieldCreateTemplateFieldsOverflowResponse7Crop       FieldCreateTemplateFieldsOverflowResponse7 = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowResponse7) ToPointer() *FieldCreateTemplateFieldsOverflowResponse7 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowResponse7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowResponse7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowResponse7: %v", v)
+	}
 }
 
 type FieldCreateTemplateFieldsFieldMetaTypeNumber string
@@ -3442,6 +4010,7 @@ type FieldCreateTemplateFieldsFieldMetaNumberResponse struct {
 	Required      *bool                                            `json:"required,omitempty"`
 	ReadOnly      *bool                                            `json:"readOnly,omitempty"`
 	FontSize      *float64                                         `default:"12" json:"fontSize"`
+	Overflow      *FieldCreateTemplateFieldsOverflowResponse7      `json:"overflow,omitempty"`
 	Type          FieldCreateTemplateFieldsFieldMetaTypeNumber     `json:"type"`
 	NumberFormat  *string                                          `json:"numberFormat,omitempty"`
 	Value         *string                                          `json:"value,omitempty"`
@@ -3497,6 +4066,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaNumberResponse) GetFontSize() *float6
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateTemplateFieldsFieldMetaNumberResponse) GetOverflow() *FieldCreateTemplateFieldsOverflowResponse7 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateTemplateFieldsFieldMetaNumberResponse) GetType() FieldCreateTemplateFieldsFieldMetaTypeNumber {
@@ -3560,6 +4136,38 @@ func (f *FieldCreateTemplateFieldsFieldMetaNumberResponse) GetVerticalAlign() *F
 		return nil
 	}
 	return f.VerticalAlign
+}
+
+type FieldCreateTemplateFieldsOverflowResponse6 string
+
+const (
+	FieldCreateTemplateFieldsOverflowResponse6Auto       FieldCreateTemplateFieldsOverflowResponse6 = "auto"
+	FieldCreateTemplateFieldsOverflowResponse6Horizontal FieldCreateTemplateFieldsOverflowResponse6 = "horizontal"
+	FieldCreateTemplateFieldsOverflowResponse6Vertical   FieldCreateTemplateFieldsOverflowResponse6 = "vertical"
+	FieldCreateTemplateFieldsOverflowResponse6Crop       FieldCreateTemplateFieldsOverflowResponse6 = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowResponse6) ToPointer() *FieldCreateTemplateFieldsOverflowResponse6 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowResponse6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowResponse6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowResponse6: %v", v)
+	}
 }
 
 type FieldCreateTemplateFieldsFieldMetaTypeText string
@@ -3649,6 +4257,7 @@ type FieldCreateTemplateFieldsFieldMetaTextResponse struct {
 	Required       *bool                                            `json:"required,omitempty"`
 	ReadOnly       *bool                                            `json:"readOnly,omitempty"`
 	FontSize       *float64                                         `default:"12" json:"fontSize"`
+	Overflow       *FieldCreateTemplateFieldsOverflowResponse6      `json:"overflow,omitempty"`
 	Type           FieldCreateTemplateFieldsFieldMetaTypeText       `json:"type"`
 	Text           *string                                          `json:"text,omitempty"`
 	CharacterLimit *float64                                         `json:"characterLimit,omitempty"`
@@ -3704,6 +4313,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaTextResponse) GetFontSize() *float64 
 	return f.FontSize
 }
 
+func (f *FieldCreateTemplateFieldsFieldMetaTextResponse) GetOverflow() *FieldCreateTemplateFieldsOverflowResponse6 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateTemplateFieldsFieldMetaTextResponse) GetType() FieldCreateTemplateFieldsFieldMetaTypeText {
 	if f == nil {
 		return FieldCreateTemplateFieldsFieldMetaTypeText("")
@@ -3751,6 +4367,38 @@ func (f *FieldCreateTemplateFieldsFieldMetaTextResponse) GetVerticalAlign() *Fie
 		return nil
 	}
 	return f.VerticalAlign
+}
+
+type FieldCreateTemplateFieldsOverflowResponse5 string
+
+const (
+	FieldCreateTemplateFieldsOverflowResponse5Auto       FieldCreateTemplateFieldsOverflowResponse5 = "auto"
+	FieldCreateTemplateFieldsOverflowResponse5Horizontal FieldCreateTemplateFieldsOverflowResponse5 = "horizontal"
+	FieldCreateTemplateFieldsOverflowResponse5Vertical   FieldCreateTemplateFieldsOverflowResponse5 = "vertical"
+	FieldCreateTemplateFieldsOverflowResponse5Crop       FieldCreateTemplateFieldsOverflowResponse5 = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowResponse5) ToPointer() *FieldCreateTemplateFieldsOverflowResponse5 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowResponse5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowResponse5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowResponse5: %v", v)
+	}
 }
 
 type FieldCreateTemplateFieldsFieldMetaTypeDate string
@@ -3811,6 +4459,7 @@ type FieldCreateTemplateFieldsFieldMetaDateResponse struct {
 	Required    *bool                                        `json:"required,omitempty"`
 	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
 	FontSize    *float64                                     `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateTemplateFieldsOverflowResponse5  `default:"auto" json:"overflow"`
 	Type        FieldCreateTemplateFieldsFieldMetaTypeDate   `json:"type"`
 	TextAlign   *FieldCreateTemplateFieldsTextAlignResponse4 `json:"textAlign,omitempty"`
 }
@@ -3861,6 +4510,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaDateResponse) GetFontSize() *float64 
 	return f.FontSize
 }
 
+func (f *FieldCreateTemplateFieldsFieldMetaDateResponse) GetOverflow() *FieldCreateTemplateFieldsOverflowResponse5 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateTemplateFieldsFieldMetaDateResponse) GetType() FieldCreateTemplateFieldsFieldMetaTypeDate {
 	if f == nil {
 		return FieldCreateTemplateFieldsFieldMetaTypeDate("")
@@ -3873,6 +4529,38 @@ func (f *FieldCreateTemplateFieldsFieldMetaDateResponse) GetTextAlign() *FieldCr
 		return nil
 	}
 	return f.TextAlign
+}
+
+type FieldCreateTemplateFieldsOverflowResponse4 string
+
+const (
+	FieldCreateTemplateFieldsOverflowResponse4Auto       FieldCreateTemplateFieldsOverflowResponse4 = "auto"
+	FieldCreateTemplateFieldsOverflowResponse4Horizontal FieldCreateTemplateFieldsOverflowResponse4 = "horizontal"
+	FieldCreateTemplateFieldsOverflowResponse4Vertical   FieldCreateTemplateFieldsOverflowResponse4 = "vertical"
+	FieldCreateTemplateFieldsOverflowResponse4Crop       FieldCreateTemplateFieldsOverflowResponse4 = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowResponse4) ToPointer() *FieldCreateTemplateFieldsOverflowResponse4 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowResponse4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowResponse4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowResponse4: %v", v)
+	}
 }
 
 type FieldCreateTemplateFieldsFieldMetaTypeEmail string
@@ -3933,6 +4621,7 @@ type FieldCreateTemplateFieldsFieldMetaEmailResponse struct {
 	Required    *bool                                        `json:"required,omitempty"`
 	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
 	FontSize    *float64                                     `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateTemplateFieldsOverflowResponse4  `default:"auto" json:"overflow"`
 	Type        FieldCreateTemplateFieldsFieldMetaTypeEmail  `json:"type"`
 	TextAlign   *FieldCreateTemplateFieldsTextAlignResponse3 `json:"textAlign,omitempty"`
 }
@@ -3983,6 +4672,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaEmailResponse) GetFontSize() *float64
 	return f.FontSize
 }
 
+func (f *FieldCreateTemplateFieldsFieldMetaEmailResponse) GetOverflow() *FieldCreateTemplateFieldsOverflowResponse4 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateTemplateFieldsFieldMetaEmailResponse) GetType() FieldCreateTemplateFieldsFieldMetaTypeEmail {
 	if f == nil {
 		return FieldCreateTemplateFieldsFieldMetaTypeEmail("")
@@ -3995,6 +4691,38 @@ func (f *FieldCreateTemplateFieldsFieldMetaEmailResponse) GetTextAlign() *FieldC
 		return nil
 	}
 	return f.TextAlign
+}
+
+type FieldCreateTemplateFieldsOverflowResponse3 string
+
+const (
+	FieldCreateTemplateFieldsOverflowResponse3Auto       FieldCreateTemplateFieldsOverflowResponse3 = "auto"
+	FieldCreateTemplateFieldsOverflowResponse3Horizontal FieldCreateTemplateFieldsOverflowResponse3 = "horizontal"
+	FieldCreateTemplateFieldsOverflowResponse3Vertical   FieldCreateTemplateFieldsOverflowResponse3 = "vertical"
+	FieldCreateTemplateFieldsOverflowResponse3Crop       FieldCreateTemplateFieldsOverflowResponse3 = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowResponse3) ToPointer() *FieldCreateTemplateFieldsOverflowResponse3 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowResponse3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowResponse3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowResponse3: %v", v)
+	}
 }
 
 type FieldCreateTemplateFieldsFieldMetaTypeName string
@@ -4055,6 +4783,7 @@ type FieldCreateTemplateFieldsFieldMetaNameResponse struct {
 	Required    *bool                                        `json:"required,omitempty"`
 	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
 	FontSize    *float64                                     `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateTemplateFieldsOverflowResponse3  `json:"overflow,omitempty"`
 	Type        FieldCreateTemplateFieldsFieldMetaTypeName   `json:"type"`
 	TextAlign   *FieldCreateTemplateFieldsTextAlignResponse2 `json:"textAlign,omitempty"`
 }
@@ -4105,6 +4834,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaNameResponse) GetFontSize() *float64 
 	return f.FontSize
 }
 
+func (f *FieldCreateTemplateFieldsFieldMetaNameResponse) GetOverflow() *FieldCreateTemplateFieldsOverflowResponse3 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateTemplateFieldsFieldMetaNameResponse) GetType() FieldCreateTemplateFieldsFieldMetaTypeName {
 	if f == nil {
 		return FieldCreateTemplateFieldsFieldMetaTypeName("")
@@ -4117,6 +4853,38 @@ func (f *FieldCreateTemplateFieldsFieldMetaNameResponse) GetTextAlign() *FieldCr
 		return nil
 	}
 	return f.TextAlign
+}
+
+type FieldCreateTemplateFieldsOverflowResponse2 string
+
+const (
+	FieldCreateTemplateFieldsOverflowResponse2Auto       FieldCreateTemplateFieldsOverflowResponse2 = "auto"
+	FieldCreateTemplateFieldsOverflowResponse2Horizontal FieldCreateTemplateFieldsOverflowResponse2 = "horizontal"
+	FieldCreateTemplateFieldsOverflowResponse2Vertical   FieldCreateTemplateFieldsOverflowResponse2 = "vertical"
+	FieldCreateTemplateFieldsOverflowResponse2Crop       FieldCreateTemplateFieldsOverflowResponse2 = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowResponse2) ToPointer() *FieldCreateTemplateFieldsOverflowResponse2 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowResponse2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowResponse2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowResponse2: %v", v)
+	}
 }
 
 type FieldCreateTemplateFieldsFieldMetaTypeInitials string
@@ -4177,6 +4945,7 @@ type FieldCreateTemplateFieldsFieldMetaInitialsResponse struct {
 	Required    *bool                                          `json:"required,omitempty"`
 	ReadOnly    *bool                                          `json:"readOnly,omitempty"`
 	FontSize    *float64                                       `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateTemplateFieldsOverflowResponse2    `json:"overflow,omitempty"`
 	Type        FieldCreateTemplateFieldsFieldMetaTypeInitials `json:"type"`
 	TextAlign   *FieldCreateTemplateFieldsTextAlignResponse1   `json:"textAlign,omitempty"`
 }
@@ -4227,6 +4996,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaInitialsResponse) GetFontSize() *floa
 	return f.FontSize
 }
 
+func (f *FieldCreateTemplateFieldsFieldMetaInitialsResponse) GetOverflow() *FieldCreateTemplateFieldsOverflowResponse2 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateTemplateFieldsFieldMetaInitialsResponse) GetType() FieldCreateTemplateFieldsFieldMetaTypeInitials {
 	if f == nil {
 		return FieldCreateTemplateFieldsFieldMetaTypeInitials("")
@@ -4239,6 +5015,38 @@ func (f *FieldCreateTemplateFieldsFieldMetaInitialsResponse) GetTextAlign() *Fie
 		return nil
 	}
 	return f.TextAlign
+}
+
+type FieldCreateTemplateFieldsOverflowResponse1 string
+
+const (
+	FieldCreateTemplateFieldsOverflowResponse1Auto       FieldCreateTemplateFieldsOverflowResponse1 = "auto"
+	FieldCreateTemplateFieldsOverflowResponse1Horizontal FieldCreateTemplateFieldsOverflowResponse1 = "horizontal"
+	FieldCreateTemplateFieldsOverflowResponse1Vertical   FieldCreateTemplateFieldsOverflowResponse1 = "vertical"
+	FieldCreateTemplateFieldsOverflowResponse1Crop       FieldCreateTemplateFieldsOverflowResponse1 = "crop"
+)
+
+func (e FieldCreateTemplateFieldsOverflowResponse1) ToPointer() *FieldCreateTemplateFieldsOverflowResponse1 {
+	return &e
+}
+func (e *FieldCreateTemplateFieldsOverflowResponse1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateTemplateFieldsOverflowResponse1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateTemplateFieldsOverflowResponse1: %v", v)
+	}
 }
 
 type FieldCreateTemplateFieldsFieldMetaTypeSignature string
@@ -4270,6 +5078,7 @@ type FieldCreateTemplateFieldsFieldMetaSignatureResponse struct {
 	Required    *bool                                           `json:"required,omitempty"`
 	ReadOnly    *bool                                           `json:"readOnly,omitempty"`
 	FontSize    *float64                                        `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateTemplateFieldsOverflowResponse1     `default:"auto" json:"overflow"`
 	Type        FieldCreateTemplateFieldsFieldMetaTypeSignature `json:"type"`
 }
 
@@ -4317,6 +5126,13 @@ func (f *FieldCreateTemplateFieldsFieldMetaSignatureResponse) GetFontSize() *flo
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateTemplateFieldsFieldMetaSignatureResponse) GetOverflow() *FieldCreateTemplateFieldsOverflowResponse1 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateTemplateFieldsFieldMetaSignatureResponse) GetType() FieldCreateTemplateFieldsFieldMetaTypeSignature {
@@ -4446,7 +5262,14 @@ func CreateFieldCreateTemplateFieldsFieldMetaUnionFieldCreateTemplateFieldsField
 	}
 }
 
-func (u *FieldCreateTemplateFieldsFieldMetaUnion) UnmarshalJSON(data []byte) error {
+func (u *FieldCreateTemplateFieldsFieldMetaUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = FieldCreateTemplateFieldsFieldMetaUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var fieldCreateTemplateFieldsFieldMetaSignatureResponse FieldCreateTemplateFieldsFieldMetaSignatureResponse = FieldCreateTemplateFieldsFieldMetaSignatureResponse{}
 	if err := utils.UnmarshalJSON(data, &fieldCreateTemplateFieldsFieldMetaSignatureResponse, "", true, nil); err == nil {
