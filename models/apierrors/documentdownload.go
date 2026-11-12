@@ -29,6 +29,10 @@ type DocumentDownloadInternalServerError struct {
 var _ error = &DocumentDownloadInternalServerError{}
 
 func (e *DocumentDownloadInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type DocumentDownloadNotFoundError struct {
 var _ error = &DocumentDownloadNotFoundError{}
 
 func (e *DocumentDownloadNotFoundError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type DocumentDownloadForbiddenError struct {
 var _ error = &DocumentDownloadForbiddenError{}
 
 func (e *DocumentDownloadForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type DocumentDownloadUnauthorizedError struct {
 var _ error = &DocumentDownloadUnauthorizedError{}
 
 func (e *DocumentDownloadUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -133,6 +149,10 @@ type DocumentDownloadBadRequestError struct {
 var _ error = &DocumentDownloadBadRequestError{}
 
 func (e *DocumentDownloadBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

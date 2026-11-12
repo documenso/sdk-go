@@ -69,3 +69,33 @@ fieldUpdateDocumentFieldsFieldUnion := operations.CreateFieldUpdateDocumentField
 fieldUpdateDocumentFieldsFieldUnion := operations.CreateFieldUpdateDocumentFieldsFieldUnionFieldUpdateDocumentFieldsFieldDropdown(operations.FieldUpdateDocumentFieldsFieldDropdown{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch fieldUpdateDocumentFieldsFieldUnion.Type {
+	case operations.FieldUpdateDocumentFieldsFieldUnionTypeFieldUpdateDocumentFieldsFieldSignature:
+		// fieldUpdateDocumentFieldsFieldUnion.FieldUpdateDocumentFieldsFieldSignature is populated
+	case operations.FieldUpdateDocumentFieldsFieldUnionTypeFieldUpdateDocumentFieldsFieldFreeSignature:
+		// fieldUpdateDocumentFieldsFieldUnion.FieldUpdateDocumentFieldsFieldFreeSignature is populated
+	case operations.FieldUpdateDocumentFieldsFieldUnionTypeFieldUpdateDocumentFieldsFieldInitials:
+		// fieldUpdateDocumentFieldsFieldUnion.FieldUpdateDocumentFieldsFieldInitials is populated
+	case operations.FieldUpdateDocumentFieldsFieldUnionTypeFieldUpdateDocumentFieldsFieldName:
+		// fieldUpdateDocumentFieldsFieldUnion.FieldUpdateDocumentFieldsFieldName is populated
+	case operations.FieldUpdateDocumentFieldsFieldUnionTypeFieldUpdateDocumentFieldsFieldEmail:
+		// fieldUpdateDocumentFieldsFieldUnion.FieldUpdateDocumentFieldsFieldEmail is populated
+	case operations.FieldUpdateDocumentFieldsFieldUnionTypeFieldUpdateDocumentFieldsFieldDate:
+		// fieldUpdateDocumentFieldsFieldUnion.FieldUpdateDocumentFieldsFieldDate is populated
+	case operations.FieldUpdateDocumentFieldsFieldUnionTypeFieldUpdateDocumentFieldsFieldText:
+		// fieldUpdateDocumentFieldsFieldUnion.FieldUpdateDocumentFieldsFieldText is populated
+	case operations.FieldUpdateDocumentFieldsFieldUnionTypeFieldUpdateDocumentFieldsFieldNumber:
+		// fieldUpdateDocumentFieldsFieldUnion.FieldUpdateDocumentFieldsFieldNumber is populated
+	case operations.FieldUpdateDocumentFieldsFieldUnionTypeFieldUpdateDocumentFieldsFieldRadio:
+		// fieldUpdateDocumentFieldsFieldUnion.FieldUpdateDocumentFieldsFieldRadio is populated
+	case operations.FieldUpdateDocumentFieldsFieldUnionTypeFieldUpdateDocumentFieldsFieldCheckbox:
+		// fieldUpdateDocumentFieldsFieldUnion.FieldUpdateDocumentFieldsFieldCheckbox is populated
+	case operations.FieldUpdateDocumentFieldsFieldUnionTypeFieldUpdateDocumentFieldsFieldDropdown:
+		// fieldUpdateDocumentFieldsFieldUnion.FieldUpdateDocumentFieldsFieldDropdown is populated
+}
+```
