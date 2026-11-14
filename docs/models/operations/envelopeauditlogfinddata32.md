@@ -3,9 +3,10 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `RecipientEmail`   | *string*           | :heavy_check_mark: | N/A                |
-| `RecipientName`    | *string*           | :heavy_check_mark: | N/A                |
-| `RecipientID`      | *float64*          | :heavy_check_mark: | N/A                |
-| `RecipientRole`    | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `FieldID`                                                            | `string`                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
+| `FieldRecipientEmail`                                                | `string`                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
+| `FieldRecipientID`                                                   | `float64`                                                            | :heavy_check_mark:                                                   | N/A                                                                  |
+| `FieldType`                                                          | `string`                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
+| `Changes`                                                            | [][operations.ChangeUnion2](../../models/operations/changeunion2.md) | :heavy_check_mark:                                                   | N/A                                                                  |

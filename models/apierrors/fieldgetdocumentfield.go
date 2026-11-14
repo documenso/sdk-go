@@ -29,6 +29,10 @@ type FieldGetDocumentFieldInternalServerError struct {
 var _ error = &FieldGetDocumentFieldInternalServerError{}
 
 func (e *FieldGetDocumentFieldInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type FieldGetDocumentFieldNotFoundError struct {
 var _ error = &FieldGetDocumentFieldNotFoundError{}
 
 func (e *FieldGetDocumentFieldNotFoundError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type FieldGetDocumentFieldForbiddenError struct {
 var _ error = &FieldGetDocumentFieldForbiddenError{}
 
 func (e *FieldGetDocumentFieldForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type FieldGetDocumentFieldUnauthorizedError struct {
 var _ error = &FieldGetDocumentFieldUnauthorizedError{}
 
 func (e *FieldGetDocumentFieldUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -133,6 +149,10 @@ type FieldGetDocumentFieldBadRequestError struct {
 var _ error = &FieldGetDocumentFieldBadRequestError{}
 
 func (e *FieldGetDocumentFieldBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

@@ -32,7 +32,9 @@ func newDocumentsAttachments(rootSDK *Documenso, sdkConfig config.SDKConfigurati
 }
 
 // Create attachment
-// Create a new attachment for a document
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Create a new attachment for a document
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsAttachments) Create(ctx context.Context, request operations.DocumentAttachmentCreateRequest, opts ...operations.Option) (*operations.DocumentAttachmentCreateResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -175,7 +177,7 @@ func (s *DocumentsAttachments) Create(ctx context.Context, request operations.Do
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -229,7 +231,7 @@ func (s *DocumentsAttachments) Create(ctx context.Context, request operations.Do
 
 			var out apierrors.DocumentAttachmentCreateBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -254,7 +256,7 @@ func (s *DocumentsAttachments) Create(ctx context.Context, request operations.Do
 
 			var out apierrors.DocumentAttachmentCreateUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -279,7 +281,7 @@ func (s *DocumentsAttachments) Create(ctx context.Context, request operations.Do
 
 			var out apierrors.DocumentAttachmentCreateForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -304,7 +306,7 @@ func (s *DocumentsAttachments) Create(ctx context.Context, request operations.Do
 
 			var out apierrors.DocumentAttachmentCreateInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -344,7 +346,9 @@ func (s *DocumentsAttachments) Create(ctx context.Context, request operations.Do
 }
 
 // Update attachment
-// Update an existing attachment
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Update an existing attachment
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsAttachments) Update(ctx context.Context, request operations.DocumentAttachmentUpdateRequest, opts ...operations.Option) (*operations.DocumentAttachmentUpdateResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -487,7 +491,7 @@ func (s *DocumentsAttachments) Update(ctx context.Context, request operations.Do
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -541,7 +545,7 @@ func (s *DocumentsAttachments) Update(ctx context.Context, request operations.Do
 
 			var out apierrors.DocumentAttachmentUpdateBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -566,7 +570,7 @@ func (s *DocumentsAttachments) Update(ctx context.Context, request operations.Do
 
 			var out apierrors.DocumentAttachmentUpdateUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -591,7 +595,7 @@ func (s *DocumentsAttachments) Update(ctx context.Context, request operations.Do
 
 			var out apierrors.DocumentAttachmentUpdateForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -616,7 +620,7 @@ func (s *DocumentsAttachments) Update(ctx context.Context, request operations.Do
 
 			var out apierrors.DocumentAttachmentUpdateInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -656,7 +660,9 @@ func (s *DocumentsAttachments) Update(ctx context.Context, request operations.Do
 }
 
 // Delete attachment
-// Delete an attachment from a document
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Delete an attachment from a document
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsAttachments) Delete(ctx context.Context, request operations.DocumentAttachmentDeleteRequest, opts ...operations.Option) (*operations.DocumentAttachmentDeleteResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -799,7 +805,7 @@ func (s *DocumentsAttachments) Delete(ctx context.Context, request operations.Do
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -853,7 +859,7 @@ func (s *DocumentsAttachments) Delete(ctx context.Context, request operations.Do
 
 			var out apierrors.DocumentAttachmentDeleteBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -878,7 +884,7 @@ func (s *DocumentsAttachments) Delete(ctx context.Context, request operations.Do
 
 			var out apierrors.DocumentAttachmentDeleteUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -903,7 +909,7 @@ func (s *DocumentsAttachments) Delete(ctx context.Context, request operations.Do
 
 			var out apierrors.DocumentAttachmentDeleteForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -928,7 +934,7 @@ func (s *DocumentsAttachments) Delete(ctx context.Context, request operations.Do
 
 			var out apierrors.DocumentAttachmentDeleteInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -968,7 +974,9 @@ func (s *DocumentsAttachments) Delete(ctx context.Context, request operations.Do
 }
 
 // Find attachments
-// Find all attachments for a document
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Find all attachments for a document
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *DocumentsAttachments) Find(ctx context.Context, documentID float64, opts ...operations.Option) (*operations.DocumentAttachmentFindResponse, error) {
 	request := operations.DocumentAttachmentFindRequest{
 		DocumentID: documentID,
@@ -1112,7 +1120,7 @@ func (s *DocumentsAttachments) Find(ctx context.Context, documentID float64, opt
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "404", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -1166,7 +1174,7 @@ func (s *DocumentsAttachments) Find(ctx context.Context, documentID float64, opt
 
 			var out apierrors.DocumentAttachmentFindBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1191,7 +1199,7 @@ func (s *DocumentsAttachments) Find(ctx context.Context, documentID float64, opt
 
 			var out apierrors.DocumentAttachmentFindUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1216,7 +1224,7 @@ func (s *DocumentsAttachments) Find(ctx context.Context, documentID float64, opt
 
 			var out apierrors.DocumentAttachmentFindForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1241,7 +1249,7 @@ func (s *DocumentsAttachments) Find(ctx context.Context, documentID float64, opt
 
 			var out apierrors.DocumentAttachmentFindNotFoundError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -1266,7 +1274,7 @@ func (s *DocumentsAttachments) Find(ctx context.Context, documentID float64, opt
 
 			var out apierrors.DocumentAttachmentFindInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{

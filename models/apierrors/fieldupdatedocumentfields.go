@@ -29,6 +29,10 @@ type FieldUpdateDocumentFieldsInternalServerError struct {
 var _ error = &FieldUpdateDocumentFieldsInternalServerError{}
 
 func (e *FieldUpdateDocumentFieldsInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type FieldUpdateDocumentFieldsForbiddenError struct {
 var _ error = &FieldUpdateDocumentFieldsForbiddenError{}
 
 func (e *FieldUpdateDocumentFieldsForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type FieldUpdateDocumentFieldsUnauthorizedError struct {
 var _ error = &FieldUpdateDocumentFieldsUnauthorizedError{}
 
 func (e *FieldUpdateDocumentFieldsUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type FieldUpdateDocumentFieldsBadRequestError struct {
 var _ error = &FieldUpdateDocumentFieldsBadRequestError{}
 
 func (e *FieldUpdateDocumentFieldsBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

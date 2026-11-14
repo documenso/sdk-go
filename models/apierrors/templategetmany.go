@@ -29,6 +29,10 @@ type TemplateGetManyInternalServerError struct {
 var _ error = &TemplateGetManyInternalServerError{}
 
 func (e *TemplateGetManyInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type TemplateGetManyForbiddenError struct {
 var _ error = &TemplateGetManyForbiddenError{}
 
 func (e *TemplateGetManyForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type TemplateGetManyUnauthorizedError struct {
 var _ error = &TemplateGetManyUnauthorizedError{}
 
 func (e *TemplateGetManyUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type TemplateGetManyBadRequestError struct {
 var _ error = &TemplateGetManyBadRequestError{}
 
 func (e *TemplateGetManyBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

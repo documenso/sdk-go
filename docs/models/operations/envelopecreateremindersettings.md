@@ -1,0 +1,9 @@
+# EnvelopeCreateReminderSettings
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `SendAfter`                                                                                            | [operations.EnvelopeCreateSendAfterUnion](../../models/operations/envelopecreatesendafterunion.md)     | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `RepeatEvery`                                                                                          | [operations.EnvelopeCreateRepeatEveryUnion](../../models/operations/envelopecreaterepeateveryunion.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
