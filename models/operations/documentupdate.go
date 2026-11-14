@@ -162,12 +162,15 @@ const (
 	DocumentUpdateDateFormatYyyyMMddHhMmA            DocumentUpdateDateFormat = "yyyy-MM-dd hh:mm a"
 	DocumentUpdateDateFormatYyyyMMdd                 DocumentUpdateDateFormat = "yyyy-MM-dd"
 	DocumentUpdateDateFormatDdMmSlashYyyy            DocumentUpdateDateFormat = "dd/MM/yyyy"
+	DocumentUpdateDateFormatDdMmDashYyyy             DocumentUpdateDateFormat = "dd-MM-yyyy"
 	DocumentUpdateDateFormatMmDdSlashYyyy            DocumentUpdateDateFormat = "MM/dd/yyyy"
 	DocumentUpdateDateFormatYyMMdd                   DocumentUpdateDateFormat = "yy-MM-dd"
 	DocumentUpdateDateFormatMmmmDdCommaYyyy          DocumentUpdateDateFormat = "MMMM dd, yyyy"
 	DocumentUpdateDateFormatEeeeMmmmDdCommaYyyy      DocumentUpdateDateFormat = "EEEE, MMMM dd, yyyy"
 	DocumentUpdateDateFormatDdMmSlashYyyyHhMmA       DocumentUpdateDateFormat = "dd/MM/yyyy hh:mm a"
 	DocumentUpdateDateFormatDdMmSlashYyyyHHmm        DocumentUpdateDateFormat = "dd/MM/yyyy HH:mm"
+	DocumentUpdateDateFormatDdMmDashYyyyHhMmA        DocumentUpdateDateFormat = "dd-MM-yyyy hh:mm a"
+	DocumentUpdateDateFormatDdMmDashYyyyHHmm         DocumentUpdateDateFormat = "dd-MM-yyyy HH:mm"
 	DocumentUpdateDateFormatMmDdSlashYyyyHhMmA       DocumentUpdateDateFormat = "MM/dd/yyyy hh:mm a"
 	DocumentUpdateDateFormatMmDdSlashYyyyHHmm        DocumentUpdateDateFormat = "MM/dd/yyyy HH:mm"
 	DocumentUpdateDateFormatDdDotMmDotYyyy           DocumentUpdateDateFormat = "dd.MM.yyyy"
@@ -198,6 +201,8 @@ func (e *DocumentUpdateDateFormat) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "dd/MM/yyyy":
 		fallthrough
+	case "dd-MM-yyyy":
+		fallthrough
 	case "MM/dd/yyyy":
 		fallthrough
 	case "yy-MM-dd":
@@ -209,6 +214,10 @@ func (e *DocumentUpdateDateFormat) UnmarshalJSON(data []byte) error {
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
 	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "dd-MM-yyyy hh:mm a":
+		fallthrough
+	case "dd-MM-yyyy HH:mm":
 		fallthrough
 	case "MM/dd/yyyy hh:mm a":
 		fallthrough
@@ -355,6 +364,8 @@ type DocumentUpdateEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (d DocumentUpdateEmailSettings) MarshalJSON() ([]byte, error) {
@@ -417,22 +428,525 @@ func (d *DocumentUpdateEmailSettings) GetOwnerDocumentCompleted() *bool {
 	return d.OwnerDocumentCompleted
 }
 
+func (d *DocumentUpdateEmailSettings) GetOwnerRecipientExpired() *bool {
+	if d == nil {
+		return nil
+	}
+	return d.OwnerRecipientExpired
+}
+
+func (d *DocumentUpdateEmailSettings) GetOwnerDocumentCreated() *bool {
+	if d == nil {
+		return nil
+	}
+	return d.OwnerDocumentCreated
+}
+
+type DocumentUpdateEnvelopeExpirationPeriod2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (d DocumentUpdateEnvelopeExpirationPeriod2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentUpdateEnvelopeExpirationPeriod2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentUpdateEnvelopeExpirationPeriod2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-documentupdateenvelopeexpirationperiod2
+// #endregion class-body-documentupdateenvelopeexpirationperiod2
+
+type DocumentUpdateEnvelopeExpirationPeriodUnit string
+
+const (
+	DocumentUpdateEnvelopeExpirationPeriodUnitDay   DocumentUpdateEnvelopeExpirationPeriodUnit = "day"
+	DocumentUpdateEnvelopeExpirationPeriodUnitWeek  DocumentUpdateEnvelopeExpirationPeriodUnit = "week"
+	DocumentUpdateEnvelopeExpirationPeriodUnitMonth DocumentUpdateEnvelopeExpirationPeriodUnit = "month"
+	DocumentUpdateEnvelopeExpirationPeriodUnitYear  DocumentUpdateEnvelopeExpirationPeriodUnit = "year"
+)
+
+func (e DocumentUpdateEnvelopeExpirationPeriodUnit) ToPointer() *DocumentUpdateEnvelopeExpirationPeriodUnit {
+	return &e
+}
+func (e *DocumentUpdateEnvelopeExpirationPeriodUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		fallthrough
+	case "year":
+		*e = DocumentUpdateEnvelopeExpirationPeriodUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentUpdateEnvelopeExpirationPeriodUnit: %v", v)
+	}
+}
+
+type DocumentUpdateEnvelopeExpirationPeriod1 struct {
+	Unit   DocumentUpdateEnvelopeExpirationPeriodUnit `json:"unit"`
+	Amount int64                                      `json:"amount"`
+}
+
+func (d DocumentUpdateEnvelopeExpirationPeriod1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentUpdateEnvelopeExpirationPeriod1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentUpdateEnvelopeExpirationPeriod1) GetUnit() DocumentUpdateEnvelopeExpirationPeriodUnit {
+	if d == nil {
+		return DocumentUpdateEnvelopeExpirationPeriodUnit("")
+	}
+	return d.Unit
+}
+
+func (d *DocumentUpdateEnvelopeExpirationPeriod1) GetAmount() int64 {
+	if d == nil {
+		return 0
+	}
+	return d.Amount
+}
+
+// #region class-body-documentupdateenvelopeexpirationperiod1
+// #endregion class-body-documentupdateenvelopeexpirationperiod1
+
+type DocumentUpdateEnvelopeExpirationPeriodUnionType string
+
+const (
+	DocumentUpdateEnvelopeExpirationPeriodUnionTypeDocumentUpdateEnvelopeExpirationPeriod1 DocumentUpdateEnvelopeExpirationPeriodUnionType = "document_update_envelopeExpirationPeriod_1"
+	DocumentUpdateEnvelopeExpirationPeriodUnionTypeDocumentUpdateEnvelopeExpirationPeriod2 DocumentUpdateEnvelopeExpirationPeriodUnionType = "document_update_envelopeExpirationPeriod_2"
+)
+
+type DocumentUpdateEnvelopeExpirationPeriodUnion struct {
+	DocumentUpdateEnvelopeExpirationPeriod1 *DocumentUpdateEnvelopeExpirationPeriod1 `queryParam:"inline" union:"member"`
+	DocumentUpdateEnvelopeExpirationPeriod2 *DocumentUpdateEnvelopeExpirationPeriod2 `queryParam:"inline" union:"member"`
+
+	Type DocumentUpdateEnvelopeExpirationPeriodUnionType
+}
+
+func CreateDocumentUpdateEnvelopeExpirationPeriodUnionDocumentUpdateEnvelopeExpirationPeriod1(documentUpdateEnvelopeExpirationPeriod1 DocumentUpdateEnvelopeExpirationPeriod1) DocumentUpdateEnvelopeExpirationPeriodUnion {
+	typ := DocumentUpdateEnvelopeExpirationPeriodUnionTypeDocumentUpdateEnvelopeExpirationPeriod1
+
+	return DocumentUpdateEnvelopeExpirationPeriodUnion{
+		DocumentUpdateEnvelopeExpirationPeriod1: &documentUpdateEnvelopeExpirationPeriod1,
+		Type:                                    typ,
+	}
+}
+
+func CreateDocumentUpdateEnvelopeExpirationPeriodUnionDocumentUpdateEnvelopeExpirationPeriod2(documentUpdateEnvelopeExpirationPeriod2 DocumentUpdateEnvelopeExpirationPeriod2) DocumentUpdateEnvelopeExpirationPeriodUnion {
+	typ := DocumentUpdateEnvelopeExpirationPeriodUnionTypeDocumentUpdateEnvelopeExpirationPeriod2
+
+	return DocumentUpdateEnvelopeExpirationPeriodUnion{
+		DocumentUpdateEnvelopeExpirationPeriod2: &documentUpdateEnvelopeExpirationPeriod2,
+		Type:                                    typ,
+	}
+}
+
+func (u *DocumentUpdateEnvelopeExpirationPeriodUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentUpdateEnvelopeExpirationPeriodUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var documentUpdateEnvelopeExpirationPeriod1 DocumentUpdateEnvelopeExpirationPeriod1 = DocumentUpdateEnvelopeExpirationPeriod1{}
+	if err := utils.UnmarshalJSON(data, &documentUpdateEnvelopeExpirationPeriod1, "", true, nil); err == nil {
+		u.DocumentUpdateEnvelopeExpirationPeriod1 = &documentUpdateEnvelopeExpirationPeriod1
+		u.Type = DocumentUpdateEnvelopeExpirationPeriodUnionTypeDocumentUpdateEnvelopeExpirationPeriod1
+		return nil
+	}
+
+	var documentUpdateEnvelopeExpirationPeriod2 DocumentUpdateEnvelopeExpirationPeriod2 = DocumentUpdateEnvelopeExpirationPeriod2{}
+	if err := utils.UnmarshalJSON(data, &documentUpdateEnvelopeExpirationPeriod2, "", true, nil); err == nil {
+		u.DocumentUpdateEnvelopeExpirationPeriod2 = &documentUpdateEnvelopeExpirationPeriod2
+		u.Type = DocumentUpdateEnvelopeExpirationPeriodUnionTypeDocumentUpdateEnvelopeExpirationPeriod2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DocumentUpdateEnvelopeExpirationPeriodUnion", string(data))
+}
+
+func (u DocumentUpdateEnvelopeExpirationPeriodUnion) MarshalJSON() ([]byte, error) {
+	if u.DocumentUpdateEnvelopeExpirationPeriod1 != nil {
+		return utils.MarshalJSON(u.DocumentUpdateEnvelopeExpirationPeriod1, "", true)
+	}
+
+	if u.DocumentUpdateEnvelopeExpirationPeriod2 != nil {
+		return utils.MarshalJSON(u.DocumentUpdateEnvelopeExpirationPeriod2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DocumentUpdateEnvelopeExpirationPeriodUnion: all fields are null")
+}
+
+type DocumentUpdateSendAfter2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (d DocumentUpdateSendAfter2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentUpdateSendAfter2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentUpdateSendAfter2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-documentupdatesendafter2
+// #endregion class-body-documentupdatesendafter2
+
+type DocumentUpdateSendAfterUnit string
+
+const (
+	DocumentUpdateSendAfterUnitDay   DocumentUpdateSendAfterUnit = "day"
+	DocumentUpdateSendAfterUnitWeek  DocumentUpdateSendAfterUnit = "week"
+	DocumentUpdateSendAfterUnitMonth DocumentUpdateSendAfterUnit = "month"
+)
+
+func (e DocumentUpdateSendAfterUnit) ToPointer() *DocumentUpdateSendAfterUnit {
+	return &e
+}
+func (e *DocumentUpdateSendAfterUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		*e = DocumentUpdateSendAfterUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentUpdateSendAfterUnit: %v", v)
+	}
+}
+
+type DocumentUpdateSendAfter1 struct {
+	Unit   DocumentUpdateSendAfterUnit `json:"unit"`
+	Amount int64                       `json:"amount"`
+}
+
+func (d DocumentUpdateSendAfter1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentUpdateSendAfter1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentUpdateSendAfter1) GetUnit() DocumentUpdateSendAfterUnit {
+	if d == nil {
+		return DocumentUpdateSendAfterUnit("")
+	}
+	return d.Unit
+}
+
+func (d *DocumentUpdateSendAfter1) GetAmount() int64 {
+	if d == nil {
+		return 0
+	}
+	return d.Amount
+}
+
+// #region class-body-documentupdatesendafter1
+// #endregion class-body-documentupdatesendafter1
+
+type DocumentUpdateSendAfterUnionType string
+
+const (
+	DocumentUpdateSendAfterUnionTypeDocumentUpdateSendAfter1 DocumentUpdateSendAfterUnionType = "document_update_sendAfter_1"
+	DocumentUpdateSendAfterUnionTypeDocumentUpdateSendAfter2 DocumentUpdateSendAfterUnionType = "document_update_sendAfter_2"
+)
+
+type DocumentUpdateSendAfterUnion struct {
+	DocumentUpdateSendAfter1 *DocumentUpdateSendAfter1 `queryParam:"inline" union:"member"`
+	DocumentUpdateSendAfter2 *DocumentUpdateSendAfter2 `queryParam:"inline" union:"member"`
+
+	Type DocumentUpdateSendAfterUnionType
+}
+
+func CreateDocumentUpdateSendAfterUnionDocumentUpdateSendAfter1(documentUpdateSendAfter1 DocumentUpdateSendAfter1) DocumentUpdateSendAfterUnion {
+	typ := DocumentUpdateSendAfterUnionTypeDocumentUpdateSendAfter1
+
+	return DocumentUpdateSendAfterUnion{
+		DocumentUpdateSendAfter1: &documentUpdateSendAfter1,
+		Type:                     typ,
+	}
+}
+
+func CreateDocumentUpdateSendAfterUnionDocumentUpdateSendAfter2(documentUpdateSendAfter2 DocumentUpdateSendAfter2) DocumentUpdateSendAfterUnion {
+	typ := DocumentUpdateSendAfterUnionTypeDocumentUpdateSendAfter2
+
+	return DocumentUpdateSendAfterUnion{
+		DocumentUpdateSendAfter2: &documentUpdateSendAfter2,
+		Type:                     typ,
+	}
+}
+
+func (u *DocumentUpdateSendAfterUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentUpdateSendAfterUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var documentUpdateSendAfter1 DocumentUpdateSendAfter1 = DocumentUpdateSendAfter1{}
+	if err := utils.UnmarshalJSON(data, &documentUpdateSendAfter1, "", true, nil); err == nil {
+		u.DocumentUpdateSendAfter1 = &documentUpdateSendAfter1
+		u.Type = DocumentUpdateSendAfterUnionTypeDocumentUpdateSendAfter1
+		return nil
+	}
+
+	var documentUpdateSendAfter2 DocumentUpdateSendAfter2 = DocumentUpdateSendAfter2{}
+	if err := utils.UnmarshalJSON(data, &documentUpdateSendAfter2, "", true, nil); err == nil {
+		u.DocumentUpdateSendAfter2 = &documentUpdateSendAfter2
+		u.Type = DocumentUpdateSendAfterUnionTypeDocumentUpdateSendAfter2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DocumentUpdateSendAfterUnion", string(data))
+}
+
+func (u DocumentUpdateSendAfterUnion) MarshalJSON() ([]byte, error) {
+	if u.DocumentUpdateSendAfter1 != nil {
+		return utils.MarshalJSON(u.DocumentUpdateSendAfter1, "", true)
+	}
+
+	if u.DocumentUpdateSendAfter2 != nil {
+		return utils.MarshalJSON(u.DocumentUpdateSendAfter2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DocumentUpdateSendAfterUnion: all fields are null")
+}
+
+type DocumentUpdateRepeatEvery2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (d DocumentUpdateRepeatEvery2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentUpdateRepeatEvery2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentUpdateRepeatEvery2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-documentupdaterepeatevery2
+// #endregion class-body-documentupdaterepeatevery2
+
+type DocumentUpdateRepeatEveryUnit string
+
+const (
+	DocumentUpdateRepeatEveryUnitDay   DocumentUpdateRepeatEveryUnit = "day"
+	DocumentUpdateRepeatEveryUnitWeek  DocumentUpdateRepeatEveryUnit = "week"
+	DocumentUpdateRepeatEveryUnitMonth DocumentUpdateRepeatEveryUnit = "month"
+)
+
+func (e DocumentUpdateRepeatEveryUnit) ToPointer() *DocumentUpdateRepeatEveryUnit {
+	return &e
+}
+func (e *DocumentUpdateRepeatEveryUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		*e = DocumentUpdateRepeatEveryUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentUpdateRepeatEveryUnit: %v", v)
+	}
+}
+
+type DocumentUpdateRepeatEvery1 struct {
+	Unit   DocumentUpdateRepeatEveryUnit `json:"unit"`
+	Amount int64                         `json:"amount"`
+}
+
+func (d DocumentUpdateRepeatEvery1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentUpdateRepeatEvery1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentUpdateRepeatEvery1) GetUnit() DocumentUpdateRepeatEveryUnit {
+	if d == nil {
+		return DocumentUpdateRepeatEveryUnit("")
+	}
+	return d.Unit
+}
+
+func (d *DocumentUpdateRepeatEvery1) GetAmount() int64 {
+	if d == nil {
+		return 0
+	}
+	return d.Amount
+}
+
+// #region class-body-documentupdaterepeatevery1
+// #endregion class-body-documentupdaterepeatevery1
+
+type DocumentUpdateRepeatEveryUnionType string
+
+const (
+	DocumentUpdateRepeatEveryUnionTypeDocumentUpdateRepeatEvery1 DocumentUpdateRepeatEveryUnionType = "document_update_repeatEvery_1"
+	DocumentUpdateRepeatEveryUnionTypeDocumentUpdateRepeatEvery2 DocumentUpdateRepeatEveryUnionType = "document_update_repeatEvery_2"
+)
+
+type DocumentUpdateRepeatEveryUnion struct {
+	DocumentUpdateRepeatEvery1 *DocumentUpdateRepeatEvery1 `queryParam:"inline" union:"member"`
+	DocumentUpdateRepeatEvery2 *DocumentUpdateRepeatEvery2 `queryParam:"inline" union:"member"`
+
+	Type DocumentUpdateRepeatEveryUnionType
+}
+
+func CreateDocumentUpdateRepeatEveryUnionDocumentUpdateRepeatEvery1(documentUpdateRepeatEvery1 DocumentUpdateRepeatEvery1) DocumentUpdateRepeatEveryUnion {
+	typ := DocumentUpdateRepeatEveryUnionTypeDocumentUpdateRepeatEvery1
+
+	return DocumentUpdateRepeatEveryUnion{
+		DocumentUpdateRepeatEvery1: &documentUpdateRepeatEvery1,
+		Type:                       typ,
+	}
+}
+
+func CreateDocumentUpdateRepeatEveryUnionDocumentUpdateRepeatEvery2(documentUpdateRepeatEvery2 DocumentUpdateRepeatEvery2) DocumentUpdateRepeatEveryUnion {
+	typ := DocumentUpdateRepeatEveryUnionTypeDocumentUpdateRepeatEvery2
+
+	return DocumentUpdateRepeatEveryUnion{
+		DocumentUpdateRepeatEvery2: &documentUpdateRepeatEvery2,
+		Type:                       typ,
+	}
+}
+
+func (u *DocumentUpdateRepeatEveryUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentUpdateRepeatEveryUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var documentUpdateRepeatEvery1 DocumentUpdateRepeatEvery1 = DocumentUpdateRepeatEvery1{}
+	if err := utils.UnmarshalJSON(data, &documentUpdateRepeatEvery1, "", true, nil); err == nil {
+		u.DocumentUpdateRepeatEvery1 = &documentUpdateRepeatEvery1
+		u.Type = DocumentUpdateRepeatEveryUnionTypeDocumentUpdateRepeatEvery1
+		return nil
+	}
+
+	var documentUpdateRepeatEvery2 DocumentUpdateRepeatEvery2 = DocumentUpdateRepeatEvery2{}
+	if err := utils.UnmarshalJSON(data, &documentUpdateRepeatEvery2, "", true, nil); err == nil {
+		u.DocumentUpdateRepeatEvery2 = &documentUpdateRepeatEvery2
+		u.Type = DocumentUpdateRepeatEveryUnionTypeDocumentUpdateRepeatEvery2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DocumentUpdateRepeatEveryUnion", string(data))
+}
+
+func (u DocumentUpdateRepeatEveryUnion) MarshalJSON() ([]byte, error) {
+	if u.DocumentUpdateRepeatEvery1 != nil {
+		return utils.MarshalJSON(u.DocumentUpdateRepeatEvery1, "", true)
+	}
+
+	if u.DocumentUpdateRepeatEvery2 != nil {
+		return utils.MarshalJSON(u.DocumentUpdateRepeatEvery2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DocumentUpdateRepeatEveryUnion: all fields are null")
+}
+
+type DocumentUpdateReminderSettings struct {
+	SendAfter   DocumentUpdateSendAfterUnion   `json:"sendAfter"`
+	RepeatEvery DocumentUpdateRepeatEveryUnion `json:"repeatEvery"`
+}
+
+func (d *DocumentUpdateReminderSettings) GetSendAfter() DocumentUpdateSendAfterUnion {
+	if d == nil {
+		return DocumentUpdateSendAfterUnion{}
+	}
+	return d.SendAfter
+}
+
+func (d *DocumentUpdateReminderSettings) GetRepeatEvery() DocumentUpdateRepeatEveryUnion {
+	if d == nil {
+		return DocumentUpdateRepeatEveryUnion{}
+	}
+	return d.RepeatEvery
+}
+
 type DocumentUpdateMeta struct {
-	Subject                *string                           `json:"subject,omitempty"`
-	Message                *string                           `json:"message,omitempty"`
-	Timezone               *string                           `json:"timezone,omitempty"`
-	DateFormat             *DocumentUpdateDateFormat         `json:"dateFormat,omitempty"`
-	DistributionMethod     *DocumentUpdateDistributionMethod `json:"distributionMethod,omitempty"`
-	SigningOrder           *DocumentUpdateSigningOrder       `json:"signingOrder,omitempty"`
-	AllowDictateNextSigner *bool                             `json:"allowDictateNextSigner,omitempty"`
-	RedirectURL            *string                           `json:"redirectUrl,omitempty"`
-	Language               *DocumentUpdateLanguage           `json:"language,omitempty"`
-	TypedSignatureEnabled  *bool                             `json:"typedSignatureEnabled,omitempty"`
-	UploadSignatureEnabled *bool                             `json:"uploadSignatureEnabled,omitempty"`
-	DrawSignatureEnabled   *bool                             `json:"drawSignatureEnabled,omitempty"`
-	EmailID                *string                           `json:"emailId,omitempty"`
-	EmailReplyTo           *string                           `json:"emailReplyTo,omitempty"`
-	EmailSettings          *DocumentUpdateEmailSettings      `json:"emailSettings,omitempty"`
+	Subject                  *string                                      `json:"subject,omitempty"`
+	Message                  *string                                      `json:"message,omitempty"`
+	Timezone                 *string                                      `json:"timezone,omitempty"`
+	DateFormat               *DocumentUpdateDateFormat                    `json:"dateFormat,omitempty"`
+	DistributionMethod       *DocumentUpdateDistributionMethod            `json:"distributionMethod,omitempty"`
+	SigningOrder             *DocumentUpdateSigningOrder                  `json:"signingOrder,omitempty"`
+	AllowDictateNextSigner   *bool                                        `json:"allowDictateNextSigner,omitempty"`
+	RedirectURL              *string                                      `json:"redirectUrl,omitempty"`
+	Language                 *DocumentUpdateLanguage                      `json:"language,omitempty"`
+	TypedSignatureEnabled    *bool                                        `json:"typedSignatureEnabled,omitempty"`
+	UploadSignatureEnabled   *bool                                        `json:"uploadSignatureEnabled,omitempty"`
+	DrawSignatureEnabled     *bool                                        `json:"drawSignatureEnabled,omitempty"`
+	EmailID                  *string                                      `json:"emailId,omitempty"`
+	EmailReplyTo             *string                                      `json:"emailReplyTo,omitempty"`
+	EmailSettings            *DocumentUpdateEmailSettings                 `json:"emailSettings,omitempty"`
+	EnvelopeExpirationPeriod *DocumentUpdateEnvelopeExpirationPeriodUnion `json:"envelopeExpirationPeriod,omitempty"`
+	ReminderSettings         *DocumentUpdateReminderSettings              `json:"reminderSettings,omitempty"`
 }
 
 func (d *DocumentUpdateMeta) GetSubject() *string {
@@ -540,6 +1054,20 @@ func (d *DocumentUpdateMeta) GetEmailSettings() *DocumentUpdateEmailSettings {
 	return d.EmailSettings
 }
 
+func (d *DocumentUpdateMeta) GetEnvelopeExpirationPeriod() *DocumentUpdateEnvelopeExpirationPeriodUnion {
+	if d == nil {
+		return nil
+	}
+	return d.EnvelopeExpirationPeriod
+}
+
+func (d *DocumentUpdateMeta) GetReminderSettings() *DocumentUpdateReminderSettings {
+	if d == nil {
+		return nil
+	}
+	return d.ReminderSettings
+}
+
 type DocumentUpdateRequest struct {
 	DocumentID float64             `json:"documentId"`
 	Data       *DocumentUpdateData `json:"data,omitempty"`
@@ -603,6 +1131,7 @@ const (
 	DocumentUpdateStatusPending   DocumentUpdateStatus = "PENDING"
 	DocumentUpdateStatusCompleted DocumentUpdateStatus = "COMPLETED"
 	DocumentUpdateStatusRejected  DocumentUpdateStatus = "REJECTED"
+	DocumentUpdateStatusCancelled DocumentUpdateStatus = "CANCELLED"
 )
 
 func (e DocumentUpdateStatus) ToPointer() *DocumentUpdateStatus {
@@ -621,6 +1150,8 @@ func (e *DocumentUpdateStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = DocumentUpdateStatus(v)
 		return nil
 	default:
@@ -777,7 +1308,14 @@ func CreateDocumentUpdateFormValuesNumber(number float64) DocumentUpdateFormValu
 	}
 }
 
-func (u *DocumentUpdateFormValues) UnmarshalJSON(data []byte) error {
+func (u *DocumentUpdateFormValues) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentUpdateFormValues{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {

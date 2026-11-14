@@ -29,6 +29,10 @@ type RecipientCreateTemplateRecipientsInternalServerError struct {
 var _ error = &RecipientCreateTemplateRecipientsInternalServerError{}
 
 func (e *RecipientCreateTemplateRecipientsInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type RecipientCreateTemplateRecipientsForbiddenError struct {
 var _ error = &RecipientCreateTemplateRecipientsForbiddenError{}
 
 func (e *RecipientCreateTemplateRecipientsForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type RecipientCreateTemplateRecipientsUnauthorizedError struct {
 var _ error = &RecipientCreateTemplateRecipientsUnauthorizedError{}
 
 func (e *RecipientCreateTemplateRecipientsUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type RecipientCreateTemplateRecipientsBadRequestError struct {
 var _ error = &RecipientCreateTemplateRecipientsBadRequestError{}
 
 func (e *RecipientCreateTemplateRecipientsBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

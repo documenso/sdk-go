@@ -69,3 +69,33 @@ fieldCreateTemplateFieldFieldUnion := operations.CreateFieldCreateTemplateFieldF
 fieldCreateTemplateFieldFieldUnion := operations.CreateFieldCreateTemplateFieldFieldUnionFieldCreateTemplateFieldFieldDropdown(operations.FieldCreateTemplateFieldFieldDropdown{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch fieldCreateTemplateFieldFieldUnion.Type {
+	case operations.FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldSignature:
+		// fieldCreateTemplateFieldFieldUnion.FieldCreateTemplateFieldFieldSignature is populated
+	case operations.FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldFreeSignature:
+		// fieldCreateTemplateFieldFieldUnion.FieldCreateTemplateFieldFieldFreeSignature is populated
+	case operations.FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldInitials:
+		// fieldCreateTemplateFieldFieldUnion.FieldCreateTemplateFieldFieldInitials is populated
+	case operations.FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldName:
+		// fieldCreateTemplateFieldFieldUnion.FieldCreateTemplateFieldFieldName is populated
+	case operations.FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldEmail:
+		// fieldCreateTemplateFieldFieldUnion.FieldCreateTemplateFieldFieldEmail is populated
+	case operations.FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldDate:
+		// fieldCreateTemplateFieldFieldUnion.FieldCreateTemplateFieldFieldDate is populated
+	case operations.FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldText:
+		// fieldCreateTemplateFieldFieldUnion.FieldCreateTemplateFieldFieldText is populated
+	case operations.FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldNumber:
+		// fieldCreateTemplateFieldFieldUnion.FieldCreateTemplateFieldFieldNumber is populated
+	case operations.FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldRadio:
+		// fieldCreateTemplateFieldFieldUnion.FieldCreateTemplateFieldFieldRadio is populated
+	case operations.FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldCheckbox:
+		// fieldCreateTemplateFieldFieldUnion.FieldCreateTemplateFieldFieldCheckbox is populated
+	case operations.FieldCreateTemplateFieldFieldUnionTypeFieldCreateTemplateFieldFieldDropdown:
+		// fieldCreateTemplateFieldFieldUnion.FieldCreateTemplateFieldFieldDropdown is populated
+}
+```

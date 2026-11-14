@@ -29,6 +29,10 @@ type FolderUpdateFolderInternalServerError struct {
 var _ error = &FolderUpdateFolderInternalServerError{}
 
 func (e *FolderUpdateFolderInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type FolderUpdateFolderForbiddenError struct {
 var _ error = &FolderUpdateFolderForbiddenError{}
 
 func (e *FolderUpdateFolderForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type FolderUpdateFolderUnauthorizedError struct {
 var _ error = &FolderUpdateFolderUnauthorizedError{}
 
 func (e *FolderUpdateFolderUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type FolderUpdateFolderBadRequestError struct {
 var _ error = &FolderUpdateFolderBadRequestError{}
 
 func (e *FolderUpdateFolderBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

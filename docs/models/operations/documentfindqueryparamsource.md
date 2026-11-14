@@ -2,6 +2,16 @@
 
 Filter documents by how it was created.
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.DocumentFindQueryParamSourceDocument
+```
+
 
 ## Values
 

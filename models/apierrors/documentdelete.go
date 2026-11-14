@@ -29,6 +29,10 @@ type DocumentDeleteInternalServerError struct {
 var _ error = &DocumentDeleteInternalServerError{}
 
 func (e *DocumentDeleteInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type DocumentDeleteForbiddenError struct {
 var _ error = &DocumentDeleteForbiddenError{}
 
 func (e *DocumentDeleteForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type DocumentDeleteUnauthorizedError struct {
 var _ error = &DocumentDeleteUnauthorizedError{}
 
 func (e *DocumentDeleteUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type DocumentDeleteBadRequestError struct {
 var _ error = &DocumentDeleteBadRequestError{}
 
 func (e *DocumentDeleteBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

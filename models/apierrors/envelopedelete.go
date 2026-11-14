@@ -29,6 +29,10 @@ type EnvelopeDeleteInternalServerError struct {
 var _ error = &EnvelopeDeleteInternalServerError{}
 
 func (e *EnvelopeDeleteInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type EnvelopeDeleteForbiddenError struct {
 var _ error = &EnvelopeDeleteForbiddenError{}
 
 func (e *EnvelopeDeleteForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type EnvelopeDeleteUnauthorizedError struct {
 var _ error = &EnvelopeDeleteUnauthorizedError{}
 
 func (e *EnvelopeDeleteUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type EnvelopeDeleteBadRequestError struct {
 var _ error = &EnvelopeDeleteBadRequestError{}
 
 func (e *EnvelopeDeleteBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

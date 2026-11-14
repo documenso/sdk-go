@@ -1,0 +1,29 @@
+# TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion
+
+
+## Supported Types
+
+### TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1
+
+```go
+templateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion := operations.CreateTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1(operations.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1{/* values here */})
+```
+
+### TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2
+
+```go
+templateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion := operations.CreateTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2(operations.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch templateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion.Type {
+	case operations.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1:
+		// templateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse1 is populated
+	case operations.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2:
+		// templateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponseUnion.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodResponse2 is populated
+}
+```
