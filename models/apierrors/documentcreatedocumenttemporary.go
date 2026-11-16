@@ -29,6 +29,10 @@ type DocumentCreateDocumentTemporaryInternalServerError struct {
 var _ error = &DocumentCreateDocumentTemporaryInternalServerError{}
 
 func (e *DocumentCreateDocumentTemporaryInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type DocumentCreateDocumentTemporaryForbiddenError struct {
 var _ error = &DocumentCreateDocumentTemporaryForbiddenError{}
 
 func (e *DocumentCreateDocumentTemporaryForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type DocumentCreateDocumentTemporaryUnauthorizedError struct {
 var _ error = &DocumentCreateDocumentTemporaryUnauthorizedError{}
 
 func (e *DocumentCreateDocumentTemporaryUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type DocumentCreateDocumentTemporaryBadRequestError struct {
 var _ error = &DocumentCreateDocumentTemporaryBadRequestError{}
 
 func (e *DocumentCreateDocumentTemporaryBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

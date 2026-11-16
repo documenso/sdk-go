@@ -1,0 +1,29 @@
+# TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion
+
+
+## Supported Types
+
+### TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1
+
+```go
+templateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion := operations.CreateTemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1(operations.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1{/* values here */})
+```
+
+### TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2
+
+```go
+templateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion := operations.CreateTemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2(operations.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2{/* values here */})
+```
+
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch templateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion.Type {
+	case operations.TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1:
+		// templateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride1 is populated
+	case operations.TemplateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnionTypeTemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2:
+		// templateCreateDocumentFromTemplateOverrideEnvelopeExpirationPeriodUnion.TemplateCreateDocumentFromTemplateEnvelopeExpirationPeriodOverride2 is populated
+}
+```

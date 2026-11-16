@@ -29,6 +29,10 @@ type TemplateToggleTemplateDirectLinkInternalServerError struct {
 var _ error = &TemplateToggleTemplateDirectLinkInternalServerError{}
 
 func (e *TemplateToggleTemplateDirectLinkInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type TemplateToggleTemplateDirectLinkForbiddenError struct {
 var _ error = &TemplateToggleTemplateDirectLinkForbiddenError{}
 
 func (e *TemplateToggleTemplateDirectLinkForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type TemplateToggleTemplateDirectLinkUnauthorizedError struct {
 var _ error = &TemplateToggleTemplateDirectLinkUnauthorizedError{}
 
 func (e *TemplateToggleTemplateDirectLinkUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type TemplateToggleTemplateDirectLinkBadRequestError struct {
 var _ error = &TemplateToggleTemplateDirectLinkBadRequestError{}
 
 func (e *TemplateToggleTemplateDirectLinkBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

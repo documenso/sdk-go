@@ -29,6 +29,10 @@ type FieldGetTemplateFieldInternalServerError struct {
 var _ error = &FieldGetTemplateFieldInternalServerError{}
 
 func (e *FieldGetTemplateFieldInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type FieldGetTemplateFieldNotFoundError struct {
 var _ error = &FieldGetTemplateFieldNotFoundError{}
 
 func (e *FieldGetTemplateFieldNotFoundError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type FieldGetTemplateFieldForbiddenError struct {
 var _ error = &FieldGetTemplateFieldForbiddenError{}
 
 func (e *FieldGetTemplateFieldForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type FieldGetTemplateFieldUnauthorizedError struct {
 var _ error = &FieldGetTemplateFieldUnauthorizedError{}
 
 func (e *FieldGetTemplateFieldUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -133,6 +149,10 @@ type FieldGetTemplateFieldBadRequestError struct {
 var _ error = &FieldGetTemplateFieldBadRequestError{}
 
 func (e *FieldGetTemplateFieldBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

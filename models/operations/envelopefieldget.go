@@ -74,6 +74,38 @@ func (e *EnvelopeFieldGetType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type EnvelopeFieldGetOverflow10 string
+
+const (
+	EnvelopeFieldGetOverflow10Auto       EnvelopeFieldGetOverflow10 = "auto"
+	EnvelopeFieldGetOverflow10Horizontal EnvelopeFieldGetOverflow10 = "horizontal"
+	EnvelopeFieldGetOverflow10Vertical   EnvelopeFieldGetOverflow10 = "vertical"
+	EnvelopeFieldGetOverflow10Crop       EnvelopeFieldGetOverflow10 = "crop"
+)
+
+func (e EnvelopeFieldGetOverflow10) ToPointer() *EnvelopeFieldGetOverflow10 {
+	return &e
+}
+func (e *EnvelopeFieldGetOverflow10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldGetOverflow10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldGetOverflow10: %v", v)
+	}
+}
+
 type EnvelopeFieldGetFieldMetaTypeDropdown string
 
 const (
@@ -119,12 +151,16 @@ func (e *EnvelopeFieldGetValue3) GetValue() string {
 	return e.Value
 }
 
+// #region class-body-envelopefieldgetvalue3
+// #endregion class-body-envelopefieldgetvalue3
+
 type EnvelopeFieldGetFieldMetaDropdown struct {
 	Label        *string                               `json:"label,omitempty"`
 	Placeholder  *string                               `json:"placeholder,omitempty"`
 	Required     *bool                                 `json:"required,omitempty"`
 	ReadOnly     *bool                                 `json:"readOnly,omitempty"`
 	FontSize     *float64                              `default:"12" json:"fontSize"`
+	Overflow     *EnvelopeFieldGetOverflow10           `json:"overflow,omitempty"`
 	Type         EnvelopeFieldGetFieldMetaTypeDropdown `json:"type"`
 	Values       []EnvelopeFieldGetValue3              `json:"values,omitempty"`
 	DefaultValue *string                               `json:"defaultValue,omitempty"`
@@ -176,6 +212,13 @@ func (e *EnvelopeFieldGetFieldMetaDropdown) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeFieldGetFieldMetaDropdown) GetOverflow() *EnvelopeFieldGetOverflow10 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeFieldGetFieldMetaDropdown) GetType() EnvelopeFieldGetFieldMetaTypeDropdown {
 	if e == nil {
 		return EnvelopeFieldGetFieldMetaTypeDropdown("")
@@ -195,6 +238,38 @@ func (e *EnvelopeFieldGetFieldMetaDropdown) GetDefaultValue() *string {
 		return nil
 	}
 	return e.DefaultValue
+}
+
+type EnvelopeFieldGetOverflow9 string
+
+const (
+	EnvelopeFieldGetOverflow9Auto       EnvelopeFieldGetOverflow9 = "auto"
+	EnvelopeFieldGetOverflow9Horizontal EnvelopeFieldGetOverflow9 = "horizontal"
+	EnvelopeFieldGetOverflow9Vertical   EnvelopeFieldGetOverflow9 = "vertical"
+	EnvelopeFieldGetOverflow9Crop       EnvelopeFieldGetOverflow9 = "crop"
+)
+
+func (e EnvelopeFieldGetOverflow9) ToPointer() *EnvelopeFieldGetOverflow9 {
+	return &e
+}
+func (e *EnvelopeFieldGetOverflow9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldGetOverflow9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldGetOverflow9: %v", v)
+	}
 }
 
 type EnvelopeFieldGetFieldMetaTypeCheckbox string
@@ -258,6 +333,9 @@ func (e *EnvelopeFieldGetValue2) GetValue() string {
 	return e.Value
 }
 
+// #region class-body-envelopefieldgetvalue2
+// #endregion class-body-envelopefieldgetvalue2
+
 type EnvelopeFieldGetDirection2 string
 
 const (
@@ -290,6 +368,7 @@ type EnvelopeFieldGetFieldMetaCheckbox struct {
 	Required         *bool                                 `json:"required,omitempty"`
 	ReadOnly         *bool                                 `json:"readOnly,omitempty"`
 	FontSize         *float64                              `default:"12" json:"fontSize"`
+	Overflow         *EnvelopeFieldGetOverflow9            `json:"overflow,omitempty"`
 	Type             EnvelopeFieldGetFieldMetaTypeCheckbox `json:"type"`
 	Values           []EnvelopeFieldGetValue2              `json:"values,omitempty"`
 	ValidationRule   *string                               `json:"validationRule,omitempty"`
@@ -343,6 +422,13 @@ func (e *EnvelopeFieldGetFieldMetaCheckbox) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeFieldGetFieldMetaCheckbox) GetOverflow() *EnvelopeFieldGetOverflow9 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeFieldGetFieldMetaCheckbox) GetType() EnvelopeFieldGetFieldMetaTypeCheckbox {
 	if e == nil {
 		return EnvelopeFieldGetFieldMetaTypeCheckbox("")
@@ -376,6 +462,38 @@ func (e *EnvelopeFieldGetFieldMetaCheckbox) GetDirection() *EnvelopeFieldGetDire
 		return nil
 	}
 	return e.Direction
+}
+
+type EnvelopeFieldGetOverflow8 string
+
+const (
+	EnvelopeFieldGetOverflow8Auto       EnvelopeFieldGetOverflow8 = "auto"
+	EnvelopeFieldGetOverflow8Horizontal EnvelopeFieldGetOverflow8 = "horizontal"
+	EnvelopeFieldGetOverflow8Vertical   EnvelopeFieldGetOverflow8 = "vertical"
+	EnvelopeFieldGetOverflow8Crop       EnvelopeFieldGetOverflow8 = "crop"
+)
+
+func (e EnvelopeFieldGetOverflow8) ToPointer() *EnvelopeFieldGetOverflow8 {
+	return &e
+}
+func (e *EnvelopeFieldGetOverflow8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldGetOverflow8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldGetOverflow8: %v", v)
+	}
 }
 
 type EnvelopeFieldGetFieldMetaTypeRadio string
@@ -439,6 +557,9 @@ func (e *EnvelopeFieldGetValue1) GetValue() string {
 	return e.Value
 }
 
+// #region class-body-envelopefieldgetvalue1
+// #endregion class-body-envelopefieldgetvalue1
+
 type EnvelopeFieldGetDirection1 string
 
 const (
@@ -471,6 +592,7 @@ type EnvelopeFieldGetFieldMetaRadio struct {
 	Required    *bool                              `json:"required,omitempty"`
 	ReadOnly    *bool                              `json:"readOnly,omitempty"`
 	FontSize    *float64                           `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldGetOverflow8         `json:"overflow,omitempty"`
 	Type        EnvelopeFieldGetFieldMetaTypeRadio `json:"type"`
 	Values      []EnvelopeFieldGetValue1           `json:"values,omitempty"`
 	Direction   *EnvelopeFieldGetDirection1        `default:"vertical" json:"direction"`
@@ -522,6 +644,13 @@ func (e *EnvelopeFieldGetFieldMetaRadio) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeFieldGetFieldMetaRadio) GetOverflow() *EnvelopeFieldGetOverflow8 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeFieldGetFieldMetaRadio) GetType() EnvelopeFieldGetFieldMetaTypeRadio {
 	if e == nil {
 		return EnvelopeFieldGetFieldMetaTypeRadio("")
@@ -541,6 +670,38 @@ func (e *EnvelopeFieldGetFieldMetaRadio) GetDirection() *EnvelopeFieldGetDirecti
 		return nil
 	}
 	return e.Direction
+}
+
+type EnvelopeFieldGetOverflow7 string
+
+const (
+	EnvelopeFieldGetOverflow7Auto       EnvelopeFieldGetOverflow7 = "auto"
+	EnvelopeFieldGetOverflow7Horizontal EnvelopeFieldGetOverflow7 = "horizontal"
+	EnvelopeFieldGetOverflow7Vertical   EnvelopeFieldGetOverflow7 = "vertical"
+	EnvelopeFieldGetOverflow7Crop       EnvelopeFieldGetOverflow7 = "crop"
+)
+
+func (e EnvelopeFieldGetOverflow7) ToPointer() *EnvelopeFieldGetOverflow7 {
+	return &e
+}
+func (e *EnvelopeFieldGetOverflow7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldGetOverflow7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldGetOverflow7: %v", v)
+	}
 }
 
 type EnvelopeFieldGetFieldMetaTypeNumber string
@@ -630,6 +791,7 @@ type EnvelopeFieldGetFieldMetaNumber struct {
 	Required      *bool                               `json:"required,omitempty"`
 	ReadOnly      *bool                               `json:"readOnly,omitempty"`
 	FontSize      *float64                            `default:"12" json:"fontSize"`
+	Overflow      *EnvelopeFieldGetOverflow7          `json:"overflow,omitempty"`
 	Type          EnvelopeFieldGetFieldMetaTypeNumber `json:"type"`
 	NumberFormat  *string                             `json:"numberFormat,omitempty"`
 	Value         *string                             `json:"value,omitempty"`
@@ -685,6 +847,13 @@ func (e *EnvelopeFieldGetFieldMetaNumber) GetFontSize() *float64 {
 		return nil
 	}
 	return e.FontSize
+}
+
+func (e *EnvelopeFieldGetFieldMetaNumber) GetOverflow() *EnvelopeFieldGetOverflow7 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
 }
 
 func (e *EnvelopeFieldGetFieldMetaNumber) GetType() EnvelopeFieldGetFieldMetaTypeNumber {
@@ -748,6 +917,38 @@ func (e *EnvelopeFieldGetFieldMetaNumber) GetVerticalAlign() *EnvelopeFieldGetVe
 		return nil
 	}
 	return e.VerticalAlign
+}
+
+type EnvelopeFieldGetOverflow6 string
+
+const (
+	EnvelopeFieldGetOverflow6Auto       EnvelopeFieldGetOverflow6 = "auto"
+	EnvelopeFieldGetOverflow6Horizontal EnvelopeFieldGetOverflow6 = "horizontal"
+	EnvelopeFieldGetOverflow6Vertical   EnvelopeFieldGetOverflow6 = "vertical"
+	EnvelopeFieldGetOverflow6Crop       EnvelopeFieldGetOverflow6 = "crop"
+)
+
+func (e EnvelopeFieldGetOverflow6) ToPointer() *EnvelopeFieldGetOverflow6 {
+	return &e
+}
+func (e *EnvelopeFieldGetOverflow6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldGetOverflow6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldGetOverflow6: %v", v)
+	}
 }
 
 type EnvelopeFieldGetFieldMetaTypeText string
@@ -837,6 +1038,7 @@ type EnvelopeFieldGetFieldMetaText struct {
 	Required       *bool                             `json:"required,omitempty"`
 	ReadOnly       *bool                             `json:"readOnly,omitempty"`
 	FontSize       *float64                          `default:"12" json:"fontSize"`
+	Overflow       *EnvelopeFieldGetOverflow6        `json:"overflow,omitempty"`
 	Type           EnvelopeFieldGetFieldMetaTypeText `json:"type"`
 	Text           *string                           `json:"text,omitempty"`
 	CharacterLimit *float64                          `json:"characterLimit,omitempty"`
@@ -892,6 +1094,13 @@ func (e *EnvelopeFieldGetFieldMetaText) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeFieldGetFieldMetaText) GetOverflow() *EnvelopeFieldGetOverflow6 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeFieldGetFieldMetaText) GetType() EnvelopeFieldGetFieldMetaTypeText {
 	if e == nil {
 		return EnvelopeFieldGetFieldMetaTypeText("")
@@ -939,6 +1148,38 @@ func (e *EnvelopeFieldGetFieldMetaText) GetVerticalAlign() *EnvelopeFieldGetVert
 		return nil
 	}
 	return e.VerticalAlign
+}
+
+type EnvelopeFieldGetOverflow5 string
+
+const (
+	EnvelopeFieldGetOverflow5Auto       EnvelopeFieldGetOverflow5 = "auto"
+	EnvelopeFieldGetOverflow5Horizontal EnvelopeFieldGetOverflow5 = "horizontal"
+	EnvelopeFieldGetOverflow5Vertical   EnvelopeFieldGetOverflow5 = "vertical"
+	EnvelopeFieldGetOverflow5Crop       EnvelopeFieldGetOverflow5 = "crop"
+)
+
+func (e EnvelopeFieldGetOverflow5) ToPointer() *EnvelopeFieldGetOverflow5 {
+	return &e
+}
+func (e *EnvelopeFieldGetOverflow5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldGetOverflow5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldGetOverflow5: %v", v)
+	}
 }
 
 type EnvelopeFieldGetFieldMetaTypeDate string
@@ -999,6 +1240,7 @@ type EnvelopeFieldGetFieldMetaDate struct {
 	Required    *bool                             `json:"required,omitempty"`
 	ReadOnly    *bool                             `json:"readOnly,omitempty"`
 	FontSize    *float64                          `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldGetOverflow5        `default:"auto" json:"overflow"`
 	Type        EnvelopeFieldGetFieldMetaTypeDate `json:"type"`
 	TextAlign   *EnvelopeFieldGetTextAlign4       `json:"textAlign,omitempty"`
 }
@@ -1049,6 +1291,13 @@ func (e *EnvelopeFieldGetFieldMetaDate) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeFieldGetFieldMetaDate) GetOverflow() *EnvelopeFieldGetOverflow5 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeFieldGetFieldMetaDate) GetType() EnvelopeFieldGetFieldMetaTypeDate {
 	if e == nil {
 		return EnvelopeFieldGetFieldMetaTypeDate("")
@@ -1061,6 +1310,38 @@ func (e *EnvelopeFieldGetFieldMetaDate) GetTextAlign() *EnvelopeFieldGetTextAlig
 		return nil
 	}
 	return e.TextAlign
+}
+
+type EnvelopeFieldGetOverflow4 string
+
+const (
+	EnvelopeFieldGetOverflow4Auto       EnvelopeFieldGetOverflow4 = "auto"
+	EnvelopeFieldGetOverflow4Horizontal EnvelopeFieldGetOverflow4 = "horizontal"
+	EnvelopeFieldGetOverflow4Vertical   EnvelopeFieldGetOverflow4 = "vertical"
+	EnvelopeFieldGetOverflow4Crop       EnvelopeFieldGetOverflow4 = "crop"
+)
+
+func (e EnvelopeFieldGetOverflow4) ToPointer() *EnvelopeFieldGetOverflow4 {
+	return &e
+}
+func (e *EnvelopeFieldGetOverflow4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldGetOverflow4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldGetOverflow4: %v", v)
+	}
 }
 
 type EnvelopeFieldGetFieldMetaTypeEmail string
@@ -1121,6 +1402,7 @@ type EnvelopeFieldGetFieldMetaEmail struct {
 	Required    *bool                              `json:"required,omitempty"`
 	ReadOnly    *bool                              `json:"readOnly,omitempty"`
 	FontSize    *float64                           `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldGetOverflow4         `default:"auto" json:"overflow"`
 	Type        EnvelopeFieldGetFieldMetaTypeEmail `json:"type"`
 	TextAlign   *EnvelopeFieldGetTextAlign3        `json:"textAlign,omitempty"`
 }
@@ -1171,6 +1453,13 @@ func (e *EnvelopeFieldGetFieldMetaEmail) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeFieldGetFieldMetaEmail) GetOverflow() *EnvelopeFieldGetOverflow4 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeFieldGetFieldMetaEmail) GetType() EnvelopeFieldGetFieldMetaTypeEmail {
 	if e == nil {
 		return EnvelopeFieldGetFieldMetaTypeEmail("")
@@ -1183,6 +1472,38 @@ func (e *EnvelopeFieldGetFieldMetaEmail) GetTextAlign() *EnvelopeFieldGetTextAli
 		return nil
 	}
 	return e.TextAlign
+}
+
+type EnvelopeFieldGetOverflow3 string
+
+const (
+	EnvelopeFieldGetOverflow3Auto       EnvelopeFieldGetOverflow3 = "auto"
+	EnvelopeFieldGetOverflow3Horizontal EnvelopeFieldGetOverflow3 = "horizontal"
+	EnvelopeFieldGetOverflow3Vertical   EnvelopeFieldGetOverflow3 = "vertical"
+	EnvelopeFieldGetOverflow3Crop       EnvelopeFieldGetOverflow3 = "crop"
+)
+
+func (e EnvelopeFieldGetOverflow3) ToPointer() *EnvelopeFieldGetOverflow3 {
+	return &e
+}
+func (e *EnvelopeFieldGetOverflow3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldGetOverflow3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldGetOverflow3: %v", v)
+	}
 }
 
 type EnvelopeFieldGetFieldMetaTypeName string
@@ -1243,6 +1564,7 @@ type EnvelopeFieldGetFieldMetaName struct {
 	Required    *bool                             `json:"required,omitempty"`
 	ReadOnly    *bool                             `json:"readOnly,omitempty"`
 	FontSize    *float64                          `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldGetOverflow3        `json:"overflow,omitempty"`
 	Type        EnvelopeFieldGetFieldMetaTypeName `json:"type"`
 	TextAlign   *EnvelopeFieldGetTextAlign2       `json:"textAlign,omitempty"`
 }
@@ -1293,6 +1615,13 @@ func (e *EnvelopeFieldGetFieldMetaName) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeFieldGetFieldMetaName) GetOverflow() *EnvelopeFieldGetOverflow3 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeFieldGetFieldMetaName) GetType() EnvelopeFieldGetFieldMetaTypeName {
 	if e == nil {
 		return EnvelopeFieldGetFieldMetaTypeName("")
@@ -1305,6 +1634,38 @@ func (e *EnvelopeFieldGetFieldMetaName) GetTextAlign() *EnvelopeFieldGetTextAlig
 		return nil
 	}
 	return e.TextAlign
+}
+
+type EnvelopeFieldGetOverflow2 string
+
+const (
+	EnvelopeFieldGetOverflow2Auto       EnvelopeFieldGetOverflow2 = "auto"
+	EnvelopeFieldGetOverflow2Horizontal EnvelopeFieldGetOverflow2 = "horizontal"
+	EnvelopeFieldGetOverflow2Vertical   EnvelopeFieldGetOverflow2 = "vertical"
+	EnvelopeFieldGetOverflow2Crop       EnvelopeFieldGetOverflow2 = "crop"
+)
+
+func (e EnvelopeFieldGetOverflow2) ToPointer() *EnvelopeFieldGetOverflow2 {
+	return &e
+}
+func (e *EnvelopeFieldGetOverflow2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldGetOverflow2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldGetOverflow2: %v", v)
+	}
 }
 
 type EnvelopeFieldGetFieldMetaTypeInitials string
@@ -1365,6 +1726,7 @@ type EnvelopeFieldGetFieldMetaInitials struct {
 	Required    *bool                                 `json:"required,omitempty"`
 	ReadOnly    *bool                                 `json:"readOnly,omitempty"`
 	FontSize    *float64                              `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldGetOverflow2            `json:"overflow,omitempty"`
 	Type        EnvelopeFieldGetFieldMetaTypeInitials `json:"type"`
 	TextAlign   *EnvelopeFieldGetTextAlign1           `json:"textAlign,omitempty"`
 }
@@ -1415,6 +1777,13 @@ func (e *EnvelopeFieldGetFieldMetaInitials) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeFieldGetFieldMetaInitials) GetOverflow() *EnvelopeFieldGetOverflow2 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeFieldGetFieldMetaInitials) GetType() EnvelopeFieldGetFieldMetaTypeInitials {
 	if e == nil {
 		return EnvelopeFieldGetFieldMetaTypeInitials("")
@@ -1427,6 +1796,38 @@ func (e *EnvelopeFieldGetFieldMetaInitials) GetTextAlign() *EnvelopeFieldGetText
 		return nil
 	}
 	return e.TextAlign
+}
+
+type EnvelopeFieldGetOverflow1 string
+
+const (
+	EnvelopeFieldGetOverflow1Auto       EnvelopeFieldGetOverflow1 = "auto"
+	EnvelopeFieldGetOverflow1Horizontal EnvelopeFieldGetOverflow1 = "horizontal"
+	EnvelopeFieldGetOverflow1Vertical   EnvelopeFieldGetOverflow1 = "vertical"
+	EnvelopeFieldGetOverflow1Crop       EnvelopeFieldGetOverflow1 = "crop"
+)
+
+func (e EnvelopeFieldGetOverflow1) ToPointer() *EnvelopeFieldGetOverflow1 {
+	return &e
+}
+func (e *EnvelopeFieldGetOverflow1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeFieldGetOverflow1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFieldGetOverflow1: %v", v)
+	}
 }
 
 type EnvelopeFieldGetFieldMetaTypeSignature string
@@ -1458,6 +1859,7 @@ type EnvelopeFieldGetFieldMetaSignature struct {
 	Required    *bool                                  `json:"required,omitempty"`
 	ReadOnly    *bool                                  `json:"readOnly,omitempty"`
 	FontSize    *float64                               `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeFieldGetOverflow1             `default:"auto" json:"overflow"`
 	Type        EnvelopeFieldGetFieldMetaTypeSignature `json:"type"`
 }
 
@@ -1505,6 +1907,13 @@ func (e *EnvelopeFieldGetFieldMetaSignature) GetFontSize() *float64 {
 		return nil
 	}
 	return e.FontSize
+}
+
+func (e *EnvelopeFieldGetFieldMetaSignature) GetOverflow() *EnvelopeFieldGetOverflow1 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
 }
 
 func (e *EnvelopeFieldGetFieldMetaSignature) GetType() EnvelopeFieldGetFieldMetaTypeSignature {
@@ -1634,7 +2043,14 @@ func CreateEnvelopeFieldGetFieldMetaUnionEnvelopeFieldGetFieldMetaDropdown(envel
 	}
 }
 
-func (u *EnvelopeFieldGetFieldMetaUnion) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeFieldGetFieldMetaUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeFieldGetFieldMetaUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var envelopeFieldGetFieldMetaSignature EnvelopeFieldGetFieldMetaSignature = EnvelopeFieldGetFieldMetaSignature{}
 	if err := utils.UnmarshalJSON(data, &envelopeFieldGetFieldMetaSignature, "", true, nil); err == nil {

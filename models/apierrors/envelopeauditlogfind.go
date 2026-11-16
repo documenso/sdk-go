@@ -29,6 +29,10 @@ type EnvelopeAuditLogFindInternalServerError struct {
 var _ error = &EnvelopeAuditLogFindInternalServerError{}
 
 func (e *EnvelopeAuditLogFindInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type EnvelopeAuditLogFindNotFoundError struct {
 var _ error = &EnvelopeAuditLogFindNotFoundError{}
 
 func (e *EnvelopeAuditLogFindNotFoundError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type EnvelopeAuditLogFindForbiddenError struct {
 var _ error = &EnvelopeAuditLogFindForbiddenError{}
 
 func (e *EnvelopeAuditLogFindForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type EnvelopeAuditLogFindUnauthorizedError struct {
 var _ error = &EnvelopeAuditLogFindUnauthorizedError{}
 
 func (e *EnvelopeAuditLogFindUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -133,6 +149,10 @@ type EnvelopeAuditLogFindBadRequestError struct {
 var _ error = &EnvelopeAuditLogFindBadRequestError{}
 
 func (e *EnvelopeAuditLogFindBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

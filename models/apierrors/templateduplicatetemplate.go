@@ -29,6 +29,10 @@ type TemplateDuplicateTemplateInternalServerError struct {
 var _ error = &TemplateDuplicateTemplateInternalServerError{}
 
 func (e *TemplateDuplicateTemplateInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type TemplateDuplicateTemplateForbiddenError struct {
 var _ error = &TemplateDuplicateTemplateForbiddenError{}
 
 func (e *TemplateDuplicateTemplateForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type TemplateDuplicateTemplateUnauthorizedError struct {
 var _ error = &TemplateDuplicateTemplateUnauthorizedError{}
 
 func (e *TemplateDuplicateTemplateUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type TemplateDuplicateTemplateBadRequestError struct {
 var _ error = &TemplateDuplicateTemplateBadRequestError{}
 
 func (e *TemplateDuplicateTemplateBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

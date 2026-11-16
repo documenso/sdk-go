@@ -29,6 +29,10 @@ type TemplateCreateDocumentFromTemplateInternalServerError struct {
 var _ error = &TemplateCreateDocumentFromTemplateInternalServerError{}
 
 func (e *TemplateCreateDocumentFromTemplateInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type TemplateCreateDocumentFromTemplateForbiddenError struct {
 var _ error = &TemplateCreateDocumentFromTemplateForbiddenError{}
 
 func (e *TemplateCreateDocumentFromTemplateForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type TemplateCreateDocumentFromTemplateUnauthorizedError struct {
 var _ error = &TemplateCreateDocumentFromTemplateUnauthorizedError{}
 
 func (e *TemplateCreateDocumentFromTemplateUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type TemplateCreateDocumentFromTemplateBadRequestError struct {
 var _ error = &TemplateCreateDocumentFromTemplateBadRequestError{}
 
 func (e *TemplateCreateDocumentFromTemplateBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

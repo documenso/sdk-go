@@ -1,5 +1,15 @@
 # DocumentUpdateDateFormat
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.DocumentUpdateDateFormatYyyyMMddHhMmA
+```
+
 
 ## Values
 
@@ -8,12 +18,15 @@
 | `DocumentUpdateDateFormatYyyyMMddHhMmA`            | yyyy-MM-dd hh:mm a                                 |
 | `DocumentUpdateDateFormatYyyyMMdd`                 | yyyy-MM-dd                                         |
 | `DocumentUpdateDateFormatDdMmSlashYyyy`            | dd/MM/yyyy                                         |
+| `DocumentUpdateDateFormatDdMmDashYyyy`             | dd-MM-yyyy                                         |
 | `DocumentUpdateDateFormatMmDdSlashYyyy`            | MM/dd/yyyy                                         |
 | `DocumentUpdateDateFormatYyMMdd`                   | yy-MM-dd                                           |
 | `DocumentUpdateDateFormatMmmmDdCommaYyyy`          | MMMM dd, yyyy                                      |
 | `DocumentUpdateDateFormatEeeeMmmmDdCommaYyyy`      | EEEE, MMMM dd, yyyy                                |
 | `DocumentUpdateDateFormatDdMmSlashYyyyHhMmA`       | dd/MM/yyyy hh:mm a                                 |
 | `DocumentUpdateDateFormatDdMmSlashYyyyHHmm`        | dd/MM/yyyy HH:mm                                   |
+| `DocumentUpdateDateFormatDdMmDashYyyyHhMmA`        | dd-MM-yyyy hh:mm a                                 |
+| `DocumentUpdateDateFormatDdMmDashYyyyHHmm`         | dd-MM-yyyy HH:mm                                   |
 | `DocumentUpdateDateFormatMmDdSlashYyyyHhMmA`       | MM/dd/yyyy hh:mm a                                 |
 | `DocumentUpdateDateFormatMmDdSlashYyyyHHmm`        | MM/dd/yyyy HH:mm                                   |
 | `DocumentUpdateDateFormatDdDotMmDotYyyy`           | dd.MM.yyyy                                         |
