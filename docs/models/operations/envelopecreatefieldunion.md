@@ -69,3 +69,33 @@ envelopeCreateFieldUnion := operations.CreateEnvelopeCreateFieldUnionEnvelopeCre
 envelopeCreateFieldUnion := operations.CreateEnvelopeCreateFieldUnionEnvelopeCreateFieldDropdown(operations.EnvelopeCreateFieldDropdown{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch envelopeCreateFieldUnion.Type {
+	case operations.EnvelopeCreateFieldUnionTypeEnvelopeCreateFieldSignature:
+		// envelopeCreateFieldUnion.EnvelopeCreateFieldSignature is populated
+	case operations.EnvelopeCreateFieldUnionTypeEnvelopeCreateFieldFreeSignature:
+		// envelopeCreateFieldUnion.EnvelopeCreateFieldFreeSignature is populated
+	case operations.EnvelopeCreateFieldUnionTypeEnvelopeCreateFieldInitials:
+		// envelopeCreateFieldUnion.EnvelopeCreateFieldInitials is populated
+	case operations.EnvelopeCreateFieldUnionTypeEnvelopeCreateFieldName:
+		// envelopeCreateFieldUnion.EnvelopeCreateFieldName is populated
+	case operations.EnvelopeCreateFieldUnionTypeEnvelopeCreateFieldEmail:
+		// envelopeCreateFieldUnion.EnvelopeCreateFieldEmail is populated
+	case operations.EnvelopeCreateFieldUnionTypeEnvelopeCreateFieldDate:
+		// envelopeCreateFieldUnion.EnvelopeCreateFieldDate is populated
+	case operations.EnvelopeCreateFieldUnionTypeEnvelopeCreateFieldText:
+		// envelopeCreateFieldUnion.EnvelopeCreateFieldText is populated
+	case operations.EnvelopeCreateFieldUnionTypeEnvelopeCreateFieldNumber:
+		// envelopeCreateFieldUnion.EnvelopeCreateFieldNumber is populated
+	case operations.EnvelopeCreateFieldUnionTypeEnvelopeCreateFieldRadio:
+		// envelopeCreateFieldUnion.EnvelopeCreateFieldRadio is populated
+	case operations.EnvelopeCreateFieldUnionTypeEnvelopeCreateFieldCheckbox:
+		// envelopeCreateFieldUnion.EnvelopeCreateFieldCheckbox is populated
+	case operations.EnvelopeCreateFieldUnionTypeEnvelopeCreateFieldDropdown:
+		// envelopeCreateFieldUnion.EnvelopeCreateFieldDropdown is populated
+}
+```

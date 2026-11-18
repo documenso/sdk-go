@@ -29,6 +29,10 @@ type TemplateCreateTemplateTemporaryInternalServerError struct {
 var _ error = &TemplateCreateTemplateTemporaryInternalServerError{}
 
 func (e *TemplateCreateTemplateTemporaryInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type TemplateCreateTemplateTemporaryForbiddenError struct {
 var _ error = &TemplateCreateTemplateTemporaryForbiddenError{}
 
 func (e *TemplateCreateTemplateTemporaryForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type TemplateCreateTemplateTemporaryUnauthorizedError struct {
 var _ error = &TemplateCreateTemplateTemporaryUnauthorizedError{}
 
 func (e *TemplateCreateTemplateTemporaryUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type TemplateCreateTemplateTemporaryBadRequestError struct {
 var _ error = &TemplateCreateTemplateTemporaryBadRequestError{}
 
 func (e *TemplateCreateTemplateTemporaryBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

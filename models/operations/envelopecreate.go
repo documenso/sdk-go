@@ -166,7 +166,14 @@ func CreateEnvelopeCreateFormValuesNumber(number float64) EnvelopeCreateFormValu
 	}
 }
 
-func (u *EnvelopeCreateFormValues) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeCreateFormValues) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateFormValues{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -263,7 +270,14 @@ func CreateEnvelopeCreateEmailUnionStr(str string) EnvelopeCreateEmailUnion {
 	}
 }
 
-func (u *EnvelopeCreateEmailUnion) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeCreateEmailUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateEmailUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var envelopeCreateEmailEnum EnvelopeCreateEmailEnum = EnvelopeCreateEmailEnum("")
 	if err := utils.UnmarshalJSON(data, &envelopeCreateEmailEnum, "", true, nil); err == nil {
@@ -413,6 +427,38 @@ func (e *EnvelopeCreateTypeDropdown1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type EnvelopeCreateOverflowDropdown string
+
+const (
+	EnvelopeCreateOverflowDropdownAuto       EnvelopeCreateOverflowDropdown = "auto"
+	EnvelopeCreateOverflowDropdownHorizontal EnvelopeCreateOverflowDropdown = "horizontal"
+	EnvelopeCreateOverflowDropdownVertical   EnvelopeCreateOverflowDropdown = "vertical"
+	EnvelopeCreateOverflowDropdownCrop       EnvelopeCreateOverflowDropdown = "crop"
+)
+
+func (e EnvelopeCreateOverflowDropdown) ToPointer() *EnvelopeCreateOverflowDropdown {
+	return &e
+}
+func (e *EnvelopeCreateOverflowDropdown) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeCreateOverflowDropdown(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeCreateOverflowDropdown: %v", v)
+	}
+}
+
 type EnvelopeCreateTypeDropdown2 string
 
 const (
@@ -459,14 +505,15 @@ func (e *EnvelopeCreateValueDropdown) GetValue() string {
 }
 
 type EnvelopeCreateFieldMetaDropdown struct {
-	Label        *string                       `json:"label,omitempty"`
-	Placeholder  *string                       `json:"placeholder,omitempty"`
-	Required     *bool                         `json:"required,omitempty"`
-	ReadOnly     *bool                         `json:"readOnly,omitempty"`
-	FontSize     *float64                      `default:"12" json:"fontSize"`
-	Type         EnvelopeCreateTypeDropdown2   `json:"type"`
-	Values       []EnvelopeCreateValueDropdown `json:"values,omitempty"`
-	DefaultValue *string                       `json:"defaultValue,omitempty"`
+	Label        *string                         `json:"label,omitempty"`
+	Placeholder  *string                         `json:"placeholder,omitempty"`
+	Required     *bool                           `json:"required,omitempty"`
+	ReadOnly     *bool                           `json:"readOnly,omitempty"`
+	FontSize     *float64                        `default:"12" json:"fontSize"`
+	Overflow     *EnvelopeCreateOverflowDropdown `json:"overflow,omitempty"`
+	Type         EnvelopeCreateTypeDropdown2     `json:"type"`
+	Values       []EnvelopeCreateValueDropdown   `json:"values,omitempty"`
+	DefaultValue *string                         `json:"defaultValue,omitempty"`
 }
 
 func (e EnvelopeCreateFieldMetaDropdown) MarshalJSON() ([]byte, error) {
@@ -513,6 +560,13 @@ func (e *EnvelopeCreateFieldMetaDropdown) GetFontSize() *float64 {
 		return nil
 	}
 	return e.FontSize
+}
+
+func (e *EnvelopeCreateFieldMetaDropdown) GetOverflow() *EnvelopeCreateOverflowDropdown {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
 }
 
 func (e *EnvelopeCreateFieldMetaDropdown) GetType() EnvelopeCreateTypeDropdown2 {
@@ -568,7 +622,14 @@ func CreateEnvelopeCreateIdentifier11Number(number float64) EnvelopeCreateIdenti
 	}
 }
 
-func (u *EnvelopeCreateIdentifier11) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeCreateIdentifier11) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateIdentifier11{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -700,6 +761,38 @@ func (e *EnvelopeCreateTypeCheckbox1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type EnvelopeCreateOverflowCheckbox string
+
+const (
+	EnvelopeCreateOverflowCheckboxAuto       EnvelopeCreateOverflowCheckbox = "auto"
+	EnvelopeCreateOverflowCheckboxHorizontal EnvelopeCreateOverflowCheckbox = "horizontal"
+	EnvelopeCreateOverflowCheckboxVertical   EnvelopeCreateOverflowCheckbox = "vertical"
+	EnvelopeCreateOverflowCheckboxCrop       EnvelopeCreateOverflowCheckbox = "crop"
+)
+
+func (e EnvelopeCreateOverflowCheckbox) ToPointer() *EnvelopeCreateOverflowCheckbox {
+	return &e
+}
+func (e *EnvelopeCreateOverflowCheckbox) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeCreateOverflowCheckbox(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeCreateOverflowCheckbox: %v", v)
+	}
+}
+
 type EnvelopeCreateTypeCheckbox2 string
 
 const (
@@ -793,6 +886,7 @@ type EnvelopeCreateFieldMetaCheckbox struct {
 	Required         *bool                            `json:"required,omitempty"`
 	ReadOnly         *bool                            `json:"readOnly,omitempty"`
 	FontSize         *float64                         `default:"12" json:"fontSize"`
+	Overflow         *EnvelopeCreateOverflowCheckbox  `json:"overflow,omitempty"`
 	Type             EnvelopeCreateTypeCheckbox2      `json:"type"`
 	Values           []EnvelopeCreateValueCheckbox    `json:"values,omitempty"`
 	ValidationRule   *string                          `json:"validationRule,omitempty"`
@@ -844,6 +938,13 @@ func (e *EnvelopeCreateFieldMetaCheckbox) GetFontSize() *float64 {
 		return nil
 	}
 	return e.FontSize
+}
+
+func (e *EnvelopeCreateFieldMetaCheckbox) GetOverflow() *EnvelopeCreateOverflowCheckbox {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
 }
 
 func (e *EnvelopeCreateFieldMetaCheckbox) GetType() EnvelopeCreateTypeCheckbox2 {
@@ -913,7 +1014,14 @@ func CreateEnvelopeCreateIdentifier10Number(number float64) EnvelopeCreateIdenti
 	}
 }
 
-func (u *EnvelopeCreateIdentifier10) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeCreateIdentifier10) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateIdentifier10{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -1045,6 +1153,38 @@ func (e *EnvelopeCreateTypeRadio1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type EnvelopeCreateOverflowRadio string
+
+const (
+	EnvelopeCreateOverflowRadioAuto       EnvelopeCreateOverflowRadio = "auto"
+	EnvelopeCreateOverflowRadioHorizontal EnvelopeCreateOverflowRadio = "horizontal"
+	EnvelopeCreateOverflowRadioVertical   EnvelopeCreateOverflowRadio = "vertical"
+	EnvelopeCreateOverflowRadioCrop       EnvelopeCreateOverflowRadio = "crop"
+)
+
+func (e EnvelopeCreateOverflowRadio) ToPointer() *EnvelopeCreateOverflowRadio {
+	return &e
+}
+func (e *EnvelopeCreateOverflowRadio) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeCreateOverflowRadio(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeCreateOverflowRadio: %v", v)
+	}
+}
+
 type EnvelopeCreateTypeRadio2 string
 
 const (
@@ -1138,6 +1278,7 @@ type EnvelopeCreateFieldMetaRadio struct {
 	Required    *bool                         `json:"required,omitempty"`
 	ReadOnly    *bool                         `json:"readOnly,omitempty"`
 	FontSize    *float64                      `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeCreateOverflowRadio  `json:"overflow,omitempty"`
 	Type        EnvelopeCreateTypeRadio2      `json:"type"`
 	Values      []EnvelopeCreateValueRadio    `json:"values,omitempty"`
 	Direction   *EnvelopeCreateDirectionRadio `default:"vertical" json:"direction"`
@@ -1187,6 +1328,13 @@ func (e *EnvelopeCreateFieldMetaRadio) GetFontSize() *float64 {
 		return nil
 	}
 	return e.FontSize
+}
+
+func (e *EnvelopeCreateFieldMetaRadio) GetOverflow() *EnvelopeCreateOverflowRadio {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
 }
 
 func (e *EnvelopeCreateFieldMetaRadio) GetType() EnvelopeCreateTypeRadio2 {
@@ -1242,7 +1390,14 @@ func CreateEnvelopeCreateIdentifier9Number(number float64) EnvelopeCreateIdentif
 	}
 }
 
-func (u *EnvelopeCreateIdentifier9) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeCreateIdentifier9) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateIdentifier9{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -1374,6 +1529,38 @@ func (e *EnvelopeCreateTypeNumber1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type EnvelopeCreateOverflowNumber string
+
+const (
+	EnvelopeCreateOverflowNumberAuto       EnvelopeCreateOverflowNumber = "auto"
+	EnvelopeCreateOverflowNumberHorizontal EnvelopeCreateOverflowNumber = "horizontal"
+	EnvelopeCreateOverflowNumberVertical   EnvelopeCreateOverflowNumber = "vertical"
+	EnvelopeCreateOverflowNumberCrop       EnvelopeCreateOverflowNumber = "crop"
+)
+
+func (e EnvelopeCreateOverflowNumber) ToPointer() *EnvelopeCreateOverflowNumber {
+	return &e
+}
+func (e *EnvelopeCreateOverflowNumber) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeCreateOverflowNumber(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeCreateOverflowNumber: %v", v)
+	}
+}
+
 type EnvelopeCreateTypeNumber2 string
 
 const (
@@ -1461,6 +1648,7 @@ type EnvelopeCreateFieldMetaNumber struct {
 	Required      *bool                              `json:"required,omitempty"`
 	ReadOnly      *bool                              `json:"readOnly,omitempty"`
 	FontSize      *float64                           `default:"12" json:"fontSize"`
+	Overflow      *EnvelopeCreateOverflowNumber      `json:"overflow,omitempty"`
 	Type          EnvelopeCreateTypeNumber2          `json:"type"`
 	NumberFormat  *string                            `json:"numberFormat,omitempty"`
 	Value         *string                            `json:"value,omitempty"`
@@ -1516,6 +1704,13 @@ func (e *EnvelopeCreateFieldMetaNumber) GetFontSize() *float64 {
 		return nil
 	}
 	return e.FontSize
+}
+
+func (e *EnvelopeCreateFieldMetaNumber) GetOverflow() *EnvelopeCreateOverflowNumber {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
 }
 
 func (e *EnvelopeCreateFieldMetaNumber) GetType() EnvelopeCreateTypeNumber2 {
@@ -1613,7 +1808,14 @@ func CreateEnvelopeCreateIdentifier8Number(number float64) EnvelopeCreateIdentif
 	}
 }
 
-func (u *EnvelopeCreateIdentifier8) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeCreateIdentifier8) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateIdentifier8{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -1745,6 +1947,38 @@ func (e *EnvelopeCreateTypeText1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type EnvelopeCreateOverflowText string
+
+const (
+	EnvelopeCreateOverflowTextAuto       EnvelopeCreateOverflowText = "auto"
+	EnvelopeCreateOverflowTextHorizontal EnvelopeCreateOverflowText = "horizontal"
+	EnvelopeCreateOverflowTextVertical   EnvelopeCreateOverflowText = "vertical"
+	EnvelopeCreateOverflowTextCrop       EnvelopeCreateOverflowText = "crop"
+)
+
+func (e EnvelopeCreateOverflowText) ToPointer() *EnvelopeCreateOverflowText {
+	return &e
+}
+func (e *EnvelopeCreateOverflowText) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeCreateOverflowText(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeCreateOverflowText: %v", v)
+	}
+}
+
 type EnvelopeCreateTypeText2 string
 
 const (
@@ -1832,6 +2066,7 @@ type EnvelopeCreateFieldMetaText struct {
 	Required       *bool                            `json:"required,omitempty"`
 	ReadOnly       *bool                            `json:"readOnly,omitempty"`
 	FontSize       *float64                         `default:"12" json:"fontSize"`
+	Overflow       *EnvelopeCreateOverflowText      `json:"overflow,omitempty"`
 	Type           EnvelopeCreateTypeText2          `json:"type"`
 	Text           *string                          `json:"text,omitempty"`
 	CharacterLimit *float64                         `json:"characterLimit,omitempty"`
@@ -1885,6 +2120,13 @@ func (e *EnvelopeCreateFieldMetaText) GetFontSize() *float64 {
 		return nil
 	}
 	return e.FontSize
+}
+
+func (e *EnvelopeCreateFieldMetaText) GetOverflow() *EnvelopeCreateOverflowText {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
 }
 
 func (e *EnvelopeCreateFieldMetaText) GetType() EnvelopeCreateTypeText2 {
@@ -1968,7 +2210,14 @@ func CreateEnvelopeCreateIdentifier7Number(number float64) EnvelopeCreateIdentif
 	}
 }
 
-func (u *EnvelopeCreateIdentifier7) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeCreateIdentifier7) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateIdentifier7{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -2100,6 +2349,38 @@ func (e *EnvelopeCreateTypeDate1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type EnvelopeCreateOverflowDate string
+
+const (
+	EnvelopeCreateOverflowDateAuto       EnvelopeCreateOverflowDate = "auto"
+	EnvelopeCreateOverflowDateHorizontal EnvelopeCreateOverflowDate = "horizontal"
+	EnvelopeCreateOverflowDateVertical   EnvelopeCreateOverflowDate = "vertical"
+	EnvelopeCreateOverflowDateCrop       EnvelopeCreateOverflowDate = "crop"
+)
+
+func (e EnvelopeCreateOverflowDate) ToPointer() *EnvelopeCreateOverflowDate {
+	return &e
+}
+func (e *EnvelopeCreateOverflowDate) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeCreateOverflowDate(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeCreateOverflowDate: %v", v)
+	}
+}
+
 type EnvelopeCreateTypeDate2 string
 
 const (
@@ -2158,6 +2439,7 @@ type EnvelopeCreateFieldMetaDate struct {
 	Required    *bool                        `json:"required,omitempty"`
 	ReadOnly    *bool                        `json:"readOnly,omitempty"`
 	FontSize    *float64                     `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeCreateOverflowDate  `default:"auto" json:"overflow"`
 	Type        EnvelopeCreateTypeDate2      `json:"type"`
 	TextAlign   *EnvelopeCreateTextAlignDate `json:"textAlign,omitempty"`
 }
@@ -2208,6 +2490,13 @@ func (e *EnvelopeCreateFieldMetaDate) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeCreateFieldMetaDate) GetOverflow() *EnvelopeCreateOverflowDate {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeCreateFieldMetaDate) GetType() EnvelopeCreateTypeDate2 {
 	if e == nil {
 		return EnvelopeCreateTypeDate2("")
@@ -2254,7 +2543,14 @@ func CreateEnvelopeCreateIdentifier6Number(number float64) EnvelopeCreateIdentif
 	}
 }
 
-func (u *EnvelopeCreateIdentifier6) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeCreateIdentifier6) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateIdentifier6{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -2386,6 +2682,38 @@ func (e *EnvelopeCreateTypeEmail1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type EnvelopeCreateOverflowEmail string
+
+const (
+	EnvelopeCreateOverflowEmailAuto       EnvelopeCreateOverflowEmail = "auto"
+	EnvelopeCreateOverflowEmailHorizontal EnvelopeCreateOverflowEmail = "horizontal"
+	EnvelopeCreateOverflowEmailVertical   EnvelopeCreateOverflowEmail = "vertical"
+	EnvelopeCreateOverflowEmailCrop       EnvelopeCreateOverflowEmail = "crop"
+)
+
+func (e EnvelopeCreateOverflowEmail) ToPointer() *EnvelopeCreateOverflowEmail {
+	return &e
+}
+func (e *EnvelopeCreateOverflowEmail) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeCreateOverflowEmail(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeCreateOverflowEmail: %v", v)
+	}
+}
+
 type EnvelopeCreateTypeEmail2 string
 
 const (
@@ -2444,6 +2772,7 @@ type EnvelopeCreateFieldMetaEmail struct {
 	Required    *bool                         `json:"required,omitempty"`
 	ReadOnly    *bool                         `json:"readOnly,omitempty"`
 	FontSize    *float64                      `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeCreateOverflowEmail  `default:"auto" json:"overflow"`
 	Type        EnvelopeCreateTypeEmail2      `json:"type"`
 	TextAlign   *EnvelopeCreateTextAlignEmail `json:"textAlign,omitempty"`
 }
@@ -2494,6 +2823,13 @@ func (e *EnvelopeCreateFieldMetaEmail) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeCreateFieldMetaEmail) GetOverflow() *EnvelopeCreateOverflowEmail {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeCreateFieldMetaEmail) GetType() EnvelopeCreateTypeEmail2 {
 	if e == nil {
 		return EnvelopeCreateTypeEmail2("")
@@ -2540,7 +2876,14 @@ func CreateEnvelopeCreateIdentifier5Number(number float64) EnvelopeCreateIdentif
 	}
 }
 
-func (u *EnvelopeCreateIdentifier5) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeCreateIdentifier5) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateIdentifier5{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -2672,6 +3015,38 @@ func (e *EnvelopeCreateTypeName1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type EnvelopeCreateOverflowName string
+
+const (
+	EnvelopeCreateOverflowNameAuto       EnvelopeCreateOverflowName = "auto"
+	EnvelopeCreateOverflowNameHorizontal EnvelopeCreateOverflowName = "horizontal"
+	EnvelopeCreateOverflowNameVertical   EnvelopeCreateOverflowName = "vertical"
+	EnvelopeCreateOverflowNameCrop       EnvelopeCreateOverflowName = "crop"
+)
+
+func (e EnvelopeCreateOverflowName) ToPointer() *EnvelopeCreateOverflowName {
+	return &e
+}
+func (e *EnvelopeCreateOverflowName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeCreateOverflowName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeCreateOverflowName: %v", v)
+	}
+}
+
 type EnvelopeCreateTypeName2 string
 
 const (
@@ -2730,6 +3105,7 @@ type EnvelopeCreateFieldMetaName struct {
 	Required    *bool                        `json:"required,omitempty"`
 	ReadOnly    *bool                        `json:"readOnly,omitempty"`
 	FontSize    *float64                     `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeCreateOverflowName  `json:"overflow,omitempty"`
 	Type        EnvelopeCreateTypeName2      `json:"type"`
 	TextAlign   *EnvelopeCreateTextAlignName `json:"textAlign,omitempty"`
 }
@@ -2780,6 +3156,13 @@ func (e *EnvelopeCreateFieldMetaName) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeCreateFieldMetaName) GetOverflow() *EnvelopeCreateOverflowName {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeCreateFieldMetaName) GetType() EnvelopeCreateTypeName2 {
 	if e == nil {
 		return EnvelopeCreateTypeName2("")
@@ -2826,7 +3209,14 @@ func CreateEnvelopeCreateIdentifier4Number(number float64) EnvelopeCreateIdentif
 	}
 }
 
-func (u *EnvelopeCreateIdentifier4) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeCreateIdentifier4) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateIdentifier4{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -2958,6 +3348,38 @@ func (e *EnvelopeCreateTypeInitials1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type EnvelopeCreateOverflowInitials string
+
+const (
+	EnvelopeCreateOverflowInitialsAuto       EnvelopeCreateOverflowInitials = "auto"
+	EnvelopeCreateOverflowInitialsHorizontal EnvelopeCreateOverflowInitials = "horizontal"
+	EnvelopeCreateOverflowInitialsVertical   EnvelopeCreateOverflowInitials = "vertical"
+	EnvelopeCreateOverflowInitialsCrop       EnvelopeCreateOverflowInitials = "crop"
+)
+
+func (e EnvelopeCreateOverflowInitials) ToPointer() *EnvelopeCreateOverflowInitials {
+	return &e
+}
+func (e *EnvelopeCreateOverflowInitials) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeCreateOverflowInitials(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeCreateOverflowInitials: %v", v)
+	}
+}
+
 type EnvelopeCreateTypeInitials2 string
 
 const (
@@ -3016,6 +3438,7 @@ type EnvelopeCreateFieldMetaInitials struct {
 	Required    *bool                            `json:"required,omitempty"`
 	ReadOnly    *bool                            `json:"readOnly,omitempty"`
 	FontSize    *float64                         `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeCreateOverflowInitials  `json:"overflow,omitempty"`
 	Type        EnvelopeCreateTypeInitials2      `json:"type"`
 	TextAlign   *EnvelopeCreateTextAlignInitials `json:"textAlign,omitempty"`
 }
@@ -3066,6 +3489,13 @@ func (e *EnvelopeCreateFieldMetaInitials) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeCreateFieldMetaInitials) GetOverflow() *EnvelopeCreateOverflowInitials {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeCreateFieldMetaInitials) GetType() EnvelopeCreateTypeInitials2 {
 	if e == nil {
 		return EnvelopeCreateTypeInitials2("")
@@ -3112,7 +3542,14 @@ func CreateEnvelopeCreateIdentifier3Number(number float64) EnvelopeCreateIdentif
 	}
 }
 
-func (u *EnvelopeCreateIdentifier3) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeCreateIdentifier3) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateIdentifier3{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -3276,7 +3713,14 @@ func CreateEnvelopeCreateIdentifier2Number(number float64) EnvelopeCreateIdentif
 	}
 }
 
-func (u *EnvelopeCreateIdentifier2) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeCreateIdentifier2) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateIdentifier2{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -3400,6 +3844,38 @@ func (e *EnvelopeCreateTypeSignature1) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type EnvelopeCreateOverflowSignature string
+
+const (
+	EnvelopeCreateOverflowSignatureAuto       EnvelopeCreateOverflowSignature = "auto"
+	EnvelopeCreateOverflowSignatureHorizontal EnvelopeCreateOverflowSignature = "horizontal"
+	EnvelopeCreateOverflowSignatureVertical   EnvelopeCreateOverflowSignature = "vertical"
+	EnvelopeCreateOverflowSignatureCrop       EnvelopeCreateOverflowSignature = "crop"
+)
+
+func (e EnvelopeCreateOverflowSignature) ToPointer() *EnvelopeCreateOverflowSignature {
+	return &e
+}
+func (e *EnvelopeCreateOverflowSignature) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeCreateOverflowSignature(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeCreateOverflowSignature: %v", v)
+	}
+}
+
 type EnvelopeCreateTypeSignature2 string
 
 const (
@@ -3424,12 +3900,13 @@ func (e *EnvelopeCreateTypeSignature2) UnmarshalJSON(data []byte) error {
 }
 
 type EnvelopeCreateFieldMetaSignature struct {
-	Label       *string                      `json:"label,omitempty"`
-	Placeholder *string                      `json:"placeholder,omitempty"`
-	Required    *bool                        `json:"required,omitempty"`
-	ReadOnly    *bool                        `json:"readOnly,omitempty"`
-	FontSize    *float64                     `default:"12" json:"fontSize"`
-	Type        EnvelopeCreateTypeSignature2 `json:"type"`
+	Label       *string                          `json:"label,omitempty"`
+	Placeholder *string                          `json:"placeholder,omitempty"`
+	Required    *bool                            `json:"required,omitempty"`
+	ReadOnly    *bool                            `json:"readOnly,omitempty"`
+	FontSize    *float64                         `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeCreateOverflowSignature `default:"auto" json:"overflow"`
+	Type        EnvelopeCreateTypeSignature2     `json:"type"`
 }
 
 func (e EnvelopeCreateFieldMetaSignature) MarshalJSON() ([]byte, error) {
@@ -3478,6 +3955,13 @@ func (e *EnvelopeCreateFieldMetaSignature) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeCreateFieldMetaSignature) GetOverflow() *EnvelopeCreateOverflowSignature {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeCreateFieldMetaSignature) GetType() EnvelopeCreateTypeSignature2 {
 	if e == nil {
 		return EnvelopeCreateTypeSignature2("")
@@ -3517,7 +4001,14 @@ func CreateEnvelopeCreateIdentifier1Number(number float64) EnvelopeCreateIdentif
 	}
 }
 
-func (u *EnvelopeCreateIdentifier1) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeCreateIdentifier1) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateIdentifier1{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -3757,7 +4248,14 @@ func CreateEnvelopeCreateFieldUnionEnvelopeCreateFieldDropdown(envelopeCreateFie
 	}
 }
 
-func (u *EnvelopeCreateFieldUnion) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeCreateFieldUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateFieldUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var envelopeCreateFieldSignature EnvelopeCreateFieldSignature = EnvelopeCreateFieldSignature{}
 	if err := utils.UnmarshalJSON(data, &envelopeCreateFieldSignature, "", true, nil); err == nil {
@@ -3952,12 +4450,15 @@ const (
 	EnvelopeCreateDateFormatYyyyMMddHhMmA            EnvelopeCreateDateFormat = "yyyy-MM-dd hh:mm a"
 	EnvelopeCreateDateFormatYyyyMMdd                 EnvelopeCreateDateFormat = "yyyy-MM-dd"
 	EnvelopeCreateDateFormatDdMmSlashYyyy            EnvelopeCreateDateFormat = "dd/MM/yyyy"
+	EnvelopeCreateDateFormatDdMmDashYyyy             EnvelopeCreateDateFormat = "dd-MM-yyyy"
 	EnvelopeCreateDateFormatMmDdSlashYyyy            EnvelopeCreateDateFormat = "MM/dd/yyyy"
 	EnvelopeCreateDateFormatYyMMdd                   EnvelopeCreateDateFormat = "yy-MM-dd"
 	EnvelopeCreateDateFormatMmmmDdCommaYyyy          EnvelopeCreateDateFormat = "MMMM dd, yyyy"
 	EnvelopeCreateDateFormatEeeeMmmmDdCommaYyyy      EnvelopeCreateDateFormat = "EEEE, MMMM dd, yyyy"
 	EnvelopeCreateDateFormatDdMmSlashYyyyHhMmA       EnvelopeCreateDateFormat = "dd/MM/yyyy hh:mm a"
 	EnvelopeCreateDateFormatDdMmSlashYyyyHHmm        EnvelopeCreateDateFormat = "dd/MM/yyyy HH:mm"
+	EnvelopeCreateDateFormatDdMmDashYyyyHhMmA        EnvelopeCreateDateFormat = "dd-MM-yyyy hh:mm a"
+	EnvelopeCreateDateFormatDdMmDashYyyyHHmm         EnvelopeCreateDateFormat = "dd-MM-yyyy HH:mm"
 	EnvelopeCreateDateFormatMmDdSlashYyyyHhMmA       EnvelopeCreateDateFormat = "MM/dd/yyyy hh:mm a"
 	EnvelopeCreateDateFormatMmDdSlashYyyyHHmm        EnvelopeCreateDateFormat = "MM/dd/yyyy HH:mm"
 	EnvelopeCreateDateFormatDdDotMmDotYyyy           EnvelopeCreateDateFormat = "dd.MM.yyyy"
@@ -3988,6 +4489,8 @@ func (e *EnvelopeCreateDateFormat) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "dd/MM/yyyy":
 		fallthrough
+	case "dd-MM-yyyy":
+		fallthrough
 	case "MM/dd/yyyy":
 		fallthrough
 	case "yy-MM-dd":
@@ -3999,6 +4502,10 @@ func (e *EnvelopeCreateDateFormat) UnmarshalJSON(data []byte) error {
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
 	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "dd-MM-yyyy hh:mm a":
+		fallthrough
+	case "dd-MM-yyyy HH:mm":
 		fallthrough
 	case "MM/dd/yyyy hh:mm a":
 		fallthrough
@@ -4145,6 +4652,8 @@ type EnvelopeCreateEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (e EnvelopeCreateEmailSettings) MarshalJSON() ([]byte, error) {
@@ -4207,22 +4716,525 @@ func (e *EnvelopeCreateEmailSettings) GetOwnerDocumentCompleted() *bool {
 	return e.OwnerDocumentCompleted
 }
 
+func (e *EnvelopeCreateEmailSettings) GetOwnerRecipientExpired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.OwnerRecipientExpired
+}
+
+func (e *EnvelopeCreateEmailSettings) GetOwnerDocumentCreated() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.OwnerDocumentCreated
+}
+
+type EnvelopeCreateEnvelopeExpirationPeriod2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (e EnvelopeCreateEnvelopeExpirationPeriod2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeCreateEnvelopeExpirationPeriod2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeCreateEnvelopeExpirationPeriod2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-envelopecreateenvelopeexpirationperiod2
+// #endregion class-body-envelopecreateenvelopeexpirationperiod2
+
+type EnvelopeCreateEnvelopeExpirationPeriodUnit string
+
+const (
+	EnvelopeCreateEnvelopeExpirationPeriodUnitDay   EnvelopeCreateEnvelopeExpirationPeriodUnit = "day"
+	EnvelopeCreateEnvelopeExpirationPeriodUnitWeek  EnvelopeCreateEnvelopeExpirationPeriodUnit = "week"
+	EnvelopeCreateEnvelopeExpirationPeriodUnitMonth EnvelopeCreateEnvelopeExpirationPeriodUnit = "month"
+	EnvelopeCreateEnvelopeExpirationPeriodUnitYear  EnvelopeCreateEnvelopeExpirationPeriodUnit = "year"
+)
+
+func (e EnvelopeCreateEnvelopeExpirationPeriodUnit) ToPointer() *EnvelopeCreateEnvelopeExpirationPeriodUnit {
+	return &e
+}
+func (e *EnvelopeCreateEnvelopeExpirationPeriodUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		fallthrough
+	case "year":
+		*e = EnvelopeCreateEnvelopeExpirationPeriodUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeCreateEnvelopeExpirationPeriodUnit: %v", v)
+	}
+}
+
+type EnvelopeCreateEnvelopeExpirationPeriod1 struct {
+	Unit   EnvelopeCreateEnvelopeExpirationPeriodUnit `json:"unit"`
+	Amount int64                                      `json:"amount"`
+}
+
+func (e EnvelopeCreateEnvelopeExpirationPeriod1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeCreateEnvelopeExpirationPeriod1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeCreateEnvelopeExpirationPeriod1) GetUnit() EnvelopeCreateEnvelopeExpirationPeriodUnit {
+	if e == nil {
+		return EnvelopeCreateEnvelopeExpirationPeriodUnit("")
+	}
+	return e.Unit
+}
+
+func (e *EnvelopeCreateEnvelopeExpirationPeriod1) GetAmount() int64 {
+	if e == nil {
+		return 0
+	}
+	return e.Amount
+}
+
+// #region class-body-envelopecreateenvelopeexpirationperiod1
+// #endregion class-body-envelopecreateenvelopeexpirationperiod1
+
+type EnvelopeCreateEnvelopeExpirationPeriodUnionType string
+
+const (
+	EnvelopeCreateEnvelopeExpirationPeriodUnionTypeEnvelopeCreateEnvelopeExpirationPeriod1 EnvelopeCreateEnvelopeExpirationPeriodUnionType = "envelope_create_envelopeExpirationPeriod_1"
+	EnvelopeCreateEnvelopeExpirationPeriodUnionTypeEnvelopeCreateEnvelopeExpirationPeriod2 EnvelopeCreateEnvelopeExpirationPeriodUnionType = "envelope_create_envelopeExpirationPeriod_2"
+)
+
+type EnvelopeCreateEnvelopeExpirationPeriodUnion struct {
+	EnvelopeCreateEnvelopeExpirationPeriod1 *EnvelopeCreateEnvelopeExpirationPeriod1 `queryParam:"inline" union:"member"`
+	EnvelopeCreateEnvelopeExpirationPeriod2 *EnvelopeCreateEnvelopeExpirationPeriod2 `queryParam:"inline" union:"member"`
+
+	Type EnvelopeCreateEnvelopeExpirationPeriodUnionType
+}
+
+func CreateEnvelopeCreateEnvelopeExpirationPeriodUnionEnvelopeCreateEnvelopeExpirationPeriod1(envelopeCreateEnvelopeExpirationPeriod1 EnvelopeCreateEnvelopeExpirationPeriod1) EnvelopeCreateEnvelopeExpirationPeriodUnion {
+	typ := EnvelopeCreateEnvelopeExpirationPeriodUnionTypeEnvelopeCreateEnvelopeExpirationPeriod1
+
+	return EnvelopeCreateEnvelopeExpirationPeriodUnion{
+		EnvelopeCreateEnvelopeExpirationPeriod1: &envelopeCreateEnvelopeExpirationPeriod1,
+		Type:                                    typ,
+	}
+}
+
+func CreateEnvelopeCreateEnvelopeExpirationPeriodUnionEnvelopeCreateEnvelopeExpirationPeriod2(envelopeCreateEnvelopeExpirationPeriod2 EnvelopeCreateEnvelopeExpirationPeriod2) EnvelopeCreateEnvelopeExpirationPeriodUnion {
+	typ := EnvelopeCreateEnvelopeExpirationPeriodUnionTypeEnvelopeCreateEnvelopeExpirationPeriod2
+
+	return EnvelopeCreateEnvelopeExpirationPeriodUnion{
+		EnvelopeCreateEnvelopeExpirationPeriod2: &envelopeCreateEnvelopeExpirationPeriod2,
+		Type:                                    typ,
+	}
+}
+
+func (u *EnvelopeCreateEnvelopeExpirationPeriodUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateEnvelopeExpirationPeriodUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var envelopeCreateEnvelopeExpirationPeriod1 EnvelopeCreateEnvelopeExpirationPeriod1 = EnvelopeCreateEnvelopeExpirationPeriod1{}
+	if err := utils.UnmarshalJSON(data, &envelopeCreateEnvelopeExpirationPeriod1, "", true, nil); err == nil {
+		u.EnvelopeCreateEnvelopeExpirationPeriod1 = &envelopeCreateEnvelopeExpirationPeriod1
+		u.Type = EnvelopeCreateEnvelopeExpirationPeriodUnionTypeEnvelopeCreateEnvelopeExpirationPeriod1
+		return nil
+	}
+
+	var envelopeCreateEnvelopeExpirationPeriod2 EnvelopeCreateEnvelopeExpirationPeriod2 = EnvelopeCreateEnvelopeExpirationPeriod2{}
+	if err := utils.UnmarshalJSON(data, &envelopeCreateEnvelopeExpirationPeriod2, "", true, nil); err == nil {
+		u.EnvelopeCreateEnvelopeExpirationPeriod2 = &envelopeCreateEnvelopeExpirationPeriod2
+		u.Type = EnvelopeCreateEnvelopeExpirationPeriodUnionTypeEnvelopeCreateEnvelopeExpirationPeriod2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvelopeCreateEnvelopeExpirationPeriodUnion", string(data))
+}
+
+func (u EnvelopeCreateEnvelopeExpirationPeriodUnion) MarshalJSON() ([]byte, error) {
+	if u.EnvelopeCreateEnvelopeExpirationPeriod1 != nil {
+		return utils.MarshalJSON(u.EnvelopeCreateEnvelopeExpirationPeriod1, "", true)
+	}
+
+	if u.EnvelopeCreateEnvelopeExpirationPeriod2 != nil {
+		return utils.MarshalJSON(u.EnvelopeCreateEnvelopeExpirationPeriod2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvelopeCreateEnvelopeExpirationPeriodUnion: all fields are null")
+}
+
+type EnvelopeCreateSendAfter2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (e EnvelopeCreateSendAfter2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeCreateSendAfter2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeCreateSendAfter2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-envelopecreatesendafter2
+// #endregion class-body-envelopecreatesendafter2
+
+type EnvelopeCreateSendAfterUnit string
+
+const (
+	EnvelopeCreateSendAfterUnitDay   EnvelopeCreateSendAfterUnit = "day"
+	EnvelopeCreateSendAfterUnitWeek  EnvelopeCreateSendAfterUnit = "week"
+	EnvelopeCreateSendAfterUnitMonth EnvelopeCreateSendAfterUnit = "month"
+)
+
+func (e EnvelopeCreateSendAfterUnit) ToPointer() *EnvelopeCreateSendAfterUnit {
+	return &e
+}
+func (e *EnvelopeCreateSendAfterUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		*e = EnvelopeCreateSendAfterUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeCreateSendAfterUnit: %v", v)
+	}
+}
+
+type EnvelopeCreateSendAfter1 struct {
+	Unit   EnvelopeCreateSendAfterUnit `json:"unit"`
+	Amount int64                       `json:"amount"`
+}
+
+func (e EnvelopeCreateSendAfter1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeCreateSendAfter1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeCreateSendAfter1) GetUnit() EnvelopeCreateSendAfterUnit {
+	if e == nil {
+		return EnvelopeCreateSendAfterUnit("")
+	}
+	return e.Unit
+}
+
+func (e *EnvelopeCreateSendAfter1) GetAmount() int64 {
+	if e == nil {
+		return 0
+	}
+	return e.Amount
+}
+
+// #region class-body-envelopecreatesendafter1
+// #endregion class-body-envelopecreatesendafter1
+
+type EnvelopeCreateSendAfterUnionType string
+
+const (
+	EnvelopeCreateSendAfterUnionTypeEnvelopeCreateSendAfter1 EnvelopeCreateSendAfterUnionType = "envelope_create_sendAfter_1"
+	EnvelopeCreateSendAfterUnionTypeEnvelopeCreateSendAfter2 EnvelopeCreateSendAfterUnionType = "envelope_create_sendAfter_2"
+)
+
+type EnvelopeCreateSendAfterUnion struct {
+	EnvelopeCreateSendAfter1 *EnvelopeCreateSendAfter1 `queryParam:"inline" union:"member"`
+	EnvelopeCreateSendAfter2 *EnvelopeCreateSendAfter2 `queryParam:"inline" union:"member"`
+
+	Type EnvelopeCreateSendAfterUnionType
+}
+
+func CreateEnvelopeCreateSendAfterUnionEnvelopeCreateSendAfter1(envelopeCreateSendAfter1 EnvelopeCreateSendAfter1) EnvelopeCreateSendAfterUnion {
+	typ := EnvelopeCreateSendAfterUnionTypeEnvelopeCreateSendAfter1
+
+	return EnvelopeCreateSendAfterUnion{
+		EnvelopeCreateSendAfter1: &envelopeCreateSendAfter1,
+		Type:                     typ,
+	}
+}
+
+func CreateEnvelopeCreateSendAfterUnionEnvelopeCreateSendAfter2(envelopeCreateSendAfter2 EnvelopeCreateSendAfter2) EnvelopeCreateSendAfterUnion {
+	typ := EnvelopeCreateSendAfterUnionTypeEnvelopeCreateSendAfter2
+
+	return EnvelopeCreateSendAfterUnion{
+		EnvelopeCreateSendAfter2: &envelopeCreateSendAfter2,
+		Type:                     typ,
+	}
+}
+
+func (u *EnvelopeCreateSendAfterUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateSendAfterUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var envelopeCreateSendAfter1 EnvelopeCreateSendAfter1 = EnvelopeCreateSendAfter1{}
+	if err := utils.UnmarshalJSON(data, &envelopeCreateSendAfter1, "", true, nil); err == nil {
+		u.EnvelopeCreateSendAfter1 = &envelopeCreateSendAfter1
+		u.Type = EnvelopeCreateSendAfterUnionTypeEnvelopeCreateSendAfter1
+		return nil
+	}
+
+	var envelopeCreateSendAfter2 EnvelopeCreateSendAfter2 = EnvelopeCreateSendAfter2{}
+	if err := utils.UnmarshalJSON(data, &envelopeCreateSendAfter2, "", true, nil); err == nil {
+		u.EnvelopeCreateSendAfter2 = &envelopeCreateSendAfter2
+		u.Type = EnvelopeCreateSendAfterUnionTypeEnvelopeCreateSendAfter2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvelopeCreateSendAfterUnion", string(data))
+}
+
+func (u EnvelopeCreateSendAfterUnion) MarshalJSON() ([]byte, error) {
+	if u.EnvelopeCreateSendAfter1 != nil {
+		return utils.MarshalJSON(u.EnvelopeCreateSendAfter1, "", true)
+	}
+
+	if u.EnvelopeCreateSendAfter2 != nil {
+		return utils.MarshalJSON(u.EnvelopeCreateSendAfter2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvelopeCreateSendAfterUnion: all fields are null")
+}
+
+type EnvelopeCreateRepeatEvery2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (e EnvelopeCreateRepeatEvery2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeCreateRepeatEvery2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeCreateRepeatEvery2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-envelopecreaterepeatevery2
+// #endregion class-body-envelopecreaterepeatevery2
+
+type EnvelopeCreateRepeatEveryUnit string
+
+const (
+	EnvelopeCreateRepeatEveryUnitDay   EnvelopeCreateRepeatEveryUnit = "day"
+	EnvelopeCreateRepeatEveryUnitWeek  EnvelopeCreateRepeatEveryUnit = "week"
+	EnvelopeCreateRepeatEveryUnitMonth EnvelopeCreateRepeatEveryUnit = "month"
+)
+
+func (e EnvelopeCreateRepeatEveryUnit) ToPointer() *EnvelopeCreateRepeatEveryUnit {
+	return &e
+}
+func (e *EnvelopeCreateRepeatEveryUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		*e = EnvelopeCreateRepeatEveryUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeCreateRepeatEveryUnit: %v", v)
+	}
+}
+
+type EnvelopeCreateRepeatEvery1 struct {
+	Unit   EnvelopeCreateRepeatEveryUnit `json:"unit"`
+	Amount int64                         `json:"amount"`
+}
+
+func (e EnvelopeCreateRepeatEvery1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *EnvelopeCreateRepeatEvery1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *EnvelopeCreateRepeatEvery1) GetUnit() EnvelopeCreateRepeatEveryUnit {
+	if e == nil {
+		return EnvelopeCreateRepeatEveryUnit("")
+	}
+	return e.Unit
+}
+
+func (e *EnvelopeCreateRepeatEvery1) GetAmount() int64 {
+	if e == nil {
+		return 0
+	}
+	return e.Amount
+}
+
+// #region class-body-envelopecreaterepeatevery1
+// #endregion class-body-envelopecreaterepeatevery1
+
+type EnvelopeCreateRepeatEveryUnionType string
+
+const (
+	EnvelopeCreateRepeatEveryUnionTypeEnvelopeCreateRepeatEvery1 EnvelopeCreateRepeatEveryUnionType = "envelope_create_repeatEvery_1"
+	EnvelopeCreateRepeatEveryUnionTypeEnvelopeCreateRepeatEvery2 EnvelopeCreateRepeatEveryUnionType = "envelope_create_repeatEvery_2"
+)
+
+type EnvelopeCreateRepeatEveryUnion struct {
+	EnvelopeCreateRepeatEvery1 *EnvelopeCreateRepeatEvery1 `queryParam:"inline" union:"member"`
+	EnvelopeCreateRepeatEvery2 *EnvelopeCreateRepeatEvery2 `queryParam:"inline" union:"member"`
+
+	Type EnvelopeCreateRepeatEveryUnionType
+}
+
+func CreateEnvelopeCreateRepeatEveryUnionEnvelopeCreateRepeatEvery1(envelopeCreateRepeatEvery1 EnvelopeCreateRepeatEvery1) EnvelopeCreateRepeatEveryUnion {
+	typ := EnvelopeCreateRepeatEveryUnionTypeEnvelopeCreateRepeatEvery1
+
+	return EnvelopeCreateRepeatEveryUnion{
+		EnvelopeCreateRepeatEvery1: &envelopeCreateRepeatEvery1,
+		Type:                       typ,
+	}
+}
+
+func CreateEnvelopeCreateRepeatEveryUnionEnvelopeCreateRepeatEvery2(envelopeCreateRepeatEvery2 EnvelopeCreateRepeatEvery2) EnvelopeCreateRepeatEveryUnion {
+	typ := EnvelopeCreateRepeatEveryUnionTypeEnvelopeCreateRepeatEvery2
+
+	return EnvelopeCreateRepeatEveryUnion{
+		EnvelopeCreateRepeatEvery2: &envelopeCreateRepeatEvery2,
+		Type:                       typ,
+	}
+}
+
+func (u *EnvelopeCreateRepeatEveryUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeCreateRepeatEveryUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var envelopeCreateRepeatEvery1 EnvelopeCreateRepeatEvery1 = EnvelopeCreateRepeatEvery1{}
+	if err := utils.UnmarshalJSON(data, &envelopeCreateRepeatEvery1, "", true, nil); err == nil {
+		u.EnvelopeCreateRepeatEvery1 = &envelopeCreateRepeatEvery1
+		u.Type = EnvelopeCreateRepeatEveryUnionTypeEnvelopeCreateRepeatEvery1
+		return nil
+	}
+
+	var envelopeCreateRepeatEvery2 EnvelopeCreateRepeatEvery2 = EnvelopeCreateRepeatEvery2{}
+	if err := utils.UnmarshalJSON(data, &envelopeCreateRepeatEvery2, "", true, nil); err == nil {
+		u.EnvelopeCreateRepeatEvery2 = &envelopeCreateRepeatEvery2
+		u.Type = EnvelopeCreateRepeatEveryUnionTypeEnvelopeCreateRepeatEvery2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for EnvelopeCreateRepeatEveryUnion", string(data))
+}
+
+func (u EnvelopeCreateRepeatEveryUnion) MarshalJSON() ([]byte, error) {
+	if u.EnvelopeCreateRepeatEvery1 != nil {
+		return utils.MarshalJSON(u.EnvelopeCreateRepeatEvery1, "", true)
+	}
+
+	if u.EnvelopeCreateRepeatEvery2 != nil {
+		return utils.MarshalJSON(u.EnvelopeCreateRepeatEvery2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type EnvelopeCreateRepeatEveryUnion: all fields are null")
+}
+
+type EnvelopeCreateReminderSettings struct {
+	SendAfter   EnvelopeCreateSendAfterUnion   `json:"sendAfter"`
+	RepeatEvery EnvelopeCreateRepeatEveryUnion `json:"repeatEvery"`
+}
+
+func (e *EnvelopeCreateReminderSettings) GetSendAfter() EnvelopeCreateSendAfterUnion {
+	if e == nil {
+		return EnvelopeCreateSendAfterUnion{}
+	}
+	return e.SendAfter
+}
+
+func (e *EnvelopeCreateReminderSettings) GetRepeatEvery() EnvelopeCreateRepeatEveryUnion {
+	if e == nil {
+		return EnvelopeCreateRepeatEveryUnion{}
+	}
+	return e.RepeatEvery
+}
+
 type EnvelopeCreateMeta struct {
-	Subject                *string                           `json:"subject,omitempty"`
-	Message                *string                           `json:"message,omitempty"`
-	Timezone               *string                           `json:"timezone,omitempty"`
-	DateFormat             *EnvelopeCreateDateFormat         `json:"dateFormat,omitempty"`
-	DistributionMethod     *EnvelopeCreateDistributionMethod `json:"distributionMethod,omitempty"`
-	SigningOrder           *EnvelopeCreateSigningOrder       `json:"signingOrder,omitempty"`
-	AllowDictateNextSigner *bool                             `json:"allowDictateNextSigner,omitempty"`
-	RedirectURL            *string                           `json:"redirectUrl,omitempty"`
-	Language               *EnvelopeCreateLanguage           `json:"language,omitempty"`
-	TypedSignatureEnabled  *bool                             `json:"typedSignatureEnabled,omitempty"`
-	UploadSignatureEnabled *bool                             `json:"uploadSignatureEnabled,omitempty"`
-	DrawSignatureEnabled   *bool                             `json:"drawSignatureEnabled,omitempty"`
-	EmailID                *string                           `json:"emailId,omitempty"`
-	EmailReplyTo           *string                           `json:"emailReplyTo,omitempty"`
-	EmailSettings          *EnvelopeCreateEmailSettings      `json:"emailSettings,omitempty"`
+	Subject                  *string                                      `json:"subject,omitempty"`
+	Message                  *string                                      `json:"message,omitempty"`
+	Timezone                 *string                                      `json:"timezone,omitempty"`
+	DateFormat               *EnvelopeCreateDateFormat                    `json:"dateFormat,omitempty"`
+	DistributionMethod       *EnvelopeCreateDistributionMethod            `json:"distributionMethod,omitempty"`
+	SigningOrder             *EnvelopeCreateSigningOrder                  `json:"signingOrder,omitempty"`
+	AllowDictateNextSigner   *bool                                        `json:"allowDictateNextSigner,omitempty"`
+	RedirectURL              *string                                      `json:"redirectUrl,omitempty"`
+	Language                 *EnvelopeCreateLanguage                      `json:"language,omitempty"`
+	TypedSignatureEnabled    *bool                                        `json:"typedSignatureEnabled,omitempty"`
+	UploadSignatureEnabled   *bool                                        `json:"uploadSignatureEnabled,omitempty"`
+	DrawSignatureEnabled     *bool                                        `json:"drawSignatureEnabled,omitempty"`
+	EmailID                  *string                                      `json:"emailId,omitempty"`
+	EmailReplyTo             *string                                      `json:"emailReplyTo,omitempty"`
+	EmailSettings            *EnvelopeCreateEmailSettings                 `json:"emailSettings,omitempty"`
+	EnvelopeExpirationPeriod *EnvelopeCreateEnvelopeExpirationPeriodUnion `json:"envelopeExpirationPeriod,omitempty"`
+	ReminderSettings         *EnvelopeCreateReminderSettings              `json:"reminderSettings,omitempty"`
 }
 
 func (e *EnvelopeCreateMeta) GetSubject() *string {
@@ -4328,6 +5340,20 @@ func (e *EnvelopeCreateMeta) GetEmailSettings() *EnvelopeCreateEmailSettings {
 		return nil
 	}
 	return e.EmailSettings
+}
+
+func (e *EnvelopeCreateMeta) GetEnvelopeExpirationPeriod() *EnvelopeCreateEnvelopeExpirationPeriodUnion {
+	if e == nil {
+		return nil
+	}
+	return e.EnvelopeExpirationPeriod
+}
+
+func (e *EnvelopeCreateMeta) GetReminderSettings() *EnvelopeCreateReminderSettings {
+	if e == nil {
+		return nil
+	}
+	return e.ReminderSettings
 }
 
 type EnvelopeCreateTypeLink string

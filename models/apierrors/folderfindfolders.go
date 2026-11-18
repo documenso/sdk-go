@@ -29,6 +29,10 @@ type FolderFindFoldersInternalServerError struct {
 var _ error = &FolderFindFoldersInternalServerError{}
 
 func (e *FolderFindFoldersInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type FolderFindFoldersNotFoundError struct {
 var _ error = &FolderFindFoldersNotFoundError{}
 
 func (e *FolderFindFoldersNotFoundError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type FolderFindFoldersForbiddenError struct {
 var _ error = &FolderFindFoldersForbiddenError{}
 
 func (e *FolderFindFoldersForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type FolderFindFoldersUnauthorizedError struct {
 var _ error = &FolderFindFoldersUnauthorizedError{}
 
 func (e *FolderFindFoldersUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -133,6 +149,10 @@ type FolderFindFoldersBadRequestError struct {
 var _ error = &FolderFindFoldersBadRequestError{}
 
 func (e *FolderFindFoldersBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

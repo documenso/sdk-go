@@ -29,6 +29,10 @@ type EnvelopeUseInternalServerError struct {
 var _ error = &EnvelopeUseInternalServerError{}
 
 func (e *EnvelopeUseInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type EnvelopeUseForbiddenError struct {
 var _ error = &EnvelopeUseForbiddenError{}
 
 func (e *EnvelopeUseForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type EnvelopeUseUnauthorizedError struct {
 var _ error = &EnvelopeUseUnauthorizedError{}
 
 func (e *EnvelopeUseUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type EnvelopeUseBadRequestError struct {
 var _ error = &EnvelopeUseBadRequestError{}
 
 func (e *EnvelopeUseBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

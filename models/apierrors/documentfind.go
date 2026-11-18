@@ -29,6 +29,10 @@ type DocumentFindInternalServerError struct {
 var _ error = &DocumentFindInternalServerError{}
 
 func (e *DocumentFindInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type DocumentFindNotFoundError struct {
 var _ error = &DocumentFindNotFoundError{}
 
 func (e *DocumentFindNotFoundError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type DocumentFindForbiddenError struct {
 var _ error = &DocumentFindForbiddenError{}
 
 func (e *DocumentFindForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type DocumentFindUnauthorizedError struct {
 var _ error = &DocumentFindUnauthorizedError{}
 
 func (e *DocumentFindUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -133,6 +149,10 @@ type DocumentFindBadRequestError struct {
 var _ error = &DocumentFindBadRequestError{}
 
 func (e *DocumentFindBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

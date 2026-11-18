@@ -29,6 +29,10 @@ type DocumentRedistributeInternalServerError struct {
 var _ error = &DocumentRedistributeInternalServerError{}
 
 func (e *DocumentRedistributeInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type DocumentRedistributeForbiddenError struct {
 var _ error = &DocumentRedistributeForbiddenError{}
 
 func (e *DocumentRedistributeForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type DocumentRedistributeUnauthorizedError struct {
 var _ error = &DocumentRedistributeUnauthorizedError{}
 
 func (e *DocumentRedistributeUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type DocumentRedistributeBadRequestError struct {
 var _ error = &DocumentRedistributeBadRequestError{}
 
 func (e *DocumentRedistributeBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
