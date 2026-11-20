@@ -29,6 +29,10 @@ type RecipientDeleteTemplateRecipientInternalServerError struct {
 var _ error = &RecipientDeleteTemplateRecipientInternalServerError{}
 
 func (e *RecipientDeleteTemplateRecipientInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type RecipientDeleteTemplateRecipientForbiddenError struct {
 var _ error = &RecipientDeleteTemplateRecipientForbiddenError{}
 
 func (e *RecipientDeleteTemplateRecipientForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type RecipientDeleteTemplateRecipientUnauthorizedError struct {
 var _ error = &RecipientDeleteTemplateRecipientUnauthorizedError{}
 
 func (e *RecipientDeleteTemplateRecipientUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type RecipientDeleteTemplateRecipientBadRequestError struct {
 var _ error = &RecipientDeleteTemplateRecipientBadRequestError{}
 
 func (e *RecipientDeleteTemplateRecipientBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

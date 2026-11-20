@@ -16,12 +16,15 @@ const (
 	DocumentDistributeDateFormatYyyyMMddHhMmA            DocumentDistributeDateFormat = "yyyy-MM-dd hh:mm a"
 	DocumentDistributeDateFormatYyyyMMdd                 DocumentDistributeDateFormat = "yyyy-MM-dd"
 	DocumentDistributeDateFormatDdMmSlashYyyy            DocumentDistributeDateFormat = "dd/MM/yyyy"
+	DocumentDistributeDateFormatDdMmDashYyyy             DocumentDistributeDateFormat = "dd-MM-yyyy"
 	DocumentDistributeDateFormatMmDdSlashYyyy            DocumentDistributeDateFormat = "MM/dd/yyyy"
 	DocumentDistributeDateFormatYyMMdd                   DocumentDistributeDateFormat = "yy-MM-dd"
 	DocumentDistributeDateFormatMmmmDdCommaYyyy          DocumentDistributeDateFormat = "MMMM dd, yyyy"
 	DocumentDistributeDateFormatEeeeMmmmDdCommaYyyy      DocumentDistributeDateFormat = "EEEE, MMMM dd, yyyy"
 	DocumentDistributeDateFormatDdMmSlashYyyyHhMmA       DocumentDistributeDateFormat = "dd/MM/yyyy hh:mm a"
 	DocumentDistributeDateFormatDdMmSlashYyyyHHmm        DocumentDistributeDateFormat = "dd/MM/yyyy HH:mm"
+	DocumentDistributeDateFormatDdMmDashYyyyHhMmA        DocumentDistributeDateFormat = "dd-MM-yyyy hh:mm a"
+	DocumentDistributeDateFormatDdMmDashYyyyHHmm         DocumentDistributeDateFormat = "dd-MM-yyyy HH:mm"
 	DocumentDistributeDateFormatMmDdSlashYyyyHhMmA       DocumentDistributeDateFormat = "MM/dd/yyyy hh:mm a"
 	DocumentDistributeDateFormatMmDdSlashYyyyHHmm        DocumentDistributeDateFormat = "MM/dd/yyyy HH:mm"
 	DocumentDistributeDateFormatDdDotMmDotYyyy           DocumentDistributeDateFormat = "dd.MM.yyyy"
@@ -52,6 +55,8 @@ func (e *DocumentDistributeDateFormat) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "dd/MM/yyyy":
 		fallthrough
+	case "dd-MM-yyyy":
+		fallthrough
 	case "MM/dd/yyyy":
 		fallthrough
 	case "yy-MM-dd":
@@ -63,6 +68,10 @@ func (e *DocumentDistributeDateFormat) UnmarshalJSON(data []byte) error {
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
 	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "dd-MM-yyyy hh:mm a":
+		fallthrough
+	case "dd-MM-yyyy HH:mm":
 		fallthrough
 	case "MM/dd/yyyy hh:mm a":
 		fallthrough
@@ -183,6 +192,8 @@ type DocumentDistributeEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (d DocumentDistributeEmailSettings) MarshalJSON() ([]byte, error) {
@@ -243,6 +254,20 @@ func (d *DocumentDistributeEmailSettings) GetOwnerDocumentCompleted() *bool {
 		return nil
 	}
 	return d.OwnerDocumentCompleted
+}
+
+func (d *DocumentDistributeEmailSettings) GetOwnerRecipientExpired() *bool {
+	if d == nil {
+		return nil
+	}
+	return d.OwnerRecipientExpired
+}
+
+func (d *DocumentDistributeEmailSettings) GetOwnerDocumentCreated() *bool {
+	if d == nil {
+		return nil
+	}
+	return d.OwnerDocumentCreated
 }
 
 type DocumentDistributeMeta struct {
@@ -383,6 +408,7 @@ const (
 	DocumentDistributeStatusPending   DocumentDistributeStatus = "PENDING"
 	DocumentDistributeStatusCompleted DocumentDistributeStatus = "COMPLETED"
 	DocumentDistributeStatusRejected  DocumentDistributeStatus = "REJECTED"
+	DocumentDistributeStatusCancelled DocumentDistributeStatus = "CANCELLED"
 )
 
 func (e DocumentDistributeStatus) ToPointer() *DocumentDistributeStatus {
@@ -401,6 +427,8 @@ func (e *DocumentDistributeStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = DocumentDistributeStatus(v)
 		return nil
 	default:
@@ -557,7 +585,14 @@ func CreateDocumentDistributeFormValuesNumber(number float64) DocumentDistribute
 	}
 }
 
-func (u *DocumentDistributeFormValues) UnmarshalJSON(data []byte) error {
+func (u *DocumentDistributeFormValues) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentDistributeFormValues{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {

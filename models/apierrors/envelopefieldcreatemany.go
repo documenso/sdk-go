@@ -29,6 +29,10 @@ type EnvelopeFieldCreateManyInternalServerError struct {
 var _ error = &EnvelopeFieldCreateManyInternalServerError{}
 
 func (e *EnvelopeFieldCreateManyInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type EnvelopeFieldCreateManyForbiddenError struct {
 var _ error = &EnvelopeFieldCreateManyForbiddenError{}
 
 func (e *EnvelopeFieldCreateManyForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type EnvelopeFieldCreateManyUnauthorizedError struct {
 var _ error = &EnvelopeFieldCreateManyUnauthorizedError{}
 
 func (e *EnvelopeFieldCreateManyUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type EnvelopeFieldCreateManyBadRequestError struct {
 var _ error = &EnvelopeFieldCreateManyBadRequestError{}
 
 func (e *EnvelopeFieldCreateManyBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

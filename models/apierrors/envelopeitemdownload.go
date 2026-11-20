@@ -29,6 +29,10 @@ type EnvelopeItemDownloadInternalServerError struct {
 var _ error = &EnvelopeItemDownloadInternalServerError{}
 
 func (e *EnvelopeItemDownloadInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type EnvelopeItemDownloadNotFoundError struct {
 var _ error = &EnvelopeItemDownloadNotFoundError{}
 
 func (e *EnvelopeItemDownloadNotFoundError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type EnvelopeItemDownloadForbiddenError struct {
 var _ error = &EnvelopeItemDownloadForbiddenError{}
 
 func (e *EnvelopeItemDownloadForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type EnvelopeItemDownloadUnauthorizedError struct {
 var _ error = &EnvelopeItemDownloadUnauthorizedError{}
 
 func (e *EnvelopeItemDownloadUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -133,6 +149,10 @@ type EnvelopeItemDownloadBadRequestError struct {
 var _ error = &EnvelopeItemDownloadBadRequestError{}
 
 func (e *EnvelopeItemDownloadBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

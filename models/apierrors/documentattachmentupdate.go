@@ -29,6 +29,10 @@ type DocumentAttachmentUpdateInternalServerError struct {
 var _ error = &DocumentAttachmentUpdateInternalServerError{}
 
 func (e *DocumentAttachmentUpdateInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type DocumentAttachmentUpdateForbiddenError struct {
 var _ error = &DocumentAttachmentUpdateForbiddenError{}
 
 func (e *DocumentAttachmentUpdateForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type DocumentAttachmentUpdateUnauthorizedError struct {
 var _ error = &DocumentAttachmentUpdateUnauthorizedError{}
 
 func (e *DocumentAttachmentUpdateUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type DocumentAttachmentUpdateBadRequestError struct {
 var _ error = &DocumentAttachmentUpdateBadRequestError{}
 
 func (e *DocumentAttachmentUpdateBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

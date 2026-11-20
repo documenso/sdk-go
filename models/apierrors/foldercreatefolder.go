@@ -29,6 +29,10 @@ type FolderCreateFolderInternalServerError struct {
 var _ error = &FolderCreateFolderInternalServerError{}
 
 func (e *FolderCreateFolderInternalServerError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +59,10 @@ type FolderCreateFolderForbiddenError struct {
 var _ error = &FolderCreateFolderForbiddenError{}
 
 func (e *FolderCreateFolderForbiddenError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +89,10 @@ type FolderCreateFolderUnauthorizedError struct {
 var _ error = &FolderCreateFolderUnauthorizedError{}
 
 func (e *FolderCreateFolderUnauthorizedError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +119,10 @@ type FolderCreateFolderBadRequestError struct {
 var _ error = &FolderCreateFolderBadRequestError{}
 
 func (e *FolderCreateFolderBadRequestError) Error() string {
+	if e != nil {
+		return e.Message
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

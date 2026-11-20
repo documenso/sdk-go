@@ -63,3 +63,31 @@ templateGetTemplateByIDFieldMetaUnion := operations.CreateTemplateGetTemplateByI
 templateGetTemplateByIDFieldMetaUnion := operations.CreateTemplateGetTemplateByIDFieldMetaUnionTemplateGetTemplateByIDFieldMetaDropdown(operations.TemplateGetTemplateByIDFieldMetaDropdown{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch templateGetTemplateByIDFieldMetaUnion.Type {
+	case operations.TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaSignature:
+		// templateGetTemplateByIDFieldMetaUnion.TemplateGetTemplateByIDFieldMetaSignature is populated
+	case operations.TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaInitials:
+		// templateGetTemplateByIDFieldMetaUnion.TemplateGetTemplateByIDFieldMetaInitials is populated
+	case operations.TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaName:
+		// templateGetTemplateByIDFieldMetaUnion.TemplateGetTemplateByIDFieldMetaName is populated
+	case operations.TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaEmail:
+		// templateGetTemplateByIDFieldMetaUnion.TemplateGetTemplateByIDFieldMetaEmail is populated
+	case operations.TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaDate:
+		// templateGetTemplateByIDFieldMetaUnion.TemplateGetTemplateByIDFieldMetaDate is populated
+	case operations.TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaText:
+		// templateGetTemplateByIDFieldMetaUnion.TemplateGetTemplateByIDFieldMetaText is populated
+	case operations.TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaNumber:
+		// templateGetTemplateByIDFieldMetaUnion.TemplateGetTemplateByIDFieldMetaNumber is populated
+	case operations.TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaRadio:
+		// templateGetTemplateByIDFieldMetaUnion.TemplateGetTemplateByIDFieldMetaRadio is populated
+	case operations.TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaCheckbox:
+		// templateGetTemplateByIDFieldMetaUnion.TemplateGetTemplateByIDFieldMetaCheckbox is populated
+	case operations.TemplateGetTemplateByIDFieldMetaUnionTypeTemplateGetTemplateByIDFieldMetaDropdown:
+		// templateGetTemplateByIDFieldMetaUnion.TemplateGetTemplateByIDFieldMetaDropdown is populated
+}
+```
