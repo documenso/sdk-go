@@ -1,5 +1,15 @@
 # RecipientGetTemplateRecipientVerticalAlign2
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.RecipientGetTemplateRecipientVerticalAlign2Top
+```
+
 
 ## Values
 

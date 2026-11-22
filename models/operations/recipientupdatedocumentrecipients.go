@@ -433,6 +433,38 @@ func (e *RecipientUpdateDocumentRecipientsType) UnmarshalJSON(data []byte) error
 	}
 }
 
+type RecipientUpdateDocumentRecipientsOverflow10 string
+
+const (
+	RecipientUpdateDocumentRecipientsOverflow10Auto       RecipientUpdateDocumentRecipientsOverflow10 = "auto"
+	RecipientUpdateDocumentRecipientsOverflow10Horizontal RecipientUpdateDocumentRecipientsOverflow10 = "horizontal"
+	RecipientUpdateDocumentRecipientsOverflow10Vertical   RecipientUpdateDocumentRecipientsOverflow10 = "vertical"
+	RecipientUpdateDocumentRecipientsOverflow10Crop       RecipientUpdateDocumentRecipientsOverflow10 = "crop"
+)
+
+func (e RecipientUpdateDocumentRecipientsOverflow10) ToPointer() *RecipientUpdateDocumentRecipientsOverflow10 {
+	return &e
+}
+func (e *RecipientUpdateDocumentRecipientsOverflow10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateDocumentRecipientsOverflow10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsOverflow10: %v", v)
+	}
+}
+
 type RecipientUpdateDocumentRecipientsFieldMetaTypeDropdown string
 
 const (
@@ -478,12 +510,16 @@ func (r *RecipientUpdateDocumentRecipientsValue3) GetValue() string {
 	return r.Value
 }
 
+// #region class-body-recipientupdatedocumentrecipientsvalue3
+// #endregion class-body-recipientupdatedocumentrecipientsvalue3
+
 type RecipientUpdateDocumentRecipientsFieldMetaDropdown struct {
 	Label        *string                                                `json:"label,omitempty"`
 	Placeholder  *string                                                `json:"placeholder,omitempty"`
 	Required     *bool                                                  `json:"required,omitempty"`
 	ReadOnly     *bool                                                  `json:"readOnly,omitempty"`
 	FontSize     *float64                                               `default:"12" json:"fontSize"`
+	Overflow     *RecipientUpdateDocumentRecipientsOverflow10           `json:"overflow,omitempty"`
 	Type         RecipientUpdateDocumentRecipientsFieldMetaTypeDropdown `json:"type"`
 	Values       []RecipientUpdateDocumentRecipientsValue3              `json:"values,omitempty"`
 	DefaultValue *string                                                `json:"defaultValue,omitempty"`
@@ -535,6 +571,13 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaDropdown) GetFontSize() *floa
 	return r.FontSize
 }
 
+func (r *RecipientUpdateDocumentRecipientsFieldMetaDropdown) GetOverflow() *RecipientUpdateDocumentRecipientsOverflow10 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateDocumentRecipientsFieldMetaDropdown) GetType() RecipientUpdateDocumentRecipientsFieldMetaTypeDropdown {
 	if r == nil {
 		return RecipientUpdateDocumentRecipientsFieldMetaTypeDropdown("")
@@ -554,6 +597,38 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaDropdown) GetDefaultValue() *
 		return nil
 	}
 	return r.DefaultValue
+}
+
+type RecipientUpdateDocumentRecipientsOverflow9 string
+
+const (
+	RecipientUpdateDocumentRecipientsOverflow9Auto       RecipientUpdateDocumentRecipientsOverflow9 = "auto"
+	RecipientUpdateDocumentRecipientsOverflow9Horizontal RecipientUpdateDocumentRecipientsOverflow9 = "horizontal"
+	RecipientUpdateDocumentRecipientsOverflow9Vertical   RecipientUpdateDocumentRecipientsOverflow9 = "vertical"
+	RecipientUpdateDocumentRecipientsOverflow9Crop       RecipientUpdateDocumentRecipientsOverflow9 = "crop"
+)
+
+func (e RecipientUpdateDocumentRecipientsOverflow9) ToPointer() *RecipientUpdateDocumentRecipientsOverflow9 {
+	return &e
+}
+func (e *RecipientUpdateDocumentRecipientsOverflow9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateDocumentRecipientsOverflow9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsOverflow9: %v", v)
+	}
 }
 
 type RecipientUpdateDocumentRecipientsFieldMetaTypeCheckbox string
@@ -617,6 +692,9 @@ func (r *RecipientUpdateDocumentRecipientsValue2) GetValue() string {
 	return r.Value
 }
 
+// #region class-body-recipientupdatedocumentrecipientsvalue2
+// #endregion class-body-recipientupdatedocumentrecipientsvalue2
+
 type RecipientUpdateDocumentRecipientsDirection2 string
 
 const (
@@ -649,6 +727,7 @@ type RecipientUpdateDocumentRecipientsFieldMetaCheckbox struct {
 	Required         *bool                                                  `json:"required,omitempty"`
 	ReadOnly         *bool                                                  `json:"readOnly,omitempty"`
 	FontSize         *float64                                               `default:"12" json:"fontSize"`
+	Overflow         *RecipientUpdateDocumentRecipientsOverflow9            `json:"overflow,omitempty"`
 	Type             RecipientUpdateDocumentRecipientsFieldMetaTypeCheckbox `json:"type"`
 	Values           []RecipientUpdateDocumentRecipientsValue2              `json:"values,omitempty"`
 	ValidationRule   *string                                                `json:"validationRule,omitempty"`
@@ -702,6 +781,13 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaCheckbox) GetFontSize() *floa
 	return r.FontSize
 }
 
+func (r *RecipientUpdateDocumentRecipientsFieldMetaCheckbox) GetOverflow() *RecipientUpdateDocumentRecipientsOverflow9 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateDocumentRecipientsFieldMetaCheckbox) GetType() RecipientUpdateDocumentRecipientsFieldMetaTypeCheckbox {
 	if r == nil {
 		return RecipientUpdateDocumentRecipientsFieldMetaTypeCheckbox("")
@@ -735,6 +821,38 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaCheckbox) GetDirection() *Rec
 		return nil
 	}
 	return r.Direction
+}
+
+type RecipientUpdateDocumentRecipientsOverflow8 string
+
+const (
+	RecipientUpdateDocumentRecipientsOverflow8Auto       RecipientUpdateDocumentRecipientsOverflow8 = "auto"
+	RecipientUpdateDocumentRecipientsOverflow8Horizontal RecipientUpdateDocumentRecipientsOverflow8 = "horizontal"
+	RecipientUpdateDocumentRecipientsOverflow8Vertical   RecipientUpdateDocumentRecipientsOverflow8 = "vertical"
+	RecipientUpdateDocumentRecipientsOverflow8Crop       RecipientUpdateDocumentRecipientsOverflow8 = "crop"
+)
+
+func (e RecipientUpdateDocumentRecipientsOverflow8) ToPointer() *RecipientUpdateDocumentRecipientsOverflow8 {
+	return &e
+}
+func (e *RecipientUpdateDocumentRecipientsOverflow8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateDocumentRecipientsOverflow8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsOverflow8: %v", v)
+	}
 }
 
 type RecipientUpdateDocumentRecipientsFieldMetaTypeRadio string
@@ -798,6 +916,9 @@ func (r *RecipientUpdateDocumentRecipientsValue1) GetValue() string {
 	return r.Value
 }
 
+// #region class-body-recipientupdatedocumentrecipientsvalue1
+// #endregion class-body-recipientupdatedocumentrecipientsvalue1
+
 type RecipientUpdateDocumentRecipientsDirection1 string
 
 const (
@@ -830,6 +951,7 @@ type RecipientUpdateDocumentRecipientsFieldMetaRadio struct {
 	Required    *bool                                               `json:"required,omitempty"`
 	ReadOnly    *bool                                               `json:"readOnly,omitempty"`
 	FontSize    *float64                                            `default:"12" json:"fontSize"`
+	Overflow    *RecipientUpdateDocumentRecipientsOverflow8         `json:"overflow,omitempty"`
 	Type        RecipientUpdateDocumentRecipientsFieldMetaTypeRadio `json:"type"`
 	Values      []RecipientUpdateDocumentRecipientsValue1           `json:"values,omitempty"`
 	Direction   *RecipientUpdateDocumentRecipientsDirection1        `default:"vertical" json:"direction"`
@@ -881,6 +1003,13 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaRadio) GetFontSize() *float64
 	return r.FontSize
 }
 
+func (r *RecipientUpdateDocumentRecipientsFieldMetaRadio) GetOverflow() *RecipientUpdateDocumentRecipientsOverflow8 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateDocumentRecipientsFieldMetaRadio) GetType() RecipientUpdateDocumentRecipientsFieldMetaTypeRadio {
 	if r == nil {
 		return RecipientUpdateDocumentRecipientsFieldMetaTypeRadio("")
@@ -900,6 +1029,38 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaRadio) GetDirection() *Recipi
 		return nil
 	}
 	return r.Direction
+}
+
+type RecipientUpdateDocumentRecipientsOverflow7 string
+
+const (
+	RecipientUpdateDocumentRecipientsOverflow7Auto       RecipientUpdateDocumentRecipientsOverflow7 = "auto"
+	RecipientUpdateDocumentRecipientsOverflow7Horizontal RecipientUpdateDocumentRecipientsOverflow7 = "horizontal"
+	RecipientUpdateDocumentRecipientsOverflow7Vertical   RecipientUpdateDocumentRecipientsOverflow7 = "vertical"
+	RecipientUpdateDocumentRecipientsOverflow7Crop       RecipientUpdateDocumentRecipientsOverflow7 = "crop"
+)
+
+func (e RecipientUpdateDocumentRecipientsOverflow7) ToPointer() *RecipientUpdateDocumentRecipientsOverflow7 {
+	return &e
+}
+func (e *RecipientUpdateDocumentRecipientsOverflow7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateDocumentRecipientsOverflow7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsOverflow7: %v", v)
+	}
 }
 
 type RecipientUpdateDocumentRecipientsFieldMetaTypeNumber string
@@ -989,6 +1150,7 @@ type RecipientUpdateDocumentRecipientsFieldMetaNumber struct {
 	Required      *bool                                                `json:"required,omitempty"`
 	ReadOnly      *bool                                                `json:"readOnly,omitempty"`
 	FontSize      *float64                                             `default:"12" json:"fontSize"`
+	Overflow      *RecipientUpdateDocumentRecipientsOverflow7          `json:"overflow,omitempty"`
 	Type          RecipientUpdateDocumentRecipientsFieldMetaTypeNumber `json:"type"`
 	NumberFormat  *string                                              `json:"numberFormat,omitempty"`
 	Value         *string                                              `json:"value,omitempty"`
@@ -1044,6 +1206,13 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaNumber) GetFontSize() *float6
 		return nil
 	}
 	return r.FontSize
+}
+
+func (r *RecipientUpdateDocumentRecipientsFieldMetaNumber) GetOverflow() *RecipientUpdateDocumentRecipientsOverflow7 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
 }
 
 func (r *RecipientUpdateDocumentRecipientsFieldMetaNumber) GetType() RecipientUpdateDocumentRecipientsFieldMetaTypeNumber {
@@ -1107,6 +1276,38 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaNumber) GetVerticalAlign() *R
 		return nil
 	}
 	return r.VerticalAlign
+}
+
+type RecipientUpdateDocumentRecipientsOverflow6 string
+
+const (
+	RecipientUpdateDocumentRecipientsOverflow6Auto       RecipientUpdateDocumentRecipientsOverflow6 = "auto"
+	RecipientUpdateDocumentRecipientsOverflow6Horizontal RecipientUpdateDocumentRecipientsOverflow6 = "horizontal"
+	RecipientUpdateDocumentRecipientsOverflow6Vertical   RecipientUpdateDocumentRecipientsOverflow6 = "vertical"
+	RecipientUpdateDocumentRecipientsOverflow6Crop       RecipientUpdateDocumentRecipientsOverflow6 = "crop"
+)
+
+func (e RecipientUpdateDocumentRecipientsOverflow6) ToPointer() *RecipientUpdateDocumentRecipientsOverflow6 {
+	return &e
+}
+func (e *RecipientUpdateDocumentRecipientsOverflow6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateDocumentRecipientsOverflow6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsOverflow6: %v", v)
+	}
 }
 
 type RecipientUpdateDocumentRecipientsFieldMetaTypeText string
@@ -1196,6 +1397,7 @@ type RecipientUpdateDocumentRecipientsFieldMetaText struct {
 	Required       *bool                                              `json:"required,omitempty"`
 	ReadOnly       *bool                                              `json:"readOnly,omitempty"`
 	FontSize       *float64                                           `default:"12" json:"fontSize"`
+	Overflow       *RecipientUpdateDocumentRecipientsOverflow6        `json:"overflow,omitempty"`
 	Type           RecipientUpdateDocumentRecipientsFieldMetaTypeText `json:"type"`
 	Text           *string                                            `json:"text,omitempty"`
 	CharacterLimit *float64                                           `json:"characterLimit,omitempty"`
@@ -1251,6 +1453,13 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaText) GetFontSize() *float64 
 	return r.FontSize
 }
 
+func (r *RecipientUpdateDocumentRecipientsFieldMetaText) GetOverflow() *RecipientUpdateDocumentRecipientsOverflow6 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateDocumentRecipientsFieldMetaText) GetType() RecipientUpdateDocumentRecipientsFieldMetaTypeText {
 	if r == nil {
 		return RecipientUpdateDocumentRecipientsFieldMetaTypeText("")
@@ -1298,6 +1507,38 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaText) GetVerticalAlign() *Rec
 		return nil
 	}
 	return r.VerticalAlign
+}
+
+type RecipientUpdateDocumentRecipientsOverflow5 string
+
+const (
+	RecipientUpdateDocumentRecipientsOverflow5Auto       RecipientUpdateDocumentRecipientsOverflow5 = "auto"
+	RecipientUpdateDocumentRecipientsOverflow5Horizontal RecipientUpdateDocumentRecipientsOverflow5 = "horizontal"
+	RecipientUpdateDocumentRecipientsOverflow5Vertical   RecipientUpdateDocumentRecipientsOverflow5 = "vertical"
+	RecipientUpdateDocumentRecipientsOverflow5Crop       RecipientUpdateDocumentRecipientsOverflow5 = "crop"
+)
+
+func (e RecipientUpdateDocumentRecipientsOverflow5) ToPointer() *RecipientUpdateDocumentRecipientsOverflow5 {
+	return &e
+}
+func (e *RecipientUpdateDocumentRecipientsOverflow5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateDocumentRecipientsOverflow5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsOverflow5: %v", v)
+	}
 }
 
 type RecipientUpdateDocumentRecipientsFieldMetaTypeDate string
@@ -1358,6 +1599,7 @@ type RecipientUpdateDocumentRecipientsFieldMetaDate struct {
 	Required    *bool                                              `json:"required,omitempty"`
 	ReadOnly    *bool                                              `json:"readOnly,omitempty"`
 	FontSize    *float64                                           `default:"12" json:"fontSize"`
+	Overflow    *RecipientUpdateDocumentRecipientsOverflow5        `default:"auto" json:"overflow"`
 	Type        RecipientUpdateDocumentRecipientsFieldMetaTypeDate `json:"type"`
 	TextAlign   *RecipientUpdateDocumentRecipientsTextAlign4       `json:"textAlign,omitempty"`
 }
@@ -1408,6 +1650,13 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaDate) GetFontSize() *float64 
 	return r.FontSize
 }
 
+func (r *RecipientUpdateDocumentRecipientsFieldMetaDate) GetOverflow() *RecipientUpdateDocumentRecipientsOverflow5 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateDocumentRecipientsFieldMetaDate) GetType() RecipientUpdateDocumentRecipientsFieldMetaTypeDate {
 	if r == nil {
 		return RecipientUpdateDocumentRecipientsFieldMetaTypeDate("")
@@ -1420,6 +1669,38 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaDate) GetTextAlign() *Recipie
 		return nil
 	}
 	return r.TextAlign
+}
+
+type RecipientUpdateDocumentRecipientsOverflow4 string
+
+const (
+	RecipientUpdateDocumentRecipientsOverflow4Auto       RecipientUpdateDocumentRecipientsOverflow4 = "auto"
+	RecipientUpdateDocumentRecipientsOverflow4Horizontal RecipientUpdateDocumentRecipientsOverflow4 = "horizontal"
+	RecipientUpdateDocumentRecipientsOverflow4Vertical   RecipientUpdateDocumentRecipientsOverflow4 = "vertical"
+	RecipientUpdateDocumentRecipientsOverflow4Crop       RecipientUpdateDocumentRecipientsOverflow4 = "crop"
+)
+
+func (e RecipientUpdateDocumentRecipientsOverflow4) ToPointer() *RecipientUpdateDocumentRecipientsOverflow4 {
+	return &e
+}
+func (e *RecipientUpdateDocumentRecipientsOverflow4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateDocumentRecipientsOverflow4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsOverflow4: %v", v)
+	}
 }
 
 type RecipientUpdateDocumentRecipientsFieldMetaTypeEmail string
@@ -1480,6 +1761,7 @@ type RecipientUpdateDocumentRecipientsFieldMetaEmail struct {
 	Required    *bool                                               `json:"required,omitempty"`
 	ReadOnly    *bool                                               `json:"readOnly,omitempty"`
 	FontSize    *float64                                            `default:"12" json:"fontSize"`
+	Overflow    *RecipientUpdateDocumentRecipientsOverflow4         `default:"auto" json:"overflow"`
 	Type        RecipientUpdateDocumentRecipientsFieldMetaTypeEmail `json:"type"`
 	TextAlign   *RecipientUpdateDocumentRecipientsTextAlign3        `json:"textAlign,omitempty"`
 }
@@ -1530,6 +1812,13 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaEmail) GetFontSize() *float64
 	return r.FontSize
 }
 
+func (r *RecipientUpdateDocumentRecipientsFieldMetaEmail) GetOverflow() *RecipientUpdateDocumentRecipientsOverflow4 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateDocumentRecipientsFieldMetaEmail) GetType() RecipientUpdateDocumentRecipientsFieldMetaTypeEmail {
 	if r == nil {
 		return RecipientUpdateDocumentRecipientsFieldMetaTypeEmail("")
@@ -1542,6 +1831,38 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaEmail) GetTextAlign() *Recipi
 		return nil
 	}
 	return r.TextAlign
+}
+
+type RecipientUpdateDocumentRecipientsOverflow3 string
+
+const (
+	RecipientUpdateDocumentRecipientsOverflow3Auto       RecipientUpdateDocumentRecipientsOverflow3 = "auto"
+	RecipientUpdateDocumentRecipientsOverflow3Horizontal RecipientUpdateDocumentRecipientsOverflow3 = "horizontal"
+	RecipientUpdateDocumentRecipientsOverflow3Vertical   RecipientUpdateDocumentRecipientsOverflow3 = "vertical"
+	RecipientUpdateDocumentRecipientsOverflow3Crop       RecipientUpdateDocumentRecipientsOverflow3 = "crop"
+)
+
+func (e RecipientUpdateDocumentRecipientsOverflow3) ToPointer() *RecipientUpdateDocumentRecipientsOverflow3 {
+	return &e
+}
+func (e *RecipientUpdateDocumentRecipientsOverflow3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateDocumentRecipientsOverflow3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsOverflow3: %v", v)
+	}
 }
 
 type RecipientUpdateDocumentRecipientsFieldMetaTypeName string
@@ -1602,6 +1923,7 @@ type RecipientUpdateDocumentRecipientsFieldMetaName struct {
 	Required    *bool                                              `json:"required,omitempty"`
 	ReadOnly    *bool                                              `json:"readOnly,omitempty"`
 	FontSize    *float64                                           `default:"12" json:"fontSize"`
+	Overflow    *RecipientUpdateDocumentRecipientsOverflow3        `json:"overflow,omitempty"`
 	Type        RecipientUpdateDocumentRecipientsFieldMetaTypeName `json:"type"`
 	TextAlign   *RecipientUpdateDocumentRecipientsTextAlign2       `json:"textAlign,omitempty"`
 }
@@ -1652,6 +1974,13 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaName) GetFontSize() *float64 
 	return r.FontSize
 }
 
+func (r *RecipientUpdateDocumentRecipientsFieldMetaName) GetOverflow() *RecipientUpdateDocumentRecipientsOverflow3 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateDocumentRecipientsFieldMetaName) GetType() RecipientUpdateDocumentRecipientsFieldMetaTypeName {
 	if r == nil {
 		return RecipientUpdateDocumentRecipientsFieldMetaTypeName("")
@@ -1664,6 +1993,38 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaName) GetTextAlign() *Recipie
 		return nil
 	}
 	return r.TextAlign
+}
+
+type RecipientUpdateDocumentRecipientsOverflow2 string
+
+const (
+	RecipientUpdateDocumentRecipientsOverflow2Auto       RecipientUpdateDocumentRecipientsOverflow2 = "auto"
+	RecipientUpdateDocumentRecipientsOverflow2Horizontal RecipientUpdateDocumentRecipientsOverflow2 = "horizontal"
+	RecipientUpdateDocumentRecipientsOverflow2Vertical   RecipientUpdateDocumentRecipientsOverflow2 = "vertical"
+	RecipientUpdateDocumentRecipientsOverflow2Crop       RecipientUpdateDocumentRecipientsOverflow2 = "crop"
+)
+
+func (e RecipientUpdateDocumentRecipientsOverflow2) ToPointer() *RecipientUpdateDocumentRecipientsOverflow2 {
+	return &e
+}
+func (e *RecipientUpdateDocumentRecipientsOverflow2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateDocumentRecipientsOverflow2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsOverflow2: %v", v)
+	}
 }
 
 type RecipientUpdateDocumentRecipientsFieldMetaTypeInitials string
@@ -1724,6 +2085,7 @@ type RecipientUpdateDocumentRecipientsFieldMetaInitials struct {
 	Required    *bool                                                  `json:"required,omitempty"`
 	ReadOnly    *bool                                                  `json:"readOnly,omitempty"`
 	FontSize    *float64                                               `default:"12" json:"fontSize"`
+	Overflow    *RecipientUpdateDocumentRecipientsOverflow2            `json:"overflow,omitempty"`
 	Type        RecipientUpdateDocumentRecipientsFieldMetaTypeInitials `json:"type"`
 	TextAlign   *RecipientUpdateDocumentRecipientsTextAlign1           `json:"textAlign,omitempty"`
 }
@@ -1774,6 +2136,13 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaInitials) GetFontSize() *floa
 	return r.FontSize
 }
 
+func (r *RecipientUpdateDocumentRecipientsFieldMetaInitials) GetOverflow() *RecipientUpdateDocumentRecipientsOverflow2 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateDocumentRecipientsFieldMetaInitials) GetType() RecipientUpdateDocumentRecipientsFieldMetaTypeInitials {
 	if r == nil {
 		return RecipientUpdateDocumentRecipientsFieldMetaTypeInitials("")
@@ -1786,6 +2155,38 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaInitials) GetTextAlign() *Rec
 		return nil
 	}
 	return r.TextAlign
+}
+
+type RecipientUpdateDocumentRecipientsOverflow1 string
+
+const (
+	RecipientUpdateDocumentRecipientsOverflow1Auto       RecipientUpdateDocumentRecipientsOverflow1 = "auto"
+	RecipientUpdateDocumentRecipientsOverflow1Horizontal RecipientUpdateDocumentRecipientsOverflow1 = "horizontal"
+	RecipientUpdateDocumentRecipientsOverflow1Vertical   RecipientUpdateDocumentRecipientsOverflow1 = "vertical"
+	RecipientUpdateDocumentRecipientsOverflow1Crop       RecipientUpdateDocumentRecipientsOverflow1 = "crop"
+)
+
+func (e RecipientUpdateDocumentRecipientsOverflow1) ToPointer() *RecipientUpdateDocumentRecipientsOverflow1 {
+	return &e
+}
+func (e *RecipientUpdateDocumentRecipientsOverflow1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateDocumentRecipientsOverflow1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateDocumentRecipientsOverflow1: %v", v)
+	}
 }
 
 type RecipientUpdateDocumentRecipientsFieldMetaTypeSignature string
@@ -1817,6 +2218,7 @@ type RecipientUpdateDocumentRecipientsFieldMetaSignature struct {
 	Required    *bool                                                   `json:"required,omitempty"`
 	ReadOnly    *bool                                                   `json:"readOnly,omitempty"`
 	FontSize    *float64                                                `default:"12" json:"fontSize"`
+	Overflow    *RecipientUpdateDocumentRecipientsOverflow1             `default:"auto" json:"overflow"`
 	Type        RecipientUpdateDocumentRecipientsFieldMetaTypeSignature `json:"type"`
 }
 
@@ -1864,6 +2266,13 @@ func (r *RecipientUpdateDocumentRecipientsFieldMetaSignature) GetFontSize() *flo
 		return nil
 	}
 	return r.FontSize
+}
+
+func (r *RecipientUpdateDocumentRecipientsFieldMetaSignature) GetOverflow() *RecipientUpdateDocumentRecipientsOverflow1 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
 }
 
 func (r *RecipientUpdateDocumentRecipientsFieldMetaSignature) GetType() RecipientUpdateDocumentRecipientsFieldMetaTypeSignature {
@@ -1993,7 +2402,14 @@ func CreateRecipientUpdateDocumentRecipientsFieldMetaUnionRecipientUpdateDocumen
 	}
 }
 
-func (u *RecipientUpdateDocumentRecipientsFieldMetaUnion) UnmarshalJSON(data []byte) error {
+func (u *RecipientUpdateDocumentRecipientsFieldMetaUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = RecipientUpdateDocumentRecipientsFieldMetaUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var recipientUpdateDocumentRecipientsFieldMetaSignature RecipientUpdateDocumentRecipientsFieldMetaSignature = RecipientUpdateDocumentRecipientsFieldMetaSignature{}
 	if err := utils.UnmarshalJSON(data, &recipientUpdateDocumentRecipientsFieldMetaSignature, "", true, nil); err == nil {
@@ -2244,24 +2660,26 @@ func (r *RecipientUpdateDocumentRecipientsField) GetTemplateID() *float64 {
 }
 
 type RecipientUpdateDocumentRecipientsRecipientResponse struct {
-	EnvelopeID        string                                         `json:"envelopeId"`
-	Role              RecipientUpdateDocumentRecipientsRoleResponse  `json:"role"`
-	ReadStatus        RecipientUpdateDocumentRecipientsReadStatus    `json:"readStatus"`
-	SigningStatus     RecipientUpdateDocumentRecipientsSigningStatus `json:"signingStatus"`
-	SendStatus        RecipientUpdateDocumentRecipientsSendStatus    `json:"sendStatus"`
-	ID                float64                                        `json:"id"`
-	Email             string                                         `json:"email"`
-	Name              string                                         `json:"name"`
-	Token             string                                         `json:"token"`
-	DocumentDeletedAt *string                                        `json:"documentDeletedAt"`
-	Expired           *string                                        `json:"expired"`
-	SignedAt          *string                                        `json:"signedAt"`
-	AuthOptions       *RecipientUpdateDocumentRecipientsAuthOptions  `json:"authOptions"`
-	SigningOrder      *float64                                       `json:"signingOrder"`
-	RejectionReason   *string                                        `json:"rejectionReason"`
-	Fields            []RecipientUpdateDocumentRecipientsField       `json:"fields"`
-	DocumentID        *float64                                       `json:"documentId,omitempty"`
-	TemplateID        *float64                                       `json:"templateId,omitempty"`
+	EnvelopeID           string                                         `json:"envelopeId"`
+	Role                 RecipientUpdateDocumentRecipientsRoleResponse  `json:"role"`
+	ReadStatus           RecipientUpdateDocumentRecipientsReadStatus    `json:"readStatus"`
+	SigningStatus        RecipientUpdateDocumentRecipientsSigningStatus `json:"signingStatus"`
+	SendStatus           RecipientUpdateDocumentRecipientsSendStatus    `json:"sendStatus"`
+	ID                   float64                                        `json:"id"`
+	Email                string                                         `json:"email"`
+	Name                 string                                         `json:"name"`
+	Token                string                                         `json:"token"`
+	DocumentDeletedAt    *string                                        `json:"documentDeletedAt"`
+	Expired              *string                                        `json:"expired"`
+	ExpiresAt            *string                                        `json:"expiresAt"`
+	ExpirationNotifiedAt *string                                        `json:"expirationNotifiedAt"`
+	SignedAt             *string                                        `json:"signedAt"`
+	AuthOptions          *RecipientUpdateDocumentRecipientsAuthOptions  `json:"authOptions"`
+	SigningOrder         *float64                                       `json:"signingOrder"`
+	RejectionReason      *string                                        `json:"rejectionReason"`
+	Fields               []RecipientUpdateDocumentRecipientsField       `json:"fields"`
+	DocumentID           *float64                                       `json:"documentId,omitempty"`
+	TemplateID           *float64                                       `json:"templateId,omitempty"`
 }
 
 func (r *RecipientUpdateDocumentRecipientsRecipientResponse) GetEnvelopeID() string {
@@ -2339,6 +2757,20 @@ func (r *RecipientUpdateDocumentRecipientsRecipientResponse) GetExpired() *strin
 		return nil
 	}
 	return r.Expired
+}
+
+func (r *RecipientUpdateDocumentRecipientsRecipientResponse) GetExpiresAt() *string {
+	if r == nil {
+		return nil
+	}
+	return r.ExpiresAt
+}
+
+func (r *RecipientUpdateDocumentRecipientsRecipientResponse) GetExpirationNotifiedAt() *string {
+	if r == nil {
+		return nil
+	}
+	return r.ExpirationNotifiedAt
 }
 
 func (r *RecipientUpdateDocumentRecipientsRecipientResponse) GetSignedAt() *string {

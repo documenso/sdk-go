@@ -4,6 +4,7 @@ package apierrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -29,6 +30,15 @@ type RecipientCreateTemplateRecipientsInternalServerError struct {
 var _ error = &RecipientCreateTemplateRecipientsInternalServerError{}
 
 func (e *RecipientCreateTemplateRecipientsInternalServerError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +65,15 @@ type RecipientCreateTemplateRecipientsForbiddenError struct {
 var _ error = &RecipientCreateTemplateRecipientsForbiddenError{}
 
 func (e *RecipientCreateTemplateRecipientsForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +100,15 @@ type RecipientCreateTemplateRecipientsUnauthorizedError struct {
 var _ error = &RecipientCreateTemplateRecipientsUnauthorizedError{}
 
 func (e *RecipientCreateTemplateRecipientsUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +135,15 @@ type RecipientCreateTemplateRecipientsBadRequestError struct {
 var _ error = &RecipientCreateTemplateRecipientsBadRequestError{}
 
 func (e *RecipientCreateTemplateRecipientsBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

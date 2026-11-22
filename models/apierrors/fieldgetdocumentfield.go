@@ -4,6 +4,7 @@ package apierrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -29,6 +30,15 @@ type FieldGetDocumentFieldInternalServerError struct {
 var _ error = &FieldGetDocumentFieldInternalServerError{}
 
 func (e *FieldGetDocumentFieldInternalServerError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +65,15 @@ type FieldGetDocumentFieldNotFoundError struct {
 var _ error = &FieldGetDocumentFieldNotFoundError{}
 
 func (e *FieldGetDocumentFieldNotFoundError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +100,15 @@ type FieldGetDocumentFieldForbiddenError struct {
 var _ error = &FieldGetDocumentFieldForbiddenError{}
 
 func (e *FieldGetDocumentFieldForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +135,15 @@ type FieldGetDocumentFieldUnauthorizedError struct {
 var _ error = &FieldGetDocumentFieldUnauthorizedError{}
 
 func (e *FieldGetDocumentFieldUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -133,6 +170,15 @@ type FieldGetDocumentFieldBadRequestError struct {
 var _ error = &FieldGetDocumentFieldBadRequestError{}
 
 func (e *FieldGetDocumentFieldBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

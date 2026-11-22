@@ -1,5 +1,15 @@
 # FieldGetTemplateFieldTextAlign5
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.FieldGetTemplateFieldTextAlign5Left
+```
+
 
 ## Values
 
