@@ -4,6 +4,7 @@ package apierrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -29,6 +30,15 @@ type RecipientDeleteTemplateRecipientInternalServerError struct {
 var _ error = &RecipientDeleteTemplateRecipientInternalServerError{}
 
 func (e *RecipientDeleteTemplateRecipientInternalServerError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +65,15 @@ type RecipientDeleteTemplateRecipientForbiddenError struct {
 var _ error = &RecipientDeleteTemplateRecipientForbiddenError{}
 
 func (e *RecipientDeleteTemplateRecipientForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +100,15 @@ type RecipientDeleteTemplateRecipientUnauthorizedError struct {
 var _ error = &RecipientDeleteTemplateRecipientUnauthorizedError{}
 
 func (e *RecipientDeleteTemplateRecipientUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +135,15 @@ type RecipientDeleteTemplateRecipientBadRequestError struct {
 var _ error = &RecipientDeleteTemplateRecipientBadRequestError{}
 
 func (e *RecipientDeleteTemplateRecipientBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

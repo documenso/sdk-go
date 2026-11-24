@@ -4,6 +4,7 @@ package apierrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -29,6 +30,15 @@ type TemplateCreateTemplateDirectLinkInternalServerError struct {
 var _ error = &TemplateCreateTemplateDirectLinkInternalServerError{}
 
 func (e *TemplateCreateTemplateDirectLinkInternalServerError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +65,15 @@ type TemplateCreateTemplateDirectLinkForbiddenError struct {
 var _ error = &TemplateCreateTemplateDirectLinkForbiddenError{}
 
 func (e *TemplateCreateTemplateDirectLinkForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +100,15 @@ type TemplateCreateTemplateDirectLinkUnauthorizedError struct {
 var _ error = &TemplateCreateTemplateDirectLinkUnauthorizedError{}
 
 func (e *TemplateCreateTemplateDirectLinkUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +135,15 @@ type TemplateCreateTemplateDirectLinkBadRequestError struct {
 var _ error = &TemplateCreateTemplateDirectLinkBadRequestError{}
 
 func (e *TemplateCreateTemplateDirectLinkBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

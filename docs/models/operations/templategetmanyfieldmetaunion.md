@@ -63,3 +63,31 @@ templateGetManyFieldMetaUnion := operations.CreateTemplateGetManyFieldMetaUnionT
 templateGetManyFieldMetaUnion := operations.CreateTemplateGetManyFieldMetaUnionTemplateGetManyFieldMetaDropdown(operations.TemplateGetManyFieldMetaDropdown{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch templateGetManyFieldMetaUnion.Type {
+	case operations.TemplateGetManyFieldMetaUnionTypeTemplateGetManyFieldMetaSignature:
+		// templateGetManyFieldMetaUnion.TemplateGetManyFieldMetaSignature is populated
+	case operations.TemplateGetManyFieldMetaUnionTypeTemplateGetManyFieldMetaInitials:
+		// templateGetManyFieldMetaUnion.TemplateGetManyFieldMetaInitials is populated
+	case operations.TemplateGetManyFieldMetaUnionTypeTemplateGetManyFieldMetaName:
+		// templateGetManyFieldMetaUnion.TemplateGetManyFieldMetaName is populated
+	case operations.TemplateGetManyFieldMetaUnionTypeTemplateGetManyFieldMetaEmail:
+		// templateGetManyFieldMetaUnion.TemplateGetManyFieldMetaEmail is populated
+	case operations.TemplateGetManyFieldMetaUnionTypeTemplateGetManyFieldMetaDate:
+		// templateGetManyFieldMetaUnion.TemplateGetManyFieldMetaDate is populated
+	case operations.TemplateGetManyFieldMetaUnionTypeTemplateGetManyFieldMetaText:
+		// templateGetManyFieldMetaUnion.TemplateGetManyFieldMetaText is populated
+	case operations.TemplateGetManyFieldMetaUnionTypeTemplateGetManyFieldMetaNumber:
+		// templateGetManyFieldMetaUnion.TemplateGetManyFieldMetaNumber is populated
+	case operations.TemplateGetManyFieldMetaUnionTypeTemplateGetManyFieldMetaRadio:
+		// templateGetManyFieldMetaUnion.TemplateGetManyFieldMetaRadio is populated
+	case operations.TemplateGetManyFieldMetaUnionTypeTemplateGetManyFieldMetaCheckbox:
+		// templateGetManyFieldMetaUnion.TemplateGetManyFieldMetaCheckbox is populated
+	case operations.TemplateGetManyFieldMetaUnionTypeTemplateGetManyFieldMetaDropdown:
+		// templateGetManyFieldMetaUnion.TemplateGetManyFieldMetaDropdown is populated
+}
+```

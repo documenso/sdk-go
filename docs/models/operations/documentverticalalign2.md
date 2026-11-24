@@ -1,5 +1,15 @@
 # DocumentVerticalAlign2
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.DocumentVerticalAlign2Top
+```
+
 
 ## Values
 

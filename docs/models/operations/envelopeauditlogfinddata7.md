@@ -3,8 +3,7 @@
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `MovedByUserID`       | *float64*             | :heavy_check_mark:    | N/A                   |
-| `FromPersonalAccount` | *bool*                | :heavy_check_mark:    | N/A                   |
-| `ToTeamID`            | *float64*             | :heavy_check_mark:    | N/A                   |
+| Field                                                   | Type                                                    | Required                                                | Description                                             |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `Title`                                                 | `string`                                                | :heavy_check_mark:                                      | N/A                                                     |
+| `Source`                                                | [*operations.Source](../../models/operations/source.md) | :heavy_minus_sign:                                      | N/A                                                     |
