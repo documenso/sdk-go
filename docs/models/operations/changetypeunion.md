@@ -51,3 +51,27 @@ changeTypeUnion := operations.CreateChangeTypeUnionTypeEmailReplyTo(operations.T
 changeTypeUnion := operations.CreateChangeTypeUnionTypeEmailSettings(operations.TypeEmailSettings{/* values here */})
 ```
 
+## Union Discrimination
+
+Use the `Type` field to determine which variant is active, then access the corresponding field:
+
+```go
+switch changeTypeUnion.Type {
+	case operations.ChangeTypeUnionTypeTypeDateFormat:
+		// changeTypeUnion.TypeDateFormat is populated
+	case operations.ChangeTypeUnionTypeTypeMessage:
+		// changeTypeUnion.TypeMessage is populated
+	case operations.ChangeTypeUnionTypeTypeRedirectURL:
+		// changeTypeUnion.TypeRedirectURL is populated
+	case operations.ChangeTypeUnionTypeTypeSubject:
+		// changeTypeUnion.TypeSubject is populated
+	case operations.ChangeTypeUnionTypeTypeTimezone:
+		// changeTypeUnion.TypeTimezone is populated
+	case operations.ChangeTypeUnionTypeTypeEmailID:
+		// changeTypeUnion.TypeEmailID is populated
+	case operations.ChangeTypeUnionTypeTypeEmailReplyTo:
+		// changeTypeUnion.TypeEmailReplyTo is populated
+	case operations.ChangeTypeUnionTypeTypeEmailSettings:
+		// changeTypeUnion.TypeEmailSettings is populated
+}
+```

@@ -4,6 +4,7 @@ package apierrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -29,6 +30,15 @@ type TemplateCreateTemplateTemporaryInternalServerError struct {
 var _ error = &TemplateCreateTemplateTemporaryInternalServerError{}
 
 func (e *TemplateCreateTemplateTemporaryInternalServerError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +65,15 @@ type TemplateCreateTemplateTemporaryForbiddenError struct {
 var _ error = &TemplateCreateTemplateTemporaryForbiddenError{}
 
 func (e *TemplateCreateTemplateTemporaryForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +100,15 @@ type TemplateCreateTemplateTemporaryUnauthorizedError struct {
 var _ error = &TemplateCreateTemplateTemporaryUnauthorizedError{}
 
 func (e *TemplateCreateTemplateTemporaryUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +135,15 @@ type TemplateCreateTemplateTemporaryBadRequestError struct {
 var _ error = &TemplateCreateTemplateTemporaryBadRequestError{}
 
 func (e *TemplateCreateTemplateTemporaryBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

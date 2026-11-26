@@ -4,6 +4,7 @@ package apierrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -29,6 +30,15 @@ type FieldDeleteDocumentFieldInternalServerError struct {
 var _ error = &FieldDeleteDocumentFieldInternalServerError{}
 
 func (e *FieldDeleteDocumentFieldInternalServerError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +65,15 @@ type FieldDeleteDocumentFieldForbiddenError struct {
 var _ error = &FieldDeleteDocumentFieldForbiddenError{}
 
 func (e *FieldDeleteDocumentFieldForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +100,15 @@ type FieldDeleteDocumentFieldUnauthorizedError struct {
 var _ error = &FieldDeleteDocumentFieldUnauthorizedError{}
 
 func (e *FieldDeleteDocumentFieldUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +135,15 @@ type FieldDeleteDocumentFieldBadRequestError struct {
 var _ error = &FieldDeleteDocumentFieldBadRequestError{}
 
 func (e *FieldDeleteDocumentFieldBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

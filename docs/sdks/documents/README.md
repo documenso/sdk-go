@@ -1,23 +1,28 @@
-# Documents
+# ~~Documents~~
+
+> [!WARNING]
+> This SDK is **DEPRECATED**
 
 ## Overview
 
 ### Available Operations
 
-* [Get](#get) - Get document
-* [Find](#find) - Find documents
-* [Create](#create) - Create document
-* [Update](#update) - Update document
-* [Delete](#delete) - Delete document
-* [Duplicate](#duplicate) - Duplicate document
-* [Distribute](#distribute) - Distribute document
-* [Redistribute](#redistribute) - Redistribute document
-* [Download](#download) - Download document
+* [~~Get~~](#get) - Get document :warning: **Deprecated**
+* [~~Find~~](#find) - Find documents :warning: **Deprecated**
+* [~~Create~~](#create) - Create document :warning: **Deprecated**
+* [~~Update~~](#update) - Update document :warning: **Deprecated**
+* [~~Delete~~](#delete) - Delete document :warning: **Deprecated**
+* [~~Duplicate~~](#duplicate) - Duplicate document :warning: **Deprecated**
+* [~~Distribute~~](#distribute) - Distribute document :warning: **Deprecated**
+* [~~Redistribute~~](#redistribute) - Redistribute document :warning: **Deprecated**
+* [~~Download~~](#download) - Download document :warning: **Deprecated**
 * [~~CreateV0~~](#createv0) - Create document :warning: **Deprecated**
 
-## Get
+## ~~Get~~
 
-Returns a document given an ID
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Returns a document given an ID
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -54,7 +59,7 @@ func main() {
 | Parameter                                                | Type                                                     | Required                                                 | Description                                              |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | `ctx`                                                    | [context.Context](https://pkg.go.dev/context#Context)    | :heavy_check_mark:                                       | The context to use for the request.                      |
-| `documentID`                                             | *float64*                                                | :heavy_check_mark:                                       | N/A                                                      |
+| `documentID`                                             | `float64`                                                | :heavy_check_mark:                                       | N/A                                                      |
 | `opts`                                                   | [][operations.Option](../../models/operations/option.md) | :heavy_minus_sign:                                       | The options for this request.                            |
 
 ### Response
@@ -72,9 +77,11 @@ func main() {
 | apierrors.DocumentGetInternalServerError | 500                                      | application/json                         |
 | apierrors.APIError                       | 4XX, 5XX                                 | \*/\*                                    |
 
-## Find
+## ~~Find~~
 
-Find documents based on a search criteria
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Find documents based on a search criteria
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -130,9 +137,11 @@ func main() {
 | apierrors.DocumentFindInternalServerError | 500                                       | application/json                          |
 | apierrors.APIError                        | 4XX, 5XX                                  | \*/\*                                     |
 
-## Create
+## ~~Create~~
 
-Create a document using form data.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -200,9 +209,11 @@ func main() {
 | apierrors.DocumentCreateInternalServerError | 500                                         | application/json                            |
 | apierrors.APIError                          | 4XX, 5XX                                    | \*/\*                                       |
 
-## Update
+## ~~Update~~
 
-Update document
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -259,9 +270,11 @@ func main() {
 | apierrors.DocumentUpdateInternalServerError | 500                                         | application/json                            |
 | apierrors.APIError                          | 4XX, 5XX                                    | \*/\*                                       |
 
-## Delete
+## ~~Delete~~
 
-Delete document
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -318,9 +331,11 @@ func main() {
 | apierrors.DocumentDeleteInternalServerError | 500                                         | application/json                            |
 | apierrors.APIError                          | 4XX, 5XX                                    | \*/\*                                       |
 
-## Duplicate
+## ~~Duplicate~~
 
-Duplicate document
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -377,9 +392,11 @@ func main() {
 | apierrors.DocumentDuplicateInternalServerError | 500                                            | application/json                               |
 | apierrors.APIError                             | 4XX, 5XX                                       | \*/\*                                          |
 
-## Distribute
+## ~~Distribute~~
 
-Send the document out to recipients based on your distribution method
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Send the document out to recipients based on your distribution method
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -436,9 +453,11 @@ func main() {
 | apierrors.DocumentDistributeInternalServerError | 500                                             | application/json                                |
 | apierrors.APIError                              | 4XX, 5XX                                        | \*/\*                                           |
 
-## Redistribute
+## ~~Redistribute~~
 
-Redistribute the document to the provided recipients who have not actioned the document. Will use the distribution method set in the document
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Redistribute the document to the provided recipients who have not actioned the document. Will use the distribution method set in the document. This also refreshes the signing-link expiration for the targeted unsigned recipients, renewing any expired links.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -500,9 +519,11 @@ func main() {
 | apierrors.DocumentRedistributeInternalServerError | 500                                               | application/json                                  |
 | apierrors.APIError                                | 4XX, 5XX                                          | \*/\*                                             |
 
-## Download
+## ~~Download~~
 
-Download document
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -540,7 +561,7 @@ func main() {
 | Parameter                                                                                                                                            | Type                                                                                                                                                 | Required                                                                                                                                             | Description                                                                                                                                          |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ctx`                                                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                                                | :heavy_check_mark:                                                                                                                                   | The context to use for the request.                                                                                                                  |
-| `documentID`                                                                                                                                         | *float64*                                                                                                                                            | :heavy_check_mark:                                                                                                                                   | The ID of the document to download.                                                                                                                  |
+| `documentID`                                                                                                                                         | `float64`                                                                                                                                            | :heavy_check_mark:                                                                                                                                   | The ID of the document to download.                                                                                                                  |
 | `version`                                                                                                                                            | [*operations.DocumentDownloadVersion](../../models/operations/documentdownloadversion.md)                                                            | :heavy_minus_sign:                                                                                                                                   | The version of the document to download. "signed" returns the completed document with signatures, "original" returns the original uploaded document. |
 | `opts`                                                                                                                                               | [][operations.Option](../../models/operations/option.md)                                                                                             | :heavy_minus_sign:                                                                                                                                   | The options for this request.                                                                                                                        |
 
@@ -561,7 +582,7 @@ func main() {
 
 ## ~~CreateV0~~
 
-You will need to upload the PDF to the provided URL returned. Note: Once V2 API is released, this will be removed since we will allow direct uploads, instead of using an upload URL.
+Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. You will need to upload the PDF to the provided URL returned. This endpoint will be removed since we will allow direct uploads, instead of using an upload URL.
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 

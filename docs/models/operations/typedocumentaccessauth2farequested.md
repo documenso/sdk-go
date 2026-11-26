@@ -1,5 +1,15 @@
 # TypeDocumentAccessAuth2FaRequested
 
+## Example Usage
+
+```go
+import (
+	"github.com/documenso/sdk-go/models/operations"
+)
+
+value := operations.TypeDocumentAccessAuth2FaRequestedDocumentAccessAuth2FaRequested
+```
+
 
 ## Values
 

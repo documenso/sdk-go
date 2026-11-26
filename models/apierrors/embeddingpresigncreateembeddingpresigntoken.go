@@ -4,6 +4,7 @@ package apierrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -29,6 +30,15 @@ type EmbeddingPresignCreateEmbeddingPresignTokenInternalServerError struct {
 var _ error = &EmbeddingPresignCreateEmbeddingPresignTokenInternalServerError{}
 
 func (e *EmbeddingPresignCreateEmbeddingPresignTokenInternalServerError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +65,15 @@ type EmbeddingPresignCreateEmbeddingPresignTokenForbiddenError struct {
 var _ error = &EmbeddingPresignCreateEmbeddingPresignTokenForbiddenError{}
 
 func (e *EmbeddingPresignCreateEmbeddingPresignTokenForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +100,15 @@ type EmbeddingPresignCreateEmbeddingPresignTokenUnauthorizedError struct {
 var _ error = &EmbeddingPresignCreateEmbeddingPresignTokenUnauthorizedError{}
 
 func (e *EmbeddingPresignCreateEmbeddingPresignTokenUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +135,15 @@ type EmbeddingPresignCreateEmbeddingPresignTokenBadRequestError struct {
 var _ error = &EmbeddingPresignCreateEmbeddingPresignTokenBadRequestError{}
 
 func (e *EmbeddingPresignCreateEmbeddingPresignTokenBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
