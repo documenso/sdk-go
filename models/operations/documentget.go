@@ -32,6 +32,15 @@ const (
 func (e DocumentGetVisibility) ToPointer() *DocumentGetVisibility {
 	return &e
 }
+
+// DocumentGetVisibilityValues returns every known DocumentGetVisibility value in schema order.
+func DocumentGetVisibilityValues() []DocumentGetVisibility {
+	return []DocumentGetVisibility{
+		DocumentGetVisibilityEveryone,
+		DocumentGetVisibilityManagerAndAbove,
+		DocumentGetVisibilityAdmin,
+	}
+}
 func (e *DocumentGetVisibility) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -57,10 +66,22 @@ const (
 	DocumentGetStatusPending   DocumentGetStatus = "PENDING"
 	DocumentGetStatusCompleted DocumentGetStatus = "COMPLETED"
 	DocumentGetStatusRejected  DocumentGetStatus = "REJECTED"
+	DocumentGetStatusCancelled DocumentGetStatus = "CANCELLED"
 )
 
 func (e DocumentGetStatus) ToPointer() *DocumentGetStatus {
 	return &e
+}
+
+// DocumentGetStatusValues returns every known DocumentGetStatus value in schema order.
+func DocumentGetStatusValues() []DocumentGetStatus {
+	return []DocumentGetStatus{
+		DocumentGetStatusDraft,
+		DocumentGetStatusPending,
+		DocumentGetStatusCompleted,
+		DocumentGetStatusRejected,
+		DocumentGetStatusCancelled,
+	}
 }
 func (e *DocumentGetStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -75,6 +96,8 @@ func (e *DocumentGetStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = DocumentGetStatus(v)
 		return nil
 	default:
@@ -92,6 +115,15 @@ const (
 
 func (e DocumentGetSource) ToPointer() *DocumentGetSource {
 	return &e
+}
+
+// DocumentGetSourceValues returns every known DocumentGetSource value in schema order.
+func DocumentGetSourceValues() []DocumentGetSource {
+	return []DocumentGetSource{
+		DocumentGetSourceDocument,
+		DocumentGetSourceTemplate,
+		DocumentGetSourceTemplateDirectLink,
+	}
 }
 func (e *DocumentGetSource) UnmarshalJSON(data []byte) error {
 	var v string
@@ -121,6 +153,14 @@ const (
 func (e DocumentGetGlobalAccessAuth) ToPointer() *DocumentGetGlobalAccessAuth {
 	return &e
 }
+
+// DocumentGetGlobalAccessAuthValues returns every known DocumentGetGlobalAccessAuth value in schema order.
+func DocumentGetGlobalAccessAuthValues() []DocumentGetGlobalAccessAuth {
+	return []DocumentGetGlobalAccessAuth{
+		DocumentGetGlobalAccessAuthAccount,
+		DocumentGetGlobalAccessAuthTwoFactorAuth,
+	}
+}
 func (e *DocumentGetGlobalAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -148,6 +188,16 @@ const (
 
 func (e DocumentGetGlobalActionAuth) ToPointer() *DocumentGetGlobalActionAuth {
 	return &e
+}
+
+// DocumentGetGlobalActionAuthValues returns every known DocumentGetGlobalActionAuth value in schema order.
+func DocumentGetGlobalActionAuthValues() []DocumentGetGlobalActionAuth {
+	return []DocumentGetGlobalActionAuth{
+		DocumentGetGlobalActionAuthAccount,
+		DocumentGetGlobalActionAuthPasskey,
+		DocumentGetGlobalActionAuthTwoFactorAuth,
+		DocumentGetGlobalActionAuthPassword,
+	}
 }
 func (e *DocumentGetGlobalActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -231,7 +281,14 @@ func CreateDocumentGetFormValuesNumber(number float64) DocumentGetFormValues {
 	}
 }
 
-func (u *DocumentGetFormValues) UnmarshalJSON(data []byte) error {
+func (u *DocumentGetFormValues) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentGetFormValues{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -283,6 +340,15 @@ const (
 
 func (e DocumentGetDocumentDataType) ToPointer() *DocumentGetDocumentDataType {
 	return &e
+}
+
+// DocumentGetDocumentDataTypeValues returns every known DocumentGetDocumentDataType value in schema order.
+func DocumentGetDocumentDataTypeValues() []DocumentGetDocumentDataType {
+	return []DocumentGetDocumentDataType{
+		DocumentGetDocumentDataTypeS3Path,
+		DocumentGetDocumentDataTypeBytes,
+		DocumentGetDocumentDataTypeBytes64,
+	}
 }
 func (e *DocumentGetDocumentDataType) UnmarshalJSON(data []byte) error {
 	var v string
@@ -355,6 +421,14 @@ const (
 func (e DocumentGetSigningOrder) ToPointer() *DocumentGetSigningOrder {
 	return &e
 }
+
+// DocumentGetSigningOrderValues returns every known DocumentGetSigningOrder value in schema order.
+func DocumentGetSigningOrderValues() []DocumentGetSigningOrder {
+	return []DocumentGetSigningOrder{
+		DocumentGetSigningOrderParallel,
+		DocumentGetSigningOrderSequential,
+	}
+}
 func (e *DocumentGetSigningOrder) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -381,6 +455,14 @@ const (
 func (e DocumentGetDistributionMethod) ToPointer() *DocumentGetDistributionMethod {
 	return &e
 }
+
+// DocumentGetDistributionMethodValues returns every known DocumentGetDistributionMethod value in schema order.
+func DocumentGetDistributionMethodValues() []DocumentGetDistributionMethod {
+	return []DocumentGetDistributionMethod{
+		DocumentGetDistributionMethodEmail,
+		DocumentGetDistributionMethodNone,
+	}
+}
 func (e *DocumentGetDistributionMethod) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -405,6 +487,8 @@ type DocumentGetEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (d DocumentGetEmailSettings) MarshalJSON() ([]byte, error) {
@@ -467,25 +551,556 @@ func (d *DocumentGetEmailSettings) GetOwnerDocumentCompleted() *bool {
 	return d.OwnerDocumentCompleted
 }
 
+func (d *DocumentGetEmailSettings) GetOwnerRecipientExpired() *bool {
+	if d == nil {
+		return nil
+	}
+	return d.OwnerRecipientExpired
+}
+
+func (d *DocumentGetEmailSettings) GetOwnerDocumentCreated() *bool {
+	if d == nil {
+		return nil
+	}
+	return d.OwnerDocumentCreated
+}
+
+type DocumentGetEnvelopeExpirationPeriod2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (d DocumentGetEnvelopeExpirationPeriod2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetEnvelopeExpirationPeriod2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentGetEnvelopeExpirationPeriod2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-documentgetenvelopeexpirationperiod2
+// #endregion class-body-documentgetenvelopeexpirationperiod2
+
+type DocumentGetEnvelopeExpirationPeriodUnit string
+
+const (
+	DocumentGetEnvelopeExpirationPeriodUnitDay   DocumentGetEnvelopeExpirationPeriodUnit = "day"
+	DocumentGetEnvelopeExpirationPeriodUnitWeek  DocumentGetEnvelopeExpirationPeriodUnit = "week"
+	DocumentGetEnvelopeExpirationPeriodUnitMonth DocumentGetEnvelopeExpirationPeriodUnit = "month"
+	DocumentGetEnvelopeExpirationPeriodUnitYear  DocumentGetEnvelopeExpirationPeriodUnit = "year"
+)
+
+func (e DocumentGetEnvelopeExpirationPeriodUnit) ToPointer() *DocumentGetEnvelopeExpirationPeriodUnit {
+	return &e
+}
+
+// DocumentGetEnvelopeExpirationPeriodUnitValues returns every known DocumentGetEnvelopeExpirationPeriodUnit value in schema order.
+func DocumentGetEnvelopeExpirationPeriodUnitValues() []DocumentGetEnvelopeExpirationPeriodUnit {
+	return []DocumentGetEnvelopeExpirationPeriodUnit{
+		DocumentGetEnvelopeExpirationPeriodUnitDay,
+		DocumentGetEnvelopeExpirationPeriodUnitWeek,
+		DocumentGetEnvelopeExpirationPeriodUnitMonth,
+		DocumentGetEnvelopeExpirationPeriodUnitYear,
+	}
+}
+func (e *DocumentGetEnvelopeExpirationPeriodUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		fallthrough
+	case "year":
+		*e = DocumentGetEnvelopeExpirationPeriodUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetEnvelopeExpirationPeriodUnit: %v", v)
+	}
+}
+
+type DocumentGetEnvelopeExpirationPeriod1 struct {
+	Unit   DocumentGetEnvelopeExpirationPeriodUnit `json:"unit"`
+	Amount int64                                   `json:"amount"`
+}
+
+func (d DocumentGetEnvelopeExpirationPeriod1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetEnvelopeExpirationPeriod1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentGetEnvelopeExpirationPeriod1) GetUnit() DocumentGetEnvelopeExpirationPeriodUnit {
+	if d == nil {
+		return DocumentGetEnvelopeExpirationPeriodUnit("")
+	}
+	return d.Unit
+}
+
+func (d *DocumentGetEnvelopeExpirationPeriod1) GetAmount() int64 {
+	if d == nil {
+		return 0
+	}
+	return d.Amount
+}
+
+// #region class-body-documentgetenvelopeexpirationperiod1
+// #endregion class-body-documentgetenvelopeexpirationperiod1
+
+type DocumentGetEnvelopeExpirationPeriodUnionType string
+
+const (
+	DocumentGetEnvelopeExpirationPeriodUnionTypeDocumentGetEnvelopeExpirationPeriod1 DocumentGetEnvelopeExpirationPeriodUnionType = "document_get_envelopeExpirationPeriod_1"
+	DocumentGetEnvelopeExpirationPeriodUnionTypeDocumentGetEnvelopeExpirationPeriod2 DocumentGetEnvelopeExpirationPeriodUnionType = "document_get_envelopeExpirationPeriod_2"
+)
+
+type DocumentGetEnvelopeExpirationPeriodUnion struct {
+	DocumentGetEnvelopeExpirationPeriod1 *DocumentGetEnvelopeExpirationPeriod1 `queryParam:"inline" union:"member"`
+	DocumentGetEnvelopeExpirationPeriod2 *DocumentGetEnvelopeExpirationPeriod2 `queryParam:"inline" union:"member"`
+
+	Type DocumentGetEnvelopeExpirationPeriodUnionType
+}
+
+func CreateDocumentGetEnvelopeExpirationPeriodUnionDocumentGetEnvelopeExpirationPeriod1(documentGetEnvelopeExpirationPeriod1 DocumentGetEnvelopeExpirationPeriod1) DocumentGetEnvelopeExpirationPeriodUnion {
+	typ := DocumentGetEnvelopeExpirationPeriodUnionTypeDocumentGetEnvelopeExpirationPeriod1
+
+	return DocumentGetEnvelopeExpirationPeriodUnion{
+		DocumentGetEnvelopeExpirationPeriod1: &documentGetEnvelopeExpirationPeriod1,
+		Type:                                 typ,
+	}
+}
+
+func CreateDocumentGetEnvelopeExpirationPeriodUnionDocumentGetEnvelopeExpirationPeriod2(documentGetEnvelopeExpirationPeriod2 DocumentGetEnvelopeExpirationPeriod2) DocumentGetEnvelopeExpirationPeriodUnion {
+	typ := DocumentGetEnvelopeExpirationPeriodUnionTypeDocumentGetEnvelopeExpirationPeriod2
+
+	return DocumentGetEnvelopeExpirationPeriodUnion{
+		DocumentGetEnvelopeExpirationPeriod2: &documentGetEnvelopeExpirationPeriod2,
+		Type:                                 typ,
+	}
+}
+
+func (u *DocumentGetEnvelopeExpirationPeriodUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentGetEnvelopeExpirationPeriodUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var documentGetEnvelopeExpirationPeriod1 DocumentGetEnvelopeExpirationPeriod1 = DocumentGetEnvelopeExpirationPeriod1{}
+	if err := utils.UnmarshalJSON(data, &documentGetEnvelopeExpirationPeriod1, "", true, nil); err == nil {
+		u.DocumentGetEnvelopeExpirationPeriod1 = &documentGetEnvelopeExpirationPeriod1
+		u.Type = DocumentGetEnvelopeExpirationPeriodUnionTypeDocumentGetEnvelopeExpirationPeriod1
+		return nil
+	}
+
+	var documentGetEnvelopeExpirationPeriod2 DocumentGetEnvelopeExpirationPeriod2 = DocumentGetEnvelopeExpirationPeriod2{}
+	if err := utils.UnmarshalJSON(data, &documentGetEnvelopeExpirationPeriod2, "", true, nil); err == nil {
+		u.DocumentGetEnvelopeExpirationPeriod2 = &documentGetEnvelopeExpirationPeriod2
+		u.Type = DocumentGetEnvelopeExpirationPeriodUnionTypeDocumentGetEnvelopeExpirationPeriod2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DocumentGetEnvelopeExpirationPeriodUnion", string(data))
+}
+
+func (u DocumentGetEnvelopeExpirationPeriodUnion) MarshalJSON() ([]byte, error) {
+	if u.DocumentGetEnvelopeExpirationPeriod1 != nil {
+		return utils.MarshalJSON(u.DocumentGetEnvelopeExpirationPeriod1, "", true)
+	}
+
+	if u.DocumentGetEnvelopeExpirationPeriod2 != nil {
+		return utils.MarshalJSON(u.DocumentGetEnvelopeExpirationPeriod2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DocumentGetEnvelopeExpirationPeriodUnion: all fields are null")
+}
+
+type DocumentGetSendAfter2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (d DocumentGetSendAfter2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetSendAfter2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentGetSendAfter2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-documentgetsendafter2
+// #endregion class-body-documentgetsendafter2
+
+type DocumentGetSendAfterUnit string
+
+const (
+	DocumentGetSendAfterUnitDay   DocumentGetSendAfterUnit = "day"
+	DocumentGetSendAfterUnitWeek  DocumentGetSendAfterUnit = "week"
+	DocumentGetSendAfterUnitMonth DocumentGetSendAfterUnit = "month"
+)
+
+func (e DocumentGetSendAfterUnit) ToPointer() *DocumentGetSendAfterUnit {
+	return &e
+}
+
+// DocumentGetSendAfterUnitValues returns every known DocumentGetSendAfterUnit value in schema order.
+func DocumentGetSendAfterUnitValues() []DocumentGetSendAfterUnit {
+	return []DocumentGetSendAfterUnit{
+		DocumentGetSendAfterUnitDay,
+		DocumentGetSendAfterUnitWeek,
+		DocumentGetSendAfterUnitMonth,
+	}
+}
+func (e *DocumentGetSendAfterUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		*e = DocumentGetSendAfterUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetSendAfterUnit: %v", v)
+	}
+}
+
+type DocumentGetSendAfter1 struct {
+	Unit   DocumentGetSendAfterUnit `json:"unit"`
+	Amount int64                    `json:"amount"`
+}
+
+func (d DocumentGetSendAfter1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetSendAfter1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentGetSendAfter1) GetUnit() DocumentGetSendAfterUnit {
+	if d == nil {
+		return DocumentGetSendAfterUnit("")
+	}
+	return d.Unit
+}
+
+func (d *DocumentGetSendAfter1) GetAmount() int64 {
+	if d == nil {
+		return 0
+	}
+	return d.Amount
+}
+
+// #region class-body-documentgetsendafter1
+// #endregion class-body-documentgetsendafter1
+
+type DocumentGetSendAfterUnionType string
+
+const (
+	DocumentGetSendAfterUnionTypeDocumentGetSendAfter1 DocumentGetSendAfterUnionType = "document_get_sendAfter_1"
+	DocumentGetSendAfterUnionTypeDocumentGetSendAfter2 DocumentGetSendAfterUnionType = "document_get_sendAfter_2"
+)
+
+type DocumentGetSendAfterUnion struct {
+	DocumentGetSendAfter1 *DocumentGetSendAfter1 `queryParam:"inline" union:"member"`
+	DocumentGetSendAfter2 *DocumentGetSendAfter2 `queryParam:"inline" union:"member"`
+
+	Type DocumentGetSendAfterUnionType
+}
+
+func CreateDocumentGetSendAfterUnionDocumentGetSendAfter1(documentGetSendAfter1 DocumentGetSendAfter1) DocumentGetSendAfterUnion {
+	typ := DocumentGetSendAfterUnionTypeDocumentGetSendAfter1
+
+	return DocumentGetSendAfterUnion{
+		DocumentGetSendAfter1: &documentGetSendAfter1,
+		Type:                  typ,
+	}
+}
+
+func CreateDocumentGetSendAfterUnionDocumentGetSendAfter2(documentGetSendAfter2 DocumentGetSendAfter2) DocumentGetSendAfterUnion {
+	typ := DocumentGetSendAfterUnionTypeDocumentGetSendAfter2
+
+	return DocumentGetSendAfterUnion{
+		DocumentGetSendAfter2: &documentGetSendAfter2,
+		Type:                  typ,
+	}
+}
+
+func (u *DocumentGetSendAfterUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentGetSendAfterUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var documentGetSendAfter1 DocumentGetSendAfter1 = DocumentGetSendAfter1{}
+	if err := utils.UnmarshalJSON(data, &documentGetSendAfter1, "", true, nil); err == nil {
+		u.DocumentGetSendAfter1 = &documentGetSendAfter1
+		u.Type = DocumentGetSendAfterUnionTypeDocumentGetSendAfter1
+		return nil
+	}
+
+	var documentGetSendAfter2 DocumentGetSendAfter2 = DocumentGetSendAfter2{}
+	if err := utils.UnmarshalJSON(data, &documentGetSendAfter2, "", true, nil); err == nil {
+		u.DocumentGetSendAfter2 = &documentGetSendAfter2
+		u.Type = DocumentGetSendAfterUnionTypeDocumentGetSendAfter2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DocumentGetSendAfterUnion", string(data))
+}
+
+func (u DocumentGetSendAfterUnion) MarshalJSON() ([]byte, error) {
+	if u.DocumentGetSendAfter1 != nil {
+		return utils.MarshalJSON(u.DocumentGetSendAfter1, "", true)
+	}
+
+	if u.DocumentGetSendAfter2 != nil {
+		return utils.MarshalJSON(u.DocumentGetSendAfter2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DocumentGetSendAfterUnion: all fields are null")
+}
+
+type DocumentGetRepeatEvery2 struct {
+	//lint:ignore U1000 accessed via reflection for JSON marshaling
+	disabled bool `const:"true" json:"disabled"`
+}
+
+func (d DocumentGetRepeatEvery2) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetRepeatEvery2) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"disabled"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentGetRepeatEvery2) GetDisabled() bool {
+	return true
+}
+
+// #region class-body-documentgetrepeatevery2
+// #endregion class-body-documentgetrepeatevery2
+
+type DocumentGetRepeatEveryUnit string
+
+const (
+	DocumentGetRepeatEveryUnitDay   DocumentGetRepeatEveryUnit = "day"
+	DocumentGetRepeatEveryUnitWeek  DocumentGetRepeatEveryUnit = "week"
+	DocumentGetRepeatEveryUnitMonth DocumentGetRepeatEveryUnit = "month"
+)
+
+func (e DocumentGetRepeatEveryUnit) ToPointer() *DocumentGetRepeatEveryUnit {
+	return &e
+}
+
+// DocumentGetRepeatEveryUnitValues returns every known DocumentGetRepeatEveryUnit value in schema order.
+func DocumentGetRepeatEveryUnitValues() []DocumentGetRepeatEveryUnit {
+	return []DocumentGetRepeatEveryUnit{
+		DocumentGetRepeatEveryUnitDay,
+		DocumentGetRepeatEveryUnitWeek,
+		DocumentGetRepeatEveryUnitMonth,
+	}
+}
+func (e *DocumentGetRepeatEveryUnit) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "day":
+		fallthrough
+	case "week":
+		fallthrough
+	case "month":
+		*e = DocumentGetRepeatEveryUnit(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetRepeatEveryUnit: %v", v)
+	}
+}
+
+type DocumentGetRepeatEvery1 struct {
+	Unit   DocumentGetRepeatEveryUnit `json:"unit"`
+	Amount int64                      `json:"amount"`
+}
+
+func (d DocumentGetRepeatEvery1) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(d, "", false)
+}
+
+func (d *DocumentGetRepeatEvery1) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &d, "", false, []string{"unit", "amount"}); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DocumentGetRepeatEvery1) GetUnit() DocumentGetRepeatEveryUnit {
+	if d == nil {
+		return DocumentGetRepeatEveryUnit("")
+	}
+	return d.Unit
+}
+
+func (d *DocumentGetRepeatEvery1) GetAmount() int64 {
+	if d == nil {
+		return 0
+	}
+	return d.Amount
+}
+
+// #region class-body-documentgetrepeatevery1
+// #endregion class-body-documentgetrepeatevery1
+
+type DocumentGetRepeatEveryUnionType string
+
+const (
+	DocumentGetRepeatEveryUnionTypeDocumentGetRepeatEvery1 DocumentGetRepeatEveryUnionType = "document_get_repeatEvery_1"
+	DocumentGetRepeatEveryUnionTypeDocumentGetRepeatEvery2 DocumentGetRepeatEveryUnionType = "document_get_repeatEvery_2"
+)
+
+type DocumentGetRepeatEveryUnion struct {
+	DocumentGetRepeatEvery1 *DocumentGetRepeatEvery1 `queryParam:"inline" union:"member"`
+	DocumentGetRepeatEvery2 *DocumentGetRepeatEvery2 `queryParam:"inline" union:"member"`
+
+	Type DocumentGetRepeatEveryUnionType
+}
+
+func CreateDocumentGetRepeatEveryUnionDocumentGetRepeatEvery1(documentGetRepeatEvery1 DocumentGetRepeatEvery1) DocumentGetRepeatEveryUnion {
+	typ := DocumentGetRepeatEveryUnionTypeDocumentGetRepeatEvery1
+
+	return DocumentGetRepeatEveryUnion{
+		DocumentGetRepeatEvery1: &documentGetRepeatEvery1,
+		Type:                    typ,
+	}
+}
+
+func CreateDocumentGetRepeatEveryUnionDocumentGetRepeatEvery2(documentGetRepeatEvery2 DocumentGetRepeatEvery2) DocumentGetRepeatEveryUnion {
+	typ := DocumentGetRepeatEveryUnionTypeDocumentGetRepeatEvery2
+
+	return DocumentGetRepeatEveryUnion{
+		DocumentGetRepeatEvery2: &documentGetRepeatEvery2,
+		Type:                    typ,
+	}
+}
+
+func (u *DocumentGetRepeatEveryUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentGetRepeatEveryUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
+
+	var documentGetRepeatEvery1 DocumentGetRepeatEvery1 = DocumentGetRepeatEvery1{}
+	if err := utils.UnmarshalJSON(data, &documentGetRepeatEvery1, "", true, nil); err == nil {
+		u.DocumentGetRepeatEvery1 = &documentGetRepeatEvery1
+		u.Type = DocumentGetRepeatEveryUnionTypeDocumentGetRepeatEvery1
+		return nil
+	}
+
+	var documentGetRepeatEvery2 DocumentGetRepeatEvery2 = DocumentGetRepeatEvery2{}
+	if err := utils.UnmarshalJSON(data, &documentGetRepeatEvery2, "", true, nil); err == nil {
+		u.DocumentGetRepeatEvery2 = &documentGetRepeatEvery2
+		u.Type = DocumentGetRepeatEveryUnionTypeDocumentGetRepeatEvery2
+		return nil
+	}
+
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for DocumentGetRepeatEveryUnion", string(data))
+}
+
+func (u DocumentGetRepeatEveryUnion) MarshalJSON() ([]byte, error) {
+	if u.DocumentGetRepeatEvery1 != nil {
+		return utils.MarshalJSON(u.DocumentGetRepeatEvery1, "", true)
+	}
+
+	if u.DocumentGetRepeatEvery2 != nil {
+		return utils.MarshalJSON(u.DocumentGetRepeatEvery2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type DocumentGetRepeatEveryUnion: all fields are null")
+}
+
+type DocumentGetReminderSettings struct {
+	SendAfter   DocumentGetSendAfterUnion   `json:"sendAfter"`
+	RepeatEvery DocumentGetRepeatEveryUnion `json:"repeatEvery"`
+}
+
+func (d *DocumentGetReminderSettings) GetSendAfter() DocumentGetSendAfterUnion {
+	if d == nil {
+		return DocumentGetSendAfterUnion{}
+	}
+	return d.SendAfter
+}
+
+func (d *DocumentGetReminderSettings) GetRepeatEvery() DocumentGetRepeatEveryUnion {
+	if d == nil {
+		return DocumentGetRepeatEveryUnion{}
+	}
+	return d.RepeatEvery
+}
+
 type DocumentGetDocumentMeta struct {
-	SigningOrder           DocumentGetSigningOrder       `json:"signingOrder"`
-	DistributionMethod     DocumentGetDistributionMethod `json:"distributionMethod"`
-	ID                     string                        `json:"id"`
-	Subject                *string                       `json:"subject"`
-	Message                *string                       `json:"message"`
-	Timezone               *string                       `json:"timezone"`
-	DateFormat             *string                       `json:"dateFormat"`
-	RedirectURL            *string                       `json:"redirectUrl"`
-	TypedSignatureEnabled  bool                          `json:"typedSignatureEnabled"`
-	UploadSignatureEnabled bool                          `json:"uploadSignatureEnabled"`
-	DrawSignatureEnabled   bool                          `json:"drawSignatureEnabled"`
-	AllowDictateNextSigner bool                          `json:"allowDictateNextSigner"`
-	Language               string                        `json:"language"`
-	EmailSettings          *DocumentGetEmailSettings     `json:"emailSettings"`
-	EmailID                *string                       `json:"emailId"`
-	EmailReplyTo           *string                       `json:"emailReplyTo"`
-	Password               *string                       `default:"null" json:"password"`
-	DocumentID             *float64                      `default:"-1" json:"documentId"`
+	SigningOrder             DocumentGetSigningOrder                   `json:"signingOrder"`
+	DistributionMethod       DocumentGetDistributionMethod             `json:"distributionMethod"`
+	ID                       string                                    `json:"id"`
+	Subject                  *string                                   `json:"subject"`
+	Message                  *string                                   `json:"message"`
+	Timezone                 *string                                   `json:"timezone"`
+	DateFormat               *string                                   `json:"dateFormat"`
+	RedirectURL              *string                                   `json:"redirectUrl"`
+	TypedSignatureEnabled    bool                                      `json:"typedSignatureEnabled"`
+	UploadSignatureEnabled   bool                                      `json:"uploadSignatureEnabled"`
+	DrawSignatureEnabled     bool                                      `json:"drawSignatureEnabled"`
+	AllowDictateNextSigner   bool                                      `json:"allowDictateNextSigner"`
+	Language                 string                                    `json:"language"`
+	EmailSettings            *DocumentGetEmailSettings                 `json:"emailSettings"`
+	EmailID                  *string                                   `json:"emailId"`
+	EmailReplyTo             *string                                   `json:"emailReplyTo"`
+	EnvelopeExpirationPeriod *DocumentGetEnvelopeExpirationPeriodUnion `json:"envelopeExpirationPeriod"`
+	ReminderSettings         *DocumentGetReminderSettings              `json:"reminderSettings"`
+	Password                 *string                                   `default:"null" json:"password"`
+	DocumentID               *float64                                  `default:"-1" json:"documentId"`
 }
 
 func (d DocumentGetDocumentMeta) MarshalJSON() ([]byte, error) {
@@ -611,6 +1226,20 @@ func (d *DocumentGetDocumentMeta) GetEmailReplyTo() *string {
 	return d.EmailReplyTo
 }
 
+func (d *DocumentGetDocumentMeta) GetEnvelopeExpirationPeriod() *DocumentGetEnvelopeExpirationPeriodUnion {
+	if d == nil {
+		return nil
+	}
+	return d.EnvelopeExpirationPeriod
+}
+
+func (d *DocumentGetDocumentMeta) GetReminderSettings() *DocumentGetReminderSettings {
+	if d == nil {
+		return nil
+	}
+	return d.ReminderSettings
+}
+
 func (d *DocumentGetDocumentMeta) GetPassword() *string {
 	if d == nil {
 		return nil
@@ -654,6 +1283,14 @@ const (
 func (e DocumentGetFolderType) ToPointer() *DocumentGetFolderType {
 	return &e
 }
+
+// DocumentGetFolderTypeValues returns every known DocumentGetFolderType value in schema order.
+func DocumentGetFolderTypeValues() []DocumentGetFolderType {
+	return []DocumentGetFolderType{
+		DocumentGetFolderTypeDocument,
+		DocumentGetFolderTypeTemplate,
+	}
+}
 func (e *DocumentGetFolderType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -680,6 +1317,15 @@ const (
 
 func (e DocumentGetFolderVisibility) ToPointer() *DocumentGetFolderVisibility {
 	return &e
+}
+
+// DocumentGetFolderVisibilityValues returns every known DocumentGetFolderVisibility value in schema order.
+func DocumentGetFolderVisibilityValues() []DocumentGetFolderVisibility {
+	return []DocumentGetFolderVisibility{
+		DocumentGetFolderVisibilityEveryone,
+		DocumentGetFolderVisibilityManagerAndAbove,
+		DocumentGetFolderVisibilityAdmin,
+	}
 }
 func (e *DocumentGetFolderVisibility) UnmarshalJSON(data []byte) error {
 	var v string
@@ -795,6 +1441,17 @@ const (
 func (e DocumentGetRole) ToPointer() *DocumentGetRole {
 	return &e
 }
+
+// DocumentGetRoleValues returns every known DocumentGetRole value in schema order.
+func DocumentGetRoleValues() []DocumentGetRole {
+	return []DocumentGetRole{
+		DocumentGetRoleCc,
+		DocumentGetRoleSigner,
+		DocumentGetRoleViewer,
+		DocumentGetRoleApprover,
+		DocumentGetRoleAssistant,
+	}
+}
 func (e *DocumentGetRole) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -827,6 +1484,14 @@ const (
 func (e DocumentGetReadStatus) ToPointer() *DocumentGetReadStatus {
 	return &e
 }
+
+// DocumentGetReadStatusValues returns every known DocumentGetReadStatus value in schema order.
+func DocumentGetReadStatusValues() []DocumentGetReadStatus {
+	return []DocumentGetReadStatus{
+		DocumentGetReadStatusNotOpened,
+		DocumentGetReadStatusOpened,
+	}
+}
 func (e *DocumentGetReadStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -853,6 +1518,15 @@ const (
 
 func (e DocumentGetSigningStatus) ToPointer() *DocumentGetSigningStatus {
 	return &e
+}
+
+// DocumentGetSigningStatusValues returns every known DocumentGetSigningStatus value in schema order.
+func DocumentGetSigningStatusValues() []DocumentGetSigningStatus {
+	return []DocumentGetSigningStatus{
+		DocumentGetSigningStatusNotSigned,
+		DocumentGetSigningStatusSigned,
+		DocumentGetSigningStatusRejected,
+	}
 }
 func (e *DocumentGetSigningStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -882,6 +1556,14 @@ const (
 func (e DocumentGetSendStatus) ToPointer() *DocumentGetSendStatus {
 	return &e
 }
+
+// DocumentGetSendStatusValues returns every known DocumentGetSendStatus value in schema order.
+func DocumentGetSendStatusValues() []DocumentGetSendStatus {
+	return []DocumentGetSendStatus{
+		DocumentGetSendStatusNotSent,
+		DocumentGetSendStatusSent,
+	}
+}
 func (e *DocumentGetSendStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -907,6 +1589,14 @@ const (
 
 func (e DocumentGetAccessAuth) ToPointer() *DocumentGetAccessAuth {
 	return &e
+}
+
+// DocumentGetAccessAuthValues returns every known DocumentGetAccessAuth value in schema order.
+func DocumentGetAccessAuthValues() []DocumentGetAccessAuth {
+	return []DocumentGetAccessAuth{
+		DocumentGetAccessAuthAccount,
+		DocumentGetAccessAuthTwoFactorAuth,
+	}
 }
 func (e *DocumentGetAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -936,6 +1626,17 @@ const (
 
 func (e DocumentGetActionAuth) ToPointer() *DocumentGetActionAuth {
 	return &e
+}
+
+// DocumentGetActionAuthValues returns every known DocumentGetActionAuth value in schema order.
+func DocumentGetActionAuthValues() []DocumentGetActionAuth {
+	return []DocumentGetActionAuth{
+		DocumentGetActionAuthAccount,
+		DocumentGetActionAuthPasskey,
+		DocumentGetActionAuthTwoFactorAuth,
+		DocumentGetActionAuthPassword,
+		DocumentGetActionAuthExplicitNone,
+	}
 }
 func (e *DocumentGetActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -979,23 +1680,25 @@ func (d *DocumentGetRecipientAuthOptions) GetActionAuth() []DocumentGetActionAut
 }
 
 type DocumentGetRecipient struct {
-	EnvelopeID        string                           `json:"envelopeId"`
-	Role              DocumentGetRole                  `json:"role"`
-	ReadStatus        DocumentGetReadStatus            `json:"readStatus"`
-	SigningStatus     DocumentGetSigningStatus         `json:"signingStatus"`
-	SendStatus        DocumentGetSendStatus            `json:"sendStatus"`
-	ID                float64                          `json:"id"`
-	Email             string                           `json:"email"`
-	Name              string                           `json:"name"`
-	Token             string                           `json:"token"`
-	DocumentDeletedAt *string                          `json:"documentDeletedAt"`
-	Expired           *string                          `json:"expired"`
-	SignedAt          *string                          `json:"signedAt"`
-	AuthOptions       *DocumentGetRecipientAuthOptions `json:"authOptions"`
-	SigningOrder      *float64                         `json:"signingOrder"`
-	RejectionReason   *string                          `json:"rejectionReason"`
-	DocumentID        *float64                         `json:"documentId,omitempty"`
-	TemplateID        *float64                         `json:"templateId,omitempty"`
+	EnvelopeID           string                           `json:"envelopeId"`
+	Role                 DocumentGetRole                  `json:"role"`
+	ReadStatus           DocumentGetReadStatus            `json:"readStatus"`
+	SigningStatus        DocumentGetSigningStatus         `json:"signingStatus"`
+	SendStatus           DocumentGetSendStatus            `json:"sendStatus"`
+	ID                   float64                          `json:"id"`
+	Email                string                           `json:"email"`
+	Name                 string                           `json:"name"`
+	Token                string                           `json:"token"`
+	DocumentDeletedAt    *string                          `json:"documentDeletedAt"`
+	Expired              *string                          `json:"expired"`
+	ExpiresAt            *string                          `json:"expiresAt"`
+	ExpirationNotifiedAt *string                          `json:"expirationNotifiedAt"`
+	SignedAt             *string                          `json:"signedAt"`
+	AuthOptions          *DocumentGetRecipientAuthOptions `json:"authOptions"`
+	SigningOrder         *float64                         `json:"signingOrder"`
+	RejectionReason      *string                          `json:"rejectionReason"`
+	DocumentID           *float64                         `json:"documentId,omitempty"`
+	TemplateID           *float64                         `json:"templateId,omitempty"`
 }
 
 func (d *DocumentGetRecipient) GetEnvelopeID() string {
@@ -1075,6 +1778,20 @@ func (d *DocumentGetRecipient) GetExpired() *string {
 	return d.Expired
 }
 
+func (d *DocumentGetRecipient) GetExpiresAt() *string {
+	if d == nil {
+		return nil
+	}
+	return d.ExpiresAt
+}
+
+func (d *DocumentGetRecipient) GetExpirationNotifiedAt() *string {
+	if d == nil {
+		return nil
+	}
+	return d.ExpirationNotifiedAt
+}
+
 func (d *DocumentGetRecipient) GetSignedAt() *string {
 	if d == nil {
 		return nil
@@ -1136,6 +1853,23 @@ const (
 func (e DocumentGetFieldType) ToPointer() *DocumentGetFieldType {
 	return &e
 }
+
+// DocumentGetFieldTypeValues returns every known DocumentGetFieldType value in schema order.
+func DocumentGetFieldTypeValues() []DocumentGetFieldType {
+	return []DocumentGetFieldType{
+		DocumentGetFieldTypeSignature,
+		DocumentGetFieldTypeFreeSignature,
+		DocumentGetFieldTypeInitials,
+		DocumentGetFieldTypeName,
+		DocumentGetFieldTypeEmail,
+		DocumentGetFieldTypeDate,
+		DocumentGetFieldTypeText,
+		DocumentGetFieldTypeNumber,
+		DocumentGetFieldTypeRadio,
+		DocumentGetFieldTypeCheckbox,
+		DocumentGetFieldTypeDropdown,
+	}
+}
 func (e *DocumentGetFieldType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1170,6 +1904,48 @@ func (e *DocumentGetFieldType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type DocumentGetOverflow10 string
+
+const (
+	DocumentGetOverflow10Auto       DocumentGetOverflow10 = "auto"
+	DocumentGetOverflow10Horizontal DocumentGetOverflow10 = "horizontal"
+	DocumentGetOverflow10Vertical   DocumentGetOverflow10 = "vertical"
+	DocumentGetOverflow10Crop       DocumentGetOverflow10 = "crop"
+)
+
+func (e DocumentGetOverflow10) ToPointer() *DocumentGetOverflow10 {
+	return &e
+}
+
+// DocumentGetOverflow10Values returns every known DocumentGetOverflow10 value in schema order.
+func DocumentGetOverflow10Values() []DocumentGetOverflow10 {
+	return []DocumentGetOverflow10{
+		DocumentGetOverflow10Auto,
+		DocumentGetOverflow10Horizontal,
+		DocumentGetOverflow10Vertical,
+		DocumentGetOverflow10Crop,
+	}
+}
+func (e *DocumentGetOverflow10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentGetOverflow10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetOverflow10: %v", v)
+	}
+}
+
 type DocumentGetTypeDropdown string
 
 const (
@@ -1178,6 +1954,13 @@ const (
 
 func (e DocumentGetTypeDropdown) ToPointer() *DocumentGetTypeDropdown {
 	return &e
+}
+
+// DocumentGetTypeDropdownValues returns every known DocumentGetTypeDropdown value in schema order.
+func DocumentGetTypeDropdownValues() []DocumentGetTypeDropdown {
+	return []DocumentGetTypeDropdown{
+		DocumentGetTypeDropdownDropdown,
+	}
 }
 func (e *DocumentGetTypeDropdown) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1215,12 +1998,16 @@ func (d *DocumentGetValue3) GetValue() string {
 	return d.Value
 }
 
+// #region class-body-documentgetvalue3
+// #endregion class-body-documentgetvalue3
+
 type DocumentGetFieldMetaDropdown struct {
 	Label        *string                 `json:"label,omitempty"`
 	Placeholder  *string                 `json:"placeholder,omitempty"`
 	Required     *bool                   `json:"required,omitempty"`
 	ReadOnly     *bool                   `json:"readOnly,omitempty"`
 	FontSize     *float64                `default:"12" json:"fontSize"`
+	Overflow     *DocumentGetOverflow10  `json:"overflow,omitempty"`
 	Type         DocumentGetTypeDropdown `json:"type"`
 	Values       []DocumentGetValue3     `json:"values,omitempty"`
 	DefaultValue *string                 `json:"defaultValue,omitempty"`
@@ -1272,6 +2059,13 @@ func (d *DocumentGetFieldMetaDropdown) GetFontSize() *float64 {
 	return d.FontSize
 }
 
+func (d *DocumentGetFieldMetaDropdown) GetOverflow() *DocumentGetOverflow10 {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
+}
+
 func (d *DocumentGetFieldMetaDropdown) GetType() DocumentGetTypeDropdown {
 	if d == nil {
 		return DocumentGetTypeDropdown("")
@@ -1293,6 +2087,48 @@ func (d *DocumentGetFieldMetaDropdown) GetDefaultValue() *string {
 	return d.DefaultValue
 }
 
+type DocumentGetOverflow9 string
+
+const (
+	DocumentGetOverflow9Auto       DocumentGetOverflow9 = "auto"
+	DocumentGetOverflow9Horizontal DocumentGetOverflow9 = "horizontal"
+	DocumentGetOverflow9Vertical   DocumentGetOverflow9 = "vertical"
+	DocumentGetOverflow9Crop       DocumentGetOverflow9 = "crop"
+)
+
+func (e DocumentGetOverflow9) ToPointer() *DocumentGetOverflow9 {
+	return &e
+}
+
+// DocumentGetOverflow9Values returns every known DocumentGetOverflow9 value in schema order.
+func DocumentGetOverflow9Values() []DocumentGetOverflow9 {
+	return []DocumentGetOverflow9{
+		DocumentGetOverflow9Auto,
+		DocumentGetOverflow9Horizontal,
+		DocumentGetOverflow9Vertical,
+		DocumentGetOverflow9Crop,
+	}
+}
+func (e *DocumentGetOverflow9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentGetOverflow9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetOverflow9: %v", v)
+	}
+}
+
 type DocumentGetTypeCheckbox string
 
 const (
@@ -1301,6 +2137,13 @@ const (
 
 func (e DocumentGetTypeCheckbox) ToPointer() *DocumentGetTypeCheckbox {
 	return &e
+}
+
+// DocumentGetTypeCheckboxValues returns every known DocumentGetTypeCheckbox value in schema order.
+func DocumentGetTypeCheckboxValues() []DocumentGetTypeCheckbox {
+	return []DocumentGetTypeCheckbox{
+		DocumentGetTypeCheckboxCheckbox,
+	}
 }
 func (e *DocumentGetTypeCheckbox) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1354,6 +2197,9 @@ func (d *DocumentGetValue2) GetValue() string {
 	return d.Value
 }
 
+// #region class-body-documentgetvalue2
+// #endregion class-body-documentgetvalue2
+
 type DocumentGetDirection2 string
 
 const (
@@ -1363,6 +2209,14 @@ const (
 
 func (e DocumentGetDirection2) ToPointer() *DocumentGetDirection2 {
 	return &e
+}
+
+// DocumentGetDirection2Values returns every known DocumentGetDirection2 value in schema order.
+func DocumentGetDirection2Values() []DocumentGetDirection2 {
+	return []DocumentGetDirection2{
+		DocumentGetDirection2Vertical,
+		DocumentGetDirection2Horizontal,
+	}
 }
 func (e *DocumentGetDirection2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1386,6 +2240,7 @@ type DocumentGetFieldMetaCheckbox struct {
 	Required         *bool                   `json:"required,omitempty"`
 	ReadOnly         *bool                   `json:"readOnly,omitempty"`
 	FontSize         *float64                `default:"12" json:"fontSize"`
+	Overflow         *DocumentGetOverflow9   `json:"overflow,omitempty"`
 	Type             DocumentGetTypeCheckbox `json:"type"`
 	Values           []DocumentGetValue2     `json:"values,omitempty"`
 	ValidationRule   *string                 `json:"validationRule,omitempty"`
@@ -1439,6 +2294,13 @@ func (d *DocumentGetFieldMetaCheckbox) GetFontSize() *float64 {
 	return d.FontSize
 }
 
+func (d *DocumentGetFieldMetaCheckbox) GetOverflow() *DocumentGetOverflow9 {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
+}
+
 func (d *DocumentGetFieldMetaCheckbox) GetType() DocumentGetTypeCheckbox {
 	if d == nil {
 		return DocumentGetTypeCheckbox("")
@@ -1474,6 +2336,48 @@ func (d *DocumentGetFieldMetaCheckbox) GetDirection() *DocumentGetDirection2 {
 	return d.Direction
 }
 
+type DocumentGetOverflow8 string
+
+const (
+	DocumentGetOverflow8Auto       DocumentGetOverflow8 = "auto"
+	DocumentGetOverflow8Horizontal DocumentGetOverflow8 = "horizontal"
+	DocumentGetOverflow8Vertical   DocumentGetOverflow8 = "vertical"
+	DocumentGetOverflow8Crop       DocumentGetOverflow8 = "crop"
+)
+
+func (e DocumentGetOverflow8) ToPointer() *DocumentGetOverflow8 {
+	return &e
+}
+
+// DocumentGetOverflow8Values returns every known DocumentGetOverflow8 value in schema order.
+func DocumentGetOverflow8Values() []DocumentGetOverflow8 {
+	return []DocumentGetOverflow8{
+		DocumentGetOverflow8Auto,
+		DocumentGetOverflow8Horizontal,
+		DocumentGetOverflow8Vertical,
+		DocumentGetOverflow8Crop,
+	}
+}
+func (e *DocumentGetOverflow8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentGetOverflow8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetOverflow8: %v", v)
+	}
+}
+
 type DocumentGetTypeRadio string
 
 const (
@@ -1482,6 +2386,13 @@ const (
 
 func (e DocumentGetTypeRadio) ToPointer() *DocumentGetTypeRadio {
 	return &e
+}
+
+// DocumentGetTypeRadioValues returns every known DocumentGetTypeRadio value in schema order.
+func DocumentGetTypeRadioValues() []DocumentGetTypeRadio {
+	return []DocumentGetTypeRadio{
+		DocumentGetTypeRadioRadio,
+	}
 }
 func (e *DocumentGetTypeRadio) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1535,6 +2446,9 @@ func (d *DocumentGetValue1) GetValue() string {
 	return d.Value
 }
 
+// #region class-body-documentgetvalue1
+// #endregion class-body-documentgetvalue1
+
 type DocumentGetDirection1 string
 
 const (
@@ -1544,6 +2458,14 @@ const (
 
 func (e DocumentGetDirection1) ToPointer() *DocumentGetDirection1 {
 	return &e
+}
+
+// DocumentGetDirection1Values returns every known DocumentGetDirection1 value in schema order.
+func DocumentGetDirection1Values() []DocumentGetDirection1 {
+	return []DocumentGetDirection1{
+		DocumentGetDirection1Vertical,
+		DocumentGetDirection1Horizontal,
+	}
 }
 func (e *DocumentGetDirection1) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1567,6 +2489,7 @@ type DocumentGetFieldMetaRadio struct {
 	Required    *bool                  `json:"required,omitempty"`
 	ReadOnly    *bool                  `json:"readOnly,omitempty"`
 	FontSize    *float64               `default:"12" json:"fontSize"`
+	Overflow    *DocumentGetOverflow8  `json:"overflow,omitempty"`
 	Type        DocumentGetTypeRadio   `json:"type"`
 	Values      []DocumentGetValue1    `json:"values,omitempty"`
 	Direction   *DocumentGetDirection1 `default:"vertical" json:"direction"`
@@ -1618,6 +2541,13 @@ func (d *DocumentGetFieldMetaRadio) GetFontSize() *float64 {
 	return d.FontSize
 }
 
+func (d *DocumentGetFieldMetaRadio) GetOverflow() *DocumentGetOverflow8 {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
+}
+
 func (d *DocumentGetFieldMetaRadio) GetType() DocumentGetTypeRadio {
 	if d == nil {
 		return DocumentGetTypeRadio("")
@@ -1639,6 +2569,48 @@ func (d *DocumentGetFieldMetaRadio) GetDirection() *DocumentGetDirection1 {
 	return d.Direction
 }
 
+type DocumentGetOverflow7 string
+
+const (
+	DocumentGetOverflow7Auto       DocumentGetOverflow7 = "auto"
+	DocumentGetOverflow7Horizontal DocumentGetOverflow7 = "horizontal"
+	DocumentGetOverflow7Vertical   DocumentGetOverflow7 = "vertical"
+	DocumentGetOverflow7Crop       DocumentGetOverflow7 = "crop"
+)
+
+func (e DocumentGetOverflow7) ToPointer() *DocumentGetOverflow7 {
+	return &e
+}
+
+// DocumentGetOverflow7Values returns every known DocumentGetOverflow7 value in schema order.
+func DocumentGetOverflow7Values() []DocumentGetOverflow7 {
+	return []DocumentGetOverflow7{
+		DocumentGetOverflow7Auto,
+		DocumentGetOverflow7Horizontal,
+		DocumentGetOverflow7Vertical,
+		DocumentGetOverflow7Crop,
+	}
+}
+func (e *DocumentGetOverflow7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentGetOverflow7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetOverflow7: %v", v)
+	}
+}
+
 type DocumentGetTypeNumber string
 
 const (
@@ -1647,6 +2619,13 @@ const (
 
 func (e DocumentGetTypeNumber) ToPointer() *DocumentGetTypeNumber {
 	return &e
+}
+
+// DocumentGetTypeNumberValues returns every known DocumentGetTypeNumber value in schema order.
+func DocumentGetTypeNumberValues() []DocumentGetTypeNumber {
+	return []DocumentGetTypeNumber{
+		DocumentGetTypeNumberNumber,
+	}
 }
 func (e *DocumentGetTypeNumber) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1672,6 +2651,15 @@ const (
 
 func (e DocumentGetTextAlign6) ToPointer() *DocumentGetTextAlign6 {
 	return &e
+}
+
+// DocumentGetTextAlign6Values returns every known DocumentGetTextAlign6 value in schema order.
+func DocumentGetTextAlign6Values() []DocumentGetTextAlign6 {
+	return []DocumentGetTextAlign6{
+		DocumentGetTextAlign6Left,
+		DocumentGetTextAlign6Center,
+		DocumentGetTextAlign6Right,
+	}
 }
 func (e *DocumentGetTextAlign6) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1702,6 +2690,15 @@ const (
 func (e DocumentGetVerticalAlign2) ToPointer() *DocumentGetVerticalAlign2 {
 	return &e
 }
+
+// DocumentGetVerticalAlign2Values returns every known DocumentGetVerticalAlign2 value in schema order.
+func DocumentGetVerticalAlign2Values() []DocumentGetVerticalAlign2 {
+	return []DocumentGetVerticalAlign2{
+		DocumentGetVerticalAlign2Top,
+		DocumentGetVerticalAlign2Middle,
+		DocumentGetVerticalAlign2Bottom,
+	}
+}
 func (e *DocumentGetVerticalAlign2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1726,6 +2723,7 @@ type DocumentGetFieldMetaNumber struct {
 	Required      *bool                      `json:"required,omitempty"`
 	ReadOnly      *bool                      `json:"readOnly,omitempty"`
 	FontSize      *float64                   `default:"12" json:"fontSize"`
+	Overflow      *DocumentGetOverflow7      `json:"overflow,omitempty"`
 	Type          DocumentGetTypeNumber      `json:"type"`
 	NumberFormat  *string                    `json:"numberFormat,omitempty"`
 	Value         *string                    `json:"value,omitempty"`
@@ -1781,6 +2779,13 @@ func (d *DocumentGetFieldMetaNumber) GetFontSize() *float64 {
 		return nil
 	}
 	return d.FontSize
+}
+
+func (d *DocumentGetFieldMetaNumber) GetOverflow() *DocumentGetOverflow7 {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
 }
 
 func (d *DocumentGetFieldMetaNumber) GetType() DocumentGetTypeNumber {
@@ -1846,6 +2851,48 @@ func (d *DocumentGetFieldMetaNumber) GetVerticalAlign() *DocumentGetVerticalAlig
 	return d.VerticalAlign
 }
 
+type DocumentGetOverflow6 string
+
+const (
+	DocumentGetOverflow6Auto       DocumentGetOverflow6 = "auto"
+	DocumentGetOverflow6Horizontal DocumentGetOverflow6 = "horizontal"
+	DocumentGetOverflow6Vertical   DocumentGetOverflow6 = "vertical"
+	DocumentGetOverflow6Crop       DocumentGetOverflow6 = "crop"
+)
+
+func (e DocumentGetOverflow6) ToPointer() *DocumentGetOverflow6 {
+	return &e
+}
+
+// DocumentGetOverflow6Values returns every known DocumentGetOverflow6 value in schema order.
+func DocumentGetOverflow6Values() []DocumentGetOverflow6 {
+	return []DocumentGetOverflow6{
+		DocumentGetOverflow6Auto,
+		DocumentGetOverflow6Horizontal,
+		DocumentGetOverflow6Vertical,
+		DocumentGetOverflow6Crop,
+	}
+}
+func (e *DocumentGetOverflow6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentGetOverflow6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetOverflow6: %v", v)
+	}
+}
+
 type DocumentGetTypeText string
 
 const (
@@ -1854,6 +2901,13 @@ const (
 
 func (e DocumentGetTypeText) ToPointer() *DocumentGetTypeText {
 	return &e
+}
+
+// DocumentGetTypeTextValues returns every known DocumentGetTypeText value in schema order.
+func DocumentGetTypeTextValues() []DocumentGetTypeText {
+	return []DocumentGetTypeText{
+		DocumentGetTypeTextText,
+	}
 }
 func (e *DocumentGetTypeText) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1879,6 +2933,15 @@ const (
 
 func (e DocumentGetTextAlign5) ToPointer() *DocumentGetTextAlign5 {
 	return &e
+}
+
+// DocumentGetTextAlign5Values returns every known DocumentGetTextAlign5 value in schema order.
+func DocumentGetTextAlign5Values() []DocumentGetTextAlign5 {
+	return []DocumentGetTextAlign5{
+		DocumentGetTextAlign5Left,
+		DocumentGetTextAlign5Center,
+		DocumentGetTextAlign5Right,
+	}
 }
 func (e *DocumentGetTextAlign5) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1909,6 +2972,15 @@ const (
 func (e DocumentGetVerticalAlign1) ToPointer() *DocumentGetVerticalAlign1 {
 	return &e
 }
+
+// DocumentGetVerticalAlign1Values returns every known DocumentGetVerticalAlign1 value in schema order.
+func DocumentGetVerticalAlign1Values() []DocumentGetVerticalAlign1 {
+	return []DocumentGetVerticalAlign1{
+		DocumentGetVerticalAlign1Top,
+		DocumentGetVerticalAlign1Middle,
+		DocumentGetVerticalAlign1Bottom,
+	}
+}
 func (e *DocumentGetVerticalAlign1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1933,6 +3005,7 @@ type DocumentGetFieldMetaText struct {
 	Required       *bool                      `json:"required,omitempty"`
 	ReadOnly       *bool                      `json:"readOnly,omitempty"`
 	FontSize       *float64                   `default:"12" json:"fontSize"`
+	Overflow       *DocumentGetOverflow6      `json:"overflow,omitempty"`
 	Type           DocumentGetTypeText        `json:"type"`
 	Text           *string                    `json:"text,omitempty"`
 	CharacterLimit *float64                   `json:"characterLimit,omitempty"`
@@ -1988,6 +3061,13 @@ func (d *DocumentGetFieldMetaText) GetFontSize() *float64 {
 	return d.FontSize
 }
 
+func (d *DocumentGetFieldMetaText) GetOverflow() *DocumentGetOverflow6 {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
+}
+
 func (d *DocumentGetFieldMetaText) GetType() DocumentGetTypeText {
 	if d == nil {
 		return DocumentGetTypeText("")
@@ -2037,6 +3117,48 @@ func (d *DocumentGetFieldMetaText) GetVerticalAlign() *DocumentGetVerticalAlign1
 	return d.VerticalAlign
 }
 
+type DocumentGetOverflow5 string
+
+const (
+	DocumentGetOverflow5Auto       DocumentGetOverflow5 = "auto"
+	DocumentGetOverflow5Horizontal DocumentGetOverflow5 = "horizontal"
+	DocumentGetOverflow5Vertical   DocumentGetOverflow5 = "vertical"
+	DocumentGetOverflow5Crop       DocumentGetOverflow5 = "crop"
+)
+
+func (e DocumentGetOverflow5) ToPointer() *DocumentGetOverflow5 {
+	return &e
+}
+
+// DocumentGetOverflow5Values returns every known DocumentGetOverflow5 value in schema order.
+func DocumentGetOverflow5Values() []DocumentGetOverflow5 {
+	return []DocumentGetOverflow5{
+		DocumentGetOverflow5Auto,
+		DocumentGetOverflow5Horizontal,
+		DocumentGetOverflow5Vertical,
+		DocumentGetOverflow5Crop,
+	}
+}
+func (e *DocumentGetOverflow5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentGetOverflow5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetOverflow5: %v", v)
+	}
+}
+
 type DocumentGetTypeDate string
 
 const (
@@ -2045,6 +3167,13 @@ const (
 
 func (e DocumentGetTypeDate) ToPointer() *DocumentGetTypeDate {
 	return &e
+}
+
+// DocumentGetTypeDateValues returns every known DocumentGetTypeDate value in schema order.
+func DocumentGetTypeDateValues() []DocumentGetTypeDate {
+	return []DocumentGetTypeDate{
+		DocumentGetTypeDateDate,
+	}
 }
 func (e *DocumentGetTypeDate) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2071,6 +3200,15 @@ const (
 func (e DocumentGetTextAlign4) ToPointer() *DocumentGetTextAlign4 {
 	return &e
 }
+
+// DocumentGetTextAlign4Values returns every known DocumentGetTextAlign4 value in schema order.
+func DocumentGetTextAlign4Values() []DocumentGetTextAlign4 {
+	return []DocumentGetTextAlign4{
+		DocumentGetTextAlign4Left,
+		DocumentGetTextAlign4Center,
+		DocumentGetTextAlign4Right,
+	}
+}
 func (e *DocumentGetTextAlign4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2095,6 +3233,7 @@ type DocumentGetFieldMetaDate struct {
 	Required    *bool                  `json:"required,omitempty"`
 	ReadOnly    *bool                  `json:"readOnly,omitempty"`
 	FontSize    *float64               `default:"12" json:"fontSize"`
+	Overflow    *DocumentGetOverflow5  `default:"auto" json:"overflow"`
 	Type        DocumentGetTypeDate    `json:"type"`
 	TextAlign   *DocumentGetTextAlign4 `json:"textAlign,omitempty"`
 }
@@ -2145,6 +3284,13 @@ func (d *DocumentGetFieldMetaDate) GetFontSize() *float64 {
 	return d.FontSize
 }
 
+func (d *DocumentGetFieldMetaDate) GetOverflow() *DocumentGetOverflow5 {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
+}
+
 func (d *DocumentGetFieldMetaDate) GetType() DocumentGetTypeDate {
 	if d == nil {
 		return DocumentGetTypeDate("")
@@ -2159,6 +3305,48 @@ func (d *DocumentGetFieldMetaDate) GetTextAlign() *DocumentGetTextAlign4 {
 	return d.TextAlign
 }
 
+type DocumentGetOverflow4 string
+
+const (
+	DocumentGetOverflow4Auto       DocumentGetOverflow4 = "auto"
+	DocumentGetOverflow4Horizontal DocumentGetOverflow4 = "horizontal"
+	DocumentGetOverflow4Vertical   DocumentGetOverflow4 = "vertical"
+	DocumentGetOverflow4Crop       DocumentGetOverflow4 = "crop"
+)
+
+func (e DocumentGetOverflow4) ToPointer() *DocumentGetOverflow4 {
+	return &e
+}
+
+// DocumentGetOverflow4Values returns every known DocumentGetOverflow4 value in schema order.
+func DocumentGetOverflow4Values() []DocumentGetOverflow4 {
+	return []DocumentGetOverflow4{
+		DocumentGetOverflow4Auto,
+		DocumentGetOverflow4Horizontal,
+		DocumentGetOverflow4Vertical,
+		DocumentGetOverflow4Crop,
+	}
+}
+func (e *DocumentGetOverflow4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentGetOverflow4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetOverflow4: %v", v)
+	}
+}
+
 type DocumentGetTypeEmail string
 
 const (
@@ -2167,6 +3355,13 @@ const (
 
 func (e DocumentGetTypeEmail) ToPointer() *DocumentGetTypeEmail {
 	return &e
+}
+
+// DocumentGetTypeEmailValues returns every known DocumentGetTypeEmail value in schema order.
+func DocumentGetTypeEmailValues() []DocumentGetTypeEmail {
+	return []DocumentGetTypeEmail{
+		DocumentGetTypeEmailEmail,
+	}
 }
 func (e *DocumentGetTypeEmail) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2193,6 +3388,15 @@ const (
 func (e DocumentGetTextAlign3) ToPointer() *DocumentGetTextAlign3 {
 	return &e
 }
+
+// DocumentGetTextAlign3Values returns every known DocumentGetTextAlign3 value in schema order.
+func DocumentGetTextAlign3Values() []DocumentGetTextAlign3 {
+	return []DocumentGetTextAlign3{
+		DocumentGetTextAlign3Left,
+		DocumentGetTextAlign3Center,
+		DocumentGetTextAlign3Right,
+	}
+}
 func (e *DocumentGetTextAlign3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2217,6 +3421,7 @@ type DocumentGetFieldMetaEmail struct {
 	Required    *bool                  `json:"required,omitempty"`
 	ReadOnly    *bool                  `json:"readOnly,omitempty"`
 	FontSize    *float64               `default:"12" json:"fontSize"`
+	Overflow    *DocumentGetOverflow4  `default:"auto" json:"overflow"`
 	Type        DocumentGetTypeEmail   `json:"type"`
 	TextAlign   *DocumentGetTextAlign3 `json:"textAlign,omitempty"`
 }
@@ -2267,6 +3472,13 @@ func (d *DocumentGetFieldMetaEmail) GetFontSize() *float64 {
 	return d.FontSize
 }
 
+func (d *DocumentGetFieldMetaEmail) GetOverflow() *DocumentGetOverflow4 {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
+}
+
 func (d *DocumentGetFieldMetaEmail) GetType() DocumentGetTypeEmail {
 	if d == nil {
 		return DocumentGetTypeEmail("")
@@ -2281,6 +3493,48 @@ func (d *DocumentGetFieldMetaEmail) GetTextAlign() *DocumentGetTextAlign3 {
 	return d.TextAlign
 }
 
+type DocumentGetOverflow3 string
+
+const (
+	DocumentGetOverflow3Auto       DocumentGetOverflow3 = "auto"
+	DocumentGetOverflow3Horizontal DocumentGetOverflow3 = "horizontal"
+	DocumentGetOverflow3Vertical   DocumentGetOverflow3 = "vertical"
+	DocumentGetOverflow3Crop       DocumentGetOverflow3 = "crop"
+)
+
+func (e DocumentGetOverflow3) ToPointer() *DocumentGetOverflow3 {
+	return &e
+}
+
+// DocumentGetOverflow3Values returns every known DocumentGetOverflow3 value in schema order.
+func DocumentGetOverflow3Values() []DocumentGetOverflow3 {
+	return []DocumentGetOverflow3{
+		DocumentGetOverflow3Auto,
+		DocumentGetOverflow3Horizontal,
+		DocumentGetOverflow3Vertical,
+		DocumentGetOverflow3Crop,
+	}
+}
+func (e *DocumentGetOverflow3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentGetOverflow3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetOverflow3: %v", v)
+	}
+}
+
 type DocumentGetTypeName string
 
 const (
@@ -2289,6 +3543,13 @@ const (
 
 func (e DocumentGetTypeName) ToPointer() *DocumentGetTypeName {
 	return &e
+}
+
+// DocumentGetTypeNameValues returns every known DocumentGetTypeName value in schema order.
+func DocumentGetTypeNameValues() []DocumentGetTypeName {
+	return []DocumentGetTypeName{
+		DocumentGetTypeNameName,
+	}
 }
 func (e *DocumentGetTypeName) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2315,6 +3576,15 @@ const (
 func (e DocumentGetTextAlign2) ToPointer() *DocumentGetTextAlign2 {
 	return &e
 }
+
+// DocumentGetTextAlign2Values returns every known DocumentGetTextAlign2 value in schema order.
+func DocumentGetTextAlign2Values() []DocumentGetTextAlign2 {
+	return []DocumentGetTextAlign2{
+		DocumentGetTextAlign2Left,
+		DocumentGetTextAlign2Center,
+		DocumentGetTextAlign2Right,
+	}
+}
 func (e *DocumentGetTextAlign2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2339,6 +3609,7 @@ type DocumentGetFieldMetaName struct {
 	Required    *bool                  `json:"required,omitempty"`
 	ReadOnly    *bool                  `json:"readOnly,omitempty"`
 	FontSize    *float64               `default:"12" json:"fontSize"`
+	Overflow    *DocumentGetOverflow3  `json:"overflow,omitempty"`
 	Type        DocumentGetTypeName    `json:"type"`
 	TextAlign   *DocumentGetTextAlign2 `json:"textAlign,omitempty"`
 }
@@ -2389,6 +3660,13 @@ func (d *DocumentGetFieldMetaName) GetFontSize() *float64 {
 	return d.FontSize
 }
 
+func (d *DocumentGetFieldMetaName) GetOverflow() *DocumentGetOverflow3 {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
+}
+
 func (d *DocumentGetFieldMetaName) GetType() DocumentGetTypeName {
 	if d == nil {
 		return DocumentGetTypeName("")
@@ -2403,6 +3681,48 @@ func (d *DocumentGetFieldMetaName) GetTextAlign() *DocumentGetTextAlign2 {
 	return d.TextAlign
 }
 
+type DocumentGetOverflow2 string
+
+const (
+	DocumentGetOverflow2Auto       DocumentGetOverflow2 = "auto"
+	DocumentGetOverflow2Horizontal DocumentGetOverflow2 = "horizontal"
+	DocumentGetOverflow2Vertical   DocumentGetOverflow2 = "vertical"
+	DocumentGetOverflow2Crop       DocumentGetOverflow2 = "crop"
+)
+
+func (e DocumentGetOverflow2) ToPointer() *DocumentGetOverflow2 {
+	return &e
+}
+
+// DocumentGetOverflow2Values returns every known DocumentGetOverflow2 value in schema order.
+func DocumentGetOverflow2Values() []DocumentGetOverflow2 {
+	return []DocumentGetOverflow2{
+		DocumentGetOverflow2Auto,
+		DocumentGetOverflow2Horizontal,
+		DocumentGetOverflow2Vertical,
+		DocumentGetOverflow2Crop,
+	}
+}
+func (e *DocumentGetOverflow2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentGetOverflow2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetOverflow2: %v", v)
+	}
+}
+
 type DocumentGetTypeInitials string
 
 const (
@@ -2411,6 +3731,13 @@ const (
 
 func (e DocumentGetTypeInitials) ToPointer() *DocumentGetTypeInitials {
 	return &e
+}
+
+// DocumentGetTypeInitialsValues returns every known DocumentGetTypeInitials value in schema order.
+func DocumentGetTypeInitialsValues() []DocumentGetTypeInitials {
+	return []DocumentGetTypeInitials{
+		DocumentGetTypeInitialsInitials,
+	}
 }
 func (e *DocumentGetTypeInitials) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2437,6 +3764,15 @@ const (
 func (e DocumentGetTextAlign1) ToPointer() *DocumentGetTextAlign1 {
 	return &e
 }
+
+// DocumentGetTextAlign1Values returns every known DocumentGetTextAlign1 value in schema order.
+func DocumentGetTextAlign1Values() []DocumentGetTextAlign1 {
+	return []DocumentGetTextAlign1{
+		DocumentGetTextAlign1Left,
+		DocumentGetTextAlign1Center,
+		DocumentGetTextAlign1Right,
+	}
+}
 func (e *DocumentGetTextAlign1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2461,6 +3797,7 @@ type DocumentGetFieldMetaInitials struct {
 	Required    *bool                   `json:"required,omitempty"`
 	ReadOnly    *bool                   `json:"readOnly,omitempty"`
 	FontSize    *float64                `default:"12" json:"fontSize"`
+	Overflow    *DocumentGetOverflow2   `json:"overflow,omitempty"`
 	Type        DocumentGetTypeInitials `json:"type"`
 	TextAlign   *DocumentGetTextAlign1  `json:"textAlign,omitempty"`
 }
@@ -2511,6 +3848,13 @@ func (d *DocumentGetFieldMetaInitials) GetFontSize() *float64 {
 	return d.FontSize
 }
 
+func (d *DocumentGetFieldMetaInitials) GetOverflow() *DocumentGetOverflow2 {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
+}
+
 func (d *DocumentGetFieldMetaInitials) GetType() DocumentGetTypeInitials {
 	if d == nil {
 		return DocumentGetTypeInitials("")
@@ -2525,6 +3869,48 @@ func (d *DocumentGetFieldMetaInitials) GetTextAlign() *DocumentGetTextAlign1 {
 	return d.TextAlign
 }
 
+type DocumentGetOverflow1 string
+
+const (
+	DocumentGetOverflow1Auto       DocumentGetOverflow1 = "auto"
+	DocumentGetOverflow1Horizontal DocumentGetOverflow1 = "horizontal"
+	DocumentGetOverflow1Vertical   DocumentGetOverflow1 = "vertical"
+	DocumentGetOverflow1Crop       DocumentGetOverflow1 = "crop"
+)
+
+func (e DocumentGetOverflow1) ToPointer() *DocumentGetOverflow1 {
+	return &e
+}
+
+// DocumentGetOverflow1Values returns every known DocumentGetOverflow1 value in schema order.
+func DocumentGetOverflow1Values() []DocumentGetOverflow1 {
+	return []DocumentGetOverflow1{
+		DocumentGetOverflow1Auto,
+		DocumentGetOverflow1Horizontal,
+		DocumentGetOverflow1Vertical,
+		DocumentGetOverflow1Crop,
+	}
+}
+func (e *DocumentGetOverflow1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = DocumentGetOverflow1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentGetOverflow1: %v", v)
+	}
+}
+
 type DocumentGetTypeSignature string
 
 const (
@@ -2533,6 +3919,13 @@ const (
 
 func (e DocumentGetTypeSignature) ToPointer() *DocumentGetTypeSignature {
 	return &e
+}
+
+// DocumentGetTypeSignatureValues returns every known DocumentGetTypeSignature value in schema order.
+func DocumentGetTypeSignatureValues() []DocumentGetTypeSignature {
+	return []DocumentGetTypeSignature{
+		DocumentGetTypeSignatureSignature,
+	}
 }
 func (e *DocumentGetTypeSignature) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2554,6 +3947,7 @@ type DocumentGetFieldMetaSignature struct {
 	Required    *bool                    `json:"required,omitempty"`
 	ReadOnly    *bool                    `json:"readOnly,omitempty"`
 	FontSize    *float64                 `default:"12" json:"fontSize"`
+	Overflow    *DocumentGetOverflow1    `default:"auto" json:"overflow"`
 	Type        DocumentGetTypeSignature `json:"type"`
 }
 
@@ -2601,6 +3995,13 @@ func (d *DocumentGetFieldMetaSignature) GetFontSize() *float64 {
 		return nil
 	}
 	return d.FontSize
+}
+
+func (d *DocumentGetFieldMetaSignature) GetOverflow() *DocumentGetOverflow1 {
+	if d == nil {
+		return nil
+	}
+	return d.Overflow
 }
 
 func (d *DocumentGetFieldMetaSignature) GetType() DocumentGetTypeSignature {
@@ -2730,7 +4131,14 @@ func CreateDocumentGetFieldMetaUnionDocumentGetFieldMetaDropdown(documentGetFiel
 	}
 }
 
-func (u *DocumentGetFieldMetaUnion) UnmarshalJSON(data []byte) error {
+func (u *DocumentGetFieldMetaUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentGetFieldMetaUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var documentGetFieldMetaSignature DocumentGetFieldMetaSignature = DocumentGetFieldMetaSignature{}
 	if err := utils.UnmarshalJSON(data, &documentGetFieldMetaSignature, "", true, nil); err == nil {

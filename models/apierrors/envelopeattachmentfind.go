@@ -4,6 +4,7 @@ package apierrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -29,6 +30,15 @@ type EnvelopeAttachmentFindInternalServerError struct {
 var _ error = &EnvelopeAttachmentFindInternalServerError{}
 
 func (e *EnvelopeAttachmentFindInternalServerError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +65,15 @@ type EnvelopeAttachmentFindNotFoundError struct {
 var _ error = &EnvelopeAttachmentFindNotFoundError{}
 
 func (e *EnvelopeAttachmentFindNotFoundError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +100,15 @@ type EnvelopeAttachmentFindForbiddenError struct {
 var _ error = &EnvelopeAttachmentFindForbiddenError{}
 
 func (e *EnvelopeAttachmentFindForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +135,15 @@ type EnvelopeAttachmentFindUnauthorizedError struct {
 var _ error = &EnvelopeAttachmentFindUnauthorizedError{}
 
 func (e *EnvelopeAttachmentFindUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -133,6 +170,15 @@ type EnvelopeAttachmentFindBadRequestError struct {
 var _ error = &EnvelopeAttachmentFindBadRequestError{}
 
 func (e *EnvelopeAttachmentFindBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

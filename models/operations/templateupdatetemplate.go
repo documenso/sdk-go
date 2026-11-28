@@ -20,6 +20,15 @@ const (
 func (e TemplateUpdateTemplateVisibilityRequest) ToPointer() *TemplateUpdateTemplateVisibilityRequest {
 	return &e
 }
+
+// TemplateUpdateTemplateVisibilityRequestValues returns every known TemplateUpdateTemplateVisibilityRequest value in schema order.
+func TemplateUpdateTemplateVisibilityRequestValues() []TemplateUpdateTemplateVisibilityRequest {
+	return []TemplateUpdateTemplateVisibilityRequest{
+		TemplateUpdateTemplateVisibilityRequestEveryone,
+		TemplateUpdateTemplateVisibilityRequestManagerAndAbove,
+		TemplateUpdateTemplateVisibilityRequestAdmin,
+	}
+}
 func (e *TemplateUpdateTemplateVisibilityRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -47,6 +56,14 @@ const (
 
 func (e TemplateUpdateTemplateGlobalAccessAuthRequest) ToPointer() *TemplateUpdateTemplateGlobalAccessAuthRequest {
 	return &e
+}
+
+// TemplateUpdateTemplateGlobalAccessAuthRequestValues returns every known TemplateUpdateTemplateGlobalAccessAuthRequest value in schema order.
+func TemplateUpdateTemplateGlobalAccessAuthRequestValues() []TemplateUpdateTemplateGlobalAccessAuthRequest {
+	return []TemplateUpdateTemplateGlobalAccessAuthRequest{
+		TemplateUpdateTemplateGlobalAccessAuthRequestAccount,
+		TemplateUpdateTemplateGlobalAccessAuthRequestTwoFactorAuth,
+	}
 }
 func (e *TemplateUpdateTemplateGlobalAccessAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
@@ -76,6 +93,16 @@ const (
 func (e TemplateUpdateTemplateGlobalActionAuthRequest) ToPointer() *TemplateUpdateTemplateGlobalActionAuthRequest {
 	return &e
 }
+
+// TemplateUpdateTemplateGlobalActionAuthRequestValues returns every known TemplateUpdateTemplateGlobalActionAuthRequest value in schema order.
+func TemplateUpdateTemplateGlobalActionAuthRequestValues() []TemplateUpdateTemplateGlobalActionAuthRequest {
+	return []TemplateUpdateTemplateGlobalActionAuthRequest{
+		TemplateUpdateTemplateGlobalActionAuthRequestAccount,
+		TemplateUpdateTemplateGlobalActionAuthRequestPasskey,
+		TemplateUpdateTemplateGlobalActionAuthRequestTwoFactorAuth,
+		TemplateUpdateTemplateGlobalActionAuthRequestPassword,
+	}
+}
 func (e *TemplateUpdateTemplateGlobalActionAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -99,12 +126,22 @@ func (e *TemplateUpdateTemplateGlobalActionAuthRequest) UnmarshalJSON(data []byt
 type TemplateUpdateTemplateDataType string
 
 const (
-	TemplateUpdateTemplateDataTypePublic  TemplateUpdateTemplateDataType = "PUBLIC"
-	TemplateUpdateTemplateDataTypePrivate TemplateUpdateTemplateDataType = "PRIVATE"
+	TemplateUpdateTemplateDataTypePublic       TemplateUpdateTemplateDataType = "PUBLIC"
+	TemplateUpdateTemplateDataTypePrivate      TemplateUpdateTemplateDataType = "PRIVATE"
+	TemplateUpdateTemplateDataTypeOrganisation TemplateUpdateTemplateDataType = "ORGANISATION"
 )
 
 func (e TemplateUpdateTemplateDataType) ToPointer() *TemplateUpdateTemplateDataType {
 	return &e
+}
+
+// TemplateUpdateTemplateDataTypeValues returns every known TemplateUpdateTemplateDataType value in schema order.
+func TemplateUpdateTemplateDataTypeValues() []TemplateUpdateTemplateDataType {
+	return []TemplateUpdateTemplateDataType{
+		TemplateUpdateTemplateDataTypePublic,
+		TemplateUpdateTemplateDataTypePrivate,
+		TemplateUpdateTemplateDataTypeOrganisation,
+	}
 }
 func (e *TemplateUpdateTemplateDataType) UnmarshalJSON(data []byte) error {
 	var v string
@@ -115,6 +152,8 @@ func (e *TemplateUpdateTemplateDataType) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
 		*e = TemplateUpdateTemplateDataType(v)
 		return nil
 	default:
@@ -211,12 +250,15 @@ const (
 	TemplateUpdateTemplateDateFormatYyyyMMddHhMmA            TemplateUpdateTemplateDateFormat = "yyyy-MM-dd hh:mm a"
 	TemplateUpdateTemplateDateFormatYyyyMMdd                 TemplateUpdateTemplateDateFormat = "yyyy-MM-dd"
 	TemplateUpdateTemplateDateFormatDdMmSlashYyyy            TemplateUpdateTemplateDateFormat = "dd/MM/yyyy"
+	TemplateUpdateTemplateDateFormatDdMmDashYyyy             TemplateUpdateTemplateDateFormat = "dd-MM-yyyy"
 	TemplateUpdateTemplateDateFormatMmDdSlashYyyy            TemplateUpdateTemplateDateFormat = "MM/dd/yyyy"
 	TemplateUpdateTemplateDateFormatYyMMdd                   TemplateUpdateTemplateDateFormat = "yy-MM-dd"
 	TemplateUpdateTemplateDateFormatMmmmDdCommaYyyy          TemplateUpdateTemplateDateFormat = "MMMM dd, yyyy"
 	TemplateUpdateTemplateDateFormatEeeeMmmmDdCommaYyyy      TemplateUpdateTemplateDateFormat = "EEEE, MMMM dd, yyyy"
 	TemplateUpdateTemplateDateFormatDdMmSlashYyyyHhMmA       TemplateUpdateTemplateDateFormat = "dd/MM/yyyy hh:mm a"
 	TemplateUpdateTemplateDateFormatDdMmSlashYyyyHHmm        TemplateUpdateTemplateDateFormat = "dd/MM/yyyy HH:mm"
+	TemplateUpdateTemplateDateFormatDdMmDashYyyyHhMmA        TemplateUpdateTemplateDateFormat = "dd-MM-yyyy hh:mm a"
+	TemplateUpdateTemplateDateFormatDdMmDashYyyyHHmm         TemplateUpdateTemplateDateFormat = "dd-MM-yyyy HH:mm"
 	TemplateUpdateTemplateDateFormatMmDdSlashYyyyHhMmA       TemplateUpdateTemplateDateFormat = "MM/dd/yyyy hh:mm a"
 	TemplateUpdateTemplateDateFormatMmDdSlashYyyyHHmm        TemplateUpdateTemplateDateFormat = "MM/dd/yyyy HH:mm"
 	TemplateUpdateTemplateDateFormatDdDotMmDotYyyy           TemplateUpdateTemplateDateFormat = "dd.MM.yyyy"
@@ -235,6 +277,37 @@ const (
 func (e TemplateUpdateTemplateDateFormat) ToPointer() *TemplateUpdateTemplateDateFormat {
 	return &e
 }
+
+// TemplateUpdateTemplateDateFormatValues returns every known TemplateUpdateTemplateDateFormat value in schema order.
+func TemplateUpdateTemplateDateFormatValues() []TemplateUpdateTemplateDateFormat {
+	return []TemplateUpdateTemplateDateFormat{
+		TemplateUpdateTemplateDateFormatYyyyMMddHhMmA,
+		TemplateUpdateTemplateDateFormatYyyyMMdd,
+		TemplateUpdateTemplateDateFormatDdMmSlashYyyy,
+		TemplateUpdateTemplateDateFormatDdMmDashYyyy,
+		TemplateUpdateTemplateDateFormatMmDdSlashYyyy,
+		TemplateUpdateTemplateDateFormatYyMMdd,
+		TemplateUpdateTemplateDateFormatMmmmDdCommaYyyy,
+		TemplateUpdateTemplateDateFormatEeeeMmmmDdCommaYyyy,
+		TemplateUpdateTemplateDateFormatDdMmSlashYyyyHhMmA,
+		TemplateUpdateTemplateDateFormatDdMmSlashYyyyHHmm,
+		TemplateUpdateTemplateDateFormatDdMmDashYyyyHhMmA,
+		TemplateUpdateTemplateDateFormatDdMmDashYyyyHHmm,
+		TemplateUpdateTemplateDateFormatMmDdSlashYyyyHhMmA,
+		TemplateUpdateTemplateDateFormatMmDdSlashYyyyHHmm,
+		TemplateUpdateTemplateDateFormatDdDotMmDotYyyy,
+		TemplateUpdateTemplateDateFormatDdDotMmDotYyyyHHmm,
+		TemplateUpdateTemplateDateFormatYyyyMMddHHmm,
+		TemplateUpdateTemplateDateFormatYyMMddHhMmA,
+		TemplateUpdateTemplateDateFormatYyMMddHHmm,
+		TemplateUpdateTemplateDateFormatYyyyMMddHHmmss,
+		TemplateUpdateTemplateDateFormatMmmmDdCommaYyyyHhMmA,
+		TemplateUpdateTemplateDateFormatMmmmDdCommaYyyyHHmm,
+		TemplateUpdateTemplateDateFormatEeeeMmmmDdCommaYyyyHhMmA,
+		TemplateUpdateTemplateDateFormatEeeeMmmmDdCommaYyyyHHmm,
+		TemplateUpdateTemplateDateFormatIso8601Full,
+	}
+}
 func (e *TemplateUpdateTemplateDateFormat) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -247,6 +320,8 @@ func (e *TemplateUpdateTemplateDateFormat) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "dd/MM/yyyy":
 		fallthrough
+	case "dd-MM-yyyy":
+		fallthrough
 	case "MM/dd/yyyy":
 		fallthrough
 	case "yy-MM-dd":
@@ -258,6 +333,10 @@ func (e *TemplateUpdateTemplateDateFormat) UnmarshalJSON(data []byte) error {
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
 	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "dd-MM-yyyy hh:mm a":
+		fallthrough
+	case "dd-MM-yyyy HH:mm":
 		fallthrough
 	case "MM/dd/yyyy hh:mm a":
 		fallthrough
@@ -301,6 +380,14 @@ const (
 func (e TemplateUpdateTemplateDistributionMethod) ToPointer() *TemplateUpdateTemplateDistributionMethod {
 	return &e
 }
+
+// TemplateUpdateTemplateDistributionMethodValues returns every known TemplateUpdateTemplateDistributionMethod value in schema order.
+func TemplateUpdateTemplateDistributionMethodValues() []TemplateUpdateTemplateDistributionMethod {
+	return []TemplateUpdateTemplateDistributionMethod{
+		TemplateUpdateTemplateDistributionMethodEmail,
+		TemplateUpdateTemplateDistributionMethodNone,
+	}
+}
 func (e *TemplateUpdateTemplateDistributionMethod) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -325,6 +412,8 @@ type TemplateUpdateTemplateEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (t TemplateUpdateTemplateEmailSettings) MarshalJSON() ([]byte, error) {
@@ -387,6 +476,20 @@ func (t *TemplateUpdateTemplateEmailSettings) GetOwnerDocumentCompleted() *bool 
 	return t.OwnerDocumentCompleted
 }
 
+func (t *TemplateUpdateTemplateEmailSettings) GetOwnerRecipientExpired() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerRecipientExpired
+}
+
+func (t *TemplateUpdateTemplateEmailSettings) GetOwnerDocumentCreated() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerDocumentCreated
+}
+
 type TemplateUpdateTemplateLanguage string
 
 const (
@@ -405,6 +508,23 @@ const (
 
 func (e TemplateUpdateTemplateLanguage) ToPointer() *TemplateUpdateTemplateLanguage {
 	return &e
+}
+
+// TemplateUpdateTemplateLanguageValues returns every known TemplateUpdateTemplateLanguage value in schema order.
+func TemplateUpdateTemplateLanguageValues() []TemplateUpdateTemplateLanguage {
+	return []TemplateUpdateTemplateLanguage{
+		TemplateUpdateTemplateLanguageDe,
+		TemplateUpdateTemplateLanguageEn,
+		TemplateUpdateTemplateLanguageFr,
+		TemplateUpdateTemplateLanguageEs,
+		TemplateUpdateTemplateLanguageIt,
+		TemplateUpdateTemplateLanguageNl,
+		TemplateUpdateTemplateLanguagePl,
+		TemplateUpdateTemplateLanguagePtBr,
+		TemplateUpdateTemplateLanguageJa,
+		TemplateUpdateTemplateLanguageKo,
+		TemplateUpdateTemplateLanguageZh,
+	}
 }
 func (e *TemplateUpdateTemplateLanguage) UnmarshalJSON(data []byte) error {
 	var v string
@@ -449,6 +569,14 @@ const (
 
 func (e TemplateUpdateTemplateSigningOrder) ToPointer() *TemplateUpdateTemplateSigningOrder {
 	return &e
+}
+
+// TemplateUpdateTemplateSigningOrderValues returns every known TemplateUpdateTemplateSigningOrder value in schema order.
+func TemplateUpdateTemplateSigningOrderValues() []TemplateUpdateTemplateSigningOrder {
+	return []TemplateUpdateTemplateSigningOrder{
+		TemplateUpdateTemplateSigningOrderParallel,
+		TemplateUpdateTemplateSigningOrderSequential,
+	}
 }
 func (e *TemplateUpdateTemplateSigningOrder) UnmarshalJSON(data []byte) error {
 	var v string
@@ -619,12 +747,22 @@ func (t *TemplateUpdateTemplateRequest) GetMeta() *TemplateUpdateTemplateMeta {
 type TemplateUpdateTemplateTypeResponse string
 
 const (
-	TemplateUpdateTemplateTypeResponsePublic  TemplateUpdateTemplateTypeResponse = "PUBLIC"
-	TemplateUpdateTemplateTypeResponsePrivate TemplateUpdateTemplateTypeResponse = "PRIVATE"
+	TemplateUpdateTemplateTypeResponsePublic       TemplateUpdateTemplateTypeResponse = "PUBLIC"
+	TemplateUpdateTemplateTypeResponsePrivate      TemplateUpdateTemplateTypeResponse = "PRIVATE"
+	TemplateUpdateTemplateTypeResponseOrganisation TemplateUpdateTemplateTypeResponse = "ORGANISATION"
 )
 
 func (e TemplateUpdateTemplateTypeResponse) ToPointer() *TemplateUpdateTemplateTypeResponse {
 	return &e
+}
+
+// TemplateUpdateTemplateTypeResponseValues returns every known TemplateUpdateTemplateTypeResponse value in schema order.
+func TemplateUpdateTemplateTypeResponseValues() []TemplateUpdateTemplateTypeResponse {
+	return []TemplateUpdateTemplateTypeResponse{
+		TemplateUpdateTemplateTypeResponsePublic,
+		TemplateUpdateTemplateTypeResponsePrivate,
+		TemplateUpdateTemplateTypeResponseOrganisation,
+	}
 }
 func (e *TemplateUpdateTemplateTypeResponse) UnmarshalJSON(data []byte) error {
 	var v string
@@ -635,6 +773,8 @@ func (e *TemplateUpdateTemplateTypeResponse) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
 		*e = TemplateUpdateTemplateTypeResponse(v)
 		return nil
 	default:
@@ -652,6 +792,15 @@ const (
 
 func (e TemplateUpdateTemplateVisibilityResponse) ToPointer() *TemplateUpdateTemplateVisibilityResponse {
 	return &e
+}
+
+// TemplateUpdateTemplateVisibilityResponseValues returns every known TemplateUpdateTemplateVisibilityResponse value in schema order.
+func TemplateUpdateTemplateVisibilityResponseValues() []TemplateUpdateTemplateVisibilityResponse {
+	return []TemplateUpdateTemplateVisibilityResponse{
+		TemplateUpdateTemplateVisibilityResponseEveryone,
+		TemplateUpdateTemplateVisibilityResponseManagerAndAbove,
+		TemplateUpdateTemplateVisibilityResponseAdmin,
+	}
 }
 func (e *TemplateUpdateTemplateVisibilityResponse) UnmarshalJSON(data []byte) error {
 	var v string
@@ -681,6 +830,14 @@ const (
 func (e TemplateUpdateTemplateGlobalAccessAuthResponse) ToPointer() *TemplateUpdateTemplateGlobalAccessAuthResponse {
 	return &e
 }
+
+// TemplateUpdateTemplateGlobalAccessAuthResponseValues returns every known TemplateUpdateTemplateGlobalAccessAuthResponse value in schema order.
+func TemplateUpdateTemplateGlobalAccessAuthResponseValues() []TemplateUpdateTemplateGlobalAccessAuthResponse {
+	return []TemplateUpdateTemplateGlobalAccessAuthResponse{
+		TemplateUpdateTemplateGlobalAccessAuthResponseAccount,
+		TemplateUpdateTemplateGlobalAccessAuthResponseTwoFactorAuth,
+	}
+}
 func (e *TemplateUpdateTemplateGlobalAccessAuthResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -708,6 +865,16 @@ const (
 
 func (e TemplateUpdateTemplateGlobalActionAuthResponse) ToPointer() *TemplateUpdateTemplateGlobalActionAuthResponse {
 	return &e
+}
+
+// TemplateUpdateTemplateGlobalActionAuthResponseValues returns every known TemplateUpdateTemplateGlobalActionAuthResponse value in schema order.
+func TemplateUpdateTemplateGlobalActionAuthResponseValues() []TemplateUpdateTemplateGlobalActionAuthResponse {
+	return []TemplateUpdateTemplateGlobalActionAuthResponse{
+		TemplateUpdateTemplateGlobalActionAuthResponseAccount,
+		TemplateUpdateTemplateGlobalActionAuthResponsePasskey,
+		TemplateUpdateTemplateGlobalActionAuthResponseTwoFactorAuth,
+		TemplateUpdateTemplateGlobalActionAuthResponsePassword,
+	}
 }
 func (e *TemplateUpdateTemplateGlobalActionAuthResponse) UnmarshalJSON(data []byte) error {
 	var v string

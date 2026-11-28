@@ -22,6 +22,15 @@ const (
 func (e DocumentFindQueryParamSource) ToPointer() *DocumentFindQueryParamSource {
 	return &e
 }
+
+// DocumentFindQueryParamSourceValues returns every known DocumentFindQueryParamSource value in schema order.
+func DocumentFindQueryParamSourceValues() []DocumentFindQueryParamSource {
+	return []DocumentFindQueryParamSource{
+		DocumentFindQueryParamSourceDocument,
+		DocumentFindQueryParamSourceTemplate,
+		DocumentFindQueryParamSourceTemplateDirectLink,
+	}
+}
 func (e *DocumentFindQueryParamSource) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -48,10 +57,22 @@ const (
 	DocumentFindQueryParamStatusPending   DocumentFindQueryParamStatus = "PENDING"
 	DocumentFindQueryParamStatusCompleted DocumentFindQueryParamStatus = "COMPLETED"
 	DocumentFindQueryParamStatusRejected  DocumentFindQueryParamStatus = "REJECTED"
+	DocumentFindQueryParamStatusCancelled DocumentFindQueryParamStatus = "CANCELLED"
 )
 
 func (e DocumentFindQueryParamStatus) ToPointer() *DocumentFindQueryParamStatus {
 	return &e
+}
+
+// DocumentFindQueryParamStatusValues returns every known DocumentFindQueryParamStatus value in schema order.
+func DocumentFindQueryParamStatusValues() []DocumentFindQueryParamStatus {
+	return []DocumentFindQueryParamStatus{
+		DocumentFindQueryParamStatusDraft,
+		DocumentFindQueryParamStatusPending,
+		DocumentFindQueryParamStatusCompleted,
+		DocumentFindQueryParamStatusRejected,
+		DocumentFindQueryParamStatusCancelled,
+	}
 }
 func (e *DocumentFindQueryParamStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -66,10 +87,47 @@ func (e *DocumentFindQueryParamStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = DocumentFindQueryParamStatus(v)
 		return nil
 	default:
 		return fmt.Errorf("invalid value for DocumentFindQueryParamStatus: %v", v)
+	}
+}
+
+// DocumentFindHasExpiredRecipients - Filter for documents that have at least one recipient whose signing link has expired.
+type DocumentFindHasExpiredRecipients string
+
+const (
+	DocumentFindHasExpiredRecipientsTrue  DocumentFindHasExpiredRecipients = "true"
+	DocumentFindHasExpiredRecipientsFalse DocumentFindHasExpiredRecipients = "false"
+)
+
+func (e DocumentFindHasExpiredRecipients) ToPointer() *DocumentFindHasExpiredRecipients {
+	return &e
+}
+
+// DocumentFindHasExpiredRecipientsValues returns every known DocumentFindHasExpiredRecipients value in schema order.
+func DocumentFindHasExpiredRecipientsValues() []DocumentFindHasExpiredRecipients {
+	return []DocumentFindHasExpiredRecipients{
+		DocumentFindHasExpiredRecipientsTrue,
+		DocumentFindHasExpiredRecipientsFalse,
+	}
+}
+func (e *DocumentFindHasExpiredRecipients) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "true":
+		fallthrough
+	case "false":
+		*e = DocumentFindHasExpiredRecipients(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for DocumentFindHasExpiredRecipients: %v", v)
 	}
 }
 
@@ -81,6 +139,13 @@ const (
 
 func (e DocumentFindOrderByColumn) ToPointer() *DocumentFindOrderByColumn {
 	return &e
+}
+
+// DocumentFindOrderByColumnValues returns every known DocumentFindOrderByColumn value in schema order.
+func DocumentFindOrderByColumnValues() []DocumentFindOrderByColumn {
+	return []DocumentFindOrderByColumn{
+		DocumentFindOrderByColumnCreatedAt,
+	}
 }
 func (e *DocumentFindOrderByColumn) UnmarshalJSON(data []byte) error {
 	var v string
@@ -105,6 +170,14 @@ const (
 
 func (e DocumentFindOrderByDirection) ToPointer() *DocumentFindOrderByDirection {
 	return &e
+}
+
+// DocumentFindOrderByDirectionValues returns every known DocumentFindOrderByDirection value in schema order.
+func DocumentFindOrderByDirectionValues() []DocumentFindOrderByDirection {
+	return []DocumentFindOrderByDirection{
+		DocumentFindOrderByDirectionAsc,
+		DocumentFindOrderByDirectionDesc,
+	}
 }
 func (e *DocumentFindOrderByDirection) UnmarshalJSON(data []byte) error {
 	var v string
@@ -135,6 +208,8 @@ type DocumentFindRequest struct {
 	Source *DocumentFindQueryParamSource `queryParam:"style=form,explode=true,name=source"`
 	// Filter documents by the current status
 	Status *DocumentFindQueryParamStatus `queryParam:"style=form,explode=true,name=status"`
+	// Filter for documents that have at least one recipient whose signing link has expired.
+	HasExpiredRecipients *DocumentFindHasExpiredRecipients `queryParam:"style=form,explode=true,name=hasExpiredRecipients"`
 	// Filter documents by folder ID
 	FolderID         *string                       `queryParam:"style=form,explode=true,name=folderId"`
 	OrderByColumn    *DocumentFindOrderByColumn    `queryParam:"style=form,explode=true,name=orderByColumn"`
@@ -194,6 +269,13 @@ func (d *DocumentFindRequest) GetStatus() *DocumentFindQueryParamStatus {
 	return d.Status
 }
 
+func (d *DocumentFindRequest) GetHasExpiredRecipients() *DocumentFindHasExpiredRecipients {
+	if d == nil {
+		return nil
+	}
+	return d.HasExpiredRecipients
+}
+
 func (d *DocumentFindRequest) GetFolderID() *string {
 	if d == nil {
 		return nil
@@ -226,6 +308,15 @@ const (
 func (e DocumentFindVisibility) ToPointer() *DocumentFindVisibility {
 	return &e
 }
+
+// DocumentFindVisibilityValues returns every known DocumentFindVisibility value in schema order.
+func DocumentFindVisibilityValues() []DocumentFindVisibility {
+	return []DocumentFindVisibility{
+		DocumentFindVisibilityEveryone,
+		DocumentFindVisibilityManagerAndAbove,
+		DocumentFindVisibilityAdmin,
+	}
+}
 func (e *DocumentFindVisibility) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -251,10 +342,22 @@ const (
 	DocumentFindDataStatusPending   DocumentFindDataStatus = "PENDING"
 	DocumentFindDataStatusCompleted DocumentFindDataStatus = "COMPLETED"
 	DocumentFindDataStatusRejected  DocumentFindDataStatus = "REJECTED"
+	DocumentFindDataStatusCancelled DocumentFindDataStatus = "CANCELLED"
 )
 
 func (e DocumentFindDataStatus) ToPointer() *DocumentFindDataStatus {
 	return &e
+}
+
+// DocumentFindDataStatusValues returns every known DocumentFindDataStatus value in schema order.
+func DocumentFindDataStatusValues() []DocumentFindDataStatus {
+	return []DocumentFindDataStatus{
+		DocumentFindDataStatusDraft,
+		DocumentFindDataStatusPending,
+		DocumentFindDataStatusCompleted,
+		DocumentFindDataStatusRejected,
+		DocumentFindDataStatusCancelled,
+	}
 }
 func (e *DocumentFindDataStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -269,6 +372,8 @@ func (e *DocumentFindDataStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = DocumentFindDataStatus(v)
 		return nil
 	default:
@@ -286,6 +391,15 @@ const (
 
 func (e DocumentFindDataSource) ToPointer() *DocumentFindDataSource {
 	return &e
+}
+
+// DocumentFindDataSourceValues returns every known DocumentFindDataSource value in schema order.
+func DocumentFindDataSourceValues() []DocumentFindDataSource {
+	return []DocumentFindDataSource{
+		DocumentFindDataSourceDocument,
+		DocumentFindDataSourceTemplate,
+		DocumentFindDataSourceTemplateDirectLink,
+	}
 }
 func (e *DocumentFindDataSource) UnmarshalJSON(data []byte) error {
 	var v string
@@ -315,6 +429,14 @@ const (
 func (e DocumentFindGlobalAccessAuth) ToPointer() *DocumentFindGlobalAccessAuth {
 	return &e
 }
+
+// DocumentFindGlobalAccessAuthValues returns every known DocumentFindGlobalAccessAuth value in schema order.
+func DocumentFindGlobalAccessAuthValues() []DocumentFindGlobalAccessAuth {
+	return []DocumentFindGlobalAccessAuth{
+		DocumentFindGlobalAccessAuthAccount,
+		DocumentFindGlobalAccessAuthTwoFactorAuth,
+	}
+}
 func (e *DocumentFindGlobalAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -342,6 +464,16 @@ const (
 
 func (e DocumentFindGlobalActionAuth) ToPointer() *DocumentFindGlobalActionAuth {
 	return &e
+}
+
+// DocumentFindGlobalActionAuthValues returns every known DocumentFindGlobalActionAuth value in schema order.
+func DocumentFindGlobalActionAuthValues() []DocumentFindGlobalActionAuth {
+	return []DocumentFindGlobalActionAuth{
+		DocumentFindGlobalActionAuthAccount,
+		DocumentFindGlobalActionAuthPasskey,
+		DocumentFindGlobalActionAuthTwoFactorAuth,
+		DocumentFindGlobalActionAuthPassword,
+	}
 }
 func (e *DocumentFindGlobalActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -425,7 +557,14 @@ func CreateDocumentFindFormValuesNumber(number float64) DocumentFindFormValues {
 	}
 }
 
-func (u *DocumentFindFormValues) UnmarshalJSON(data []byte) error {
+func (u *DocumentFindFormValues) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentFindFormValues{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -507,6 +646,17 @@ const (
 func (e DocumentFindRole) ToPointer() *DocumentFindRole {
 	return &e
 }
+
+// DocumentFindRoleValues returns every known DocumentFindRole value in schema order.
+func DocumentFindRoleValues() []DocumentFindRole {
+	return []DocumentFindRole{
+		DocumentFindRoleCc,
+		DocumentFindRoleSigner,
+		DocumentFindRoleViewer,
+		DocumentFindRoleApprover,
+		DocumentFindRoleAssistant,
+	}
+}
 func (e *DocumentFindRole) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -539,6 +689,14 @@ const (
 func (e DocumentFindReadStatus) ToPointer() *DocumentFindReadStatus {
 	return &e
 }
+
+// DocumentFindReadStatusValues returns every known DocumentFindReadStatus value in schema order.
+func DocumentFindReadStatusValues() []DocumentFindReadStatus {
+	return []DocumentFindReadStatus{
+		DocumentFindReadStatusNotOpened,
+		DocumentFindReadStatusOpened,
+	}
+}
 func (e *DocumentFindReadStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -565,6 +723,15 @@ const (
 
 func (e DocumentFindSigningStatus) ToPointer() *DocumentFindSigningStatus {
 	return &e
+}
+
+// DocumentFindSigningStatusValues returns every known DocumentFindSigningStatus value in schema order.
+func DocumentFindSigningStatusValues() []DocumentFindSigningStatus {
+	return []DocumentFindSigningStatus{
+		DocumentFindSigningStatusNotSigned,
+		DocumentFindSigningStatusSigned,
+		DocumentFindSigningStatusRejected,
+	}
 }
 func (e *DocumentFindSigningStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -594,6 +761,14 @@ const (
 func (e DocumentFindSendStatus) ToPointer() *DocumentFindSendStatus {
 	return &e
 }
+
+// DocumentFindSendStatusValues returns every known DocumentFindSendStatus value in schema order.
+func DocumentFindSendStatusValues() []DocumentFindSendStatus {
+	return []DocumentFindSendStatus{
+		DocumentFindSendStatusNotSent,
+		DocumentFindSendStatusSent,
+	}
+}
 func (e *DocumentFindSendStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -619,6 +794,14 @@ const (
 
 func (e DocumentFindAccessAuth) ToPointer() *DocumentFindAccessAuth {
 	return &e
+}
+
+// DocumentFindAccessAuthValues returns every known DocumentFindAccessAuth value in schema order.
+func DocumentFindAccessAuthValues() []DocumentFindAccessAuth {
+	return []DocumentFindAccessAuth{
+		DocumentFindAccessAuthAccount,
+		DocumentFindAccessAuthTwoFactorAuth,
+	}
 }
 func (e *DocumentFindAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -648,6 +831,17 @@ const (
 
 func (e DocumentFindActionAuth) ToPointer() *DocumentFindActionAuth {
 	return &e
+}
+
+// DocumentFindActionAuthValues returns every known DocumentFindActionAuth value in schema order.
+func DocumentFindActionAuthValues() []DocumentFindActionAuth {
+	return []DocumentFindActionAuth{
+		DocumentFindActionAuthAccount,
+		DocumentFindActionAuthPasskey,
+		DocumentFindActionAuthTwoFactorAuth,
+		DocumentFindActionAuthPassword,
+		DocumentFindActionAuthExplicitNone,
+	}
 }
 func (e *DocumentFindActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -691,23 +885,25 @@ func (d *DocumentFindRecipientAuthOptions) GetActionAuth() []DocumentFindActionA
 }
 
 type DocumentFindRecipient struct {
-	EnvelopeID        string                            `json:"envelopeId"`
-	Role              DocumentFindRole                  `json:"role"`
-	ReadStatus        DocumentFindReadStatus            `json:"readStatus"`
-	SigningStatus     DocumentFindSigningStatus         `json:"signingStatus"`
-	SendStatus        DocumentFindSendStatus            `json:"sendStatus"`
-	ID                float64                           `json:"id"`
-	Email             string                            `json:"email"`
-	Name              string                            `json:"name"`
-	Token             string                            `json:"token"`
-	DocumentDeletedAt *string                           `json:"documentDeletedAt"`
-	Expired           *string                           `json:"expired"`
-	SignedAt          *string                           `json:"signedAt"`
-	AuthOptions       *DocumentFindRecipientAuthOptions `json:"authOptions"`
-	SigningOrder      *float64                          `json:"signingOrder"`
-	RejectionReason   *string                           `json:"rejectionReason"`
-	DocumentID        *float64                          `json:"documentId,omitempty"`
-	TemplateID        *float64                          `json:"templateId,omitempty"`
+	EnvelopeID           string                            `json:"envelopeId"`
+	Role                 DocumentFindRole                  `json:"role"`
+	ReadStatus           DocumentFindReadStatus            `json:"readStatus"`
+	SigningStatus        DocumentFindSigningStatus         `json:"signingStatus"`
+	SendStatus           DocumentFindSendStatus            `json:"sendStatus"`
+	ID                   float64                           `json:"id"`
+	Email                string                            `json:"email"`
+	Name                 string                            `json:"name"`
+	Token                string                            `json:"token"`
+	DocumentDeletedAt    *string                           `json:"documentDeletedAt"`
+	Expired              *string                           `json:"expired"`
+	ExpiresAt            *string                           `json:"expiresAt"`
+	ExpirationNotifiedAt *string                           `json:"expirationNotifiedAt"`
+	SignedAt             *string                           `json:"signedAt"`
+	AuthOptions          *DocumentFindRecipientAuthOptions `json:"authOptions"`
+	SigningOrder         *float64                          `json:"signingOrder"`
+	RejectionReason      *string                           `json:"rejectionReason"`
+	DocumentID           *float64                          `json:"documentId,omitempty"`
+	TemplateID           *float64                          `json:"templateId,omitempty"`
 }
 
 func (d *DocumentFindRecipient) GetEnvelopeID() string {
@@ -785,6 +981,20 @@ func (d *DocumentFindRecipient) GetExpired() *string {
 		return nil
 	}
 	return d.Expired
+}
+
+func (d *DocumentFindRecipient) GetExpiresAt() *string {
+	if d == nil {
+		return nil
+	}
+	return d.ExpiresAt
+}
+
+func (d *DocumentFindRecipient) GetExpirationNotifiedAt() *string {
+	if d == nil {
+		return nil
+	}
+	return d.ExpirationNotifiedAt
 }
 
 func (d *DocumentFindRecipient) GetSignedAt() *string {

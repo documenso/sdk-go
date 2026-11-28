@@ -21,6 +21,14 @@ const (
 func (e EnvelopeFindQueryParamType) ToPointer() *EnvelopeFindQueryParamType {
 	return &e
 }
+
+// EnvelopeFindQueryParamTypeValues returns every known EnvelopeFindQueryParamType value in schema order.
+func EnvelopeFindQueryParamTypeValues() []EnvelopeFindQueryParamType {
+	return []EnvelopeFindQueryParamType{
+		EnvelopeFindQueryParamTypeDocument,
+		EnvelopeFindQueryParamTypeTemplate,
+	}
+}
 func (e *EnvelopeFindQueryParamType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -49,6 +57,15 @@ const (
 func (e EnvelopeFindQueryParamSource) ToPointer() *EnvelopeFindQueryParamSource {
 	return &e
 }
+
+// EnvelopeFindQueryParamSourceValues returns every known EnvelopeFindQueryParamSource value in schema order.
+func EnvelopeFindQueryParamSourceValues() []EnvelopeFindQueryParamSource {
+	return []EnvelopeFindQueryParamSource{
+		EnvelopeFindQueryParamSourceDocument,
+		EnvelopeFindQueryParamSourceTemplate,
+		EnvelopeFindQueryParamSourceTemplateDirectLink,
+	}
+}
 func (e *EnvelopeFindQueryParamSource) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -75,10 +92,22 @@ const (
 	EnvelopeFindQueryParamStatusPending   EnvelopeFindQueryParamStatus = "PENDING"
 	EnvelopeFindQueryParamStatusCompleted EnvelopeFindQueryParamStatus = "COMPLETED"
 	EnvelopeFindQueryParamStatusRejected  EnvelopeFindQueryParamStatus = "REJECTED"
+	EnvelopeFindQueryParamStatusCancelled EnvelopeFindQueryParamStatus = "CANCELLED"
 )
 
 func (e EnvelopeFindQueryParamStatus) ToPointer() *EnvelopeFindQueryParamStatus {
 	return &e
+}
+
+// EnvelopeFindQueryParamStatusValues returns every known EnvelopeFindQueryParamStatus value in schema order.
+func EnvelopeFindQueryParamStatusValues() []EnvelopeFindQueryParamStatus {
+	return []EnvelopeFindQueryParamStatus{
+		EnvelopeFindQueryParamStatusDraft,
+		EnvelopeFindQueryParamStatusPending,
+		EnvelopeFindQueryParamStatusCompleted,
+		EnvelopeFindQueryParamStatusRejected,
+		EnvelopeFindQueryParamStatusCancelled,
+	}
 }
 func (e *EnvelopeFindQueryParamStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -93,10 +122,47 @@ func (e *EnvelopeFindQueryParamStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = EnvelopeFindQueryParamStatus(v)
 		return nil
 	default:
 		return fmt.Errorf("invalid value for EnvelopeFindQueryParamStatus: %v", v)
+	}
+}
+
+// EnvelopeFindHasExpiredRecipients - Filter for envelopes that have at least one recipient whose signing link has expired.
+type EnvelopeFindHasExpiredRecipients string
+
+const (
+	EnvelopeFindHasExpiredRecipientsTrue  EnvelopeFindHasExpiredRecipients = "true"
+	EnvelopeFindHasExpiredRecipientsFalse EnvelopeFindHasExpiredRecipients = "false"
+)
+
+func (e EnvelopeFindHasExpiredRecipients) ToPointer() *EnvelopeFindHasExpiredRecipients {
+	return &e
+}
+
+// EnvelopeFindHasExpiredRecipientsValues returns every known EnvelopeFindHasExpiredRecipients value in schema order.
+func EnvelopeFindHasExpiredRecipientsValues() []EnvelopeFindHasExpiredRecipients {
+	return []EnvelopeFindHasExpiredRecipients{
+		EnvelopeFindHasExpiredRecipientsTrue,
+		EnvelopeFindHasExpiredRecipientsFalse,
+	}
+}
+func (e *EnvelopeFindHasExpiredRecipients) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "true":
+		fallthrough
+	case "false":
+		*e = EnvelopeFindHasExpiredRecipients(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeFindHasExpiredRecipients: %v", v)
 	}
 }
 
@@ -108,6 +174,13 @@ const (
 
 func (e EnvelopeFindOrderByColumn) ToPointer() *EnvelopeFindOrderByColumn {
 	return &e
+}
+
+// EnvelopeFindOrderByColumnValues returns every known EnvelopeFindOrderByColumn value in schema order.
+func EnvelopeFindOrderByColumnValues() []EnvelopeFindOrderByColumn {
+	return []EnvelopeFindOrderByColumn{
+		EnvelopeFindOrderByColumnCreatedAt,
+	}
 }
 func (e *EnvelopeFindOrderByColumn) UnmarshalJSON(data []byte) error {
 	var v string
@@ -133,6 +206,14 @@ const (
 
 func (e EnvelopeFindOrderByDirection) ToPointer() *EnvelopeFindOrderByDirection {
 	return &e
+}
+
+// EnvelopeFindOrderByDirectionValues returns every known EnvelopeFindOrderByDirection value in schema order.
+func EnvelopeFindOrderByDirectionValues() []EnvelopeFindOrderByDirection {
+	return []EnvelopeFindOrderByDirection{
+		EnvelopeFindOrderByDirectionAsc,
+		EnvelopeFindOrderByDirectionDesc,
+	}
 }
 func (e *EnvelopeFindOrderByDirection) UnmarshalJSON(data []byte) error {
 	var v string
@@ -165,6 +246,8 @@ type EnvelopeFindRequest struct {
 	Source *EnvelopeFindQueryParamSource `queryParam:"style=form,explode=true,name=source"`
 	// Filter envelopes by the current status.
 	Status *EnvelopeFindQueryParamStatus `queryParam:"style=form,explode=true,name=status"`
+	// Filter for envelopes that have at least one recipient whose signing link has expired.
+	HasExpiredRecipients *EnvelopeFindHasExpiredRecipients `queryParam:"style=form,explode=true,name=hasExpiredRecipients"`
 	// Filter envelopes by folder ID.
 	FolderID      *string                    `queryParam:"style=form,explode=true,name=folderId"`
 	OrderByColumn *EnvelopeFindOrderByColumn `queryParam:"style=form,explode=true,name=orderByColumn"`
@@ -232,6 +315,13 @@ func (e *EnvelopeFindRequest) GetStatus() *EnvelopeFindQueryParamStatus {
 	return e.Status
 }
 
+func (e *EnvelopeFindRequest) GetHasExpiredRecipients() *EnvelopeFindHasExpiredRecipients {
+	if e == nil {
+		return nil
+	}
+	return e.HasExpiredRecipients
+}
+
 func (e *EnvelopeFindRequest) GetFolderID() *string {
 	if e == nil {
 		return nil
@@ -263,6 +353,14 @@ const (
 func (e EnvelopeFindDataType) ToPointer() *EnvelopeFindDataType {
 	return &e
 }
+
+// EnvelopeFindDataTypeValues returns every known EnvelopeFindDataType value in schema order.
+func EnvelopeFindDataTypeValues() []EnvelopeFindDataType {
+	return []EnvelopeFindDataType{
+		EnvelopeFindDataTypeDocument,
+		EnvelopeFindDataTypeTemplate,
+	}
+}
 func (e *EnvelopeFindDataType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -286,10 +384,22 @@ const (
 	EnvelopeFindDataStatusPending   EnvelopeFindDataStatus = "PENDING"
 	EnvelopeFindDataStatusCompleted EnvelopeFindDataStatus = "COMPLETED"
 	EnvelopeFindDataStatusRejected  EnvelopeFindDataStatus = "REJECTED"
+	EnvelopeFindDataStatusCancelled EnvelopeFindDataStatus = "CANCELLED"
 )
 
 func (e EnvelopeFindDataStatus) ToPointer() *EnvelopeFindDataStatus {
 	return &e
+}
+
+// EnvelopeFindDataStatusValues returns every known EnvelopeFindDataStatus value in schema order.
+func EnvelopeFindDataStatusValues() []EnvelopeFindDataStatus {
+	return []EnvelopeFindDataStatus{
+		EnvelopeFindDataStatusDraft,
+		EnvelopeFindDataStatusPending,
+		EnvelopeFindDataStatusCompleted,
+		EnvelopeFindDataStatusRejected,
+		EnvelopeFindDataStatusCancelled,
+	}
 }
 func (e *EnvelopeFindDataStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -304,6 +414,8 @@ func (e *EnvelopeFindDataStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = EnvelopeFindDataStatus(v)
 		return nil
 	default:
@@ -321,6 +433,15 @@ const (
 
 func (e EnvelopeFindDataSource) ToPointer() *EnvelopeFindDataSource {
 	return &e
+}
+
+// EnvelopeFindDataSourceValues returns every known EnvelopeFindDataSource value in schema order.
+func EnvelopeFindDataSourceValues() []EnvelopeFindDataSource {
+	return []EnvelopeFindDataSource{
+		EnvelopeFindDataSourceDocument,
+		EnvelopeFindDataSourceTemplate,
+		EnvelopeFindDataSourceTemplateDirectLink,
+	}
 }
 func (e *EnvelopeFindDataSource) UnmarshalJSON(data []byte) error {
 	var v string
@@ -351,6 +472,15 @@ const (
 func (e EnvelopeFindVisibility) ToPointer() *EnvelopeFindVisibility {
 	return &e
 }
+
+// EnvelopeFindVisibilityValues returns every known EnvelopeFindVisibility value in schema order.
+func EnvelopeFindVisibilityValues() []EnvelopeFindVisibility {
+	return []EnvelopeFindVisibility{
+		EnvelopeFindVisibilityEveryone,
+		EnvelopeFindVisibilityManagerAndAbove,
+		EnvelopeFindVisibilityAdmin,
+	}
+}
 func (e *EnvelopeFindVisibility) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -372,12 +502,22 @@ func (e *EnvelopeFindVisibility) UnmarshalJSON(data []byte) error {
 type EnvelopeFindTemplateType string
 
 const (
-	EnvelopeFindTemplateTypePublic  EnvelopeFindTemplateType = "PUBLIC"
-	EnvelopeFindTemplateTypePrivate EnvelopeFindTemplateType = "PRIVATE"
+	EnvelopeFindTemplateTypePublic       EnvelopeFindTemplateType = "PUBLIC"
+	EnvelopeFindTemplateTypePrivate      EnvelopeFindTemplateType = "PRIVATE"
+	EnvelopeFindTemplateTypeOrganisation EnvelopeFindTemplateType = "ORGANISATION"
 )
 
 func (e EnvelopeFindTemplateType) ToPointer() *EnvelopeFindTemplateType {
 	return &e
+}
+
+// EnvelopeFindTemplateTypeValues returns every known EnvelopeFindTemplateType value in schema order.
+func EnvelopeFindTemplateTypeValues() []EnvelopeFindTemplateType {
+	return []EnvelopeFindTemplateType{
+		EnvelopeFindTemplateTypePublic,
+		EnvelopeFindTemplateTypePrivate,
+		EnvelopeFindTemplateTypeOrganisation,
+	}
 }
 func (e *EnvelopeFindTemplateType) UnmarshalJSON(data []byte) error {
 	var v string
@@ -388,6 +528,8 @@ func (e *EnvelopeFindTemplateType) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
 		*e = EnvelopeFindTemplateType(v)
 		return nil
 	default:
@@ -404,6 +546,14 @@ const (
 
 func (e EnvelopeFindGlobalAccessAuth) ToPointer() *EnvelopeFindGlobalAccessAuth {
 	return &e
+}
+
+// EnvelopeFindGlobalAccessAuthValues returns every known EnvelopeFindGlobalAccessAuth value in schema order.
+func EnvelopeFindGlobalAccessAuthValues() []EnvelopeFindGlobalAccessAuth {
+	return []EnvelopeFindGlobalAccessAuth{
+		EnvelopeFindGlobalAccessAuthAccount,
+		EnvelopeFindGlobalAccessAuthTwoFactorAuth,
+	}
 }
 func (e *EnvelopeFindGlobalAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -432,6 +582,16 @@ const (
 
 func (e EnvelopeFindGlobalActionAuth) ToPointer() *EnvelopeFindGlobalActionAuth {
 	return &e
+}
+
+// EnvelopeFindGlobalActionAuthValues returns every known EnvelopeFindGlobalActionAuth value in schema order.
+func EnvelopeFindGlobalActionAuthValues() []EnvelopeFindGlobalActionAuth {
+	return []EnvelopeFindGlobalActionAuth{
+		EnvelopeFindGlobalActionAuthAccount,
+		EnvelopeFindGlobalActionAuthPasskey,
+		EnvelopeFindGlobalActionAuthTwoFactorAuth,
+		EnvelopeFindGlobalActionAuthPassword,
+	}
 }
 func (e *EnvelopeFindGlobalActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -515,7 +675,14 @@ func CreateEnvelopeFindFormValuesNumber(number float64) EnvelopeFindFormValues {
 	}
 }
 
-func (u *EnvelopeFindFormValues) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeFindFormValues) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeFindFormValues{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -597,6 +764,17 @@ const (
 func (e EnvelopeFindRole) ToPointer() *EnvelopeFindRole {
 	return &e
 }
+
+// EnvelopeFindRoleValues returns every known EnvelopeFindRole value in schema order.
+func EnvelopeFindRoleValues() []EnvelopeFindRole {
+	return []EnvelopeFindRole{
+		EnvelopeFindRoleCc,
+		EnvelopeFindRoleSigner,
+		EnvelopeFindRoleViewer,
+		EnvelopeFindRoleApprover,
+		EnvelopeFindRoleAssistant,
+	}
+}
 func (e *EnvelopeFindRole) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -629,6 +807,14 @@ const (
 func (e EnvelopeFindReadStatus) ToPointer() *EnvelopeFindReadStatus {
 	return &e
 }
+
+// EnvelopeFindReadStatusValues returns every known EnvelopeFindReadStatus value in schema order.
+func EnvelopeFindReadStatusValues() []EnvelopeFindReadStatus {
+	return []EnvelopeFindReadStatus{
+		EnvelopeFindReadStatusNotOpened,
+		EnvelopeFindReadStatusOpened,
+	}
+}
 func (e *EnvelopeFindReadStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -655,6 +841,15 @@ const (
 
 func (e EnvelopeFindSigningStatus) ToPointer() *EnvelopeFindSigningStatus {
 	return &e
+}
+
+// EnvelopeFindSigningStatusValues returns every known EnvelopeFindSigningStatus value in schema order.
+func EnvelopeFindSigningStatusValues() []EnvelopeFindSigningStatus {
+	return []EnvelopeFindSigningStatus{
+		EnvelopeFindSigningStatusNotSigned,
+		EnvelopeFindSigningStatusSigned,
+		EnvelopeFindSigningStatusRejected,
+	}
 }
 func (e *EnvelopeFindSigningStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -684,6 +879,14 @@ const (
 func (e EnvelopeFindSendStatus) ToPointer() *EnvelopeFindSendStatus {
 	return &e
 }
+
+// EnvelopeFindSendStatusValues returns every known EnvelopeFindSendStatus value in schema order.
+func EnvelopeFindSendStatusValues() []EnvelopeFindSendStatus {
+	return []EnvelopeFindSendStatus{
+		EnvelopeFindSendStatusNotSent,
+		EnvelopeFindSendStatusSent,
+	}
+}
 func (e *EnvelopeFindSendStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -709,6 +912,14 @@ const (
 
 func (e EnvelopeFindAccessAuth) ToPointer() *EnvelopeFindAccessAuth {
 	return &e
+}
+
+// EnvelopeFindAccessAuthValues returns every known EnvelopeFindAccessAuth value in schema order.
+func EnvelopeFindAccessAuthValues() []EnvelopeFindAccessAuth {
+	return []EnvelopeFindAccessAuth{
+		EnvelopeFindAccessAuthAccount,
+		EnvelopeFindAccessAuthTwoFactorAuth,
+	}
 }
 func (e *EnvelopeFindAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -738,6 +949,17 @@ const (
 
 func (e EnvelopeFindActionAuth) ToPointer() *EnvelopeFindActionAuth {
 	return &e
+}
+
+// EnvelopeFindActionAuthValues returns every known EnvelopeFindActionAuth value in schema order.
+func EnvelopeFindActionAuthValues() []EnvelopeFindActionAuth {
+	return []EnvelopeFindActionAuth{
+		EnvelopeFindActionAuthAccount,
+		EnvelopeFindActionAuthPasskey,
+		EnvelopeFindActionAuthTwoFactorAuth,
+		EnvelopeFindActionAuthPassword,
+		EnvelopeFindActionAuthExplicitNone,
+	}
 }
 func (e *EnvelopeFindActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -781,21 +1003,23 @@ func (e *EnvelopeFindRecipientAuthOptions) GetActionAuth() []EnvelopeFindActionA
 }
 
 type EnvelopeFindRecipient struct {
-	EnvelopeID        string                            `json:"envelopeId"`
-	Role              EnvelopeFindRole                  `json:"role"`
-	ReadStatus        EnvelopeFindReadStatus            `json:"readStatus"`
-	SigningStatus     EnvelopeFindSigningStatus         `json:"signingStatus"`
-	SendStatus        EnvelopeFindSendStatus            `json:"sendStatus"`
-	ID                float64                           `json:"id"`
-	Email             string                            `json:"email"`
-	Name              string                            `json:"name"`
-	Token             string                            `json:"token"`
-	DocumentDeletedAt *string                           `json:"documentDeletedAt"`
-	Expired           *string                           `json:"expired"`
-	SignedAt          *string                           `json:"signedAt"`
-	AuthOptions       *EnvelopeFindRecipientAuthOptions `json:"authOptions"`
-	SigningOrder      *float64                          `json:"signingOrder"`
-	RejectionReason   *string                           `json:"rejectionReason"`
+	EnvelopeID           string                            `json:"envelopeId"`
+	Role                 EnvelopeFindRole                  `json:"role"`
+	ReadStatus           EnvelopeFindReadStatus            `json:"readStatus"`
+	SigningStatus        EnvelopeFindSigningStatus         `json:"signingStatus"`
+	SendStatus           EnvelopeFindSendStatus            `json:"sendStatus"`
+	ID                   float64                           `json:"id"`
+	Email                string                            `json:"email"`
+	Name                 string                            `json:"name"`
+	Token                string                            `json:"token"`
+	DocumentDeletedAt    *string                           `json:"documentDeletedAt"`
+	Expired              *string                           `json:"expired"`
+	ExpiresAt            *string                           `json:"expiresAt"`
+	ExpirationNotifiedAt *string                           `json:"expirationNotifiedAt"`
+	SignedAt             *string                           `json:"signedAt"`
+	AuthOptions          *EnvelopeFindRecipientAuthOptions `json:"authOptions"`
+	SigningOrder         *float64                          `json:"signingOrder"`
+	RejectionReason      *string                           `json:"rejectionReason"`
 }
 
 func (e *EnvelopeFindRecipient) GetEnvelopeID() string {
@@ -873,6 +1097,20 @@ func (e *EnvelopeFindRecipient) GetExpired() *string {
 		return nil
 	}
 	return e.Expired
+}
+
+func (e *EnvelopeFindRecipient) GetExpiresAt() *string {
+	if e == nil {
+		return nil
+	}
+	return e.ExpiresAt
+}
+
+func (e *EnvelopeFindRecipient) GetExpirationNotifiedAt() *string {
+	if e == nil {
+		return nil
+	}
+	return e.ExpirationNotifiedAt
 }
 
 func (e *EnvelopeFindRecipient) GetSignedAt() *string {

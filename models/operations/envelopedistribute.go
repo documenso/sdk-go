@@ -15,12 +15,15 @@ const (
 	EnvelopeDistributeDateFormatYyyyMMddHhMmA            EnvelopeDistributeDateFormat = "yyyy-MM-dd hh:mm a"
 	EnvelopeDistributeDateFormatYyyyMMdd                 EnvelopeDistributeDateFormat = "yyyy-MM-dd"
 	EnvelopeDistributeDateFormatDdMmSlashYyyy            EnvelopeDistributeDateFormat = "dd/MM/yyyy"
+	EnvelopeDistributeDateFormatDdMmDashYyyy             EnvelopeDistributeDateFormat = "dd-MM-yyyy"
 	EnvelopeDistributeDateFormatMmDdSlashYyyy            EnvelopeDistributeDateFormat = "MM/dd/yyyy"
 	EnvelopeDistributeDateFormatYyMMdd                   EnvelopeDistributeDateFormat = "yy-MM-dd"
 	EnvelopeDistributeDateFormatMmmmDdCommaYyyy          EnvelopeDistributeDateFormat = "MMMM dd, yyyy"
 	EnvelopeDistributeDateFormatEeeeMmmmDdCommaYyyy      EnvelopeDistributeDateFormat = "EEEE, MMMM dd, yyyy"
 	EnvelopeDistributeDateFormatDdMmSlashYyyyHhMmA       EnvelopeDistributeDateFormat = "dd/MM/yyyy hh:mm a"
 	EnvelopeDistributeDateFormatDdMmSlashYyyyHHmm        EnvelopeDistributeDateFormat = "dd/MM/yyyy HH:mm"
+	EnvelopeDistributeDateFormatDdMmDashYyyyHhMmA        EnvelopeDistributeDateFormat = "dd-MM-yyyy hh:mm a"
+	EnvelopeDistributeDateFormatDdMmDashYyyyHHmm         EnvelopeDistributeDateFormat = "dd-MM-yyyy HH:mm"
 	EnvelopeDistributeDateFormatMmDdSlashYyyyHhMmA       EnvelopeDistributeDateFormat = "MM/dd/yyyy hh:mm a"
 	EnvelopeDistributeDateFormatMmDdSlashYyyyHHmm        EnvelopeDistributeDateFormat = "MM/dd/yyyy HH:mm"
 	EnvelopeDistributeDateFormatDdDotMmDotYyyy           EnvelopeDistributeDateFormat = "dd.MM.yyyy"
@@ -39,6 +42,37 @@ const (
 func (e EnvelopeDistributeDateFormat) ToPointer() *EnvelopeDistributeDateFormat {
 	return &e
 }
+
+// EnvelopeDistributeDateFormatValues returns every known EnvelopeDistributeDateFormat value in schema order.
+func EnvelopeDistributeDateFormatValues() []EnvelopeDistributeDateFormat {
+	return []EnvelopeDistributeDateFormat{
+		EnvelopeDistributeDateFormatYyyyMMddHhMmA,
+		EnvelopeDistributeDateFormatYyyyMMdd,
+		EnvelopeDistributeDateFormatDdMmSlashYyyy,
+		EnvelopeDistributeDateFormatDdMmDashYyyy,
+		EnvelopeDistributeDateFormatMmDdSlashYyyy,
+		EnvelopeDistributeDateFormatYyMMdd,
+		EnvelopeDistributeDateFormatMmmmDdCommaYyyy,
+		EnvelopeDistributeDateFormatEeeeMmmmDdCommaYyyy,
+		EnvelopeDistributeDateFormatDdMmSlashYyyyHhMmA,
+		EnvelopeDistributeDateFormatDdMmSlashYyyyHHmm,
+		EnvelopeDistributeDateFormatDdMmDashYyyyHhMmA,
+		EnvelopeDistributeDateFormatDdMmDashYyyyHHmm,
+		EnvelopeDistributeDateFormatMmDdSlashYyyyHhMmA,
+		EnvelopeDistributeDateFormatMmDdSlashYyyyHHmm,
+		EnvelopeDistributeDateFormatDdDotMmDotYyyy,
+		EnvelopeDistributeDateFormatDdDotMmDotYyyyHHmm,
+		EnvelopeDistributeDateFormatYyyyMMddHHmm,
+		EnvelopeDistributeDateFormatYyMMddHhMmA,
+		EnvelopeDistributeDateFormatYyMMddHHmm,
+		EnvelopeDistributeDateFormatYyyyMMddHHmmss,
+		EnvelopeDistributeDateFormatMmmmDdCommaYyyyHhMmA,
+		EnvelopeDistributeDateFormatMmmmDdCommaYyyyHHmm,
+		EnvelopeDistributeDateFormatEeeeMmmmDdCommaYyyyHhMmA,
+		EnvelopeDistributeDateFormatEeeeMmmmDdCommaYyyyHHmm,
+		EnvelopeDistributeDateFormatIso8601Full,
+	}
+}
 func (e *EnvelopeDistributeDateFormat) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -51,6 +85,8 @@ func (e *EnvelopeDistributeDateFormat) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "dd/MM/yyyy":
 		fallthrough
+	case "dd-MM-yyyy":
+		fallthrough
 	case "MM/dd/yyyy":
 		fallthrough
 	case "yy-MM-dd":
@@ -62,6 +98,10 @@ func (e *EnvelopeDistributeDateFormat) UnmarshalJSON(data []byte) error {
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
 	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "dd-MM-yyyy hh:mm a":
+		fallthrough
+	case "dd-MM-yyyy HH:mm":
 		fallthrough
 	case "MM/dd/yyyy hh:mm a":
 		fallthrough
@@ -105,6 +145,14 @@ const (
 func (e EnvelopeDistributeDistributionMethod) ToPointer() *EnvelopeDistributeDistributionMethod {
 	return &e
 }
+
+// EnvelopeDistributeDistributionMethodValues returns every known EnvelopeDistributeDistributionMethod value in schema order.
+func EnvelopeDistributeDistributionMethodValues() []EnvelopeDistributeDistributionMethod {
+	return []EnvelopeDistributeDistributionMethod{
+		EnvelopeDistributeDistributionMethodEmail,
+		EnvelopeDistributeDistributionMethodNone,
+	}
+}
 func (e *EnvelopeDistributeDistributionMethod) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -139,6 +187,23 @@ const (
 
 func (e EnvelopeDistributeLanguage) ToPointer() *EnvelopeDistributeLanguage {
 	return &e
+}
+
+// EnvelopeDistributeLanguageValues returns every known EnvelopeDistributeLanguage value in schema order.
+func EnvelopeDistributeLanguageValues() []EnvelopeDistributeLanguage {
+	return []EnvelopeDistributeLanguage{
+		EnvelopeDistributeLanguageDe,
+		EnvelopeDistributeLanguageEn,
+		EnvelopeDistributeLanguageFr,
+		EnvelopeDistributeLanguageEs,
+		EnvelopeDistributeLanguageIt,
+		EnvelopeDistributeLanguageNl,
+		EnvelopeDistributeLanguagePl,
+		EnvelopeDistributeLanguagePtBr,
+		EnvelopeDistributeLanguageJa,
+		EnvelopeDistributeLanguageKo,
+		EnvelopeDistributeLanguageZh,
+	}
 }
 func (e *EnvelopeDistributeLanguage) UnmarshalJSON(data []byte) error {
 	var v string
@@ -182,6 +247,8 @@ type EnvelopeDistributeEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (e EnvelopeDistributeEmailSettings) MarshalJSON() ([]byte, error) {
@@ -242,6 +309,20 @@ func (e *EnvelopeDistributeEmailSettings) GetOwnerDocumentCompleted() *bool {
 		return nil
 	}
 	return e.OwnerDocumentCompleted
+}
+
+func (e *EnvelopeDistributeEmailSettings) GetOwnerRecipientExpired() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.OwnerRecipientExpired
+}
+
+func (e *EnvelopeDistributeEmailSettings) GetOwnerDocumentCreated() *bool {
+	if e == nil {
+		return nil
+	}
+	return e.OwnerDocumentCreated
 }
 
 type EnvelopeDistributeMeta struct {
@@ -358,6 +439,17 @@ const (
 
 func (e EnvelopeDistributeRole) ToPointer() *EnvelopeDistributeRole {
 	return &e
+}
+
+// EnvelopeDistributeRoleValues returns every known EnvelopeDistributeRole value in schema order.
+func EnvelopeDistributeRoleValues() []EnvelopeDistributeRole {
+	return []EnvelopeDistributeRole{
+		EnvelopeDistributeRoleCc,
+		EnvelopeDistributeRoleSigner,
+		EnvelopeDistributeRoleViewer,
+		EnvelopeDistributeRoleApprover,
+		EnvelopeDistributeRoleAssistant,
+	}
 }
 func (e *EnvelopeDistributeRole) UnmarshalJSON(data []byte) error {
 	var v string

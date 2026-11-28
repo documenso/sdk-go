@@ -20,6 +20,15 @@ const (
 func (e TemplateCreateTemplateVisibility) ToPointer() *TemplateCreateTemplateVisibility {
 	return &e
 }
+
+// TemplateCreateTemplateVisibilityValues returns every known TemplateCreateTemplateVisibility value in schema order.
+func TemplateCreateTemplateVisibilityValues() []TemplateCreateTemplateVisibility {
+	return []TemplateCreateTemplateVisibility{
+		TemplateCreateTemplateVisibilityEveryone,
+		TemplateCreateTemplateVisibilityManagerAndAbove,
+		TemplateCreateTemplateVisibilityAdmin,
+	}
+}
 func (e *TemplateCreateTemplateVisibility) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -47,6 +56,14 @@ const (
 
 func (e TemplateCreateTemplateGlobalAccessAuth) ToPointer() *TemplateCreateTemplateGlobalAccessAuth {
 	return &e
+}
+
+// TemplateCreateTemplateGlobalAccessAuthValues returns every known TemplateCreateTemplateGlobalAccessAuth value in schema order.
+func TemplateCreateTemplateGlobalAccessAuthValues() []TemplateCreateTemplateGlobalAccessAuth {
+	return []TemplateCreateTemplateGlobalAccessAuth{
+		TemplateCreateTemplateGlobalAccessAuthAccount,
+		TemplateCreateTemplateGlobalAccessAuthTwoFactorAuth,
+	}
 }
 func (e *TemplateCreateTemplateGlobalAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -76,6 +93,16 @@ const (
 func (e TemplateCreateTemplateGlobalActionAuth) ToPointer() *TemplateCreateTemplateGlobalActionAuth {
 	return &e
 }
+
+// TemplateCreateTemplateGlobalActionAuthValues returns every known TemplateCreateTemplateGlobalActionAuth value in schema order.
+func TemplateCreateTemplateGlobalActionAuthValues() []TemplateCreateTemplateGlobalActionAuth {
+	return []TemplateCreateTemplateGlobalActionAuth{
+		TemplateCreateTemplateGlobalActionAuthAccount,
+		TemplateCreateTemplateGlobalActionAuthPasskey,
+		TemplateCreateTemplateGlobalActionAuthTwoFactorAuth,
+		TemplateCreateTemplateGlobalActionAuthPassword,
+	}
+}
 func (e *TemplateCreateTemplateGlobalActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -99,12 +126,22 @@ func (e *TemplateCreateTemplateGlobalActionAuth) UnmarshalJSON(data []byte) erro
 type TemplateCreateTemplateType string
 
 const (
-	TemplateCreateTemplateTypePublic  TemplateCreateTemplateType = "PUBLIC"
-	TemplateCreateTemplateTypePrivate TemplateCreateTemplateType = "PRIVATE"
+	TemplateCreateTemplateTypePublic       TemplateCreateTemplateType = "PUBLIC"
+	TemplateCreateTemplateTypePrivate      TemplateCreateTemplateType = "PRIVATE"
+	TemplateCreateTemplateTypeOrganisation TemplateCreateTemplateType = "ORGANISATION"
 )
 
 func (e TemplateCreateTemplateType) ToPointer() *TemplateCreateTemplateType {
 	return &e
+}
+
+// TemplateCreateTemplateTypeValues returns every known TemplateCreateTemplateType value in schema order.
+func TemplateCreateTemplateTypeValues() []TemplateCreateTemplateType {
+	return []TemplateCreateTemplateType{
+		TemplateCreateTemplateTypePublic,
+		TemplateCreateTemplateTypePrivate,
+		TemplateCreateTemplateTypeOrganisation,
+	}
 }
 func (e *TemplateCreateTemplateType) UnmarshalJSON(data []byte) error {
 	var v string
@@ -115,6 +152,8 @@ func (e *TemplateCreateTemplateType) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
 		*e = TemplateCreateTemplateType(v)
 		return nil
 	default:
@@ -128,12 +167,15 @@ const (
 	TemplateCreateTemplateDateFormatYyyyMMddHhMmA            TemplateCreateTemplateDateFormat = "yyyy-MM-dd hh:mm a"
 	TemplateCreateTemplateDateFormatYyyyMMdd                 TemplateCreateTemplateDateFormat = "yyyy-MM-dd"
 	TemplateCreateTemplateDateFormatDdMmSlashYyyy            TemplateCreateTemplateDateFormat = "dd/MM/yyyy"
+	TemplateCreateTemplateDateFormatDdMmDashYyyy             TemplateCreateTemplateDateFormat = "dd-MM-yyyy"
 	TemplateCreateTemplateDateFormatMmDdSlashYyyy            TemplateCreateTemplateDateFormat = "MM/dd/yyyy"
 	TemplateCreateTemplateDateFormatYyMMdd                   TemplateCreateTemplateDateFormat = "yy-MM-dd"
 	TemplateCreateTemplateDateFormatMmmmDdCommaYyyy          TemplateCreateTemplateDateFormat = "MMMM dd, yyyy"
 	TemplateCreateTemplateDateFormatEeeeMmmmDdCommaYyyy      TemplateCreateTemplateDateFormat = "EEEE, MMMM dd, yyyy"
 	TemplateCreateTemplateDateFormatDdMmSlashYyyyHhMmA       TemplateCreateTemplateDateFormat = "dd/MM/yyyy hh:mm a"
 	TemplateCreateTemplateDateFormatDdMmSlashYyyyHHmm        TemplateCreateTemplateDateFormat = "dd/MM/yyyy HH:mm"
+	TemplateCreateTemplateDateFormatDdMmDashYyyyHhMmA        TemplateCreateTemplateDateFormat = "dd-MM-yyyy hh:mm a"
+	TemplateCreateTemplateDateFormatDdMmDashYyyyHHmm         TemplateCreateTemplateDateFormat = "dd-MM-yyyy HH:mm"
 	TemplateCreateTemplateDateFormatMmDdSlashYyyyHhMmA       TemplateCreateTemplateDateFormat = "MM/dd/yyyy hh:mm a"
 	TemplateCreateTemplateDateFormatMmDdSlashYyyyHHmm        TemplateCreateTemplateDateFormat = "MM/dd/yyyy HH:mm"
 	TemplateCreateTemplateDateFormatDdDotMmDotYyyy           TemplateCreateTemplateDateFormat = "dd.MM.yyyy"
@@ -152,6 +194,37 @@ const (
 func (e TemplateCreateTemplateDateFormat) ToPointer() *TemplateCreateTemplateDateFormat {
 	return &e
 }
+
+// TemplateCreateTemplateDateFormatValues returns every known TemplateCreateTemplateDateFormat value in schema order.
+func TemplateCreateTemplateDateFormatValues() []TemplateCreateTemplateDateFormat {
+	return []TemplateCreateTemplateDateFormat{
+		TemplateCreateTemplateDateFormatYyyyMMddHhMmA,
+		TemplateCreateTemplateDateFormatYyyyMMdd,
+		TemplateCreateTemplateDateFormatDdMmSlashYyyy,
+		TemplateCreateTemplateDateFormatDdMmDashYyyy,
+		TemplateCreateTemplateDateFormatMmDdSlashYyyy,
+		TemplateCreateTemplateDateFormatYyMMdd,
+		TemplateCreateTemplateDateFormatMmmmDdCommaYyyy,
+		TemplateCreateTemplateDateFormatEeeeMmmmDdCommaYyyy,
+		TemplateCreateTemplateDateFormatDdMmSlashYyyyHhMmA,
+		TemplateCreateTemplateDateFormatDdMmSlashYyyyHHmm,
+		TemplateCreateTemplateDateFormatDdMmDashYyyyHhMmA,
+		TemplateCreateTemplateDateFormatDdMmDashYyyyHHmm,
+		TemplateCreateTemplateDateFormatMmDdSlashYyyyHhMmA,
+		TemplateCreateTemplateDateFormatMmDdSlashYyyyHHmm,
+		TemplateCreateTemplateDateFormatDdDotMmDotYyyy,
+		TemplateCreateTemplateDateFormatDdDotMmDotYyyyHHmm,
+		TemplateCreateTemplateDateFormatYyyyMMddHHmm,
+		TemplateCreateTemplateDateFormatYyMMddHhMmA,
+		TemplateCreateTemplateDateFormatYyMMddHHmm,
+		TemplateCreateTemplateDateFormatYyyyMMddHHmmss,
+		TemplateCreateTemplateDateFormatMmmmDdCommaYyyyHhMmA,
+		TemplateCreateTemplateDateFormatMmmmDdCommaYyyyHHmm,
+		TemplateCreateTemplateDateFormatEeeeMmmmDdCommaYyyyHhMmA,
+		TemplateCreateTemplateDateFormatEeeeMmmmDdCommaYyyyHHmm,
+		TemplateCreateTemplateDateFormatIso8601Full,
+	}
+}
 func (e *TemplateCreateTemplateDateFormat) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -164,6 +237,8 @@ func (e *TemplateCreateTemplateDateFormat) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "dd/MM/yyyy":
 		fallthrough
+	case "dd-MM-yyyy":
+		fallthrough
 	case "MM/dd/yyyy":
 		fallthrough
 	case "yy-MM-dd":
@@ -175,6 +250,10 @@ func (e *TemplateCreateTemplateDateFormat) UnmarshalJSON(data []byte) error {
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
 	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "dd-MM-yyyy hh:mm a":
+		fallthrough
+	case "dd-MM-yyyy HH:mm":
 		fallthrough
 	case "MM/dd/yyyy hh:mm a":
 		fallthrough
@@ -218,6 +297,14 @@ const (
 func (e TemplateCreateTemplateDistributionMethod) ToPointer() *TemplateCreateTemplateDistributionMethod {
 	return &e
 }
+
+// TemplateCreateTemplateDistributionMethodValues returns every known TemplateCreateTemplateDistributionMethod value in schema order.
+func TemplateCreateTemplateDistributionMethodValues() []TemplateCreateTemplateDistributionMethod {
+	return []TemplateCreateTemplateDistributionMethod{
+		TemplateCreateTemplateDistributionMethodEmail,
+		TemplateCreateTemplateDistributionMethodNone,
+	}
+}
 func (e *TemplateCreateTemplateDistributionMethod) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -242,6 +329,8 @@ type TemplateCreateTemplateEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (t TemplateCreateTemplateEmailSettings) MarshalJSON() ([]byte, error) {
@@ -304,6 +393,20 @@ func (t *TemplateCreateTemplateEmailSettings) GetOwnerDocumentCompleted() *bool 
 	return t.OwnerDocumentCompleted
 }
 
+func (t *TemplateCreateTemplateEmailSettings) GetOwnerRecipientExpired() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerRecipientExpired
+}
+
+func (t *TemplateCreateTemplateEmailSettings) GetOwnerDocumentCreated() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerDocumentCreated
+}
+
 type TemplateCreateTemplateLanguage string
 
 const (
@@ -322,6 +425,23 @@ const (
 
 func (e TemplateCreateTemplateLanguage) ToPointer() *TemplateCreateTemplateLanguage {
 	return &e
+}
+
+// TemplateCreateTemplateLanguageValues returns every known TemplateCreateTemplateLanguage value in schema order.
+func TemplateCreateTemplateLanguageValues() []TemplateCreateTemplateLanguage {
+	return []TemplateCreateTemplateLanguage{
+		TemplateCreateTemplateLanguageDe,
+		TemplateCreateTemplateLanguageEn,
+		TemplateCreateTemplateLanguageFr,
+		TemplateCreateTemplateLanguageEs,
+		TemplateCreateTemplateLanguageIt,
+		TemplateCreateTemplateLanguageNl,
+		TemplateCreateTemplateLanguagePl,
+		TemplateCreateTemplateLanguagePtBr,
+		TemplateCreateTemplateLanguageJa,
+		TemplateCreateTemplateLanguageKo,
+		TemplateCreateTemplateLanguageZh,
+	}
 }
 func (e *TemplateCreateTemplateLanguage) UnmarshalJSON(data []byte) error {
 	var v string
@@ -366,6 +486,14 @@ const (
 
 func (e TemplateCreateTemplateSigningOrder) ToPointer() *TemplateCreateTemplateSigningOrder {
 	return &e
+}
+
+// TemplateCreateTemplateSigningOrderValues returns every known TemplateCreateTemplateSigningOrder value in schema order.
+func TemplateCreateTemplateSigningOrderValues() []TemplateCreateTemplateSigningOrder {
+	return []TemplateCreateTemplateSigningOrder{
+		TemplateCreateTemplateSigningOrderParallel,
+		TemplateCreateTemplateSigningOrderSequential,
+	}
 }
 func (e *TemplateCreateTemplateSigningOrder) UnmarshalJSON(data []byte) error {
 	var v string
@@ -514,6 +642,13 @@ const (
 
 func (e TemplateCreateTemplateTypeLink) ToPointer() *TemplateCreateTemplateTypeLink {
 	return &e
+}
+
+// TemplateCreateTemplateTypeLinkValues returns every known TemplateCreateTemplateTypeLink value in schema order.
+func TemplateCreateTemplateTypeLinkValues() []TemplateCreateTemplateTypeLink {
+	return []TemplateCreateTemplateTypeLink{
+		TemplateCreateTemplateTypeLinkLink,
+	}
 }
 func (e *TemplateCreateTemplateTypeLink) UnmarshalJSON(data []byte) error {
 	var v string

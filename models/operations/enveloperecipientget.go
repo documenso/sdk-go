@@ -34,6 +34,17 @@ const (
 func (e EnvelopeRecipientGetRole) ToPointer() *EnvelopeRecipientGetRole {
 	return &e
 }
+
+// EnvelopeRecipientGetRoleValues returns every known EnvelopeRecipientGetRole value in schema order.
+func EnvelopeRecipientGetRoleValues() []EnvelopeRecipientGetRole {
+	return []EnvelopeRecipientGetRole{
+		EnvelopeRecipientGetRoleCc,
+		EnvelopeRecipientGetRoleSigner,
+		EnvelopeRecipientGetRoleViewer,
+		EnvelopeRecipientGetRoleApprover,
+		EnvelopeRecipientGetRoleAssistant,
+	}
+}
 func (e *EnvelopeRecipientGetRole) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -66,6 +77,14 @@ const (
 func (e EnvelopeRecipientGetReadStatus) ToPointer() *EnvelopeRecipientGetReadStatus {
 	return &e
 }
+
+// EnvelopeRecipientGetReadStatusValues returns every known EnvelopeRecipientGetReadStatus value in schema order.
+func EnvelopeRecipientGetReadStatusValues() []EnvelopeRecipientGetReadStatus {
+	return []EnvelopeRecipientGetReadStatus{
+		EnvelopeRecipientGetReadStatusNotOpened,
+		EnvelopeRecipientGetReadStatusOpened,
+	}
+}
 func (e *EnvelopeRecipientGetReadStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -92,6 +111,15 @@ const (
 
 func (e EnvelopeRecipientGetSigningStatus) ToPointer() *EnvelopeRecipientGetSigningStatus {
 	return &e
+}
+
+// EnvelopeRecipientGetSigningStatusValues returns every known EnvelopeRecipientGetSigningStatus value in schema order.
+func EnvelopeRecipientGetSigningStatusValues() []EnvelopeRecipientGetSigningStatus {
+	return []EnvelopeRecipientGetSigningStatus{
+		EnvelopeRecipientGetSigningStatusNotSigned,
+		EnvelopeRecipientGetSigningStatusSigned,
+		EnvelopeRecipientGetSigningStatusRejected,
+	}
 }
 func (e *EnvelopeRecipientGetSigningStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -121,6 +149,14 @@ const (
 func (e EnvelopeRecipientGetSendStatus) ToPointer() *EnvelopeRecipientGetSendStatus {
 	return &e
 }
+
+// EnvelopeRecipientGetSendStatusValues returns every known EnvelopeRecipientGetSendStatus value in schema order.
+func EnvelopeRecipientGetSendStatusValues() []EnvelopeRecipientGetSendStatus {
+	return []EnvelopeRecipientGetSendStatus{
+		EnvelopeRecipientGetSendStatusNotSent,
+		EnvelopeRecipientGetSendStatusSent,
+	}
+}
 func (e *EnvelopeRecipientGetSendStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -146,6 +182,14 @@ const (
 
 func (e EnvelopeRecipientGetAccessAuth) ToPointer() *EnvelopeRecipientGetAccessAuth {
 	return &e
+}
+
+// EnvelopeRecipientGetAccessAuthValues returns every known EnvelopeRecipientGetAccessAuth value in schema order.
+func EnvelopeRecipientGetAccessAuthValues() []EnvelopeRecipientGetAccessAuth {
+	return []EnvelopeRecipientGetAccessAuth{
+		EnvelopeRecipientGetAccessAuthAccount,
+		EnvelopeRecipientGetAccessAuthTwoFactorAuth,
+	}
 }
 func (e *EnvelopeRecipientGetAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -175,6 +219,17 @@ const (
 
 func (e EnvelopeRecipientGetActionAuth) ToPointer() *EnvelopeRecipientGetActionAuth {
 	return &e
+}
+
+// EnvelopeRecipientGetActionAuthValues returns every known EnvelopeRecipientGetActionAuth value in schema order.
+func EnvelopeRecipientGetActionAuthValues() []EnvelopeRecipientGetActionAuth {
+	return []EnvelopeRecipientGetActionAuth{
+		EnvelopeRecipientGetActionAuthAccount,
+		EnvelopeRecipientGetActionAuthPasskey,
+		EnvelopeRecipientGetActionAuthTwoFactorAuth,
+		EnvelopeRecipientGetActionAuthPassword,
+		EnvelopeRecipientGetActionAuthExplicitNone,
+	}
 }
 func (e *EnvelopeRecipientGetActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -236,6 +291,23 @@ const (
 func (e EnvelopeRecipientGetType) ToPointer() *EnvelopeRecipientGetType {
 	return &e
 }
+
+// EnvelopeRecipientGetTypeValues returns every known EnvelopeRecipientGetType value in schema order.
+func EnvelopeRecipientGetTypeValues() []EnvelopeRecipientGetType {
+	return []EnvelopeRecipientGetType{
+		EnvelopeRecipientGetTypeSignature,
+		EnvelopeRecipientGetTypeFreeSignature,
+		EnvelopeRecipientGetTypeInitials,
+		EnvelopeRecipientGetTypeName,
+		EnvelopeRecipientGetTypeEmail,
+		EnvelopeRecipientGetTypeDate,
+		EnvelopeRecipientGetTypeText,
+		EnvelopeRecipientGetTypeNumber,
+		EnvelopeRecipientGetTypeRadio,
+		EnvelopeRecipientGetTypeCheckbox,
+		EnvelopeRecipientGetTypeDropdown,
+	}
+}
 func (e *EnvelopeRecipientGetType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -270,6 +342,48 @@ func (e *EnvelopeRecipientGetType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type EnvelopeRecipientGetOverflow10 string
+
+const (
+	EnvelopeRecipientGetOverflow10Auto       EnvelopeRecipientGetOverflow10 = "auto"
+	EnvelopeRecipientGetOverflow10Horizontal EnvelopeRecipientGetOverflow10 = "horizontal"
+	EnvelopeRecipientGetOverflow10Vertical   EnvelopeRecipientGetOverflow10 = "vertical"
+	EnvelopeRecipientGetOverflow10Crop       EnvelopeRecipientGetOverflow10 = "crop"
+)
+
+func (e EnvelopeRecipientGetOverflow10) ToPointer() *EnvelopeRecipientGetOverflow10 {
+	return &e
+}
+
+// EnvelopeRecipientGetOverflow10Values returns every known EnvelopeRecipientGetOverflow10 value in schema order.
+func EnvelopeRecipientGetOverflow10Values() []EnvelopeRecipientGetOverflow10 {
+	return []EnvelopeRecipientGetOverflow10{
+		EnvelopeRecipientGetOverflow10Auto,
+		EnvelopeRecipientGetOverflow10Horizontal,
+		EnvelopeRecipientGetOverflow10Vertical,
+		EnvelopeRecipientGetOverflow10Crop,
+	}
+}
+func (e *EnvelopeRecipientGetOverflow10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeRecipientGetOverflow10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeRecipientGetOverflow10: %v", v)
+	}
+}
+
 type EnvelopeRecipientGetFieldMetaTypeDropdown string
 
 const (
@@ -278,6 +392,13 @@ const (
 
 func (e EnvelopeRecipientGetFieldMetaTypeDropdown) ToPointer() *EnvelopeRecipientGetFieldMetaTypeDropdown {
 	return &e
+}
+
+// EnvelopeRecipientGetFieldMetaTypeDropdownValues returns every known EnvelopeRecipientGetFieldMetaTypeDropdown value in schema order.
+func EnvelopeRecipientGetFieldMetaTypeDropdownValues() []EnvelopeRecipientGetFieldMetaTypeDropdown {
+	return []EnvelopeRecipientGetFieldMetaTypeDropdown{
+		EnvelopeRecipientGetFieldMetaTypeDropdownDropdown,
+	}
 }
 func (e *EnvelopeRecipientGetFieldMetaTypeDropdown) UnmarshalJSON(data []byte) error {
 	var v string
@@ -315,12 +436,16 @@ func (e *EnvelopeRecipientGetValue3) GetValue() string {
 	return e.Value
 }
 
+// #region class-body-enveloperecipientgetvalue3
+// #endregion class-body-enveloperecipientgetvalue3
+
 type EnvelopeRecipientGetFieldMetaDropdown struct {
 	Label        *string                                   `json:"label,omitempty"`
 	Placeholder  *string                                   `json:"placeholder,omitempty"`
 	Required     *bool                                     `json:"required,omitempty"`
 	ReadOnly     *bool                                     `json:"readOnly,omitempty"`
 	FontSize     *float64                                  `default:"12" json:"fontSize"`
+	Overflow     *EnvelopeRecipientGetOverflow10           `json:"overflow,omitempty"`
 	Type         EnvelopeRecipientGetFieldMetaTypeDropdown `json:"type"`
 	Values       []EnvelopeRecipientGetValue3              `json:"values,omitempty"`
 	DefaultValue *string                                   `json:"defaultValue,omitempty"`
@@ -372,6 +497,13 @@ func (e *EnvelopeRecipientGetFieldMetaDropdown) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeRecipientGetFieldMetaDropdown) GetOverflow() *EnvelopeRecipientGetOverflow10 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeRecipientGetFieldMetaDropdown) GetType() EnvelopeRecipientGetFieldMetaTypeDropdown {
 	if e == nil {
 		return EnvelopeRecipientGetFieldMetaTypeDropdown("")
@@ -393,6 +525,48 @@ func (e *EnvelopeRecipientGetFieldMetaDropdown) GetDefaultValue() *string {
 	return e.DefaultValue
 }
 
+type EnvelopeRecipientGetOverflow9 string
+
+const (
+	EnvelopeRecipientGetOverflow9Auto       EnvelopeRecipientGetOverflow9 = "auto"
+	EnvelopeRecipientGetOverflow9Horizontal EnvelopeRecipientGetOverflow9 = "horizontal"
+	EnvelopeRecipientGetOverflow9Vertical   EnvelopeRecipientGetOverflow9 = "vertical"
+	EnvelopeRecipientGetOverflow9Crop       EnvelopeRecipientGetOverflow9 = "crop"
+)
+
+func (e EnvelopeRecipientGetOverflow9) ToPointer() *EnvelopeRecipientGetOverflow9 {
+	return &e
+}
+
+// EnvelopeRecipientGetOverflow9Values returns every known EnvelopeRecipientGetOverflow9 value in schema order.
+func EnvelopeRecipientGetOverflow9Values() []EnvelopeRecipientGetOverflow9 {
+	return []EnvelopeRecipientGetOverflow9{
+		EnvelopeRecipientGetOverflow9Auto,
+		EnvelopeRecipientGetOverflow9Horizontal,
+		EnvelopeRecipientGetOverflow9Vertical,
+		EnvelopeRecipientGetOverflow9Crop,
+	}
+}
+func (e *EnvelopeRecipientGetOverflow9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeRecipientGetOverflow9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeRecipientGetOverflow9: %v", v)
+	}
+}
+
 type EnvelopeRecipientGetFieldMetaTypeCheckbox string
 
 const (
@@ -401,6 +575,13 @@ const (
 
 func (e EnvelopeRecipientGetFieldMetaTypeCheckbox) ToPointer() *EnvelopeRecipientGetFieldMetaTypeCheckbox {
 	return &e
+}
+
+// EnvelopeRecipientGetFieldMetaTypeCheckboxValues returns every known EnvelopeRecipientGetFieldMetaTypeCheckbox value in schema order.
+func EnvelopeRecipientGetFieldMetaTypeCheckboxValues() []EnvelopeRecipientGetFieldMetaTypeCheckbox {
+	return []EnvelopeRecipientGetFieldMetaTypeCheckbox{
+		EnvelopeRecipientGetFieldMetaTypeCheckboxCheckbox,
+	}
 }
 func (e *EnvelopeRecipientGetFieldMetaTypeCheckbox) UnmarshalJSON(data []byte) error {
 	var v string
@@ -454,6 +635,9 @@ func (e *EnvelopeRecipientGetValue2) GetValue() string {
 	return e.Value
 }
 
+// #region class-body-enveloperecipientgetvalue2
+// #endregion class-body-enveloperecipientgetvalue2
+
 type EnvelopeRecipientGetDirection2 string
 
 const (
@@ -463,6 +647,14 @@ const (
 
 func (e EnvelopeRecipientGetDirection2) ToPointer() *EnvelopeRecipientGetDirection2 {
 	return &e
+}
+
+// EnvelopeRecipientGetDirection2Values returns every known EnvelopeRecipientGetDirection2 value in schema order.
+func EnvelopeRecipientGetDirection2Values() []EnvelopeRecipientGetDirection2 {
+	return []EnvelopeRecipientGetDirection2{
+		EnvelopeRecipientGetDirection2Vertical,
+		EnvelopeRecipientGetDirection2Horizontal,
+	}
 }
 func (e *EnvelopeRecipientGetDirection2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -486,6 +678,7 @@ type EnvelopeRecipientGetFieldMetaCheckbox struct {
 	Required         *bool                                     `json:"required,omitempty"`
 	ReadOnly         *bool                                     `json:"readOnly,omitempty"`
 	FontSize         *float64                                  `default:"12" json:"fontSize"`
+	Overflow         *EnvelopeRecipientGetOverflow9            `json:"overflow,omitempty"`
 	Type             EnvelopeRecipientGetFieldMetaTypeCheckbox `json:"type"`
 	Values           []EnvelopeRecipientGetValue2              `json:"values,omitempty"`
 	ValidationRule   *string                                   `json:"validationRule,omitempty"`
@@ -539,6 +732,13 @@ func (e *EnvelopeRecipientGetFieldMetaCheckbox) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeRecipientGetFieldMetaCheckbox) GetOverflow() *EnvelopeRecipientGetOverflow9 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeRecipientGetFieldMetaCheckbox) GetType() EnvelopeRecipientGetFieldMetaTypeCheckbox {
 	if e == nil {
 		return EnvelopeRecipientGetFieldMetaTypeCheckbox("")
@@ -574,6 +774,48 @@ func (e *EnvelopeRecipientGetFieldMetaCheckbox) GetDirection() *EnvelopeRecipien
 	return e.Direction
 }
 
+type EnvelopeRecipientGetOverflow8 string
+
+const (
+	EnvelopeRecipientGetOverflow8Auto       EnvelopeRecipientGetOverflow8 = "auto"
+	EnvelopeRecipientGetOverflow8Horizontal EnvelopeRecipientGetOverflow8 = "horizontal"
+	EnvelopeRecipientGetOverflow8Vertical   EnvelopeRecipientGetOverflow8 = "vertical"
+	EnvelopeRecipientGetOverflow8Crop       EnvelopeRecipientGetOverflow8 = "crop"
+)
+
+func (e EnvelopeRecipientGetOverflow8) ToPointer() *EnvelopeRecipientGetOverflow8 {
+	return &e
+}
+
+// EnvelopeRecipientGetOverflow8Values returns every known EnvelopeRecipientGetOverflow8 value in schema order.
+func EnvelopeRecipientGetOverflow8Values() []EnvelopeRecipientGetOverflow8 {
+	return []EnvelopeRecipientGetOverflow8{
+		EnvelopeRecipientGetOverflow8Auto,
+		EnvelopeRecipientGetOverflow8Horizontal,
+		EnvelopeRecipientGetOverflow8Vertical,
+		EnvelopeRecipientGetOverflow8Crop,
+	}
+}
+func (e *EnvelopeRecipientGetOverflow8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeRecipientGetOverflow8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeRecipientGetOverflow8: %v", v)
+	}
+}
+
 type EnvelopeRecipientGetFieldMetaTypeRadio string
 
 const (
@@ -582,6 +824,13 @@ const (
 
 func (e EnvelopeRecipientGetFieldMetaTypeRadio) ToPointer() *EnvelopeRecipientGetFieldMetaTypeRadio {
 	return &e
+}
+
+// EnvelopeRecipientGetFieldMetaTypeRadioValues returns every known EnvelopeRecipientGetFieldMetaTypeRadio value in schema order.
+func EnvelopeRecipientGetFieldMetaTypeRadioValues() []EnvelopeRecipientGetFieldMetaTypeRadio {
+	return []EnvelopeRecipientGetFieldMetaTypeRadio{
+		EnvelopeRecipientGetFieldMetaTypeRadioRadio,
+	}
 }
 func (e *EnvelopeRecipientGetFieldMetaTypeRadio) UnmarshalJSON(data []byte) error {
 	var v string
@@ -635,6 +884,9 @@ func (e *EnvelopeRecipientGetValue1) GetValue() string {
 	return e.Value
 }
 
+// #region class-body-enveloperecipientgetvalue1
+// #endregion class-body-enveloperecipientgetvalue1
+
 type EnvelopeRecipientGetDirection1 string
 
 const (
@@ -644,6 +896,14 @@ const (
 
 func (e EnvelopeRecipientGetDirection1) ToPointer() *EnvelopeRecipientGetDirection1 {
 	return &e
+}
+
+// EnvelopeRecipientGetDirection1Values returns every known EnvelopeRecipientGetDirection1 value in schema order.
+func EnvelopeRecipientGetDirection1Values() []EnvelopeRecipientGetDirection1 {
+	return []EnvelopeRecipientGetDirection1{
+		EnvelopeRecipientGetDirection1Vertical,
+		EnvelopeRecipientGetDirection1Horizontal,
+	}
 }
 func (e *EnvelopeRecipientGetDirection1) UnmarshalJSON(data []byte) error {
 	var v string
@@ -667,6 +927,7 @@ type EnvelopeRecipientGetFieldMetaRadio struct {
 	Required    *bool                                  `json:"required,omitempty"`
 	ReadOnly    *bool                                  `json:"readOnly,omitempty"`
 	FontSize    *float64                               `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeRecipientGetOverflow8         `json:"overflow,omitempty"`
 	Type        EnvelopeRecipientGetFieldMetaTypeRadio `json:"type"`
 	Values      []EnvelopeRecipientGetValue1           `json:"values,omitempty"`
 	Direction   *EnvelopeRecipientGetDirection1        `default:"vertical" json:"direction"`
@@ -718,6 +979,13 @@ func (e *EnvelopeRecipientGetFieldMetaRadio) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeRecipientGetFieldMetaRadio) GetOverflow() *EnvelopeRecipientGetOverflow8 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeRecipientGetFieldMetaRadio) GetType() EnvelopeRecipientGetFieldMetaTypeRadio {
 	if e == nil {
 		return EnvelopeRecipientGetFieldMetaTypeRadio("")
@@ -739,6 +1007,48 @@ func (e *EnvelopeRecipientGetFieldMetaRadio) GetDirection() *EnvelopeRecipientGe
 	return e.Direction
 }
 
+type EnvelopeRecipientGetOverflow7 string
+
+const (
+	EnvelopeRecipientGetOverflow7Auto       EnvelopeRecipientGetOverflow7 = "auto"
+	EnvelopeRecipientGetOverflow7Horizontal EnvelopeRecipientGetOverflow7 = "horizontal"
+	EnvelopeRecipientGetOverflow7Vertical   EnvelopeRecipientGetOverflow7 = "vertical"
+	EnvelopeRecipientGetOverflow7Crop       EnvelopeRecipientGetOverflow7 = "crop"
+)
+
+func (e EnvelopeRecipientGetOverflow7) ToPointer() *EnvelopeRecipientGetOverflow7 {
+	return &e
+}
+
+// EnvelopeRecipientGetOverflow7Values returns every known EnvelopeRecipientGetOverflow7 value in schema order.
+func EnvelopeRecipientGetOverflow7Values() []EnvelopeRecipientGetOverflow7 {
+	return []EnvelopeRecipientGetOverflow7{
+		EnvelopeRecipientGetOverflow7Auto,
+		EnvelopeRecipientGetOverflow7Horizontal,
+		EnvelopeRecipientGetOverflow7Vertical,
+		EnvelopeRecipientGetOverflow7Crop,
+	}
+}
+func (e *EnvelopeRecipientGetOverflow7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeRecipientGetOverflow7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeRecipientGetOverflow7: %v", v)
+	}
+}
+
 type EnvelopeRecipientGetFieldMetaTypeNumber string
 
 const (
@@ -747,6 +1057,13 @@ const (
 
 func (e EnvelopeRecipientGetFieldMetaTypeNumber) ToPointer() *EnvelopeRecipientGetFieldMetaTypeNumber {
 	return &e
+}
+
+// EnvelopeRecipientGetFieldMetaTypeNumberValues returns every known EnvelopeRecipientGetFieldMetaTypeNumber value in schema order.
+func EnvelopeRecipientGetFieldMetaTypeNumberValues() []EnvelopeRecipientGetFieldMetaTypeNumber {
+	return []EnvelopeRecipientGetFieldMetaTypeNumber{
+		EnvelopeRecipientGetFieldMetaTypeNumberNumber,
+	}
 }
 func (e *EnvelopeRecipientGetFieldMetaTypeNumber) UnmarshalJSON(data []byte) error {
 	var v string
@@ -772,6 +1089,15 @@ const (
 
 func (e EnvelopeRecipientGetTextAlign6) ToPointer() *EnvelopeRecipientGetTextAlign6 {
 	return &e
+}
+
+// EnvelopeRecipientGetTextAlign6Values returns every known EnvelopeRecipientGetTextAlign6 value in schema order.
+func EnvelopeRecipientGetTextAlign6Values() []EnvelopeRecipientGetTextAlign6 {
+	return []EnvelopeRecipientGetTextAlign6{
+		EnvelopeRecipientGetTextAlign6Left,
+		EnvelopeRecipientGetTextAlign6Center,
+		EnvelopeRecipientGetTextAlign6Right,
+	}
 }
 func (e *EnvelopeRecipientGetTextAlign6) UnmarshalJSON(data []byte) error {
 	var v string
@@ -802,6 +1128,15 @@ const (
 func (e EnvelopeRecipientGetVerticalAlign2) ToPointer() *EnvelopeRecipientGetVerticalAlign2 {
 	return &e
 }
+
+// EnvelopeRecipientGetVerticalAlign2Values returns every known EnvelopeRecipientGetVerticalAlign2 value in schema order.
+func EnvelopeRecipientGetVerticalAlign2Values() []EnvelopeRecipientGetVerticalAlign2 {
+	return []EnvelopeRecipientGetVerticalAlign2{
+		EnvelopeRecipientGetVerticalAlign2Top,
+		EnvelopeRecipientGetVerticalAlign2Middle,
+		EnvelopeRecipientGetVerticalAlign2Bottom,
+	}
+}
 func (e *EnvelopeRecipientGetVerticalAlign2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -826,6 +1161,7 @@ type EnvelopeRecipientGetFieldMetaNumber struct {
 	Required      *bool                                   `json:"required,omitempty"`
 	ReadOnly      *bool                                   `json:"readOnly,omitempty"`
 	FontSize      *float64                                `default:"12" json:"fontSize"`
+	Overflow      *EnvelopeRecipientGetOverflow7          `json:"overflow,omitempty"`
 	Type          EnvelopeRecipientGetFieldMetaTypeNumber `json:"type"`
 	NumberFormat  *string                                 `json:"numberFormat,omitempty"`
 	Value         *string                                 `json:"value,omitempty"`
@@ -881,6 +1217,13 @@ func (e *EnvelopeRecipientGetFieldMetaNumber) GetFontSize() *float64 {
 		return nil
 	}
 	return e.FontSize
+}
+
+func (e *EnvelopeRecipientGetFieldMetaNumber) GetOverflow() *EnvelopeRecipientGetOverflow7 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
 }
 
 func (e *EnvelopeRecipientGetFieldMetaNumber) GetType() EnvelopeRecipientGetFieldMetaTypeNumber {
@@ -946,6 +1289,48 @@ func (e *EnvelopeRecipientGetFieldMetaNumber) GetVerticalAlign() *EnvelopeRecipi
 	return e.VerticalAlign
 }
 
+type EnvelopeRecipientGetOverflow6 string
+
+const (
+	EnvelopeRecipientGetOverflow6Auto       EnvelopeRecipientGetOverflow6 = "auto"
+	EnvelopeRecipientGetOverflow6Horizontal EnvelopeRecipientGetOverflow6 = "horizontal"
+	EnvelopeRecipientGetOverflow6Vertical   EnvelopeRecipientGetOverflow6 = "vertical"
+	EnvelopeRecipientGetOverflow6Crop       EnvelopeRecipientGetOverflow6 = "crop"
+)
+
+func (e EnvelopeRecipientGetOverflow6) ToPointer() *EnvelopeRecipientGetOverflow6 {
+	return &e
+}
+
+// EnvelopeRecipientGetOverflow6Values returns every known EnvelopeRecipientGetOverflow6 value in schema order.
+func EnvelopeRecipientGetOverflow6Values() []EnvelopeRecipientGetOverflow6 {
+	return []EnvelopeRecipientGetOverflow6{
+		EnvelopeRecipientGetOverflow6Auto,
+		EnvelopeRecipientGetOverflow6Horizontal,
+		EnvelopeRecipientGetOverflow6Vertical,
+		EnvelopeRecipientGetOverflow6Crop,
+	}
+}
+func (e *EnvelopeRecipientGetOverflow6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeRecipientGetOverflow6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeRecipientGetOverflow6: %v", v)
+	}
+}
+
 type EnvelopeRecipientGetFieldMetaTypeText string
 
 const (
@@ -954,6 +1339,13 @@ const (
 
 func (e EnvelopeRecipientGetFieldMetaTypeText) ToPointer() *EnvelopeRecipientGetFieldMetaTypeText {
 	return &e
+}
+
+// EnvelopeRecipientGetFieldMetaTypeTextValues returns every known EnvelopeRecipientGetFieldMetaTypeText value in schema order.
+func EnvelopeRecipientGetFieldMetaTypeTextValues() []EnvelopeRecipientGetFieldMetaTypeText {
+	return []EnvelopeRecipientGetFieldMetaTypeText{
+		EnvelopeRecipientGetFieldMetaTypeTextText,
+	}
 }
 func (e *EnvelopeRecipientGetFieldMetaTypeText) UnmarshalJSON(data []byte) error {
 	var v string
@@ -979,6 +1371,15 @@ const (
 
 func (e EnvelopeRecipientGetTextAlign5) ToPointer() *EnvelopeRecipientGetTextAlign5 {
 	return &e
+}
+
+// EnvelopeRecipientGetTextAlign5Values returns every known EnvelopeRecipientGetTextAlign5 value in schema order.
+func EnvelopeRecipientGetTextAlign5Values() []EnvelopeRecipientGetTextAlign5 {
+	return []EnvelopeRecipientGetTextAlign5{
+		EnvelopeRecipientGetTextAlign5Left,
+		EnvelopeRecipientGetTextAlign5Center,
+		EnvelopeRecipientGetTextAlign5Right,
+	}
 }
 func (e *EnvelopeRecipientGetTextAlign5) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1009,6 +1410,15 @@ const (
 func (e EnvelopeRecipientGetVerticalAlign1) ToPointer() *EnvelopeRecipientGetVerticalAlign1 {
 	return &e
 }
+
+// EnvelopeRecipientGetVerticalAlign1Values returns every known EnvelopeRecipientGetVerticalAlign1 value in schema order.
+func EnvelopeRecipientGetVerticalAlign1Values() []EnvelopeRecipientGetVerticalAlign1 {
+	return []EnvelopeRecipientGetVerticalAlign1{
+		EnvelopeRecipientGetVerticalAlign1Top,
+		EnvelopeRecipientGetVerticalAlign1Middle,
+		EnvelopeRecipientGetVerticalAlign1Bottom,
+	}
+}
 func (e *EnvelopeRecipientGetVerticalAlign1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1033,6 +1443,7 @@ type EnvelopeRecipientGetFieldMetaText struct {
 	Required       *bool                                 `json:"required,omitempty"`
 	ReadOnly       *bool                                 `json:"readOnly,omitempty"`
 	FontSize       *float64                              `default:"12" json:"fontSize"`
+	Overflow       *EnvelopeRecipientGetOverflow6        `json:"overflow,omitempty"`
 	Type           EnvelopeRecipientGetFieldMetaTypeText `json:"type"`
 	Text           *string                               `json:"text,omitempty"`
 	CharacterLimit *float64                              `json:"characterLimit,omitempty"`
@@ -1088,6 +1499,13 @@ func (e *EnvelopeRecipientGetFieldMetaText) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeRecipientGetFieldMetaText) GetOverflow() *EnvelopeRecipientGetOverflow6 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeRecipientGetFieldMetaText) GetType() EnvelopeRecipientGetFieldMetaTypeText {
 	if e == nil {
 		return EnvelopeRecipientGetFieldMetaTypeText("")
@@ -1137,6 +1555,48 @@ func (e *EnvelopeRecipientGetFieldMetaText) GetVerticalAlign() *EnvelopeRecipien
 	return e.VerticalAlign
 }
 
+type EnvelopeRecipientGetOverflow5 string
+
+const (
+	EnvelopeRecipientGetOverflow5Auto       EnvelopeRecipientGetOverflow5 = "auto"
+	EnvelopeRecipientGetOverflow5Horizontal EnvelopeRecipientGetOverflow5 = "horizontal"
+	EnvelopeRecipientGetOverflow5Vertical   EnvelopeRecipientGetOverflow5 = "vertical"
+	EnvelopeRecipientGetOverflow5Crop       EnvelopeRecipientGetOverflow5 = "crop"
+)
+
+func (e EnvelopeRecipientGetOverflow5) ToPointer() *EnvelopeRecipientGetOverflow5 {
+	return &e
+}
+
+// EnvelopeRecipientGetOverflow5Values returns every known EnvelopeRecipientGetOverflow5 value in schema order.
+func EnvelopeRecipientGetOverflow5Values() []EnvelopeRecipientGetOverflow5 {
+	return []EnvelopeRecipientGetOverflow5{
+		EnvelopeRecipientGetOverflow5Auto,
+		EnvelopeRecipientGetOverflow5Horizontal,
+		EnvelopeRecipientGetOverflow5Vertical,
+		EnvelopeRecipientGetOverflow5Crop,
+	}
+}
+func (e *EnvelopeRecipientGetOverflow5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeRecipientGetOverflow5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeRecipientGetOverflow5: %v", v)
+	}
+}
+
 type EnvelopeRecipientGetFieldMetaTypeDate string
 
 const (
@@ -1145,6 +1605,13 @@ const (
 
 func (e EnvelopeRecipientGetFieldMetaTypeDate) ToPointer() *EnvelopeRecipientGetFieldMetaTypeDate {
 	return &e
+}
+
+// EnvelopeRecipientGetFieldMetaTypeDateValues returns every known EnvelopeRecipientGetFieldMetaTypeDate value in schema order.
+func EnvelopeRecipientGetFieldMetaTypeDateValues() []EnvelopeRecipientGetFieldMetaTypeDate {
+	return []EnvelopeRecipientGetFieldMetaTypeDate{
+		EnvelopeRecipientGetFieldMetaTypeDateDate,
+	}
 }
 func (e *EnvelopeRecipientGetFieldMetaTypeDate) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1171,6 +1638,15 @@ const (
 func (e EnvelopeRecipientGetTextAlign4) ToPointer() *EnvelopeRecipientGetTextAlign4 {
 	return &e
 }
+
+// EnvelopeRecipientGetTextAlign4Values returns every known EnvelopeRecipientGetTextAlign4 value in schema order.
+func EnvelopeRecipientGetTextAlign4Values() []EnvelopeRecipientGetTextAlign4 {
+	return []EnvelopeRecipientGetTextAlign4{
+		EnvelopeRecipientGetTextAlign4Left,
+		EnvelopeRecipientGetTextAlign4Center,
+		EnvelopeRecipientGetTextAlign4Right,
+	}
+}
 func (e *EnvelopeRecipientGetTextAlign4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1195,6 +1671,7 @@ type EnvelopeRecipientGetFieldMetaDate struct {
 	Required    *bool                                 `json:"required,omitempty"`
 	ReadOnly    *bool                                 `json:"readOnly,omitempty"`
 	FontSize    *float64                              `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeRecipientGetOverflow5        `default:"auto" json:"overflow"`
 	Type        EnvelopeRecipientGetFieldMetaTypeDate `json:"type"`
 	TextAlign   *EnvelopeRecipientGetTextAlign4       `json:"textAlign,omitempty"`
 }
@@ -1245,6 +1722,13 @@ func (e *EnvelopeRecipientGetFieldMetaDate) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeRecipientGetFieldMetaDate) GetOverflow() *EnvelopeRecipientGetOverflow5 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeRecipientGetFieldMetaDate) GetType() EnvelopeRecipientGetFieldMetaTypeDate {
 	if e == nil {
 		return EnvelopeRecipientGetFieldMetaTypeDate("")
@@ -1259,6 +1743,48 @@ func (e *EnvelopeRecipientGetFieldMetaDate) GetTextAlign() *EnvelopeRecipientGet
 	return e.TextAlign
 }
 
+type EnvelopeRecipientGetOverflow4 string
+
+const (
+	EnvelopeRecipientGetOverflow4Auto       EnvelopeRecipientGetOverflow4 = "auto"
+	EnvelopeRecipientGetOverflow4Horizontal EnvelopeRecipientGetOverflow4 = "horizontal"
+	EnvelopeRecipientGetOverflow4Vertical   EnvelopeRecipientGetOverflow4 = "vertical"
+	EnvelopeRecipientGetOverflow4Crop       EnvelopeRecipientGetOverflow4 = "crop"
+)
+
+func (e EnvelopeRecipientGetOverflow4) ToPointer() *EnvelopeRecipientGetOverflow4 {
+	return &e
+}
+
+// EnvelopeRecipientGetOverflow4Values returns every known EnvelopeRecipientGetOverflow4 value in schema order.
+func EnvelopeRecipientGetOverflow4Values() []EnvelopeRecipientGetOverflow4 {
+	return []EnvelopeRecipientGetOverflow4{
+		EnvelopeRecipientGetOverflow4Auto,
+		EnvelopeRecipientGetOverflow4Horizontal,
+		EnvelopeRecipientGetOverflow4Vertical,
+		EnvelopeRecipientGetOverflow4Crop,
+	}
+}
+func (e *EnvelopeRecipientGetOverflow4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeRecipientGetOverflow4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeRecipientGetOverflow4: %v", v)
+	}
+}
+
 type EnvelopeRecipientGetFieldMetaTypeEmail string
 
 const (
@@ -1267,6 +1793,13 @@ const (
 
 func (e EnvelopeRecipientGetFieldMetaTypeEmail) ToPointer() *EnvelopeRecipientGetFieldMetaTypeEmail {
 	return &e
+}
+
+// EnvelopeRecipientGetFieldMetaTypeEmailValues returns every known EnvelopeRecipientGetFieldMetaTypeEmail value in schema order.
+func EnvelopeRecipientGetFieldMetaTypeEmailValues() []EnvelopeRecipientGetFieldMetaTypeEmail {
+	return []EnvelopeRecipientGetFieldMetaTypeEmail{
+		EnvelopeRecipientGetFieldMetaTypeEmailEmail,
+	}
 }
 func (e *EnvelopeRecipientGetFieldMetaTypeEmail) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1293,6 +1826,15 @@ const (
 func (e EnvelopeRecipientGetTextAlign3) ToPointer() *EnvelopeRecipientGetTextAlign3 {
 	return &e
 }
+
+// EnvelopeRecipientGetTextAlign3Values returns every known EnvelopeRecipientGetTextAlign3 value in schema order.
+func EnvelopeRecipientGetTextAlign3Values() []EnvelopeRecipientGetTextAlign3 {
+	return []EnvelopeRecipientGetTextAlign3{
+		EnvelopeRecipientGetTextAlign3Left,
+		EnvelopeRecipientGetTextAlign3Center,
+		EnvelopeRecipientGetTextAlign3Right,
+	}
+}
 func (e *EnvelopeRecipientGetTextAlign3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1317,6 +1859,7 @@ type EnvelopeRecipientGetFieldMetaEmail struct {
 	Required    *bool                                  `json:"required,omitempty"`
 	ReadOnly    *bool                                  `json:"readOnly,omitempty"`
 	FontSize    *float64                               `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeRecipientGetOverflow4         `default:"auto" json:"overflow"`
 	Type        EnvelopeRecipientGetFieldMetaTypeEmail `json:"type"`
 	TextAlign   *EnvelopeRecipientGetTextAlign3        `json:"textAlign,omitempty"`
 }
@@ -1367,6 +1910,13 @@ func (e *EnvelopeRecipientGetFieldMetaEmail) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeRecipientGetFieldMetaEmail) GetOverflow() *EnvelopeRecipientGetOverflow4 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeRecipientGetFieldMetaEmail) GetType() EnvelopeRecipientGetFieldMetaTypeEmail {
 	if e == nil {
 		return EnvelopeRecipientGetFieldMetaTypeEmail("")
@@ -1381,6 +1931,48 @@ func (e *EnvelopeRecipientGetFieldMetaEmail) GetTextAlign() *EnvelopeRecipientGe
 	return e.TextAlign
 }
 
+type EnvelopeRecipientGetOverflow3 string
+
+const (
+	EnvelopeRecipientGetOverflow3Auto       EnvelopeRecipientGetOverflow3 = "auto"
+	EnvelopeRecipientGetOverflow3Horizontal EnvelopeRecipientGetOverflow3 = "horizontal"
+	EnvelopeRecipientGetOverflow3Vertical   EnvelopeRecipientGetOverflow3 = "vertical"
+	EnvelopeRecipientGetOverflow3Crop       EnvelopeRecipientGetOverflow3 = "crop"
+)
+
+func (e EnvelopeRecipientGetOverflow3) ToPointer() *EnvelopeRecipientGetOverflow3 {
+	return &e
+}
+
+// EnvelopeRecipientGetOverflow3Values returns every known EnvelopeRecipientGetOverflow3 value in schema order.
+func EnvelopeRecipientGetOverflow3Values() []EnvelopeRecipientGetOverflow3 {
+	return []EnvelopeRecipientGetOverflow3{
+		EnvelopeRecipientGetOverflow3Auto,
+		EnvelopeRecipientGetOverflow3Horizontal,
+		EnvelopeRecipientGetOverflow3Vertical,
+		EnvelopeRecipientGetOverflow3Crop,
+	}
+}
+func (e *EnvelopeRecipientGetOverflow3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeRecipientGetOverflow3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeRecipientGetOverflow3: %v", v)
+	}
+}
+
 type EnvelopeRecipientGetFieldMetaTypeName string
 
 const (
@@ -1389,6 +1981,13 @@ const (
 
 func (e EnvelopeRecipientGetFieldMetaTypeName) ToPointer() *EnvelopeRecipientGetFieldMetaTypeName {
 	return &e
+}
+
+// EnvelopeRecipientGetFieldMetaTypeNameValues returns every known EnvelopeRecipientGetFieldMetaTypeName value in schema order.
+func EnvelopeRecipientGetFieldMetaTypeNameValues() []EnvelopeRecipientGetFieldMetaTypeName {
+	return []EnvelopeRecipientGetFieldMetaTypeName{
+		EnvelopeRecipientGetFieldMetaTypeNameName,
+	}
 }
 func (e *EnvelopeRecipientGetFieldMetaTypeName) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1415,6 +2014,15 @@ const (
 func (e EnvelopeRecipientGetTextAlign2) ToPointer() *EnvelopeRecipientGetTextAlign2 {
 	return &e
 }
+
+// EnvelopeRecipientGetTextAlign2Values returns every known EnvelopeRecipientGetTextAlign2 value in schema order.
+func EnvelopeRecipientGetTextAlign2Values() []EnvelopeRecipientGetTextAlign2 {
+	return []EnvelopeRecipientGetTextAlign2{
+		EnvelopeRecipientGetTextAlign2Left,
+		EnvelopeRecipientGetTextAlign2Center,
+		EnvelopeRecipientGetTextAlign2Right,
+	}
+}
 func (e *EnvelopeRecipientGetTextAlign2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1439,6 +2047,7 @@ type EnvelopeRecipientGetFieldMetaName struct {
 	Required    *bool                                 `json:"required,omitempty"`
 	ReadOnly    *bool                                 `json:"readOnly,omitempty"`
 	FontSize    *float64                              `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeRecipientGetOverflow3        `json:"overflow,omitempty"`
 	Type        EnvelopeRecipientGetFieldMetaTypeName `json:"type"`
 	TextAlign   *EnvelopeRecipientGetTextAlign2       `json:"textAlign,omitempty"`
 }
@@ -1489,6 +2098,13 @@ func (e *EnvelopeRecipientGetFieldMetaName) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeRecipientGetFieldMetaName) GetOverflow() *EnvelopeRecipientGetOverflow3 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeRecipientGetFieldMetaName) GetType() EnvelopeRecipientGetFieldMetaTypeName {
 	if e == nil {
 		return EnvelopeRecipientGetFieldMetaTypeName("")
@@ -1503,6 +2119,48 @@ func (e *EnvelopeRecipientGetFieldMetaName) GetTextAlign() *EnvelopeRecipientGet
 	return e.TextAlign
 }
 
+type EnvelopeRecipientGetOverflow2 string
+
+const (
+	EnvelopeRecipientGetOverflow2Auto       EnvelopeRecipientGetOverflow2 = "auto"
+	EnvelopeRecipientGetOverflow2Horizontal EnvelopeRecipientGetOverflow2 = "horizontal"
+	EnvelopeRecipientGetOverflow2Vertical   EnvelopeRecipientGetOverflow2 = "vertical"
+	EnvelopeRecipientGetOverflow2Crop       EnvelopeRecipientGetOverflow2 = "crop"
+)
+
+func (e EnvelopeRecipientGetOverflow2) ToPointer() *EnvelopeRecipientGetOverflow2 {
+	return &e
+}
+
+// EnvelopeRecipientGetOverflow2Values returns every known EnvelopeRecipientGetOverflow2 value in schema order.
+func EnvelopeRecipientGetOverflow2Values() []EnvelopeRecipientGetOverflow2 {
+	return []EnvelopeRecipientGetOverflow2{
+		EnvelopeRecipientGetOverflow2Auto,
+		EnvelopeRecipientGetOverflow2Horizontal,
+		EnvelopeRecipientGetOverflow2Vertical,
+		EnvelopeRecipientGetOverflow2Crop,
+	}
+}
+func (e *EnvelopeRecipientGetOverflow2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeRecipientGetOverflow2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeRecipientGetOverflow2: %v", v)
+	}
+}
+
 type EnvelopeRecipientGetFieldMetaTypeInitials string
 
 const (
@@ -1511,6 +2169,13 @@ const (
 
 func (e EnvelopeRecipientGetFieldMetaTypeInitials) ToPointer() *EnvelopeRecipientGetFieldMetaTypeInitials {
 	return &e
+}
+
+// EnvelopeRecipientGetFieldMetaTypeInitialsValues returns every known EnvelopeRecipientGetFieldMetaTypeInitials value in schema order.
+func EnvelopeRecipientGetFieldMetaTypeInitialsValues() []EnvelopeRecipientGetFieldMetaTypeInitials {
+	return []EnvelopeRecipientGetFieldMetaTypeInitials{
+		EnvelopeRecipientGetFieldMetaTypeInitialsInitials,
+	}
 }
 func (e *EnvelopeRecipientGetFieldMetaTypeInitials) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1537,6 +2202,15 @@ const (
 func (e EnvelopeRecipientGetTextAlign1) ToPointer() *EnvelopeRecipientGetTextAlign1 {
 	return &e
 }
+
+// EnvelopeRecipientGetTextAlign1Values returns every known EnvelopeRecipientGetTextAlign1 value in schema order.
+func EnvelopeRecipientGetTextAlign1Values() []EnvelopeRecipientGetTextAlign1 {
+	return []EnvelopeRecipientGetTextAlign1{
+		EnvelopeRecipientGetTextAlign1Left,
+		EnvelopeRecipientGetTextAlign1Center,
+		EnvelopeRecipientGetTextAlign1Right,
+	}
+}
 func (e *EnvelopeRecipientGetTextAlign1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1561,6 +2235,7 @@ type EnvelopeRecipientGetFieldMetaInitials struct {
 	Required    *bool                                     `json:"required,omitempty"`
 	ReadOnly    *bool                                     `json:"readOnly,omitempty"`
 	FontSize    *float64                                  `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeRecipientGetOverflow2            `json:"overflow,omitempty"`
 	Type        EnvelopeRecipientGetFieldMetaTypeInitials `json:"type"`
 	TextAlign   *EnvelopeRecipientGetTextAlign1           `json:"textAlign,omitempty"`
 }
@@ -1611,6 +2286,13 @@ func (e *EnvelopeRecipientGetFieldMetaInitials) GetFontSize() *float64 {
 	return e.FontSize
 }
 
+func (e *EnvelopeRecipientGetFieldMetaInitials) GetOverflow() *EnvelopeRecipientGetOverflow2 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
+}
+
 func (e *EnvelopeRecipientGetFieldMetaInitials) GetType() EnvelopeRecipientGetFieldMetaTypeInitials {
 	if e == nil {
 		return EnvelopeRecipientGetFieldMetaTypeInitials("")
@@ -1625,6 +2307,48 @@ func (e *EnvelopeRecipientGetFieldMetaInitials) GetTextAlign() *EnvelopeRecipien
 	return e.TextAlign
 }
 
+type EnvelopeRecipientGetOverflow1 string
+
+const (
+	EnvelopeRecipientGetOverflow1Auto       EnvelopeRecipientGetOverflow1 = "auto"
+	EnvelopeRecipientGetOverflow1Horizontal EnvelopeRecipientGetOverflow1 = "horizontal"
+	EnvelopeRecipientGetOverflow1Vertical   EnvelopeRecipientGetOverflow1 = "vertical"
+	EnvelopeRecipientGetOverflow1Crop       EnvelopeRecipientGetOverflow1 = "crop"
+)
+
+func (e EnvelopeRecipientGetOverflow1) ToPointer() *EnvelopeRecipientGetOverflow1 {
+	return &e
+}
+
+// EnvelopeRecipientGetOverflow1Values returns every known EnvelopeRecipientGetOverflow1 value in schema order.
+func EnvelopeRecipientGetOverflow1Values() []EnvelopeRecipientGetOverflow1 {
+	return []EnvelopeRecipientGetOverflow1{
+		EnvelopeRecipientGetOverflow1Auto,
+		EnvelopeRecipientGetOverflow1Horizontal,
+		EnvelopeRecipientGetOverflow1Vertical,
+		EnvelopeRecipientGetOverflow1Crop,
+	}
+}
+func (e *EnvelopeRecipientGetOverflow1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = EnvelopeRecipientGetOverflow1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for EnvelopeRecipientGetOverflow1: %v", v)
+	}
+}
+
 type EnvelopeRecipientGetFieldMetaTypeSignature string
 
 const (
@@ -1633,6 +2357,13 @@ const (
 
 func (e EnvelopeRecipientGetFieldMetaTypeSignature) ToPointer() *EnvelopeRecipientGetFieldMetaTypeSignature {
 	return &e
+}
+
+// EnvelopeRecipientGetFieldMetaTypeSignatureValues returns every known EnvelopeRecipientGetFieldMetaTypeSignature value in schema order.
+func EnvelopeRecipientGetFieldMetaTypeSignatureValues() []EnvelopeRecipientGetFieldMetaTypeSignature {
+	return []EnvelopeRecipientGetFieldMetaTypeSignature{
+		EnvelopeRecipientGetFieldMetaTypeSignatureSignature,
+	}
 }
 func (e *EnvelopeRecipientGetFieldMetaTypeSignature) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1654,6 +2385,7 @@ type EnvelopeRecipientGetFieldMetaSignature struct {
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
 	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Overflow    *EnvelopeRecipientGetOverflow1             `default:"auto" json:"overflow"`
 	Type        EnvelopeRecipientGetFieldMetaTypeSignature `json:"type"`
 }
 
@@ -1701,6 +2433,13 @@ func (e *EnvelopeRecipientGetFieldMetaSignature) GetFontSize() *float64 {
 		return nil
 	}
 	return e.FontSize
+}
+
+func (e *EnvelopeRecipientGetFieldMetaSignature) GetOverflow() *EnvelopeRecipientGetOverflow1 {
+	if e == nil {
+		return nil
+	}
+	return e.Overflow
 }
 
 func (e *EnvelopeRecipientGetFieldMetaSignature) GetType() EnvelopeRecipientGetFieldMetaTypeSignature {
@@ -1830,7 +2569,14 @@ func CreateEnvelopeRecipientGetFieldMetaUnionEnvelopeRecipientGetFieldMetaDropdo
 	}
 }
 
-func (u *EnvelopeRecipientGetFieldMetaUnion) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeRecipientGetFieldMetaUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeRecipientGetFieldMetaUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var envelopeRecipientGetFieldMetaSignature EnvelopeRecipientGetFieldMetaSignature = EnvelopeRecipientGetFieldMetaSignature{}
 	if err := utils.UnmarshalJSON(data, &envelopeRecipientGetFieldMetaSignature, "", true, nil); err == nil {
@@ -2082,22 +2828,24 @@ func (e *EnvelopeRecipientGetField) GetTemplateID() *float64 {
 
 // EnvelopeRecipientGetResponseBody - Successful response
 type EnvelopeRecipientGetResponseBody struct {
-	EnvelopeID        string                            `json:"envelopeId"`
-	Role              EnvelopeRecipientGetRole          `json:"role"`
-	ReadStatus        EnvelopeRecipientGetReadStatus    `json:"readStatus"`
-	SigningStatus     EnvelopeRecipientGetSigningStatus `json:"signingStatus"`
-	SendStatus        EnvelopeRecipientGetSendStatus    `json:"sendStatus"`
-	ID                float64                           `json:"id"`
-	Email             string                            `json:"email"`
-	Name              string                            `json:"name"`
-	Token             string                            `json:"token"`
-	DocumentDeletedAt *string                           `json:"documentDeletedAt"`
-	Expired           *string                           `json:"expired"`
-	SignedAt          *string                           `json:"signedAt"`
-	AuthOptions       *EnvelopeRecipientGetAuthOptions  `json:"authOptions"`
-	SigningOrder      *float64                          `json:"signingOrder"`
-	RejectionReason   *string                           `json:"rejectionReason"`
-	Fields            []EnvelopeRecipientGetField       `json:"fields"`
+	EnvelopeID           string                            `json:"envelopeId"`
+	Role                 EnvelopeRecipientGetRole          `json:"role"`
+	ReadStatus           EnvelopeRecipientGetReadStatus    `json:"readStatus"`
+	SigningStatus        EnvelopeRecipientGetSigningStatus `json:"signingStatus"`
+	SendStatus           EnvelopeRecipientGetSendStatus    `json:"sendStatus"`
+	ID                   float64                           `json:"id"`
+	Email                string                            `json:"email"`
+	Name                 string                            `json:"name"`
+	Token                string                            `json:"token"`
+	DocumentDeletedAt    *string                           `json:"documentDeletedAt"`
+	Expired              *string                           `json:"expired"`
+	ExpiresAt            *string                           `json:"expiresAt"`
+	ExpirationNotifiedAt *string                           `json:"expirationNotifiedAt"`
+	SignedAt             *string                           `json:"signedAt"`
+	AuthOptions          *EnvelopeRecipientGetAuthOptions  `json:"authOptions"`
+	SigningOrder         *float64                          `json:"signingOrder"`
+	RejectionReason      *string                           `json:"rejectionReason"`
+	Fields               []EnvelopeRecipientGetField       `json:"fields"`
 }
 
 func (e *EnvelopeRecipientGetResponseBody) GetEnvelopeID() string {
@@ -2175,6 +2923,20 @@ func (e *EnvelopeRecipientGetResponseBody) GetExpired() *string {
 		return nil
 	}
 	return e.Expired
+}
+
+func (e *EnvelopeRecipientGetResponseBody) GetExpiresAt() *string {
+	if e == nil {
+		return nil
+	}
+	return e.ExpiresAt
+}
+
+func (e *EnvelopeRecipientGetResponseBody) GetExpirationNotifiedAt() *string {
+	if e == nil {
+		return nil
+	}
+	return e.ExpirationNotifiedAt
 }
 
 func (e *EnvelopeRecipientGetResponseBody) GetSignedAt() *string {

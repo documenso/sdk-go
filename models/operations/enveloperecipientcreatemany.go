@@ -19,6 +19,13 @@ const (
 func (e EnvelopeRecipientCreateManyEmailEnum) ToPointer() *EnvelopeRecipientCreateManyEmailEnum {
 	return &e
 }
+
+// EnvelopeRecipientCreateManyEmailEnumValues returns every known EnvelopeRecipientCreateManyEmailEnum value in schema order.
+func EnvelopeRecipientCreateManyEmailEnumValues() []EnvelopeRecipientCreateManyEmailEnum {
+	return []EnvelopeRecipientCreateManyEmailEnum{
+		EnvelopeRecipientCreateManyEmailEnumUnknown,
+	}
+}
 func (e *EnvelopeRecipientCreateManyEmailEnum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -65,7 +72,14 @@ func CreateEnvelopeRecipientCreateManyEmailUnionStr(str string) EnvelopeRecipien
 	}
 }
 
-func (u *EnvelopeRecipientCreateManyEmailUnion) UnmarshalJSON(data []byte) error {
+func (u *EnvelopeRecipientCreateManyEmailUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = EnvelopeRecipientCreateManyEmailUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var envelopeRecipientCreateManyEmailEnum EnvelopeRecipientCreateManyEmailEnum = EnvelopeRecipientCreateManyEmailEnum("")
 	if err := utils.UnmarshalJSON(data, &envelopeRecipientCreateManyEmailEnum, "", true, nil); err == nil {
@@ -109,6 +123,17 @@ const (
 func (e EnvelopeRecipientCreateManyRoleRequest) ToPointer() *EnvelopeRecipientCreateManyRoleRequest {
 	return &e
 }
+
+// EnvelopeRecipientCreateManyRoleRequestValues returns every known EnvelopeRecipientCreateManyRoleRequest value in schema order.
+func EnvelopeRecipientCreateManyRoleRequestValues() []EnvelopeRecipientCreateManyRoleRequest {
+	return []EnvelopeRecipientCreateManyRoleRequest{
+		EnvelopeRecipientCreateManyRoleRequestCc,
+		EnvelopeRecipientCreateManyRoleRequestSigner,
+		EnvelopeRecipientCreateManyRoleRequestViewer,
+		EnvelopeRecipientCreateManyRoleRequestApprover,
+		EnvelopeRecipientCreateManyRoleRequestAssistant,
+	}
+}
 func (e *EnvelopeRecipientCreateManyRoleRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -141,6 +166,14 @@ const (
 func (e EnvelopeRecipientCreateManyAccessAuthRequest) ToPointer() *EnvelopeRecipientCreateManyAccessAuthRequest {
 	return &e
 }
+
+// EnvelopeRecipientCreateManyAccessAuthRequestValues returns every known EnvelopeRecipientCreateManyAccessAuthRequest value in schema order.
+func EnvelopeRecipientCreateManyAccessAuthRequestValues() []EnvelopeRecipientCreateManyAccessAuthRequest {
+	return []EnvelopeRecipientCreateManyAccessAuthRequest{
+		EnvelopeRecipientCreateManyAccessAuthRequestAccount,
+		EnvelopeRecipientCreateManyAccessAuthRequestTwoFactorAuth,
+	}
+}
 func (e *EnvelopeRecipientCreateManyAccessAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -169,6 +202,17 @@ const (
 
 func (e EnvelopeRecipientCreateManyActionAuthRequest) ToPointer() *EnvelopeRecipientCreateManyActionAuthRequest {
 	return &e
+}
+
+// EnvelopeRecipientCreateManyActionAuthRequestValues returns every known EnvelopeRecipientCreateManyActionAuthRequest value in schema order.
+func EnvelopeRecipientCreateManyActionAuthRequestValues() []EnvelopeRecipientCreateManyActionAuthRequest {
+	return []EnvelopeRecipientCreateManyActionAuthRequest{
+		EnvelopeRecipientCreateManyActionAuthRequestAccount,
+		EnvelopeRecipientCreateManyActionAuthRequestPasskey,
+		EnvelopeRecipientCreateManyActionAuthRequestTwoFactorAuth,
+		EnvelopeRecipientCreateManyActionAuthRequestPassword,
+		EnvelopeRecipientCreateManyActionAuthRequestExplicitNone,
+	}
 }
 func (e *EnvelopeRecipientCreateManyActionAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
@@ -275,6 +319,17 @@ const (
 func (e EnvelopeRecipientCreateManyRoleResponse) ToPointer() *EnvelopeRecipientCreateManyRoleResponse {
 	return &e
 }
+
+// EnvelopeRecipientCreateManyRoleResponseValues returns every known EnvelopeRecipientCreateManyRoleResponse value in schema order.
+func EnvelopeRecipientCreateManyRoleResponseValues() []EnvelopeRecipientCreateManyRoleResponse {
+	return []EnvelopeRecipientCreateManyRoleResponse{
+		EnvelopeRecipientCreateManyRoleResponseCc,
+		EnvelopeRecipientCreateManyRoleResponseSigner,
+		EnvelopeRecipientCreateManyRoleResponseViewer,
+		EnvelopeRecipientCreateManyRoleResponseApprover,
+		EnvelopeRecipientCreateManyRoleResponseAssistant,
+	}
+}
 func (e *EnvelopeRecipientCreateManyRoleResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -307,6 +362,14 @@ const (
 func (e EnvelopeRecipientCreateManyReadStatus) ToPointer() *EnvelopeRecipientCreateManyReadStatus {
 	return &e
 }
+
+// EnvelopeRecipientCreateManyReadStatusValues returns every known EnvelopeRecipientCreateManyReadStatus value in schema order.
+func EnvelopeRecipientCreateManyReadStatusValues() []EnvelopeRecipientCreateManyReadStatus {
+	return []EnvelopeRecipientCreateManyReadStatus{
+		EnvelopeRecipientCreateManyReadStatusNotOpened,
+		EnvelopeRecipientCreateManyReadStatusOpened,
+	}
+}
 func (e *EnvelopeRecipientCreateManyReadStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -333,6 +396,15 @@ const (
 
 func (e EnvelopeRecipientCreateManySigningStatus) ToPointer() *EnvelopeRecipientCreateManySigningStatus {
 	return &e
+}
+
+// EnvelopeRecipientCreateManySigningStatusValues returns every known EnvelopeRecipientCreateManySigningStatus value in schema order.
+func EnvelopeRecipientCreateManySigningStatusValues() []EnvelopeRecipientCreateManySigningStatus {
+	return []EnvelopeRecipientCreateManySigningStatus{
+		EnvelopeRecipientCreateManySigningStatusNotSigned,
+		EnvelopeRecipientCreateManySigningStatusSigned,
+		EnvelopeRecipientCreateManySigningStatusRejected,
+	}
 }
 func (e *EnvelopeRecipientCreateManySigningStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -362,6 +434,14 @@ const (
 func (e EnvelopeRecipientCreateManySendStatus) ToPointer() *EnvelopeRecipientCreateManySendStatus {
 	return &e
 }
+
+// EnvelopeRecipientCreateManySendStatusValues returns every known EnvelopeRecipientCreateManySendStatus value in schema order.
+func EnvelopeRecipientCreateManySendStatusValues() []EnvelopeRecipientCreateManySendStatus {
+	return []EnvelopeRecipientCreateManySendStatus{
+		EnvelopeRecipientCreateManySendStatusNotSent,
+		EnvelopeRecipientCreateManySendStatusSent,
+	}
+}
 func (e *EnvelopeRecipientCreateManySendStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -387,6 +467,14 @@ const (
 
 func (e EnvelopeRecipientCreateManyAuthOptionsAccessAuth) ToPointer() *EnvelopeRecipientCreateManyAuthOptionsAccessAuth {
 	return &e
+}
+
+// EnvelopeRecipientCreateManyAuthOptionsAccessAuthValues returns every known EnvelopeRecipientCreateManyAuthOptionsAccessAuth value in schema order.
+func EnvelopeRecipientCreateManyAuthOptionsAccessAuthValues() []EnvelopeRecipientCreateManyAuthOptionsAccessAuth {
+	return []EnvelopeRecipientCreateManyAuthOptionsAccessAuth{
+		EnvelopeRecipientCreateManyAuthOptionsAccessAuthAccount,
+		EnvelopeRecipientCreateManyAuthOptionsAccessAuthTwoFactorAuth,
+	}
 }
 func (e *EnvelopeRecipientCreateManyAuthOptionsAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -416,6 +504,17 @@ const (
 
 func (e EnvelopeRecipientCreateManyAuthOptionsActionAuth) ToPointer() *EnvelopeRecipientCreateManyAuthOptionsActionAuth {
 	return &e
+}
+
+// EnvelopeRecipientCreateManyAuthOptionsActionAuthValues returns every known EnvelopeRecipientCreateManyAuthOptionsActionAuth value in schema order.
+func EnvelopeRecipientCreateManyAuthOptionsActionAuthValues() []EnvelopeRecipientCreateManyAuthOptionsActionAuth {
+	return []EnvelopeRecipientCreateManyAuthOptionsActionAuth{
+		EnvelopeRecipientCreateManyAuthOptionsActionAuthAccount,
+		EnvelopeRecipientCreateManyAuthOptionsActionAuthPasskey,
+		EnvelopeRecipientCreateManyAuthOptionsActionAuthTwoFactorAuth,
+		EnvelopeRecipientCreateManyAuthOptionsActionAuthPassword,
+		EnvelopeRecipientCreateManyAuthOptionsActionAuthExplicitNone,
+	}
 }
 func (e *EnvelopeRecipientCreateManyAuthOptionsActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -459,21 +558,23 @@ func (e *EnvelopeRecipientCreateManyAuthOptions) GetActionAuth() []EnvelopeRecip
 }
 
 type EnvelopeRecipientCreateManyDataResponse struct {
-	EnvelopeID        string                                   `json:"envelopeId"`
-	Role              EnvelopeRecipientCreateManyRoleResponse  `json:"role"`
-	ReadStatus        EnvelopeRecipientCreateManyReadStatus    `json:"readStatus"`
-	SigningStatus     EnvelopeRecipientCreateManySigningStatus `json:"signingStatus"`
-	SendStatus        EnvelopeRecipientCreateManySendStatus    `json:"sendStatus"`
-	ID                float64                                  `json:"id"`
-	Email             string                                   `json:"email"`
-	Name              string                                   `json:"name"`
-	Token             string                                   `json:"token"`
-	DocumentDeletedAt *string                                  `json:"documentDeletedAt"`
-	Expired           *string                                  `json:"expired"`
-	SignedAt          *string                                  `json:"signedAt"`
-	AuthOptions       *EnvelopeRecipientCreateManyAuthOptions  `json:"authOptions"`
-	SigningOrder      *float64                                 `json:"signingOrder"`
-	RejectionReason   *string                                  `json:"rejectionReason"`
+	EnvelopeID           string                                   `json:"envelopeId"`
+	Role                 EnvelopeRecipientCreateManyRoleResponse  `json:"role"`
+	ReadStatus           EnvelopeRecipientCreateManyReadStatus    `json:"readStatus"`
+	SigningStatus        EnvelopeRecipientCreateManySigningStatus `json:"signingStatus"`
+	SendStatus           EnvelopeRecipientCreateManySendStatus    `json:"sendStatus"`
+	ID                   float64                                  `json:"id"`
+	Email                string                                   `json:"email"`
+	Name                 string                                   `json:"name"`
+	Token                string                                   `json:"token"`
+	DocumentDeletedAt    *string                                  `json:"documentDeletedAt"`
+	Expired              *string                                  `json:"expired"`
+	ExpiresAt            *string                                  `json:"expiresAt"`
+	ExpirationNotifiedAt *string                                  `json:"expirationNotifiedAt"`
+	SignedAt             *string                                  `json:"signedAt"`
+	AuthOptions          *EnvelopeRecipientCreateManyAuthOptions  `json:"authOptions"`
+	SigningOrder         *float64                                 `json:"signingOrder"`
+	RejectionReason      *string                                  `json:"rejectionReason"`
 }
 
 func (e *EnvelopeRecipientCreateManyDataResponse) GetEnvelopeID() string {
@@ -551,6 +652,20 @@ func (e *EnvelopeRecipientCreateManyDataResponse) GetExpired() *string {
 		return nil
 	}
 	return e.Expired
+}
+
+func (e *EnvelopeRecipientCreateManyDataResponse) GetExpiresAt() *string {
+	if e == nil {
+		return nil
+	}
+	return e.ExpiresAt
+}
+
+func (e *EnvelopeRecipientCreateManyDataResponse) GetExpirationNotifiedAt() *string {
+	if e == nil {
+		return nil
+	}
+	return e.ExpirationNotifiedAt
 }
 
 func (e *EnvelopeRecipientCreateManyDataResponse) GetSignedAt() *string {

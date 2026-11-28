@@ -3,7 +3,11 @@
 
 ## Fields
 
-| Field                                                   | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `Title`                                                 | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |
-| `Source`                                                | [*operations.Source](../../models/operations/source.md) | :heavy_minus_sign:                                      | N/A                                                     |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `RecipientEmail`                                             | `string`                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `RecipientName`                                              | `string`                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `RecipientID`                                                | `float64`                                                    | :heavy_check_mark:                                           | N/A                                                          |
+| `RecipientRole`                                              | `string`                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `EmailType`                                                  | [operations.EmailType](../../models/operations/emailtype.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `IsResending`                                                | `bool`                                                       | :heavy_check_mark:                                           | N/A                                                          |

@@ -4,6 +4,7 @@ package apierrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -29,6 +30,15 @@ type DocumentDuplicateInternalServerError struct {
 var _ error = &DocumentDuplicateInternalServerError{}
 
 func (e *DocumentDuplicateInternalServerError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +65,15 @@ type DocumentDuplicateForbiddenError struct {
 var _ error = &DocumentDuplicateForbiddenError{}
 
 func (e *DocumentDuplicateForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +100,15 @@ type DocumentDuplicateUnauthorizedError struct {
 var _ error = &DocumentDuplicateUnauthorizedError{}
 
 func (e *DocumentDuplicateUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +135,15 @@ type DocumentDuplicateBadRequestError struct {
 var _ error = &DocumentDuplicateBadRequestError{}
 
 func (e *DocumentDuplicateBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

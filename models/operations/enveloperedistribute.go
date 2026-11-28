@@ -40,6 +40,17 @@ const (
 func (e EnvelopeRedistributeRole) ToPointer() *EnvelopeRedistributeRole {
 	return &e
 }
+
+// EnvelopeRedistributeRoleValues returns every known EnvelopeRedistributeRole value in schema order.
+func EnvelopeRedistributeRoleValues() []EnvelopeRedistributeRole {
+	return []EnvelopeRedistributeRole{
+		EnvelopeRedistributeRoleCc,
+		EnvelopeRedistributeRoleSigner,
+		EnvelopeRedistributeRoleViewer,
+		EnvelopeRedistributeRoleApprover,
+		EnvelopeRedistributeRoleAssistant,
+	}
+}
 func (e *EnvelopeRedistributeRole) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

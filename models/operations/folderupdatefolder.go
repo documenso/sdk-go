@@ -19,6 +19,15 @@ const (
 func (e FolderUpdateFolderVisibilityRequest) ToPointer() *FolderUpdateFolderVisibilityRequest {
 	return &e
 }
+
+// FolderUpdateFolderVisibilityRequestValues returns every known FolderUpdateFolderVisibilityRequest value in schema order.
+func FolderUpdateFolderVisibilityRequestValues() []FolderUpdateFolderVisibilityRequest {
+	return []FolderUpdateFolderVisibilityRequest{
+		FolderUpdateFolderVisibilityRequestEveryone,
+		FolderUpdateFolderVisibilityRequestManagerAndAbove,
+		FolderUpdateFolderVisibilityRequestAdmin,
+	}
+}
 func (e *FolderUpdateFolderVisibilityRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -102,6 +111,15 @@ const (
 func (e FolderUpdateFolderVisibilityResponse) ToPointer() *FolderUpdateFolderVisibilityResponse {
 	return &e
 }
+
+// FolderUpdateFolderVisibilityResponseValues returns every known FolderUpdateFolderVisibilityResponse value in schema order.
+func FolderUpdateFolderVisibilityResponseValues() []FolderUpdateFolderVisibilityResponse {
+	return []FolderUpdateFolderVisibilityResponse{
+		FolderUpdateFolderVisibilityResponseEveryone,
+		FolderUpdateFolderVisibilityResponseManagerAndAbove,
+		FolderUpdateFolderVisibilityResponseAdmin,
+	}
+}
 func (e *FolderUpdateFolderVisibilityResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -129,6 +147,14 @@ const (
 
 func (e FolderUpdateFolderType) ToPointer() *FolderUpdateFolderType {
 	return &e
+}
+
+// FolderUpdateFolderTypeValues returns every known FolderUpdateFolderType value in schema order.
+func FolderUpdateFolderTypeValues() []FolderUpdateFolderType {
+	return []FolderUpdateFolderType{
+		FolderUpdateFolderTypeDocument,
+		FolderUpdateFolderTypeTemplate,
+	}
 }
 func (e *FolderUpdateFolderType) UnmarshalJSON(data []byte) error {
 	var v string

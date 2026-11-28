@@ -36,6 +36,13 @@ const (
 func (e EnvelopeAttachmentFindType) ToPointer() *EnvelopeAttachmentFindType {
 	return &e
 }
+
+// EnvelopeAttachmentFindTypeValues returns every known EnvelopeAttachmentFindType value in schema order.
+func EnvelopeAttachmentFindTypeValues() []EnvelopeAttachmentFindType {
+	return []EnvelopeAttachmentFindType{
+		EnvelopeAttachmentFindTypeLink,
+	}
+}
 func (e *EnvelopeAttachmentFindType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

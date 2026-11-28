@@ -4,6 +4,7 @@ package apierrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -29,6 +30,15 @@ type FieldUpdateTemplateFieldsInternalServerError struct {
 var _ error = &FieldUpdateTemplateFieldsInternalServerError{}
 
 func (e *FieldUpdateTemplateFieldsInternalServerError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +65,15 @@ type FieldUpdateTemplateFieldsForbiddenError struct {
 var _ error = &FieldUpdateTemplateFieldsForbiddenError{}
 
 func (e *FieldUpdateTemplateFieldsForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +100,15 @@ type FieldUpdateTemplateFieldsUnauthorizedError struct {
 var _ error = &FieldUpdateTemplateFieldsUnauthorizedError{}
 
 func (e *FieldUpdateTemplateFieldsUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +135,15 @@ type FieldUpdateTemplateFieldsBadRequestError struct {
 var _ error = &FieldUpdateTemplateFieldsBadRequestError{}
 
 func (e *FieldUpdateTemplateFieldsBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

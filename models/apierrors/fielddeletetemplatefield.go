@@ -4,6 +4,7 @@ package apierrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -29,6 +30,15 @@ type FieldDeleteTemplateFieldInternalServerError struct {
 var _ error = &FieldDeleteTemplateFieldInternalServerError{}
 
 func (e *FieldDeleteTemplateFieldInternalServerError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +65,15 @@ type FieldDeleteTemplateFieldForbiddenError struct {
 var _ error = &FieldDeleteTemplateFieldForbiddenError{}
 
 func (e *FieldDeleteTemplateFieldForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +100,15 @@ type FieldDeleteTemplateFieldUnauthorizedError struct {
 var _ error = &FieldDeleteTemplateFieldUnauthorizedError{}
 
 func (e *FieldDeleteTemplateFieldUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +135,15 @@ type FieldDeleteTemplateFieldBadRequestError struct {
 var _ error = &FieldDeleteTemplateFieldBadRequestError{}
 
 func (e *FieldDeleteTemplateFieldBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

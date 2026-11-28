@@ -28,6 +28,13 @@ const (
 func (e DocumentAttachmentFindType) ToPointer() *DocumentAttachmentFindType {
 	return &e
 }
+
+// DocumentAttachmentFindTypeValues returns every known DocumentAttachmentFindType value in schema order.
+func DocumentAttachmentFindTypeValues() []DocumentAttachmentFindType {
+	return []DocumentAttachmentFindType{
+		DocumentAttachmentFindTypeLink,
+	}
+}
 func (e *DocumentAttachmentFindType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

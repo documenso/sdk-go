@@ -4,6 +4,7 @@ package apierrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -29,6 +30,15 @@ type EnvelopeFieldGetInternalServerError struct {
 var _ error = &EnvelopeFieldGetInternalServerError{}
 
 func (e *EnvelopeFieldGetInternalServerError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +65,15 @@ type EnvelopeFieldGetNotFoundError struct {
 var _ error = &EnvelopeFieldGetNotFoundError{}
 
 func (e *EnvelopeFieldGetNotFoundError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +100,15 @@ type EnvelopeFieldGetForbiddenError struct {
 var _ error = &EnvelopeFieldGetForbiddenError{}
 
 func (e *EnvelopeFieldGetForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +135,15 @@ type EnvelopeFieldGetUnauthorizedError struct {
 var _ error = &EnvelopeFieldGetUnauthorizedError{}
 
 func (e *EnvelopeFieldGetUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -133,6 +170,15 @@ type EnvelopeFieldGetBadRequestError struct {
 var _ error = &EnvelopeFieldGetBadRequestError{}
 
 func (e *EnvelopeFieldGetBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

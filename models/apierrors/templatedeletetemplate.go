@@ -4,6 +4,7 @@ package apierrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -29,6 +30,15 @@ type TemplateDeleteTemplateInternalServerError struct {
 var _ error = &TemplateDeleteTemplateInternalServerError{}
 
 func (e *TemplateDeleteTemplateInternalServerError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +65,15 @@ type TemplateDeleteTemplateForbiddenError struct {
 var _ error = &TemplateDeleteTemplateForbiddenError{}
 
 func (e *TemplateDeleteTemplateForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +100,15 @@ type TemplateDeleteTemplateUnauthorizedError struct {
 var _ error = &TemplateDeleteTemplateUnauthorizedError{}
 
 func (e *TemplateDeleteTemplateUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +135,15 @@ type TemplateDeleteTemplateBadRequestError struct {
 var _ error = &TemplateDeleteTemplateBadRequestError{}
 
 func (e *TemplateDeleteTemplateBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

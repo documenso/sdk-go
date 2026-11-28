@@ -3,8 +3,6 @@
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `DelegatedOwnerName`  | *string*              | :heavy_check_mark:    | N/A                   |
-| `DelegatedOwnerEmail` | *string*              | :heavy_check_mark:    | N/A                   |
-| `TeamName`            | *string*              | :heavy_check_mark:    | N/A                   |
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                             | [operations.EnvelopeAuditLogFindTypeEnum](../../models/operations/envelopeauditlogfindtypeenum.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |

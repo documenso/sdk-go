@@ -19,6 +19,13 @@ const (
 func (e FieldCreateDocumentFieldsTypeDropdownRequest1) ToPointer() *FieldCreateDocumentFieldsTypeDropdownRequest1 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTypeDropdownRequest1Values returns every known FieldCreateDocumentFieldsTypeDropdownRequest1 value in schema order.
+func FieldCreateDocumentFieldsTypeDropdownRequest1Values() []FieldCreateDocumentFieldsTypeDropdownRequest1 {
+	return []FieldCreateDocumentFieldsTypeDropdownRequest1{
+		FieldCreateDocumentFieldsTypeDropdownRequest1Dropdown,
+	}
+}
 func (e *FieldCreateDocumentFieldsTypeDropdownRequest1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -33,6 +40,48 @@ func (e *FieldCreateDocumentFieldsTypeDropdownRequest1) UnmarshalJSON(data []byt
 	}
 }
 
+type FieldCreateDocumentFieldsOverflowDropdown string
+
+const (
+	FieldCreateDocumentFieldsOverflowDropdownAuto       FieldCreateDocumentFieldsOverflowDropdown = "auto"
+	FieldCreateDocumentFieldsOverflowDropdownHorizontal FieldCreateDocumentFieldsOverflowDropdown = "horizontal"
+	FieldCreateDocumentFieldsOverflowDropdownVertical   FieldCreateDocumentFieldsOverflowDropdown = "vertical"
+	FieldCreateDocumentFieldsOverflowDropdownCrop       FieldCreateDocumentFieldsOverflowDropdown = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowDropdown) ToPointer() *FieldCreateDocumentFieldsOverflowDropdown {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowDropdownValues returns every known FieldCreateDocumentFieldsOverflowDropdown value in schema order.
+func FieldCreateDocumentFieldsOverflowDropdownValues() []FieldCreateDocumentFieldsOverflowDropdown {
+	return []FieldCreateDocumentFieldsOverflowDropdown{
+		FieldCreateDocumentFieldsOverflowDropdownAuto,
+		FieldCreateDocumentFieldsOverflowDropdownHorizontal,
+		FieldCreateDocumentFieldsOverflowDropdownVertical,
+		FieldCreateDocumentFieldsOverflowDropdownCrop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowDropdown) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowDropdown(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowDropdown: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsTypeDropdownRequest2 string
 
 const (
@@ -41,6 +90,13 @@ const (
 
 func (e FieldCreateDocumentFieldsTypeDropdownRequest2) ToPointer() *FieldCreateDocumentFieldsTypeDropdownRequest2 {
 	return &e
+}
+
+// FieldCreateDocumentFieldsTypeDropdownRequest2Values returns every known FieldCreateDocumentFieldsTypeDropdownRequest2 value in schema order.
+func FieldCreateDocumentFieldsTypeDropdownRequest2Values() []FieldCreateDocumentFieldsTypeDropdownRequest2 {
+	return []FieldCreateDocumentFieldsTypeDropdownRequest2{
+		FieldCreateDocumentFieldsTypeDropdownRequest2Dropdown,
+	}
 }
 func (e *FieldCreateDocumentFieldsTypeDropdownRequest2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -84,6 +140,7 @@ type FieldCreateDocumentFieldsFieldMetaDropdownRequest struct {
 	Required     *bool                                         `json:"required,omitempty"`
 	ReadOnly     *bool                                         `json:"readOnly,omitempty"`
 	FontSize     *float64                                      `default:"12" json:"fontSize"`
+	Overflow     *FieldCreateDocumentFieldsOverflowDropdown    `json:"overflow,omitempty"`
 	Type         FieldCreateDocumentFieldsTypeDropdownRequest2 `json:"type"`
 	Values       []FieldCreateDocumentFieldsValueDropdown      `json:"values,omitempty"`
 	DefaultValue *string                                       `json:"defaultValue,omitempty"`
@@ -133,6 +190,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaDropdownRequest) GetFontSize() *float
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaDropdownRequest) GetOverflow() *FieldCreateDocumentFieldsOverflowDropdown {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaDropdownRequest) GetType() FieldCreateDocumentFieldsTypeDropdownRequest2 {
@@ -243,6 +307,13 @@ const (
 func (e FieldCreateDocumentFieldsTypeCheckboxRequest1) ToPointer() *FieldCreateDocumentFieldsTypeCheckboxRequest1 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTypeCheckboxRequest1Values returns every known FieldCreateDocumentFieldsTypeCheckboxRequest1 value in schema order.
+func FieldCreateDocumentFieldsTypeCheckboxRequest1Values() []FieldCreateDocumentFieldsTypeCheckboxRequest1 {
+	return []FieldCreateDocumentFieldsTypeCheckboxRequest1{
+		FieldCreateDocumentFieldsTypeCheckboxRequest1Checkbox,
+	}
+}
 func (e *FieldCreateDocumentFieldsTypeCheckboxRequest1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -257,6 +328,48 @@ func (e *FieldCreateDocumentFieldsTypeCheckboxRequest1) UnmarshalJSON(data []byt
 	}
 }
 
+type FieldCreateDocumentFieldsOverflowCheckbox string
+
+const (
+	FieldCreateDocumentFieldsOverflowCheckboxAuto       FieldCreateDocumentFieldsOverflowCheckbox = "auto"
+	FieldCreateDocumentFieldsOverflowCheckboxHorizontal FieldCreateDocumentFieldsOverflowCheckbox = "horizontal"
+	FieldCreateDocumentFieldsOverflowCheckboxVertical   FieldCreateDocumentFieldsOverflowCheckbox = "vertical"
+	FieldCreateDocumentFieldsOverflowCheckboxCrop       FieldCreateDocumentFieldsOverflowCheckbox = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowCheckbox) ToPointer() *FieldCreateDocumentFieldsOverflowCheckbox {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowCheckboxValues returns every known FieldCreateDocumentFieldsOverflowCheckbox value in schema order.
+func FieldCreateDocumentFieldsOverflowCheckboxValues() []FieldCreateDocumentFieldsOverflowCheckbox {
+	return []FieldCreateDocumentFieldsOverflowCheckbox{
+		FieldCreateDocumentFieldsOverflowCheckboxAuto,
+		FieldCreateDocumentFieldsOverflowCheckboxHorizontal,
+		FieldCreateDocumentFieldsOverflowCheckboxVertical,
+		FieldCreateDocumentFieldsOverflowCheckboxCrop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowCheckbox) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowCheckbox(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowCheckbox: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsTypeCheckboxRequest2 string
 
 const (
@@ -265,6 +378,13 @@ const (
 
 func (e FieldCreateDocumentFieldsTypeCheckboxRequest2) ToPointer() *FieldCreateDocumentFieldsTypeCheckboxRequest2 {
 	return &e
+}
+
+// FieldCreateDocumentFieldsTypeCheckboxRequest2Values returns every known FieldCreateDocumentFieldsTypeCheckboxRequest2 value in schema order.
+func FieldCreateDocumentFieldsTypeCheckboxRequest2Values() []FieldCreateDocumentFieldsTypeCheckboxRequest2 {
+	return []FieldCreateDocumentFieldsTypeCheckboxRequest2{
+		FieldCreateDocumentFieldsTypeCheckboxRequest2Checkbox,
+	}
 }
 func (e *FieldCreateDocumentFieldsTypeCheckboxRequest2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -328,6 +448,14 @@ const (
 func (e FieldCreateDocumentFieldsDirectionCheckbox) ToPointer() *FieldCreateDocumentFieldsDirectionCheckbox {
 	return &e
 }
+
+// FieldCreateDocumentFieldsDirectionCheckboxValues returns every known FieldCreateDocumentFieldsDirectionCheckbox value in schema order.
+func FieldCreateDocumentFieldsDirectionCheckboxValues() []FieldCreateDocumentFieldsDirectionCheckbox {
+	return []FieldCreateDocumentFieldsDirectionCheckbox{
+		FieldCreateDocumentFieldsDirectionCheckboxVertical,
+		FieldCreateDocumentFieldsDirectionCheckboxHorizontal,
+	}
+}
 func (e *FieldCreateDocumentFieldsDirectionCheckbox) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -350,6 +478,7 @@ type FieldCreateDocumentFieldsFieldMetaCheckboxRequest struct {
 	Required         *bool                                         `json:"required,omitempty"`
 	ReadOnly         *bool                                         `json:"readOnly,omitempty"`
 	FontSize         *float64                                      `default:"12" json:"fontSize"`
+	Overflow         *FieldCreateDocumentFieldsOverflowCheckbox    `json:"overflow,omitempty"`
 	Type             FieldCreateDocumentFieldsTypeCheckboxRequest2 `json:"type"`
 	Values           []FieldCreateDocumentFieldsValueCheckbox      `json:"values,omitempty"`
 	ValidationRule   *string                                       `json:"validationRule,omitempty"`
@@ -401,6 +530,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaCheckboxRequest) GetFontSize() *float
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaCheckboxRequest) GetOverflow() *FieldCreateDocumentFieldsOverflowCheckbox {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaCheckboxRequest) GetType() FieldCreateDocumentFieldsTypeCheckboxRequest2 {
@@ -525,6 +661,13 @@ const (
 func (e FieldCreateDocumentFieldsTypeRadioRequest1) ToPointer() *FieldCreateDocumentFieldsTypeRadioRequest1 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTypeRadioRequest1Values returns every known FieldCreateDocumentFieldsTypeRadioRequest1 value in schema order.
+func FieldCreateDocumentFieldsTypeRadioRequest1Values() []FieldCreateDocumentFieldsTypeRadioRequest1 {
+	return []FieldCreateDocumentFieldsTypeRadioRequest1{
+		FieldCreateDocumentFieldsTypeRadioRequest1Radio,
+	}
+}
 func (e *FieldCreateDocumentFieldsTypeRadioRequest1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -539,6 +682,48 @@ func (e *FieldCreateDocumentFieldsTypeRadioRequest1) UnmarshalJSON(data []byte) 
 	}
 }
 
+type FieldCreateDocumentFieldsOverflowRadio string
+
+const (
+	FieldCreateDocumentFieldsOverflowRadioAuto       FieldCreateDocumentFieldsOverflowRadio = "auto"
+	FieldCreateDocumentFieldsOverflowRadioHorizontal FieldCreateDocumentFieldsOverflowRadio = "horizontal"
+	FieldCreateDocumentFieldsOverflowRadioVertical   FieldCreateDocumentFieldsOverflowRadio = "vertical"
+	FieldCreateDocumentFieldsOverflowRadioCrop       FieldCreateDocumentFieldsOverflowRadio = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowRadio) ToPointer() *FieldCreateDocumentFieldsOverflowRadio {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowRadioValues returns every known FieldCreateDocumentFieldsOverflowRadio value in schema order.
+func FieldCreateDocumentFieldsOverflowRadioValues() []FieldCreateDocumentFieldsOverflowRadio {
+	return []FieldCreateDocumentFieldsOverflowRadio{
+		FieldCreateDocumentFieldsOverflowRadioAuto,
+		FieldCreateDocumentFieldsOverflowRadioHorizontal,
+		FieldCreateDocumentFieldsOverflowRadioVertical,
+		FieldCreateDocumentFieldsOverflowRadioCrop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowRadio) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowRadio(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowRadio: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsTypeRadioRequest2 string
 
 const (
@@ -547,6 +732,13 @@ const (
 
 func (e FieldCreateDocumentFieldsTypeRadioRequest2) ToPointer() *FieldCreateDocumentFieldsTypeRadioRequest2 {
 	return &e
+}
+
+// FieldCreateDocumentFieldsTypeRadioRequest2Values returns every known FieldCreateDocumentFieldsTypeRadioRequest2 value in schema order.
+func FieldCreateDocumentFieldsTypeRadioRequest2Values() []FieldCreateDocumentFieldsTypeRadioRequest2 {
+	return []FieldCreateDocumentFieldsTypeRadioRequest2{
+		FieldCreateDocumentFieldsTypeRadioRequest2Radio,
+	}
 }
 func (e *FieldCreateDocumentFieldsTypeRadioRequest2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -610,6 +802,14 @@ const (
 func (e FieldCreateDocumentFieldsDirectionRadio) ToPointer() *FieldCreateDocumentFieldsDirectionRadio {
 	return &e
 }
+
+// FieldCreateDocumentFieldsDirectionRadioValues returns every known FieldCreateDocumentFieldsDirectionRadio value in schema order.
+func FieldCreateDocumentFieldsDirectionRadioValues() []FieldCreateDocumentFieldsDirectionRadio {
+	return []FieldCreateDocumentFieldsDirectionRadio{
+		FieldCreateDocumentFieldsDirectionRadioVertical,
+		FieldCreateDocumentFieldsDirectionRadioHorizontal,
+	}
+}
 func (e *FieldCreateDocumentFieldsDirectionRadio) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -632,6 +832,7 @@ type FieldCreateDocumentFieldsFieldMetaRadioRequest struct {
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
 	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateDocumentFieldsOverflowRadio    `json:"overflow,omitempty"`
 	Type        FieldCreateDocumentFieldsTypeRadioRequest2 `json:"type"`
 	Values      []FieldCreateDocumentFieldsValueRadio      `json:"values,omitempty"`
 	Direction   *FieldCreateDocumentFieldsDirectionRadio   `default:"vertical" json:"direction"`
@@ -681,6 +882,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaRadioRequest) GetFontSize() *float64 
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaRadioRequest) GetOverflow() *FieldCreateDocumentFieldsOverflowRadio {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaRadioRequest) GetType() FieldCreateDocumentFieldsTypeRadioRequest2 {
@@ -791,6 +999,13 @@ const (
 func (e FieldCreateDocumentFieldsTypeNumberRequest1) ToPointer() *FieldCreateDocumentFieldsTypeNumberRequest1 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTypeNumberRequest1Values returns every known FieldCreateDocumentFieldsTypeNumberRequest1 value in schema order.
+func FieldCreateDocumentFieldsTypeNumberRequest1Values() []FieldCreateDocumentFieldsTypeNumberRequest1 {
+	return []FieldCreateDocumentFieldsTypeNumberRequest1{
+		FieldCreateDocumentFieldsTypeNumberRequest1Number,
+	}
+}
 func (e *FieldCreateDocumentFieldsTypeNumberRequest1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -805,6 +1020,48 @@ func (e *FieldCreateDocumentFieldsTypeNumberRequest1) UnmarshalJSON(data []byte)
 	}
 }
 
+type FieldCreateDocumentFieldsOverflowNumber string
+
+const (
+	FieldCreateDocumentFieldsOverflowNumberAuto       FieldCreateDocumentFieldsOverflowNumber = "auto"
+	FieldCreateDocumentFieldsOverflowNumberHorizontal FieldCreateDocumentFieldsOverflowNumber = "horizontal"
+	FieldCreateDocumentFieldsOverflowNumberVertical   FieldCreateDocumentFieldsOverflowNumber = "vertical"
+	FieldCreateDocumentFieldsOverflowNumberCrop       FieldCreateDocumentFieldsOverflowNumber = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowNumber) ToPointer() *FieldCreateDocumentFieldsOverflowNumber {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowNumberValues returns every known FieldCreateDocumentFieldsOverflowNumber value in schema order.
+func FieldCreateDocumentFieldsOverflowNumberValues() []FieldCreateDocumentFieldsOverflowNumber {
+	return []FieldCreateDocumentFieldsOverflowNumber{
+		FieldCreateDocumentFieldsOverflowNumberAuto,
+		FieldCreateDocumentFieldsOverflowNumberHorizontal,
+		FieldCreateDocumentFieldsOverflowNumberVertical,
+		FieldCreateDocumentFieldsOverflowNumberCrop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowNumber) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowNumber(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowNumber: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsTypeNumberRequest2 string
 
 const (
@@ -813,6 +1070,13 @@ const (
 
 func (e FieldCreateDocumentFieldsTypeNumberRequest2) ToPointer() *FieldCreateDocumentFieldsTypeNumberRequest2 {
 	return &e
+}
+
+// FieldCreateDocumentFieldsTypeNumberRequest2Values returns every known FieldCreateDocumentFieldsTypeNumberRequest2 value in schema order.
+func FieldCreateDocumentFieldsTypeNumberRequest2Values() []FieldCreateDocumentFieldsTypeNumberRequest2 {
+	return []FieldCreateDocumentFieldsTypeNumberRequest2{
+		FieldCreateDocumentFieldsTypeNumberRequest2Number,
+	}
 }
 func (e *FieldCreateDocumentFieldsTypeNumberRequest2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -838,6 +1102,15 @@ const (
 
 func (e FieldCreateDocumentFieldsTextAlignNumber) ToPointer() *FieldCreateDocumentFieldsTextAlignNumber {
 	return &e
+}
+
+// FieldCreateDocumentFieldsTextAlignNumberValues returns every known FieldCreateDocumentFieldsTextAlignNumber value in schema order.
+func FieldCreateDocumentFieldsTextAlignNumberValues() []FieldCreateDocumentFieldsTextAlignNumber {
+	return []FieldCreateDocumentFieldsTextAlignNumber{
+		FieldCreateDocumentFieldsTextAlignNumberLeft,
+		FieldCreateDocumentFieldsTextAlignNumberCenter,
+		FieldCreateDocumentFieldsTextAlignNumberRight,
+	}
 }
 func (e *FieldCreateDocumentFieldsTextAlignNumber) UnmarshalJSON(data []byte) error {
 	var v string
@@ -868,6 +1141,15 @@ const (
 func (e FieldCreateDocumentFieldsVerticalAlignNumber) ToPointer() *FieldCreateDocumentFieldsVerticalAlignNumber {
 	return &e
 }
+
+// FieldCreateDocumentFieldsVerticalAlignNumberValues returns every known FieldCreateDocumentFieldsVerticalAlignNumber value in schema order.
+func FieldCreateDocumentFieldsVerticalAlignNumberValues() []FieldCreateDocumentFieldsVerticalAlignNumber {
+	return []FieldCreateDocumentFieldsVerticalAlignNumber{
+		FieldCreateDocumentFieldsVerticalAlignNumberTop,
+		FieldCreateDocumentFieldsVerticalAlignNumberMiddle,
+		FieldCreateDocumentFieldsVerticalAlignNumberBottom,
+	}
+}
 func (e *FieldCreateDocumentFieldsVerticalAlignNumber) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -892,6 +1174,7 @@ type FieldCreateDocumentFieldsFieldMetaNumberRequest struct {
 	Required      *bool                                         `json:"required,omitempty"`
 	ReadOnly      *bool                                         `json:"readOnly,omitempty"`
 	FontSize      *float64                                      `default:"12" json:"fontSize"`
+	Overflow      *FieldCreateDocumentFieldsOverflowNumber      `json:"overflow,omitempty"`
 	Type          FieldCreateDocumentFieldsTypeNumberRequest2   `json:"type"`
 	NumberFormat  *string                                       `json:"numberFormat,omitempty"`
 	Value         *string                                       `json:"value,omitempty"`
@@ -947,6 +1230,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaNumberRequest) GetFontSize() *float64
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaNumberRequest) GetOverflow() *FieldCreateDocumentFieldsOverflowNumber {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaNumberRequest) GetType() FieldCreateDocumentFieldsTypeNumberRequest2 {
@@ -1099,6 +1389,13 @@ const (
 func (e FieldCreateDocumentFieldsTypeTextRequest1) ToPointer() *FieldCreateDocumentFieldsTypeTextRequest1 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTypeTextRequest1Values returns every known FieldCreateDocumentFieldsTypeTextRequest1 value in schema order.
+func FieldCreateDocumentFieldsTypeTextRequest1Values() []FieldCreateDocumentFieldsTypeTextRequest1 {
+	return []FieldCreateDocumentFieldsTypeTextRequest1{
+		FieldCreateDocumentFieldsTypeTextRequest1Text,
+	}
+}
 func (e *FieldCreateDocumentFieldsTypeTextRequest1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1113,6 +1410,48 @@ func (e *FieldCreateDocumentFieldsTypeTextRequest1) UnmarshalJSON(data []byte) e
 	}
 }
 
+type FieldCreateDocumentFieldsOverflowText string
+
+const (
+	FieldCreateDocumentFieldsOverflowTextAuto       FieldCreateDocumentFieldsOverflowText = "auto"
+	FieldCreateDocumentFieldsOverflowTextHorizontal FieldCreateDocumentFieldsOverflowText = "horizontal"
+	FieldCreateDocumentFieldsOverflowTextVertical   FieldCreateDocumentFieldsOverflowText = "vertical"
+	FieldCreateDocumentFieldsOverflowTextCrop       FieldCreateDocumentFieldsOverflowText = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowText) ToPointer() *FieldCreateDocumentFieldsOverflowText {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowTextValues returns every known FieldCreateDocumentFieldsOverflowText value in schema order.
+func FieldCreateDocumentFieldsOverflowTextValues() []FieldCreateDocumentFieldsOverflowText {
+	return []FieldCreateDocumentFieldsOverflowText{
+		FieldCreateDocumentFieldsOverflowTextAuto,
+		FieldCreateDocumentFieldsOverflowTextHorizontal,
+		FieldCreateDocumentFieldsOverflowTextVertical,
+		FieldCreateDocumentFieldsOverflowTextCrop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowText) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowText(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowText: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsTypeTextRequest2 string
 
 const (
@@ -1121,6 +1460,13 @@ const (
 
 func (e FieldCreateDocumentFieldsTypeTextRequest2) ToPointer() *FieldCreateDocumentFieldsTypeTextRequest2 {
 	return &e
+}
+
+// FieldCreateDocumentFieldsTypeTextRequest2Values returns every known FieldCreateDocumentFieldsTypeTextRequest2 value in schema order.
+func FieldCreateDocumentFieldsTypeTextRequest2Values() []FieldCreateDocumentFieldsTypeTextRequest2 {
+	return []FieldCreateDocumentFieldsTypeTextRequest2{
+		FieldCreateDocumentFieldsTypeTextRequest2Text,
+	}
 }
 func (e *FieldCreateDocumentFieldsTypeTextRequest2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1146,6 +1492,15 @@ const (
 
 func (e FieldCreateDocumentFieldsTextAlignText) ToPointer() *FieldCreateDocumentFieldsTextAlignText {
 	return &e
+}
+
+// FieldCreateDocumentFieldsTextAlignTextValues returns every known FieldCreateDocumentFieldsTextAlignText value in schema order.
+func FieldCreateDocumentFieldsTextAlignTextValues() []FieldCreateDocumentFieldsTextAlignText {
+	return []FieldCreateDocumentFieldsTextAlignText{
+		FieldCreateDocumentFieldsTextAlignTextLeft,
+		FieldCreateDocumentFieldsTextAlignTextCenter,
+		FieldCreateDocumentFieldsTextAlignTextRight,
+	}
 }
 func (e *FieldCreateDocumentFieldsTextAlignText) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1176,6 +1531,15 @@ const (
 func (e FieldCreateDocumentFieldsVerticalAlignText) ToPointer() *FieldCreateDocumentFieldsVerticalAlignText {
 	return &e
 }
+
+// FieldCreateDocumentFieldsVerticalAlignTextValues returns every known FieldCreateDocumentFieldsVerticalAlignText value in schema order.
+func FieldCreateDocumentFieldsVerticalAlignTextValues() []FieldCreateDocumentFieldsVerticalAlignText {
+	return []FieldCreateDocumentFieldsVerticalAlignText{
+		FieldCreateDocumentFieldsVerticalAlignTextTop,
+		FieldCreateDocumentFieldsVerticalAlignTextMiddle,
+		FieldCreateDocumentFieldsVerticalAlignTextBottom,
+	}
+}
 func (e *FieldCreateDocumentFieldsVerticalAlignText) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1200,6 +1564,7 @@ type FieldCreateDocumentFieldsFieldMetaTextRequest struct {
 	Required       *bool                                       `json:"required,omitempty"`
 	ReadOnly       *bool                                       `json:"readOnly,omitempty"`
 	FontSize       *float64                                    `default:"12" json:"fontSize"`
+	Overflow       *FieldCreateDocumentFieldsOverflowText      `json:"overflow,omitempty"`
 	Type           FieldCreateDocumentFieldsTypeTextRequest2   `json:"type"`
 	Text           *string                                     `json:"text,omitempty"`
 	CharacterLimit *float64                                    `json:"characterLimit,omitempty"`
@@ -1253,6 +1618,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaTextRequest) GetFontSize() *float64 {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaTextRequest) GetOverflow() *FieldCreateDocumentFieldsOverflowText {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaTextRequest) GetType() FieldCreateDocumentFieldsTypeTextRequest2 {
@@ -1391,6 +1763,13 @@ const (
 func (e FieldCreateDocumentFieldsTypeDateRequest1) ToPointer() *FieldCreateDocumentFieldsTypeDateRequest1 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTypeDateRequest1Values returns every known FieldCreateDocumentFieldsTypeDateRequest1 value in schema order.
+func FieldCreateDocumentFieldsTypeDateRequest1Values() []FieldCreateDocumentFieldsTypeDateRequest1 {
+	return []FieldCreateDocumentFieldsTypeDateRequest1{
+		FieldCreateDocumentFieldsTypeDateRequest1Date,
+	}
+}
 func (e *FieldCreateDocumentFieldsTypeDateRequest1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1405,6 +1784,48 @@ func (e *FieldCreateDocumentFieldsTypeDateRequest1) UnmarshalJSON(data []byte) e
 	}
 }
 
+type FieldCreateDocumentFieldsOverflowDate string
+
+const (
+	FieldCreateDocumentFieldsOverflowDateAuto       FieldCreateDocumentFieldsOverflowDate = "auto"
+	FieldCreateDocumentFieldsOverflowDateHorizontal FieldCreateDocumentFieldsOverflowDate = "horizontal"
+	FieldCreateDocumentFieldsOverflowDateVertical   FieldCreateDocumentFieldsOverflowDate = "vertical"
+	FieldCreateDocumentFieldsOverflowDateCrop       FieldCreateDocumentFieldsOverflowDate = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowDate) ToPointer() *FieldCreateDocumentFieldsOverflowDate {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowDateValues returns every known FieldCreateDocumentFieldsOverflowDate value in schema order.
+func FieldCreateDocumentFieldsOverflowDateValues() []FieldCreateDocumentFieldsOverflowDate {
+	return []FieldCreateDocumentFieldsOverflowDate{
+		FieldCreateDocumentFieldsOverflowDateAuto,
+		FieldCreateDocumentFieldsOverflowDateHorizontal,
+		FieldCreateDocumentFieldsOverflowDateVertical,
+		FieldCreateDocumentFieldsOverflowDateCrop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowDate) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowDate(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowDate: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsTypeDateRequest2 string
 
 const (
@@ -1413,6 +1834,13 @@ const (
 
 func (e FieldCreateDocumentFieldsTypeDateRequest2) ToPointer() *FieldCreateDocumentFieldsTypeDateRequest2 {
 	return &e
+}
+
+// FieldCreateDocumentFieldsTypeDateRequest2Values returns every known FieldCreateDocumentFieldsTypeDateRequest2 value in schema order.
+func FieldCreateDocumentFieldsTypeDateRequest2Values() []FieldCreateDocumentFieldsTypeDateRequest2 {
+	return []FieldCreateDocumentFieldsTypeDateRequest2{
+		FieldCreateDocumentFieldsTypeDateRequest2Date,
+	}
 }
 func (e *FieldCreateDocumentFieldsTypeDateRequest2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1439,6 +1867,15 @@ const (
 func (e FieldCreateDocumentFieldsTextAlignDate) ToPointer() *FieldCreateDocumentFieldsTextAlignDate {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTextAlignDateValues returns every known FieldCreateDocumentFieldsTextAlignDate value in schema order.
+func FieldCreateDocumentFieldsTextAlignDateValues() []FieldCreateDocumentFieldsTextAlignDate {
+	return []FieldCreateDocumentFieldsTextAlignDate{
+		FieldCreateDocumentFieldsTextAlignDateLeft,
+		FieldCreateDocumentFieldsTextAlignDateCenter,
+		FieldCreateDocumentFieldsTextAlignDateRight,
+	}
+}
 func (e *FieldCreateDocumentFieldsTextAlignDate) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1463,6 +1900,7 @@ type FieldCreateDocumentFieldsFieldMetaDateRequest struct {
 	Required    *bool                                     `json:"required,omitempty"`
 	ReadOnly    *bool                                     `json:"readOnly,omitempty"`
 	FontSize    *float64                                  `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateDocumentFieldsOverflowDate    `default:"auto" json:"overflow"`
 	Type        FieldCreateDocumentFieldsTypeDateRequest2 `json:"type"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignDate   `json:"textAlign,omitempty"`
 }
@@ -1511,6 +1949,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaDateRequest) GetFontSize() *float64 {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaDateRequest) GetOverflow() *FieldCreateDocumentFieldsOverflowDate {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaDateRequest) GetType() FieldCreateDocumentFieldsTypeDateRequest2 {
@@ -1614,6 +2059,13 @@ const (
 func (e FieldCreateDocumentFieldsTypeEmailRequest1) ToPointer() *FieldCreateDocumentFieldsTypeEmailRequest1 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTypeEmailRequest1Values returns every known FieldCreateDocumentFieldsTypeEmailRequest1 value in schema order.
+func FieldCreateDocumentFieldsTypeEmailRequest1Values() []FieldCreateDocumentFieldsTypeEmailRequest1 {
+	return []FieldCreateDocumentFieldsTypeEmailRequest1{
+		FieldCreateDocumentFieldsTypeEmailRequest1Email,
+	}
+}
 func (e *FieldCreateDocumentFieldsTypeEmailRequest1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1628,6 +2080,48 @@ func (e *FieldCreateDocumentFieldsTypeEmailRequest1) UnmarshalJSON(data []byte) 
 	}
 }
 
+type FieldCreateDocumentFieldsOverflowEmail string
+
+const (
+	FieldCreateDocumentFieldsOverflowEmailAuto       FieldCreateDocumentFieldsOverflowEmail = "auto"
+	FieldCreateDocumentFieldsOverflowEmailHorizontal FieldCreateDocumentFieldsOverflowEmail = "horizontal"
+	FieldCreateDocumentFieldsOverflowEmailVertical   FieldCreateDocumentFieldsOverflowEmail = "vertical"
+	FieldCreateDocumentFieldsOverflowEmailCrop       FieldCreateDocumentFieldsOverflowEmail = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowEmail) ToPointer() *FieldCreateDocumentFieldsOverflowEmail {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowEmailValues returns every known FieldCreateDocumentFieldsOverflowEmail value in schema order.
+func FieldCreateDocumentFieldsOverflowEmailValues() []FieldCreateDocumentFieldsOverflowEmail {
+	return []FieldCreateDocumentFieldsOverflowEmail{
+		FieldCreateDocumentFieldsOverflowEmailAuto,
+		FieldCreateDocumentFieldsOverflowEmailHorizontal,
+		FieldCreateDocumentFieldsOverflowEmailVertical,
+		FieldCreateDocumentFieldsOverflowEmailCrop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowEmail) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowEmail(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowEmail: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsTypeEmailRequest2 string
 
 const (
@@ -1636,6 +2130,13 @@ const (
 
 func (e FieldCreateDocumentFieldsTypeEmailRequest2) ToPointer() *FieldCreateDocumentFieldsTypeEmailRequest2 {
 	return &e
+}
+
+// FieldCreateDocumentFieldsTypeEmailRequest2Values returns every known FieldCreateDocumentFieldsTypeEmailRequest2 value in schema order.
+func FieldCreateDocumentFieldsTypeEmailRequest2Values() []FieldCreateDocumentFieldsTypeEmailRequest2 {
+	return []FieldCreateDocumentFieldsTypeEmailRequest2{
+		FieldCreateDocumentFieldsTypeEmailRequest2Email,
+	}
 }
 func (e *FieldCreateDocumentFieldsTypeEmailRequest2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1662,6 +2163,15 @@ const (
 func (e FieldCreateDocumentFieldsTextAlignEmail) ToPointer() *FieldCreateDocumentFieldsTextAlignEmail {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTextAlignEmailValues returns every known FieldCreateDocumentFieldsTextAlignEmail value in schema order.
+func FieldCreateDocumentFieldsTextAlignEmailValues() []FieldCreateDocumentFieldsTextAlignEmail {
+	return []FieldCreateDocumentFieldsTextAlignEmail{
+		FieldCreateDocumentFieldsTextAlignEmailLeft,
+		FieldCreateDocumentFieldsTextAlignEmailCenter,
+		FieldCreateDocumentFieldsTextAlignEmailRight,
+	}
+}
 func (e *FieldCreateDocumentFieldsTextAlignEmail) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1686,6 +2196,7 @@ type FieldCreateDocumentFieldsFieldMetaEmailRequest struct {
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
 	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateDocumentFieldsOverflowEmail    `default:"auto" json:"overflow"`
 	Type        FieldCreateDocumentFieldsTypeEmailRequest2 `json:"type"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignEmail   `json:"textAlign,omitempty"`
 }
@@ -1734,6 +2245,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaEmailRequest) GetFontSize() *float64 
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaEmailRequest) GetOverflow() *FieldCreateDocumentFieldsOverflowEmail {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaEmailRequest) GetType() FieldCreateDocumentFieldsTypeEmailRequest2 {
@@ -1837,6 +2355,13 @@ const (
 func (e FieldCreateDocumentFieldsTypeNameRequest1) ToPointer() *FieldCreateDocumentFieldsTypeNameRequest1 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTypeNameRequest1Values returns every known FieldCreateDocumentFieldsTypeNameRequest1 value in schema order.
+func FieldCreateDocumentFieldsTypeNameRequest1Values() []FieldCreateDocumentFieldsTypeNameRequest1 {
+	return []FieldCreateDocumentFieldsTypeNameRequest1{
+		FieldCreateDocumentFieldsTypeNameRequest1Name,
+	}
+}
 func (e *FieldCreateDocumentFieldsTypeNameRequest1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1851,6 +2376,48 @@ func (e *FieldCreateDocumentFieldsTypeNameRequest1) UnmarshalJSON(data []byte) e
 	}
 }
 
+type FieldCreateDocumentFieldsOverflowName string
+
+const (
+	FieldCreateDocumentFieldsOverflowNameAuto       FieldCreateDocumentFieldsOverflowName = "auto"
+	FieldCreateDocumentFieldsOverflowNameHorizontal FieldCreateDocumentFieldsOverflowName = "horizontal"
+	FieldCreateDocumentFieldsOverflowNameVertical   FieldCreateDocumentFieldsOverflowName = "vertical"
+	FieldCreateDocumentFieldsOverflowNameCrop       FieldCreateDocumentFieldsOverflowName = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowName) ToPointer() *FieldCreateDocumentFieldsOverflowName {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowNameValues returns every known FieldCreateDocumentFieldsOverflowName value in schema order.
+func FieldCreateDocumentFieldsOverflowNameValues() []FieldCreateDocumentFieldsOverflowName {
+	return []FieldCreateDocumentFieldsOverflowName{
+		FieldCreateDocumentFieldsOverflowNameAuto,
+		FieldCreateDocumentFieldsOverflowNameHorizontal,
+		FieldCreateDocumentFieldsOverflowNameVertical,
+		FieldCreateDocumentFieldsOverflowNameCrop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowName) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowName(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowName: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsTypeNameRequest2 string
 
 const (
@@ -1859,6 +2426,13 @@ const (
 
 func (e FieldCreateDocumentFieldsTypeNameRequest2) ToPointer() *FieldCreateDocumentFieldsTypeNameRequest2 {
 	return &e
+}
+
+// FieldCreateDocumentFieldsTypeNameRequest2Values returns every known FieldCreateDocumentFieldsTypeNameRequest2 value in schema order.
+func FieldCreateDocumentFieldsTypeNameRequest2Values() []FieldCreateDocumentFieldsTypeNameRequest2 {
+	return []FieldCreateDocumentFieldsTypeNameRequest2{
+		FieldCreateDocumentFieldsTypeNameRequest2Name,
+	}
 }
 func (e *FieldCreateDocumentFieldsTypeNameRequest2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1885,6 +2459,15 @@ const (
 func (e FieldCreateDocumentFieldsTextAlignName) ToPointer() *FieldCreateDocumentFieldsTextAlignName {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTextAlignNameValues returns every known FieldCreateDocumentFieldsTextAlignName value in schema order.
+func FieldCreateDocumentFieldsTextAlignNameValues() []FieldCreateDocumentFieldsTextAlignName {
+	return []FieldCreateDocumentFieldsTextAlignName{
+		FieldCreateDocumentFieldsTextAlignNameLeft,
+		FieldCreateDocumentFieldsTextAlignNameCenter,
+		FieldCreateDocumentFieldsTextAlignNameRight,
+	}
+}
 func (e *FieldCreateDocumentFieldsTextAlignName) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1909,6 +2492,7 @@ type FieldCreateDocumentFieldsFieldMetaNameRequest struct {
 	Required    *bool                                     `json:"required,omitempty"`
 	ReadOnly    *bool                                     `json:"readOnly,omitempty"`
 	FontSize    *float64                                  `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateDocumentFieldsOverflowName    `json:"overflow,omitempty"`
 	Type        FieldCreateDocumentFieldsTypeNameRequest2 `json:"type"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignName   `json:"textAlign,omitempty"`
 }
@@ -1957,6 +2541,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaNameRequest) GetFontSize() *float64 {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaNameRequest) GetOverflow() *FieldCreateDocumentFieldsOverflowName {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaNameRequest) GetType() FieldCreateDocumentFieldsTypeNameRequest2 {
@@ -2060,6 +2651,13 @@ const (
 func (e FieldCreateDocumentFieldsTypeInitialsRequest1) ToPointer() *FieldCreateDocumentFieldsTypeInitialsRequest1 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTypeInitialsRequest1Values returns every known FieldCreateDocumentFieldsTypeInitialsRequest1 value in schema order.
+func FieldCreateDocumentFieldsTypeInitialsRequest1Values() []FieldCreateDocumentFieldsTypeInitialsRequest1 {
+	return []FieldCreateDocumentFieldsTypeInitialsRequest1{
+		FieldCreateDocumentFieldsTypeInitialsRequest1Initials,
+	}
+}
 func (e *FieldCreateDocumentFieldsTypeInitialsRequest1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2074,6 +2672,48 @@ func (e *FieldCreateDocumentFieldsTypeInitialsRequest1) UnmarshalJSON(data []byt
 	}
 }
 
+type FieldCreateDocumentFieldsOverflowInitials string
+
+const (
+	FieldCreateDocumentFieldsOverflowInitialsAuto       FieldCreateDocumentFieldsOverflowInitials = "auto"
+	FieldCreateDocumentFieldsOverflowInitialsHorizontal FieldCreateDocumentFieldsOverflowInitials = "horizontal"
+	FieldCreateDocumentFieldsOverflowInitialsVertical   FieldCreateDocumentFieldsOverflowInitials = "vertical"
+	FieldCreateDocumentFieldsOverflowInitialsCrop       FieldCreateDocumentFieldsOverflowInitials = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowInitials) ToPointer() *FieldCreateDocumentFieldsOverflowInitials {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowInitialsValues returns every known FieldCreateDocumentFieldsOverflowInitials value in schema order.
+func FieldCreateDocumentFieldsOverflowInitialsValues() []FieldCreateDocumentFieldsOverflowInitials {
+	return []FieldCreateDocumentFieldsOverflowInitials{
+		FieldCreateDocumentFieldsOverflowInitialsAuto,
+		FieldCreateDocumentFieldsOverflowInitialsHorizontal,
+		FieldCreateDocumentFieldsOverflowInitialsVertical,
+		FieldCreateDocumentFieldsOverflowInitialsCrop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowInitials) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowInitials(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowInitials: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsTypeInitialsRequest2 string
 
 const (
@@ -2082,6 +2722,13 @@ const (
 
 func (e FieldCreateDocumentFieldsTypeInitialsRequest2) ToPointer() *FieldCreateDocumentFieldsTypeInitialsRequest2 {
 	return &e
+}
+
+// FieldCreateDocumentFieldsTypeInitialsRequest2Values returns every known FieldCreateDocumentFieldsTypeInitialsRequest2 value in schema order.
+func FieldCreateDocumentFieldsTypeInitialsRequest2Values() []FieldCreateDocumentFieldsTypeInitialsRequest2 {
+	return []FieldCreateDocumentFieldsTypeInitialsRequest2{
+		FieldCreateDocumentFieldsTypeInitialsRequest2Initials,
+	}
 }
 func (e *FieldCreateDocumentFieldsTypeInitialsRequest2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2108,6 +2755,15 @@ const (
 func (e FieldCreateDocumentFieldsTextAlignInitials) ToPointer() *FieldCreateDocumentFieldsTextAlignInitials {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTextAlignInitialsValues returns every known FieldCreateDocumentFieldsTextAlignInitials value in schema order.
+func FieldCreateDocumentFieldsTextAlignInitialsValues() []FieldCreateDocumentFieldsTextAlignInitials {
+	return []FieldCreateDocumentFieldsTextAlignInitials{
+		FieldCreateDocumentFieldsTextAlignInitialsLeft,
+		FieldCreateDocumentFieldsTextAlignInitialsCenter,
+		FieldCreateDocumentFieldsTextAlignInitialsRight,
+	}
+}
 func (e *FieldCreateDocumentFieldsTextAlignInitials) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2132,6 +2788,7 @@ type FieldCreateDocumentFieldsFieldMetaInitialsRequest struct {
 	Required    *bool                                         `json:"required,omitempty"`
 	ReadOnly    *bool                                         `json:"readOnly,omitempty"`
 	FontSize    *float64                                      `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateDocumentFieldsOverflowInitials    `json:"overflow,omitempty"`
 	Type        FieldCreateDocumentFieldsTypeInitialsRequest2 `json:"type"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignInitials   `json:"textAlign,omitempty"`
 }
@@ -2180,6 +2837,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaInitialsRequest) GetFontSize() *float
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaInitialsRequest) GetOverflow() *FieldCreateDocumentFieldsOverflowInitials {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaInitialsRequest) GetType() FieldCreateDocumentFieldsTypeInitialsRequest2 {
@@ -2283,6 +2947,13 @@ const (
 func (e FieldCreateDocumentFieldsTypeFreeSignature) ToPointer() *FieldCreateDocumentFieldsTypeFreeSignature {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTypeFreeSignatureValues returns every known FieldCreateDocumentFieldsTypeFreeSignature value in schema order.
+func FieldCreateDocumentFieldsTypeFreeSignatureValues() []FieldCreateDocumentFieldsTypeFreeSignature {
+	return []FieldCreateDocumentFieldsTypeFreeSignature{
+		FieldCreateDocumentFieldsTypeFreeSignatureFreeSignature,
+	}
+}
 func (e *FieldCreateDocumentFieldsTypeFreeSignature) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2376,6 +3047,13 @@ const (
 func (e FieldCreateDocumentFieldsTypeSignatureRequest1) ToPointer() *FieldCreateDocumentFieldsTypeSignatureRequest1 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTypeSignatureRequest1Values returns every known FieldCreateDocumentFieldsTypeSignatureRequest1 value in schema order.
+func FieldCreateDocumentFieldsTypeSignatureRequest1Values() []FieldCreateDocumentFieldsTypeSignatureRequest1 {
+	return []FieldCreateDocumentFieldsTypeSignatureRequest1{
+		FieldCreateDocumentFieldsTypeSignatureRequest1Signature,
+	}
+}
 func (e *FieldCreateDocumentFieldsTypeSignatureRequest1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2390,6 +3068,48 @@ func (e *FieldCreateDocumentFieldsTypeSignatureRequest1) UnmarshalJSON(data []by
 	}
 }
 
+type FieldCreateDocumentFieldsOverflowSignature string
+
+const (
+	FieldCreateDocumentFieldsOverflowSignatureAuto       FieldCreateDocumentFieldsOverflowSignature = "auto"
+	FieldCreateDocumentFieldsOverflowSignatureHorizontal FieldCreateDocumentFieldsOverflowSignature = "horizontal"
+	FieldCreateDocumentFieldsOverflowSignatureVertical   FieldCreateDocumentFieldsOverflowSignature = "vertical"
+	FieldCreateDocumentFieldsOverflowSignatureCrop       FieldCreateDocumentFieldsOverflowSignature = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowSignature) ToPointer() *FieldCreateDocumentFieldsOverflowSignature {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowSignatureValues returns every known FieldCreateDocumentFieldsOverflowSignature value in schema order.
+func FieldCreateDocumentFieldsOverflowSignatureValues() []FieldCreateDocumentFieldsOverflowSignature {
+	return []FieldCreateDocumentFieldsOverflowSignature{
+		FieldCreateDocumentFieldsOverflowSignatureAuto,
+		FieldCreateDocumentFieldsOverflowSignatureHorizontal,
+		FieldCreateDocumentFieldsOverflowSignatureVertical,
+		FieldCreateDocumentFieldsOverflowSignatureCrop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowSignature) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowSignature(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowSignature: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsTypeSignatureRequest2 string
 
 const (
@@ -2398,6 +3118,13 @@ const (
 
 func (e FieldCreateDocumentFieldsTypeSignatureRequest2) ToPointer() *FieldCreateDocumentFieldsTypeSignatureRequest2 {
 	return &e
+}
+
+// FieldCreateDocumentFieldsTypeSignatureRequest2Values returns every known FieldCreateDocumentFieldsTypeSignatureRequest2 value in schema order.
+func FieldCreateDocumentFieldsTypeSignatureRequest2Values() []FieldCreateDocumentFieldsTypeSignatureRequest2 {
+	return []FieldCreateDocumentFieldsTypeSignatureRequest2{
+		FieldCreateDocumentFieldsTypeSignatureRequest2Signature,
+	}
 }
 func (e *FieldCreateDocumentFieldsTypeSignatureRequest2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2419,6 +3146,7 @@ type FieldCreateDocumentFieldsFieldMetaSignatureRequest struct {
 	Required    *bool                                          `json:"required,omitempty"`
 	ReadOnly    *bool                                          `json:"readOnly,omitempty"`
 	FontSize    *float64                                       `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateDocumentFieldsOverflowSignature    `default:"auto" json:"overflow"`
 	Type        FieldCreateDocumentFieldsTypeSignatureRequest2 `json:"type"`
 }
 
@@ -2466,6 +3194,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaSignatureRequest) GetFontSize() *floa
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureRequest) GetOverflow() *FieldCreateDocumentFieldsOverflowSignature {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaSignatureRequest) GetType() FieldCreateDocumentFieldsTypeSignatureRequest2 {
@@ -2684,7 +3419,14 @@ func CreateFieldCreateDocumentFieldsFieldUnionFieldCreateDocumentFieldsFieldDrop
 	}
 }
 
-func (u *FieldCreateDocumentFieldsFieldUnion) UnmarshalJSON(data []byte) error {
+func (u *FieldCreateDocumentFieldsFieldUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = FieldCreateDocumentFieldsFieldUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var fieldCreateDocumentFieldsFieldSignature FieldCreateDocumentFieldsFieldSignature = FieldCreateDocumentFieldsFieldSignature{}
 	if err := utils.UnmarshalJSON(data, &fieldCreateDocumentFieldsFieldSignature, "", true, nil); err == nil {
@@ -2852,6 +3594,23 @@ const (
 func (e FieldCreateDocumentFieldsTypeResponse) ToPointer() *FieldCreateDocumentFieldsTypeResponse {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTypeResponseValues returns every known FieldCreateDocumentFieldsTypeResponse value in schema order.
+func FieldCreateDocumentFieldsTypeResponseValues() []FieldCreateDocumentFieldsTypeResponse {
+	return []FieldCreateDocumentFieldsTypeResponse{
+		FieldCreateDocumentFieldsTypeResponseSignature,
+		FieldCreateDocumentFieldsTypeResponseFreeSignature,
+		FieldCreateDocumentFieldsTypeResponseInitials,
+		FieldCreateDocumentFieldsTypeResponseName,
+		FieldCreateDocumentFieldsTypeResponseEmail,
+		FieldCreateDocumentFieldsTypeResponseDate,
+		FieldCreateDocumentFieldsTypeResponseText,
+		FieldCreateDocumentFieldsTypeResponseNumber,
+		FieldCreateDocumentFieldsTypeResponseRadio,
+		FieldCreateDocumentFieldsTypeResponseCheckbox,
+		FieldCreateDocumentFieldsTypeResponseDropdown,
+	}
+}
 func (e *FieldCreateDocumentFieldsTypeResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2886,6 +3645,48 @@ func (e *FieldCreateDocumentFieldsTypeResponse) UnmarshalJSON(data []byte) error
 	}
 }
 
+type FieldCreateDocumentFieldsOverflowResponse10 string
+
+const (
+	FieldCreateDocumentFieldsOverflowResponse10Auto       FieldCreateDocumentFieldsOverflowResponse10 = "auto"
+	FieldCreateDocumentFieldsOverflowResponse10Horizontal FieldCreateDocumentFieldsOverflowResponse10 = "horizontal"
+	FieldCreateDocumentFieldsOverflowResponse10Vertical   FieldCreateDocumentFieldsOverflowResponse10 = "vertical"
+	FieldCreateDocumentFieldsOverflowResponse10Crop       FieldCreateDocumentFieldsOverflowResponse10 = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowResponse10) ToPointer() *FieldCreateDocumentFieldsOverflowResponse10 {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowResponse10Values returns every known FieldCreateDocumentFieldsOverflowResponse10 value in schema order.
+func FieldCreateDocumentFieldsOverflowResponse10Values() []FieldCreateDocumentFieldsOverflowResponse10 {
+	return []FieldCreateDocumentFieldsOverflowResponse10{
+		FieldCreateDocumentFieldsOverflowResponse10Auto,
+		FieldCreateDocumentFieldsOverflowResponse10Horizontal,
+		FieldCreateDocumentFieldsOverflowResponse10Vertical,
+		FieldCreateDocumentFieldsOverflowResponse10Crop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowResponse10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowResponse10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowResponse10: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaTypeDropdown string
 
 const (
@@ -2894,6 +3695,13 @@ const (
 
 func (e FieldCreateDocumentFieldsFieldMetaTypeDropdown) ToPointer() *FieldCreateDocumentFieldsFieldMetaTypeDropdown {
 	return &e
+}
+
+// FieldCreateDocumentFieldsFieldMetaTypeDropdownValues returns every known FieldCreateDocumentFieldsFieldMetaTypeDropdown value in schema order.
+func FieldCreateDocumentFieldsFieldMetaTypeDropdownValues() []FieldCreateDocumentFieldsFieldMetaTypeDropdown {
+	return []FieldCreateDocumentFieldsFieldMetaTypeDropdown{
+		FieldCreateDocumentFieldsFieldMetaTypeDropdownDropdown,
+	}
 }
 func (e *FieldCreateDocumentFieldsFieldMetaTypeDropdown) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2931,12 +3739,16 @@ func (f *FieldCreateDocumentFieldsValueResponse3) GetValue() string {
 	return f.Value
 }
 
+// #region class-body-fieldcreatedocumentfieldsvalueresponse3
+// #endregion class-body-fieldcreatedocumentfieldsvalueresponse3
+
 type FieldCreateDocumentFieldsFieldMetaDropdownResponse struct {
 	Label        *string                                        `json:"label,omitempty"`
 	Placeholder  *string                                        `json:"placeholder,omitempty"`
 	Required     *bool                                          `json:"required,omitempty"`
 	ReadOnly     *bool                                          `json:"readOnly,omitempty"`
 	FontSize     *float64                                       `default:"12" json:"fontSize"`
+	Overflow     *FieldCreateDocumentFieldsOverflowResponse10   `json:"overflow,omitempty"`
 	Type         FieldCreateDocumentFieldsFieldMetaTypeDropdown `json:"type"`
 	Values       []FieldCreateDocumentFieldsValueResponse3      `json:"values,omitempty"`
 	DefaultValue *string                                        `json:"defaultValue,omitempty"`
@@ -2988,6 +3800,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaDropdownResponse) GetFontSize() *floa
 	return f.FontSize
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaDropdownResponse) GetOverflow() *FieldCreateDocumentFieldsOverflowResponse10 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaDropdownResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeDropdown {
 	if f == nil {
 		return FieldCreateDocumentFieldsFieldMetaTypeDropdown("")
@@ -3009,6 +3828,48 @@ func (f *FieldCreateDocumentFieldsFieldMetaDropdownResponse) GetDefaultValue() *
 	return f.DefaultValue
 }
 
+type FieldCreateDocumentFieldsOverflowResponse9 string
+
+const (
+	FieldCreateDocumentFieldsOverflowResponse9Auto       FieldCreateDocumentFieldsOverflowResponse9 = "auto"
+	FieldCreateDocumentFieldsOverflowResponse9Horizontal FieldCreateDocumentFieldsOverflowResponse9 = "horizontal"
+	FieldCreateDocumentFieldsOverflowResponse9Vertical   FieldCreateDocumentFieldsOverflowResponse9 = "vertical"
+	FieldCreateDocumentFieldsOverflowResponse9Crop       FieldCreateDocumentFieldsOverflowResponse9 = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowResponse9) ToPointer() *FieldCreateDocumentFieldsOverflowResponse9 {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowResponse9Values returns every known FieldCreateDocumentFieldsOverflowResponse9 value in schema order.
+func FieldCreateDocumentFieldsOverflowResponse9Values() []FieldCreateDocumentFieldsOverflowResponse9 {
+	return []FieldCreateDocumentFieldsOverflowResponse9{
+		FieldCreateDocumentFieldsOverflowResponse9Auto,
+		FieldCreateDocumentFieldsOverflowResponse9Horizontal,
+		FieldCreateDocumentFieldsOverflowResponse9Vertical,
+		FieldCreateDocumentFieldsOverflowResponse9Crop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowResponse9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowResponse9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowResponse9: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaTypeCheckbox string
 
 const (
@@ -3017,6 +3878,13 @@ const (
 
 func (e FieldCreateDocumentFieldsFieldMetaTypeCheckbox) ToPointer() *FieldCreateDocumentFieldsFieldMetaTypeCheckbox {
 	return &e
+}
+
+// FieldCreateDocumentFieldsFieldMetaTypeCheckboxValues returns every known FieldCreateDocumentFieldsFieldMetaTypeCheckbox value in schema order.
+func FieldCreateDocumentFieldsFieldMetaTypeCheckboxValues() []FieldCreateDocumentFieldsFieldMetaTypeCheckbox {
+	return []FieldCreateDocumentFieldsFieldMetaTypeCheckbox{
+		FieldCreateDocumentFieldsFieldMetaTypeCheckboxCheckbox,
+	}
 }
 func (e *FieldCreateDocumentFieldsFieldMetaTypeCheckbox) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3070,6 +3938,9 @@ func (f *FieldCreateDocumentFieldsValueResponse2) GetValue() string {
 	return f.Value
 }
 
+// #region class-body-fieldcreatedocumentfieldsvalueresponse2
+// #endregion class-body-fieldcreatedocumentfieldsvalueresponse2
+
 type FieldCreateDocumentFieldsDirectionResponse2 string
 
 const (
@@ -3079,6 +3950,14 @@ const (
 
 func (e FieldCreateDocumentFieldsDirectionResponse2) ToPointer() *FieldCreateDocumentFieldsDirectionResponse2 {
 	return &e
+}
+
+// FieldCreateDocumentFieldsDirectionResponse2Values returns every known FieldCreateDocumentFieldsDirectionResponse2 value in schema order.
+func FieldCreateDocumentFieldsDirectionResponse2Values() []FieldCreateDocumentFieldsDirectionResponse2 {
+	return []FieldCreateDocumentFieldsDirectionResponse2{
+		FieldCreateDocumentFieldsDirectionResponse2Vertical,
+		FieldCreateDocumentFieldsDirectionResponse2Horizontal,
+	}
 }
 func (e *FieldCreateDocumentFieldsDirectionResponse2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3102,6 +3981,7 @@ type FieldCreateDocumentFieldsFieldMetaCheckboxResponse struct {
 	Required         *bool                                          `json:"required,omitempty"`
 	ReadOnly         *bool                                          `json:"readOnly,omitempty"`
 	FontSize         *float64                                       `default:"12" json:"fontSize"`
+	Overflow         *FieldCreateDocumentFieldsOverflowResponse9    `json:"overflow,omitempty"`
 	Type             FieldCreateDocumentFieldsFieldMetaTypeCheckbox `json:"type"`
 	Values           []FieldCreateDocumentFieldsValueResponse2      `json:"values,omitempty"`
 	ValidationRule   *string                                        `json:"validationRule,omitempty"`
@@ -3155,6 +4035,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaCheckboxResponse) GetFontSize() *floa
 	return f.FontSize
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaCheckboxResponse) GetOverflow() *FieldCreateDocumentFieldsOverflowResponse9 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaCheckboxResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeCheckbox {
 	if f == nil {
 		return FieldCreateDocumentFieldsFieldMetaTypeCheckbox("")
@@ -3190,6 +4077,48 @@ func (f *FieldCreateDocumentFieldsFieldMetaCheckboxResponse) GetDirection() *Fie
 	return f.Direction
 }
 
+type FieldCreateDocumentFieldsOverflowResponse8 string
+
+const (
+	FieldCreateDocumentFieldsOverflowResponse8Auto       FieldCreateDocumentFieldsOverflowResponse8 = "auto"
+	FieldCreateDocumentFieldsOverflowResponse8Horizontal FieldCreateDocumentFieldsOverflowResponse8 = "horizontal"
+	FieldCreateDocumentFieldsOverflowResponse8Vertical   FieldCreateDocumentFieldsOverflowResponse8 = "vertical"
+	FieldCreateDocumentFieldsOverflowResponse8Crop       FieldCreateDocumentFieldsOverflowResponse8 = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowResponse8) ToPointer() *FieldCreateDocumentFieldsOverflowResponse8 {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowResponse8Values returns every known FieldCreateDocumentFieldsOverflowResponse8 value in schema order.
+func FieldCreateDocumentFieldsOverflowResponse8Values() []FieldCreateDocumentFieldsOverflowResponse8 {
+	return []FieldCreateDocumentFieldsOverflowResponse8{
+		FieldCreateDocumentFieldsOverflowResponse8Auto,
+		FieldCreateDocumentFieldsOverflowResponse8Horizontal,
+		FieldCreateDocumentFieldsOverflowResponse8Vertical,
+		FieldCreateDocumentFieldsOverflowResponse8Crop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowResponse8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowResponse8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowResponse8: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaTypeRadio string
 
 const (
@@ -3198,6 +4127,13 @@ const (
 
 func (e FieldCreateDocumentFieldsFieldMetaTypeRadio) ToPointer() *FieldCreateDocumentFieldsFieldMetaTypeRadio {
 	return &e
+}
+
+// FieldCreateDocumentFieldsFieldMetaTypeRadioValues returns every known FieldCreateDocumentFieldsFieldMetaTypeRadio value in schema order.
+func FieldCreateDocumentFieldsFieldMetaTypeRadioValues() []FieldCreateDocumentFieldsFieldMetaTypeRadio {
+	return []FieldCreateDocumentFieldsFieldMetaTypeRadio{
+		FieldCreateDocumentFieldsFieldMetaTypeRadioRadio,
+	}
 }
 func (e *FieldCreateDocumentFieldsFieldMetaTypeRadio) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3251,6 +4187,9 @@ func (f *FieldCreateDocumentFieldsValueResponse1) GetValue() string {
 	return f.Value
 }
 
+// #region class-body-fieldcreatedocumentfieldsvalueresponse1
+// #endregion class-body-fieldcreatedocumentfieldsvalueresponse1
+
 type FieldCreateDocumentFieldsDirectionResponse1 string
 
 const (
@@ -3260,6 +4199,14 @@ const (
 
 func (e FieldCreateDocumentFieldsDirectionResponse1) ToPointer() *FieldCreateDocumentFieldsDirectionResponse1 {
 	return &e
+}
+
+// FieldCreateDocumentFieldsDirectionResponse1Values returns every known FieldCreateDocumentFieldsDirectionResponse1 value in schema order.
+func FieldCreateDocumentFieldsDirectionResponse1Values() []FieldCreateDocumentFieldsDirectionResponse1 {
+	return []FieldCreateDocumentFieldsDirectionResponse1{
+		FieldCreateDocumentFieldsDirectionResponse1Vertical,
+		FieldCreateDocumentFieldsDirectionResponse1Horizontal,
+	}
 }
 func (e *FieldCreateDocumentFieldsDirectionResponse1) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3283,6 +4230,7 @@ type FieldCreateDocumentFieldsFieldMetaRadioResponse struct {
 	Required    *bool                                        `json:"required,omitempty"`
 	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
 	FontSize    *float64                                     `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateDocumentFieldsOverflowResponse8  `json:"overflow,omitempty"`
 	Type        FieldCreateDocumentFieldsFieldMetaTypeRadio  `json:"type"`
 	Values      []FieldCreateDocumentFieldsValueResponse1    `json:"values,omitempty"`
 	Direction   *FieldCreateDocumentFieldsDirectionResponse1 `default:"vertical" json:"direction"`
@@ -3334,6 +4282,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaRadioResponse) GetFontSize() *float64
 	return f.FontSize
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaRadioResponse) GetOverflow() *FieldCreateDocumentFieldsOverflowResponse8 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaRadioResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeRadio {
 	if f == nil {
 		return FieldCreateDocumentFieldsFieldMetaTypeRadio("")
@@ -3355,6 +4310,48 @@ func (f *FieldCreateDocumentFieldsFieldMetaRadioResponse) GetDirection() *FieldC
 	return f.Direction
 }
 
+type FieldCreateDocumentFieldsOverflowResponse7 string
+
+const (
+	FieldCreateDocumentFieldsOverflowResponse7Auto       FieldCreateDocumentFieldsOverflowResponse7 = "auto"
+	FieldCreateDocumentFieldsOverflowResponse7Horizontal FieldCreateDocumentFieldsOverflowResponse7 = "horizontal"
+	FieldCreateDocumentFieldsOverflowResponse7Vertical   FieldCreateDocumentFieldsOverflowResponse7 = "vertical"
+	FieldCreateDocumentFieldsOverflowResponse7Crop       FieldCreateDocumentFieldsOverflowResponse7 = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowResponse7) ToPointer() *FieldCreateDocumentFieldsOverflowResponse7 {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowResponse7Values returns every known FieldCreateDocumentFieldsOverflowResponse7 value in schema order.
+func FieldCreateDocumentFieldsOverflowResponse7Values() []FieldCreateDocumentFieldsOverflowResponse7 {
+	return []FieldCreateDocumentFieldsOverflowResponse7{
+		FieldCreateDocumentFieldsOverflowResponse7Auto,
+		FieldCreateDocumentFieldsOverflowResponse7Horizontal,
+		FieldCreateDocumentFieldsOverflowResponse7Vertical,
+		FieldCreateDocumentFieldsOverflowResponse7Crop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowResponse7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowResponse7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowResponse7: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaTypeNumber string
 
 const (
@@ -3363,6 +4360,13 @@ const (
 
 func (e FieldCreateDocumentFieldsFieldMetaTypeNumber) ToPointer() *FieldCreateDocumentFieldsFieldMetaTypeNumber {
 	return &e
+}
+
+// FieldCreateDocumentFieldsFieldMetaTypeNumberValues returns every known FieldCreateDocumentFieldsFieldMetaTypeNumber value in schema order.
+func FieldCreateDocumentFieldsFieldMetaTypeNumberValues() []FieldCreateDocumentFieldsFieldMetaTypeNumber {
+	return []FieldCreateDocumentFieldsFieldMetaTypeNumber{
+		FieldCreateDocumentFieldsFieldMetaTypeNumberNumber,
+	}
 }
 func (e *FieldCreateDocumentFieldsFieldMetaTypeNumber) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3388,6 +4392,15 @@ const (
 
 func (e FieldCreateDocumentFieldsTextAlignResponse6) ToPointer() *FieldCreateDocumentFieldsTextAlignResponse6 {
 	return &e
+}
+
+// FieldCreateDocumentFieldsTextAlignResponse6Values returns every known FieldCreateDocumentFieldsTextAlignResponse6 value in schema order.
+func FieldCreateDocumentFieldsTextAlignResponse6Values() []FieldCreateDocumentFieldsTextAlignResponse6 {
+	return []FieldCreateDocumentFieldsTextAlignResponse6{
+		FieldCreateDocumentFieldsTextAlignResponse6Left,
+		FieldCreateDocumentFieldsTextAlignResponse6Center,
+		FieldCreateDocumentFieldsTextAlignResponse6Right,
+	}
 }
 func (e *FieldCreateDocumentFieldsTextAlignResponse6) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3418,6 +4431,15 @@ const (
 func (e FieldCreateDocumentFieldsVerticalAlignResponse2) ToPointer() *FieldCreateDocumentFieldsVerticalAlignResponse2 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsVerticalAlignResponse2Values returns every known FieldCreateDocumentFieldsVerticalAlignResponse2 value in schema order.
+func FieldCreateDocumentFieldsVerticalAlignResponse2Values() []FieldCreateDocumentFieldsVerticalAlignResponse2 {
+	return []FieldCreateDocumentFieldsVerticalAlignResponse2{
+		FieldCreateDocumentFieldsVerticalAlignResponse2Top,
+		FieldCreateDocumentFieldsVerticalAlignResponse2Middle,
+		FieldCreateDocumentFieldsVerticalAlignResponse2Bottom,
+	}
+}
 func (e *FieldCreateDocumentFieldsVerticalAlignResponse2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -3442,6 +4464,7 @@ type FieldCreateDocumentFieldsFieldMetaNumberResponse struct {
 	Required      *bool                                            `json:"required,omitempty"`
 	ReadOnly      *bool                                            `json:"readOnly,omitempty"`
 	FontSize      *float64                                         `default:"12" json:"fontSize"`
+	Overflow      *FieldCreateDocumentFieldsOverflowResponse7      `json:"overflow,omitempty"`
 	Type          FieldCreateDocumentFieldsFieldMetaTypeNumber     `json:"type"`
 	NumberFormat  *string                                          `json:"numberFormat,omitempty"`
 	Value         *string                                          `json:"value,omitempty"`
@@ -3497,6 +4520,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaNumberResponse) GetFontSize() *float6
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaNumberResponse) GetOverflow() *FieldCreateDocumentFieldsOverflowResponse7 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaNumberResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeNumber {
@@ -3562,6 +4592,48 @@ func (f *FieldCreateDocumentFieldsFieldMetaNumberResponse) GetVerticalAlign() *F
 	return f.VerticalAlign
 }
 
+type FieldCreateDocumentFieldsOverflowResponse6 string
+
+const (
+	FieldCreateDocumentFieldsOverflowResponse6Auto       FieldCreateDocumentFieldsOverflowResponse6 = "auto"
+	FieldCreateDocumentFieldsOverflowResponse6Horizontal FieldCreateDocumentFieldsOverflowResponse6 = "horizontal"
+	FieldCreateDocumentFieldsOverflowResponse6Vertical   FieldCreateDocumentFieldsOverflowResponse6 = "vertical"
+	FieldCreateDocumentFieldsOverflowResponse6Crop       FieldCreateDocumentFieldsOverflowResponse6 = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowResponse6) ToPointer() *FieldCreateDocumentFieldsOverflowResponse6 {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowResponse6Values returns every known FieldCreateDocumentFieldsOverflowResponse6 value in schema order.
+func FieldCreateDocumentFieldsOverflowResponse6Values() []FieldCreateDocumentFieldsOverflowResponse6 {
+	return []FieldCreateDocumentFieldsOverflowResponse6{
+		FieldCreateDocumentFieldsOverflowResponse6Auto,
+		FieldCreateDocumentFieldsOverflowResponse6Horizontal,
+		FieldCreateDocumentFieldsOverflowResponse6Vertical,
+		FieldCreateDocumentFieldsOverflowResponse6Crop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowResponse6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowResponse6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowResponse6: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaTypeText string
 
 const (
@@ -3570,6 +4642,13 @@ const (
 
 func (e FieldCreateDocumentFieldsFieldMetaTypeText) ToPointer() *FieldCreateDocumentFieldsFieldMetaTypeText {
 	return &e
+}
+
+// FieldCreateDocumentFieldsFieldMetaTypeTextValues returns every known FieldCreateDocumentFieldsFieldMetaTypeText value in schema order.
+func FieldCreateDocumentFieldsFieldMetaTypeTextValues() []FieldCreateDocumentFieldsFieldMetaTypeText {
+	return []FieldCreateDocumentFieldsFieldMetaTypeText{
+		FieldCreateDocumentFieldsFieldMetaTypeTextText,
+	}
 }
 func (e *FieldCreateDocumentFieldsFieldMetaTypeText) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3595,6 +4674,15 @@ const (
 
 func (e FieldCreateDocumentFieldsTextAlignResponse5) ToPointer() *FieldCreateDocumentFieldsTextAlignResponse5 {
 	return &e
+}
+
+// FieldCreateDocumentFieldsTextAlignResponse5Values returns every known FieldCreateDocumentFieldsTextAlignResponse5 value in schema order.
+func FieldCreateDocumentFieldsTextAlignResponse5Values() []FieldCreateDocumentFieldsTextAlignResponse5 {
+	return []FieldCreateDocumentFieldsTextAlignResponse5{
+		FieldCreateDocumentFieldsTextAlignResponse5Left,
+		FieldCreateDocumentFieldsTextAlignResponse5Center,
+		FieldCreateDocumentFieldsTextAlignResponse5Right,
+	}
 }
 func (e *FieldCreateDocumentFieldsTextAlignResponse5) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3625,6 +4713,15 @@ const (
 func (e FieldCreateDocumentFieldsVerticalAlignResponse1) ToPointer() *FieldCreateDocumentFieldsVerticalAlignResponse1 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsVerticalAlignResponse1Values returns every known FieldCreateDocumentFieldsVerticalAlignResponse1 value in schema order.
+func FieldCreateDocumentFieldsVerticalAlignResponse1Values() []FieldCreateDocumentFieldsVerticalAlignResponse1 {
+	return []FieldCreateDocumentFieldsVerticalAlignResponse1{
+		FieldCreateDocumentFieldsVerticalAlignResponse1Top,
+		FieldCreateDocumentFieldsVerticalAlignResponse1Middle,
+		FieldCreateDocumentFieldsVerticalAlignResponse1Bottom,
+	}
+}
 func (e *FieldCreateDocumentFieldsVerticalAlignResponse1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -3649,6 +4746,7 @@ type FieldCreateDocumentFieldsFieldMetaTextResponse struct {
 	Required       *bool                                            `json:"required,omitempty"`
 	ReadOnly       *bool                                            `json:"readOnly,omitempty"`
 	FontSize       *float64                                         `default:"12" json:"fontSize"`
+	Overflow       *FieldCreateDocumentFieldsOverflowResponse6      `json:"overflow,omitempty"`
 	Type           FieldCreateDocumentFieldsFieldMetaTypeText       `json:"type"`
 	Text           *string                                          `json:"text,omitempty"`
 	CharacterLimit *float64                                         `json:"characterLimit,omitempty"`
@@ -3704,6 +4802,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaTextResponse) GetFontSize() *float64 
 	return f.FontSize
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaTextResponse) GetOverflow() *FieldCreateDocumentFieldsOverflowResponse6 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaTextResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeText {
 	if f == nil {
 		return FieldCreateDocumentFieldsFieldMetaTypeText("")
@@ -3753,6 +4858,48 @@ func (f *FieldCreateDocumentFieldsFieldMetaTextResponse) GetVerticalAlign() *Fie
 	return f.VerticalAlign
 }
 
+type FieldCreateDocumentFieldsOverflowResponse5 string
+
+const (
+	FieldCreateDocumentFieldsOverflowResponse5Auto       FieldCreateDocumentFieldsOverflowResponse5 = "auto"
+	FieldCreateDocumentFieldsOverflowResponse5Horizontal FieldCreateDocumentFieldsOverflowResponse5 = "horizontal"
+	FieldCreateDocumentFieldsOverflowResponse5Vertical   FieldCreateDocumentFieldsOverflowResponse5 = "vertical"
+	FieldCreateDocumentFieldsOverflowResponse5Crop       FieldCreateDocumentFieldsOverflowResponse5 = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowResponse5) ToPointer() *FieldCreateDocumentFieldsOverflowResponse5 {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowResponse5Values returns every known FieldCreateDocumentFieldsOverflowResponse5 value in schema order.
+func FieldCreateDocumentFieldsOverflowResponse5Values() []FieldCreateDocumentFieldsOverflowResponse5 {
+	return []FieldCreateDocumentFieldsOverflowResponse5{
+		FieldCreateDocumentFieldsOverflowResponse5Auto,
+		FieldCreateDocumentFieldsOverflowResponse5Horizontal,
+		FieldCreateDocumentFieldsOverflowResponse5Vertical,
+		FieldCreateDocumentFieldsOverflowResponse5Crop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowResponse5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowResponse5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowResponse5: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaTypeDate string
 
 const (
@@ -3761,6 +4908,13 @@ const (
 
 func (e FieldCreateDocumentFieldsFieldMetaTypeDate) ToPointer() *FieldCreateDocumentFieldsFieldMetaTypeDate {
 	return &e
+}
+
+// FieldCreateDocumentFieldsFieldMetaTypeDateValues returns every known FieldCreateDocumentFieldsFieldMetaTypeDate value in schema order.
+func FieldCreateDocumentFieldsFieldMetaTypeDateValues() []FieldCreateDocumentFieldsFieldMetaTypeDate {
+	return []FieldCreateDocumentFieldsFieldMetaTypeDate{
+		FieldCreateDocumentFieldsFieldMetaTypeDateDate,
+	}
 }
 func (e *FieldCreateDocumentFieldsFieldMetaTypeDate) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3787,6 +4941,15 @@ const (
 func (e FieldCreateDocumentFieldsTextAlignResponse4) ToPointer() *FieldCreateDocumentFieldsTextAlignResponse4 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTextAlignResponse4Values returns every known FieldCreateDocumentFieldsTextAlignResponse4 value in schema order.
+func FieldCreateDocumentFieldsTextAlignResponse4Values() []FieldCreateDocumentFieldsTextAlignResponse4 {
+	return []FieldCreateDocumentFieldsTextAlignResponse4{
+		FieldCreateDocumentFieldsTextAlignResponse4Left,
+		FieldCreateDocumentFieldsTextAlignResponse4Center,
+		FieldCreateDocumentFieldsTextAlignResponse4Right,
+	}
+}
 func (e *FieldCreateDocumentFieldsTextAlignResponse4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -3811,6 +4974,7 @@ type FieldCreateDocumentFieldsFieldMetaDateResponse struct {
 	Required    *bool                                        `json:"required,omitempty"`
 	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
 	FontSize    *float64                                     `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateDocumentFieldsOverflowResponse5  `default:"auto" json:"overflow"`
 	Type        FieldCreateDocumentFieldsFieldMetaTypeDate   `json:"type"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignResponse4 `json:"textAlign,omitempty"`
 }
@@ -3861,6 +5025,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaDateResponse) GetFontSize() *float64 
 	return f.FontSize
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaDateResponse) GetOverflow() *FieldCreateDocumentFieldsOverflowResponse5 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaDateResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeDate {
 	if f == nil {
 		return FieldCreateDocumentFieldsFieldMetaTypeDate("")
@@ -3875,6 +5046,48 @@ func (f *FieldCreateDocumentFieldsFieldMetaDateResponse) GetTextAlign() *FieldCr
 	return f.TextAlign
 }
 
+type FieldCreateDocumentFieldsOverflowResponse4 string
+
+const (
+	FieldCreateDocumentFieldsOverflowResponse4Auto       FieldCreateDocumentFieldsOverflowResponse4 = "auto"
+	FieldCreateDocumentFieldsOverflowResponse4Horizontal FieldCreateDocumentFieldsOverflowResponse4 = "horizontal"
+	FieldCreateDocumentFieldsOverflowResponse4Vertical   FieldCreateDocumentFieldsOverflowResponse4 = "vertical"
+	FieldCreateDocumentFieldsOverflowResponse4Crop       FieldCreateDocumentFieldsOverflowResponse4 = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowResponse4) ToPointer() *FieldCreateDocumentFieldsOverflowResponse4 {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowResponse4Values returns every known FieldCreateDocumentFieldsOverflowResponse4 value in schema order.
+func FieldCreateDocumentFieldsOverflowResponse4Values() []FieldCreateDocumentFieldsOverflowResponse4 {
+	return []FieldCreateDocumentFieldsOverflowResponse4{
+		FieldCreateDocumentFieldsOverflowResponse4Auto,
+		FieldCreateDocumentFieldsOverflowResponse4Horizontal,
+		FieldCreateDocumentFieldsOverflowResponse4Vertical,
+		FieldCreateDocumentFieldsOverflowResponse4Crop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowResponse4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowResponse4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowResponse4: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaTypeEmail string
 
 const (
@@ -3883,6 +5096,13 @@ const (
 
 func (e FieldCreateDocumentFieldsFieldMetaTypeEmail) ToPointer() *FieldCreateDocumentFieldsFieldMetaTypeEmail {
 	return &e
+}
+
+// FieldCreateDocumentFieldsFieldMetaTypeEmailValues returns every known FieldCreateDocumentFieldsFieldMetaTypeEmail value in schema order.
+func FieldCreateDocumentFieldsFieldMetaTypeEmailValues() []FieldCreateDocumentFieldsFieldMetaTypeEmail {
+	return []FieldCreateDocumentFieldsFieldMetaTypeEmail{
+		FieldCreateDocumentFieldsFieldMetaTypeEmailEmail,
+	}
 }
 func (e *FieldCreateDocumentFieldsFieldMetaTypeEmail) UnmarshalJSON(data []byte) error {
 	var v string
@@ -3909,6 +5129,15 @@ const (
 func (e FieldCreateDocumentFieldsTextAlignResponse3) ToPointer() *FieldCreateDocumentFieldsTextAlignResponse3 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTextAlignResponse3Values returns every known FieldCreateDocumentFieldsTextAlignResponse3 value in schema order.
+func FieldCreateDocumentFieldsTextAlignResponse3Values() []FieldCreateDocumentFieldsTextAlignResponse3 {
+	return []FieldCreateDocumentFieldsTextAlignResponse3{
+		FieldCreateDocumentFieldsTextAlignResponse3Left,
+		FieldCreateDocumentFieldsTextAlignResponse3Center,
+		FieldCreateDocumentFieldsTextAlignResponse3Right,
+	}
+}
 func (e *FieldCreateDocumentFieldsTextAlignResponse3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -3933,6 +5162,7 @@ type FieldCreateDocumentFieldsFieldMetaEmailResponse struct {
 	Required    *bool                                        `json:"required,omitempty"`
 	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
 	FontSize    *float64                                     `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateDocumentFieldsOverflowResponse4  `default:"auto" json:"overflow"`
 	Type        FieldCreateDocumentFieldsFieldMetaTypeEmail  `json:"type"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignResponse3 `json:"textAlign,omitempty"`
 }
@@ -3983,6 +5213,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaEmailResponse) GetFontSize() *float64
 	return f.FontSize
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaEmailResponse) GetOverflow() *FieldCreateDocumentFieldsOverflowResponse4 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaEmailResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeEmail {
 	if f == nil {
 		return FieldCreateDocumentFieldsFieldMetaTypeEmail("")
@@ -3997,6 +5234,48 @@ func (f *FieldCreateDocumentFieldsFieldMetaEmailResponse) GetTextAlign() *FieldC
 	return f.TextAlign
 }
 
+type FieldCreateDocumentFieldsOverflowResponse3 string
+
+const (
+	FieldCreateDocumentFieldsOverflowResponse3Auto       FieldCreateDocumentFieldsOverflowResponse3 = "auto"
+	FieldCreateDocumentFieldsOverflowResponse3Horizontal FieldCreateDocumentFieldsOverflowResponse3 = "horizontal"
+	FieldCreateDocumentFieldsOverflowResponse3Vertical   FieldCreateDocumentFieldsOverflowResponse3 = "vertical"
+	FieldCreateDocumentFieldsOverflowResponse3Crop       FieldCreateDocumentFieldsOverflowResponse3 = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowResponse3) ToPointer() *FieldCreateDocumentFieldsOverflowResponse3 {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowResponse3Values returns every known FieldCreateDocumentFieldsOverflowResponse3 value in schema order.
+func FieldCreateDocumentFieldsOverflowResponse3Values() []FieldCreateDocumentFieldsOverflowResponse3 {
+	return []FieldCreateDocumentFieldsOverflowResponse3{
+		FieldCreateDocumentFieldsOverflowResponse3Auto,
+		FieldCreateDocumentFieldsOverflowResponse3Horizontal,
+		FieldCreateDocumentFieldsOverflowResponse3Vertical,
+		FieldCreateDocumentFieldsOverflowResponse3Crop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowResponse3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowResponse3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowResponse3: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaTypeName string
 
 const (
@@ -4005,6 +5284,13 @@ const (
 
 func (e FieldCreateDocumentFieldsFieldMetaTypeName) ToPointer() *FieldCreateDocumentFieldsFieldMetaTypeName {
 	return &e
+}
+
+// FieldCreateDocumentFieldsFieldMetaTypeNameValues returns every known FieldCreateDocumentFieldsFieldMetaTypeName value in schema order.
+func FieldCreateDocumentFieldsFieldMetaTypeNameValues() []FieldCreateDocumentFieldsFieldMetaTypeName {
+	return []FieldCreateDocumentFieldsFieldMetaTypeName{
+		FieldCreateDocumentFieldsFieldMetaTypeNameName,
+	}
 }
 func (e *FieldCreateDocumentFieldsFieldMetaTypeName) UnmarshalJSON(data []byte) error {
 	var v string
@@ -4031,6 +5317,15 @@ const (
 func (e FieldCreateDocumentFieldsTextAlignResponse2) ToPointer() *FieldCreateDocumentFieldsTextAlignResponse2 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTextAlignResponse2Values returns every known FieldCreateDocumentFieldsTextAlignResponse2 value in schema order.
+func FieldCreateDocumentFieldsTextAlignResponse2Values() []FieldCreateDocumentFieldsTextAlignResponse2 {
+	return []FieldCreateDocumentFieldsTextAlignResponse2{
+		FieldCreateDocumentFieldsTextAlignResponse2Left,
+		FieldCreateDocumentFieldsTextAlignResponse2Center,
+		FieldCreateDocumentFieldsTextAlignResponse2Right,
+	}
+}
 func (e *FieldCreateDocumentFieldsTextAlignResponse2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -4055,6 +5350,7 @@ type FieldCreateDocumentFieldsFieldMetaNameResponse struct {
 	Required    *bool                                        `json:"required,omitempty"`
 	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
 	FontSize    *float64                                     `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateDocumentFieldsOverflowResponse3  `json:"overflow,omitempty"`
 	Type        FieldCreateDocumentFieldsFieldMetaTypeName   `json:"type"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignResponse2 `json:"textAlign,omitempty"`
 }
@@ -4105,6 +5401,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaNameResponse) GetFontSize() *float64 
 	return f.FontSize
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaNameResponse) GetOverflow() *FieldCreateDocumentFieldsOverflowResponse3 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaNameResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeName {
 	if f == nil {
 		return FieldCreateDocumentFieldsFieldMetaTypeName("")
@@ -4119,6 +5422,48 @@ func (f *FieldCreateDocumentFieldsFieldMetaNameResponse) GetTextAlign() *FieldCr
 	return f.TextAlign
 }
 
+type FieldCreateDocumentFieldsOverflowResponse2 string
+
+const (
+	FieldCreateDocumentFieldsOverflowResponse2Auto       FieldCreateDocumentFieldsOverflowResponse2 = "auto"
+	FieldCreateDocumentFieldsOverflowResponse2Horizontal FieldCreateDocumentFieldsOverflowResponse2 = "horizontal"
+	FieldCreateDocumentFieldsOverflowResponse2Vertical   FieldCreateDocumentFieldsOverflowResponse2 = "vertical"
+	FieldCreateDocumentFieldsOverflowResponse2Crop       FieldCreateDocumentFieldsOverflowResponse2 = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowResponse2) ToPointer() *FieldCreateDocumentFieldsOverflowResponse2 {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowResponse2Values returns every known FieldCreateDocumentFieldsOverflowResponse2 value in schema order.
+func FieldCreateDocumentFieldsOverflowResponse2Values() []FieldCreateDocumentFieldsOverflowResponse2 {
+	return []FieldCreateDocumentFieldsOverflowResponse2{
+		FieldCreateDocumentFieldsOverflowResponse2Auto,
+		FieldCreateDocumentFieldsOverflowResponse2Horizontal,
+		FieldCreateDocumentFieldsOverflowResponse2Vertical,
+		FieldCreateDocumentFieldsOverflowResponse2Crop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowResponse2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowResponse2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowResponse2: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaTypeInitials string
 
 const (
@@ -4127,6 +5472,13 @@ const (
 
 func (e FieldCreateDocumentFieldsFieldMetaTypeInitials) ToPointer() *FieldCreateDocumentFieldsFieldMetaTypeInitials {
 	return &e
+}
+
+// FieldCreateDocumentFieldsFieldMetaTypeInitialsValues returns every known FieldCreateDocumentFieldsFieldMetaTypeInitials value in schema order.
+func FieldCreateDocumentFieldsFieldMetaTypeInitialsValues() []FieldCreateDocumentFieldsFieldMetaTypeInitials {
+	return []FieldCreateDocumentFieldsFieldMetaTypeInitials{
+		FieldCreateDocumentFieldsFieldMetaTypeInitialsInitials,
+	}
 }
 func (e *FieldCreateDocumentFieldsFieldMetaTypeInitials) UnmarshalJSON(data []byte) error {
 	var v string
@@ -4153,6 +5505,15 @@ const (
 func (e FieldCreateDocumentFieldsTextAlignResponse1) ToPointer() *FieldCreateDocumentFieldsTextAlignResponse1 {
 	return &e
 }
+
+// FieldCreateDocumentFieldsTextAlignResponse1Values returns every known FieldCreateDocumentFieldsTextAlignResponse1 value in schema order.
+func FieldCreateDocumentFieldsTextAlignResponse1Values() []FieldCreateDocumentFieldsTextAlignResponse1 {
+	return []FieldCreateDocumentFieldsTextAlignResponse1{
+		FieldCreateDocumentFieldsTextAlignResponse1Left,
+		FieldCreateDocumentFieldsTextAlignResponse1Center,
+		FieldCreateDocumentFieldsTextAlignResponse1Right,
+	}
+}
 func (e *FieldCreateDocumentFieldsTextAlignResponse1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -4177,6 +5538,7 @@ type FieldCreateDocumentFieldsFieldMetaInitialsResponse struct {
 	Required    *bool                                          `json:"required,omitempty"`
 	ReadOnly    *bool                                          `json:"readOnly,omitempty"`
 	FontSize    *float64                                       `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateDocumentFieldsOverflowResponse2    `json:"overflow,omitempty"`
 	Type        FieldCreateDocumentFieldsFieldMetaTypeInitials `json:"type"`
 	TextAlign   *FieldCreateDocumentFieldsTextAlignResponse1   `json:"textAlign,omitempty"`
 }
@@ -4227,6 +5589,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaInitialsResponse) GetFontSize() *floa
 	return f.FontSize
 }
 
+func (f *FieldCreateDocumentFieldsFieldMetaInitialsResponse) GetOverflow() *FieldCreateDocumentFieldsOverflowResponse2 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldCreateDocumentFieldsFieldMetaInitialsResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeInitials {
 	if f == nil {
 		return FieldCreateDocumentFieldsFieldMetaTypeInitials("")
@@ -4241,6 +5610,48 @@ func (f *FieldCreateDocumentFieldsFieldMetaInitialsResponse) GetTextAlign() *Fie
 	return f.TextAlign
 }
 
+type FieldCreateDocumentFieldsOverflowResponse1 string
+
+const (
+	FieldCreateDocumentFieldsOverflowResponse1Auto       FieldCreateDocumentFieldsOverflowResponse1 = "auto"
+	FieldCreateDocumentFieldsOverflowResponse1Horizontal FieldCreateDocumentFieldsOverflowResponse1 = "horizontal"
+	FieldCreateDocumentFieldsOverflowResponse1Vertical   FieldCreateDocumentFieldsOverflowResponse1 = "vertical"
+	FieldCreateDocumentFieldsOverflowResponse1Crop       FieldCreateDocumentFieldsOverflowResponse1 = "crop"
+)
+
+func (e FieldCreateDocumentFieldsOverflowResponse1) ToPointer() *FieldCreateDocumentFieldsOverflowResponse1 {
+	return &e
+}
+
+// FieldCreateDocumentFieldsOverflowResponse1Values returns every known FieldCreateDocumentFieldsOverflowResponse1 value in schema order.
+func FieldCreateDocumentFieldsOverflowResponse1Values() []FieldCreateDocumentFieldsOverflowResponse1 {
+	return []FieldCreateDocumentFieldsOverflowResponse1{
+		FieldCreateDocumentFieldsOverflowResponse1Auto,
+		FieldCreateDocumentFieldsOverflowResponse1Horizontal,
+		FieldCreateDocumentFieldsOverflowResponse1Vertical,
+		FieldCreateDocumentFieldsOverflowResponse1Crop,
+	}
+}
+func (e *FieldCreateDocumentFieldsOverflowResponse1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldCreateDocumentFieldsOverflowResponse1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldCreateDocumentFieldsOverflowResponse1: %v", v)
+	}
+}
+
 type FieldCreateDocumentFieldsFieldMetaTypeSignature string
 
 const (
@@ -4249,6 +5660,13 @@ const (
 
 func (e FieldCreateDocumentFieldsFieldMetaTypeSignature) ToPointer() *FieldCreateDocumentFieldsFieldMetaTypeSignature {
 	return &e
+}
+
+// FieldCreateDocumentFieldsFieldMetaTypeSignatureValues returns every known FieldCreateDocumentFieldsFieldMetaTypeSignature value in schema order.
+func FieldCreateDocumentFieldsFieldMetaTypeSignatureValues() []FieldCreateDocumentFieldsFieldMetaTypeSignature {
+	return []FieldCreateDocumentFieldsFieldMetaTypeSignature{
+		FieldCreateDocumentFieldsFieldMetaTypeSignatureSignature,
+	}
 }
 func (e *FieldCreateDocumentFieldsFieldMetaTypeSignature) UnmarshalJSON(data []byte) error {
 	var v string
@@ -4270,6 +5688,7 @@ type FieldCreateDocumentFieldsFieldMetaSignatureResponse struct {
 	Required    *bool                                           `json:"required,omitempty"`
 	ReadOnly    *bool                                           `json:"readOnly,omitempty"`
 	FontSize    *float64                                        `default:"12" json:"fontSize"`
+	Overflow    *FieldCreateDocumentFieldsOverflowResponse1     `default:"auto" json:"overflow"`
 	Type        FieldCreateDocumentFieldsFieldMetaTypeSignature `json:"type"`
 }
 
@@ -4317,6 +5736,13 @@ func (f *FieldCreateDocumentFieldsFieldMetaSignatureResponse) GetFontSize() *flo
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldCreateDocumentFieldsFieldMetaSignatureResponse) GetOverflow() *FieldCreateDocumentFieldsOverflowResponse1 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldCreateDocumentFieldsFieldMetaSignatureResponse) GetType() FieldCreateDocumentFieldsFieldMetaTypeSignature {
@@ -4446,7 +5872,14 @@ func CreateFieldCreateDocumentFieldsFieldMetaUnionFieldCreateDocumentFieldsField
 	}
 }
 
-func (u *FieldCreateDocumentFieldsFieldMetaUnion) UnmarshalJSON(data []byte) error {
+func (u *FieldCreateDocumentFieldsFieldMetaUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = FieldCreateDocumentFieldsFieldMetaUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var fieldCreateDocumentFieldsFieldMetaSignatureResponse FieldCreateDocumentFieldsFieldMetaSignatureResponse = FieldCreateDocumentFieldsFieldMetaSignatureResponse{}
 	if err := utils.UnmarshalJSON(data, &fieldCreateDocumentFieldsFieldMetaSignatureResponse, "", true, nil); err == nil {
