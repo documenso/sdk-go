@@ -4,6 +4,7 @@ package apierrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -29,6 +30,15 @@ type DocumentCreateDocumentTemporaryInternalServerError struct {
 var _ error = &DocumentCreateDocumentTemporaryInternalServerError{}
 
 func (e *DocumentCreateDocumentTemporaryInternalServerError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +65,15 @@ type DocumentCreateDocumentTemporaryForbiddenError struct {
 var _ error = &DocumentCreateDocumentTemporaryForbiddenError{}
 
 func (e *DocumentCreateDocumentTemporaryForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +100,15 @@ type DocumentCreateDocumentTemporaryUnauthorizedError struct {
 var _ error = &DocumentCreateDocumentTemporaryUnauthorizedError{}
 
 func (e *DocumentCreateDocumentTemporaryUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +135,15 @@ type DocumentCreateDocumentTemporaryBadRequestError struct {
 var _ error = &DocumentCreateDocumentTemporaryBadRequestError{}
 
 func (e *DocumentCreateDocumentTemporaryBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

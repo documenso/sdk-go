@@ -23,6 +23,17 @@ const (
 func (e RecipientUpdateTemplateRecipientRoleRequest) ToPointer() *RecipientUpdateTemplateRecipientRoleRequest {
 	return &e
 }
+
+// RecipientUpdateTemplateRecipientRoleRequestValues returns every known RecipientUpdateTemplateRecipientRoleRequest value in schema order.
+func RecipientUpdateTemplateRecipientRoleRequestValues() []RecipientUpdateTemplateRecipientRoleRequest {
+	return []RecipientUpdateTemplateRecipientRoleRequest{
+		RecipientUpdateTemplateRecipientRoleRequestCc,
+		RecipientUpdateTemplateRecipientRoleRequestSigner,
+		RecipientUpdateTemplateRecipientRoleRequestViewer,
+		RecipientUpdateTemplateRecipientRoleRequestApprover,
+		RecipientUpdateTemplateRecipientRoleRequestAssistant,
+	}
+}
 func (e *RecipientUpdateTemplateRecipientRoleRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -55,6 +66,14 @@ const (
 func (e RecipientUpdateTemplateRecipientAccessAuthRequest) ToPointer() *RecipientUpdateTemplateRecipientAccessAuthRequest {
 	return &e
 }
+
+// RecipientUpdateTemplateRecipientAccessAuthRequestValues returns every known RecipientUpdateTemplateRecipientAccessAuthRequest value in schema order.
+func RecipientUpdateTemplateRecipientAccessAuthRequestValues() []RecipientUpdateTemplateRecipientAccessAuthRequest {
+	return []RecipientUpdateTemplateRecipientAccessAuthRequest{
+		RecipientUpdateTemplateRecipientAccessAuthRequestAccount,
+		RecipientUpdateTemplateRecipientAccessAuthRequestTwoFactorAuth,
+	}
+}
 func (e *RecipientUpdateTemplateRecipientAccessAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -83,6 +102,17 @@ const (
 
 func (e RecipientUpdateTemplateRecipientActionAuthRequest) ToPointer() *RecipientUpdateTemplateRecipientActionAuthRequest {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientActionAuthRequestValues returns every known RecipientUpdateTemplateRecipientActionAuthRequest value in schema order.
+func RecipientUpdateTemplateRecipientActionAuthRequestValues() []RecipientUpdateTemplateRecipientActionAuthRequest {
+	return []RecipientUpdateTemplateRecipientActionAuthRequest{
+		RecipientUpdateTemplateRecipientActionAuthRequestAccount,
+		RecipientUpdateTemplateRecipientActionAuthRequestPasskey,
+		RecipientUpdateTemplateRecipientActionAuthRequestTwoFactorAuth,
+		RecipientUpdateTemplateRecipientActionAuthRequestPassword,
+		RecipientUpdateTemplateRecipientActionAuthRequestExplicitNone,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientActionAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
@@ -197,6 +227,17 @@ const (
 func (e RecipientUpdateTemplateRecipientRoleResponse) ToPointer() *RecipientUpdateTemplateRecipientRoleResponse {
 	return &e
 }
+
+// RecipientUpdateTemplateRecipientRoleResponseValues returns every known RecipientUpdateTemplateRecipientRoleResponse value in schema order.
+func RecipientUpdateTemplateRecipientRoleResponseValues() []RecipientUpdateTemplateRecipientRoleResponse {
+	return []RecipientUpdateTemplateRecipientRoleResponse{
+		RecipientUpdateTemplateRecipientRoleResponseCc,
+		RecipientUpdateTemplateRecipientRoleResponseSigner,
+		RecipientUpdateTemplateRecipientRoleResponseViewer,
+		RecipientUpdateTemplateRecipientRoleResponseApprover,
+		RecipientUpdateTemplateRecipientRoleResponseAssistant,
+	}
+}
 func (e *RecipientUpdateTemplateRecipientRoleResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -229,6 +270,14 @@ const (
 func (e RecipientUpdateTemplateRecipientReadStatus) ToPointer() *RecipientUpdateTemplateRecipientReadStatus {
 	return &e
 }
+
+// RecipientUpdateTemplateRecipientReadStatusValues returns every known RecipientUpdateTemplateRecipientReadStatus value in schema order.
+func RecipientUpdateTemplateRecipientReadStatusValues() []RecipientUpdateTemplateRecipientReadStatus {
+	return []RecipientUpdateTemplateRecipientReadStatus{
+		RecipientUpdateTemplateRecipientReadStatusNotOpened,
+		RecipientUpdateTemplateRecipientReadStatusOpened,
+	}
+}
 func (e *RecipientUpdateTemplateRecipientReadStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -255,6 +304,15 @@ const (
 
 func (e RecipientUpdateTemplateRecipientSigningStatus) ToPointer() *RecipientUpdateTemplateRecipientSigningStatus {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientSigningStatusValues returns every known RecipientUpdateTemplateRecipientSigningStatus value in schema order.
+func RecipientUpdateTemplateRecipientSigningStatusValues() []RecipientUpdateTemplateRecipientSigningStatus {
+	return []RecipientUpdateTemplateRecipientSigningStatus{
+		RecipientUpdateTemplateRecipientSigningStatusNotSigned,
+		RecipientUpdateTemplateRecipientSigningStatusSigned,
+		RecipientUpdateTemplateRecipientSigningStatusRejected,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientSigningStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -284,6 +342,14 @@ const (
 func (e RecipientUpdateTemplateRecipientSendStatus) ToPointer() *RecipientUpdateTemplateRecipientSendStatus {
 	return &e
 }
+
+// RecipientUpdateTemplateRecipientSendStatusValues returns every known RecipientUpdateTemplateRecipientSendStatus value in schema order.
+func RecipientUpdateTemplateRecipientSendStatusValues() []RecipientUpdateTemplateRecipientSendStatus {
+	return []RecipientUpdateTemplateRecipientSendStatus{
+		RecipientUpdateTemplateRecipientSendStatusNotSent,
+		RecipientUpdateTemplateRecipientSendStatusSent,
+	}
+}
 func (e *RecipientUpdateTemplateRecipientSendStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -309,6 +375,14 @@ const (
 
 func (e RecipientUpdateTemplateRecipientAuthOptionsAccessAuth) ToPointer() *RecipientUpdateTemplateRecipientAuthOptionsAccessAuth {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientAuthOptionsAccessAuthValues returns every known RecipientUpdateTemplateRecipientAuthOptionsAccessAuth value in schema order.
+func RecipientUpdateTemplateRecipientAuthOptionsAccessAuthValues() []RecipientUpdateTemplateRecipientAuthOptionsAccessAuth {
+	return []RecipientUpdateTemplateRecipientAuthOptionsAccessAuth{
+		RecipientUpdateTemplateRecipientAuthOptionsAccessAuthAccount,
+		RecipientUpdateTemplateRecipientAuthOptionsAccessAuthTwoFactorAuth,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientAuthOptionsAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -338,6 +412,17 @@ const (
 
 func (e RecipientUpdateTemplateRecipientAuthOptionsActionAuth) ToPointer() *RecipientUpdateTemplateRecipientAuthOptionsActionAuth {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientAuthOptionsActionAuthValues returns every known RecipientUpdateTemplateRecipientAuthOptionsActionAuth value in schema order.
+func RecipientUpdateTemplateRecipientAuthOptionsActionAuthValues() []RecipientUpdateTemplateRecipientAuthOptionsActionAuth {
+	return []RecipientUpdateTemplateRecipientAuthOptionsActionAuth{
+		RecipientUpdateTemplateRecipientAuthOptionsActionAuthAccount,
+		RecipientUpdateTemplateRecipientAuthOptionsActionAuthPasskey,
+		RecipientUpdateTemplateRecipientAuthOptionsActionAuthTwoFactorAuth,
+		RecipientUpdateTemplateRecipientAuthOptionsActionAuthPassword,
+		RecipientUpdateTemplateRecipientAuthOptionsActionAuthExplicitNone,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientAuthOptionsActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -399,6 +484,23 @@ const (
 func (e RecipientUpdateTemplateRecipientType) ToPointer() *RecipientUpdateTemplateRecipientType {
 	return &e
 }
+
+// RecipientUpdateTemplateRecipientTypeValues returns every known RecipientUpdateTemplateRecipientType value in schema order.
+func RecipientUpdateTemplateRecipientTypeValues() []RecipientUpdateTemplateRecipientType {
+	return []RecipientUpdateTemplateRecipientType{
+		RecipientUpdateTemplateRecipientTypeSignature,
+		RecipientUpdateTemplateRecipientTypeFreeSignature,
+		RecipientUpdateTemplateRecipientTypeInitials,
+		RecipientUpdateTemplateRecipientTypeName,
+		RecipientUpdateTemplateRecipientTypeEmail,
+		RecipientUpdateTemplateRecipientTypeDate,
+		RecipientUpdateTemplateRecipientTypeText,
+		RecipientUpdateTemplateRecipientTypeNumber,
+		RecipientUpdateTemplateRecipientTypeRadio,
+		RecipientUpdateTemplateRecipientTypeCheckbox,
+		RecipientUpdateTemplateRecipientTypeDropdown,
+	}
+}
 func (e *RecipientUpdateTemplateRecipientType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -433,6 +535,48 @@ func (e *RecipientUpdateTemplateRecipientType) UnmarshalJSON(data []byte) error 
 	}
 }
 
+type RecipientUpdateTemplateRecipientOverflow10 string
+
+const (
+	RecipientUpdateTemplateRecipientOverflow10Auto       RecipientUpdateTemplateRecipientOverflow10 = "auto"
+	RecipientUpdateTemplateRecipientOverflow10Horizontal RecipientUpdateTemplateRecipientOverflow10 = "horizontal"
+	RecipientUpdateTemplateRecipientOverflow10Vertical   RecipientUpdateTemplateRecipientOverflow10 = "vertical"
+	RecipientUpdateTemplateRecipientOverflow10Crop       RecipientUpdateTemplateRecipientOverflow10 = "crop"
+)
+
+func (e RecipientUpdateTemplateRecipientOverflow10) ToPointer() *RecipientUpdateTemplateRecipientOverflow10 {
+	return &e
+}
+
+// RecipientUpdateTemplateRecipientOverflow10Values returns every known RecipientUpdateTemplateRecipientOverflow10 value in schema order.
+func RecipientUpdateTemplateRecipientOverflow10Values() []RecipientUpdateTemplateRecipientOverflow10 {
+	return []RecipientUpdateTemplateRecipientOverflow10{
+		RecipientUpdateTemplateRecipientOverflow10Auto,
+		RecipientUpdateTemplateRecipientOverflow10Horizontal,
+		RecipientUpdateTemplateRecipientOverflow10Vertical,
+		RecipientUpdateTemplateRecipientOverflow10Crop,
+	}
+}
+func (e *RecipientUpdateTemplateRecipientOverflow10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateTemplateRecipientOverflow10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientOverflow10: %v", v)
+	}
+}
+
 type RecipientUpdateTemplateRecipientFieldMetaTypeDropdown string
 
 const (
@@ -441,6 +585,13 @@ const (
 
 func (e RecipientUpdateTemplateRecipientFieldMetaTypeDropdown) ToPointer() *RecipientUpdateTemplateRecipientFieldMetaTypeDropdown {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientFieldMetaTypeDropdownValues returns every known RecipientUpdateTemplateRecipientFieldMetaTypeDropdown value in schema order.
+func RecipientUpdateTemplateRecipientFieldMetaTypeDropdownValues() []RecipientUpdateTemplateRecipientFieldMetaTypeDropdown {
+	return []RecipientUpdateTemplateRecipientFieldMetaTypeDropdown{
+		RecipientUpdateTemplateRecipientFieldMetaTypeDropdownDropdown,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientFieldMetaTypeDropdown) UnmarshalJSON(data []byte) error {
 	var v string
@@ -478,12 +629,16 @@ func (r *RecipientUpdateTemplateRecipientValue3) GetValue() string {
 	return r.Value
 }
 
+// #region class-body-recipientupdatetemplaterecipientvalue3
+// #endregion class-body-recipientupdatetemplaterecipientvalue3
+
 type RecipientUpdateTemplateRecipientFieldMetaDropdown struct {
 	Label        *string                                               `json:"label,omitempty"`
 	Placeholder  *string                                               `json:"placeholder,omitempty"`
 	Required     *bool                                                 `json:"required,omitempty"`
 	ReadOnly     *bool                                                 `json:"readOnly,omitempty"`
 	FontSize     *float64                                              `default:"12" json:"fontSize"`
+	Overflow     *RecipientUpdateTemplateRecipientOverflow10           `json:"overflow,omitempty"`
 	Type         RecipientUpdateTemplateRecipientFieldMetaTypeDropdown `json:"type"`
 	Values       []RecipientUpdateTemplateRecipientValue3              `json:"values,omitempty"`
 	DefaultValue *string                                               `json:"defaultValue,omitempty"`
@@ -535,6 +690,13 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetFontSize() *float
 	return r.FontSize
 }
 
+func (r *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetOverflow() *RecipientUpdateTemplateRecipientOverflow10 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeDropdown {
 	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeDropdown("")
@@ -556,6 +718,48 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaDropdown) GetDefaultValue() *s
 	return r.DefaultValue
 }
 
+type RecipientUpdateTemplateRecipientOverflow9 string
+
+const (
+	RecipientUpdateTemplateRecipientOverflow9Auto       RecipientUpdateTemplateRecipientOverflow9 = "auto"
+	RecipientUpdateTemplateRecipientOverflow9Horizontal RecipientUpdateTemplateRecipientOverflow9 = "horizontal"
+	RecipientUpdateTemplateRecipientOverflow9Vertical   RecipientUpdateTemplateRecipientOverflow9 = "vertical"
+	RecipientUpdateTemplateRecipientOverflow9Crop       RecipientUpdateTemplateRecipientOverflow9 = "crop"
+)
+
+func (e RecipientUpdateTemplateRecipientOverflow9) ToPointer() *RecipientUpdateTemplateRecipientOverflow9 {
+	return &e
+}
+
+// RecipientUpdateTemplateRecipientOverflow9Values returns every known RecipientUpdateTemplateRecipientOverflow9 value in schema order.
+func RecipientUpdateTemplateRecipientOverflow9Values() []RecipientUpdateTemplateRecipientOverflow9 {
+	return []RecipientUpdateTemplateRecipientOverflow9{
+		RecipientUpdateTemplateRecipientOverflow9Auto,
+		RecipientUpdateTemplateRecipientOverflow9Horizontal,
+		RecipientUpdateTemplateRecipientOverflow9Vertical,
+		RecipientUpdateTemplateRecipientOverflow9Crop,
+	}
+}
+func (e *RecipientUpdateTemplateRecipientOverflow9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateTemplateRecipientOverflow9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientOverflow9: %v", v)
+	}
+}
+
 type RecipientUpdateTemplateRecipientFieldMetaTypeCheckbox string
 
 const (
@@ -564,6 +768,13 @@ const (
 
 func (e RecipientUpdateTemplateRecipientFieldMetaTypeCheckbox) ToPointer() *RecipientUpdateTemplateRecipientFieldMetaTypeCheckbox {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientFieldMetaTypeCheckboxValues returns every known RecipientUpdateTemplateRecipientFieldMetaTypeCheckbox value in schema order.
+func RecipientUpdateTemplateRecipientFieldMetaTypeCheckboxValues() []RecipientUpdateTemplateRecipientFieldMetaTypeCheckbox {
+	return []RecipientUpdateTemplateRecipientFieldMetaTypeCheckbox{
+		RecipientUpdateTemplateRecipientFieldMetaTypeCheckboxCheckbox,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientFieldMetaTypeCheckbox) UnmarshalJSON(data []byte) error {
 	var v string
@@ -617,6 +828,9 @@ func (r *RecipientUpdateTemplateRecipientValue2) GetValue() string {
 	return r.Value
 }
 
+// #region class-body-recipientupdatetemplaterecipientvalue2
+// #endregion class-body-recipientupdatetemplaterecipientvalue2
+
 type RecipientUpdateTemplateRecipientDirection2 string
 
 const (
@@ -626,6 +840,14 @@ const (
 
 func (e RecipientUpdateTemplateRecipientDirection2) ToPointer() *RecipientUpdateTemplateRecipientDirection2 {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientDirection2Values returns every known RecipientUpdateTemplateRecipientDirection2 value in schema order.
+func RecipientUpdateTemplateRecipientDirection2Values() []RecipientUpdateTemplateRecipientDirection2 {
+	return []RecipientUpdateTemplateRecipientDirection2{
+		RecipientUpdateTemplateRecipientDirection2Vertical,
+		RecipientUpdateTemplateRecipientDirection2Horizontal,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientDirection2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -649,6 +871,7 @@ type RecipientUpdateTemplateRecipientFieldMetaCheckbox struct {
 	Required         *bool                                                 `json:"required,omitempty"`
 	ReadOnly         *bool                                                 `json:"readOnly,omitempty"`
 	FontSize         *float64                                              `default:"12" json:"fontSize"`
+	Overflow         *RecipientUpdateTemplateRecipientOverflow9            `json:"overflow,omitempty"`
 	Type             RecipientUpdateTemplateRecipientFieldMetaTypeCheckbox `json:"type"`
 	Values           []RecipientUpdateTemplateRecipientValue2              `json:"values,omitempty"`
 	ValidationRule   *string                                               `json:"validationRule,omitempty"`
@@ -702,6 +925,13 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetFontSize() *float
 	return r.FontSize
 }
 
+func (r *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetOverflow() *RecipientUpdateTemplateRecipientOverflow9 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeCheckbox {
 	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeCheckbox("")
@@ -737,6 +967,48 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaCheckbox) GetDirection() *Reci
 	return r.Direction
 }
 
+type RecipientUpdateTemplateRecipientOverflow8 string
+
+const (
+	RecipientUpdateTemplateRecipientOverflow8Auto       RecipientUpdateTemplateRecipientOverflow8 = "auto"
+	RecipientUpdateTemplateRecipientOverflow8Horizontal RecipientUpdateTemplateRecipientOverflow8 = "horizontal"
+	RecipientUpdateTemplateRecipientOverflow8Vertical   RecipientUpdateTemplateRecipientOverflow8 = "vertical"
+	RecipientUpdateTemplateRecipientOverflow8Crop       RecipientUpdateTemplateRecipientOverflow8 = "crop"
+)
+
+func (e RecipientUpdateTemplateRecipientOverflow8) ToPointer() *RecipientUpdateTemplateRecipientOverflow8 {
+	return &e
+}
+
+// RecipientUpdateTemplateRecipientOverflow8Values returns every known RecipientUpdateTemplateRecipientOverflow8 value in schema order.
+func RecipientUpdateTemplateRecipientOverflow8Values() []RecipientUpdateTemplateRecipientOverflow8 {
+	return []RecipientUpdateTemplateRecipientOverflow8{
+		RecipientUpdateTemplateRecipientOverflow8Auto,
+		RecipientUpdateTemplateRecipientOverflow8Horizontal,
+		RecipientUpdateTemplateRecipientOverflow8Vertical,
+		RecipientUpdateTemplateRecipientOverflow8Crop,
+	}
+}
+func (e *RecipientUpdateTemplateRecipientOverflow8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateTemplateRecipientOverflow8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientOverflow8: %v", v)
+	}
+}
+
 type RecipientUpdateTemplateRecipientFieldMetaTypeRadio string
 
 const (
@@ -745,6 +1017,13 @@ const (
 
 func (e RecipientUpdateTemplateRecipientFieldMetaTypeRadio) ToPointer() *RecipientUpdateTemplateRecipientFieldMetaTypeRadio {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientFieldMetaTypeRadioValues returns every known RecipientUpdateTemplateRecipientFieldMetaTypeRadio value in schema order.
+func RecipientUpdateTemplateRecipientFieldMetaTypeRadioValues() []RecipientUpdateTemplateRecipientFieldMetaTypeRadio {
+	return []RecipientUpdateTemplateRecipientFieldMetaTypeRadio{
+		RecipientUpdateTemplateRecipientFieldMetaTypeRadioRadio,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientFieldMetaTypeRadio) UnmarshalJSON(data []byte) error {
 	var v string
@@ -798,6 +1077,9 @@ func (r *RecipientUpdateTemplateRecipientValue1) GetValue() string {
 	return r.Value
 }
 
+// #region class-body-recipientupdatetemplaterecipientvalue1
+// #endregion class-body-recipientupdatetemplaterecipientvalue1
+
 type RecipientUpdateTemplateRecipientDirection1 string
 
 const (
@@ -807,6 +1089,14 @@ const (
 
 func (e RecipientUpdateTemplateRecipientDirection1) ToPointer() *RecipientUpdateTemplateRecipientDirection1 {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientDirection1Values returns every known RecipientUpdateTemplateRecipientDirection1 value in schema order.
+func RecipientUpdateTemplateRecipientDirection1Values() []RecipientUpdateTemplateRecipientDirection1 {
+	return []RecipientUpdateTemplateRecipientDirection1{
+		RecipientUpdateTemplateRecipientDirection1Vertical,
+		RecipientUpdateTemplateRecipientDirection1Horizontal,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientDirection1) UnmarshalJSON(data []byte) error {
 	var v string
@@ -830,6 +1120,7 @@ type RecipientUpdateTemplateRecipientFieldMetaRadio struct {
 	Required    *bool                                              `json:"required,omitempty"`
 	ReadOnly    *bool                                              `json:"readOnly,omitempty"`
 	FontSize    *float64                                           `default:"12" json:"fontSize"`
+	Overflow    *RecipientUpdateTemplateRecipientOverflow8         `json:"overflow,omitempty"`
 	Type        RecipientUpdateTemplateRecipientFieldMetaTypeRadio `json:"type"`
 	Values      []RecipientUpdateTemplateRecipientValue1           `json:"values,omitempty"`
 	Direction   *RecipientUpdateTemplateRecipientDirection1        `default:"vertical" json:"direction"`
@@ -881,6 +1172,13 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaRadio) GetFontSize() *float64 
 	return r.FontSize
 }
 
+func (r *RecipientUpdateTemplateRecipientFieldMetaRadio) GetOverflow() *RecipientUpdateTemplateRecipientOverflow8 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateTemplateRecipientFieldMetaRadio) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeRadio {
 	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeRadio("")
@@ -902,6 +1200,48 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaRadio) GetDirection() *Recipie
 	return r.Direction
 }
 
+type RecipientUpdateTemplateRecipientOverflow7 string
+
+const (
+	RecipientUpdateTemplateRecipientOverflow7Auto       RecipientUpdateTemplateRecipientOverflow7 = "auto"
+	RecipientUpdateTemplateRecipientOverflow7Horizontal RecipientUpdateTemplateRecipientOverflow7 = "horizontal"
+	RecipientUpdateTemplateRecipientOverflow7Vertical   RecipientUpdateTemplateRecipientOverflow7 = "vertical"
+	RecipientUpdateTemplateRecipientOverflow7Crop       RecipientUpdateTemplateRecipientOverflow7 = "crop"
+)
+
+func (e RecipientUpdateTemplateRecipientOverflow7) ToPointer() *RecipientUpdateTemplateRecipientOverflow7 {
+	return &e
+}
+
+// RecipientUpdateTemplateRecipientOverflow7Values returns every known RecipientUpdateTemplateRecipientOverflow7 value in schema order.
+func RecipientUpdateTemplateRecipientOverflow7Values() []RecipientUpdateTemplateRecipientOverflow7 {
+	return []RecipientUpdateTemplateRecipientOverflow7{
+		RecipientUpdateTemplateRecipientOverflow7Auto,
+		RecipientUpdateTemplateRecipientOverflow7Horizontal,
+		RecipientUpdateTemplateRecipientOverflow7Vertical,
+		RecipientUpdateTemplateRecipientOverflow7Crop,
+	}
+}
+func (e *RecipientUpdateTemplateRecipientOverflow7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateTemplateRecipientOverflow7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientOverflow7: %v", v)
+	}
+}
+
 type RecipientUpdateTemplateRecipientFieldMetaTypeNumber string
 
 const (
@@ -910,6 +1250,13 @@ const (
 
 func (e RecipientUpdateTemplateRecipientFieldMetaTypeNumber) ToPointer() *RecipientUpdateTemplateRecipientFieldMetaTypeNumber {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientFieldMetaTypeNumberValues returns every known RecipientUpdateTemplateRecipientFieldMetaTypeNumber value in schema order.
+func RecipientUpdateTemplateRecipientFieldMetaTypeNumberValues() []RecipientUpdateTemplateRecipientFieldMetaTypeNumber {
+	return []RecipientUpdateTemplateRecipientFieldMetaTypeNumber{
+		RecipientUpdateTemplateRecipientFieldMetaTypeNumberNumber,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientFieldMetaTypeNumber) UnmarshalJSON(data []byte) error {
 	var v string
@@ -935,6 +1282,15 @@ const (
 
 func (e RecipientUpdateTemplateRecipientTextAlign6) ToPointer() *RecipientUpdateTemplateRecipientTextAlign6 {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientTextAlign6Values returns every known RecipientUpdateTemplateRecipientTextAlign6 value in schema order.
+func RecipientUpdateTemplateRecipientTextAlign6Values() []RecipientUpdateTemplateRecipientTextAlign6 {
+	return []RecipientUpdateTemplateRecipientTextAlign6{
+		RecipientUpdateTemplateRecipientTextAlign6Left,
+		RecipientUpdateTemplateRecipientTextAlign6Center,
+		RecipientUpdateTemplateRecipientTextAlign6Right,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientTextAlign6) UnmarshalJSON(data []byte) error {
 	var v string
@@ -965,6 +1321,15 @@ const (
 func (e RecipientUpdateTemplateRecipientVerticalAlign2) ToPointer() *RecipientUpdateTemplateRecipientVerticalAlign2 {
 	return &e
 }
+
+// RecipientUpdateTemplateRecipientVerticalAlign2Values returns every known RecipientUpdateTemplateRecipientVerticalAlign2 value in schema order.
+func RecipientUpdateTemplateRecipientVerticalAlign2Values() []RecipientUpdateTemplateRecipientVerticalAlign2 {
+	return []RecipientUpdateTemplateRecipientVerticalAlign2{
+		RecipientUpdateTemplateRecipientVerticalAlign2Top,
+		RecipientUpdateTemplateRecipientVerticalAlign2Middle,
+		RecipientUpdateTemplateRecipientVerticalAlign2Bottom,
+	}
+}
 func (e *RecipientUpdateTemplateRecipientVerticalAlign2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -989,6 +1354,7 @@ type RecipientUpdateTemplateRecipientFieldMetaNumber struct {
 	Required      *bool                                               `json:"required,omitempty"`
 	ReadOnly      *bool                                               `json:"readOnly,omitempty"`
 	FontSize      *float64                                            `default:"12" json:"fontSize"`
+	Overflow      *RecipientUpdateTemplateRecipientOverflow7          `json:"overflow,omitempty"`
 	Type          RecipientUpdateTemplateRecipientFieldMetaTypeNumber `json:"type"`
 	NumberFormat  *string                                             `json:"numberFormat,omitempty"`
 	Value         *string                                             `json:"value,omitempty"`
@@ -1044,6 +1410,13 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) GetFontSize() *float64
 		return nil
 	}
 	return r.FontSize
+}
+
+func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) GetOverflow() *RecipientUpdateTemplateRecipientOverflow7 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
 }
 
 func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeNumber {
@@ -1109,6 +1482,48 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaNumber) GetVerticalAlign() *Re
 	return r.VerticalAlign
 }
 
+type RecipientUpdateTemplateRecipientOverflow6 string
+
+const (
+	RecipientUpdateTemplateRecipientOverflow6Auto       RecipientUpdateTemplateRecipientOverflow6 = "auto"
+	RecipientUpdateTemplateRecipientOverflow6Horizontal RecipientUpdateTemplateRecipientOverflow6 = "horizontal"
+	RecipientUpdateTemplateRecipientOverflow6Vertical   RecipientUpdateTemplateRecipientOverflow6 = "vertical"
+	RecipientUpdateTemplateRecipientOverflow6Crop       RecipientUpdateTemplateRecipientOverflow6 = "crop"
+)
+
+func (e RecipientUpdateTemplateRecipientOverflow6) ToPointer() *RecipientUpdateTemplateRecipientOverflow6 {
+	return &e
+}
+
+// RecipientUpdateTemplateRecipientOverflow6Values returns every known RecipientUpdateTemplateRecipientOverflow6 value in schema order.
+func RecipientUpdateTemplateRecipientOverflow6Values() []RecipientUpdateTemplateRecipientOverflow6 {
+	return []RecipientUpdateTemplateRecipientOverflow6{
+		RecipientUpdateTemplateRecipientOverflow6Auto,
+		RecipientUpdateTemplateRecipientOverflow6Horizontal,
+		RecipientUpdateTemplateRecipientOverflow6Vertical,
+		RecipientUpdateTemplateRecipientOverflow6Crop,
+	}
+}
+func (e *RecipientUpdateTemplateRecipientOverflow6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateTemplateRecipientOverflow6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientOverflow6: %v", v)
+	}
+}
+
 type RecipientUpdateTemplateRecipientFieldMetaTypeText string
 
 const (
@@ -1117,6 +1532,13 @@ const (
 
 func (e RecipientUpdateTemplateRecipientFieldMetaTypeText) ToPointer() *RecipientUpdateTemplateRecipientFieldMetaTypeText {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientFieldMetaTypeTextValues returns every known RecipientUpdateTemplateRecipientFieldMetaTypeText value in schema order.
+func RecipientUpdateTemplateRecipientFieldMetaTypeTextValues() []RecipientUpdateTemplateRecipientFieldMetaTypeText {
+	return []RecipientUpdateTemplateRecipientFieldMetaTypeText{
+		RecipientUpdateTemplateRecipientFieldMetaTypeTextText,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientFieldMetaTypeText) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1142,6 +1564,15 @@ const (
 
 func (e RecipientUpdateTemplateRecipientTextAlign5) ToPointer() *RecipientUpdateTemplateRecipientTextAlign5 {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientTextAlign5Values returns every known RecipientUpdateTemplateRecipientTextAlign5 value in schema order.
+func RecipientUpdateTemplateRecipientTextAlign5Values() []RecipientUpdateTemplateRecipientTextAlign5 {
+	return []RecipientUpdateTemplateRecipientTextAlign5{
+		RecipientUpdateTemplateRecipientTextAlign5Left,
+		RecipientUpdateTemplateRecipientTextAlign5Center,
+		RecipientUpdateTemplateRecipientTextAlign5Right,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientTextAlign5) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1172,6 +1603,15 @@ const (
 func (e RecipientUpdateTemplateRecipientVerticalAlign1) ToPointer() *RecipientUpdateTemplateRecipientVerticalAlign1 {
 	return &e
 }
+
+// RecipientUpdateTemplateRecipientVerticalAlign1Values returns every known RecipientUpdateTemplateRecipientVerticalAlign1 value in schema order.
+func RecipientUpdateTemplateRecipientVerticalAlign1Values() []RecipientUpdateTemplateRecipientVerticalAlign1 {
+	return []RecipientUpdateTemplateRecipientVerticalAlign1{
+		RecipientUpdateTemplateRecipientVerticalAlign1Top,
+		RecipientUpdateTemplateRecipientVerticalAlign1Middle,
+		RecipientUpdateTemplateRecipientVerticalAlign1Bottom,
+	}
+}
 func (e *RecipientUpdateTemplateRecipientVerticalAlign1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1196,6 +1636,7 @@ type RecipientUpdateTemplateRecipientFieldMetaText struct {
 	Required       *bool                                             `json:"required,omitempty"`
 	ReadOnly       *bool                                             `json:"readOnly,omitempty"`
 	FontSize       *float64                                          `default:"12" json:"fontSize"`
+	Overflow       *RecipientUpdateTemplateRecipientOverflow6        `json:"overflow,omitempty"`
 	Type           RecipientUpdateTemplateRecipientFieldMetaTypeText `json:"type"`
 	Text           *string                                           `json:"text,omitempty"`
 	CharacterLimit *float64                                          `json:"characterLimit,omitempty"`
@@ -1251,6 +1692,13 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaText) GetFontSize() *float64 {
 	return r.FontSize
 }
 
+func (r *RecipientUpdateTemplateRecipientFieldMetaText) GetOverflow() *RecipientUpdateTemplateRecipientOverflow6 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateTemplateRecipientFieldMetaText) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeText {
 	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeText("")
@@ -1300,6 +1748,48 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaText) GetVerticalAlign() *Reci
 	return r.VerticalAlign
 }
 
+type RecipientUpdateTemplateRecipientOverflow5 string
+
+const (
+	RecipientUpdateTemplateRecipientOverflow5Auto       RecipientUpdateTemplateRecipientOverflow5 = "auto"
+	RecipientUpdateTemplateRecipientOverflow5Horizontal RecipientUpdateTemplateRecipientOverflow5 = "horizontal"
+	RecipientUpdateTemplateRecipientOverflow5Vertical   RecipientUpdateTemplateRecipientOverflow5 = "vertical"
+	RecipientUpdateTemplateRecipientOverflow5Crop       RecipientUpdateTemplateRecipientOverflow5 = "crop"
+)
+
+func (e RecipientUpdateTemplateRecipientOverflow5) ToPointer() *RecipientUpdateTemplateRecipientOverflow5 {
+	return &e
+}
+
+// RecipientUpdateTemplateRecipientOverflow5Values returns every known RecipientUpdateTemplateRecipientOverflow5 value in schema order.
+func RecipientUpdateTemplateRecipientOverflow5Values() []RecipientUpdateTemplateRecipientOverflow5 {
+	return []RecipientUpdateTemplateRecipientOverflow5{
+		RecipientUpdateTemplateRecipientOverflow5Auto,
+		RecipientUpdateTemplateRecipientOverflow5Horizontal,
+		RecipientUpdateTemplateRecipientOverflow5Vertical,
+		RecipientUpdateTemplateRecipientOverflow5Crop,
+	}
+}
+func (e *RecipientUpdateTemplateRecipientOverflow5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateTemplateRecipientOverflow5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientOverflow5: %v", v)
+	}
+}
+
 type RecipientUpdateTemplateRecipientFieldMetaTypeDate string
 
 const (
@@ -1308,6 +1798,13 @@ const (
 
 func (e RecipientUpdateTemplateRecipientFieldMetaTypeDate) ToPointer() *RecipientUpdateTemplateRecipientFieldMetaTypeDate {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientFieldMetaTypeDateValues returns every known RecipientUpdateTemplateRecipientFieldMetaTypeDate value in schema order.
+func RecipientUpdateTemplateRecipientFieldMetaTypeDateValues() []RecipientUpdateTemplateRecipientFieldMetaTypeDate {
+	return []RecipientUpdateTemplateRecipientFieldMetaTypeDate{
+		RecipientUpdateTemplateRecipientFieldMetaTypeDateDate,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientFieldMetaTypeDate) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1334,6 +1831,15 @@ const (
 func (e RecipientUpdateTemplateRecipientTextAlign4) ToPointer() *RecipientUpdateTemplateRecipientTextAlign4 {
 	return &e
 }
+
+// RecipientUpdateTemplateRecipientTextAlign4Values returns every known RecipientUpdateTemplateRecipientTextAlign4 value in schema order.
+func RecipientUpdateTemplateRecipientTextAlign4Values() []RecipientUpdateTemplateRecipientTextAlign4 {
+	return []RecipientUpdateTemplateRecipientTextAlign4{
+		RecipientUpdateTemplateRecipientTextAlign4Left,
+		RecipientUpdateTemplateRecipientTextAlign4Center,
+		RecipientUpdateTemplateRecipientTextAlign4Right,
+	}
+}
 func (e *RecipientUpdateTemplateRecipientTextAlign4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1358,6 +1864,7 @@ type RecipientUpdateTemplateRecipientFieldMetaDate struct {
 	Required    *bool                                             `json:"required,omitempty"`
 	ReadOnly    *bool                                             `json:"readOnly,omitempty"`
 	FontSize    *float64                                          `default:"12" json:"fontSize"`
+	Overflow    *RecipientUpdateTemplateRecipientOverflow5        `default:"auto" json:"overflow"`
 	Type        RecipientUpdateTemplateRecipientFieldMetaTypeDate `json:"type"`
 	TextAlign   *RecipientUpdateTemplateRecipientTextAlign4       `json:"textAlign,omitempty"`
 }
@@ -1408,6 +1915,13 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaDate) GetFontSize() *float64 {
 	return r.FontSize
 }
 
+func (r *RecipientUpdateTemplateRecipientFieldMetaDate) GetOverflow() *RecipientUpdateTemplateRecipientOverflow5 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateTemplateRecipientFieldMetaDate) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeDate {
 	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeDate("")
@@ -1422,6 +1936,48 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaDate) GetTextAlign() *Recipien
 	return r.TextAlign
 }
 
+type RecipientUpdateTemplateRecipientOverflow4 string
+
+const (
+	RecipientUpdateTemplateRecipientOverflow4Auto       RecipientUpdateTemplateRecipientOverflow4 = "auto"
+	RecipientUpdateTemplateRecipientOverflow4Horizontal RecipientUpdateTemplateRecipientOverflow4 = "horizontal"
+	RecipientUpdateTemplateRecipientOverflow4Vertical   RecipientUpdateTemplateRecipientOverflow4 = "vertical"
+	RecipientUpdateTemplateRecipientOverflow4Crop       RecipientUpdateTemplateRecipientOverflow4 = "crop"
+)
+
+func (e RecipientUpdateTemplateRecipientOverflow4) ToPointer() *RecipientUpdateTemplateRecipientOverflow4 {
+	return &e
+}
+
+// RecipientUpdateTemplateRecipientOverflow4Values returns every known RecipientUpdateTemplateRecipientOverflow4 value in schema order.
+func RecipientUpdateTemplateRecipientOverflow4Values() []RecipientUpdateTemplateRecipientOverflow4 {
+	return []RecipientUpdateTemplateRecipientOverflow4{
+		RecipientUpdateTemplateRecipientOverflow4Auto,
+		RecipientUpdateTemplateRecipientOverflow4Horizontal,
+		RecipientUpdateTemplateRecipientOverflow4Vertical,
+		RecipientUpdateTemplateRecipientOverflow4Crop,
+	}
+}
+func (e *RecipientUpdateTemplateRecipientOverflow4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateTemplateRecipientOverflow4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientOverflow4: %v", v)
+	}
+}
+
 type RecipientUpdateTemplateRecipientFieldMetaTypeEmail string
 
 const (
@@ -1430,6 +1986,13 @@ const (
 
 func (e RecipientUpdateTemplateRecipientFieldMetaTypeEmail) ToPointer() *RecipientUpdateTemplateRecipientFieldMetaTypeEmail {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientFieldMetaTypeEmailValues returns every known RecipientUpdateTemplateRecipientFieldMetaTypeEmail value in schema order.
+func RecipientUpdateTemplateRecipientFieldMetaTypeEmailValues() []RecipientUpdateTemplateRecipientFieldMetaTypeEmail {
+	return []RecipientUpdateTemplateRecipientFieldMetaTypeEmail{
+		RecipientUpdateTemplateRecipientFieldMetaTypeEmailEmail,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientFieldMetaTypeEmail) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1456,6 +2019,15 @@ const (
 func (e RecipientUpdateTemplateRecipientTextAlign3) ToPointer() *RecipientUpdateTemplateRecipientTextAlign3 {
 	return &e
 }
+
+// RecipientUpdateTemplateRecipientTextAlign3Values returns every known RecipientUpdateTemplateRecipientTextAlign3 value in schema order.
+func RecipientUpdateTemplateRecipientTextAlign3Values() []RecipientUpdateTemplateRecipientTextAlign3 {
+	return []RecipientUpdateTemplateRecipientTextAlign3{
+		RecipientUpdateTemplateRecipientTextAlign3Left,
+		RecipientUpdateTemplateRecipientTextAlign3Center,
+		RecipientUpdateTemplateRecipientTextAlign3Right,
+	}
+}
 func (e *RecipientUpdateTemplateRecipientTextAlign3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1480,6 +2052,7 @@ type RecipientUpdateTemplateRecipientFieldMetaEmail struct {
 	Required    *bool                                              `json:"required,omitempty"`
 	ReadOnly    *bool                                              `json:"readOnly,omitempty"`
 	FontSize    *float64                                           `default:"12" json:"fontSize"`
+	Overflow    *RecipientUpdateTemplateRecipientOverflow4         `default:"auto" json:"overflow"`
 	Type        RecipientUpdateTemplateRecipientFieldMetaTypeEmail `json:"type"`
 	TextAlign   *RecipientUpdateTemplateRecipientTextAlign3        `json:"textAlign,omitempty"`
 }
@@ -1530,6 +2103,13 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaEmail) GetFontSize() *float64 
 	return r.FontSize
 }
 
+func (r *RecipientUpdateTemplateRecipientFieldMetaEmail) GetOverflow() *RecipientUpdateTemplateRecipientOverflow4 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateTemplateRecipientFieldMetaEmail) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeEmail {
 	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeEmail("")
@@ -1544,6 +2124,48 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaEmail) GetTextAlign() *Recipie
 	return r.TextAlign
 }
 
+type RecipientUpdateTemplateRecipientOverflow3 string
+
+const (
+	RecipientUpdateTemplateRecipientOverflow3Auto       RecipientUpdateTemplateRecipientOverflow3 = "auto"
+	RecipientUpdateTemplateRecipientOverflow3Horizontal RecipientUpdateTemplateRecipientOverflow3 = "horizontal"
+	RecipientUpdateTemplateRecipientOverflow3Vertical   RecipientUpdateTemplateRecipientOverflow3 = "vertical"
+	RecipientUpdateTemplateRecipientOverflow3Crop       RecipientUpdateTemplateRecipientOverflow3 = "crop"
+)
+
+func (e RecipientUpdateTemplateRecipientOverflow3) ToPointer() *RecipientUpdateTemplateRecipientOverflow3 {
+	return &e
+}
+
+// RecipientUpdateTemplateRecipientOverflow3Values returns every known RecipientUpdateTemplateRecipientOverflow3 value in schema order.
+func RecipientUpdateTemplateRecipientOverflow3Values() []RecipientUpdateTemplateRecipientOverflow3 {
+	return []RecipientUpdateTemplateRecipientOverflow3{
+		RecipientUpdateTemplateRecipientOverflow3Auto,
+		RecipientUpdateTemplateRecipientOverflow3Horizontal,
+		RecipientUpdateTemplateRecipientOverflow3Vertical,
+		RecipientUpdateTemplateRecipientOverflow3Crop,
+	}
+}
+func (e *RecipientUpdateTemplateRecipientOverflow3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateTemplateRecipientOverflow3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientOverflow3: %v", v)
+	}
+}
+
 type RecipientUpdateTemplateRecipientFieldMetaTypeName string
 
 const (
@@ -1552,6 +2174,13 @@ const (
 
 func (e RecipientUpdateTemplateRecipientFieldMetaTypeName) ToPointer() *RecipientUpdateTemplateRecipientFieldMetaTypeName {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientFieldMetaTypeNameValues returns every known RecipientUpdateTemplateRecipientFieldMetaTypeName value in schema order.
+func RecipientUpdateTemplateRecipientFieldMetaTypeNameValues() []RecipientUpdateTemplateRecipientFieldMetaTypeName {
+	return []RecipientUpdateTemplateRecipientFieldMetaTypeName{
+		RecipientUpdateTemplateRecipientFieldMetaTypeNameName,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientFieldMetaTypeName) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1578,6 +2207,15 @@ const (
 func (e RecipientUpdateTemplateRecipientTextAlign2) ToPointer() *RecipientUpdateTemplateRecipientTextAlign2 {
 	return &e
 }
+
+// RecipientUpdateTemplateRecipientTextAlign2Values returns every known RecipientUpdateTemplateRecipientTextAlign2 value in schema order.
+func RecipientUpdateTemplateRecipientTextAlign2Values() []RecipientUpdateTemplateRecipientTextAlign2 {
+	return []RecipientUpdateTemplateRecipientTextAlign2{
+		RecipientUpdateTemplateRecipientTextAlign2Left,
+		RecipientUpdateTemplateRecipientTextAlign2Center,
+		RecipientUpdateTemplateRecipientTextAlign2Right,
+	}
+}
 func (e *RecipientUpdateTemplateRecipientTextAlign2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1602,6 +2240,7 @@ type RecipientUpdateTemplateRecipientFieldMetaName struct {
 	Required    *bool                                             `json:"required,omitempty"`
 	ReadOnly    *bool                                             `json:"readOnly,omitempty"`
 	FontSize    *float64                                          `default:"12" json:"fontSize"`
+	Overflow    *RecipientUpdateTemplateRecipientOverflow3        `json:"overflow,omitempty"`
 	Type        RecipientUpdateTemplateRecipientFieldMetaTypeName `json:"type"`
 	TextAlign   *RecipientUpdateTemplateRecipientTextAlign2       `json:"textAlign,omitempty"`
 }
@@ -1652,6 +2291,13 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaName) GetFontSize() *float64 {
 	return r.FontSize
 }
 
+func (r *RecipientUpdateTemplateRecipientFieldMetaName) GetOverflow() *RecipientUpdateTemplateRecipientOverflow3 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateTemplateRecipientFieldMetaName) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeName {
 	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeName("")
@@ -1666,6 +2312,48 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaName) GetTextAlign() *Recipien
 	return r.TextAlign
 }
 
+type RecipientUpdateTemplateRecipientOverflow2 string
+
+const (
+	RecipientUpdateTemplateRecipientOverflow2Auto       RecipientUpdateTemplateRecipientOverflow2 = "auto"
+	RecipientUpdateTemplateRecipientOverflow2Horizontal RecipientUpdateTemplateRecipientOverflow2 = "horizontal"
+	RecipientUpdateTemplateRecipientOverflow2Vertical   RecipientUpdateTemplateRecipientOverflow2 = "vertical"
+	RecipientUpdateTemplateRecipientOverflow2Crop       RecipientUpdateTemplateRecipientOverflow2 = "crop"
+)
+
+func (e RecipientUpdateTemplateRecipientOverflow2) ToPointer() *RecipientUpdateTemplateRecipientOverflow2 {
+	return &e
+}
+
+// RecipientUpdateTemplateRecipientOverflow2Values returns every known RecipientUpdateTemplateRecipientOverflow2 value in schema order.
+func RecipientUpdateTemplateRecipientOverflow2Values() []RecipientUpdateTemplateRecipientOverflow2 {
+	return []RecipientUpdateTemplateRecipientOverflow2{
+		RecipientUpdateTemplateRecipientOverflow2Auto,
+		RecipientUpdateTemplateRecipientOverflow2Horizontal,
+		RecipientUpdateTemplateRecipientOverflow2Vertical,
+		RecipientUpdateTemplateRecipientOverflow2Crop,
+	}
+}
+func (e *RecipientUpdateTemplateRecipientOverflow2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateTemplateRecipientOverflow2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientOverflow2: %v", v)
+	}
+}
+
 type RecipientUpdateTemplateRecipientFieldMetaTypeInitials string
 
 const (
@@ -1674,6 +2362,13 @@ const (
 
 func (e RecipientUpdateTemplateRecipientFieldMetaTypeInitials) ToPointer() *RecipientUpdateTemplateRecipientFieldMetaTypeInitials {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientFieldMetaTypeInitialsValues returns every known RecipientUpdateTemplateRecipientFieldMetaTypeInitials value in schema order.
+func RecipientUpdateTemplateRecipientFieldMetaTypeInitialsValues() []RecipientUpdateTemplateRecipientFieldMetaTypeInitials {
+	return []RecipientUpdateTemplateRecipientFieldMetaTypeInitials{
+		RecipientUpdateTemplateRecipientFieldMetaTypeInitialsInitials,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientFieldMetaTypeInitials) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1700,6 +2395,15 @@ const (
 func (e RecipientUpdateTemplateRecipientTextAlign1) ToPointer() *RecipientUpdateTemplateRecipientTextAlign1 {
 	return &e
 }
+
+// RecipientUpdateTemplateRecipientTextAlign1Values returns every known RecipientUpdateTemplateRecipientTextAlign1 value in schema order.
+func RecipientUpdateTemplateRecipientTextAlign1Values() []RecipientUpdateTemplateRecipientTextAlign1 {
+	return []RecipientUpdateTemplateRecipientTextAlign1{
+		RecipientUpdateTemplateRecipientTextAlign1Left,
+		RecipientUpdateTemplateRecipientTextAlign1Center,
+		RecipientUpdateTemplateRecipientTextAlign1Right,
+	}
+}
 func (e *RecipientUpdateTemplateRecipientTextAlign1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1724,6 +2428,7 @@ type RecipientUpdateTemplateRecipientFieldMetaInitials struct {
 	Required    *bool                                                 `json:"required,omitempty"`
 	ReadOnly    *bool                                                 `json:"readOnly,omitempty"`
 	FontSize    *float64                                              `default:"12" json:"fontSize"`
+	Overflow    *RecipientUpdateTemplateRecipientOverflow2            `json:"overflow,omitempty"`
 	Type        RecipientUpdateTemplateRecipientFieldMetaTypeInitials `json:"type"`
 	TextAlign   *RecipientUpdateTemplateRecipientTextAlign1           `json:"textAlign,omitempty"`
 }
@@ -1774,6 +2479,13 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaInitials) GetFontSize() *float
 	return r.FontSize
 }
 
+func (r *RecipientUpdateTemplateRecipientFieldMetaInitials) GetOverflow() *RecipientUpdateTemplateRecipientOverflow2 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
+}
+
 func (r *RecipientUpdateTemplateRecipientFieldMetaInitials) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeInitials {
 	if r == nil {
 		return RecipientUpdateTemplateRecipientFieldMetaTypeInitials("")
@@ -1788,6 +2500,48 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaInitials) GetTextAlign() *Reci
 	return r.TextAlign
 }
 
+type RecipientUpdateTemplateRecipientOverflow1 string
+
+const (
+	RecipientUpdateTemplateRecipientOverflow1Auto       RecipientUpdateTemplateRecipientOverflow1 = "auto"
+	RecipientUpdateTemplateRecipientOverflow1Horizontal RecipientUpdateTemplateRecipientOverflow1 = "horizontal"
+	RecipientUpdateTemplateRecipientOverflow1Vertical   RecipientUpdateTemplateRecipientOverflow1 = "vertical"
+	RecipientUpdateTemplateRecipientOverflow1Crop       RecipientUpdateTemplateRecipientOverflow1 = "crop"
+)
+
+func (e RecipientUpdateTemplateRecipientOverflow1) ToPointer() *RecipientUpdateTemplateRecipientOverflow1 {
+	return &e
+}
+
+// RecipientUpdateTemplateRecipientOverflow1Values returns every known RecipientUpdateTemplateRecipientOverflow1 value in schema order.
+func RecipientUpdateTemplateRecipientOverflow1Values() []RecipientUpdateTemplateRecipientOverflow1 {
+	return []RecipientUpdateTemplateRecipientOverflow1{
+		RecipientUpdateTemplateRecipientOverflow1Auto,
+		RecipientUpdateTemplateRecipientOverflow1Horizontal,
+		RecipientUpdateTemplateRecipientOverflow1Vertical,
+		RecipientUpdateTemplateRecipientOverflow1Crop,
+	}
+}
+func (e *RecipientUpdateTemplateRecipientOverflow1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = RecipientUpdateTemplateRecipientOverflow1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for RecipientUpdateTemplateRecipientOverflow1: %v", v)
+	}
+}
+
 type RecipientUpdateTemplateRecipientFieldMetaTypeSignature string
 
 const (
@@ -1796,6 +2550,13 @@ const (
 
 func (e RecipientUpdateTemplateRecipientFieldMetaTypeSignature) ToPointer() *RecipientUpdateTemplateRecipientFieldMetaTypeSignature {
 	return &e
+}
+
+// RecipientUpdateTemplateRecipientFieldMetaTypeSignatureValues returns every known RecipientUpdateTemplateRecipientFieldMetaTypeSignature value in schema order.
+func RecipientUpdateTemplateRecipientFieldMetaTypeSignatureValues() []RecipientUpdateTemplateRecipientFieldMetaTypeSignature {
+	return []RecipientUpdateTemplateRecipientFieldMetaTypeSignature{
+		RecipientUpdateTemplateRecipientFieldMetaTypeSignatureSignature,
+	}
 }
 func (e *RecipientUpdateTemplateRecipientFieldMetaTypeSignature) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1817,6 +2578,7 @@ type RecipientUpdateTemplateRecipientFieldMetaSignature struct {
 	Required    *bool                                                  `json:"required,omitempty"`
 	ReadOnly    *bool                                                  `json:"readOnly,omitempty"`
 	FontSize    *float64                                               `default:"12" json:"fontSize"`
+	Overflow    *RecipientUpdateTemplateRecipientOverflow1             `default:"auto" json:"overflow"`
 	Type        RecipientUpdateTemplateRecipientFieldMetaTypeSignature `json:"type"`
 }
 
@@ -1864,6 +2626,13 @@ func (r *RecipientUpdateTemplateRecipientFieldMetaSignature) GetFontSize() *floa
 		return nil
 	}
 	return r.FontSize
+}
+
+func (r *RecipientUpdateTemplateRecipientFieldMetaSignature) GetOverflow() *RecipientUpdateTemplateRecipientOverflow1 {
+	if r == nil {
+		return nil
+	}
+	return r.Overflow
 }
 
 func (r *RecipientUpdateTemplateRecipientFieldMetaSignature) GetType() RecipientUpdateTemplateRecipientFieldMetaTypeSignature {
@@ -1993,7 +2762,14 @@ func CreateRecipientUpdateTemplateRecipientFieldMetaUnionRecipientUpdateTemplate
 	}
 }
 
-func (u *RecipientUpdateTemplateRecipientFieldMetaUnion) UnmarshalJSON(data []byte) error {
+func (u *RecipientUpdateTemplateRecipientFieldMetaUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = RecipientUpdateTemplateRecipientFieldMetaUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var recipientUpdateTemplateRecipientFieldMetaSignature RecipientUpdateTemplateRecipientFieldMetaSignature = RecipientUpdateTemplateRecipientFieldMetaSignature{}
 	if err := utils.UnmarshalJSON(data, &recipientUpdateTemplateRecipientFieldMetaSignature, "", true, nil); err == nil {
@@ -2245,24 +3021,26 @@ func (r *RecipientUpdateTemplateRecipientField) GetTemplateID() *float64 {
 
 // RecipientUpdateTemplateRecipientResponseBody - Successful response
 type RecipientUpdateTemplateRecipientResponseBody struct {
-	EnvelopeID        string                                        `json:"envelopeId"`
-	Role              RecipientUpdateTemplateRecipientRoleResponse  `json:"role"`
-	ReadStatus        RecipientUpdateTemplateRecipientReadStatus    `json:"readStatus"`
-	SigningStatus     RecipientUpdateTemplateRecipientSigningStatus `json:"signingStatus"`
-	SendStatus        RecipientUpdateTemplateRecipientSendStatus    `json:"sendStatus"`
-	ID                float64                                       `json:"id"`
-	Email             string                                        `json:"email"`
-	Name              string                                        `json:"name"`
-	Token             string                                        `json:"token"`
-	DocumentDeletedAt *string                                       `json:"documentDeletedAt"`
-	Expired           *string                                       `json:"expired"`
-	SignedAt          *string                                       `json:"signedAt"`
-	AuthOptions       *RecipientUpdateTemplateRecipientAuthOptions  `json:"authOptions"`
-	SigningOrder      *float64                                      `json:"signingOrder"`
-	RejectionReason   *string                                       `json:"rejectionReason"`
-	Fields            []RecipientUpdateTemplateRecipientField       `json:"fields"`
-	DocumentID        *float64                                      `json:"documentId,omitempty"`
-	TemplateID        *float64                                      `json:"templateId,omitempty"`
+	EnvelopeID           string                                        `json:"envelopeId"`
+	Role                 RecipientUpdateTemplateRecipientRoleResponse  `json:"role"`
+	ReadStatus           RecipientUpdateTemplateRecipientReadStatus    `json:"readStatus"`
+	SigningStatus        RecipientUpdateTemplateRecipientSigningStatus `json:"signingStatus"`
+	SendStatus           RecipientUpdateTemplateRecipientSendStatus    `json:"sendStatus"`
+	ID                   float64                                       `json:"id"`
+	Email                string                                        `json:"email"`
+	Name                 string                                        `json:"name"`
+	Token                string                                        `json:"token"`
+	DocumentDeletedAt    *string                                       `json:"documentDeletedAt"`
+	Expired              *string                                       `json:"expired"`
+	ExpiresAt            *string                                       `json:"expiresAt"`
+	ExpirationNotifiedAt *string                                       `json:"expirationNotifiedAt"`
+	SignedAt             *string                                       `json:"signedAt"`
+	AuthOptions          *RecipientUpdateTemplateRecipientAuthOptions  `json:"authOptions"`
+	SigningOrder         *float64                                      `json:"signingOrder"`
+	RejectionReason      *string                                       `json:"rejectionReason"`
+	Fields               []RecipientUpdateTemplateRecipientField       `json:"fields"`
+	DocumentID           *float64                                      `json:"documentId,omitempty"`
+	TemplateID           *float64                                      `json:"templateId,omitempty"`
 }
 
 func (r *RecipientUpdateTemplateRecipientResponseBody) GetEnvelopeID() string {
@@ -2340,6 +3118,20 @@ func (r *RecipientUpdateTemplateRecipientResponseBody) GetExpired() *string {
 		return nil
 	}
 	return r.Expired
+}
+
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetExpiresAt() *string {
+	if r == nil {
+		return nil
+	}
+	return r.ExpiresAt
+}
+
+func (r *RecipientUpdateTemplateRecipientResponseBody) GetExpirationNotifiedAt() *string {
+	if r == nil {
+		return nil
+	}
+	return r.ExpirationNotifiedAt
 }
 
 func (r *RecipientUpdateTemplateRecipientResponseBody) GetSignedAt() *string {

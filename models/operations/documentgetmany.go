@@ -32,6 +32,15 @@ const (
 func (e DocumentGetManyVisibility) ToPointer() *DocumentGetManyVisibility {
 	return &e
 }
+
+// DocumentGetManyVisibilityValues returns every known DocumentGetManyVisibility value in schema order.
+func DocumentGetManyVisibilityValues() []DocumentGetManyVisibility {
+	return []DocumentGetManyVisibility{
+		DocumentGetManyVisibilityEveryone,
+		DocumentGetManyVisibilityManagerAndAbove,
+		DocumentGetManyVisibilityAdmin,
+	}
+}
 func (e *DocumentGetManyVisibility) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -57,10 +66,22 @@ const (
 	DocumentGetManyStatusPending   DocumentGetManyStatus = "PENDING"
 	DocumentGetManyStatusCompleted DocumentGetManyStatus = "COMPLETED"
 	DocumentGetManyStatusRejected  DocumentGetManyStatus = "REJECTED"
+	DocumentGetManyStatusCancelled DocumentGetManyStatus = "CANCELLED"
 )
 
 func (e DocumentGetManyStatus) ToPointer() *DocumentGetManyStatus {
 	return &e
+}
+
+// DocumentGetManyStatusValues returns every known DocumentGetManyStatus value in schema order.
+func DocumentGetManyStatusValues() []DocumentGetManyStatus {
+	return []DocumentGetManyStatus{
+		DocumentGetManyStatusDraft,
+		DocumentGetManyStatusPending,
+		DocumentGetManyStatusCompleted,
+		DocumentGetManyStatusRejected,
+		DocumentGetManyStatusCancelled,
+	}
 }
 func (e *DocumentGetManyStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -75,6 +96,8 @@ func (e *DocumentGetManyStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = DocumentGetManyStatus(v)
 		return nil
 	default:
@@ -92,6 +115,15 @@ const (
 
 func (e DocumentGetManySource) ToPointer() *DocumentGetManySource {
 	return &e
+}
+
+// DocumentGetManySourceValues returns every known DocumentGetManySource value in schema order.
+func DocumentGetManySourceValues() []DocumentGetManySource {
+	return []DocumentGetManySource{
+		DocumentGetManySourceDocument,
+		DocumentGetManySourceTemplate,
+		DocumentGetManySourceTemplateDirectLink,
+	}
 }
 func (e *DocumentGetManySource) UnmarshalJSON(data []byte) error {
 	var v string
@@ -121,6 +153,14 @@ const (
 func (e DocumentGetManyGlobalAccessAuth) ToPointer() *DocumentGetManyGlobalAccessAuth {
 	return &e
 }
+
+// DocumentGetManyGlobalAccessAuthValues returns every known DocumentGetManyGlobalAccessAuth value in schema order.
+func DocumentGetManyGlobalAccessAuthValues() []DocumentGetManyGlobalAccessAuth {
+	return []DocumentGetManyGlobalAccessAuth{
+		DocumentGetManyGlobalAccessAuthAccount,
+		DocumentGetManyGlobalAccessAuthTwoFactorAuth,
+	}
+}
 func (e *DocumentGetManyGlobalAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -148,6 +188,16 @@ const (
 
 func (e DocumentGetManyGlobalActionAuth) ToPointer() *DocumentGetManyGlobalActionAuth {
 	return &e
+}
+
+// DocumentGetManyGlobalActionAuthValues returns every known DocumentGetManyGlobalActionAuth value in schema order.
+func DocumentGetManyGlobalActionAuthValues() []DocumentGetManyGlobalActionAuth {
+	return []DocumentGetManyGlobalActionAuth{
+		DocumentGetManyGlobalActionAuthAccount,
+		DocumentGetManyGlobalActionAuthPasskey,
+		DocumentGetManyGlobalActionAuthTwoFactorAuth,
+		DocumentGetManyGlobalActionAuthPassword,
+	}
 }
 func (e *DocumentGetManyGlobalActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -231,7 +281,14 @@ func CreateDocumentGetManyFormValuesNumber(number float64) DocumentGetManyFormVa
 	}
 }
 
-func (u *DocumentGetManyFormValues) UnmarshalJSON(data []byte) error {
+func (u *DocumentGetManyFormValues) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentGetManyFormValues{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {
@@ -313,6 +370,17 @@ const (
 func (e DocumentGetManyRole) ToPointer() *DocumentGetManyRole {
 	return &e
 }
+
+// DocumentGetManyRoleValues returns every known DocumentGetManyRole value in schema order.
+func DocumentGetManyRoleValues() []DocumentGetManyRole {
+	return []DocumentGetManyRole{
+		DocumentGetManyRoleCc,
+		DocumentGetManyRoleSigner,
+		DocumentGetManyRoleViewer,
+		DocumentGetManyRoleApprover,
+		DocumentGetManyRoleAssistant,
+	}
+}
 func (e *DocumentGetManyRole) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -345,6 +413,14 @@ const (
 func (e DocumentGetManyReadStatus) ToPointer() *DocumentGetManyReadStatus {
 	return &e
 }
+
+// DocumentGetManyReadStatusValues returns every known DocumentGetManyReadStatus value in schema order.
+func DocumentGetManyReadStatusValues() []DocumentGetManyReadStatus {
+	return []DocumentGetManyReadStatus{
+		DocumentGetManyReadStatusNotOpened,
+		DocumentGetManyReadStatusOpened,
+	}
+}
 func (e *DocumentGetManyReadStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -371,6 +447,15 @@ const (
 
 func (e DocumentGetManySigningStatus) ToPointer() *DocumentGetManySigningStatus {
 	return &e
+}
+
+// DocumentGetManySigningStatusValues returns every known DocumentGetManySigningStatus value in schema order.
+func DocumentGetManySigningStatusValues() []DocumentGetManySigningStatus {
+	return []DocumentGetManySigningStatus{
+		DocumentGetManySigningStatusNotSigned,
+		DocumentGetManySigningStatusSigned,
+		DocumentGetManySigningStatusRejected,
+	}
 }
 func (e *DocumentGetManySigningStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -400,6 +485,14 @@ const (
 func (e DocumentGetManySendStatus) ToPointer() *DocumentGetManySendStatus {
 	return &e
 }
+
+// DocumentGetManySendStatusValues returns every known DocumentGetManySendStatus value in schema order.
+func DocumentGetManySendStatusValues() []DocumentGetManySendStatus {
+	return []DocumentGetManySendStatus{
+		DocumentGetManySendStatusNotSent,
+		DocumentGetManySendStatusSent,
+	}
+}
 func (e *DocumentGetManySendStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -425,6 +518,14 @@ const (
 
 func (e DocumentGetManyAccessAuth) ToPointer() *DocumentGetManyAccessAuth {
 	return &e
+}
+
+// DocumentGetManyAccessAuthValues returns every known DocumentGetManyAccessAuth value in schema order.
+func DocumentGetManyAccessAuthValues() []DocumentGetManyAccessAuth {
+	return []DocumentGetManyAccessAuth{
+		DocumentGetManyAccessAuthAccount,
+		DocumentGetManyAccessAuthTwoFactorAuth,
+	}
 }
 func (e *DocumentGetManyAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -454,6 +555,17 @@ const (
 
 func (e DocumentGetManyActionAuth) ToPointer() *DocumentGetManyActionAuth {
 	return &e
+}
+
+// DocumentGetManyActionAuthValues returns every known DocumentGetManyActionAuth value in schema order.
+func DocumentGetManyActionAuthValues() []DocumentGetManyActionAuth {
+	return []DocumentGetManyActionAuth{
+		DocumentGetManyActionAuthAccount,
+		DocumentGetManyActionAuthPasskey,
+		DocumentGetManyActionAuthTwoFactorAuth,
+		DocumentGetManyActionAuthPassword,
+		DocumentGetManyActionAuthExplicitNone,
+	}
 }
 func (e *DocumentGetManyActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -497,23 +609,25 @@ func (d *DocumentGetManyRecipientAuthOptions) GetActionAuth() []DocumentGetManyA
 }
 
 type DocumentGetManyRecipient struct {
-	EnvelopeID        string                               `json:"envelopeId"`
-	Role              DocumentGetManyRole                  `json:"role"`
-	ReadStatus        DocumentGetManyReadStatus            `json:"readStatus"`
-	SigningStatus     DocumentGetManySigningStatus         `json:"signingStatus"`
-	SendStatus        DocumentGetManySendStatus            `json:"sendStatus"`
-	ID                float64                              `json:"id"`
-	Email             string                               `json:"email"`
-	Name              string                               `json:"name"`
-	Token             string                               `json:"token"`
-	DocumentDeletedAt *string                              `json:"documentDeletedAt"`
-	Expired           *string                              `json:"expired"`
-	SignedAt          *string                              `json:"signedAt"`
-	AuthOptions       *DocumentGetManyRecipientAuthOptions `json:"authOptions"`
-	SigningOrder      *float64                             `json:"signingOrder"`
-	RejectionReason   *string                              `json:"rejectionReason"`
-	DocumentID        *float64                             `json:"documentId,omitempty"`
-	TemplateID        *float64                             `json:"templateId,omitempty"`
+	EnvelopeID           string                               `json:"envelopeId"`
+	Role                 DocumentGetManyRole                  `json:"role"`
+	ReadStatus           DocumentGetManyReadStatus            `json:"readStatus"`
+	SigningStatus        DocumentGetManySigningStatus         `json:"signingStatus"`
+	SendStatus           DocumentGetManySendStatus            `json:"sendStatus"`
+	ID                   float64                              `json:"id"`
+	Email                string                               `json:"email"`
+	Name                 string                               `json:"name"`
+	Token                string                               `json:"token"`
+	DocumentDeletedAt    *string                              `json:"documentDeletedAt"`
+	Expired              *string                              `json:"expired"`
+	ExpiresAt            *string                              `json:"expiresAt"`
+	ExpirationNotifiedAt *string                              `json:"expirationNotifiedAt"`
+	SignedAt             *string                              `json:"signedAt"`
+	AuthOptions          *DocumentGetManyRecipientAuthOptions `json:"authOptions"`
+	SigningOrder         *float64                             `json:"signingOrder"`
+	RejectionReason      *string                              `json:"rejectionReason"`
+	DocumentID           *float64                             `json:"documentId,omitempty"`
+	TemplateID           *float64                             `json:"templateId,omitempty"`
 }
 
 func (d *DocumentGetManyRecipient) GetEnvelopeID() string {
@@ -591,6 +705,20 @@ func (d *DocumentGetManyRecipient) GetExpired() *string {
 		return nil
 	}
 	return d.Expired
+}
+
+func (d *DocumentGetManyRecipient) GetExpiresAt() *string {
+	if d == nil {
+		return nil
+	}
+	return d.ExpiresAt
+}
+
+func (d *DocumentGetManyRecipient) GetExpirationNotifiedAt() *string {
+	if d == nil {
+		return nil
+	}
+	return d.ExpirationNotifiedAt
 }
 
 func (d *DocumentGetManyRecipient) GetSignedAt() *string {

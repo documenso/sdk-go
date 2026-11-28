@@ -4,6 +4,7 @@ package apierrors
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/documenso/sdk-go/models/components"
 )
 
@@ -29,6 +30,15 @@ type TemplateDuplicateTemplateInternalServerError struct {
 var _ error = &TemplateDuplicateTemplateInternalServerError{}
 
 func (e *TemplateDuplicateTemplateInternalServerError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -55,6 +65,15 @@ type TemplateDuplicateTemplateForbiddenError struct {
 var _ error = &TemplateDuplicateTemplateForbiddenError{}
 
 func (e *TemplateDuplicateTemplateForbiddenError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -81,6 +100,15 @@ type TemplateDuplicateTemplateUnauthorizedError struct {
 var _ error = &TemplateDuplicateTemplateUnauthorizedError{}
 
 func (e *TemplateDuplicateTemplateUnauthorizedError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }
@@ -107,6 +135,15 @@ type TemplateDuplicateTemplateBadRequestError struct {
 var _ error = &TemplateDuplicateTemplateBadRequestError{}
 
 func (e *TemplateDuplicateTemplateBadRequestError) Error() string {
+	if e != nil {
+		if e.Message != "" {
+			if e.Code != "" {
+				return fmt.Sprintf("%v: %s", e.Code, e.Message)
+			}
+			return e.Message
+		}
+	}
+
 	data, _ := json.Marshal(e)
 	return string(data)
 }

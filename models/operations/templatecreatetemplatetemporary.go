@@ -21,6 +21,15 @@ const (
 func (e TemplateCreateTemplateTemporaryVisibilityRequest) ToPointer() *TemplateCreateTemplateTemporaryVisibilityRequest {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryVisibilityRequestValues returns every known TemplateCreateTemplateTemporaryVisibilityRequest value in schema order.
+func TemplateCreateTemplateTemporaryVisibilityRequestValues() []TemplateCreateTemplateTemporaryVisibilityRequest {
+	return []TemplateCreateTemplateTemporaryVisibilityRequest{
+		TemplateCreateTemplateTemporaryVisibilityRequestEveryone,
+		TemplateCreateTemplateTemporaryVisibilityRequestManagerAndAbove,
+		TemplateCreateTemplateTemporaryVisibilityRequestAdmin,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryVisibilityRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -48,6 +57,14 @@ const (
 
 func (e TemplateCreateTemplateTemporaryGlobalAccessAuthRequest) ToPointer() *TemplateCreateTemplateTemporaryGlobalAccessAuthRequest {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryGlobalAccessAuthRequestValues returns every known TemplateCreateTemplateTemporaryGlobalAccessAuthRequest value in schema order.
+func TemplateCreateTemplateTemporaryGlobalAccessAuthRequestValues() []TemplateCreateTemplateTemporaryGlobalAccessAuthRequest {
+	return []TemplateCreateTemplateTemporaryGlobalAccessAuthRequest{
+		TemplateCreateTemplateTemporaryGlobalAccessAuthRequestAccount,
+		TemplateCreateTemplateTemporaryGlobalAccessAuthRequestTwoFactorAuth,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryGlobalAccessAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
@@ -77,6 +94,16 @@ const (
 func (e TemplateCreateTemplateTemporaryGlobalActionAuthRequest) ToPointer() *TemplateCreateTemplateTemporaryGlobalActionAuthRequest {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryGlobalActionAuthRequestValues returns every known TemplateCreateTemplateTemporaryGlobalActionAuthRequest value in schema order.
+func TemplateCreateTemplateTemporaryGlobalActionAuthRequestValues() []TemplateCreateTemplateTemporaryGlobalActionAuthRequest {
+	return []TemplateCreateTemplateTemporaryGlobalActionAuthRequest{
+		TemplateCreateTemplateTemporaryGlobalActionAuthRequestAccount,
+		TemplateCreateTemplateTemporaryGlobalActionAuthRequestPasskey,
+		TemplateCreateTemplateTemporaryGlobalActionAuthRequestTwoFactorAuth,
+		TemplateCreateTemplateTemporaryGlobalActionAuthRequestPassword,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryGlobalActionAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -100,12 +127,22 @@ func (e *TemplateCreateTemplateTemporaryGlobalActionAuthRequest) UnmarshalJSON(d
 type TemplateCreateTemplateTemporaryTypeRequest string
 
 const (
-	TemplateCreateTemplateTemporaryTypeRequestPublic  TemplateCreateTemplateTemporaryTypeRequest = "PUBLIC"
-	TemplateCreateTemplateTemporaryTypeRequestPrivate TemplateCreateTemplateTemporaryTypeRequest = "PRIVATE"
+	TemplateCreateTemplateTemporaryTypeRequestPublic       TemplateCreateTemplateTemporaryTypeRequest = "PUBLIC"
+	TemplateCreateTemplateTemporaryTypeRequestPrivate      TemplateCreateTemplateTemporaryTypeRequest = "PRIVATE"
+	TemplateCreateTemplateTemporaryTypeRequestOrganisation TemplateCreateTemplateTemporaryTypeRequest = "ORGANISATION"
 )
 
 func (e TemplateCreateTemplateTemporaryTypeRequest) ToPointer() *TemplateCreateTemplateTemporaryTypeRequest {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryTypeRequestValues returns every known TemplateCreateTemplateTemporaryTypeRequest value in schema order.
+func TemplateCreateTemplateTemporaryTypeRequestValues() []TemplateCreateTemplateTemporaryTypeRequest {
+	return []TemplateCreateTemplateTemporaryTypeRequest{
+		TemplateCreateTemplateTemporaryTypeRequestPublic,
+		TemplateCreateTemplateTemporaryTypeRequestPrivate,
+		TemplateCreateTemplateTemporaryTypeRequestOrganisation,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryTypeRequest) UnmarshalJSON(data []byte) error {
 	var v string
@@ -116,6 +153,8 @@ func (e *TemplateCreateTemplateTemporaryTypeRequest) UnmarshalJSON(data []byte) 
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
 		*e = TemplateCreateTemplateTemporaryTypeRequest(v)
 		return nil
 	default:
@@ -129,12 +168,15 @@ const (
 	TemplateCreateTemplateTemporaryDateFormatYyyyMMddHhMmA            TemplateCreateTemplateTemporaryDateFormat = "yyyy-MM-dd hh:mm a"
 	TemplateCreateTemplateTemporaryDateFormatYyyyMMdd                 TemplateCreateTemplateTemporaryDateFormat = "yyyy-MM-dd"
 	TemplateCreateTemplateTemporaryDateFormatDdMmSlashYyyy            TemplateCreateTemplateTemporaryDateFormat = "dd/MM/yyyy"
+	TemplateCreateTemplateTemporaryDateFormatDdMmDashYyyy             TemplateCreateTemplateTemporaryDateFormat = "dd-MM-yyyy"
 	TemplateCreateTemplateTemporaryDateFormatMmDdSlashYyyy            TemplateCreateTemplateTemporaryDateFormat = "MM/dd/yyyy"
 	TemplateCreateTemplateTemporaryDateFormatYyMMdd                   TemplateCreateTemplateTemporaryDateFormat = "yy-MM-dd"
 	TemplateCreateTemplateTemporaryDateFormatMmmmDdCommaYyyy          TemplateCreateTemplateTemporaryDateFormat = "MMMM dd, yyyy"
 	TemplateCreateTemplateTemporaryDateFormatEeeeMmmmDdCommaYyyy      TemplateCreateTemplateTemporaryDateFormat = "EEEE, MMMM dd, yyyy"
 	TemplateCreateTemplateTemporaryDateFormatDdMmSlashYyyyHhMmA       TemplateCreateTemplateTemporaryDateFormat = "dd/MM/yyyy hh:mm a"
 	TemplateCreateTemplateTemporaryDateFormatDdMmSlashYyyyHHmm        TemplateCreateTemplateTemporaryDateFormat = "dd/MM/yyyy HH:mm"
+	TemplateCreateTemplateTemporaryDateFormatDdMmDashYyyyHhMmA        TemplateCreateTemplateTemporaryDateFormat = "dd-MM-yyyy hh:mm a"
+	TemplateCreateTemplateTemporaryDateFormatDdMmDashYyyyHHmm         TemplateCreateTemplateTemporaryDateFormat = "dd-MM-yyyy HH:mm"
 	TemplateCreateTemplateTemporaryDateFormatMmDdSlashYyyyHhMmA       TemplateCreateTemplateTemporaryDateFormat = "MM/dd/yyyy hh:mm a"
 	TemplateCreateTemplateTemporaryDateFormatMmDdSlashYyyyHHmm        TemplateCreateTemplateTemporaryDateFormat = "MM/dd/yyyy HH:mm"
 	TemplateCreateTemplateTemporaryDateFormatDdDotMmDotYyyy           TemplateCreateTemplateTemporaryDateFormat = "dd.MM.yyyy"
@@ -153,6 +195,37 @@ const (
 func (e TemplateCreateTemplateTemporaryDateFormat) ToPointer() *TemplateCreateTemplateTemporaryDateFormat {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryDateFormatValues returns every known TemplateCreateTemplateTemporaryDateFormat value in schema order.
+func TemplateCreateTemplateTemporaryDateFormatValues() []TemplateCreateTemplateTemporaryDateFormat {
+	return []TemplateCreateTemplateTemporaryDateFormat{
+		TemplateCreateTemplateTemporaryDateFormatYyyyMMddHhMmA,
+		TemplateCreateTemplateTemporaryDateFormatYyyyMMdd,
+		TemplateCreateTemplateTemporaryDateFormatDdMmSlashYyyy,
+		TemplateCreateTemplateTemporaryDateFormatDdMmDashYyyy,
+		TemplateCreateTemplateTemporaryDateFormatMmDdSlashYyyy,
+		TemplateCreateTemplateTemporaryDateFormatYyMMdd,
+		TemplateCreateTemplateTemporaryDateFormatMmmmDdCommaYyyy,
+		TemplateCreateTemplateTemporaryDateFormatEeeeMmmmDdCommaYyyy,
+		TemplateCreateTemplateTemporaryDateFormatDdMmSlashYyyyHhMmA,
+		TemplateCreateTemplateTemporaryDateFormatDdMmSlashYyyyHHmm,
+		TemplateCreateTemplateTemporaryDateFormatDdMmDashYyyyHhMmA,
+		TemplateCreateTemplateTemporaryDateFormatDdMmDashYyyyHHmm,
+		TemplateCreateTemplateTemporaryDateFormatMmDdSlashYyyyHhMmA,
+		TemplateCreateTemplateTemporaryDateFormatMmDdSlashYyyyHHmm,
+		TemplateCreateTemplateTemporaryDateFormatDdDotMmDotYyyy,
+		TemplateCreateTemplateTemporaryDateFormatDdDotMmDotYyyyHHmm,
+		TemplateCreateTemplateTemporaryDateFormatYyyyMMddHHmm,
+		TemplateCreateTemplateTemporaryDateFormatYyMMddHhMmA,
+		TemplateCreateTemplateTemporaryDateFormatYyMMddHHmm,
+		TemplateCreateTemplateTemporaryDateFormatYyyyMMddHHmmss,
+		TemplateCreateTemplateTemporaryDateFormatMmmmDdCommaYyyyHhMmA,
+		TemplateCreateTemplateTemporaryDateFormatMmmmDdCommaYyyyHHmm,
+		TemplateCreateTemplateTemporaryDateFormatEeeeMmmmDdCommaYyyyHhMmA,
+		TemplateCreateTemplateTemporaryDateFormatEeeeMmmmDdCommaYyyyHHmm,
+		TemplateCreateTemplateTemporaryDateFormatIso8601Full,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryDateFormat) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -165,6 +238,8 @@ func (e *TemplateCreateTemplateTemporaryDateFormat) UnmarshalJSON(data []byte) e
 		fallthrough
 	case "dd/MM/yyyy":
 		fallthrough
+	case "dd-MM-yyyy":
+		fallthrough
 	case "MM/dd/yyyy":
 		fallthrough
 	case "yy-MM-dd":
@@ -176,6 +251,10 @@ func (e *TemplateCreateTemplateTemporaryDateFormat) UnmarshalJSON(data []byte) e
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
 	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "dd-MM-yyyy hh:mm a":
+		fallthrough
+	case "dd-MM-yyyy HH:mm":
 		fallthrough
 	case "MM/dd/yyyy hh:mm a":
 		fallthrough
@@ -219,6 +298,14 @@ const (
 func (e TemplateCreateTemplateTemporaryMetaDistributionMethod) ToPointer() *TemplateCreateTemplateTemporaryMetaDistributionMethod {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryMetaDistributionMethodValues returns every known TemplateCreateTemplateTemporaryMetaDistributionMethod value in schema order.
+func TemplateCreateTemplateTemporaryMetaDistributionMethodValues() []TemplateCreateTemplateTemporaryMetaDistributionMethod {
+	return []TemplateCreateTemplateTemporaryMetaDistributionMethod{
+		TemplateCreateTemplateTemporaryMetaDistributionMethodEmail,
+		TemplateCreateTemplateTemporaryMetaDistributionMethodNone,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryMetaDistributionMethod) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -243,6 +330,8 @@ type TemplateCreateTemplateTemporaryMetaEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (t TemplateCreateTemplateTemporaryMetaEmailSettings) MarshalJSON() ([]byte, error) {
@@ -305,6 +394,20 @@ func (t *TemplateCreateTemplateTemporaryMetaEmailSettings) GetOwnerDocumentCompl
 	return t.OwnerDocumentCompleted
 }
 
+func (t *TemplateCreateTemplateTemporaryMetaEmailSettings) GetOwnerRecipientExpired() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerRecipientExpired
+}
+
+func (t *TemplateCreateTemplateTemporaryMetaEmailSettings) GetOwnerDocumentCreated() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerDocumentCreated
+}
+
 type TemplateCreateTemplateTemporaryLanguage string
 
 const (
@@ -323,6 +426,23 @@ const (
 
 func (e TemplateCreateTemplateTemporaryLanguage) ToPointer() *TemplateCreateTemplateTemporaryLanguage {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryLanguageValues returns every known TemplateCreateTemplateTemporaryLanguage value in schema order.
+func TemplateCreateTemplateTemporaryLanguageValues() []TemplateCreateTemplateTemporaryLanguage {
+	return []TemplateCreateTemplateTemporaryLanguage{
+		TemplateCreateTemplateTemporaryLanguageDe,
+		TemplateCreateTemplateTemporaryLanguageEn,
+		TemplateCreateTemplateTemporaryLanguageFr,
+		TemplateCreateTemplateTemporaryLanguageEs,
+		TemplateCreateTemplateTemporaryLanguageIt,
+		TemplateCreateTemplateTemporaryLanguageNl,
+		TemplateCreateTemplateTemporaryLanguagePl,
+		TemplateCreateTemplateTemporaryLanguagePtBr,
+		TemplateCreateTemplateTemporaryLanguageJa,
+		TemplateCreateTemplateTemporaryLanguageKo,
+		TemplateCreateTemplateTemporaryLanguageZh,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryLanguage) UnmarshalJSON(data []byte) error {
 	var v string
@@ -367,6 +487,14 @@ const (
 
 func (e TemplateCreateTemplateTemporarySigningOrderRequest) ToPointer() *TemplateCreateTemplateTemporarySigningOrderRequest {
 	return &e
+}
+
+// TemplateCreateTemplateTemporarySigningOrderRequestValues returns every known TemplateCreateTemplateTemporarySigningOrderRequest value in schema order.
+func TemplateCreateTemplateTemporarySigningOrderRequestValues() []TemplateCreateTemplateTemporarySigningOrderRequest {
+	return []TemplateCreateTemplateTemporarySigningOrderRequest{
+		TemplateCreateTemplateTemporarySigningOrderRequestParallel,
+		TemplateCreateTemplateTemporarySigningOrderRequestSequential,
+	}
 }
 func (e *TemplateCreateTemplateTemporarySigningOrderRequest) UnmarshalJSON(data []byte) error {
 	var v string
@@ -516,6 +644,13 @@ const (
 func (e TemplateCreateTemplateTemporaryTypeLink) ToPointer() *TemplateCreateTemplateTemporaryTypeLink {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryTypeLinkValues returns every known TemplateCreateTemplateTemporaryTypeLink value in schema order.
+func TemplateCreateTemplateTemporaryTypeLinkValues() []TemplateCreateTemplateTemporaryTypeLink {
+	return []TemplateCreateTemplateTemporaryTypeLink{
+		TemplateCreateTemplateTemporaryTypeLinkLink,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryTypeLink) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -662,12 +797,22 @@ func (t *TemplateCreateTemplateTemporaryRequest) GetAttachments() []TemplateCrea
 type TemplateCreateTemplateTemporaryTypeResponse string
 
 const (
-	TemplateCreateTemplateTemporaryTypeResponsePublic  TemplateCreateTemplateTemporaryTypeResponse = "PUBLIC"
-	TemplateCreateTemplateTemporaryTypeResponsePrivate TemplateCreateTemplateTemporaryTypeResponse = "PRIVATE"
+	TemplateCreateTemplateTemporaryTypeResponsePublic       TemplateCreateTemplateTemporaryTypeResponse = "PUBLIC"
+	TemplateCreateTemplateTemporaryTypeResponsePrivate      TemplateCreateTemplateTemporaryTypeResponse = "PRIVATE"
+	TemplateCreateTemplateTemporaryTypeResponseOrganisation TemplateCreateTemplateTemporaryTypeResponse = "ORGANISATION"
 )
 
 func (e TemplateCreateTemplateTemporaryTypeResponse) ToPointer() *TemplateCreateTemplateTemporaryTypeResponse {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryTypeResponseValues returns every known TemplateCreateTemplateTemporaryTypeResponse value in schema order.
+func TemplateCreateTemplateTemporaryTypeResponseValues() []TemplateCreateTemplateTemporaryTypeResponse {
+	return []TemplateCreateTemplateTemporaryTypeResponse{
+		TemplateCreateTemplateTemporaryTypeResponsePublic,
+		TemplateCreateTemplateTemporaryTypeResponsePrivate,
+		TemplateCreateTemplateTemporaryTypeResponseOrganisation,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryTypeResponse) UnmarshalJSON(data []byte) error {
 	var v string
@@ -678,6 +823,8 @@ func (e *TemplateCreateTemplateTemporaryTypeResponse) UnmarshalJSON(data []byte)
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
 		*e = TemplateCreateTemplateTemporaryTypeResponse(v)
 		return nil
 	default:
@@ -695,6 +842,15 @@ const (
 
 func (e TemplateCreateTemplateTemporaryVisibilityResponse) ToPointer() *TemplateCreateTemplateTemporaryVisibilityResponse {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryVisibilityResponseValues returns every known TemplateCreateTemplateTemporaryVisibilityResponse value in schema order.
+func TemplateCreateTemplateTemporaryVisibilityResponseValues() []TemplateCreateTemplateTemporaryVisibilityResponse {
+	return []TemplateCreateTemplateTemporaryVisibilityResponse{
+		TemplateCreateTemplateTemporaryVisibilityResponseEveryone,
+		TemplateCreateTemplateTemporaryVisibilityResponseManagerAndAbove,
+		TemplateCreateTemplateTemporaryVisibilityResponseAdmin,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryVisibilityResponse) UnmarshalJSON(data []byte) error {
 	var v string
@@ -724,6 +880,14 @@ const (
 func (e TemplateCreateTemplateTemporaryGlobalAccessAuthResponse) ToPointer() *TemplateCreateTemplateTemporaryGlobalAccessAuthResponse {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryGlobalAccessAuthResponseValues returns every known TemplateCreateTemplateTemporaryGlobalAccessAuthResponse value in schema order.
+func TemplateCreateTemplateTemporaryGlobalAccessAuthResponseValues() []TemplateCreateTemplateTemporaryGlobalAccessAuthResponse {
+	return []TemplateCreateTemplateTemporaryGlobalAccessAuthResponse{
+		TemplateCreateTemplateTemporaryGlobalAccessAuthResponseAccount,
+		TemplateCreateTemplateTemporaryGlobalAccessAuthResponseTwoFactorAuth,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryGlobalAccessAuthResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -751,6 +915,16 @@ const (
 
 func (e TemplateCreateTemplateTemporaryGlobalActionAuthResponse) ToPointer() *TemplateCreateTemplateTemporaryGlobalActionAuthResponse {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryGlobalActionAuthResponseValues returns every known TemplateCreateTemplateTemporaryGlobalActionAuthResponse value in schema order.
+func TemplateCreateTemplateTemporaryGlobalActionAuthResponseValues() []TemplateCreateTemplateTemporaryGlobalActionAuthResponse {
+	return []TemplateCreateTemplateTemporaryGlobalActionAuthResponse{
+		TemplateCreateTemplateTemporaryGlobalActionAuthResponseAccount,
+		TemplateCreateTemplateTemporaryGlobalActionAuthResponsePasskey,
+		TemplateCreateTemplateTemporaryGlobalActionAuthResponseTwoFactorAuth,
+		TemplateCreateTemplateTemporaryGlobalActionAuthResponsePassword,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryGlobalActionAuthResponse) UnmarshalJSON(data []byte) error {
 	var v string
@@ -801,6 +975,15 @@ const (
 
 func (e TemplateCreateTemplateTemporaryTemplateDocumentDataType) ToPointer() *TemplateCreateTemplateTemporaryTemplateDocumentDataType {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryTemplateDocumentDataTypeValues returns every known TemplateCreateTemplateTemporaryTemplateDocumentDataType value in schema order.
+func TemplateCreateTemplateTemporaryTemplateDocumentDataTypeValues() []TemplateCreateTemplateTemporaryTemplateDocumentDataType {
+	return []TemplateCreateTemplateTemporaryTemplateDocumentDataType{
+		TemplateCreateTemplateTemporaryTemplateDocumentDataTypeS3Path,
+		TemplateCreateTemplateTemporaryTemplateDocumentDataTypeBytes,
+		TemplateCreateTemplateTemporaryTemplateDocumentDataTypeBytes64,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryTemplateDocumentDataType) UnmarshalJSON(data []byte) error {
 	var v string
@@ -873,6 +1056,14 @@ const (
 func (e TemplateCreateTemplateTemporaryTemplateMetaSigningOrder) ToPointer() *TemplateCreateTemplateTemporaryTemplateMetaSigningOrder {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryTemplateMetaSigningOrderValues returns every known TemplateCreateTemplateTemporaryTemplateMetaSigningOrder value in schema order.
+func TemplateCreateTemplateTemporaryTemplateMetaSigningOrderValues() []TemplateCreateTemplateTemporaryTemplateMetaSigningOrder {
+	return []TemplateCreateTemplateTemporaryTemplateMetaSigningOrder{
+		TemplateCreateTemplateTemporaryTemplateMetaSigningOrderParallel,
+		TemplateCreateTemplateTemporaryTemplateMetaSigningOrderSequential,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryTemplateMetaSigningOrder) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -899,6 +1090,14 @@ const (
 func (e TemplateCreateTemplateTemporaryTemplateMetaDistributionMethod) ToPointer() *TemplateCreateTemplateTemporaryTemplateMetaDistributionMethod {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryTemplateMetaDistributionMethodValues returns every known TemplateCreateTemplateTemporaryTemplateMetaDistributionMethod value in schema order.
+func TemplateCreateTemplateTemporaryTemplateMetaDistributionMethodValues() []TemplateCreateTemplateTemporaryTemplateMetaDistributionMethod {
+	return []TemplateCreateTemplateTemporaryTemplateMetaDistributionMethod{
+		TemplateCreateTemplateTemporaryTemplateMetaDistributionMethodEmail,
+		TemplateCreateTemplateTemporaryTemplateMetaDistributionMethodNone,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryTemplateMetaDistributionMethod) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -923,6 +1122,8 @@ type TemplateCreateTemplateTemporaryTemplateMetaEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (t TemplateCreateTemplateTemporaryTemplateMetaEmailSettings) MarshalJSON() ([]byte, error) {
@@ -983,6 +1184,20 @@ func (t *TemplateCreateTemplateTemporaryTemplateMetaEmailSettings) GetOwnerDocum
 		return nil
 	}
 	return t.OwnerDocumentCompleted
+}
+
+func (t *TemplateCreateTemplateTemporaryTemplateMetaEmailSettings) GetOwnerRecipientExpired() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerRecipientExpired
+}
+
+func (t *TemplateCreateTemplateTemporaryTemplateMetaEmailSettings) GetOwnerDocumentCreated() *bool {
+	if t == nil {
+		return nil
+	}
+	return t.OwnerDocumentCreated
 }
 
 type TemplateCreateTemplateTemporaryTemplateMeta struct {
@@ -1223,6 +1438,17 @@ const (
 func (e TemplateCreateTemplateTemporaryRole) ToPointer() *TemplateCreateTemplateTemporaryRole {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryRoleValues returns every known TemplateCreateTemplateTemporaryRole value in schema order.
+func TemplateCreateTemplateTemporaryRoleValues() []TemplateCreateTemplateTemporaryRole {
+	return []TemplateCreateTemplateTemporaryRole{
+		TemplateCreateTemplateTemporaryRoleCc,
+		TemplateCreateTemplateTemporaryRoleSigner,
+		TemplateCreateTemplateTemporaryRoleViewer,
+		TemplateCreateTemplateTemporaryRoleApprover,
+		TemplateCreateTemplateTemporaryRoleAssistant,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryRole) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1255,6 +1481,14 @@ const (
 func (e TemplateCreateTemplateTemporaryReadStatus) ToPointer() *TemplateCreateTemplateTemporaryReadStatus {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryReadStatusValues returns every known TemplateCreateTemplateTemporaryReadStatus value in schema order.
+func TemplateCreateTemplateTemporaryReadStatusValues() []TemplateCreateTemplateTemporaryReadStatus {
+	return []TemplateCreateTemplateTemporaryReadStatus{
+		TemplateCreateTemplateTemporaryReadStatusNotOpened,
+		TemplateCreateTemplateTemporaryReadStatusOpened,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryReadStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1281,6 +1515,15 @@ const (
 
 func (e TemplateCreateTemplateTemporarySigningStatus) ToPointer() *TemplateCreateTemplateTemporarySigningStatus {
 	return &e
+}
+
+// TemplateCreateTemplateTemporarySigningStatusValues returns every known TemplateCreateTemplateTemporarySigningStatus value in schema order.
+func TemplateCreateTemplateTemporarySigningStatusValues() []TemplateCreateTemplateTemporarySigningStatus {
+	return []TemplateCreateTemplateTemporarySigningStatus{
+		TemplateCreateTemplateTemporarySigningStatusNotSigned,
+		TemplateCreateTemplateTemporarySigningStatusSigned,
+		TemplateCreateTemplateTemporarySigningStatusRejected,
+	}
 }
 func (e *TemplateCreateTemplateTemporarySigningStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1310,6 +1553,14 @@ const (
 func (e TemplateCreateTemplateTemporarySendStatus) ToPointer() *TemplateCreateTemplateTemporarySendStatus {
 	return &e
 }
+
+// TemplateCreateTemplateTemporarySendStatusValues returns every known TemplateCreateTemplateTemporarySendStatus value in schema order.
+func TemplateCreateTemplateTemporarySendStatusValues() []TemplateCreateTemplateTemporarySendStatus {
+	return []TemplateCreateTemplateTemporarySendStatus{
+		TemplateCreateTemplateTemporarySendStatusNotSent,
+		TemplateCreateTemplateTemporarySendStatusSent,
+	}
+}
 func (e *TemplateCreateTemplateTemporarySendStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1335,6 +1586,14 @@ const (
 
 func (e TemplateCreateTemplateTemporaryAccessAuth) ToPointer() *TemplateCreateTemplateTemporaryAccessAuth {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryAccessAuthValues returns every known TemplateCreateTemplateTemporaryAccessAuth value in schema order.
+func TemplateCreateTemplateTemporaryAccessAuthValues() []TemplateCreateTemplateTemporaryAccessAuth {
+	return []TemplateCreateTemplateTemporaryAccessAuth{
+		TemplateCreateTemplateTemporaryAccessAuthAccount,
+		TemplateCreateTemplateTemporaryAccessAuthTwoFactorAuth,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1364,6 +1623,17 @@ const (
 
 func (e TemplateCreateTemplateTemporaryActionAuth) ToPointer() *TemplateCreateTemplateTemporaryActionAuth {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryActionAuthValues returns every known TemplateCreateTemplateTemporaryActionAuth value in schema order.
+func TemplateCreateTemplateTemporaryActionAuthValues() []TemplateCreateTemplateTemporaryActionAuth {
+	return []TemplateCreateTemplateTemporaryActionAuth{
+		TemplateCreateTemplateTemporaryActionAuthAccount,
+		TemplateCreateTemplateTemporaryActionAuthPasskey,
+		TemplateCreateTemplateTemporaryActionAuthTwoFactorAuth,
+		TemplateCreateTemplateTemporaryActionAuthPassword,
+		TemplateCreateTemplateTemporaryActionAuthExplicitNone,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1407,23 +1677,25 @@ func (t *TemplateCreateTemplateTemporaryRecipientAuthOptions) GetActionAuth() []
 }
 
 type TemplateCreateTemplateTemporaryRecipient struct {
-	EnvelopeID        string                                               `json:"envelopeId"`
-	Role              TemplateCreateTemplateTemporaryRole                  `json:"role"`
-	ReadStatus        TemplateCreateTemplateTemporaryReadStatus            `json:"readStatus"`
-	SigningStatus     TemplateCreateTemplateTemporarySigningStatus         `json:"signingStatus"`
-	SendStatus        TemplateCreateTemplateTemporarySendStatus            `json:"sendStatus"`
-	ID                float64                                              `json:"id"`
-	Email             string                                               `json:"email"`
-	Name              string                                               `json:"name"`
-	Token             string                                               `json:"token"`
-	DocumentDeletedAt *string                                              `json:"documentDeletedAt"`
-	Expired           *string                                              `json:"expired"`
-	SignedAt          *string                                              `json:"signedAt"`
-	AuthOptions       *TemplateCreateTemplateTemporaryRecipientAuthOptions `json:"authOptions"`
-	SigningOrder      *float64                                             `json:"signingOrder"`
-	RejectionReason   *string                                              `json:"rejectionReason"`
-	DocumentID        *float64                                             `json:"documentId,omitempty"`
-	TemplateID        *float64                                             `json:"templateId,omitempty"`
+	EnvelopeID           string                                               `json:"envelopeId"`
+	Role                 TemplateCreateTemplateTemporaryRole                  `json:"role"`
+	ReadStatus           TemplateCreateTemplateTemporaryReadStatus            `json:"readStatus"`
+	SigningStatus        TemplateCreateTemplateTemporarySigningStatus         `json:"signingStatus"`
+	SendStatus           TemplateCreateTemplateTemporarySendStatus            `json:"sendStatus"`
+	ID                   float64                                              `json:"id"`
+	Email                string                                               `json:"email"`
+	Name                 string                                               `json:"name"`
+	Token                string                                               `json:"token"`
+	DocumentDeletedAt    *string                                              `json:"documentDeletedAt"`
+	Expired              *string                                              `json:"expired"`
+	ExpiresAt            *string                                              `json:"expiresAt"`
+	ExpirationNotifiedAt *string                                              `json:"expirationNotifiedAt"`
+	SignedAt             *string                                              `json:"signedAt"`
+	AuthOptions          *TemplateCreateTemplateTemporaryRecipientAuthOptions `json:"authOptions"`
+	SigningOrder         *float64                                             `json:"signingOrder"`
+	RejectionReason      *string                                              `json:"rejectionReason"`
+	DocumentID           *float64                                             `json:"documentId,omitempty"`
+	TemplateID           *float64                                             `json:"templateId,omitempty"`
 }
 
 func (t *TemplateCreateTemplateTemporaryRecipient) GetEnvelopeID() string {
@@ -1503,6 +1775,20 @@ func (t *TemplateCreateTemplateTemporaryRecipient) GetExpired() *string {
 	return t.Expired
 }
 
+func (t *TemplateCreateTemplateTemporaryRecipient) GetExpiresAt() *string {
+	if t == nil {
+		return nil
+	}
+	return t.ExpiresAt
+}
+
+func (t *TemplateCreateTemplateTemporaryRecipient) GetExpirationNotifiedAt() *string {
+	if t == nil {
+		return nil
+	}
+	return t.ExpirationNotifiedAt
+}
+
 func (t *TemplateCreateTemplateTemporaryRecipient) GetSignedAt() *string {
 	if t == nil {
 		return nil
@@ -1564,6 +1850,23 @@ const (
 func (e TemplateCreateTemplateTemporaryFieldType) ToPointer() *TemplateCreateTemplateTemporaryFieldType {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryFieldTypeValues returns every known TemplateCreateTemplateTemporaryFieldType value in schema order.
+func TemplateCreateTemplateTemporaryFieldTypeValues() []TemplateCreateTemplateTemporaryFieldType {
+	return []TemplateCreateTemplateTemporaryFieldType{
+		TemplateCreateTemplateTemporaryFieldTypeSignature,
+		TemplateCreateTemplateTemporaryFieldTypeFreeSignature,
+		TemplateCreateTemplateTemporaryFieldTypeInitials,
+		TemplateCreateTemplateTemporaryFieldTypeName,
+		TemplateCreateTemplateTemporaryFieldTypeEmail,
+		TemplateCreateTemplateTemporaryFieldTypeDate,
+		TemplateCreateTemplateTemporaryFieldTypeText,
+		TemplateCreateTemplateTemporaryFieldTypeNumber,
+		TemplateCreateTemplateTemporaryFieldTypeRadio,
+		TemplateCreateTemplateTemporaryFieldTypeCheckbox,
+		TemplateCreateTemplateTemporaryFieldTypeDropdown,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryFieldType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1598,6 +1901,48 @@ func (e *TemplateCreateTemplateTemporaryFieldType) UnmarshalJSON(data []byte) er
 	}
 }
 
+type TemplateCreateTemplateTemporaryOverflow10 string
+
+const (
+	TemplateCreateTemplateTemporaryOverflow10Auto       TemplateCreateTemplateTemporaryOverflow10 = "auto"
+	TemplateCreateTemplateTemporaryOverflow10Horizontal TemplateCreateTemplateTemporaryOverflow10 = "horizontal"
+	TemplateCreateTemplateTemporaryOverflow10Vertical   TemplateCreateTemplateTemporaryOverflow10 = "vertical"
+	TemplateCreateTemplateTemporaryOverflow10Crop       TemplateCreateTemplateTemporaryOverflow10 = "crop"
+)
+
+func (e TemplateCreateTemplateTemporaryOverflow10) ToPointer() *TemplateCreateTemplateTemporaryOverflow10 {
+	return &e
+}
+
+// TemplateCreateTemplateTemporaryOverflow10Values returns every known TemplateCreateTemplateTemporaryOverflow10 value in schema order.
+func TemplateCreateTemplateTemporaryOverflow10Values() []TemplateCreateTemplateTemporaryOverflow10 {
+	return []TemplateCreateTemplateTemporaryOverflow10{
+		TemplateCreateTemplateTemporaryOverflow10Auto,
+		TemplateCreateTemplateTemporaryOverflow10Horizontal,
+		TemplateCreateTemplateTemporaryOverflow10Vertical,
+		TemplateCreateTemplateTemporaryOverflow10Crop,
+	}
+}
+func (e *TemplateCreateTemplateTemporaryOverflow10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateTemplateTemporaryOverflow10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryOverflow10: %v", v)
+	}
+}
+
 type TemplateCreateTemplateTemporaryTypeDropdown string
 
 const (
@@ -1606,6 +1951,13 @@ const (
 
 func (e TemplateCreateTemplateTemporaryTypeDropdown) ToPointer() *TemplateCreateTemplateTemporaryTypeDropdown {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryTypeDropdownValues returns every known TemplateCreateTemplateTemporaryTypeDropdown value in schema order.
+func TemplateCreateTemplateTemporaryTypeDropdownValues() []TemplateCreateTemplateTemporaryTypeDropdown {
+	return []TemplateCreateTemplateTemporaryTypeDropdown{
+		TemplateCreateTemplateTemporaryTypeDropdownDropdown,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryTypeDropdown) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1643,12 +1995,16 @@ func (t *TemplateCreateTemplateTemporaryValue3) GetValue() string {
 	return t.Value
 }
 
+// #region class-body-templatecreatetemplatetemporaryvalue3
+// #endregion class-body-templatecreatetemplatetemporaryvalue3
+
 type TemplateCreateTemplateTemporaryFieldMetaDropdown struct {
 	Label        *string                                     `json:"label,omitempty"`
 	Placeholder  *string                                     `json:"placeholder,omitempty"`
 	Required     *bool                                       `json:"required,omitempty"`
 	ReadOnly     *bool                                       `json:"readOnly,omitempty"`
 	FontSize     *float64                                    `default:"12" json:"fontSize"`
+	Overflow     *TemplateCreateTemplateTemporaryOverflow10  `json:"overflow,omitempty"`
 	Type         TemplateCreateTemplateTemporaryTypeDropdown `json:"type"`
 	Values       []TemplateCreateTemplateTemporaryValue3     `json:"values,omitempty"`
 	DefaultValue *string                                     `json:"defaultValue,omitempty"`
@@ -1700,6 +2056,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaDropdown) GetFontSize() *float6
 	return t.FontSize
 }
 
+func (t *TemplateCreateTemplateTemporaryFieldMetaDropdown) GetOverflow() *TemplateCreateTemplateTemporaryOverflow10 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateTemplateTemporaryFieldMetaDropdown) GetType() TemplateCreateTemplateTemporaryTypeDropdown {
 	if t == nil {
 		return TemplateCreateTemplateTemporaryTypeDropdown("")
@@ -1721,6 +2084,48 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaDropdown) GetDefaultValue() *st
 	return t.DefaultValue
 }
 
+type TemplateCreateTemplateTemporaryOverflow9 string
+
+const (
+	TemplateCreateTemplateTemporaryOverflow9Auto       TemplateCreateTemplateTemporaryOverflow9 = "auto"
+	TemplateCreateTemplateTemporaryOverflow9Horizontal TemplateCreateTemplateTemporaryOverflow9 = "horizontal"
+	TemplateCreateTemplateTemporaryOverflow9Vertical   TemplateCreateTemplateTemporaryOverflow9 = "vertical"
+	TemplateCreateTemplateTemporaryOverflow9Crop       TemplateCreateTemplateTemporaryOverflow9 = "crop"
+)
+
+func (e TemplateCreateTemplateTemporaryOverflow9) ToPointer() *TemplateCreateTemplateTemporaryOverflow9 {
+	return &e
+}
+
+// TemplateCreateTemplateTemporaryOverflow9Values returns every known TemplateCreateTemplateTemporaryOverflow9 value in schema order.
+func TemplateCreateTemplateTemporaryOverflow9Values() []TemplateCreateTemplateTemporaryOverflow9 {
+	return []TemplateCreateTemplateTemporaryOverflow9{
+		TemplateCreateTemplateTemporaryOverflow9Auto,
+		TemplateCreateTemplateTemporaryOverflow9Horizontal,
+		TemplateCreateTemplateTemporaryOverflow9Vertical,
+		TemplateCreateTemplateTemporaryOverflow9Crop,
+	}
+}
+func (e *TemplateCreateTemplateTemporaryOverflow9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateTemplateTemporaryOverflow9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryOverflow9: %v", v)
+	}
+}
+
 type TemplateCreateTemplateTemporaryTypeCheckbox string
 
 const (
@@ -1729,6 +2134,13 @@ const (
 
 func (e TemplateCreateTemplateTemporaryTypeCheckbox) ToPointer() *TemplateCreateTemplateTemporaryTypeCheckbox {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryTypeCheckboxValues returns every known TemplateCreateTemplateTemporaryTypeCheckbox value in schema order.
+func TemplateCreateTemplateTemporaryTypeCheckboxValues() []TemplateCreateTemplateTemporaryTypeCheckbox {
+	return []TemplateCreateTemplateTemporaryTypeCheckbox{
+		TemplateCreateTemplateTemporaryTypeCheckboxCheckbox,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryTypeCheckbox) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1782,6 +2194,9 @@ func (t *TemplateCreateTemplateTemporaryValue2) GetValue() string {
 	return t.Value
 }
 
+// #region class-body-templatecreatetemplatetemporaryvalue2
+// #endregion class-body-templatecreatetemplatetemporaryvalue2
+
 type TemplateCreateTemplateTemporaryDirection2 string
 
 const (
@@ -1791,6 +2206,14 @@ const (
 
 func (e TemplateCreateTemplateTemporaryDirection2) ToPointer() *TemplateCreateTemplateTemporaryDirection2 {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryDirection2Values returns every known TemplateCreateTemplateTemporaryDirection2 value in schema order.
+func TemplateCreateTemplateTemporaryDirection2Values() []TemplateCreateTemplateTemporaryDirection2 {
+	return []TemplateCreateTemplateTemporaryDirection2{
+		TemplateCreateTemplateTemporaryDirection2Vertical,
+		TemplateCreateTemplateTemporaryDirection2Horizontal,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryDirection2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1814,6 +2237,7 @@ type TemplateCreateTemplateTemporaryFieldMetaCheckbox struct {
 	Required         *bool                                       `json:"required,omitempty"`
 	ReadOnly         *bool                                       `json:"readOnly,omitempty"`
 	FontSize         *float64                                    `default:"12" json:"fontSize"`
+	Overflow         *TemplateCreateTemplateTemporaryOverflow9   `json:"overflow,omitempty"`
 	Type             TemplateCreateTemplateTemporaryTypeCheckbox `json:"type"`
 	Values           []TemplateCreateTemplateTemporaryValue2     `json:"values,omitempty"`
 	ValidationRule   *string                                     `json:"validationRule,omitempty"`
@@ -1867,6 +2291,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaCheckbox) GetFontSize() *float6
 	return t.FontSize
 }
 
+func (t *TemplateCreateTemplateTemporaryFieldMetaCheckbox) GetOverflow() *TemplateCreateTemplateTemporaryOverflow9 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateTemplateTemporaryFieldMetaCheckbox) GetType() TemplateCreateTemplateTemporaryTypeCheckbox {
 	if t == nil {
 		return TemplateCreateTemplateTemporaryTypeCheckbox("")
@@ -1902,6 +2333,48 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaCheckbox) GetDirection() *Templ
 	return t.Direction
 }
 
+type TemplateCreateTemplateTemporaryOverflow8 string
+
+const (
+	TemplateCreateTemplateTemporaryOverflow8Auto       TemplateCreateTemplateTemporaryOverflow8 = "auto"
+	TemplateCreateTemplateTemporaryOverflow8Horizontal TemplateCreateTemplateTemporaryOverflow8 = "horizontal"
+	TemplateCreateTemplateTemporaryOverflow8Vertical   TemplateCreateTemplateTemporaryOverflow8 = "vertical"
+	TemplateCreateTemplateTemporaryOverflow8Crop       TemplateCreateTemplateTemporaryOverflow8 = "crop"
+)
+
+func (e TemplateCreateTemplateTemporaryOverflow8) ToPointer() *TemplateCreateTemplateTemporaryOverflow8 {
+	return &e
+}
+
+// TemplateCreateTemplateTemporaryOverflow8Values returns every known TemplateCreateTemplateTemporaryOverflow8 value in schema order.
+func TemplateCreateTemplateTemporaryOverflow8Values() []TemplateCreateTemplateTemporaryOverflow8 {
+	return []TemplateCreateTemplateTemporaryOverflow8{
+		TemplateCreateTemplateTemporaryOverflow8Auto,
+		TemplateCreateTemplateTemporaryOverflow8Horizontal,
+		TemplateCreateTemplateTemporaryOverflow8Vertical,
+		TemplateCreateTemplateTemporaryOverflow8Crop,
+	}
+}
+func (e *TemplateCreateTemplateTemporaryOverflow8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateTemplateTemporaryOverflow8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryOverflow8: %v", v)
+	}
+}
+
 type TemplateCreateTemplateTemporaryTypeRadio string
 
 const (
@@ -1910,6 +2383,13 @@ const (
 
 func (e TemplateCreateTemplateTemporaryTypeRadio) ToPointer() *TemplateCreateTemplateTemporaryTypeRadio {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryTypeRadioValues returns every known TemplateCreateTemplateTemporaryTypeRadio value in schema order.
+func TemplateCreateTemplateTemporaryTypeRadioValues() []TemplateCreateTemplateTemporaryTypeRadio {
+	return []TemplateCreateTemplateTemporaryTypeRadio{
+		TemplateCreateTemplateTemporaryTypeRadioRadio,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryTypeRadio) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1963,6 +2443,9 @@ func (t *TemplateCreateTemplateTemporaryValue1) GetValue() string {
 	return t.Value
 }
 
+// #region class-body-templatecreatetemplatetemporaryvalue1
+// #endregion class-body-templatecreatetemplatetemporaryvalue1
+
 type TemplateCreateTemplateTemporaryDirection1 string
 
 const (
@@ -1972,6 +2455,14 @@ const (
 
 func (e TemplateCreateTemplateTemporaryDirection1) ToPointer() *TemplateCreateTemplateTemporaryDirection1 {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryDirection1Values returns every known TemplateCreateTemplateTemporaryDirection1 value in schema order.
+func TemplateCreateTemplateTemporaryDirection1Values() []TemplateCreateTemplateTemporaryDirection1 {
+	return []TemplateCreateTemplateTemporaryDirection1{
+		TemplateCreateTemplateTemporaryDirection1Vertical,
+		TemplateCreateTemplateTemporaryDirection1Horizontal,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryDirection1) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1995,6 +2486,7 @@ type TemplateCreateTemplateTemporaryFieldMetaRadio struct {
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
 	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Overflow    *TemplateCreateTemplateTemporaryOverflow8  `json:"overflow,omitempty"`
 	Type        TemplateCreateTemplateTemporaryTypeRadio   `json:"type"`
 	Values      []TemplateCreateTemplateTemporaryValue1    `json:"values,omitempty"`
 	Direction   *TemplateCreateTemplateTemporaryDirection1 `default:"vertical" json:"direction"`
@@ -2046,6 +2538,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaRadio) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateCreateTemplateTemporaryFieldMetaRadio) GetOverflow() *TemplateCreateTemplateTemporaryOverflow8 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateTemplateTemporaryFieldMetaRadio) GetType() TemplateCreateTemplateTemporaryTypeRadio {
 	if t == nil {
 		return TemplateCreateTemplateTemporaryTypeRadio("")
@@ -2067,6 +2566,48 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaRadio) GetDirection() *Template
 	return t.Direction
 }
 
+type TemplateCreateTemplateTemporaryOverflow7 string
+
+const (
+	TemplateCreateTemplateTemporaryOverflow7Auto       TemplateCreateTemplateTemporaryOverflow7 = "auto"
+	TemplateCreateTemplateTemporaryOverflow7Horizontal TemplateCreateTemplateTemporaryOverflow7 = "horizontal"
+	TemplateCreateTemplateTemporaryOverflow7Vertical   TemplateCreateTemplateTemporaryOverflow7 = "vertical"
+	TemplateCreateTemplateTemporaryOverflow7Crop       TemplateCreateTemplateTemporaryOverflow7 = "crop"
+)
+
+func (e TemplateCreateTemplateTemporaryOverflow7) ToPointer() *TemplateCreateTemplateTemporaryOverflow7 {
+	return &e
+}
+
+// TemplateCreateTemplateTemporaryOverflow7Values returns every known TemplateCreateTemplateTemporaryOverflow7 value in schema order.
+func TemplateCreateTemplateTemporaryOverflow7Values() []TemplateCreateTemplateTemporaryOverflow7 {
+	return []TemplateCreateTemplateTemporaryOverflow7{
+		TemplateCreateTemplateTemporaryOverflow7Auto,
+		TemplateCreateTemplateTemporaryOverflow7Horizontal,
+		TemplateCreateTemplateTemporaryOverflow7Vertical,
+		TemplateCreateTemplateTemporaryOverflow7Crop,
+	}
+}
+func (e *TemplateCreateTemplateTemporaryOverflow7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateTemplateTemporaryOverflow7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryOverflow7: %v", v)
+	}
+}
+
 type TemplateCreateTemplateTemporaryTypeNumber string
 
 const (
@@ -2075,6 +2616,13 @@ const (
 
 func (e TemplateCreateTemplateTemporaryTypeNumber) ToPointer() *TemplateCreateTemplateTemporaryTypeNumber {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryTypeNumberValues returns every known TemplateCreateTemplateTemporaryTypeNumber value in schema order.
+func TemplateCreateTemplateTemporaryTypeNumberValues() []TemplateCreateTemplateTemporaryTypeNumber {
+	return []TemplateCreateTemplateTemporaryTypeNumber{
+		TemplateCreateTemplateTemporaryTypeNumberNumber,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryTypeNumber) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2100,6 +2648,15 @@ const (
 
 func (e TemplateCreateTemplateTemporaryTextAlign6) ToPointer() *TemplateCreateTemplateTemporaryTextAlign6 {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryTextAlign6Values returns every known TemplateCreateTemplateTemporaryTextAlign6 value in schema order.
+func TemplateCreateTemplateTemporaryTextAlign6Values() []TemplateCreateTemplateTemporaryTextAlign6 {
+	return []TemplateCreateTemplateTemporaryTextAlign6{
+		TemplateCreateTemplateTemporaryTextAlign6Left,
+		TemplateCreateTemplateTemporaryTextAlign6Center,
+		TemplateCreateTemplateTemporaryTextAlign6Right,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryTextAlign6) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2130,6 +2687,15 @@ const (
 func (e TemplateCreateTemplateTemporaryVerticalAlign2) ToPointer() *TemplateCreateTemplateTemporaryVerticalAlign2 {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryVerticalAlign2Values returns every known TemplateCreateTemplateTemporaryVerticalAlign2 value in schema order.
+func TemplateCreateTemplateTemporaryVerticalAlign2Values() []TemplateCreateTemplateTemporaryVerticalAlign2 {
+	return []TemplateCreateTemplateTemporaryVerticalAlign2{
+		TemplateCreateTemplateTemporaryVerticalAlign2Top,
+		TemplateCreateTemplateTemporaryVerticalAlign2Middle,
+		TemplateCreateTemplateTemporaryVerticalAlign2Bottom,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryVerticalAlign2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2154,6 +2720,7 @@ type TemplateCreateTemplateTemporaryFieldMetaNumber struct {
 	Required      *bool                                          `json:"required,omitempty"`
 	ReadOnly      *bool                                          `json:"readOnly,omitempty"`
 	FontSize      *float64                                       `default:"12" json:"fontSize"`
+	Overflow      *TemplateCreateTemplateTemporaryOverflow7      `json:"overflow,omitempty"`
 	Type          TemplateCreateTemplateTemporaryTypeNumber      `json:"type"`
 	NumberFormat  *string                                        `json:"numberFormat,omitempty"`
 	Value         *string                                        `json:"value,omitempty"`
@@ -2209,6 +2776,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaNumber) GetFontSize() *float64 
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaNumber) GetOverflow() *TemplateCreateTemplateTemporaryOverflow7 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
 }
 
 func (t *TemplateCreateTemplateTemporaryFieldMetaNumber) GetType() TemplateCreateTemplateTemporaryTypeNumber {
@@ -2274,6 +2848,48 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaNumber) GetVerticalAlign() *Tem
 	return t.VerticalAlign
 }
 
+type TemplateCreateTemplateTemporaryOverflow6 string
+
+const (
+	TemplateCreateTemplateTemporaryOverflow6Auto       TemplateCreateTemplateTemporaryOverflow6 = "auto"
+	TemplateCreateTemplateTemporaryOverflow6Horizontal TemplateCreateTemplateTemporaryOverflow6 = "horizontal"
+	TemplateCreateTemplateTemporaryOverflow6Vertical   TemplateCreateTemplateTemporaryOverflow6 = "vertical"
+	TemplateCreateTemplateTemporaryOverflow6Crop       TemplateCreateTemplateTemporaryOverflow6 = "crop"
+)
+
+func (e TemplateCreateTemplateTemporaryOverflow6) ToPointer() *TemplateCreateTemplateTemporaryOverflow6 {
+	return &e
+}
+
+// TemplateCreateTemplateTemporaryOverflow6Values returns every known TemplateCreateTemplateTemporaryOverflow6 value in schema order.
+func TemplateCreateTemplateTemporaryOverflow6Values() []TemplateCreateTemplateTemporaryOverflow6 {
+	return []TemplateCreateTemplateTemporaryOverflow6{
+		TemplateCreateTemplateTemporaryOverflow6Auto,
+		TemplateCreateTemplateTemporaryOverflow6Horizontal,
+		TemplateCreateTemplateTemporaryOverflow6Vertical,
+		TemplateCreateTemplateTemporaryOverflow6Crop,
+	}
+}
+func (e *TemplateCreateTemplateTemporaryOverflow6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateTemplateTemporaryOverflow6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryOverflow6: %v", v)
+	}
+}
+
 type TemplateCreateTemplateTemporaryTypeText string
 
 const (
@@ -2282,6 +2898,13 @@ const (
 
 func (e TemplateCreateTemplateTemporaryTypeText) ToPointer() *TemplateCreateTemplateTemporaryTypeText {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryTypeTextValues returns every known TemplateCreateTemplateTemporaryTypeText value in schema order.
+func TemplateCreateTemplateTemporaryTypeTextValues() []TemplateCreateTemplateTemporaryTypeText {
+	return []TemplateCreateTemplateTemporaryTypeText{
+		TemplateCreateTemplateTemporaryTypeTextText,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryTypeText) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2307,6 +2930,15 @@ const (
 
 func (e TemplateCreateTemplateTemporaryTextAlign5) ToPointer() *TemplateCreateTemplateTemporaryTextAlign5 {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryTextAlign5Values returns every known TemplateCreateTemplateTemporaryTextAlign5 value in schema order.
+func TemplateCreateTemplateTemporaryTextAlign5Values() []TemplateCreateTemplateTemporaryTextAlign5 {
+	return []TemplateCreateTemplateTemporaryTextAlign5{
+		TemplateCreateTemplateTemporaryTextAlign5Left,
+		TemplateCreateTemplateTemporaryTextAlign5Center,
+		TemplateCreateTemplateTemporaryTextAlign5Right,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryTextAlign5) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2337,6 +2969,15 @@ const (
 func (e TemplateCreateTemplateTemporaryVerticalAlign1) ToPointer() *TemplateCreateTemplateTemporaryVerticalAlign1 {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryVerticalAlign1Values returns every known TemplateCreateTemplateTemporaryVerticalAlign1 value in schema order.
+func TemplateCreateTemplateTemporaryVerticalAlign1Values() []TemplateCreateTemplateTemporaryVerticalAlign1 {
+	return []TemplateCreateTemplateTemporaryVerticalAlign1{
+		TemplateCreateTemplateTemporaryVerticalAlign1Top,
+		TemplateCreateTemplateTemporaryVerticalAlign1Middle,
+		TemplateCreateTemplateTemporaryVerticalAlign1Bottom,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryVerticalAlign1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2361,6 +3002,7 @@ type TemplateCreateTemplateTemporaryFieldMetaText struct {
 	Required       *bool                                          `json:"required,omitempty"`
 	ReadOnly       *bool                                          `json:"readOnly,omitempty"`
 	FontSize       *float64                                       `default:"12" json:"fontSize"`
+	Overflow       *TemplateCreateTemplateTemporaryOverflow6      `json:"overflow,omitempty"`
 	Type           TemplateCreateTemplateTemporaryTypeText        `json:"type"`
 	Text           *string                                        `json:"text,omitempty"`
 	CharacterLimit *float64                                       `json:"characterLimit,omitempty"`
@@ -2416,6 +3058,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaText) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateCreateTemplateTemporaryFieldMetaText) GetOverflow() *TemplateCreateTemplateTemporaryOverflow6 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateTemplateTemporaryFieldMetaText) GetType() TemplateCreateTemplateTemporaryTypeText {
 	if t == nil {
 		return TemplateCreateTemplateTemporaryTypeText("")
@@ -2465,6 +3114,48 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaText) GetVerticalAlign() *Templ
 	return t.VerticalAlign
 }
 
+type TemplateCreateTemplateTemporaryOverflow5 string
+
+const (
+	TemplateCreateTemplateTemporaryOverflow5Auto       TemplateCreateTemplateTemporaryOverflow5 = "auto"
+	TemplateCreateTemplateTemporaryOverflow5Horizontal TemplateCreateTemplateTemporaryOverflow5 = "horizontal"
+	TemplateCreateTemplateTemporaryOverflow5Vertical   TemplateCreateTemplateTemporaryOverflow5 = "vertical"
+	TemplateCreateTemplateTemporaryOverflow5Crop       TemplateCreateTemplateTemporaryOverflow5 = "crop"
+)
+
+func (e TemplateCreateTemplateTemporaryOverflow5) ToPointer() *TemplateCreateTemplateTemporaryOverflow5 {
+	return &e
+}
+
+// TemplateCreateTemplateTemporaryOverflow5Values returns every known TemplateCreateTemplateTemporaryOverflow5 value in schema order.
+func TemplateCreateTemplateTemporaryOverflow5Values() []TemplateCreateTemplateTemporaryOverflow5 {
+	return []TemplateCreateTemplateTemporaryOverflow5{
+		TemplateCreateTemplateTemporaryOverflow5Auto,
+		TemplateCreateTemplateTemporaryOverflow5Horizontal,
+		TemplateCreateTemplateTemporaryOverflow5Vertical,
+		TemplateCreateTemplateTemporaryOverflow5Crop,
+	}
+}
+func (e *TemplateCreateTemplateTemporaryOverflow5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateTemplateTemporaryOverflow5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryOverflow5: %v", v)
+	}
+}
+
 type TemplateCreateTemplateTemporaryTypeDate string
 
 const (
@@ -2473,6 +3164,13 @@ const (
 
 func (e TemplateCreateTemplateTemporaryTypeDate) ToPointer() *TemplateCreateTemplateTemporaryTypeDate {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryTypeDateValues returns every known TemplateCreateTemplateTemporaryTypeDate value in schema order.
+func TemplateCreateTemplateTemporaryTypeDateValues() []TemplateCreateTemplateTemporaryTypeDate {
+	return []TemplateCreateTemplateTemporaryTypeDate{
+		TemplateCreateTemplateTemporaryTypeDateDate,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryTypeDate) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2499,6 +3197,15 @@ const (
 func (e TemplateCreateTemplateTemporaryTextAlign4) ToPointer() *TemplateCreateTemplateTemporaryTextAlign4 {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryTextAlign4Values returns every known TemplateCreateTemplateTemporaryTextAlign4 value in schema order.
+func TemplateCreateTemplateTemporaryTextAlign4Values() []TemplateCreateTemplateTemporaryTextAlign4 {
+	return []TemplateCreateTemplateTemporaryTextAlign4{
+		TemplateCreateTemplateTemporaryTextAlign4Left,
+		TemplateCreateTemplateTemporaryTextAlign4Center,
+		TemplateCreateTemplateTemporaryTextAlign4Right,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryTextAlign4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2523,6 +3230,7 @@ type TemplateCreateTemplateTemporaryFieldMetaDate struct {
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
 	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Overflow    *TemplateCreateTemplateTemporaryOverflow5  `default:"auto" json:"overflow"`
 	Type        TemplateCreateTemplateTemporaryTypeDate    `json:"type"`
 	TextAlign   *TemplateCreateTemplateTemporaryTextAlign4 `json:"textAlign,omitempty"`
 }
@@ -2573,6 +3281,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaDate) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateCreateTemplateTemporaryFieldMetaDate) GetOverflow() *TemplateCreateTemplateTemporaryOverflow5 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateTemplateTemporaryFieldMetaDate) GetType() TemplateCreateTemplateTemporaryTypeDate {
 	if t == nil {
 		return TemplateCreateTemplateTemporaryTypeDate("")
@@ -2587,6 +3302,48 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaDate) GetTextAlign() *TemplateC
 	return t.TextAlign
 }
 
+type TemplateCreateTemplateTemporaryOverflow4 string
+
+const (
+	TemplateCreateTemplateTemporaryOverflow4Auto       TemplateCreateTemplateTemporaryOverflow4 = "auto"
+	TemplateCreateTemplateTemporaryOverflow4Horizontal TemplateCreateTemplateTemporaryOverflow4 = "horizontal"
+	TemplateCreateTemplateTemporaryOverflow4Vertical   TemplateCreateTemplateTemporaryOverflow4 = "vertical"
+	TemplateCreateTemplateTemporaryOverflow4Crop       TemplateCreateTemplateTemporaryOverflow4 = "crop"
+)
+
+func (e TemplateCreateTemplateTemporaryOverflow4) ToPointer() *TemplateCreateTemplateTemporaryOverflow4 {
+	return &e
+}
+
+// TemplateCreateTemplateTemporaryOverflow4Values returns every known TemplateCreateTemplateTemporaryOverflow4 value in schema order.
+func TemplateCreateTemplateTemporaryOverflow4Values() []TemplateCreateTemplateTemporaryOverflow4 {
+	return []TemplateCreateTemplateTemporaryOverflow4{
+		TemplateCreateTemplateTemporaryOverflow4Auto,
+		TemplateCreateTemplateTemporaryOverflow4Horizontal,
+		TemplateCreateTemplateTemporaryOverflow4Vertical,
+		TemplateCreateTemplateTemporaryOverflow4Crop,
+	}
+}
+func (e *TemplateCreateTemplateTemporaryOverflow4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateTemplateTemporaryOverflow4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryOverflow4: %v", v)
+	}
+}
+
 type TemplateCreateTemplateTemporaryTypeEmail string
 
 const (
@@ -2595,6 +3352,13 @@ const (
 
 func (e TemplateCreateTemplateTemporaryTypeEmail) ToPointer() *TemplateCreateTemplateTemporaryTypeEmail {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryTypeEmailValues returns every known TemplateCreateTemplateTemporaryTypeEmail value in schema order.
+func TemplateCreateTemplateTemporaryTypeEmailValues() []TemplateCreateTemplateTemporaryTypeEmail {
+	return []TemplateCreateTemplateTemporaryTypeEmail{
+		TemplateCreateTemplateTemporaryTypeEmailEmail,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryTypeEmail) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2621,6 +3385,15 @@ const (
 func (e TemplateCreateTemplateTemporaryTextAlign3) ToPointer() *TemplateCreateTemplateTemporaryTextAlign3 {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryTextAlign3Values returns every known TemplateCreateTemplateTemporaryTextAlign3 value in schema order.
+func TemplateCreateTemplateTemporaryTextAlign3Values() []TemplateCreateTemplateTemporaryTextAlign3 {
+	return []TemplateCreateTemplateTemporaryTextAlign3{
+		TemplateCreateTemplateTemporaryTextAlign3Left,
+		TemplateCreateTemplateTemporaryTextAlign3Center,
+		TemplateCreateTemplateTemporaryTextAlign3Right,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryTextAlign3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2645,6 +3418,7 @@ type TemplateCreateTemplateTemporaryFieldMetaEmail struct {
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
 	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Overflow    *TemplateCreateTemplateTemporaryOverflow4  `default:"auto" json:"overflow"`
 	Type        TemplateCreateTemplateTemporaryTypeEmail   `json:"type"`
 	TextAlign   *TemplateCreateTemplateTemporaryTextAlign3 `json:"textAlign,omitempty"`
 }
@@ -2695,6 +3469,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaEmail) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateCreateTemplateTemporaryFieldMetaEmail) GetOverflow() *TemplateCreateTemplateTemporaryOverflow4 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateTemplateTemporaryFieldMetaEmail) GetType() TemplateCreateTemplateTemporaryTypeEmail {
 	if t == nil {
 		return TemplateCreateTemplateTemporaryTypeEmail("")
@@ -2709,6 +3490,48 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaEmail) GetTextAlign() *Template
 	return t.TextAlign
 }
 
+type TemplateCreateTemplateTemporaryOverflow3 string
+
+const (
+	TemplateCreateTemplateTemporaryOverflow3Auto       TemplateCreateTemplateTemporaryOverflow3 = "auto"
+	TemplateCreateTemplateTemporaryOverflow3Horizontal TemplateCreateTemplateTemporaryOverflow3 = "horizontal"
+	TemplateCreateTemplateTemporaryOverflow3Vertical   TemplateCreateTemplateTemporaryOverflow3 = "vertical"
+	TemplateCreateTemplateTemporaryOverflow3Crop       TemplateCreateTemplateTemporaryOverflow3 = "crop"
+)
+
+func (e TemplateCreateTemplateTemporaryOverflow3) ToPointer() *TemplateCreateTemplateTemporaryOverflow3 {
+	return &e
+}
+
+// TemplateCreateTemplateTemporaryOverflow3Values returns every known TemplateCreateTemplateTemporaryOverflow3 value in schema order.
+func TemplateCreateTemplateTemporaryOverflow3Values() []TemplateCreateTemplateTemporaryOverflow3 {
+	return []TemplateCreateTemplateTemporaryOverflow3{
+		TemplateCreateTemplateTemporaryOverflow3Auto,
+		TemplateCreateTemplateTemporaryOverflow3Horizontal,
+		TemplateCreateTemplateTemporaryOverflow3Vertical,
+		TemplateCreateTemplateTemporaryOverflow3Crop,
+	}
+}
+func (e *TemplateCreateTemplateTemporaryOverflow3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateTemplateTemporaryOverflow3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryOverflow3: %v", v)
+	}
+}
+
 type TemplateCreateTemplateTemporaryTypeName string
 
 const (
@@ -2717,6 +3540,13 @@ const (
 
 func (e TemplateCreateTemplateTemporaryTypeName) ToPointer() *TemplateCreateTemplateTemporaryTypeName {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryTypeNameValues returns every known TemplateCreateTemplateTemporaryTypeName value in schema order.
+func TemplateCreateTemplateTemporaryTypeNameValues() []TemplateCreateTemplateTemporaryTypeName {
+	return []TemplateCreateTemplateTemporaryTypeName{
+		TemplateCreateTemplateTemporaryTypeNameName,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryTypeName) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2743,6 +3573,15 @@ const (
 func (e TemplateCreateTemplateTemporaryTextAlign2) ToPointer() *TemplateCreateTemplateTemporaryTextAlign2 {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryTextAlign2Values returns every known TemplateCreateTemplateTemporaryTextAlign2 value in schema order.
+func TemplateCreateTemplateTemporaryTextAlign2Values() []TemplateCreateTemplateTemporaryTextAlign2 {
+	return []TemplateCreateTemplateTemporaryTextAlign2{
+		TemplateCreateTemplateTemporaryTextAlign2Left,
+		TemplateCreateTemplateTemporaryTextAlign2Center,
+		TemplateCreateTemplateTemporaryTextAlign2Right,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryTextAlign2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2767,6 +3606,7 @@ type TemplateCreateTemplateTemporaryFieldMetaName struct {
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
 	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Overflow    *TemplateCreateTemplateTemporaryOverflow3  `json:"overflow,omitempty"`
 	Type        TemplateCreateTemplateTemporaryTypeName    `json:"type"`
 	TextAlign   *TemplateCreateTemplateTemporaryTextAlign2 `json:"textAlign,omitempty"`
 }
@@ -2817,6 +3657,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaName) GetFontSize() *float64 {
 	return t.FontSize
 }
 
+func (t *TemplateCreateTemplateTemporaryFieldMetaName) GetOverflow() *TemplateCreateTemplateTemporaryOverflow3 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateTemplateTemporaryFieldMetaName) GetType() TemplateCreateTemplateTemporaryTypeName {
 	if t == nil {
 		return TemplateCreateTemplateTemporaryTypeName("")
@@ -2831,6 +3678,48 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaName) GetTextAlign() *TemplateC
 	return t.TextAlign
 }
 
+type TemplateCreateTemplateTemporaryOverflow2 string
+
+const (
+	TemplateCreateTemplateTemporaryOverflow2Auto       TemplateCreateTemplateTemporaryOverflow2 = "auto"
+	TemplateCreateTemplateTemporaryOverflow2Horizontal TemplateCreateTemplateTemporaryOverflow2 = "horizontal"
+	TemplateCreateTemplateTemporaryOverflow2Vertical   TemplateCreateTemplateTemporaryOverflow2 = "vertical"
+	TemplateCreateTemplateTemporaryOverflow2Crop       TemplateCreateTemplateTemporaryOverflow2 = "crop"
+)
+
+func (e TemplateCreateTemplateTemporaryOverflow2) ToPointer() *TemplateCreateTemplateTemporaryOverflow2 {
+	return &e
+}
+
+// TemplateCreateTemplateTemporaryOverflow2Values returns every known TemplateCreateTemplateTemporaryOverflow2 value in schema order.
+func TemplateCreateTemplateTemporaryOverflow2Values() []TemplateCreateTemplateTemporaryOverflow2 {
+	return []TemplateCreateTemplateTemporaryOverflow2{
+		TemplateCreateTemplateTemporaryOverflow2Auto,
+		TemplateCreateTemplateTemporaryOverflow2Horizontal,
+		TemplateCreateTemplateTemporaryOverflow2Vertical,
+		TemplateCreateTemplateTemporaryOverflow2Crop,
+	}
+}
+func (e *TemplateCreateTemplateTemporaryOverflow2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateTemplateTemporaryOverflow2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryOverflow2: %v", v)
+	}
+}
+
 type TemplateCreateTemplateTemporaryTypeInitials string
 
 const (
@@ -2839,6 +3728,13 @@ const (
 
 func (e TemplateCreateTemplateTemporaryTypeInitials) ToPointer() *TemplateCreateTemplateTemporaryTypeInitials {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryTypeInitialsValues returns every known TemplateCreateTemplateTemporaryTypeInitials value in schema order.
+func TemplateCreateTemplateTemporaryTypeInitialsValues() []TemplateCreateTemplateTemporaryTypeInitials {
+	return []TemplateCreateTemplateTemporaryTypeInitials{
+		TemplateCreateTemplateTemporaryTypeInitialsInitials,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryTypeInitials) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2865,6 +3761,15 @@ const (
 func (e TemplateCreateTemplateTemporaryTextAlign1) ToPointer() *TemplateCreateTemplateTemporaryTextAlign1 {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryTextAlign1Values returns every known TemplateCreateTemplateTemporaryTextAlign1 value in schema order.
+func TemplateCreateTemplateTemporaryTextAlign1Values() []TemplateCreateTemplateTemporaryTextAlign1 {
+	return []TemplateCreateTemplateTemporaryTextAlign1{
+		TemplateCreateTemplateTemporaryTextAlign1Left,
+		TemplateCreateTemplateTemporaryTextAlign1Center,
+		TemplateCreateTemplateTemporaryTextAlign1Right,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryTextAlign1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -2889,6 +3794,7 @@ type TemplateCreateTemplateTemporaryFieldMetaInitials struct {
 	Required    *bool                                       `json:"required,omitempty"`
 	ReadOnly    *bool                                       `json:"readOnly,omitempty"`
 	FontSize    *float64                                    `default:"12" json:"fontSize"`
+	Overflow    *TemplateCreateTemplateTemporaryOverflow2   `json:"overflow,omitempty"`
 	Type        TemplateCreateTemplateTemporaryTypeInitials `json:"type"`
 	TextAlign   *TemplateCreateTemplateTemporaryTextAlign1  `json:"textAlign,omitempty"`
 }
@@ -2939,6 +3845,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaInitials) GetFontSize() *float6
 	return t.FontSize
 }
 
+func (t *TemplateCreateTemplateTemporaryFieldMetaInitials) GetOverflow() *TemplateCreateTemplateTemporaryOverflow2 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
+}
+
 func (t *TemplateCreateTemplateTemporaryFieldMetaInitials) GetType() TemplateCreateTemplateTemporaryTypeInitials {
 	if t == nil {
 		return TemplateCreateTemplateTemporaryTypeInitials("")
@@ -2953,6 +3866,48 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaInitials) GetTextAlign() *Templ
 	return t.TextAlign
 }
 
+type TemplateCreateTemplateTemporaryOverflow1 string
+
+const (
+	TemplateCreateTemplateTemporaryOverflow1Auto       TemplateCreateTemplateTemporaryOverflow1 = "auto"
+	TemplateCreateTemplateTemporaryOverflow1Horizontal TemplateCreateTemplateTemporaryOverflow1 = "horizontal"
+	TemplateCreateTemplateTemporaryOverflow1Vertical   TemplateCreateTemplateTemporaryOverflow1 = "vertical"
+	TemplateCreateTemplateTemporaryOverflow1Crop       TemplateCreateTemplateTemporaryOverflow1 = "crop"
+)
+
+func (e TemplateCreateTemplateTemporaryOverflow1) ToPointer() *TemplateCreateTemplateTemporaryOverflow1 {
+	return &e
+}
+
+// TemplateCreateTemplateTemporaryOverflow1Values returns every known TemplateCreateTemplateTemporaryOverflow1 value in schema order.
+func TemplateCreateTemplateTemporaryOverflow1Values() []TemplateCreateTemplateTemporaryOverflow1 {
+	return []TemplateCreateTemplateTemporaryOverflow1{
+		TemplateCreateTemplateTemporaryOverflow1Auto,
+		TemplateCreateTemplateTemporaryOverflow1Horizontal,
+		TemplateCreateTemplateTemporaryOverflow1Vertical,
+		TemplateCreateTemplateTemporaryOverflow1Crop,
+	}
+}
+func (e *TemplateCreateTemplateTemporaryOverflow1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = TemplateCreateTemplateTemporaryOverflow1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for TemplateCreateTemplateTemporaryOverflow1: %v", v)
+	}
+}
+
 type TemplateCreateTemplateTemporaryTypeSignature string
 
 const (
@@ -2961,6 +3916,13 @@ const (
 
 func (e TemplateCreateTemplateTemporaryTypeSignature) ToPointer() *TemplateCreateTemplateTemporaryTypeSignature {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryTypeSignatureValues returns every known TemplateCreateTemplateTemporaryTypeSignature value in schema order.
+func TemplateCreateTemplateTemporaryTypeSignatureValues() []TemplateCreateTemplateTemporaryTypeSignature {
+	return []TemplateCreateTemplateTemporaryTypeSignature{
+		TemplateCreateTemplateTemporaryTypeSignatureSignature,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryTypeSignature) UnmarshalJSON(data []byte) error {
 	var v string
@@ -2982,6 +3944,7 @@ type TemplateCreateTemplateTemporaryFieldMetaSignature struct {
 	Required    *bool                                        `json:"required,omitempty"`
 	ReadOnly    *bool                                        `json:"readOnly,omitempty"`
 	FontSize    *float64                                     `default:"12" json:"fontSize"`
+	Overflow    *TemplateCreateTemplateTemporaryOverflow1    `default:"auto" json:"overflow"`
 	Type        TemplateCreateTemplateTemporaryTypeSignature `json:"type"`
 }
 
@@ -3029,6 +3992,13 @@ func (t *TemplateCreateTemplateTemporaryFieldMetaSignature) GetFontSize() *float
 		return nil
 	}
 	return t.FontSize
+}
+
+func (t *TemplateCreateTemplateTemporaryFieldMetaSignature) GetOverflow() *TemplateCreateTemplateTemporaryOverflow1 {
+	if t == nil {
+		return nil
+	}
+	return t.Overflow
 }
 
 func (t *TemplateCreateTemplateTemporaryFieldMetaSignature) GetType() TemplateCreateTemplateTemporaryTypeSignature {
@@ -3158,7 +4128,14 @@ func CreateTemplateCreateTemplateTemporaryFieldMetaUnionTemplateCreateTemplateTe
 	}
 }
 
-func (u *TemplateCreateTemplateTemporaryFieldMetaUnion) UnmarshalJSON(data []byte) error {
+func (u *TemplateCreateTemplateTemporaryFieldMetaUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = TemplateCreateTemplateTemporaryFieldMetaUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var templateCreateTemplateTemporaryFieldMetaSignature TemplateCreateTemplateTemporaryFieldMetaSignature = TemplateCreateTemplateTemporaryFieldMetaSignature{}
 	if err := utils.UnmarshalJSON(data, &templateCreateTemplateTemporaryFieldMetaSignature, "", true, nil); err == nil {
@@ -3418,6 +4395,14 @@ const (
 func (e TemplateCreateTemplateTemporaryFolderType) ToPointer() *TemplateCreateTemplateTemporaryFolderType {
 	return &e
 }
+
+// TemplateCreateTemplateTemporaryFolderTypeValues returns every known TemplateCreateTemplateTemporaryFolderType value in schema order.
+func TemplateCreateTemplateTemporaryFolderTypeValues() []TemplateCreateTemplateTemporaryFolderType {
+	return []TemplateCreateTemplateTemporaryFolderType{
+		TemplateCreateTemplateTemporaryFolderTypeDocument,
+		TemplateCreateTemplateTemporaryFolderTypeTemplate,
+	}
+}
 func (e *TemplateCreateTemplateTemporaryFolderType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -3444,6 +4429,15 @@ const (
 
 func (e TemplateCreateTemplateTemporaryFolderVisibility) ToPointer() *TemplateCreateTemplateTemporaryFolderVisibility {
 	return &e
+}
+
+// TemplateCreateTemplateTemporaryFolderVisibilityValues returns every known TemplateCreateTemplateTemporaryFolderVisibility value in schema order.
+func TemplateCreateTemplateTemporaryFolderVisibilityValues() []TemplateCreateTemplateTemporaryFolderVisibility {
+	return []TemplateCreateTemplateTemporaryFolderVisibility{
+		TemplateCreateTemplateTemporaryFolderVisibilityEveryone,
+		TemplateCreateTemplateTemporaryFolderVisibilityManagerAndAbove,
+		TemplateCreateTemplateTemporaryFolderVisibilityAdmin,
+	}
 }
 func (e *TemplateCreateTemplateTemporaryFolderVisibility) UnmarshalJSON(data []byte) error {
 	var v string

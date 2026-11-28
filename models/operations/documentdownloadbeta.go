@@ -20,6 +20,14 @@ const (
 func (e DocumentDownloadBetaVersion) ToPointer() *DocumentDownloadBetaVersion {
 	return &e
 }
+
+// DocumentDownloadBetaVersionValues returns every known DocumentDownloadBetaVersion value in schema order.
+func DocumentDownloadBetaVersionValues() []DocumentDownloadBetaVersion {
+	return []DocumentDownloadBetaVersion{
+		DocumentDownloadBetaVersionOriginal,
+		DocumentDownloadBetaVersionSigned,
+	}
+}
 func (e *DocumentDownloadBetaVersion) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {

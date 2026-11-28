@@ -18,6 +18,14 @@ const (
 func (e FolderCreateFolderTypeRequest) ToPointer() *FolderCreateFolderTypeRequest {
 	return &e
 }
+
+// FolderCreateFolderTypeRequestValues returns every known FolderCreateFolderTypeRequest value in schema order.
+func FolderCreateFolderTypeRequestValues() []FolderCreateFolderTypeRequest {
+	return []FolderCreateFolderTypeRequest{
+		FolderCreateFolderTypeRequestDocument,
+		FolderCreateFolderTypeRequestTemplate,
+	}
+}
 func (e *FolderCreateFolderTypeRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -72,6 +80,15 @@ const (
 func (e FolderCreateFolderVisibility) ToPointer() *FolderCreateFolderVisibility {
 	return &e
 }
+
+// FolderCreateFolderVisibilityValues returns every known FolderCreateFolderVisibility value in schema order.
+func FolderCreateFolderVisibilityValues() []FolderCreateFolderVisibility {
+	return []FolderCreateFolderVisibility{
+		FolderCreateFolderVisibilityEveryone,
+		FolderCreateFolderVisibilityManagerAndAbove,
+		FolderCreateFolderVisibilityAdmin,
+	}
+}
 func (e *FolderCreateFolderVisibility) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -99,6 +116,14 @@ const (
 
 func (e FolderCreateFolderTypeResponse) ToPointer() *FolderCreateFolderTypeResponse {
 	return &e
+}
+
+// FolderCreateFolderTypeResponseValues returns every known FolderCreateFolderTypeResponse value in schema order.
+func FolderCreateFolderTypeResponseValues() []FolderCreateFolderTypeResponse {
+	return []FolderCreateFolderTypeResponse{
+		FolderCreateFolderTypeResponseDocument,
+		FolderCreateFolderTypeResponseTemplate,
+	}
 }
 func (e *FolderCreateFolderTypeResponse) UnmarshalJSON(data []byte) error {
 	var v string

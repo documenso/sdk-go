@@ -21,6 +21,17 @@ const (
 func (e RecipientCreateTemplateRecipientsRoleRequest) ToPointer() *RecipientCreateTemplateRecipientsRoleRequest {
 	return &e
 }
+
+// RecipientCreateTemplateRecipientsRoleRequestValues returns every known RecipientCreateTemplateRecipientsRoleRequest value in schema order.
+func RecipientCreateTemplateRecipientsRoleRequestValues() []RecipientCreateTemplateRecipientsRoleRequest {
+	return []RecipientCreateTemplateRecipientsRoleRequest{
+		RecipientCreateTemplateRecipientsRoleRequestCc,
+		RecipientCreateTemplateRecipientsRoleRequestSigner,
+		RecipientCreateTemplateRecipientsRoleRequestViewer,
+		RecipientCreateTemplateRecipientsRoleRequestApprover,
+		RecipientCreateTemplateRecipientsRoleRequestAssistant,
+	}
+}
 func (e *RecipientCreateTemplateRecipientsRoleRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -53,6 +64,14 @@ const (
 func (e RecipientCreateTemplateRecipientsAccessAuthRequest) ToPointer() *RecipientCreateTemplateRecipientsAccessAuthRequest {
 	return &e
 }
+
+// RecipientCreateTemplateRecipientsAccessAuthRequestValues returns every known RecipientCreateTemplateRecipientsAccessAuthRequest value in schema order.
+func RecipientCreateTemplateRecipientsAccessAuthRequestValues() []RecipientCreateTemplateRecipientsAccessAuthRequest {
+	return []RecipientCreateTemplateRecipientsAccessAuthRequest{
+		RecipientCreateTemplateRecipientsAccessAuthRequestAccount,
+		RecipientCreateTemplateRecipientsAccessAuthRequestTwoFactorAuth,
+	}
+}
 func (e *RecipientCreateTemplateRecipientsAccessAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -81,6 +100,17 @@ const (
 
 func (e RecipientCreateTemplateRecipientsActionAuthRequest) ToPointer() *RecipientCreateTemplateRecipientsActionAuthRequest {
 	return &e
+}
+
+// RecipientCreateTemplateRecipientsActionAuthRequestValues returns every known RecipientCreateTemplateRecipientsActionAuthRequest value in schema order.
+func RecipientCreateTemplateRecipientsActionAuthRequestValues() []RecipientCreateTemplateRecipientsActionAuthRequest {
+	return []RecipientCreateTemplateRecipientsActionAuthRequest{
+		RecipientCreateTemplateRecipientsActionAuthRequestAccount,
+		RecipientCreateTemplateRecipientsActionAuthRequestPasskey,
+		RecipientCreateTemplateRecipientsActionAuthRequestTwoFactorAuth,
+		RecipientCreateTemplateRecipientsActionAuthRequestPassword,
+		RecipientCreateTemplateRecipientsActionAuthRequestExplicitNone,
+	}
 }
 func (e *RecipientCreateTemplateRecipientsActionAuthRequest) UnmarshalJSON(data []byte) error {
 	var v string
@@ -187,6 +217,17 @@ const (
 func (e RecipientCreateTemplateRecipientsRoleResponse) ToPointer() *RecipientCreateTemplateRecipientsRoleResponse {
 	return &e
 }
+
+// RecipientCreateTemplateRecipientsRoleResponseValues returns every known RecipientCreateTemplateRecipientsRoleResponse value in schema order.
+func RecipientCreateTemplateRecipientsRoleResponseValues() []RecipientCreateTemplateRecipientsRoleResponse {
+	return []RecipientCreateTemplateRecipientsRoleResponse{
+		RecipientCreateTemplateRecipientsRoleResponseCc,
+		RecipientCreateTemplateRecipientsRoleResponseSigner,
+		RecipientCreateTemplateRecipientsRoleResponseViewer,
+		RecipientCreateTemplateRecipientsRoleResponseApprover,
+		RecipientCreateTemplateRecipientsRoleResponseAssistant,
+	}
+}
 func (e *RecipientCreateTemplateRecipientsRoleResponse) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -219,6 +260,14 @@ const (
 func (e RecipientCreateTemplateRecipientsReadStatus) ToPointer() *RecipientCreateTemplateRecipientsReadStatus {
 	return &e
 }
+
+// RecipientCreateTemplateRecipientsReadStatusValues returns every known RecipientCreateTemplateRecipientsReadStatus value in schema order.
+func RecipientCreateTemplateRecipientsReadStatusValues() []RecipientCreateTemplateRecipientsReadStatus {
+	return []RecipientCreateTemplateRecipientsReadStatus{
+		RecipientCreateTemplateRecipientsReadStatusNotOpened,
+		RecipientCreateTemplateRecipientsReadStatusOpened,
+	}
+}
 func (e *RecipientCreateTemplateRecipientsReadStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -245,6 +294,15 @@ const (
 
 func (e RecipientCreateTemplateRecipientsSigningStatus) ToPointer() *RecipientCreateTemplateRecipientsSigningStatus {
 	return &e
+}
+
+// RecipientCreateTemplateRecipientsSigningStatusValues returns every known RecipientCreateTemplateRecipientsSigningStatus value in schema order.
+func RecipientCreateTemplateRecipientsSigningStatusValues() []RecipientCreateTemplateRecipientsSigningStatus {
+	return []RecipientCreateTemplateRecipientsSigningStatus{
+		RecipientCreateTemplateRecipientsSigningStatusNotSigned,
+		RecipientCreateTemplateRecipientsSigningStatusSigned,
+		RecipientCreateTemplateRecipientsSigningStatusRejected,
+	}
 }
 func (e *RecipientCreateTemplateRecipientsSigningStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -274,6 +332,14 @@ const (
 func (e RecipientCreateTemplateRecipientsSendStatus) ToPointer() *RecipientCreateTemplateRecipientsSendStatus {
 	return &e
 }
+
+// RecipientCreateTemplateRecipientsSendStatusValues returns every known RecipientCreateTemplateRecipientsSendStatus value in schema order.
+func RecipientCreateTemplateRecipientsSendStatusValues() []RecipientCreateTemplateRecipientsSendStatus {
+	return []RecipientCreateTemplateRecipientsSendStatus{
+		RecipientCreateTemplateRecipientsSendStatusNotSent,
+		RecipientCreateTemplateRecipientsSendStatusSent,
+	}
+}
 func (e *RecipientCreateTemplateRecipientsSendStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -299,6 +365,14 @@ const (
 
 func (e RecipientCreateTemplateRecipientsAuthOptionsAccessAuth) ToPointer() *RecipientCreateTemplateRecipientsAuthOptionsAccessAuth {
 	return &e
+}
+
+// RecipientCreateTemplateRecipientsAuthOptionsAccessAuthValues returns every known RecipientCreateTemplateRecipientsAuthOptionsAccessAuth value in schema order.
+func RecipientCreateTemplateRecipientsAuthOptionsAccessAuthValues() []RecipientCreateTemplateRecipientsAuthOptionsAccessAuth {
+	return []RecipientCreateTemplateRecipientsAuthOptionsAccessAuth{
+		RecipientCreateTemplateRecipientsAuthOptionsAccessAuthAccount,
+		RecipientCreateTemplateRecipientsAuthOptionsAccessAuthTwoFactorAuth,
+	}
 }
 func (e *RecipientCreateTemplateRecipientsAuthOptionsAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -328,6 +402,17 @@ const (
 
 func (e RecipientCreateTemplateRecipientsAuthOptionsActionAuth) ToPointer() *RecipientCreateTemplateRecipientsAuthOptionsActionAuth {
 	return &e
+}
+
+// RecipientCreateTemplateRecipientsAuthOptionsActionAuthValues returns every known RecipientCreateTemplateRecipientsAuthOptionsActionAuth value in schema order.
+func RecipientCreateTemplateRecipientsAuthOptionsActionAuthValues() []RecipientCreateTemplateRecipientsAuthOptionsActionAuth {
+	return []RecipientCreateTemplateRecipientsAuthOptionsActionAuth{
+		RecipientCreateTemplateRecipientsAuthOptionsActionAuthAccount,
+		RecipientCreateTemplateRecipientsAuthOptionsActionAuthPasskey,
+		RecipientCreateTemplateRecipientsAuthOptionsActionAuthTwoFactorAuth,
+		RecipientCreateTemplateRecipientsAuthOptionsActionAuthPassword,
+		RecipientCreateTemplateRecipientsAuthOptionsActionAuthExplicitNone,
+	}
 }
 func (e *RecipientCreateTemplateRecipientsAuthOptionsActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -371,23 +456,25 @@ func (r *RecipientCreateTemplateRecipientsAuthOptions) GetActionAuth() []Recipie
 }
 
 type RecipientCreateTemplateRecipientsRecipientResponse struct {
-	EnvelopeID        string                                         `json:"envelopeId"`
-	Role              RecipientCreateTemplateRecipientsRoleResponse  `json:"role"`
-	ReadStatus        RecipientCreateTemplateRecipientsReadStatus    `json:"readStatus"`
-	SigningStatus     RecipientCreateTemplateRecipientsSigningStatus `json:"signingStatus"`
-	SendStatus        RecipientCreateTemplateRecipientsSendStatus    `json:"sendStatus"`
-	ID                float64                                        `json:"id"`
-	Email             string                                         `json:"email"`
-	Name              string                                         `json:"name"`
-	Token             string                                         `json:"token"`
-	DocumentDeletedAt *string                                        `json:"documentDeletedAt"`
-	Expired           *string                                        `json:"expired"`
-	SignedAt          *string                                        `json:"signedAt"`
-	AuthOptions       *RecipientCreateTemplateRecipientsAuthOptions  `json:"authOptions"`
-	SigningOrder      *float64                                       `json:"signingOrder"`
-	RejectionReason   *string                                        `json:"rejectionReason"`
-	DocumentID        *float64                                       `json:"documentId,omitempty"`
-	TemplateID        *float64                                       `json:"templateId,omitempty"`
+	EnvelopeID           string                                         `json:"envelopeId"`
+	Role                 RecipientCreateTemplateRecipientsRoleResponse  `json:"role"`
+	ReadStatus           RecipientCreateTemplateRecipientsReadStatus    `json:"readStatus"`
+	SigningStatus        RecipientCreateTemplateRecipientsSigningStatus `json:"signingStatus"`
+	SendStatus           RecipientCreateTemplateRecipientsSendStatus    `json:"sendStatus"`
+	ID                   float64                                        `json:"id"`
+	Email                string                                         `json:"email"`
+	Name                 string                                         `json:"name"`
+	Token                string                                         `json:"token"`
+	DocumentDeletedAt    *string                                        `json:"documentDeletedAt"`
+	Expired              *string                                        `json:"expired"`
+	ExpiresAt            *string                                        `json:"expiresAt"`
+	ExpirationNotifiedAt *string                                        `json:"expirationNotifiedAt"`
+	SignedAt             *string                                        `json:"signedAt"`
+	AuthOptions          *RecipientCreateTemplateRecipientsAuthOptions  `json:"authOptions"`
+	SigningOrder         *float64                                       `json:"signingOrder"`
+	RejectionReason      *string                                        `json:"rejectionReason"`
+	DocumentID           *float64                                       `json:"documentId,omitempty"`
+	TemplateID           *float64                                       `json:"templateId,omitempty"`
 }
 
 func (r *RecipientCreateTemplateRecipientsRecipientResponse) GetEnvelopeID() string {
@@ -465,6 +552,20 @@ func (r *RecipientCreateTemplateRecipientsRecipientResponse) GetExpired() *strin
 		return nil
 	}
 	return r.Expired
+}
+
+func (r *RecipientCreateTemplateRecipientsRecipientResponse) GetExpiresAt() *string {
+	if r == nil {
+		return nil
+	}
+	return r.ExpiresAt
+}
+
+func (r *RecipientCreateTemplateRecipientsRecipientResponse) GetExpirationNotifiedAt() *string {
+	if r == nil {
+		return nil
+	}
+	return r.ExpirationNotifiedAt
 }
 
 func (r *RecipientCreateTemplateRecipientsRecipientResponse) GetSignedAt() *string {

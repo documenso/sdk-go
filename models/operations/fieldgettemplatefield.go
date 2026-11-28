@@ -40,6 +40,23 @@ const (
 func (e FieldGetTemplateFieldType) ToPointer() *FieldGetTemplateFieldType {
 	return &e
 }
+
+// FieldGetTemplateFieldTypeValues returns every known FieldGetTemplateFieldType value in schema order.
+func FieldGetTemplateFieldTypeValues() []FieldGetTemplateFieldType {
+	return []FieldGetTemplateFieldType{
+		FieldGetTemplateFieldTypeSignature,
+		FieldGetTemplateFieldTypeFreeSignature,
+		FieldGetTemplateFieldTypeInitials,
+		FieldGetTemplateFieldTypeName,
+		FieldGetTemplateFieldTypeEmail,
+		FieldGetTemplateFieldTypeDate,
+		FieldGetTemplateFieldTypeText,
+		FieldGetTemplateFieldTypeNumber,
+		FieldGetTemplateFieldTypeRadio,
+		FieldGetTemplateFieldTypeCheckbox,
+		FieldGetTemplateFieldTypeDropdown,
+	}
+}
 func (e *FieldGetTemplateFieldType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -74,6 +91,48 @@ func (e *FieldGetTemplateFieldType) UnmarshalJSON(data []byte) error {
 	}
 }
 
+type FieldGetTemplateFieldOverflow10 string
+
+const (
+	FieldGetTemplateFieldOverflow10Auto       FieldGetTemplateFieldOverflow10 = "auto"
+	FieldGetTemplateFieldOverflow10Horizontal FieldGetTemplateFieldOverflow10 = "horizontal"
+	FieldGetTemplateFieldOverflow10Vertical   FieldGetTemplateFieldOverflow10 = "vertical"
+	FieldGetTemplateFieldOverflow10Crop       FieldGetTemplateFieldOverflow10 = "crop"
+)
+
+func (e FieldGetTemplateFieldOverflow10) ToPointer() *FieldGetTemplateFieldOverflow10 {
+	return &e
+}
+
+// FieldGetTemplateFieldOverflow10Values returns every known FieldGetTemplateFieldOverflow10 value in schema order.
+func FieldGetTemplateFieldOverflow10Values() []FieldGetTemplateFieldOverflow10 {
+	return []FieldGetTemplateFieldOverflow10{
+		FieldGetTemplateFieldOverflow10Auto,
+		FieldGetTemplateFieldOverflow10Horizontal,
+		FieldGetTemplateFieldOverflow10Vertical,
+		FieldGetTemplateFieldOverflow10Crop,
+	}
+}
+func (e *FieldGetTemplateFieldOverflow10) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetTemplateFieldOverflow10(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetTemplateFieldOverflow10: %v", v)
+	}
+}
+
 type FieldGetTemplateFieldFieldMetaTypeDropdown string
 
 const (
@@ -82,6 +141,13 @@ const (
 
 func (e FieldGetTemplateFieldFieldMetaTypeDropdown) ToPointer() *FieldGetTemplateFieldFieldMetaTypeDropdown {
 	return &e
+}
+
+// FieldGetTemplateFieldFieldMetaTypeDropdownValues returns every known FieldGetTemplateFieldFieldMetaTypeDropdown value in schema order.
+func FieldGetTemplateFieldFieldMetaTypeDropdownValues() []FieldGetTemplateFieldFieldMetaTypeDropdown {
+	return []FieldGetTemplateFieldFieldMetaTypeDropdown{
+		FieldGetTemplateFieldFieldMetaTypeDropdownDropdown,
+	}
 }
 func (e *FieldGetTemplateFieldFieldMetaTypeDropdown) UnmarshalJSON(data []byte) error {
 	var v string
@@ -119,12 +185,16 @@ func (f *FieldGetTemplateFieldValue3) GetValue() string {
 	return f.Value
 }
 
+// #region class-body-fieldgettemplatefieldvalue3
+// #endregion class-body-fieldgettemplatefieldvalue3
+
 type FieldGetTemplateFieldFieldMetaDropdown struct {
 	Label        *string                                    `json:"label,omitempty"`
 	Placeholder  *string                                    `json:"placeholder,omitempty"`
 	Required     *bool                                      `json:"required,omitempty"`
 	ReadOnly     *bool                                      `json:"readOnly,omitempty"`
 	FontSize     *float64                                   `default:"12" json:"fontSize"`
+	Overflow     *FieldGetTemplateFieldOverflow10           `json:"overflow,omitempty"`
 	Type         FieldGetTemplateFieldFieldMetaTypeDropdown `json:"type"`
 	Values       []FieldGetTemplateFieldValue3              `json:"values,omitempty"`
 	DefaultValue *string                                    `json:"defaultValue,omitempty"`
@@ -176,6 +246,13 @@ func (f *FieldGetTemplateFieldFieldMetaDropdown) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetTemplateFieldFieldMetaDropdown) GetOverflow() *FieldGetTemplateFieldOverflow10 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetTemplateFieldFieldMetaDropdown) GetType() FieldGetTemplateFieldFieldMetaTypeDropdown {
 	if f == nil {
 		return FieldGetTemplateFieldFieldMetaTypeDropdown("")
@@ -197,6 +274,48 @@ func (f *FieldGetTemplateFieldFieldMetaDropdown) GetDefaultValue() *string {
 	return f.DefaultValue
 }
 
+type FieldGetTemplateFieldOverflow9 string
+
+const (
+	FieldGetTemplateFieldOverflow9Auto       FieldGetTemplateFieldOverflow9 = "auto"
+	FieldGetTemplateFieldOverflow9Horizontal FieldGetTemplateFieldOverflow9 = "horizontal"
+	FieldGetTemplateFieldOverflow9Vertical   FieldGetTemplateFieldOverflow9 = "vertical"
+	FieldGetTemplateFieldOverflow9Crop       FieldGetTemplateFieldOverflow9 = "crop"
+)
+
+func (e FieldGetTemplateFieldOverflow9) ToPointer() *FieldGetTemplateFieldOverflow9 {
+	return &e
+}
+
+// FieldGetTemplateFieldOverflow9Values returns every known FieldGetTemplateFieldOverflow9 value in schema order.
+func FieldGetTemplateFieldOverflow9Values() []FieldGetTemplateFieldOverflow9 {
+	return []FieldGetTemplateFieldOverflow9{
+		FieldGetTemplateFieldOverflow9Auto,
+		FieldGetTemplateFieldOverflow9Horizontal,
+		FieldGetTemplateFieldOverflow9Vertical,
+		FieldGetTemplateFieldOverflow9Crop,
+	}
+}
+func (e *FieldGetTemplateFieldOverflow9) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetTemplateFieldOverflow9(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetTemplateFieldOverflow9: %v", v)
+	}
+}
+
 type FieldGetTemplateFieldFieldMetaTypeCheckbox string
 
 const (
@@ -205,6 +324,13 @@ const (
 
 func (e FieldGetTemplateFieldFieldMetaTypeCheckbox) ToPointer() *FieldGetTemplateFieldFieldMetaTypeCheckbox {
 	return &e
+}
+
+// FieldGetTemplateFieldFieldMetaTypeCheckboxValues returns every known FieldGetTemplateFieldFieldMetaTypeCheckbox value in schema order.
+func FieldGetTemplateFieldFieldMetaTypeCheckboxValues() []FieldGetTemplateFieldFieldMetaTypeCheckbox {
+	return []FieldGetTemplateFieldFieldMetaTypeCheckbox{
+		FieldGetTemplateFieldFieldMetaTypeCheckboxCheckbox,
+	}
 }
 func (e *FieldGetTemplateFieldFieldMetaTypeCheckbox) UnmarshalJSON(data []byte) error {
 	var v string
@@ -258,6 +384,9 @@ func (f *FieldGetTemplateFieldValue2) GetValue() string {
 	return f.Value
 }
 
+// #region class-body-fieldgettemplatefieldvalue2
+// #endregion class-body-fieldgettemplatefieldvalue2
+
 type FieldGetTemplateFieldDirection2 string
 
 const (
@@ -267,6 +396,14 @@ const (
 
 func (e FieldGetTemplateFieldDirection2) ToPointer() *FieldGetTemplateFieldDirection2 {
 	return &e
+}
+
+// FieldGetTemplateFieldDirection2Values returns every known FieldGetTemplateFieldDirection2 value in schema order.
+func FieldGetTemplateFieldDirection2Values() []FieldGetTemplateFieldDirection2 {
+	return []FieldGetTemplateFieldDirection2{
+		FieldGetTemplateFieldDirection2Vertical,
+		FieldGetTemplateFieldDirection2Horizontal,
+	}
 }
 func (e *FieldGetTemplateFieldDirection2) UnmarshalJSON(data []byte) error {
 	var v string
@@ -290,6 +427,7 @@ type FieldGetTemplateFieldFieldMetaCheckbox struct {
 	Required         *bool                                      `json:"required,omitempty"`
 	ReadOnly         *bool                                      `json:"readOnly,omitempty"`
 	FontSize         *float64                                   `default:"12" json:"fontSize"`
+	Overflow         *FieldGetTemplateFieldOverflow9            `json:"overflow,omitempty"`
 	Type             FieldGetTemplateFieldFieldMetaTypeCheckbox `json:"type"`
 	Values           []FieldGetTemplateFieldValue2              `json:"values,omitempty"`
 	ValidationRule   *string                                    `json:"validationRule,omitempty"`
@@ -343,6 +481,13 @@ func (f *FieldGetTemplateFieldFieldMetaCheckbox) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetTemplateFieldFieldMetaCheckbox) GetOverflow() *FieldGetTemplateFieldOverflow9 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetTemplateFieldFieldMetaCheckbox) GetType() FieldGetTemplateFieldFieldMetaTypeCheckbox {
 	if f == nil {
 		return FieldGetTemplateFieldFieldMetaTypeCheckbox("")
@@ -378,6 +523,48 @@ func (f *FieldGetTemplateFieldFieldMetaCheckbox) GetDirection() *FieldGetTemplat
 	return f.Direction
 }
 
+type FieldGetTemplateFieldOverflow8 string
+
+const (
+	FieldGetTemplateFieldOverflow8Auto       FieldGetTemplateFieldOverflow8 = "auto"
+	FieldGetTemplateFieldOverflow8Horizontal FieldGetTemplateFieldOverflow8 = "horizontal"
+	FieldGetTemplateFieldOverflow8Vertical   FieldGetTemplateFieldOverflow8 = "vertical"
+	FieldGetTemplateFieldOverflow8Crop       FieldGetTemplateFieldOverflow8 = "crop"
+)
+
+func (e FieldGetTemplateFieldOverflow8) ToPointer() *FieldGetTemplateFieldOverflow8 {
+	return &e
+}
+
+// FieldGetTemplateFieldOverflow8Values returns every known FieldGetTemplateFieldOverflow8 value in schema order.
+func FieldGetTemplateFieldOverflow8Values() []FieldGetTemplateFieldOverflow8 {
+	return []FieldGetTemplateFieldOverflow8{
+		FieldGetTemplateFieldOverflow8Auto,
+		FieldGetTemplateFieldOverflow8Horizontal,
+		FieldGetTemplateFieldOverflow8Vertical,
+		FieldGetTemplateFieldOverflow8Crop,
+	}
+}
+func (e *FieldGetTemplateFieldOverflow8) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetTemplateFieldOverflow8(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetTemplateFieldOverflow8: %v", v)
+	}
+}
+
 type FieldGetTemplateFieldFieldMetaTypeRadio string
 
 const (
@@ -386,6 +573,13 @@ const (
 
 func (e FieldGetTemplateFieldFieldMetaTypeRadio) ToPointer() *FieldGetTemplateFieldFieldMetaTypeRadio {
 	return &e
+}
+
+// FieldGetTemplateFieldFieldMetaTypeRadioValues returns every known FieldGetTemplateFieldFieldMetaTypeRadio value in schema order.
+func FieldGetTemplateFieldFieldMetaTypeRadioValues() []FieldGetTemplateFieldFieldMetaTypeRadio {
+	return []FieldGetTemplateFieldFieldMetaTypeRadio{
+		FieldGetTemplateFieldFieldMetaTypeRadioRadio,
+	}
 }
 func (e *FieldGetTemplateFieldFieldMetaTypeRadio) UnmarshalJSON(data []byte) error {
 	var v string
@@ -439,6 +633,9 @@ func (f *FieldGetTemplateFieldValue1) GetValue() string {
 	return f.Value
 }
 
+// #region class-body-fieldgettemplatefieldvalue1
+// #endregion class-body-fieldgettemplatefieldvalue1
+
 type FieldGetTemplateFieldDirection1 string
 
 const (
@@ -448,6 +645,14 @@ const (
 
 func (e FieldGetTemplateFieldDirection1) ToPointer() *FieldGetTemplateFieldDirection1 {
 	return &e
+}
+
+// FieldGetTemplateFieldDirection1Values returns every known FieldGetTemplateFieldDirection1 value in schema order.
+func FieldGetTemplateFieldDirection1Values() []FieldGetTemplateFieldDirection1 {
+	return []FieldGetTemplateFieldDirection1{
+		FieldGetTemplateFieldDirection1Vertical,
+		FieldGetTemplateFieldDirection1Horizontal,
+	}
 }
 func (e *FieldGetTemplateFieldDirection1) UnmarshalJSON(data []byte) error {
 	var v string
@@ -471,6 +676,7 @@ type FieldGetTemplateFieldFieldMetaRadio struct {
 	Required    *bool                                   `json:"required,omitempty"`
 	ReadOnly    *bool                                   `json:"readOnly,omitempty"`
 	FontSize    *float64                                `default:"12" json:"fontSize"`
+	Overflow    *FieldGetTemplateFieldOverflow8         `json:"overflow,omitempty"`
 	Type        FieldGetTemplateFieldFieldMetaTypeRadio `json:"type"`
 	Values      []FieldGetTemplateFieldValue1           `json:"values,omitempty"`
 	Direction   *FieldGetTemplateFieldDirection1        `default:"vertical" json:"direction"`
@@ -522,6 +728,13 @@ func (f *FieldGetTemplateFieldFieldMetaRadio) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetTemplateFieldFieldMetaRadio) GetOverflow() *FieldGetTemplateFieldOverflow8 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetTemplateFieldFieldMetaRadio) GetType() FieldGetTemplateFieldFieldMetaTypeRadio {
 	if f == nil {
 		return FieldGetTemplateFieldFieldMetaTypeRadio("")
@@ -543,6 +756,48 @@ func (f *FieldGetTemplateFieldFieldMetaRadio) GetDirection() *FieldGetTemplateFi
 	return f.Direction
 }
 
+type FieldGetTemplateFieldOverflow7 string
+
+const (
+	FieldGetTemplateFieldOverflow7Auto       FieldGetTemplateFieldOverflow7 = "auto"
+	FieldGetTemplateFieldOverflow7Horizontal FieldGetTemplateFieldOverflow7 = "horizontal"
+	FieldGetTemplateFieldOverflow7Vertical   FieldGetTemplateFieldOverflow7 = "vertical"
+	FieldGetTemplateFieldOverflow7Crop       FieldGetTemplateFieldOverflow7 = "crop"
+)
+
+func (e FieldGetTemplateFieldOverflow7) ToPointer() *FieldGetTemplateFieldOverflow7 {
+	return &e
+}
+
+// FieldGetTemplateFieldOverflow7Values returns every known FieldGetTemplateFieldOverflow7 value in schema order.
+func FieldGetTemplateFieldOverflow7Values() []FieldGetTemplateFieldOverflow7 {
+	return []FieldGetTemplateFieldOverflow7{
+		FieldGetTemplateFieldOverflow7Auto,
+		FieldGetTemplateFieldOverflow7Horizontal,
+		FieldGetTemplateFieldOverflow7Vertical,
+		FieldGetTemplateFieldOverflow7Crop,
+	}
+}
+func (e *FieldGetTemplateFieldOverflow7) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetTemplateFieldOverflow7(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetTemplateFieldOverflow7: %v", v)
+	}
+}
+
 type FieldGetTemplateFieldFieldMetaTypeNumber string
 
 const (
@@ -551,6 +806,13 @@ const (
 
 func (e FieldGetTemplateFieldFieldMetaTypeNumber) ToPointer() *FieldGetTemplateFieldFieldMetaTypeNumber {
 	return &e
+}
+
+// FieldGetTemplateFieldFieldMetaTypeNumberValues returns every known FieldGetTemplateFieldFieldMetaTypeNumber value in schema order.
+func FieldGetTemplateFieldFieldMetaTypeNumberValues() []FieldGetTemplateFieldFieldMetaTypeNumber {
+	return []FieldGetTemplateFieldFieldMetaTypeNumber{
+		FieldGetTemplateFieldFieldMetaTypeNumberNumber,
+	}
 }
 func (e *FieldGetTemplateFieldFieldMetaTypeNumber) UnmarshalJSON(data []byte) error {
 	var v string
@@ -576,6 +838,15 @@ const (
 
 func (e FieldGetTemplateFieldTextAlign6) ToPointer() *FieldGetTemplateFieldTextAlign6 {
 	return &e
+}
+
+// FieldGetTemplateFieldTextAlign6Values returns every known FieldGetTemplateFieldTextAlign6 value in schema order.
+func FieldGetTemplateFieldTextAlign6Values() []FieldGetTemplateFieldTextAlign6 {
+	return []FieldGetTemplateFieldTextAlign6{
+		FieldGetTemplateFieldTextAlign6Left,
+		FieldGetTemplateFieldTextAlign6Center,
+		FieldGetTemplateFieldTextAlign6Right,
+	}
 }
 func (e *FieldGetTemplateFieldTextAlign6) UnmarshalJSON(data []byte) error {
 	var v string
@@ -606,6 +877,15 @@ const (
 func (e FieldGetTemplateFieldVerticalAlign2) ToPointer() *FieldGetTemplateFieldVerticalAlign2 {
 	return &e
 }
+
+// FieldGetTemplateFieldVerticalAlign2Values returns every known FieldGetTemplateFieldVerticalAlign2 value in schema order.
+func FieldGetTemplateFieldVerticalAlign2Values() []FieldGetTemplateFieldVerticalAlign2 {
+	return []FieldGetTemplateFieldVerticalAlign2{
+		FieldGetTemplateFieldVerticalAlign2Top,
+		FieldGetTemplateFieldVerticalAlign2Middle,
+		FieldGetTemplateFieldVerticalAlign2Bottom,
+	}
+}
 func (e *FieldGetTemplateFieldVerticalAlign2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -630,6 +910,7 @@ type FieldGetTemplateFieldFieldMetaNumber struct {
 	Required      *bool                                    `json:"required,omitempty"`
 	ReadOnly      *bool                                    `json:"readOnly,omitempty"`
 	FontSize      *float64                                 `default:"12" json:"fontSize"`
+	Overflow      *FieldGetTemplateFieldOverflow7          `json:"overflow,omitempty"`
 	Type          FieldGetTemplateFieldFieldMetaTypeNumber `json:"type"`
 	NumberFormat  *string                                  `json:"numberFormat,omitempty"`
 	Value         *string                                  `json:"value,omitempty"`
@@ -685,6 +966,13 @@ func (f *FieldGetTemplateFieldFieldMetaNumber) GetFontSize() *float64 {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldGetTemplateFieldFieldMetaNumber) GetOverflow() *FieldGetTemplateFieldOverflow7 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldGetTemplateFieldFieldMetaNumber) GetType() FieldGetTemplateFieldFieldMetaTypeNumber {
@@ -750,6 +1038,48 @@ func (f *FieldGetTemplateFieldFieldMetaNumber) GetVerticalAlign() *FieldGetTempl
 	return f.VerticalAlign
 }
 
+type FieldGetTemplateFieldOverflow6 string
+
+const (
+	FieldGetTemplateFieldOverflow6Auto       FieldGetTemplateFieldOverflow6 = "auto"
+	FieldGetTemplateFieldOverflow6Horizontal FieldGetTemplateFieldOverflow6 = "horizontal"
+	FieldGetTemplateFieldOverflow6Vertical   FieldGetTemplateFieldOverflow6 = "vertical"
+	FieldGetTemplateFieldOverflow6Crop       FieldGetTemplateFieldOverflow6 = "crop"
+)
+
+func (e FieldGetTemplateFieldOverflow6) ToPointer() *FieldGetTemplateFieldOverflow6 {
+	return &e
+}
+
+// FieldGetTemplateFieldOverflow6Values returns every known FieldGetTemplateFieldOverflow6 value in schema order.
+func FieldGetTemplateFieldOverflow6Values() []FieldGetTemplateFieldOverflow6 {
+	return []FieldGetTemplateFieldOverflow6{
+		FieldGetTemplateFieldOverflow6Auto,
+		FieldGetTemplateFieldOverflow6Horizontal,
+		FieldGetTemplateFieldOverflow6Vertical,
+		FieldGetTemplateFieldOverflow6Crop,
+	}
+}
+func (e *FieldGetTemplateFieldOverflow6) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetTemplateFieldOverflow6(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetTemplateFieldOverflow6: %v", v)
+	}
+}
+
 type FieldGetTemplateFieldFieldMetaTypeText string
 
 const (
@@ -758,6 +1088,13 @@ const (
 
 func (e FieldGetTemplateFieldFieldMetaTypeText) ToPointer() *FieldGetTemplateFieldFieldMetaTypeText {
 	return &e
+}
+
+// FieldGetTemplateFieldFieldMetaTypeTextValues returns every known FieldGetTemplateFieldFieldMetaTypeText value in schema order.
+func FieldGetTemplateFieldFieldMetaTypeTextValues() []FieldGetTemplateFieldFieldMetaTypeText {
+	return []FieldGetTemplateFieldFieldMetaTypeText{
+		FieldGetTemplateFieldFieldMetaTypeTextText,
+	}
 }
 func (e *FieldGetTemplateFieldFieldMetaTypeText) UnmarshalJSON(data []byte) error {
 	var v string
@@ -783,6 +1120,15 @@ const (
 
 func (e FieldGetTemplateFieldTextAlign5) ToPointer() *FieldGetTemplateFieldTextAlign5 {
 	return &e
+}
+
+// FieldGetTemplateFieldTextAlign5Values returns every known FieldGetTemplateFieldTextAlign5 value in schema order.
+func FieldGetTemplateFieldTextAlign5Values() []FieldGetTemplateFieldTextAlign5 {
+	return []FieldGetTemplateFieldTextAlign5{
+		FieldGetTemplateFieldTextAlign5Left,
+		FieldGetTemplateFieldTextAlign5Center,
+		FieldGetTemplateFieldTextAlign5Right,
+	}
 }
 func (e *FieldGetTemplateFieldTextAlign5) UnmarshalJSON(data []byte) error {
 	var v string
@@ -813,6 +1159,15 @@ const (
 func (e FieldGetTemplateFieldVerticalAlign1) ToPointer() *FieldGetTemplateFieldVerticalAlign1 {
 	return &e
 }
+
+// FieldGetTemplateFieldVerticalAlign1Values returns every known FieldGetTemplateFieldVerticalAlign1 value in schema order.
+func FieldGetTemplateFieldVerticalAlign1Values() []FieldGetTemplateFieldVerticalAlign1 {
+	return []FieldGetTemplateFieldVerticalAlign1{
+		FieldGetTemplateFieldVerticalAlign1Top,
+		FieldGetTemplateFieldVerticalAlign1Middle,
+		FieldGetTemplateFieldVerticalAlign1Bottom,
+	}
+}
 func (e *FieldGetTemplateFieldVerticalAlign1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -837,6 +1192,7 @@ type FieldGetTemplateFieldFieldMetaText struct {
 	Required       *bool                                  `json:"required,omitempty"`
 	ReadOnly       *bool                                  `json:"readOnly,omitempty"`
 	FontSize       *float64                               `default:"12" json:"fontSize"`
+	Overflow       *FieldGetTemplateFieldOverflow6        `json:"overflow,omitempty"`
 	Type           FieldGetTemplateFieldFieldMetaTypeText `json:"type"`
 	Text           *string                                `json:"text,omitempty"`
 	CharacterLimit *float64                               `json:"characterLimit,omitempty"`
@@ -892,6 +1248,13 @@ func (f *FieldGetTemplateFieldFieldMetaText) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetTemplateFieldFieldMetaText) GetOverflow() *FieldGetTemplateFieldOverflow6 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetTemplateFieldFieldMetaText) GetType() FieldGetTemplateFieldFieldMetaTypeText {
 	if f == nil {
 		return FieldGetTemplateFieldFieldMetaTypeText("")
@@ -941,6 +1304,48 @@ func (f *FieldGetTemplateFieldFieldMetaText) GetVerticalAlign() *FieldGetTemplat
 	return f.VerticalAlign
 }
 
+type FieldGetTemplateFieldOverflow5 string
+
+const (
+	FieldGetTemplateFieldOverflow5Auto       FieldGetTemplateFieldOverflow5 = "auto"
+	FieldGetTemplateFieldOverflow5Horizontal FieldGetTemplateFieldOverflow5 = "horizontal"
+	FieldGetTemplateFieldOverflow5Vertical   FieldGetTemplateFieldOverflow5 = "vertical"
+	FieldGetTemplateFieldOverflow5Crop       FieldGetTemplateFieldOverflow5 = "crop"
+)
+
+func (e FieldGetTemplateFieldOverflow5) ToPointer() *FieldGetTemplateFieldOverflow5 {
+	return &e
+}
+
+// FieldGetTemplateFieldOverflow5Values returns every known FieldGetTemplateFieldOverflow5 value in schema order.
+func FieldGetTemplateFieldOverflow5Values() []FieldGetTemplateFieldOverflow5 {
+	return []FieldGetTemplateFieldOverflow5{
+		FieldGetTemplateFieldOverflow5Auto,
+		FieldGetTemplateFieldOverflow5Horizontal,
+		FieldGetTemplateFieldOverflow5Vertical,
+		FieldGetTemplateFieldOverflow5Crop,
+	}
+}
+func (e *FieldGetTemplateFieldOverflow5) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetTemplateFieldOverflow5(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetTemplateFieldOverflow5: %v", v)
+	}
+}
+
 type FieldGetTemplateFieldFieldMetaTypeDate string
 
 const (
@@ -949,6 +1354,13 @@ const (
 
 func (e FieldGetTemplateFieldFieldMetaTypeDate) ToPointer() *FieldGetTemplateFieldFieldMetaTypeDate {
 	return &e
+}
+
+// FieldGetTemplateFieldFieldMetaTypeDateValues returns every known FieldGetTemplateFieldFieldMetaTypeDate value in schema order.
+func FieldGetTemplateFieldFieldMetaTypeDateValues() []FieldGetTemplateFieldFieldMetaTypeDate {
+	return []FieldGetTemplateFieldFieldMetaTypeDate{
+		FieldGetTemplateFieldFieldMetaTypeDateDate,
+	}
 }
 func (e *FieldGetTemplateFieldFieldMetaTypeDate) UnmarshalJSON(data []byte) error {
 	var v string
@@ -975,6 +1387,15 @@ const (
 func (e FieldGetTemplateFieldTextAlign4) ToPointer() *FieldGetTemplateFieldTextAlign4 {
 	return &e
 }
+
+// FieldGetTemplateFieldTextAlign4Values returns every known FieldGetTemplateFieldTextAlign4 value in schema order.
+func FieldGetTemplateFieldTextAlign4Values() []FieldGetTemplateFieldTextAlign4 {
+	return []FieldGetTemplateFieldTextAlign4{
+		FieldGetTemplateFieldTextAlign4Left,
+		FieldGetTemplateFieldTextAlign4Center,
+		FieldGetTemplateFieldTextAlign4Right,
+	}
+}
 func (e *FieldGetTemplateFieldTextAlign4) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -999,6 +1420,7 @@ type FieldGetTemplateFieldFieldMetaDate struct {
 	Required    *bool                                  `json:"required,omitempty"`
 	ReadOnly    *bool                                  `json:"readOnly,omitempty"`
 	FontSize    *float64                               `default:"12" json:"fontSize"`
+	Overflow    *FieldGetTemplateFieldOverflow5        `default:"auto" json:"overflow"`
 	Type        FieldGetTemplateFieldFieldMetaTypeDate `json:"type"`
 	TextAlign   *FieldGetTemplateFieldTextAlign4       `json:"textAlign,omitempty"`
 }
@@ -1049,6 +1471,13 @@ func (f *FieldGetTemplateFieldFieldMetaDate) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetTemplateFieldFieldMetaDate) GetOverflow() *FieldGetTemplateFieldOverflow5 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetTemplateFieldFieldMetaDate) GetType() FieldGetTemplateFieldFieldMetaTypeDate {
 	if f == nil {
 		return FieldGetTemplateFieldFieldMetaTypeDate("")
@@ -1063,6 +1492,48 @@ func (f *FieldGetTemplateFieldFieldMetaDate) GetTextAlign() *FieldGetTemplateFie
 	return f.TextAlign
 }
 
+type FieldGetTemplateFieldOverflow4 string
+
+const (
+	FieldGetTemplateFieldOverflow4Auto       FieldGetTemplateFieldOverflow4 = "auto"
+	FieldGetTemplateFieldOverflow4Horizontal FieldGetTemplateFieldOverflow4 = "horizontal"
+	FieldGetTemplateFieldOverflow4Vertical   FieldGetTemplateFieldOverflow4 = "vertical"
+	FieldGetTemplateFieldOverflow4Crop       FieldGetTemplateFieldOverflow4 = "crop"
+)
+
+func (e FieldGetTemplateFieldOverflow4) ToPointer() *FieldGetTemplateFieldOverflow4 {
+	return &e
+}
+
+// FieldGetTemplateFieldOverflow4Values returns every known FieldGetTemplateFieldOverflow4 value in schema order.
+func FieldGetTemplateFieldOverflow4Values() []FieldGetTemplateFieldOverflow4 {
+	return []FieldGetTemplateFieldOverflow4{
+		FieldGetTemplateFieldOverflow4Auto,
+		FieldGetTemplateFieldOverflow4Horizontal,
+		FieldGetTemplateFieldOverflow4Vertical,
+		FieldGetTemplateFieldOverflow4Crop,
+	}
+}
+func (e *FieldGetTemplateFieldOverflow4) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetTemplateFieldOverflow4(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetTemplateFieldOverflow4: %v", v)
+	}
+}
+
 type FieldGetTemplateFieldFieldMetaTypeEmail string
 
 const (
@@ -1071,6 +1542,13 @@ const (
 
 func (e FieldGetTemplateFieldFieldMetaTypeEmail) ToPointer() *FieldGetTemplateFieldFieldMetaTypeEmail {
 	return &e
+}
+
+// FieldGetTemplateFieldFieldMetaTypeEmailValues returns every known FieldGetTemplateFieldFieldMetaTypeEmail value in schema order.
+func FieldGetTemplateFieldFieldMetaTypeEmailValues() []FieldGetTemplateFieldFieldMetaTypeEmail {
+	return []FieldGetTemplateFieldFieldMetaTypeEmail{
+		FieldGetTemplateFieldFieldMetaTypeEmailEmail,
+	}
 }
 func (e *FieldGetTemplateFieldFieldMetaTypeEmail) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1097,6 +1575,15 @@ const (
 func (e FieldGetTemplateFieldTextAlign3) ToPointer() *FieldGetTemplateFieldTextAlign3 {
 	return &e
 }
+
+// FieldGetTemplateFieldTextAlign3Values returns every known FieldGetTemplateFieldTextAlign3 value in schema order.
+func FieldGetTemplateFieldTextAlign3Values() []FieldGetTemplateFieldTextAlign3 {
+	return []FieldGetTemplateFieldTextAlign3{
+		FieldGetTemplateFieldTextAlign3Left,
+		FieldGetTemplateFieldTextAlign3Center,
+		FieldGetTemplateFieldTextAlign3Right,
+	}
+}
 func (e *FieldGetTemplateFieldTextAlign3) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1121,6 +1608,7 @@ type FieldGetTemplateFieldFieldMetaEmail struct {
 	Required    *bool                                   `json:"required,omitempty"`
 	ReadOnly    *bool                                   `json:"readOnly,omitempty"`
 	FontSize    *float64                                `default:"12" json:"fontSize"`
+	Overflow    *FieldGetTemplateFieldOverflow4         `default:"auto" json:"overflow"`
 	Type        FieldGetTemplateFieldFieldMetaTypeEmail `json:"type"`
 	TextAlign   *FieldGetTemplateFieldTextAlign3        `json:"textAlign,omitempty"`
 }
@@ -1171,6 +1659,13 @@ func (f *FieldGetTemplateFieldFieldMetaEmail) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetTemplateFieldFieldMetaEmail) GetOverflow() *FieldGetTemplateFieldOverflow4 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetTemplateFieldFieldMetaEmail) GetType() FieldGetTemplateFieldFieldMetaTypeEmail {
 	if f == nil {
 		return FieldGetTemplateFieldFieldMetaTypeEmail("")
@@ -1185,6 +1680,48 @@ func (f *FieldGetTemplateFieldFieldMetaEmail) GetTextAlign() *FieldGetTemplateFi
 	return f.TextAlign
 }
 
+type FieldGetTemplateFieldOverflow3 string
+
+const (
+	FieldGetTemplateFieldOverflow3Auto       FieldGetTemplateFieldOverflow3 = "auto"
+	FieldGetTemplateFieldOverflow3Horizontal FieldGetTemplateFieldOverflow3 = "horizontal"
+	FieldGetTemplateFieldOverflow3Vertical   FieldGetTemplateFieldOverflow3 = "vertical"
+	FieldGetTemplateFieldOverflow3Crop       FieldGetTemplateFieldOverflow3 = "crop"
+)
+
+func (e FieldGetTemplateFieldOverflow3) ToPointer() *FieldGetTemplateFieldOverflow3 {
+	return &e
+}
+
+// FieldGetTemplateFieldOverflow3Values returns every known FieldGetTemplateFieldOverflow3 value in schema order.
+func FieldGetTemplateFieldOverflow3Values() []FieldGetTemplateFieldOverflow3 {
+	return []FieldGetTemplateFieldOverflow3{
+		FieldGetTemplateFieldOverflow3Auto,
+		FieldGetTemplateFieldOverflow3Horizontal,
+		FieldGetTemplateFieldOverflow3Vertical,
+		FieldGetTemplateFieldOverflow3Crop,
+	}
+}
+func (e *FieldGetTemplateFieldOverflow3) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetTemplateFieldOverflow3(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetTemplateFieldOverflow3: %v", v)
+	}
+}
+
 type FieldGetTemplateFieldFieldMetaTypeName string
 
 const (
@@ -1193,6 +1730,13 @@ const (
 
 func (e FieldGetTemplateFieldFieldMetaTypeName) ToPointer() *FieldGetTemplateFieldFieldMetaTypeName {
 	return &e
+}
+
+// FieldGetTemplateFieldFieldMetaTypeNameValues returns every known FieldGetTemplateFieldFieldMetaTypeName value in schema order.
+func FieldGetTemplateFieldFieldMetaTypeNameValues() []FieldGetTemplateFieldFieldMetaTypeName {
+	return []FieldGetTemplateFieldFieldMetaTypeName{
+		FieldGetTemplateFieldFieldMetaTypeNameName,
+	}
 }
 func (e *FieldGetTemplateFieldFieldMetaTypeName) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1219,6 +1763,15 @@ const (
 func (e FieldGetTemplateFieldTextAlign2) ToPointer() *FieldGetTemplateFieldTextAlign2 {
 	return &e
 }
+
+// FieldGetTemplateFieldTextAlign2Values returns every known FieldGetTemplateFieldTextAlign2 value in schema order.
+func FieldGetTemplateFieldTextAlign2Values() []FieldGetTemplateFieldTextAlign2 {
+	return []FieldGetTemplateFieldTextAlign2{
+		FieldGetTemplateFieldTextAlign2Left,
+		FieldGetTemplateFieldTextAlign2Center,
+		FieldGetTemplateFieldTextAlign2Right,
+	}
+}
 func (e *FieldGetTemplateFieldTextAlign2) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1243,6 +1796,7 @@ type FieldGetTemplateFieldFieldMetaName struct {
 	Required    *bool                                  `json:"required,omitempty"`
 	ReadOnly    *bool                                  `json:"readOnly,omitempty"`
 	FontSize    *float64                               `default:"12" json:"fontSize"`
+	Overflow    *FieldGetTemplateFieldOverflow3        `json:"overflow,omitempty"`
 	Type        FieldGetTemplateFieldFieldMetaTypeName `json:"type"`
 	TextAlign   *FieldGetTemplateFieldTextAlign2       `json:"textAlign,omitempty"`
 }
@@ -1293,6 +1847,13 @@ func (f *FieldGetTemplateFieldFieldMetaName) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetTemplateFieldFieldMetaName) GetOverflow() *FieldGetTemplateFieldOverflow3 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetTemplateFieldFieldMetaName) GetType() FieldGetTemplateFieldFieldMetaTypeName {
 	if f == nil {
 		return FieldGetTemplateFieldFieldMetaTypeName("")
@@ -1307,6 +1868,48 @@ func (f *FieldGetTemplateFieldFieldMetaName) GetTextAlign() *FieldGetTemplateFie
 	return f.TextAlign
 }
 
+type FieldGetTemplateFieldOverflow2 string
+
+const (
+	FieldGetTemplateFieldOverflow2Auto       FieldGetTemplateFieldOverflow2 = "auto"
+	FieldGetTemplateFieldOverflow2Horizontal FieldGetTemplateFieldOverflow2 = "horizontal"
+	FieldGetTemplateFieldOverflow2Vertical   FieldGetTemplateFieldOverflow2 = "vertical"
+	FieldGetTemplateFieldOverflow2Crop       FieldGetTemplateFieldOverflow2 = "crop"
+)
+
+func (e FieldGetTemplateFieldOverflow2) ToPointer() *FieldGetTemplateFieldOverflow2 {
+	return &e
+}
+
+// FieldGetTemplateFieldOverflow2Values returns every known FieldGetTemplateFieldOverflow2 value in schema order.
+func FieldGetTemplateFieldOverflow2Values() []FieldGetTemplateFieldOverflow2 {
+	return []FieldGetTemplateFieldOverflow2{
+		FieldGetTemplateFieldOverflow2Auto,
+		FieldGetTemplateFieldOverflow2Horizontal,
+		FieldGetTemplateFieldOverflow2Vertical,
+		FieldGetTemplateFieldOverflow2Crop,
+	}
+}
+func (e *FieldGetTemplateFieldOverflow2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetTemplateFieldOverflow2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetTemplateFieldOverflow2: %v", v)
+	}
+}
+
 type FieldGetTemplateFieldFieldMetaTypeInitials string
 
 const (
@@ -1315,6 +1918,13 @@ const (
 
 func (e FieldGetTemplateFieldFieldMetaTypeInitials) ToPointer() *FieldGetTemplateFieldFieldMetaTypeInitials {
 	return &e
+}
+
+// FieldGetTemplateFieldFieldMetaTypeInitialsValues returns every known FieldGetTemplateFieldFieldMetaTypeInitials value in schema order.
+func FieldGetTemplateFieldFieldMetaTypeInitialsValues() []FieldGetTemplateFieldFieldMetaTypeInitials {
+	return []FieldGetTemplateFieldFieldMetaTypeInitials{
+		FieldGetTemplateFieldFieldMetaTypeInitialsInitials,
+	}
 }
 func (e *FieldGetTemplateFieldFieldMetaTypeInitials) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1341,6 +1951,15 @@ const (
 func (e FieldGetTemplateFieldTextAlign1) ToPointer() *FieldGetTemplateFieldTextAlign1 {
 	return &e
 }
+
+// FieldGetTemplateFieldTextAlign1Values returns every known FieldGetTemplateFieldTextAlign1 value in schema order.
+func FieldGetTemplateFieldTextAlign1Values() []FieldGetTemplateFieldTextAlign1 {
+	return []FieldGetTemplateFieldTextAlign1{
+		FieldGetTemplateFieldTextAlign1Left,
+		FieldGetTemplateFieldTextAlign1Center,
+		FieldGetTemplateFieldTextAlign1Right,
+	}
+}
 func (e *FieldGetTemplateFieldTextAlign1) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -1365,6 +1984,7 @@ type FieldGetTemplateFieldFieldMetaInitials struct {
 	Required    *bool                                      `json:"required,omitempty"`
 	ReadOnly    *bool                                      `json:"readOnly,omitempty"`
 	FontSize    *float64                                   `default:"12" json:"fontSize"`
+	Overflow    *FieldGetTemplateFieldOverflow2            `json:"overflow,omitempty"`
 	Type        FieldGetTemplateFieldFieldMetaTypeInitials `json:"type"`
 	TextAlign   *FieldGetTemplateFieldTextAlign1           `json:"textAlign,omitempty"`
 }
@@ -1415,6 +2035,13 @@ func (f *FieldGetTemplateFieldFieldMetaInitials) GetFontSize() *float64 {
 	return f.FontSize
 }
 
+func (f *FieldGetTemplateFieldFieldMetaInitials) GetOverflow() *FieldGetTemplateFieldOverflow2 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
+}
+
 func (f *FieldGetTemplateFieldFieldMetaInitials) GetType() FieldGetTemplateFieldFieldMetaTypeInitials {
 	if f == nil {
 		return FieldGetTemplateFieldFieldMetaTypeInitials("")
@@ -1429,6 +2056,48 @@ func (f *FieldGetTemplateFieldFieldMetaInitials) GetTextAlign() *FieldGetTemplat
 	return f.TextAlign
 }
 
+type FieldGetTemplateFieldOverflow1 string
+
+const (
+	FieldGetTemplateFieldOverflow1Auto       FieldGetTemplateFieldOverflow1 = "auto"
+	FieldGetTemplateFieldOverflow1Horizontal FieldGetTemplateFieldOverflow1 = "horizontal"
+	FieldGetTemplateFieldOverflow1Vertical   FieldGetTemplateFieldOverflow1 = "vertical"
+	FieldGetTemplateFieldOverflow1Crop       FieldGetTemplateFieldOverflow1 = "crop"
+)
+
+func (e FieldGetTemplateFieldOverflow1) ToPointer() *FieldGetTemplateFieldOverflow1 {
+	return &e
+}
+
+// FieldGetTemplateFieldOverflow1Values returns every known FieldGetTemplateFieldOverflow1 value in schema order.
+func FieldGetTemplateFieldOverflow1Values() []FieldGetTemplateFieldOverflow1 {
+	return []FieldGetTemplateFieldOverflow1{
+		FieldGetTemplateFieldOverflow1Auto,
+		FieldGetTemplateFieldOverflow1Horizontal,
+		FieldGetTemplateFieldOverflow1Vertical,
+		FieldGetTemplateFieldOverflow1Crop,
+	}
+}
+func (e *FieldGetTemplateFieldOverflow1) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "auto":
+		fallthrough
+	case "horizontal":
+		fallthrough
+	case "vertical":
+		fallthrough
+	case "crop":
+		*e = FieldGetTemplateFieldOverflow1(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for FieldGetTemplateFieldOverflow1: %v", v)
+	}
+}
+
 type FieldGetTemplateFieldFieldMetaTypeSignature string
 
 const (
@@ -1437,6 +2106,13 @@ const (
 
 func (e FieldGetTemplateFieldFieldMetaTypeSignature) ToPointer() *FieldGetTemplateFieldFieldMetaTypeSignature {
 	return &e
+}
+
+// FieldGetTemplateFieldFieldMetaTypeSignatureValues returns every known FieldGetTemplateFieldFieldMetaTypeSignature value in schema order.
+func FieldGetTemplateFieldFieldMetaTypeSignatureValues() []FieldGetTemplateFieldFieldMetaTypeSignature {
+	return []FieldGetTemplateFieldFieldMetaTypeSignature{
+		FieldGetTemplateFieldFieldMetaTypeSignatureSignature,
+	}
 }
 func (e *FieldGetTemplateFieldFieldMetaTypeSignature) UnmarshalJSON(data []byte) error {
 	var v string
@@ -1458,6 +2134,7 @@ type FieldGetTemplateFieldFieldMetaSignature struct {
 	Required    *bool                                       `json:"required,omitempty"`
 	ReadOnly    *bool                                       `json:"readOnly,omitempty"`
 	FontSize    *float64                                    `default:"12" json:"fontSize"`
+	Overflow    *FieldGetTemplateFieldOverflow1             `default:"auto" json:"overflow"`
 	Type        FieldGetTemplateFieldFieldMetaTypeSignature `json:"type"`
 }
 
@@ -1505,6 +2182,13 @@ func (f *FieldGetTemplateFieldFieldMetaSignature) GetFontSize() *float64 {
 		return nil
 	}
 	return f.FontSize
+}
+
+func (f *FieldGetTemplateFieldFieldMetaSignature) GetOverflow() *FieldGetTemplateFieldOverflow1 {
+	if f == nil {
+		return nil
+	}
+	return f.Overflow
 }
 
 func (f *FieldGetTemplateFieldFieldMetaSignature) GetType() FieldGetTemplateFieldFieldMetaTypeSignature {
@@ -1634,7 +2318,14 @@ func CreateFieldGetTemplateFieldFieldMetaUnionFieldGetTemplateFieldFieldMetaDrop
 	}
 }
 
-func (u *FieldGetTemplateFieldFieldMetaUnion) UnmarshalJSON(data []byte) error {
+func (u *FieldGetTemplateFieldFieldMetaUnion) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = FieldGetTemplateFieldFieldMetaUnion{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var fieldGetTemplateFieldFieldMetaSignature FieldGetTemplateFieldFieldMetaSignature = FieldGetTemplateFieldFieldMetaSignature{}
 	if err := utils.UnmarshalJSON(data, &fieldGetTemplateFieldFieldMetaSignature, "", true, nil); err == nil {

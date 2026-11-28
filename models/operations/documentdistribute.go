@@ -16,12 +16,15 @@ const (
 	DocumentDistributeDateFormatYyyyMMddHhMmA            DocumentDistributeDateFormat = "yyyy-MM-dd hh:mm a"
 	DocumentDistributeDateFormatYyyyMMdd                 DocumentDistributeDateFormat = "yyyy-MM-dd"
 	DocumentDistributeDateFormatDdMmSlashYyyy            DocumentDistributeDateFormat = "dd/MM/yyyy"
+	DocumentDistributeDateFormatDdMmDashYyyy             DocumentDistributeDateFormat = "dd-MM-yyyy"
 	DocumentDistributeDateFormatMmDdSlashYyyy            DocumentDistributeDateFormat = "MM/dd/yyyy"
 	DocumentDistributeDateFormatYyMMdd                   DocumentDistributeDateFormat = "yy-MM-dd"
 	DocumentDistributeDateFormatMmmmDdCommaYyyy          DocumentDistributeDateFormat = "MMMM dd, yyyy"
 	DocumentDistributeDateFormatEeeeMmmmDdCommaYyyy      DocumentDistributeDateFormat = "EEEE, MMMM dd, yyyy"
 	DocumentDistributeDateFormatDdMmSlashYyyyHhMmA       DocumentDistributeDateFormat = "dd/MM/yyyy hh:mm a"
 	DocumentDistributeDateFormatDdMmSlashYyyyHHmm        DocumentDistributeDateFormat = "dd/MM/yyyy HH:mm"
+	DocumentDistributeDateFormatDdMmDashYyyyHhMmA        DocumentDistributeDateFormat = "dd-MM-yyyy hh:mm a"
+	DocumentDistributeDateFormatDdMmDashYyyyHHmm         DocumentDistributeDateFormat = "dd-MM-yyyy HH:mm"
 	DocumentDistributeDateFormatMmDdSlashYyyyHhMmA       DocumentDistributeDateFormat = "MM/dd/yyyy hh:mm a"
 	DocumentDistributeDateFormatMmDdSlashYyyyHHmm        DocumentDistributeDateFormat = "MM/dd/yyyy HH:mm"
 	DocumentDistributeDateFormatDdDotMmDotYyyy           DocumentDistributeDateFormat = "dd.MM.yyyy"
@@ -40,6 +43,37 @@ const (
 func (e DocumentDistributeDateFormat) ToPointer() *DocumentDistributeDateFormat {
 	return &e
 }
+
+// DocumentDistributeDateFormatValues returns every known DocumentDistributeDateFormat value in schema order.
+func DocumentDistributeDateFormatValues() []DocumentDistributeDateFormat {
+	return []DocumentDistributeDateFormat{
+		DocumentDistributeDateFormatYyyyMMddHhMmA,
+		DocumentDistributeDateFormatYyyyMMdd,
+		DocumentDistributeDateFormatDdMmSlashYyyy,
+		DocumentDistributeDateFormatDdMmDashYyyy,
+		DocumentDistributeDateFormatMmDdSlashYyyy,
+		DocumentDistributeDateFormatYyMMdd,
+		DocumentDistributeDateFormatMmmmDdCommaYyyy,
+		DocumentDistributeDateFormatEeeeMmmmDdCommaYyyy,
+		DocumentDistributeDateFormatDdMmSlashYyyyHhMmA,
+		DocumentDistributeDateFormatDdMmSlashYyyyHHmm,
+		DocumentDistributeDateFormatDdMmDashYyyyHhMmA,
+		DocumentDistributeDateFormatDdMmDashYyyyHHmm,
+		DocumentDistributeDateFormatMmDdSlashYyyyHhMmA,
+		DocumentDistributeDateFormatMmDdSlashYyyyHHmm,
+		DocumentDistributeDateFormatDdDotMmDotYyyy,
+		DocumentDistributeDateFormatDdDotMmDotYyyyHHmm,
+		DocumentDistributeDateFormatYyyyMMddHHmm,
+		DocumentDistributeDateFormatYyMMddHhMmA,
+		DocumentDistributeDateFormatYyMMddHHmm,
+		DocumentDistributeDateFormatYyyyMMddHHmmss,
+		DocumentDistributeDateFormatMmmmDdCommaYyyyHhMmA,
+		DocumentDistributeDateFormatMmmmDdCommaYyyyHHmm,
+		DocumentDistributeDateFormatEeeeMmmmDdCommaYyyyHhMmA,
+		DocumentDistributeDateFormatEeeeMmmmDdCommaYyyyHHmm,
+		DocumentDistributeDateFormatIso8601Full,
+	}
+}
 func (e *DocumentDistributeDateFormat) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -52,6 +86,8 @@ func (e *DocumentDistributeDateFormat) UnmarshalJSON(data []byte) error {
 		fallthrough
 	case "dd/MM/yyyy":
 		fallthrough
+	case "dd-MM-yyyy":
+		fallthrough
 	case "MM/dd/yyyy":
 		fallthrough
 	case "yy-MM-dd":
@@ -63,6 +99,10 @@ func (e *DocumentDistributeDateFormat) UnmarshalJSON(data []byte) error {
 	case "dd/MM/yyyy hh:mm a":
 		fallthrough
 	case "dd/MM/yyyy HH:mm":
+		fallthrough
+	case "dd-MM-yyyy hh:mm a":
+		fallthrough
+	case "dd-MM-yyyy HH:mm":
 		fallthrough
 	case "MM/dd/yyyy hh:mm a":
 		fallthrough
@@ -106,6 +146,14 @@ const (
 func (e DocumentDistributeDistributionMethod) ToPointer() *DocumentDistributeDistributionMethod {
 	return &e
 }
+
+// DocumentDistributeDistributionMethodValues returns every known DocumentDistributeDistributionMethod value in schema order.
+func DocumentDistributeDistributionMethodValues() []DocumentDistributeDistributionMethod {
+	return []DocumentDistributeDistributionMethod{
+		DocumentDistributeDistributionMethodEmail,
+		DocumentDistributeDistributionMethodNone,
+	}
+}
 func (e *DocumentDistributeDistributionMethod) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -140,6 +188,23 @@ const (
 
 func (e DocumentDistributeLanguage) ToPointer() *DocumentDistributeLanguage {
 	return &e
+}
+
+// DocumentDistributeLanguageValues returns every known DocumentDistributeLanguage value in schema order.
+func DocumentDistributeLanguageValues() []DocumentDistributeLanguage {
+	return []DocumentDistributeLanguage{
+		DocumentDistributeLanguageDe,
+		DocumentDistributeLanguageEn,
+		DocumentDistributeLanguageFr,
+		DocumentDistributeLanguageEs,
+		DocumentDistributeLanguageIt,
+		DocumentDistributeLanguageNl,
+		DocumentDistributeLanguagePl,
+		DocumentDistributeLanguagePtBr,
+		DocumentDistributeLanguageJa,
+		DocumentDistributeLanguageKo,
+		DocumentDistributeLanguageZh,
+	}
 }
 func (e *DocumentDistributeLanguage) UnmarshalJSON(data []byte) error {
 	var v string
@@ -183,6 +248,8 @@ type DocumentDistributeEmailSettings struct {
 	DocumentCompleted       *bool `default:"true" json:"documentCompleted"`
 	DocumentDeleted         *bool `default:"true" json:"documentDeleted"`
 	OwnerDocumentCompleted  *bool `default:"true" json:"ownerDocumentCompleted"`
+	OwnerRecipientExpired   *bool `default:"true" json:"ownerRecipientExpired"`
+	OwnerDocumentCreated    *bool `default:"true" json:"ownerDocumentCreated"`
 }
 
 func (d DocumentDistributeEmailSettings) MarshalJSON() ([]byte, error) {
@@ -243,6 +310,20 @@ func (d *DocumentDistributeEmailSettings) GetOwnerDocumentCompleted() *bool {
 		return nil
 	}
 	return d.OwnerDocumentCompleted
+}
+
+func (d *DocumentDistributeEmailSettings) GetOwnerRecipientExpired() *bool {
+	if d == nil {
+		return nil
+	}
+	return d.OwnerRecipientExpired
+}
+
+func (d *DocumentDistributeEmailSettings) GetOwnerDocumentCreated() *bool {
+	if d == nil {
+		return nil
+	}
+	return d.OwnerDocumentCreated
 }
 
 type DocumentDistributeMeta struct {
@@ -358,6 +439,15 @@ const (
 func (e DocumentDistributeVisibility) ToPointer() *DocumentDistributeVisibility {
 	return &e
 }
+
+// DocumentDistributeVisibilityValues returns every known DocumentDistributeVisibility value in schema order.
+func DocumentDistributeVisibilityValues() []DocumentDistributeVisibility {
+	return []DocumentDistributeVisibility{
+		DocumentDistributeVisibilityEveryone,
+		DocumentDistributeVisibilityManagerAndAbove,
+		DocumentDistributeVisibilityAdmin,
+	}
+}
 func (e *DocumentDistributeVisibility) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -383,10 +473,22 @@ const (
 	DocumentDistributeStatusPending   DocumentDistributeStatus = "PENDING"
 	DocumentDistributeStatusCompleted DocumentDistributeStatus = "COMPLETED"
 	DocumentDistributeStatusRejected  DocumentDistributeStatus = "REJECTED"
+	DocumentDistributeStatusCancelled DocumentDistributeStatus = "CANCELLED"
 )
 
 func (e DocumentDistributeStatus) ToPointer() *DocumentDistributeStatus {
 	return &e
+}
+
+// DocumentDistributeStatusValues returns every known DocumentDistributeStatus value in schema order.
+func DocumentDistributeStatusValues() []DocumentDistributeStatus {
+	return []DocumentDistributeStatus{
+		DocumentDistributeStatusDraft,
+		DocumentDistributeStatusPending,
+		DocumentDistributeStatusCompleted,
+		DocumentDistributeStatusRejected,
+		DocumentDistributeStatusCancelled,
+	}
 }
 func (e *DocumentDistributeStatus) UnmarshalJSON(data []byte) error {
 	var v string
@@ -401,6 +503,8 @@ func (e *DocumentDistributeStatus) UnmarshalJSON(data []byte) error {
 	case "COMPLETED":
 		fallthrough
 	case "REJECTED":
+		fallthrough
+	case "CANCELLED":
 		*e = DocumentDistributeStatus(v)
 		return nil
 	default:
@@ -418,6 +522,15 @@ const (
 
 func (e DocumentDistributeSource) ToPointer() *DocumentDistributeSource {
 	return &e
+}
+
+// DocumentDistributeSourceValues returns every known DocumentDistributeSource value in schema order.
+func DocumentDistributeSourceValues() []DocumentDistributeSource {
+	return []DocumentDistributeSource{
+		DocumentDistributeSourceDocument,
+		DocumentDistributeSourceTemplate,
+		DocumentDistributeSourceTemplateDirectLink,
+	}
 }
 func (e *DocumentDistributeSource) UnmarshalJSON(data []byte) error {
 	var v string
@@ -447,6 +560,14 @@ const (
 func (e DocumentDistributeGlobalAccessAuth) ToPointer() *DocumentDistributeGlobalAccessAuth {
 	return &e
 }
+
+// DocumentDistributeGlobalAccessAuthValues returns every known DocumentDistributeGlobalAccessAuth value in schema order.
+func DocumentDistributeGlobalAccessAuthValues() []DocumentDistributeGlobalAccessAuth {
+	return []DocumentDistributeGlobalAccessAuth{
+		DocumentDistributeGlobalAccessAuthAccount,
+		DocumentDistributeGlobalAccessAuthTwoFactorAuth,
+	}
+}
 func (e *DocumentDistributeGlobalAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -474,6 +595,16 @@ const (
 
 func (e DocumentDistributeGlobalActionAuth) ToPointer() *DocumentDistributeGlobalActionAuth {
 	return &e
+}
+
+// DocumentDistributeGlobalActionAuthValues returns every known DocumentDistributeGlobalActionAuth value in schema order.
+func DocumentDistributeGlobalActionAuthValues() []DocumentDistributeGlobalActionAuth {
+	return []DocumentDistributeGlobalActionAuth{
+		DocumentDistributeGlobalActionAuthAccount,
+		DocumentDistributeGlobalActionAuthPasskey,
+		DocumentDistributeGlobalActionAuthTwoFactorAuth,
+		DocumentDistributeGlobalActionAuthPassword,
+	}
 }
 func (e *DocumentDistributeGlobalActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
@@ -557,7 +688,14 @@ func CreateDocumentDistributeFormValuesNumber(number float64) DocumentDistribute
 	}
 }
 
-func (u *DocumentDistributeFormValues) UnmarshalJSON(data []byte) error {
+func (u *DocumentDistributeFormValues) UnmarshalJSON(data []byte) (err error) {
+	previous := *u
+	*u = DocumentDistributeFormValues{}
+	defer func() {
+		if err != nil {
+			*u = previous
+		}
+	}()
 
 	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, nil); err == nil {

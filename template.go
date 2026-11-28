@@ -32,7 +32,9 @@ func newTemplate(rootSDK *Documenso, sdkConfig config.SDKConfiguration, hooks *h
 }
 
 // TemplateGetMany - Get multiple templates
-// Retrieve multiple templates by their IDs
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. Retrieve multiple templates by their IDs
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Template) TemplateGetMany(ctx context.Context, request operations.TemplateGetManyRequest, opts ...operations.Option) (*operations.TemplateGetManyResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -175,7 +177,7 @@ func (s *Template) TemplateGetMany(ctx context.Context, request operations.Templ
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -229,7 +231,7 @@ func (s *Template) TemplateGetMany(ctx context.Context, request operations.Templ
 
 			var out apierrors.TemplateGetManyBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -254,7 +256,7 @@ func (s *Template) TemplateGetMany(ctx context.Context, request operations.Templ
 
 			var out apierrors.TemplateGetManyUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -279,7 +281,7 @@ func (s *Template) TemplateGetMany(ctx context.Context, request operations.Templ
 
 			var out apierrors.TemplateGetManyForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -304,7 +306,7 @@ func (s *Template) TemplateGetMany(ctx context.Context, request operations.Templ
 
 			var out apierrors.TemplateGetManyInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -344,7 +346,9 @@ func (s *Template) TemplateGetMany(ctx context.Context, request operations.Templ
 }
 
 // TemplateCreateTemplateTemporary - Create template
-// You will need to upload the PDF to the provided URL returned. Note: Once V2 API is released, this will be removed since we will allow direct uploads, instead of using an upload URL.
+// Deprecated: this endpoint is being replaced by the Envelope API. See https://docs.documenso.com/docs/developers/api/migrate-to-envelopes for the migration guide. You will need to upload the PDF to the provided URL returned. Note: Once V2 API is released, this will be removed since we will allow direct uploads, instead of using an upload URL.
+//
+// Deprecated: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *Template) TemplateCreateTemplateTemporary(ctx context.Context, request operations.TemplateCreateTemplateTemporaryRequest, opts ...operations.Option) (*operations.TemplateCreateTemplateTemporaryResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
@@ -487,7 +491,7 @@ func (s *Template) TemplateCreateTemplateTemporary(ctx context.Context, request 
 
 			_, err = s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 			return nil, err
-		} else if utils.MatchStatusCodes([]string{"400", "401", "403", "4XX", "500", "5XX"}, httpRes.StatusCode) {
+		} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
 			_httpRes, err := s.hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 			if err != nil {
 				return nil, err
@@ -541,7 +545,7 @@ func (s *Template) TemplateCreateTemplateTemporary(ctx context.Context, request 
 
 			var out apierrors.TemplateCreateTemplateTemporaryBadRequestError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -566,7 +570,7 @@ func (s *Template) TemplateCreateTemplateTemporary(ctx context.Context, request 
 
 			var out apierrors.TemplateCreateTemplateTemporaryUnauthorizedError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -591,7 +595,7 @@ func (s *Template) TemplateCreateTemplateTemporary(ctx context.Context, request 
 
 			var out apierrors.TemplateCreateTemplateTemporaryForbiddenError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{
@@ -616,7 +620,7 @@ func (s *Template) TemplateCreateTemplateTemporary(ctx context.Context, request 
 
 			var out apierrors.TemplateCreateTemplateTemporaryInternalServerError
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out, ""); err != nil {
-				return nil, err
+				return nil, apierrors.NewResponseValidationError("response did not match the declared error schema", httpRes.StatusCode, string(rawBody), httpRes, err)
 			}
 
 			out.HTTPMeta = components.HTTPMetadata{

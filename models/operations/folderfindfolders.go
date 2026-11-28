@@ -18,6 +18,14 @@ const (
 func (e FolderFindFoldersQueryParamType) ToPointer() *FolderFindFoldersQueryParamType {
 	return &e
 }
+
+// FolderFindFoldersQueryParamTypeValues returns every known FolderFindFoldersQueryParamType value in schema order.
+func FolderFindFoldersQueryParamTypeValues() []FolderFindFoldersQueryParamType {
+	return []FolderFindFoldersQueryParamType{
+		FolderFindFoldersQueryParamTypeDocument,
+		FolderFindFoldersQueryParamTypeTemplate,
+	}
+}
 func (e *FolderFindFoldersQueryParamType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -91,6 +99,15 @@ const (
 func (e FolderFindFoldersVisibility) ToPointer() *FolderFindFoldersVisibility {
 	return &e
 }
+
+// FolderFindFoldersVisibilityValues returns every known FolderFindFoldersVisibility value in schema order.
+func FolderFindFoldersVisibilityValues() []FolderFindFoldersVisibility {
+	return []FolderFindFoldersVisibility{
+		FolderFindFoldersVisibilityEveryone,
+		FolderFindFoldersVisibilityManagerAndAbove,
+		FolderFindFoldersVisibilityAdmin,
+	}
+}
 func (e *FolderFindFoldersVisibility) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -118,6 +135,14 @@ const (
 
 func (e FolderFindFoldersDataType) ToPointer() *FolderFindFoldersDataType {
 	return &e
+}
+
+// FolderFindFoldersDataTypeValues returns every known FolderFindFoldersDataType value in schema order.
+func FolderFindFoldersDataTypeValues() []FolderFindFoldersDataType {
+	return []FolderFindFoldersDataType{
+		FolderFindFoldersDataTypeDocument,
+		FolderFindFoldersDataTypeTemplate,
+	}
 }
 func (e *FolderFindFoldersDataType) UnmarshalJSON(data []byte) error {
 	var v string

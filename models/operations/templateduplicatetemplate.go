@@ -23,12 +23,22 @@ func (t *TemplateDuplicateTemplateRequest) GetTemplateID() float64 {
 type TemplateDuplicateTemplateType string
 
 const (
-	TemplateDuplicateTemplateTypePublic  TemplateDuplicateTemplateType = "PUBLIC"
-	TemplateDuplicateTemplateTypePrivate TemplateDuplicateTemplateType = "PRIVATE"
+	TemplateDuplicateTemplateTypePublic       TemplateDuplicateTemplateType = "PUBLIC"
+	TemplateDuplicateTemplateTypePrivate      TemplateDuplicateTemplateType = "PRIVATE"
+	TemplateDuplicateTemplateTypeOrganisation TemplateDuplicateTemplateType = "ORGANISATION"
 )
 
 func (e TemplateDuplicateTemplateType) ToPointer() *TemplateDuplicateTemplateType {
 	return &e
+}
+
+// TemplateDuplicateTemplateTypeValues returns every known TemplateDuplicateTemplateType value in schema order.
+func TemplateDuplicateTemplateTypeValues() []TemplateDuplicateTemplateType {
+	return []TemplateDuplicateTemplateType{
+		TemplateDuplicateTemplateTypePublic,
+		TemplateDuplicateTemplateTypePrivate,
+		TemplateDuplicateTemplateTypeOrganisation,
+	}
 }
 func (e *TemplateDuplicateTemplateType) UnmarshalJSON(data []byte) error {
 	var v string
@@ -39,6 +49,8 @@ func (e *TemplateDuplicateTemplateType) UnmarshalJSON(data []byte) error {
 	case "PUBLIC":
 		fallthrough
 	case "PRIVATE":
+		fallthrough
+	case "ORGANISATION":
 		*e = TemplateDuplicateTemplateType(v)
 		return nil
 	default:
@@ -56,6 +68,15 @@ const (
 
 func (e TemplateDuplicateTemplateVisibility) ToPointer() *TemplateDuplicateTemplateVisibility {
 	return &e
+}
+
+// TemplateDuplicateTemplateVisibilityValues returns every known TemplateDuplicateTemplateVisibility value in schema order.
+func TemplateDuplicateTemplateVisibilityValues() []TemplateDuplicateTemplateVisibility {
+	return []TemplateDuplicateTemplateVisibility{
+		TemplateDuplicateTemplateVisibilityEveryone,
+		TemplateDuplicateTemplateVisibilityManagerAndAbove,
+		TemplateDuplicateTemplateVisibilityAdmin,
+	}
 }
 func (e *TemplateDuplicateTemplateVisibility) UnmarshalJSON(data []byte) error {
 	var v string
@@ -85,6 +106,14 @@ const (
 func (e TemplateDuplicateTemplateGlobalAccessAuth) ToPointer() *TemplateDuplicateTemplateGlobalAccessAuth {
 	return &e
 }
+
+// TemplateDuplicateTemplateGlobalAccessAuthValues returns every known TemplateDuplicateTemplateGlobalAccessAuth value in schema order.
+func TemplateDuplicateTemplateGlobalAccessAuthValues() []TemplateDuplicateTemplateGlobalAccessAuth {
+	return []TemplateDuplicateTemplateGlobalAccessAuth{
+		TemplateDuplicateTemplateGlobalAccessAuthAccount,
+		TemplateDuplicateTemplateGlobalAccessAuthTwoFactorAuth,
+	}
+}
 func (e *TemplateDuplicateTemplateGlobalAccessAuth) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -112,6 +141,16 @@ const (
 
 func (e TemplateDuplicateTemplateGlobalActionAuth) ToPointer() *TemplateDuplicateTemplateGlobalActionAuth {
 	return &e
+}
+
+// TemplateDuplicateTemplateGlobalActionAuthValues returns every known TemplateDuplicateTemplateGlobalActionAuth value in schema order.
+func TemplateDuplicateTemplateGlobalActionAuthValues() []TemplateDuplicateTemplateGlobalActionAuth {
+	return []TemplateDuplicateTemplateGlobalActionAuth{
+		TemplateDuplicateTemplateGlobalActionAuthAccount,
+		TemplateDuplicateTemplateGlobalActionAuthPasskey,
+		TemplateDuplicateTemplateGlobalActionAuthTwoFactorAuth,
+		TemplateDuplicateTemplateGlobalActionAuthPassword,
+	}
 }
 func (e *TemplateDuplicateTemplateGlobalActionAuth) UnmarshalJSON(data []byte) error {
 	var v string
